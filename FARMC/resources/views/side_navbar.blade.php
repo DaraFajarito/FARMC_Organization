@@ -78,7 +78,7 @@
                                 <li class="p-0">
                                     <div class="dropdown-divider m-0"></div>
                                 </li>
-                                <li><a href="login1.html"><i class="icon-logout"></i> Logout</a></li>
+                                <li><a href="{{url ('/login')}}"><i class="icon-logout"></i> Logout</a></li>
 
                             </ul>
                         </li>

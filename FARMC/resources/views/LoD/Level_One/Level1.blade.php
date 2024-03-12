@@ -11,7 +11,7 @@
 <body>
 
     <!-- side_navbar -->
-    @include ('side_navbar');
+    @include ('side_navbar')
     <!-- side_navbar -->
 
     <div class="content-wrapper">
@@ -30,44 +30,59 @@
                         </li>
                         <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 1</a>
                         </li>
+                        <div class="text-right">
+                            <span><button type="button" class="btn btn-primary">+New Form</button></span>
+                        </div>
                     </ol>
+
                 </div>
             </div>
+
             <!-- Tab panes -->
             <div class="tab-content tabs">
                 <div class="tab-pane active" id="farmc" role="tabpanel">
-                    <br>
-                    <label for="">Count Overview</label>
+                   <div class="card-block">
+                    <label for="">COUNT OVERVIEW</label>
+                    </div>
                     <div class="row dashboard-header">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="card dashboard-product">
-                                <span class="label label-warning">All</span>
-                                <span>City / Municipalities</span>
-                                <h2 class="dashboard-total-products">76</h2>
-                                <div class="side-box ">
-                                    <i class="ti-gift text-primary-color"></i>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Completed</span>
                                 <h2 class="dashboard-total-products">0</h2>
+                                <div class="side-box ">
+                                    <i class="ti-check text-success-color"></i>
+                                </div>
                             </div>
                         </div>
-
-
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card dashboard-product">
+                                <span class="label label-danger">All</span>
+                                <span>Incompleted</span>
+                                <h2 class="dashboard-total-products">0</h2>
+                                <div class="side-box ">
+                                    <i class="ti-close text-danger-color"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- 4-blocks row end -->
                     <hr>
-                    <label for="">Mimaropa Levels Overview</label>
-                    <!-- 2-1 block start -->
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>MIMAROPA LEVELS OVERVIEW</label>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button type="button" class="btn btn-primary">All Completed</button>
+                                <button type="button" class="btn btn-danger">All Incomplete</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-xl-12 col-lg-12">
                             <div class="card">
                                 <div class="card-block">
-
                                     <ul class="nav nav-tabs  tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#mimaropa" role="tab">All</a>
@@ -114,14 +129,10 @@
                                                             <td>Appestia Project
                                                                 <p><i class="icofont icofont-clock-time"></i>Created 14.9.2016</p>
                                                             </td>
-                                                            <td>
-                                                                <span class="pie" style="display: none;">226,134</span><svg class="peity" height="30" width="30">
-                                                                    <path d="M 15.000000000000002 0 A 15 15 0 1 1 4.209902994920235 25.41987555688496 L 15 15" fill="#2196F3"></path>
-                                                                    <path d="M 4.209902994920235 25.41987555688496 A 15 15 0 0 1 14.999999999999996 0 L 15 15" fill="#ccc"></path>
-                                                                </svg>
-                                                            </td>
-                                                            <td></td>
+                                                            <td>CALAPAN CITY  </td>
+                                                            <td><b style="color: green;">COMPLETED</b></td>
                                                             <td>October 21, 2015</td>
+                                                            <td><button type="button" class="btn btn-danger">Edit Form</button></td>
                                                         </tr>
 
                                                     </tbody>
@@ -133,63 +144,48 @@
                                             <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" data-toggle="tab" href="#Ormin" role="tab">Baco</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin1" role="tab">Bansud</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin2" role="tab">Bongabong</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin3" role="tab">Bulalacao</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin4" role="tab">Calapan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin5" role="tab">Gloria</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin6" role="tab">Mansalay</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin7" role="tab">Naujan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin8" role="tab">Puerto Galera</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin9" role="tab">Pinamalayan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin10" role="tab">Pola</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin11" role="tab">Roxas</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin12" role="tab">San Teodoro</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Ormin13" role="tab">Socorro</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#ormin14" role="tab">Victoria</a>
-                                                    <div class="slide"></div>
                                                 </li>
 
                                             </ul>
@@ -244,57 +240,45 @@
 
                                         </div>
                                         <div class="tab-pane" id="mimaropa2" role="tabpanel">
-                                        <br>
+                                            <br>
                                             <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" data-toggle="tab" href="#OcciMin" role="tab">Abra de Ilog</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin1" role="tab">Calintaan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin2" role="tab">Looc</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin3" role="tab">Lubang</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin4" role="tab">Magsaysay</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin5" role="tab">Mamburao</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin6" role="tab">Paluan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin7" role="tab">Rizal</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin8" role="tab"></a>Sablayan
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin9" role="tab">Pinamalayan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin10" role="tab">San Jose</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#OcciMin11" role="tab">Santa Cruz</a>
-                                                    <div class="slide"></div>
                                                 </li>
-                                                
+
 
                                             </ul>
                                             <!-- Tab panes -->
@@ -338,31 +322,25 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="mimaropa3" role="tabpanel">
-                                        <br>
+                                            <br>
                                             <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" data-toggle="tab" href="#Marinduque" role="tab">Boac</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Marinduque1" role="tab">Buenavista</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Marinduque2" role="tab">Gasan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Marinduque3" role="tab">Mogpog</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Marinduque4" role="tab">Sta. Cruz</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Marinduque5" role="tab">Torrijos</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                             </ul>
                                             <!-- Tab panes -->
@@ -388,77 +366,59 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="mimaropa4" role="tabpanel">
-                                        <br>
+                                            <br>
                                             <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" data-toggle="tab" href="#Romblon" role="tab">Alcantara</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon1" role="tab">Banton</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon2" role="tab">Cajidiocan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon3" role="tab">Calatrava</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon4" role="tab">Concepcion</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon5" role="tab">Corcuera</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon6" role="tab">Ferrol</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon7" role="tab">Looc</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon8" role="tab"></a>Magdiwang
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon9" role="tab">Odiongan</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon10" role="tab">Romblon</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon11" role="tab">San Agustin</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon13" role="tab"></a>San Andres
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon14" role="tab">San Fernando</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon15" role="tab">San Jose</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon16" role="tab">Santa Fe</a>
-                                                    <div class="slide"></div>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#Romblon17" role="tab">Santa Maria</a>
-                                                    <div class="slide"></div>
                                                 </li>
-                                                
 
                                             </ul>
                                             <!-- Tab panes -->
@@ -517,18 +477,153 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="mimaropa5" role="tabpanel">
-                                            <p>3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                                nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
-                                        </div>
-                                        <div class="tab-pane" id="mimaropa6" role="tabpanel">
-                                            <p>4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                                        <br>
+                                            <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#Palawan" role="tab">Aborlan</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan1" role="tab">Agutaya</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan2" role="tab">Aracelli</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan3" role="tab">Balabac</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan4" role="tab">Bataraza</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan5" role="tab">Brooke's Point</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan6" role="tab">Busuanga</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan7" role="tab">Cagayancillo</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan8" role="tab"></a>Coron
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan9" role="tab">Culion</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan10" role="tab">Cuyo</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan11" role="tab">Dumaran</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan13" role="tab"></a>El Nido
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan14" role="tab">Kalayaan</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan15" role="tab">Linapacan</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan16" role="tab">Magsaysay</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan17" role="tab">Narra</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan18" role="tab">Quezon</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan19" role="tab">Rizal</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan20" role="tab">Roxas</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan21" role="tab">San Vicente</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan22" role="tab">Sofronio Espaniola</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#Palawan23" role="tab">Taytay</a>
+                                                </li>
+
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content tabs-left-content">
+                                                <div class="tab-pane active" id="Palawan" role="tabpanel">
+                                                    <label for="">Palawan</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan1" role="tabpanel">
+                                                    <label for="">Palawan1</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan2" role="tabpanel">
+                                                    <label for="">Palawan2</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan3" role="tabpanel">
+                                                    <label for="">Palawan3</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan4" role="tabpanel">
+                                                    <label for="">Palawan4</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan5" role="tabpanel">
+                                                    <label for="">Palawan5</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan6" role="tabpanel">
+                                                    <label for="">Palawan6</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan7" role="tabpanel">
+                                                    <label for="">Palawan7</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan8" role="tabpanel">
+                                                    <label for="">Palawan8</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan9" role="tabpanel">
+                                                    <label for="">Palawan9</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan10" role="tabpanel">
+                                                    <label for="">Palawan10</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan11" role="tabpanel">
+                                                    <label for="">Palawan11</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan13" role="tabpanel">
+                                                    <label for="">Palawan13</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan14" role="tabpanel">
+                                                    <label for="">Palawan14</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan15" role="tabpanel">
+                                                    <label for="">Palawan15</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan16" role="tabpanel">
+                                                    <label for="">Palawan16</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan17" role="tabpanel">
+                                                    <label for="">Palawan17</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan18" role="tabpanel">
+                                                    <label for="">Palawan18</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan19" role="tabpanel">
+                                                    <label for="">Palawan19</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan20" role="tabpanel">
+                                                    <label for="">Palawan20</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan21" role="tabpanel">
+                                                    <label for="">Palawan21</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan22" role="tabpanel">
+                                                    <label for="">Palawan22</label>
+                                                </div>
+                                                <div class="tab-pane" id="Palawan23" role="tabpanel">
+                                                    <label for="">Palawan23</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -551,3 +646,5 @@
     </div>
 
 </body>
+
+</html>

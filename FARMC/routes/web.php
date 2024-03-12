@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('FARMC_Authentication/login');
-// });
+Route::get('/login', function () {
+    return view('FARMC_Authentication/login');
+});
 
 Route::get('/registeracc', function () {
     return view('FARMC_Authentication/register');

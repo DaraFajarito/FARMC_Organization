@@ -11,7 +11,7 @@
 <body>
 
     <!-- side_navbar -->
-    @include ('side_navbar');
+    @include ('side_navbar')
     <!-- side_navbar -->
 
     <div class="content-wrapper">

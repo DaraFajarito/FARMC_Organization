@@ -693,7 +693,8 @@ textarea {
 .md-tabs .nav-item {
   background-color: #fff;
   width: calc(100% / 4);
-  text-align: center;
+  text-align: left;
+  padding-left:20px;
 }
 
 .md-tabs .nav-item a {
@@ -711,6 +712,7 @@ textarea {
   border: none;
   background-color: transparent;
   border-radius: 0;
+  font-weight: bold;
 }
 
 .md-tabs .nav-item .nav-link.active~.slide {
