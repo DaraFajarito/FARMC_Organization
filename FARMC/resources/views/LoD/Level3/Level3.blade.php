@@ -73,8 +73,8 @@
                                 <label>MIMAROPA LEVELS OVERVIEW</label>
                             </div>
                             <div class="col-md-6 text-right">
-                                <button type="button" class="btn btn-primary">All Completed</button>
-                                <button type="button" class="btn btn-danger">All Incomplete</button>
+                            <a href="{{ url ('/L3Completed') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                            <a href="{{ url ('/L3Incomplete') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
                             </div>
                         </div>
                     </div>

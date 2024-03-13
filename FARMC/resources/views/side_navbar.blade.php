@@ -103,7 +103,7 @@
                 <ul class="sidebar-menu">
                     <li class="nav-level">--- Main</li>
                     <li class="active treeview">
-                        <a class="waves-effect waves-dark" href="index.html">
+                        <a class="waves-effect waves-dark" href="{{ url ('dash') }}">
                             <i class="icon-speedometer"></i><span> Dashboard</span>
                         </a>
                     </li>
@@ -133,22 +133,22 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="waves-effect waves-dark" href="#!">
+                                                <a class="waves-effect waves-dark" href="{{ url ('/level2') }}">
                                                     1.1.1.2 Level Two
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="waves-effect waves-dark" href="#!">
+                                                <a class="waves-effect waves-dark" href="{{ url ('/level3') }}">
                                                     1.1.1.3 Level Three
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="waves-effect waves-dark" href="#!">
+                                                <a class="waves-effect waves-dark" href="{{ url ('/level4') }}">
                                                     1.1.1.4 Level Four
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="waves-effect waves-dark" href="#!">
+                                                <a class="waves-effect waves-dark" href="{{ url ('/level5') }}">
                                                     1.1.1.5 Level Five
                                                 </a>
                                             </li>
