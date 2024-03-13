@@ -31,7 +31,7 @@
                         <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 1</a>
                         </li>
                         <div class="text-right">
-                            <span><button type="button" class="btn btn-primary">+New Form</button></span>
+                            <span><a href="{{ url ('/basicStructure') }}"><button type="button" class="btn btn-primary">+New Form</button></a></span>
                         </div>
                     </ol>
 

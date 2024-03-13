@@ -78,7 +78,15 @@
                                 <li class="p-0">
                                     <div class="dropdown-divider m-0"></div>
                                 </li>
-                                <li><a href="{{url ('/login')}}"><i class="icon-logout"></i> Logout</a></li>
+                                <li>
+                                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="icon-logout"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf <!-- CSRF protection -->
+                                    </form>
+                                </li>
+
 
                             </ul>
                         </li>
@@ -196,19 +204,19 @@
                             <li>
                                 <a class="waves-effect waves-dark" href="#!">
                                     <i class="icon-arrow-right"></i>
-                                   3.1 Provincial Fisherfolk Representative
+                                    3.1 Provincial Fisherfolk Representative
                                 </a>
                             </li>
                             <li>
                                 <a class="waves-effect waves-dark" href="#!">
                                     <i class="icon-arrow-right"></i>
-                                   3.2 Regional Fisherfolk Director
+                                    3.2 Regional Fisherfolk Director
                                 </a>
                             </li>
                             <li>
                                 <a class="waves-effect waves-dark" href="#!">
                                     <i class="icon-arrow-right"></i>
-                                   3.3 National Fisherfolk Director
+                                    3.3 National Fisherfolk Director
                                 </a>
                             </li>
                         </ul>

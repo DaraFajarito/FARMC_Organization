@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Login Page | FARMC - BFAR</title>
-   
+    <title>Register Page | FARMC - BFAR</title>
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -50,7 +50,8 @@
 
                 <div class="col-sm-12">
                     <div class="login-card card-block">
-                        <form class="md-float-material">
+                        <form method="post" action="{{ route('register') }}" class="md-float-material">
+                            @csrf <!-- CSRF protection -->
                             <div class="text-center">
                                 <img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style="width:120px; height: 80px" alt="logo">
                             </div>
@@ -60,25 +61,29 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
-                                        <input type="text" class="md-form-control" required="required" />
+                                        <input type="text" class="md-form-control" id="username" name="username" placeholder="Enter username" value="{{ old('username') }}">
                                         <label>Username</label>
+                                        @error('username')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
-                                        <input type="password" class="md-form-control" required="required" />
+                                        <input type="password" class="md-form-control" id="password" name="password" placeholder="Enter password">
                                         <label>Password</label>
+                                        @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
-                               
-                               
                             </div>
                             <div class="row">
                                 <div class="col-xs-10 offset-xs-1">
-                                    <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">REGISTER</button>
                                 </div>
                             </div>
-                           
                         </form>
                         <!-- end of form -->
                     </div>

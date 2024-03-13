@@ -20,196 +20,15 @@
 <body>
 
     <!-- side_navbar -->
-    @include ('side_navbar');
+    @include ('side_navbar')
     <!-- side_navbar -->
-
-    <body class="sidebar-mini fixed">
-        <div class="loader-bg">
-            <div class="loader-bar">
-            </div>
-        </div>
+        
         <div class="wrapper">
-            <!-- Navbar-->
-            <header class="main-header-top hidden-print">
-                <a href="index.html" class="logo"><img src="../../BFAR_FARMC/img/FARMC_new.png" style=" width:200px;" alt="logo"></a>
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
-
-                    <!-- Navbar Right Menu-->
-                    <div class="navbar-custom-menu f-right">
-
-                        <ul class="top-nav">
-
-                            <!-- window screen -->
-                            <li class="pc-rheader-submenu">
-                                <a href="#!" class="drop icon-circle" onclick="javascript:toggleFullScreen()">
-                                    <i class="icon-size-fullscreen"></i>
-                                </a>
-
-                            </li>
-                            <!-- User Menu-->
-                            <li class="dropdown">
-                                <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
-                                    <!-- <span><img class="img-circle " src="./../BFAR_FARMC/img/FarmC.jpg" style="width:60px; height: 50px" alt="User Image"></span> -->
-                                    <span>Mr. <b>Montallana</b> <i class=" icofont icofont-simple-down"></i></span>
-                                </a>
-                                <ul class="dropdown-menu settings-menu">
-                                    <!-- <li><a href="#!"><i class="icon-settings"></i> Settings</a></li> -->
-                                    <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-                                    <!-- <li><a href="#"><i class="icon-envelope-open"></i> My Messages</a></li>
-                        <li class="p-0">
-                           <div class="dropdown-divider m-0"></div>
-                        </li>
-                        <li><a href="#"><i class="icon-lock"></i> Lock Screen</a></li> -->
-                                    <li><a href="login.php"><i class="icon-logout"></i> Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-            <!-- Side-Nav-->
-            <aside class="main-sidebar hidden-print ">
-                <section class="sidebar" id="sidebar-scroll">
-                    <!-- Sidebar Menu-->
-                    <ul class="sidebar-menu">
-                        <li class="nav-level">--- Main</li>
-                        <li class="active treeview">
-                            <a class="waves-effect waves-dark" href="../../BFAR_FARMC/index.php">
-                                <i class="icon-speedometer"></i><span> Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-level">--- FARMC Profile</li>
-
-                        <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icofont icofont-company"></i><span>1. FARMC STRENGTHENING</span><i class="icon-arrow-down"></i></a>
-
-                            <!-- MUNICIPAL -->
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a class="waves-effect waves-dark" href="#!">
-                                        <i class="icon-arrow-right"></i>
-                                        <span>1.1 Organized FARMC </span>
-                                        <i class="icon-arrow-down"></i>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li>
-                                            <a class="waves-effect waves-dark" href="#!">
-                                                <i class="icon-arrow-right"></i>
-                                                <span>1.1.1 Municipal / City FARMC</span>
-                                                <i class="icon-arrow-down"></i>
-                                            </a>
-                                            <ul class="treeview-menu">
-                                                <li>
-                                                    <a class="waves-effect waves-dark" href="../../BFAR_FARMC/LoD/L1/Level1.php">
-                                                        1.1.1.1 LEVEL 1
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="waves-effect waves-dark" href="../../BFAR_FARMC/LoD/L2/Level2.php">
-                                                        1.1.1.2 LEVEL 2
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="waves-effect waves-dark" href="../../BFAR_FARMC/LoD/L3/Level3.php">
-                                                        1.1.1.3 LEVEL 3
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="waves-effect waves-dark" href="../../BFAR_FARMC/LoD/L4/Level4.php">
-                                                        1.1.1.4 LEVEL 4
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="waves-effect waves-dark" href="../../BFAR_FARMC/LoD/L5/Level5.php">
-                                                        1.1.1.5 LEVEL 5
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a class="waves-effect waves-dark" href="#!">
-                                                <i class="icon-arrow-right"></i>
-                                                1.1.2 Barangay / Lakewide FARMC
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="waves-effect waves-dark" href="#!">
-                                                <i class="icon-arrow-right"></i>
-                                                1.1.3 Integrated FARMC
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                            </ul>
-
-
-                            <!-- INTEGRATE FARMC -->
-                            <ul class="treeview-menu">
-                                <li class="treeview">
-                                    <a class="waves-effect waves-dark" href="../BFAR_FARMC/FARMC_MembersProfile_Form/member_info.php">
-                                        <i class="icon-arrow-right"></i>
-                                        <span>1.2 FARMC Membership</span>
-                                        <i class="icon-arrow-down"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-level">--- FARMC Org</li>
-                        <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span>Fisherfolk Organization </span><i class="icon-arrow-down"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a class="waves-effect waves-dark" href="accordion.html"><i class="icon-arrow-right"></i>2.1 Municipal</a></li>
-                                <li><a class="waves-effect waves-dark" href="button.html"><i class="icon-arrow-right"></i>2.2 Fishworker</a></li>
-                                <li><a class="waves-effect waves-dark" href="label-badge.html"><i class="icon-arrow-right"></i>2.3 Commercial</a></li>
-                                <li><a class="waves-effect waves-dark" href="label-badge.html"><i class="icon-arrow-right"></i>2.4 Women Fisherfolk</a></li>
-                                <li><a class="waves-effect waves-dark" href="label-badge.html"><i class="icon-arrow-right"></i>2.5 Youth Fisherfolk</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-level">--- FARMC DP</li>
-                        <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span>Fisherfolk Directors Program
-                                    <br><small>(Regional Fisherfolk Council </small><small>of</small> <br><small> Leaders Assembly)</small>
-                                </span><i class="icon-arrow-down"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a class="waves-effect waves-dark" href="accordion.html"><i class="icon-arrow-right"></i>3.1 Provincial Fisherfolk Representative</a></li>
-                                <li><a class="waves-effect waves-dark" href="button.html"><i class="icon-arrow-right"></i>2.2 Regional Fisherfolk Director</a></li>
-                                <li><a class="waves-effect waves-dark" href="button.html"><i class="icon-arrow-right"></i>2.2 National Fisherfolk Director</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-level">--- More</li>
-
-                        <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-docs"></i><span>Pages</span><i class="icon-arrow-down"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="treeview"><a href="#!"><i class="icon-arrow-right"></i><span> Authentication</span><i class="icon-arrow-down"></i></a>
-                                    <ul class="treeview-menu">
-                                        <li><a class="waves-effect waves-dark" href="register1.html" target="_blank"><i class="icon-arrow-right"></i> Register 1</a></li>
-
-                                        <li><a class="waves-effect waves-dark" href="login1.html" target="_blank"><i class="icon-arrow-right"></i><span> Login 1</span></a></li>
-                                        <li><a class="waves-effect waves-dark" href="forgot-password.html" target="_blank"><i class="icon-arrow-right"></i><span> Forgot Password</span></a></li>
-
-                                    </ul>
-                                </li>
-
-                                <li><a class="waves-effect waves-dark" href="404.html" target="_blank"><i class="icon-arrow-right"></i> Error 404</a></li>
-                                <li><a class="waves-effect waves-dark" href="sample-page.html"><i class="icon-arrow-right"></i> Sample Page</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-level">--- Menu Level</li>
-                    </ul>
-                </section>
-            </aside>
-        </div>
-        <div class="wrapper">
-            <div class="content-wrapper" style="padding-left: 80px;">
+            <div class="content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="main-header">
-                            <a href="index.html" class="logo"><img src="./../img/Logo_BFAR.png" style=" width: 60px;" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                             <h4>M/C FARMC Profile</h4>
                             <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                                 <li class="breadcrumb-item">
@@ -223,7 +42,7 @@
                                 </li>
                             </ol>
                             <br>
-                            <a href="./../LoD/L1/Level1.php" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                            <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         </div>
                     </div>
                     <div class="card">

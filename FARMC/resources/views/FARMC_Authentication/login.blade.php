@@ -1,116 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <title>Login Page | FARMC - BFAR</title>
-   
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="codedthemes">
-    <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
-    <meta name="author" content="codedthemes">
+    <head>
+        <title>Login Page | FARMC - BFAR</title>
 
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{{ asset ('assets/images/favicon.png') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset ('assets/images/favicon.ico') }}" type="image/x-icon">
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="codedthemes">
+        <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+        <meta name="author" content="codedthemes">
 
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+        <!-- Favicon icon -->
+        <link rel="shortcut icon" href="{{ asset ('assets/images/favicon.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset ('assets/images/favicon.ico') }}" type="image/x-icon">
 
-    <!-- Font Awesome -->
-    <link href="{{ asset ('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <!-- Google font-->
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
 
-    <!--ico Fonts-->
-    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/icon/icofont/css/icofont.css') }}">
+        <!-- Font Awesome -->
+        <link href="{{ asset ('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+        <!--ico Fonts-->
+        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/icon/icofont/css/icofont.css') }}">
 
-    <!-- waves css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/plugins/Waves/waves.min.css') }}">
+        <!-- Required Fremwork -->
+        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 
-    <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/main.css') }}">
+        <!-- waves css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/plugins/Waves/waves.min.css') }}">
 
-    <!-- Responsive.css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/responsive.css') }}">
+        <!-- Style.css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/main.css') }}">
 
-    <!--color css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/color/color-1.min.css') }}" id="color" />
+        <!-- Responsive.css-->
+        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/responsive.css') }}">
 
-</head>
+        <!--color css-->
+        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/color/color-1.min.css') }}" id="color" />
 
-<body>
-    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
-        <!-- Container-fluid starts -->
-        <div class="container-fluid">
-            <div class="row">
+    </head>
 
-                <div class="col-sm-12">
-                    <div class="login-card card-block">
-                        <form class="md-float-material">
-                            <div class="text-center">
-                                <img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style="width:120px; height: 80px" alt="logo">
-                            </div>
-                            <h3 class="text-center txt-primary">
-                                Sign In to your account
-                            </h3>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="md-input-wrapper">
-                                        <input type="text" class="md-form-control" required="required" />
-                                        <label>Username</label>
+    <body>
+        <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+            <!-- Container-fluid starts -->
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="login-card card-block">
+                            <form method="post" action="{{ url('/login') }}" class="md-float-material">
+                                @csrf <!-- CSRF protection -->
+                                <div class="text-center">
+                                    <img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style="width:120px; height: 80px" alt="logo">
+                                </div>
+                                <h3 class="text-center txt-primary">
+                                    Sign In to your account
+                                </h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="md-input-wrapper">
+                                            <input type="text" class="md-form-control" id="username" name="username" value="{{ old('username') }}">
+                                            <label>Username</label>
+                                            @error('username')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="md-input-wrapper">
+                                            <input type="password" class="md-form-control" id="password" name="password">
+                                            <label>Password</label>
+                                            @error('password')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="md-input-wrapper">
-                                        <input type="password" class="md-form-control" required="required" />
-                                        <label>Password</label>
+                                <div class="row">
+                                    <div class="col-xs-10 offset-xs-1">
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
                                     </div>
                                 </div>
-                               
-                               
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-10 offset-xs-1">
-                                    <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                                <!-- <div class="card-footer"> -->
+                                <div class="col-sm-12 col-xs-12 forgot-phone text-center">
+                                    <a href="{{ url('/forgetpass') }}" class=" f-w-600"> Forget Password?</a>
                                 </div>
-                            </div>
-                            <!-- <div class="card-footer"> -->
-                            <div class="col-sm-12 col-xs-12 forgot-phone text-center">
-                                    <a href="forgot-password.html" class=" f-w-600"> Forget Password?</a>
-                                </div>
+                            </form>
 
-                            <!-- </div> -->
-                        </form>
-                        <!-- end of form -->
+                            <!-- end of form -->
+                        </div>
+                        <!-- end of login-card -->
                     </div>
-                    <!-- end of login-card -->
+                    <!-- end of col-sm-12 -->
                 </div>
-                <!-- end of col-sm-12 -->
+                <!-- end of row -->
             </div>
-            <!-- end of row -->
-        </div>
-        <!-- end of container-fluid -->
-    </section>
+            <!-- end of container-fluid -->
+        </section>
 
-    <!-- Required Jqurey -->
-    <script src="{{ asset ('assets/plugins/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
+        <!-- Required Jqurey -->
+        <script src="{{ asset ('assets/plugins/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
 
-    <!-- Required Fremwork -->
-    <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- Required Fremwork -->
+        <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    <!-- waves effects.js -->
-    <script src="{{ asset ('assets/plugins/Waves/waves.min.js') }}"></script>
-    <!-- Custom js -->
-    <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
+        <!-- waves effects.js -->
+        <script src="{{ asset ('assets/plugins/Waves/waves.min.js') }}"></script>
+        <!-- Custom js -->
+        <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>

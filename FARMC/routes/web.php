@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FARMC_Authentication\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
+
+
+Route::get('/', function () {
     return view('FARMC_Authentication/login');
 });
 
@@ -25,6 +28,21 @@ Route::get('/forgetpass', function () {
 });  
 
 
-Route::view('/', 'dashboard');
+//AUTHENTICATION
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/reg-account', [AuthController::class, 'register'])->name('register');
+
+Route::get('/dash', function () {
+    return view('dashboard');
+});
+
+
+Route::post('/forg-account', [AuthController::class, 'resetPassword'])->name('password.reset');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
+
+
 Route::view('/level1', 'LoD.Level_One.Level1');
 Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
