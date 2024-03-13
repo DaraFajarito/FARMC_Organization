@@ -39,6 +39,7 @@ Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structur
 Route::view('/officers', 'LVL1_Profile_Form.FARMC_Officers.officers');
 Route::view('/mandatedmem', 'LVL1_Profile_Form.Composition_OM.mandated_member');
 Route::view('/fisherfolkrep', 'LVL1_Profile_Form.Composition_OM.fisherfolk_representative');
+Route::view('/committee', 'LVL1_Profile_Form.MFARMC_Committee.committee');
 Route::view('/secretariat', 'LVL1_Profile_Form.Composition_OS.secretariat');
 
 // ------------------------------------------------------------------------------

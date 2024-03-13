@@ -23,8 +23,8 @@
         <div class="content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="main-header" style="padding-left: 90px" ;>
-                        <a href="index.html" class="logo"><img src="../../img/Logo_BFAR.png" style=" width: 60px;" alt="logo"></a>
+                    <div class="main-header">
+                    <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                         <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
@@ -39,7 +39,7 @@
                         </ol>
                         <br>
 
-                        <a href="FARMC_basic_structure.php" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                        <a href="{{ url ('/officers') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br>
                         <br>
                         <div class="card">
@@ -129,7 +129,7 @@
                                         </form>
                                         <div class="row">
                                             <div class="col-md-12 text-right">
-                                                <a href="./../../../BFAR_FARMC/FARMC_Profile_Form/CompositionOM/Fisherfolk_ Representative.php" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                                <a href="{{ url ('/fisherfolkrep') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
