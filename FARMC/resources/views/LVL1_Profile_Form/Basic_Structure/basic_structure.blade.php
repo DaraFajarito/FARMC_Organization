@@ -3,6 +3,7 @@
 
 <head>
     <title>Basic Structure | FARMC - BFAR</title>
+    <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
     <meta charset="utf-8">

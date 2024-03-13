@@ -3,6 +3,8 @@
 
 <head>
     <title>All Dashboard | BFAR - FARMC</title>
+    <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -41,8 +43,8 @@
             <!-- Tab panes -->
             <div class="tab-content tabs">
                 <div class="tab-pane active" id="farmc" role="tabpanel">
-                   <div class="card-block">
-                    <label for="">COUNT OVERVIEW</label>
+                    <div class="card-block">
+                        <label for="">COUNT OVERVIEW</label>
                     </div>
                     <div class="row dashboard-header">
                         <div class="col-lg-6 col-md-6">
@@ -73,8 +75,8 @@
                                 <label>MIMAROPA LEVELS OVERVIEW</label>
                             </div>
                             <div class="col-md-6 text-right">
-                            <a href="{{ url ('/L1Completed') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                            <a href="{{ url ('/L1Incomplete') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                <a href="{{ url ('/L1Completed') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                <a href="{{ url ('/L1Incomplete') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
                             </div>
                         </div>
                     </div>
@@ -129,7 +131,7 @@
                                                             <td>Appestia Project
                                                                 <p><i class="icofont icofont-clock-time"></i>Created 14.9.2016</p>
                                                             </td>
-                                                            <td>CALAPAN CITY  </td>
+                                                            <td>CALAPAN CITY </td>
                                                             <td><b style="color: green;">COMPLETED</b></td>
                                                             <td>October 21, 2015</td>
                                                             <td><button type="button" class="btn btn-danger">Edit Form</button></td>
@@ -192,7 +194,38 @@
                                             <!-- Tab panes -->
                                             <div class="tab-content tabs-left-content">
                                                 <div class="tab-pane active" id="Ormin" role="tabpanel">
-                                                    <label for="">Ormin</label>
+                                                    <br>
+                                                    <div class="col-mb-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table m-b-0 photo-table">
+                                                            <thead>
+                                                                <tr class="text-uppercase">
+                                                                    <th>Photo</th>
+                                                                    <th>Province</th>
+                                                                    <th>Municipality</th>
+                                                                    <th>Status</th>
+                                                                    <th>Date</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>
+                                                                        <img class="img-fluid img-circle" src="assets/images/avatar-2.png" alt="User">
+                                                                    </th>
+                                                                    <td>Appestia Project
+                                                                        <p><i class="icofont icofont-clock-time"></i>Created 14.9.2016</p>
+                                                                    </td>
+                                                                    <td>CALAPAN CITY </td>
+                                                                    <td><b style="color: green;">COMPLETED</b></td>
+                                                                    <td>October 21, 2015</td>
+                                                                    <td><button type="button" class="btn btn-danger">Edit Form</button></td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane" id="Ormin1" role="tabpanel">
                                                     <label for="">Ormin1</label>
@@ -477,7 +510,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="mimaropa5" role="tabpanel">
-                                        <br>
+                                            <br>
                                             <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" data-toggle="tab" href="#Palawan" role="tab">Aborlan</a>
