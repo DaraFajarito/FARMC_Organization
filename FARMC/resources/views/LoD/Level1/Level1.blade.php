@@ -48,7 +48,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
-                                <span>Completed</span>
+                                <span>Level 1 | Completed</span>
                                 <h2 class="dashboard-total-products">0</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
@@ -58,7 +58,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
-                                <span>Incompleted</span>
+                                <span>Level 1 | Incompleted</span>
                                 <h2 class="dashboard-total-products">0</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>

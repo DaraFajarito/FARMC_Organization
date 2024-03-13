@@ -11,10 +11,6 @@
     <meta name="description" content="codedthemes">
     <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="codedthemes">
-
-
-
-
 </head>
 
 <body>
@@ -172,7 +168,7 @@
                                         </form>
                                         <div class="row">
                                             <div class="col-md-12 text-right">
-                                                <a href="../FARMC_Profile_Form/CompositionOM/Mandated_Member.php" class="btn btn-primary">Next <i class="icon-arrow-right"></i></a>
+                                                <a href="{{ url ('/officers') }}" class="btn btn-primary">Next <i class="icon-arrow-right"></i></a>
                                             </div>
                                         </div>
                                         <!-- </div> -->

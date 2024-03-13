@@ -34,8 +34,12 @@ Route::view('/level1', 'LoD.Level1.Level1');
 Route::view('/L1Completed', 'LoD.Level1.L1_Completed');
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
 
+
 Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
-Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
+Route::view('/officers', 'LVL1_Profile_Form.FARMC_Officers.officers');
+Route::view('/mandatedmem', 'LVL1_Profile_Form.Composition_OM.mandated_member');
+Route::view('/fisherfolkrep', 'LVL1_Profile_Form.Composition_OM.fisherfolk_representative');
+Route::view('/secretariat', 'LVL1_Profile_Form.Composition_OS.secretariat');
 
 // ------------------------------------------------------------------------------
 

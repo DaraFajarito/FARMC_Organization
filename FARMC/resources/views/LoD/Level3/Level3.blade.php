@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="main-header">
-                    <h4>Level One Overview</h4>
+                    <h4>Level Three Overview</h4>
                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                         <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
                         </li>
@@ -28,11 +28,11 @@
                         </li>
                         <li class="breadcrumb-item"><a href="tabs.html">Organized FARMC</a>
                         </li>
-                        <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 1</a>
+                        <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 3</a>
                         </li>
-                        <div class="text-right">
+                        <!-- <div class="text-right">
                             <span><a href="{{ url ('/basicStructure') }}"><button type="button" class="btn btn-primary">+New Form</button></a></span>
-                        </div>
+                        </div> -->
                     </ol>
 
                 </div>
@@ -48,7 +48,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
-                                <span>Completed</span>
+                                <span>Level 3 | Completed</span>
                                 <h2 class="dashboard-total-products">0</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
@@ -58,7 +58,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
-                                <span>Incompleted</span>
+                                <span>Level 3 | Incompleted</span>
                                 <h2 class="dashboard-total-products">0</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
