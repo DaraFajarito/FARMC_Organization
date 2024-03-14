@@ -52,39 +52,34 @@
 
                         <a href="{{ url ('/membership')}}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br> <br>
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="card inline-form-style">
-                                    <div class="card-header">
-                                        <div class="col-sm--1 col-xs--1 waves-effect waves-light">
-                                            <div class="grid-material bg-general">Organizational Membership</div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <form class="form-inline">
+                        <form class="form-inline">
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card inline-form-style">
+                                        <div class="card-header">
+                                            <div class="col-sm--1 col-xs--1 waves-effect waves-light">
+                                                <div class="grid-material bg-general">Organizational Membership</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name of Association/Organization/Cooperative <em></em></label>
                                                         <input id="inline3mail" type="email" class="form-control" style="width: 830px;" placeholder="">
                                                     </div>
-                                                </form>
-                                                <br>
-
-                                                <form class="form-inline">
+                                                    <br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Address of Association/Organization/Cooperative <em></em></label>
                                                         <input id="inline3mail" type="email" class="form-control" style="width: 830px;" placeholder="">
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <!-- <div class="card-block"> -->
-                                        <div class="row">
-                                            <div class="col-md-4    ">
-                                                <div class="grid-material bg-general"><em>Composition of Membership</em></div>
-                                                <br>
-                                                <form>
+                                            <hr>
+                                            <!-- <div class="card-block"> -->
+                                            <div class="row">
+                                                <div class="col-md-4    ">
+                                                    <div class="grid-material bg-general"><em>Composition of Membership</em></div>
+                                                    <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
 
@@ -105,12 +100,10 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>Registration of Association</em></div>
-                                                <br>
-                                                <form>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>Registration of Association</em></div>
+                                                    <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
 
@@ -122,8 +115,6 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                                <form>
                                                     <div class="form-inline">
                                                         <div>
                                                             <label for="textBox">If yes, what agency</label>
@@ -134,14 +125,12 @@
 
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
 
 
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>LGU Accreditation</em></div>
-                                                <br>
-                                                <form>
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>LGU Accreditation</em></div>
+                                                    <br>
                                                     <div class="radio-container">
                                                         <div class="form-group">
                                                             <input type="radio" class="form-check-input" name="option" value="yes" id="yes_radio">
@@ -160,16 +149,14 @@
                                                         <label for="date">Date</label>
                                                         <input id="date" type="text" class="form-control" placeholder="Date">
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>Officer of Association</em></div>
-                                                <br>
-                                                <form>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>Officer of Association</em></div>
+                                                    <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
 
@@ -184,8 +171,6 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                                <form>
                                                     <div class="form-inline">
                                                         <div>
                                                             <label for="textBox">Specify, if yes</label>
@@ -195,13 +180,11 @@
 
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
 
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>Involvement in Mangingisdang Director Program</em></div>
-                                                <br>
-                                                <form>
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>Involvement in Mangingisdang Director Program</em></div>
+                                                    <br>
                                                     <div class="radio-container">
                                                         <div class="form-group">
                                                             <input type="radio" class="form-check-input" name="option" value="pro" id="pro_radio">
@@ -216,12 +199,10 @@
                                                             <label class="form-check-label" for="na_radio">National Fisherfolk Director</label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>Year Elected</em></div>
-                                                <br>
-                                                <form>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>Year Elected</em></div>
+                                                    <br>
                                                     <div class="form-inline">
                                                         <div>
                                                             <label>
@@ -237,75 +218,74 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div style="display: flex; justify-content: center;">
-                                                    <div style="width: 300px; text-align: center;" class="signature-container">
-                                                        <p style="margin: 0;">I hereby certify that the above information is true and correct to the best of my knowledge and belief.</p>
-                                                        <input type="file" id="signatureFile" accept="image/*" style="margin-top: 10px; position: relative;">
-                                                        <label for="signatureFile" class="signature-line" style="text-align: center;">Member's Signature</label>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div style="display: flex; justify-content: center;">
+                                                        <div style="width: 300px; text-align: center;" class="signature-container">
+                                                            <p style="margin: 0;">I hereby certify that the above information is true and correct to the best of my knowledge and belief.</p>
+                                                            <input type="file" id="signatureFile" accept="image/*" style="margin-top: 10px; position: relative;">
+                                                            <label for="signatureFile" class="signature-line" style="text-align: center;">Member's Signature</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div style="flex: 1; display: flex; padding-left:60px;">
+                                                        <div style="width: 120px; height: 110px; border: 1px solid black; margin-right: 20px;"></div> <!-- First Thumbmarks box -->
+                                                        <div style="width: 120px; height: 110px; border: 1px solid black;"></div> <!-- Second Thumbmarks box -->
+                                                    </div>
+                                                    <div style="flex: 1; display: flex; align-items: center;">
+                                                        <div style="width: 20px;"></div> <!-- Add space between thumbmarks and photo box -->
+                                                    </div>
+                                                    <div style="text-align: center;">
+                                                        <p>Thumbmarks</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div style="margin-left: 100px; width: 130px; height: 120px; border: 1px solid black; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
+                                                        <input type="file" id="photo1x1" accept="image/*" style="display: none;">
+                                                        <label for="photo1x1" style="cursor: pointer;">1x1 Photo</label> <!-- 1x1 photo box -->
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div style="flex: 1; display: flex; padding-left:60px;">
-                                                    <div style="width: 120px; height: 110px; border: 1px solid black; margin-right: 20px;"></div> <!-- First Thumbmarks box -->
-                                                    <div style="width: 120px; height: 110px; border: 1px solid black;"></div> <!-- Second Thumbmarks box -->
-                                                </div>
-                                                <div style="flex: 1; display: flex; align-items: center;">
-                                                    <div style="width: 20px;"></div> <!-- Add space between thumbmarks and photo box -->
-                                                </div>
-                                                <div style="text-align: center;">
-                                                    <p>Thumbmarks</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div style="margin-left: 100px; width: 130px; height: 120px; border: 1px solid black; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
-                                                    <input type="file" id="photo1x1" accept="image/*" style="display: none;">
-                                                    <label for="photo1x1" style="cursor: pointer;">1x1 Photo</label> <!-- 1x1 photo box -->
-                                                </div>
+                                            <div class="text-right">
+                                                <a href="{{ url ('/farmc_membership') }}" class="btn btn-primary">SUBMIT</i></a>
                                             </div>
                                         </div>
-                                        <div class="text-right">
-                                            <a href="{{ url ('/farmc_membership') }}" class="btn btn-primary">SUBMIT</i></a>
-                                        </div>
-
-                                        <script>
-                                            // Add JavaScript code here to handle file uploads
-                                            document.querySelector('.signature-line').addEventListener('click', function() {
-                                                document.getElementById('signatureFile').click();
-                                            });
-
-                                            document.getElementById('signatureFile').addEventListener('change', function() {
-                                                const file = this.files[0];
-                                                if (file) {
-                                                    // Handle the uploaded signature file
-                                                    console.log('Uploaded signature file:', file);
-                                                }
-                                            });
-
-                                            document.getElementById('photo1x1').addEventListener('change', function() {
-                                                const file = this.files[0];
-                                                if (file) {
-                                                    // Handle the uploaded 1x1 photo file
-                                                    console.log('Uploaded 1x1 photo file:', file);
-                                                }
-                                            });
-                                        </script>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        // Add JavaScript code here to handle file uploads
+        document.querySelector('.signature-line').addEventListener('click', function() {
+            document.getElementById('signatureFile').click();
+        });
+
+        document.getElementById('signatureFile').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                // Handle the uploaded signature file
+                console.log('Uploaded signature file:', file);
+            }
+        });
+
+        document.getElementById('photo1x1').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                // Handle the uploaded 1x1 photo file
+                console.log('Uploaded 1x1 photo file:', file);
+            }
+        });
+    </script>
 
     <script>
         document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {

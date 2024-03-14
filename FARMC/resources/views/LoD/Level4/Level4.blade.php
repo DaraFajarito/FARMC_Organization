@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="main-header">
-                    <h4>Level Four Overview</h4> | <span class="label label-success">Sustainability Mechanism</span>
+                    <h4>Level Four Overview</h4> | <span class="label label-danger">Sustainability Mechanism</span>
                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                         <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
                         </li>
@@ -30,9 +30,7 @@
                         </li>
                         <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 4</a>
                         </li>
-                        <!-- <div class="text-right">
-                            <span><a href="{{ url ('/basicStructure') }}"><button type="button" class="btn btn-primary">+New Form</button></a></span>
-                        </div> -->
+                        
                     </ol>
 
                 </div>

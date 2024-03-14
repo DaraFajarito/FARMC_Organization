@@ -46,45 +46,38 @@
                         </ol>
                     </div>
                     <div class="col-lg-12 inline-forms">
-
                         <a href="{{ url ('/personal_info') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
-                        <br> <br>
+                        <br><br>
 
-                        <div class="card">
-                            <div class="card-block">
-
-
-                                <div class="card inline-form-style">
-                                    <div class="card-header">
-                                        <div class="col-sm--1 col-xs--1 waves-effect waves-light">
-                                            <div class="grid-material bg-general">FARMC Membership</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <form class="form-inline">
+                        <form class="form-inline">
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card inline-form-style">
+                                        <div class="card-header">
+                                            <div class="col-sm--1 col-xs--1 waves-effect waves-light">
+                                                <div class="grid-material bg-general">FARMC Membership</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name of FARMC<em><em></label>
                                                         <input id="inline3mail" type="email" class="form-control" style="width: 1050px;" placeholder="Enter Name (First Name, Middle Initial, Last Name)">
                                                     </div>
-                                                </form>
-                                                <br>
+                                                    <br>
 
-                                                <form class="form-inline">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Address of FARMC<em></em></label>
                                                         <input id="inline3mail" type="email" class="form-control" style="width: 1050px;" placeholder="Enter Address ( Brgy., St., City, Province)">
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <br>
-                                        <hr>
-                                        <!-- <div class="card-block"> -->
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"><em>Officer of MFARMC</em></div>
-                                                <br>
-                                                <form>
+                                            <br>
+                                            <hr>
+                                            <!-- <div class="card-block"> -->
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em>Officer of MFARMC</em></div>
+                                                    <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
@@ -99,12 +92,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>Inclusive Dates/s of Membership</em></div>
-                                                <br>
-                                                <form>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>Inclusive Dates/s of Membership</em></div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <label for="inline3mail" class="block form-control-label">As Officer</label>
                                                         <div class="row">
@@ -128,14 +119,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
 
-                                            <div class="row">
-                                                <div class="col-md-5">
-                                                    <div class="grid-material bg-general"><em>FARMC Representation</em></div>
-                                                    <br>
-                                                    <form>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="grid-material bg-general"><em>FARMC Representation</em></div>
+                                                        <br>
                                                         <div class="form-radio">
                                                             <div class="radio radio-inline">
                                                                 <label>
@@ -146,48 +135,42 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <!-- <div class="row"> -->
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"><em>Sector Represented</em></div>
-                                                <br>
-                                                <form>
+                                                <hr>
+                                                <!-- <div class="row"> -->
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em>Sector Represented</em></div>
+                                                    <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio"/> <i class="helper"></i> Fisherfolk/Fishworker
+                                                                <input type="radio" name="radio" /> <i class="helper"></i> Fisherfolk/Fishworker
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio"/> <i class="helper"></i> Commercial Operator
+                                                                <input type="radio" name="radio" /> <i class="helper"></i> Commercial Operator
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
 
-                                            <br>
-                                            <br>
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"><em></em></div>
-                                                <form>
+                                                <br>
+                                                <br>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em></em></div>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio"/> <i class="helper"></i> Women Sector
+                                                                <input type="radio" name="radio" /> <i class="helper"></i> Women Sector
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio"/> <i class="helper"></i> Youth Sector
+                                                                <input type="radio" name="radio" /> <i class="helper"></i> Youth Sector
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"><em></em></div>
-                                                <form>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em></em></div>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
@@ -198,11 +181,9 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"><em></em></div>
-                                                <form>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em></em></div>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
@@ -213,17 +194,15 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <!-- </div> -->
-                                            <br><br><br><br>
-                                            <hr>
+                                                </div>
+                                                <!-- </div> -->
+                                                <br><br><br><br>
+                                                <hr>
 
-                                            <!-- <div class="row"> -->
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em>LGU Representative, specify the office</em></div>
-                                                <br>
-                                                <form>
+                                                <!-- <div class="row"> -->
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em>LGU Representative, specify the office</em></div>
+                                                    <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
@@ -234,14 +213,12 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
 
-                                            <br>
-                                            <br>
-                                            <div class="col-md-4">
-                                                <div class="grid-material bg-general"><em></em></div>
-                                                <form>
+                                                <br>
+                                                <br>
+                                                <div class="col-md-4">
+                                                    <div class="grid-material bg-general"><em></em></div>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
@@ -252,99 +229,32 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
 
-                                            <div class="col-md-4">
-                                                <div class="form-radio">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> Others, Please specify
-                                                        </label>
+                                                <div class="col-md-4">
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> Others, Please specify
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <!-- </div> -->
                                             </div>
-                                            <!-- </div> -->
-                                        </div>
 
-                                        <div class="text-right">
-                                            <a href="{{ url ('/org_membership') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                            <div class="text-right">
+                                                <a href="{{ url ('/org_membership') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- Required Jqurey -->
-        <script src="./../assets/plugins/jquery/dist/jquery.min.js"></script>
-        <script src="./../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <script src="./../assets/plugins/tether/dist/js/tether.min.js"></script>
-
-        <!-- Required Fremwork -->
-        <script src="./../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- waves effects.js -->
-        <script src="./../assets/plugins/Waves/waves.min.js"></script>
-
-        <!-- Scrollbar JS-->
-        <script src="./../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-        <script src="./../assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
-
-        <!--classic JS-->
-        <script src="./../assets/plugins/classie/classie.js"></script>
-
-        <!-- notification -->
-        <script src="./../assets/plugins/notification/js/bootstrap-growl.min.js"></script>
-
-        <!-- Date picker.js -->
-        <script src="./../assets/plugins/datepicker/js/moment-with-locales.min.js"></script>
-        <script src="./../assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-
-        <!-- Select 2 js -->
-        <script src="./../assets/plugins/select2/dist/js/select2.full.min.js"></script>
-
-        <!-- Max-Length js -->
-        <script src="./../assets/plugins/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
-
-        <!-- Multi Select js -->
-        <script src="./../assets/plugins/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
-        <script src="./../assets/plugins/multiselect/js/jquery.multi-select.js"></script>
-        <script type="text/javascript" src="./../assets/plugins/multi-select/js/jquery.quicksearch.js"></script>
-
-        <!-- Tags js -->
-        <script src="./../assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-
-        <!-- Bootstrap Datepicker js -->
-        <script type="text/javascript" src="./../assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="./../assets/plugins/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-        <!-- bootstrap range picker -->
-        <script type="text/javascript" src="./../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-        <!-- color picker -->
-        <script type="text/javascript" src="./../assets/plugins/spectrum/spectrum.js"></script>
-        <script type="text/javascript" src="./../assets/plugins/jscolor/jscolor.js"></script>
-
-        <!-- highlite js -->
-        <script type="text/javascript" src="./../assets/plugins/syntaxhighlighter/scripts/shCore.js"></script>
-        <script type="text/javascript" src="./../assets/plugins/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-        <script type="text/javascript" src="./../assets/plugins/syntaxhighlighter/scripts/shBrushXml.js"></script>
-        <script type="text/javascript">
-            SyntaxHighlighter.all();
-        </script>
-
-        <!-- custom js -->
-        <script type="text/javascript" src="./../assets/js/main.min.js"></script>
-        <script type="text/javascript" src="./../assets/pages/advance-form.js"></script>
-        <script src="assets/js/menu.min.js"></script>
-        <script type="text/javascript">
-            SyntaxHighlighter.all();
-        </script>
 
         <script>
             document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
