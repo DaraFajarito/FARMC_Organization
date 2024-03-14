@@ -8640,6 +8640,12 @@ svg#sun {
   display: block;
 }
 
+#signatureFile::after {
+  content: '';
+  display: block;
+  border-bottom: 1px solid black;
+  margin-top: 5px;
+}
 
 
 /*# sourceMappingURL=main.css.map */

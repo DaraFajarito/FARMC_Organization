@@ -40,7 +40,7 @@
                         </li>
 
                         <div class="text-right">
-                            <span><a href="{{ url ('/personal_info') }}"><button type="button" class="btn btn-primary">+New Form</button></a></span>
+                            <span><a href="{{ url ('/personal_info') }}"><button type="button" class="btn btn-primary">+ New Form</button></a></span>
                         </div>
                     </ol>
 
