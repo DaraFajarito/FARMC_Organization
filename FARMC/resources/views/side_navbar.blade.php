@@ -171,7 +171,7 @@
                             </li>
 
                             <li>
-                                <a class="waves-effect waves-dark" href="#!">
+                                <a class="waves-effect waves-dark" href="{{ url ('/farmc_membership') }}">
                                     <i class="icon-arrow-right"></i>
                                     1.2 FARMC Membership
                                 </a>

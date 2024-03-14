@@ -27,6 +27,7 @@ Route::get('/dash', function () {
 
 // ------------------------------------------------------------------------------
 
+// ORGANIZED FARMC
 //*LEVELS OF DEVELOPMENT*/
 
 //LevelOne
@@ -69,3 +70,12 @@ Route::view('/L4Incomplete', 'LoD.Level4.L4_Incomplete');
 Route::view('/level5', 'LoD.Level5.Level5');
 Route::view('/L5Completed', 'LoD.Level5.L5_Completed');
 Route::view('/L5Incomplete', 'LoD.Level5.L5_Incomplete');
+
+// ------------------------------------------------------------------------------
+
+//FARMC Membership
+
+Route::view('/farmc_membership', 'FARMC_Membership.FARMC_Membership');
+Route::view('/personal_info', 'FARMC_Membership.personal_info');
+Route::view('/membership', 'FARMC_Membership.membership');
+Route::view('/org_membership', 'FARMC_Membership.org_membership');
