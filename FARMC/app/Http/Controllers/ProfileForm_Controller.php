@@ -35,6 +35,15 @@ class ProfileForm_Controller extends Controller
             return view('LVL1_Profile_Form.Composition_OM.fisherfolk_representative', compact('officers'));
         }
     }
+    public function display_sectariat_form($id)
+    {
+        $secretariat = ProfileForm_Model::where('id', $id)->get();
+        if (!$secretariat) {
+            return redirect()->back()->with('failed', 'Officer record not found');
+        } else {
+            return view('LVL1_Profile_Form.Composition_OS.secretariat', compact('secretariat'));
+        }
+    }
 
 
     public function createProfileForm(Request $request)
@@ -134,10 +143,10 @@ class ProfileForm_Controller extends Controller
             'sgt_arms2' => 'nullable',
             'sgt_arms3' => 'nullable',
         ]);
-    
+
         // Find the record
         $officers = ProfileForm_Model::findOrFail($id);
-    
+
         // Update the officers' details
         $officers->chairperson = $validatedData['chairperson'];
         $officers->vice_chairperson = $validatedData['vice_chairperson'];
@@ -152,14 +161,14 @@ class ProfileForm_Controller extends Controller
         $officers->sgt_arms1 = $validatedData['sgt_arms1'];
         $officers->sgt_arms2 = $validatedData['sgt_arms2'];
         $officers->sgt_arms3 = $validatedData['sgt_arms3'];
-    
+
         // Save the updated officer details
         $officers->save();
-    
+
         if ($officers) {
             return redirect('/mandated-officers-form/' . $officers->id)->with('success', 'Officers created successfully.');
         }
-    
+
         return redirect()->back()->with('failed', 'There was a problem updating the officers.');
     }
 
@@ -175,10 +184,10 @@ class ProfileForm_Controller extends Controller
             'repps' => 'nullable',
             'others' => 'nullable',
         ]);
-    
+
         // Find the record
         $officers = ProfileForm_Model::findOrFail($id);
-    
+
         // Update the officers' details
         $officers->chairpersonSB = $validatedData['chairpersonSB'];
         $officers->mpdo = $validatedData['mpdo'];
@@ -187,15 +196,52 @@ class ProfileForm_Controller extends Controller
         $officers->repngo = $validatedData['repngo'];
         $officers->repps = $validatedData['repps'];
         $officers->others = $validatedData['others'];
-    
+
         // Save the updated officer details
         $officers->save();
-    
+
         if ($officers) {
             return redirect('/fisherfolk-rep-form/' . $officers->id)->with('success', 'Mandated Officer created successfully.');
         }
-    
+
         return redirect()->back()->with('failed', 'There was a problem updating the officers.');
     }
-    
+
+    public function addSecretariat(Request $request, $id)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name_sec' => 'nullable',
+            'name_sec1' => 'nullable',
+            'name_sec2' => 'nullable',
+            'office_org' => 'nullable',
+            'office_org1' => 'nullable',
+            'office_org2' => 'nullable',
+        ]);
+
+        // Find the record
+        $secretariat = ProfileForm_Model::findOrFail($id);
+
+        // Update the secre$secretariat' details
+        $secretariat->name_sec = $validatedData['name_sec'];
+        $secretariat->name_sec1 = $validatedData['name_sec1'];
+        $secretariat->name_sec2 = $validatedData['name_sec2'];
+        $secretariat->office_org = $validatedData['office_org'];
+        $secretariat->office_org1 = $validatedData['office_org1'];
+        $secretariat->office_org2 = $validatedData['office_org2'];
+
+        // Save the updated officer details
+        $secretariat->save();
+
+        $nullFields = collect($secretariat->toArray())->filter(function ($value, $key) {
+            return $value === null;
+        })->keys()->toArray();
+        
+        if (!empty($nullFields)) {
+            return view('LoD.Level1.L1_Incomplete', compact('nullFields'));
+        } else {
+            return view('LoD.Level1.L1_Completed');
+        }
+        
+    }
 }

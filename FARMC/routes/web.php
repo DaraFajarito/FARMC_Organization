@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Committee_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FARMC_Authentication\AuthController;
+use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
 
 Route::get('/', function () {
@@ -42,7 +44,7 @@ Route::view('/officers', 'LVL1_Profile_Form.FARMC_Officers.officers');
 Route::view('/mandatedmem', 'LVL1_Profile_Form.Composition_OM.mandated_member');
 Route::view('/fisherfolkrep', 'LVL1_Profile_Form.Composition_OM.fisherfolk_representative');
 Route::view('/committee', 'LVL1_Profile_Form.MFARMC_Committee.committee');
-Route::view('/secretariat', 'LVL1_Profile_Form.Composition_OS.secretariat');
+// Route::view('/secretariat', 'LVL1_Profile_Form.Composition_OS.secretariat');
 
 // ------------------------------------------------------------------------------
 
@@ -75,17 +77,28 @@ Route::view('/L5Incomplete', 'LoD.Level5.L5_Incomplete');
 // ------------------------------------------------------------------------------
 
 //FARMC Membership
-
 Route::view('/farmc_membership', 'FARMC_Membership.FARMC_Membership');
 Route::view('/personal_info', 'FARMC_Membership.personal_info');
 Route::view('/membership', 'FARMC_Membership.membership');
 Route::view('/org_membership', 'FARMC_Membership.org_membership');
 
+//--------------------------------------------------------------
 
 //Profile Form
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
 Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'display_mandatedOfficer_form']);
 Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
+Route::get('/secretariat-form/{id}', [ProfileForm_Controller::class,'display_sectariat_form']);
 Route::post('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
 Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
 Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);
+Route::put('/add-secretariat/{id}', [ProfileForm_Controller::class,'addSecretariat']);
+
+//Fisherfolk Representative
+Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);
+
+
+//Committee
+Route::post('/add-committee', [Committee_Controller::class,'createCommittee']);
+Route::get('/go-to-committee', [Committee_Controller::class,'display_committee_form']);
+

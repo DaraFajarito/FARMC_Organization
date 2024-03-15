@@ -71,11 +71,12 @@
                                     </div>
                                     <hr>
 
-                                    <form method="post" id="FormId">
+                                    <form method="post" action="{{url('/add-committee')}}" enctype="multipart/form-data" id="yourFormId">
+                                        @csrf
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <select class="js-example-basic-single form-control">
+                                                    <select name="category" class="js-example-basic-single form-control">
                                                         <optgroup label="Committee  ">
                                                             <option value="AL">Faw Enforcement & Prosecution </option>
                                                             <option value="WY">Rehabilitation and Conservation</option>
@@ -102,28 +103,28 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Chairperson</td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="chairperson_name" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="chairperson_org" id="h-email" class="form-control" placeholder=""></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Secretary</td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="sec_name" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="sec_org" id="h-email" class="form-control" placeholder=""></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Member</td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="member_name" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="member_org" id="h-email" class="form-control" placeholder=""></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-10 text-center">
-                                                <button class="btn btn-primary" onclick="submitFormAndAddAnother1()">Add another</button>
+                                                <button class="btn btn-primary" type="submit">Add another</button>
                                             </div>
                                             <div class="col-md-2 text-right">
-                                                <a href="{{ url ('/secretariat') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                                <a href="{{ url ('/secretariat-form/' . $profile->id) }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </form>

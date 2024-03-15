@@ -46,7 +46,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="main-header">
-                    <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                         <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
@@ -65,18 +65,29 @@
                         <div class="card">
                             <div class="card-header">
                                 <hr>
-                                    <div class="grid-material bg-general" style="text-align: center;"><b>A. COMPOSITION OF MEMBERSHIP</b>
-                                    </div>
+                                <div class="grid-material bg-general" style="text-align: center;"><b>A. COMPOSITION OF MEMBERSHIP</b>
+                                </div>
                                 <hr>
                                 <div class="card-block">
-                                    <form method="post" id="yourFormId">
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+
+                                    <form method="post" action="{{ url('/add-fisherfolk-rep') }}" enctype="multipart/form-data" id="yourFormId">
+                                        @csrf
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col-md-9">
                                                     <label for="inline3mail" class="block form-control-label"><strong>2. Fisherfolk Representative</strong></label>
                                                 </div>
                                                 <div class="col-md-3 text-left">
-                                                    <select class="js-example-basic-single form-control">
+                                                    <select name="category" class="js-example-basic-single form-control">
                                                         <optgroup label="Fisherfolk Representative">
                                                             <option value="AL">Municipal Fisherfolk</option>
                                                             <option value="WY">Fisherworker</option>
@@ -87,102 +98,105 @@
                                                         </optgroup>
                                                     </select>
                                                 </div>
-                                                <br><br>
-                                                <div class="col-md-12">
-                                                    <div class="form-group row">
-                                                        <label for="h-email" class="col-md-3 col-form-label form-control-label">Name of Representative</label>
-                                                        <div class="col-md-2">
-                                                            <input type="email" id="h-email" class="form-control" style="width:780px" placeholder="">
-                                                        </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label for="h-email" class="col-md-3 col-form-label form-control-label">Name of Representative</label>
+                                                    <div class="col-md-2">
+                                                        <input type="text" name="name" id="h-email" class="form-control" style="width:780px" placeholder="">
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <input type="checkbox" id="checkbox-3">
-                                                            <span class="checkbox"></span>
-                                                        </label>
-                                                        <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
+                                            \ <div class="col-md-6">
+                                                <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                    <label class="input-checkbox checkbox-primary">
+                                                        <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk">
+                                                        <span class="checkbox"></span>
+                                                    </label>
+                                                    <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
+                                                </div>
+                                                <input type="hidden" name="endorsement_fisherfolk" id="endorsement_fisherfolk_input">
+                                            </div>
+                                            <div class="col-md-6" style="padding-left: 200px;">
+                                                <input id="inline3mail" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label for="h-email" class="captions">Barangay Certification</label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                    <label class="input-checkbox checkbox-primary">
+                                                        <input type="checkbox" id="atleast_one_year_checkbox" name="atleast_one_year">
+                                                        <span class="checkbox"></span>
+                                                    </label>
+                                                    <div class="captions">Atleast 1 year residency</div>
+                                                </div>
+                                                <input type="hidden" name="atleast_one_year" id="atleast_one_year_input">
+                                            </div>
+                                            <div class="col-md-6" style="padding-left: 200px;">
+                                                <input id="inline3mail" type="file" name="aoy_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                    <label class="input-checkbox checkbox-primary">
+                                                        <input type="checkbox" id="source_of_income_checkbox" name="source_of_income">
+                                                        <span class="checkbox"></span>
+                                                    </label>
+                                                    <div class="captions">Source of income (Capture/Culture/Processing)</div>
+                                                </div>
+                                                <input type="hidden" name="source_of_income" id="source_of_income_input">
+                                            </div>
+                                            <div class="col-md-6" style="padding-left: 200px;">
+                                                <input id="inline3mail" type="file" name="soi_attachment" namez class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                    <label class="input-checkbox checkbox-primary">
+                                                        <input type="checkbox" id="good_moral_checkbox" name="good_moral">
+                                                        <span class="checkbox"></span>
+                                                    </label>
+                                                    <div class="captions">Good Moral Character</div>
+                                                </div>
+                                                <input type="hidden" name="good_moral" id="good_moral_input">
+                                            </div>
+                                            <div class="col-md-6" style="padding-left: 200px;">
+                                                <input id="inline3mail" type="file" name="gmc_attachment" class="form-control" style="width:200px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <br>
+                                                <div class="form-group row">
+                                                    <label for="h-email" class="col-md-2 col-form-label form-control-label">Name of Organization</label>
+                                                    <div class="col-md-2">
+                                                        <input type="text" id="h-email" name="org_name" class="form-control" style="width:800px" placeholder="">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6" style="padding-left: 200px;">
-                                                    <input id="inline3mail" type="file" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <label for="h-email" class="captions">Barangay Certification</label>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <input type="checkbox" id="checkbox-3">
-                                                            <span class="checkbox"></span>
-                                                        </label>
-                                                        <div class="captions">Atleast 1 year residency</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6" style="padding-left: 200px;">
-                                                    <input id="inline3mail" type="file" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <input type="checkbox" id="checkbox-3">
-                                                            <span class="checkbox"></span>
-                                                        </label>
-                                                        <div class="captions">Source of income (Capture/Culture/Processing)</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6" style="padding-left: 200px;">
-                                                    <input id="inline3mail" type="file" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <input type="checkbox" id="checkbox-3">
-                                                            <span class="checkbox"></span>
-                                                        </label>
-                                                        <div class="captions">Good Moral Character</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6" style="padding-left: 200px;">
-                                                    <input id="inline3mail" type="file" class="form-control" style="width:200px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <br>
-                                                    <div class="form-group row">
-                                                        <label for="h-email" class="col-md-2 col-form-label form-control-label">Name of Organization</label>
-                                                        <div class="col-md-2">
-                                                            <input type="email" id="h-email" class="form-control" style="width:800px" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6" style=" line-height:4rem">
-                                                    <small><b><em>Date of Registration</b></em></small>
-                                                    <input id="inline3mail" type="date" class="form-control" style="width: 300px;" placeholder="">
-                                                    <small><b><em>Date of Accreditation</em></b></small>
-                                                    <input id="inline3mail" type="date" class="form-control" style="width: 300px;" placeholder="">
-                                                </div>
-                                                <div class="col-md-6" style=" line-height:4rem">
-                                                    <br>
-                                                    <input id="inline3mail" type="file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    <br>
-                                                    <input id="inline3mail" type="file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style=" line-height:4rem">
+                                                <small><b><em>Date of Registration</b></em></small>
+                                                <input id="inline3mail" type="date" name="date_of_reg" class="form-control" style="width: 300px;" placeholder="">
+                                                <small><b><em>Date of Accreditation</em></b></small>
+                                                <input id="inline3mail" type="date" name="date_of_accreditation" class="form-control" style="width: 300px;" placeholder="">
+                                            </div>
+                                            <div class="col-md-6" style=" line-height:4rem">
+                                                <br>
+                                                <input id="inline3mail" type="file" name="dor_file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <br>
+                                                <input id="inline3mail" type="file" name="doa_file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <br>
                                             <div class="col-md-10 text-center">
-                                                <button class="btn btn-primary" onclick="submitFormAndAddAnother()">Add another</button>
+                                                <button type="submit" class="btn btn-primary">Add another</button>
                                             </div>
                                             <div class="col-md-2 text-right">
-                                                <a href="{{ url ('/committee') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                                <a href="{{url('/go-to-committee')}}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </form>
@@ -210,14 +224,7 @@
 
         <!-- custom js -->
         <script type="text/javascript" src="{{ asset ('assets/pages/advance-form.js') }}"></script>
-        <script>
-            function submitFormAndAddAnother() {
-                // Submit the form
-                document.getElementById("yourFormId").submit();
-                // Clear the form fields
-                document.getElementById("yourFormId").reset();
-            }
-        </script>
+
 
         <script>
             document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
@@ -230,6 +237,24 @@
                 });
             });
         </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function setupCheckbox(checkboxId, hiddenInputId) {
+                    const checkbox = document.getElementById(checkboxId);
+                    const hiddenInput = document.getElementById(hiddenInputId);
+
+                    checkbox.addEventListener('change', function() {
+                        hiddenInput.value = this.checked ? '1' : null;
+                    });
+                }
+
+                setupCheckbox('endorsement_fisherfolk_checkbox', 'endorsement_fisherfolk_input');
+                setupCheckbox('atleast_one_year_checkbox', 'atleast_one_year_input');
+                setupCheckbox('source_of_income_checkbox', 'source_of_income_input');
+                setupCheckbox('good_moral_checkbox', 'good_moral_input');
+            });
+        </script>
+
 </body>
 
 </html>

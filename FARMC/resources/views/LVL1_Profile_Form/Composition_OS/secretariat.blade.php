@@ -51,8 +51,11 @@
                                     <div class="grid-material bg-general"><b>B. MFARMC Committee</b>
                                     </div>
                                     <hr>
-                                    <div class="card-header">
-                                        <form action="" method="post" id="FormId">
+                                    @foreach($secretariat as $item)
+                                    <form method="POST" action="{{url('/add-secretariat/' . $item->id)}}" enctype="multipart/form-data" id="yourFormId">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="card-header">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -63,29 +66,28 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="name_sec" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="office_org" id="h-email" class="form-control" placeholder=""></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="name_sec1" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="office_org1" id="h-email" class="form-control" placeholder=""></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
-                                                        <td><input type="email" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="name_sec2" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" name="office_org2" id="h-email" class="form-control" placeholder=""></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </form>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-10 text-center">
-                                            <button class="btn btn-primary" onclick="submitFormAndAddAnother1()">Add another</button>
+
                                         </div>
-                                        <div class="col-md-2 text-right">
-                                            <a href="./../../../BFAR_FARMC/FARMC_Profile_Form/Composition/Fisherfolk_Representative.php" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</a>
+                                        <div class="row">
+                                            <div class="col-md-2 text-right">
+                                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
