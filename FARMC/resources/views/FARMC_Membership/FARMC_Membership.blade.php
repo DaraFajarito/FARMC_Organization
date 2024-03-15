@@ -8,6 +8,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+
 </head>
 
 <body>
@@ -79,6 +81,55 @@
                 </div>
             </div>
 
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="row">
+                    <div class="card">
+                        <!-- <div class="card-body"> -->
+
+
+                        <div class="card-block">
+                            <div class="col-lg-4">
+                                <h6 class="card-title">Member's Age</h6>
+                                <canvas id="salesDifference"></canvas>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <h4 class="card-title">Best Sellers</h4>
+                                <div class="row">
+                                    <!-- <div class="col-sm-4">
+                                        <ul class="graphl-legend-rectangle">
+                                            <li><span class="bg-danger"></span>Automotive</li>
+                                            <li><span class="bg-warning"></span>Books</li>
+                                            <li><span class="bg-info"></span>Software</li>
+                                            <li><span class="bg-success"></span>Video games</li>
+                                        </ul>
+                                    </div> -->
+                                    <div class="col-sm-10 grid-margin">
+                                        <canvas id="bestSellers"></canvas>
+                                    </div>
+                                </div>
+                                <br>
+                                <p>Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit.
+                                </p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="row">
+
+                                    <div class="align-items-center justify-content-between">
+                                        <h6 class="card-title">Member's Gender</h6>
+                                    </div>
+                                    <!-- <div id="support-tracker-legend" class="support-tracker-legend"></div> -->
+                                    <canvas id="supportTracker"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
@@ -86,54 +137,95 @@
                         <div class="card-block">
                             <ul class="nav nav-tabs  tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#mimaropa" role="tab">FARMC Members</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">FARMC Members</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#mimaropa1" role="tab">FARMC Organizations</a>
+                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">FARMC Organizations</a>
                                 </li>
-
-
                             </ul>
+
                             <!-- Tab panes -->
                             <div class="tab-content tabs">
-                                <div class="tab-pane active" id="mimaropa" role="tabpanel">
+                                <div class="tab-pane active" id="members" role="tabpanel">
                                     <br>
+                                    <!-- <a href="#!"><button type="button" class="btn btn-primary">View details</button> -->
                                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Order</th>
-                                                <th>Description</th>
-                                                <th>Deadline</th>
-                                                <th>Status</th>
-                                                <th>Amount</th>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>FARMC Organization</th>
+                                                <th>Action</th>
+                                                <!-- <th>Amount</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
+                                                <td>Ms. Darlene Angel G. Fajarito</td>
                                                 <td>Alphabet puzzle</td>
-                                                <td>2016/01/15</td>
-                                                <td>Done</td>
-                                                <td data-order="1000">€1.000,00</td>
+                                                <td>2014/11/21</td>
+                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
+                                                <!-- <td data-order="1000">€1.000,00</td> -->
                                             </tr>
                                             <tr>
-                                                <td>2</td>
+                                                <td>Mr. Antonio Montallana</td>
                                                 <td>Layout for poster</td>
                                                 <td>2016/01/31</td>
-                                                <td>Planned</td>
-                                                <td data-order="1834">€1.834,00</td>
+                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
+                                                <!-- <td data-order="1834">€1.834,00</td> -->
                                             </tr>
                                             <tr>
-                                                <td>3</td>
+                                                <td>Mr. Philip Arguelles</td>
                                                 <td>Image creation</td>
                                                 <td>2016/01/23</td>
-                                                <td>To Do</td>
-                                                <td data-order="1500">€1.500,00</td>
+                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
+                                                <!-- <td data-order="1500">€1.500,00</td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- </div> -->
+
+                                <!-- <div class="tab-content tabs"> -->
+                                <div class="tab-pane" id="organization" role="tabpanel">
+                                    <br>
+                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <!-- <th>Name</th> -->
+                                                <th>FARMC Organization</th>
+                                                <th>Address of Organization</th>
+                                                <!-- <th>Action</th> -->
+                                                <!-- <th>Amount</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Ms. Darlene Angel G. Fajarito</td>
+                                                <td>Alphabet puzzle</td>
+                                                <!-- <td>2014/11/21</td> -->
+                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
+                                                <!-- <td data-order="1000">€1.000,00</td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>Mr. Antonio Montallana</td>
+                                                <td>Layout for poster</td>
+                                                <!-- <td>2016/01/31</td> -->
+                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
+                                                <!-- <td data-order="1834">€1.834,00</td> -->
+                                            </tr>
+                                            <tr>
+                                                <td>Mr. Philip Arguelles</td>
+                                                <td>Image creation</td>
+                                                <!-- <td>2016/01/23</td> -->
+                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
+                                                <!-- <td data-order="1500">€1.500,00</td> -->
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -171,6 +263,25 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example1').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+
+    <script src="{{ asset ('assets/vendors/base/vendor.bundle.base.js') }}"></script>
+
+    <!-- Custom js for this page-->
+    <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
+
+    <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
 
 
 </body>
