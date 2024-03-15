@@ -682,16 +682,15 @@
                                             <div class="col-sm-12 grid-margin">
                                                 <canvas id="bestSellers"></canvas>
                                             </div>
-                                         
                                             <div class="col-sm-12">
-                                            <ul class="graphl-legend-rectangle">
-                                                <br>
+                                                <ul class="graphl-legend-rectangle">
+                                                    <br>
                                                     <li><span class="btn btn-danger"></span> Municipal</li>
                                                     <li><span class="btn btn-warning"></span> Fisherworker</li>
                                                     <li><span class="btn btn-info"></span> Commercial</li>
                                                     <li><span class="btn btn-primary"></span> Women/Youth</li>
                                                     <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
-                                            </ul>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
