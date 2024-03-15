@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FARMC_Authentication\AuthController;
+use App\Http\Controllers\ProfileForm_Controller;
 
 Route::get('/', function () {
     return view('FARMC_Authentication/login');
@@ -79,3 +80,12 @@ Route::view('/farmc_membership', 'FARMC_Membership.FARMC_Membership');
 Route::view('/personal_info', 'FARMC_Membership.personal_info');
 Route::view('/membership', 'FARMC_Membership.membership');
 Route::view('/org_membership', 'FARMC_Membership.org_membership');
+
+
+//Profile Form
+Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
+Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'display_mandatedOfficer_form']);
+Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
+Route::post('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
+Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
+Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);

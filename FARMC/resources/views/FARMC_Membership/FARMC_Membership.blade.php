@@ -130,90 +130,6 @@
                                                 <td>To Do</td>
                                                 <td data-order="1500">€1.500,00</td>
                                             </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Create font</td>
-                                                <td>2016/02/26</td>
-                                                <td>Done</td>
-                                                <td data-order="1200">€1.200,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Sticker production</td>
-                                                <td>2016/02/18</td>
-                                                <td>Planned</td>
-                                                <td data-order="2100">€2.100,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Glossy poster</td>
-                                                <td>2016/03/17</td>
-                                                <td>To Do</td>
-                                                <td data-order="899">€899,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>Beer label</td>
-                                                <td>2016/05/28</td>
-                                                <td>Confirmed</td>
-                                                <td data-order="2499">€2.499,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>Shop sign</td>
-                                                <td>2016/04/19</td>
-                                                <td>Offer</td>
-                                                <td data-order="1099">€1.099,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>X-Mas decoration</td>
-                                                <td>2016/10/31</td>
-                                                <td>Confirmed</td>
-                                                <td data-order="1750">€1.750,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>Halloween invite</td>
-                                                <td>2016/09/12</td>
-                                                <td>Planned</td>
-                                                <td data-order="400">€400,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>11</td>
-                                                <td>Wedding announcement</td>
-                                                <td>2016/07/09</td>
-                                                <td>To Do</td>
-                                                <td data-order="299">€299,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>12</td>
-                                                <td>Member pasport</td>
-                                                <td>2016/06/22</td>
-                                                <td>Offer</td>
-                                                <td data-order="149">€149,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>13</td>
-                                                <td>Drink tickets</td>
-                                                <td>2016/11/01</td>
-                                                <td>Confirmed</td>
-                                                <td data-order="199">€199,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>14</td>
-                                                <td>Album cover</td>
-                                                <td>2017/03/15</td>
-                                                <td>To Do</td>
-                                                <td data-order="4999">€4.999,00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>15</td>
-                                                <td>Shipment box</td>
-                                                <td>2017/02/08</td>
-                                                <td>Offer</td>
-                                                <td data-order="1399">€1.399,00</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -225,7 +141,6 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="{{ asset ('assets/js/datatable.js') }}"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -242,6 +157,9 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
     <script>
         $(document).ready(function() {

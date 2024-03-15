@@ -49,7 +49,10 @@
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-sm-12 table-responsive">
-                                        <form>
+                                        @foreach($officers as $officer)
+                                        <form method="POST" action="{{ url('/add-officer/' . $officer->id) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -62,81 +65,82 @@
                                                     <tr>
                                                         <td>1</td>
                                                         <td>Chairperson</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="" name="chairperson" value="{{$officer->chairperson}}"></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
                                                         <td>Vice-Chairperson</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="" name="vice_chairperson" value="{{$officer->vice_chairperson}}"></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
                                                         <td>Secretary</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="secretary" value="{{$officer->secretary}}"></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Assistant Secretary</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="asst_sec" value="{{$officer->asst_sec}}"></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td>4</td>
                                                         <td>Treasurer</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="treasurer" value="{{$officer->treasurer}}"></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Assistant Treasurer</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="asst_treas" value="{{$officer->asst_treas}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>5</td>
                                                         <td>Auditor</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="auditor" value="{{$officer->auditor}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Assistant Auditor</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="asst_aud" value="{{$officer->asst_aud}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>6</td>
                                                         <td>Press Relation Officer 1</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="pro1" value="{{$officer->pro1}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Press Relation Officer 2</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="pro2" value="{{$officer->pro2}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>7</td>
                                                         <td>Sgt-at-Arms 1</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="sgt_arms1" value="{{$officer->sgt_arms1}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Sgt-at-Arms 2</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="sgt_arms2" value="{{$officer->sgt_arms2}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Sgt-at-Arms 3</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="sgt_arms3" value="{{$officer->sgt_arms3}}"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <div class="row">
                                                 <div class="col-md-12 text-right">
-                                                    <a href="{{ url ('/mandatedmem') }}" class="btn btn-primary">Next <i class="icon-arrow-right"></i></a>
+                                                    <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
                                                 </div>
                                             </div>
                                         </form>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

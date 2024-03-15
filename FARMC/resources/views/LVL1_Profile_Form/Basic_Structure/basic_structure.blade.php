@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="main-header">
-                    <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                         <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
@@ -51,70 +51,105 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form class="form-inline">
+                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                            @csrf
+                            @if($errors->any())
+                            <div class="alert alert-danger">
+                                {{ $errors->first() }}
+                            </div>
+                            @endif
+
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="form-group row">
                                             <label for="h-email" class="col-md-2 col-form-label form-control-label">Municipality / City</label>
                                             <div class="col-md-2">
-                                                <input type="email" id="h-email" class="form-control" style="width:900px" placeholder="">
-                                            </div>
+                                                <input type="text" id="h-email" name="municipality" class="form-control" style="width:900px" placeholder="">
+                                            </div>z
                                         </div>
                                         <br>
                                         <div class="form-group row">
                                             <label for="h-email" class="col-md-2 col-form-label form-control-label">Province</label>
                                             <div class="col-md-2">
-                                                <input type="email" id="h-email" class="form-control" style="width:900px" placeholder="">
+                                                <input type="text" id="h-email" name="province" class="form-control" style="width:900px" placeholder="">
                                             </div>
                                         </div>
                                         <br><br>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Date organized</label>
-                                            <input id="inline3mail" type="date" class="form-control" style="width: 400px;" placeholder="">
+                                            <input id="inline3mail" type="date" name="date_organized" class="form-control" style="width: 400px;" placeholder="">
                                         </div>
 
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the minutes</label>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="minutes1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            @error('minutes1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the Photos</label>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="photos1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            @error('photos1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the Attendance</label>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="attendance1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            @error('attendance1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <br>
                                         <hr>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Date of Re-Organization</label>
-                                            <input id="inline3mail" type="date" class="form-control" style="width: 400px;" placeholder="">
+                                            <input id="inline3mail" type="date" name="date_reorganized" class="form-control" style="width: 400px;" placeholder="">
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"><br></label>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="minues2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            @error('minutes2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"><br></label>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="photos2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            @error('photos2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"><br></label>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="attendance2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            @error('attendance2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
-                                    </form>
-                                    <br>
+                                        <br>
 
-                                    <!-- <div class="col-md-12"> -->
-                                    <form class="form-inline">
+                                        <!-- <div class="col-md-12"> -->
                                         <br>
                                         <div class="col-md-5">
                                             <br>
                                             <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                 <label class="input-checkbox checkbox-primary">
-                                                    <input type="checkbox" id="checkbox">
+                                                    <input type="checkbox" name="internalP" id="checkbox">
                                                     <span class="checkbox"></span>
                                                 </label>
                                                 <div class="captions">Internal Policy</div>
@@ -122,7 +157,7 @@
                                             <br><br><br>
                                             <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                 <label class="input-checkbox checkbox-primary">
-                                                    <input type="checkbox" id="checkbox-1">
+                                                    <input type="checkbox" name="fisherfolR" id="checkbox-1">
                                                     <span class="checkbox"></span>
                                                 </label>
                                                 <div class="captions">Fisherfolk Registry</div>
@@ -130,7 +165,7 @@
                                             <br><br><br>
                                             <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                 <label class="input-checkbox checkbox-primary">
-                                                    <input type="checkbox" id="checkbox-2">
+                                                    <input type="checkbox" name="fisheriesP" id="checkbox-2">
                                                     <span class="checkbox"></span>
                                                 </label>
                                                 <div class="captions">Fisheries Profile</div>
@@ -138,42 +173,40 @@
                                             <br><br><br>
                                             <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                 <label class="input-checkbox checkbox-primary">
-                                                    <input type="checkbox" id="checkbox-3">
+                                                    <input type="checkbox" name="formulationR" id="checkbox-3">
                                                     <span class="checkbox"></span>
                                                 </label>
                                                 <div class="captions">Formulation of Resolution and propose ordinances initiated </div>
                                             </div>
                                         </div>
 
-
-
                                         <div class="col-md-7" style=" line-height:4rem">
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="internalP_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Approved Internal Policy</b></em></small>
                                             <br>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="fisherfolR_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
 
                                             <small><b><em>Attach Fisherfolk Registry</em></b></small>
                                             <br>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="fisheriesP_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Fisheries Profile</em></b></small>
                                             <br>
-                                            <input id="inline3mail" type="file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="formulationR_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Files</em></b></small>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-md-12 text-right">
-                                                <a href="{{ url ('/officers') }}" class="btn btn-primary">Next <i class="icon-arrow-right"></i></a>
+                                                <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
-                                    </form>
 
-                                    <!-- </div> -->
+
+                                        <!-- </div> -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- </div> -->
+                            <!-- </div> -->
+                        </form>
                     </div>
                 </div>
             </div>

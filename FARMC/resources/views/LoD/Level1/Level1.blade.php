@@ -111,35 +111,40 @@
                                     <div class="tab-content tabs">
                                         <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                             <br>
-                                            <div class="table-responsive">
-                                                <table class="table m-b-0 photo-table">
-                                                    <thead>
-                                                        <tr class="text-uppercase">
-                                                            <th>Photo</th>
-                                                            <th>Province</th>
-                                                            <th>Municipality</th>
-                                                            <th>Status</th>
-                                                            <th>Date</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>
-                                                                <img class="img-fluid img-circle" src="assets/images/avatar-2.png" alt="User">
-                                                            </th>
-                                                            <td>Appestia Project
-                                                                <p><i class="icofont icofont-clock-time"></i>Created 14.9.2016</p>
-                                                            </td>
-                                                            <td>CALAPAN CITY </td>
-                                                            <td><b style="color: green;">COMPLETED</b></td>
-                                                            <td>October 21, 2015</td>
-                                                            <td><button type="button" class="btn btn-danger">Edit Form</button></td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order</th>
+                                                        <th>Description</th>
+                                                        <th>Deadline</th>
+                                                        <th>Status</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Alphabet puzzle</td>
+                                                        <td>2016/01/15</td>
+                                                        <td>Done</td>
+                                                        <td data-order="1000">€1.000,00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Layout for poster</td>
+                                                        <td>2016/01/31</td>
+                                                        <td>Planned</td>
+                                                        <td data-order="1834">€1.834,00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Image creation</td>
+                                                        <td>2016/01/23</td>
+                                                        <td>To Do</td>
+                                                        <td data-order="1500">€1.500,00</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                         <div class="tab-pane" id="mimaropa1" role="tabpanel">
                                             <br>
@@ -196,35 +201,40 @@
                                                 <div class="tab-pane active" id="Ormin" role="tabpanel">
                                                     <br>
                                                     <div class="col-mb-12">
-                                                    <div class="table-responsive">
-                                                        <table class="table m-b-0 photo-table">
+                                                        <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                             <thead>
-                                                                <tr class="text-uppercase">
-                                                                    <th>Photo</th>
-                                                                    <th>Province</th>
-                                                                    <th>Municipality</th>
+                                                                <tr>
+                                                                    <th>Order</th>
+                                                                    <th>Description</th>
+                                                                    <th>Deadline</th>
                                                                     <th>Status</th>
-                                                                    <th>Date</th>
-                                                                    <th>Action</th>
+                                                                    <th>Amount</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <th>
-                                                                        <img class="img-fluid img-circle" src="assets/images/avatar-2.png" alt="User">
-                                                                    </th>
-                                                                    <td>Appestia Project
-                                                                        <p><i class="icofont icofont-clock-time"></i>Created 14.9.2016</p>
-                                                                    </td>
-                                                                    <td>CALAPAN CITY </td>
-                                                                    <td><b style="color: green;">COMPLETED</b></td>
-                                                                    <td>October 21, 2015</td>
-                                                                    <td><button type="button" class="btn btn-danger">Edit Form</button></td>
+                                                                    <td>1</td>
+                                                                    <td>Alphabet puzzle</td>
+                                                                    <td>2016/01/15</td>
+                                                                    <td>Done</td>
+                                                                    <td data-order="1000">€1.000,00</td>
                                                                 </tr>
-
+                                                                <tr>
+                                                                    <td>2</td>
+                                                                    <td>Layout for poster</td>
+                                                                    <td>2016/01/31</td>
+                                                                    <td>Planned</td>
+                                                                    <td data-order="1834">€1.834,00</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3</td>
+                                                                    <td>Image creation</td>
+                                                                    <td>2016/01/23</td>
+                                                                    <td>To Do</td>
+                                                                    <td data-order="1500">€1.500,00</td>
+                                                                </tr>
                                                             </tbody>
                                                         </table>
-                                                    </div>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane" id="Ormin1" role="tabpanel">
@@ -677,6 +687,49 @@
 
         </div>
     </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- DataTables Buttons extension CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+
+    <!-- DataTables Buttons extension JS -->
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example1').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+
+
 
 </body>
 

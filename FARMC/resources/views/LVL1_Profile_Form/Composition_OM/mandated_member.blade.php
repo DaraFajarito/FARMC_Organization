@@ -15,17 +15,17 @@
 </head>
 
 <body>
-     <!-- side_navbar -->
-     @include ('side_navbar')
     <!-- side_navbar -->
-    
+    @include ('side_navbar')
+    <!-- side_navbar -->
+
     <div class="wrapper">
         <!-- Navbar-->
         <div class="content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="main-header">
-                    <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                         <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
@@ -49,10 +49,13 @@
                                     <hr>
                                     <div class="grid-material bg-general"><b>A. COMPOSITION OF MEMBERSHIP</b></div>
                                     <hr>
+                                    @foreach($officers as $officer)
+                                    <form method="POST" action="{{ url('/add-mandated-officer/' . $officer->id) }}" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="card-header">
+                                            <label for="inline3mail" class="block form-control-label"><strong>1. Mandated member</strong></label>
 
-                                    <div class="card-header">
-                                        <label for="inline3mail" class="block form-control-label"><strong>1. Mandated member</strong></label>
-                                        <form action="process_form.php" method="post">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -62,7 +65,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="chairpersonSB" value="{{$officer->chairpersonSB}}">
                                                         </td>
                                                     </tr>
 
@@ -72,7 +75,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="mpdo" value="{{$officer->mpdo}}">
                                                         </td>
                                                     </tr>
 
@@ -82,7 +85,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="repmdc" value="{{$officer->repmdc}}">
                                                         </td>
                                                     </tr>
 
@@ -92,7 +95,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="repda" value="{{$officer->repda}}">
                                                         </td>
                                                     </tr>
 
@@ -102,7 +105,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="repngo" value="{{$officer->repngo}}">
                                                         </td>
                                                     </tr>
 
@@ -112,7 +115,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="repps" value="{{$officer->repps}}">
                                                         </td>
                                                     </tr>
 
@@ -122,38 +125,39 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="email" id="h-email" class="form-control" placeholder="">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="others" value="{{$officer->others}}">
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </form>
-                                        <div class="row">
-                                            <div class="col-md-12 text-right">
-                                                <a href="{{ url ('/fisherfolkrep') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                            <div class="row">
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-primary">Next<i class="icon-arrow-right"></i></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                    </form>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> <!-- </div> -->
+        </div>
+    </div> <!-- </div> -->
 
 
-        <script>
-            document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'IPoption') {
-                        document.getElementById('textBoxContainer').style.display = 'block';
-                    } else {
-                        document.getElementById('textBoxContainer').style.display = 'none';
-                    }
-                });
+    <script>
+        document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (this.value === 'IPoption') {
+                    document.getElementById('textBoxContainer').style.display = 'block';
+                } else {
+                    document.getElementById('textBoxContainer').style.display = 'none';
+                }
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
