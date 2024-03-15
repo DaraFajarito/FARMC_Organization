@@ -94,26 +94,27 @@
                             </div>
 
                             <div class="col-lg-4">
-                                <h4 class="card-title">Best Sellers</h4>
+                                <h6 class="card-title">Composition of Membership</h6>
                                 <div class="row">
-                                    <!-- <div class="col-sm-4">
-                                        <ul class="graphl-legend-rectangle">
-                                            <li><span class="bg-danger"></span>Automotive</li>
-                                            <li><span class="bg-warning"></span>Books</li>
-                                            <li><span class="bg-info"></span>Software</li>
-                                            <li><span class="bg-success"></span>Video games</li>
-                                        </ul>
-                                    </div> -->
                                     <div class="col-sm-10 grid-margin">
                                         <canvas id="bestSellers"></canvas>
                                     </div>
                                 </div>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit.
-                                </p>
+                                <div class="col-sm-12">
+                                    <ul class="graphl-legend-rectangle">
+                                        <div class="col-sm-6">
+                                            <li><span class="btn btn-danger"></span> Municipal</li>
+                                            <li><span class="btn btn-warning"></span> Fisherworker</li>
+                                            <li><span class="btn btn-info"></span> Commercial</li>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <li><span class="btn btn-default"></span> Women/Youth</li>
+                                            <li><span class="btn btn-success"></span>Cuntural Community (IPs)</li>
+                                        </div>
+                                    </ul>
+                                </div>
                             </div>
-
                             <div class="col-lg-4">
                                 <div class="row">
 

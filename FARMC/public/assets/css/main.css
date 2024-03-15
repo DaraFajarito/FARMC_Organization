@@ -8647,5 +8647,17 @@ svg#sun {
   margin-top: 5px;
 }
 
+.graphl-legend-rectangle .btn {
+    font-size: 12px;
+    /* Resize the button text */
+    padding: 2px 6px;
+    /* Adjust the padding of the button */
+}
+
+.graphl-legend-rectangle li {
+    font-size: 12px;
+    /* Resize the list item text */
+}
+
 
 /*# sourceMappingURL=main.css.map */
