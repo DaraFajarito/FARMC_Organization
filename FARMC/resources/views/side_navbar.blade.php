@@ -198,7 +198,7 @@
                     <li class="nav-level">--- FARMC Directors Program</li>
 
                     <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span>3. Fisherfolk Directors Program
-                                <br><small>(Regional Fisherfolk Council </small><small>of</small> <br><small> Leaders Assembly)</small>
+                                <br><small>(Regional Fisherfolk Council of Leaders </small> <br><small> Assembly)</small>
                             </span><i class="icon-arrow-down"></i></a>
                         <ul class="treeview-menu">
                             <li>

@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="col-sm-12">
+                                <!-- <div class="col-sm-12"> -->
                                     <ul class="graphl-legend-rectangle">
                                         <div class="col-sm-6">
                                             <li><span class="btn btn-danger"></span> Municipal</li>
@@ -109,11 +109,11 @@
                                             <li><span class="btn btn-info"></span> Commercial</li>
                                         </div>
                                         <div class="col-sm-6">
-                                            <li><span class="btn btn-default"></span> Women/Youth</li>
-                                            <li><span class="btn btn-success"></span>Cuntural Community (IPs)</li>
+                                            <li><span class="btn btn-primary"></span> Women/Youth</li>
+                                            <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
                                         </div>
                                     </ul>
-                                </div>
+                                <!-- </div> -->
                             </div>
                             <div class="col-lg-4">
                                 <div class="row">
@@ -156,6 +156,7 @@
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>FARMC Organization</th>
+                                                <th>Date</th>
                                                 <th>Action</th>
                                                 <!-- <th>Amount</th> -->
                                             </tr>
@@ -165,22 +166,22 @@
                                                 <td>Ms. Darlene Angel G. Fajarito</td>
                                                 <td>Alphabet puzzle</td>
                                                 <td>2014/11/21</td>
+                                                <td data-order="1000">€1.000,00</td>
                                                 <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                                <!-- <td data-order="1000">€1.000,00</td> -->
                                             </tr>
                                             <tr>
                                                 <td>Mr. Antonio Montallana</td>
                                                 <td>Layout for poster</td>
                                                 <td>2016/01/31</td>
+                                                <td data-order="1834">€1.834,00</td>
                                                 <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                                <!-- <td data-order="1834">€1.834,00</td> -->
                                             </tr>
                                             <tr>
                                                 <td>Mr. Philip Arguelles</td>
                                                 <td>Image creation</td>
                                                 <td>2016/01/23</td>
+                                                <td data-order="1500">€1.500,00</td>
                                                 <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                                <!-- <td data-order="1500">€1.500,00</td> -->
                                             </tr>
                                         </tbody>
                                     </table>
@@ -196,6 +197,7 @@
                                                 <!-- <th>Name</th> -->
                                                 <th>FARMC Organization</th>
                                                 <th>Address of Organization</th>
+                                                <th>Date</th>
                                                 <!-- <th>Action</th> -->
                                                 <!-- <th>Amount</th> -->
                                             </tr>
@@ -204,6 +206,7 @@
                                             <tr>
                                                 <td>Ms. Darlene Angel G. Fajarito</td>
                                                 <td>Alphabet puzzle</td>
+                                                <td></td>
                                                 <!-- <td>2014/11/21</td> -->
                                                 <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
                                                 <!-- <td data-order="1000">€1.000,00</td> -->
@@ -211,6 +214,7 @@
                                             <tr>
                                                 <td>Mr. Antonio Montallana</td>
                                                 <td>Layout for poster</td>
+                                                <td></td>
                                                 <!-- <td>2016/01/31</td> -->
                                                 <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
                                                 <!-- <td data-order="1834">€1.834,00</td> -->
@@ -218,6 +222,7 @@
                                             <tr>
                                                 <td>Mr. Philip Arguelles</td>
                                                 <td>Image creation</td>
+                                                <td></td>
                                                 <!-- <td>2016/01/23</td> -->
                                                 <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
                                                 <!-- <td data-order="1500">€1.500,00</td> -->
@@ -276,7 +281,7 @@
         });
     </script>
 
-    <script src="{{ asset ('assets/vendors/base/vendor.bundle.base.js') }}"></script>
+    <!-- <script src="{{ asset ('assets/vendors/base/vendor.bundle.base.js') }}"></script> -->
 
     <!-- Custom js for this page-->
     <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
