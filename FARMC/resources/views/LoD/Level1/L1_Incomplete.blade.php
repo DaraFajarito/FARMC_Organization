@@ -12,7 +12,6 @@
 
         <!-- side_navbar -->
         @include ('side_navbar')
-
         <div class="wrapper">
             <div class="content-wrapper">
                 <div class="container-fluid">

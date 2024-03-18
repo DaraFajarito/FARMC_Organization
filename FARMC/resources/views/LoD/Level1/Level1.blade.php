@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <a href="{{ url ('/L1Completed') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L1Incomplete') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                            <a href="{{ url ('/L1Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
                                         </div>
                                     </div>
                                 </div>
