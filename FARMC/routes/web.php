@@ -35,7 +35,8 @@ Route::get('/dash', function () {
 
 //LevelOne
 Route::view('/level1', 'LoD.Level1.Level1');
-Route::view('/L1Completed', 'LoD.Level1.L1_Completed');
+Route::view('/L1Completedtbl', 'LoD.Level1.L1_Completed');
+Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
 
 

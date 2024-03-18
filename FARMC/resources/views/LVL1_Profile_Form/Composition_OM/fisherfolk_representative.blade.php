@@ -99,6 +99,7 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="col-md-12">
                                                 <div class="form-group row">
                                                     <label for="h-email" class="col-md-3 col-form-label form-control-label">Name of Representative</label>
@@ -108,7 +109,7 @@
                                                 </div>
                                             </div>
 
-                                            \ <div class="col-md-6">
+                                             <div class="col-md-6">
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
                                                         <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk">

@@ -63,27 +63,27 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group row">
-                                            <label for="h-email" class="col-md-2 col-form-label form-control-label">Municipality / City</label>
+                                            <label for="municipality" class="col-md-2 col-form-label form-control-label">Municipality / City</label>
                                             <div class="col-md-2">
-                                                <input type="text" id="h-email" name="municipality" class="form-control" style="width:900px" placeholder="">
+                                                <input type="text" id="municipality" name="municipality" class="form-control" style="width:900px" placeholder="">
                                             </div>z
                                         </div>
                                         <br>
                                         <div class="form-group row">
-                                            <label for="h-email" class="col-md-2 col-form-label form-control-label">Province</label>
+                                            <label for="province" class="col-md-2 col-form-label form-control-label">Province</label>
                                             <div class="col-md-2">
-                                                <input type="text" id="h-email" name="province" class="form-control" style="width:900px" placeholder="">
+                                                <input type="text" id="province" name="province" class="form-control" style="width:900px" placeholder="">
                                             </div>
                                         </div>
                                         <br><br>
                                         <div class="form-group m-r-15">
-                                            <label for="inline3mail" class="block form-control-label">Date organized</label>
-                                            <input id="inline3mail" type="date" name="date_organized" class="form-control" style="width: 400px;" placeholder="">
+                                            <label for="date" class="block form-control-label">Date organized</label>
+                                            <input id="date" type="date" name="date_organized" class="form-control" style="width: 400px;" placeholder="">
                                         </div>
 
                                         <div class="form-group m-r-15">
-                                            <label for="inline3mail" class="block form-control-label">Attach the minutes</label>
-                                            <input id="inline3mail" type="file" name="minutes1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <label for="minutes1" class="block form-control-label">Attach the minutes</label>
+                                            <input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             @error('minutes1')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the Photos</label>
-                                            <input id="inline3mail" type="file" name="photos1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="photos1" type="file" name="photos1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             @error('photos1')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the Attendance</label>
-                                            <input id="inline3mail" type="file" name="attendance1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="attendance1" type="file" name="attendance1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             @error('attendance1')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -112,11 +112,11 @@
                                         <hr>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Date of Re-Organization</label>
-                                            <input id="inline3mail" type="date" name="date_reorganized" class="form-control" style="width: 400px;" placeholder="">
+                                            <input id="date_reorganized" type="date" name="date_reorganized" class="form-control" style="width: 400px;" placeholder="">
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"><br></label>
-                                            <input id="inline3mail" type="file" name="minues2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="minutes2" type="file" name="minutes2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             @error('minutes2')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -125,7 +125,7 @@
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"><br></label>
-                                            <input id="inline3mail" type="file" name="photos2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="photos2" type="file" name="photos2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             @error('photos2')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"><br></label>
-                                            <input id="inline3mail" type="file" name="attendance2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="attendance2" type="file" name="attendance2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             @error('attendance2')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -157,7 +157,7 @@
                                             <br><br><br>
                                             <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                 <label class="input-checkbox checkbox-primary">
-                                                    <input type="checkbox" name="fisherfolR" id="checkbox-1">
+                                                    <input type="checkbox" name="fisherfolkR" id="checkbox-1">
                                                     <span class="checkbox"></span>
                                                 </label>
                                                 <div class="captions">Fisherfolk Registry</div>
@@ -184,7 +184,7 @@
                                             <input id="inline3mail" type="file" name="internalP_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Approved Internal Policy</b></em></small>
                                             <br>
-                                            <input id="inline3mail" type="file" name="fisherfolR_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="inline3mail" type="file" name="fisherfolkR_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
 
                                             <small><b><em>Attach Fisherfolk Registry</em></b></small>
                                             <br>

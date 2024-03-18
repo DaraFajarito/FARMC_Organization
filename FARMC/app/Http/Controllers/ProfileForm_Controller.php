@@ -49,59 +49,57 @@ class ProfileForm_Controller extends Controller
     public function createProfileForm(Request $request)
     {
         $validatedData = $request->validate([
-            'minutes1' => 'file|max:2048|mimes:pdf,doc,docx',
-            'minutes2' => 'file|max:2048|mimes:pdf,doc,docx',
-            'photos1' => 'file|max:2048|mimes:jpeg,png',
-            'photos2' => 'file|max:2048|mimes:jpeg,png',
-            'attendance1' => 'file|max:2048|mimes:pdf,doc,docx',
-            'attendance2' => 'file|max:2048|mimes:pdf,doc,docx',
-            'internalP_file' => 'file|max:2048|mimes:pdf,doc,docx',
-            'fisherfolkR_file' => 'file|max:2048|mimes:pdf,doc,docx',
-            'fisheriesP_file' => 'file|max:2048|mimes:pdf,doc,docx',
-            'formulationR_file' => 'file|max:2048|mimes:pdf,doc,docx',
+            'minutes1' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'minutes2' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'photos1' => 'file|max:5242880|mimes:jpeg,png',
+            'photos2' => 'file|max:5242880|mimes:jpeg,png',
+            'attendance1' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'attendance2' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'internalP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'fisherfolkR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'fisheriesP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png    ',
         ], [
-            'minutes1.max' => 'The minutes1 file may not be greater than 2MB.',
-            'minutes2.max' => 'The minutes2 file may not be greater than 2MB.',
-            'photos1.max' => 'The photos1 file may not be greater than 2MB.',
-            'photos2.max' => 'The photos2 file may not be greater than 2MB.',
-            'attendance1.max' => 'The attendance1 file may not be greater than 2MB.',
-            'attendance2.max' => 'The attendance2 file may not be greater than 2MB.',
-            'internalP_file.max' => 'The internalP file may not be greater than 2MB.',
-            'fisherfolkR_file.max' => 'The fisherfolkR file may not be greater than 2MB.',
-            'fisheriesP_file.max' => 'The fisheriesP file may not be greater than 2MB.',
-            'formulationR_file.max' => 'The formulationR file may not be greater than 2MB.',
-            'minutes1.mimes' => 'The minutes1 file must be a file of type: pdf, doc, docx.',
-            'minutes2.mimes' => 'The minutes2 file must be a file of type: pdf, doc, docx.',
+            'minutes1.max' => 'The minutes1 file may not be greater than 5MB.',
+            'minutes2.max' => 'The minutes2 file may not be greater than 5MB.',
+            'photos1.max' => 'The photos1 file may not be greater than 5MB.',
+            'photos2.max' => 'The photos2 file may not be greater than 5MB.',
+            'attendance1.max' => 'The attendance1 file may not be greater than 5MB.',
+            'attendance2.max' => 'The attendance2 file may not be greater than 5MB.',
+            'internalP_file.max' => 'The internalP file may not be greater than 5MB.',
+            'fisherfolkR_file.max' => 'The fisherfolkR file may not be greater than 5MB.',
+            'fisheriesP_file.max' => 'The fisheriesP file may not be greater than 5MB.',
+            'formulationR_file.max' => 'The formulationR file may not be greater than 5MB.',
+            'minutes1.mimes' => 'The minutes1 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'minutes2.mimes' => 'The minutes2 file must be a file of type: pdf, doc, docx.,jpeg,png',
             'photos1.mimes' => 'The photos1 file must be a file of type: jpeg, png.',
             'photos2.mimes' => 'The photos2 file must be a file of type: jpeg, png.',
-            'attendance1.mimes' => 'The attendance1 file must be a file of type: pdf, doc, docx.',
-            'attendance2.mimes' => 'The attendance2 file must be a file of type: pdf, doc, docx.',
-            'internalP_file.mimes' => 'The internalP file must be a file of type: pdf, doc, docx.',
-            'fisherfolkR_file.mimes' => 'The fisherfolkR file must be a file of type: pdf, doc, docx.',
-            'fisheriesP_file.mimes' => 'The fisheriesP file must be a file of type: pdf, doc, docx.',
-            'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.',
+            'attendance1.mimes' => 'The attendance1 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'attendance2.mimes' => 'The attendance2 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'internalP_file.mimes' => 'The internalP file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'fisherfolkR_file.mimes' => 'The fisherfolkR file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'fisheriesP_file.mimes' => 'The fisheriesP file must be a file of type: pdf, doc, docx.,,jpeg,png',
+            'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.,,jpeg,png',
         ]);
 
         // Store the files in a public path
-        $internalPFilePath = $request->hasFile('internalP_file') ? $request->file('internalP_file')->move(public_path('internalPolicy')) : null;
-        $fisherfolkRFilePath = $request->hasFile('fisherfolkR_file') ? $request->file('fisherfolkR_file')->move(public_path('fisherfolkRegistry')) : null;
-        $fisheriesPFilePath = $request->hasFile('fisheriesP_file') ? $request->file('fisheriesP_file')->move(public_path('fisheriesProfile')) : null;
-        $formulationRFilePath = $request->hasFile('formulationR_file') ? $request->file('formulationR_file')->move(public_path('formulationResolution')) : null;
-        $photos1FilePath = $request->hasFile('photos1') ? $request->file('photos1')->move(public_path('assets/images/dateOrganized-photos')) : null;
-        $minutes1FilePath = $request->hasFile('minutes1') ? $request->file('minutes1')->move(public_path('dateOrganized-minutes')) : null;
-        $photos2FilePath = $request->hasFile('photos2') ? $request->file('photos2')->move(public_path('assets/images/dateReOrganized-photos')) : null;
-        $minutes2FilePath = $request->hasFile('minutes2') ? $request->file('minutes2')->move(public_path('dateReOrganized-minutes')) : null;
-        $attendance1FilePath = $request->hasFile('attendance1') ? $request->file('attendance1')->move(public_path('dateOrganized-attendance')) : null;
-        $attendance2FilePath = $request->hasFile('attendance2') ? $request->file('attendance2')->move(public_path('dateReOrganized-attendance')) : null;
+        $photos1FilePath = $request->file('photos1') ? $request->file('photos1')->move(public_path('assets/images/dateOrganized-photos')) : null;
+        $minutes1FilePath = $request->file('minutes1') ? $request->file('minutes1')->move(public_path('dateOrganized-minutes')) : null;
+        $photos2FilePath = $request->file('photos2') ? $request->file('photos2')->move(public_path('assets/images/dateReOrganized-photos')) : null;
+        $minutes2FilePath = $request->file('minutes2') ? $request->file('minutes2')->move(public_path('dateReOrganized-minutes')) : null;
+        $attendance1FilePath = $request->file('attendance1') ? $request->file('attendance1')->move(public_path('dateOrganized-attendance')) : null;
+        $attendance2FilePath = $request->file('attendance2') ? $request->file('attendance2')->move(public_path('dateReOrganized-attendance')) : null;
+        $internalPFilePath = $request->file('internalP_file') ? $request->file('internalP_file')->move(public_path('internalPolicy')) : null;
+        $fisherfolkRFilePath = $request->file('fisherfolkR_file') ? $request->file('fisherfolkR_file')->move(public_path('fisherfolkRegistry')) : null;
+        $fisheriesPFilePath = $request->file('fisheriesP_file') ? $request->file('fisheriesP_file')->move(public_path('fisheriesProfile')) : null;
+        $formulationRFilePath = $request->file('formulationR_file') ? $request->file('formulationR_file')->move(public_path('formulationResolution')) : null;
 
         // Create a new ProfileForm instance
         $profileForm = new ProfileForm_Model();
         $profileForm->municipality = $validatedData['municipality'] ?? null;
         $profileForm->province = $validatedData['province'] ?? null;
         $profileForm->date_organized = $validatedData['date_organized'] ?? null;
-        $profileForm->photos1 = $photos1FilePath ? '/assets/images/dateOrganized-photos/' . $photos1FilePath->getFilename() : null;
         $profileForm->date_reorganized = $validatedData['date_reorganized'] ?? null;
-        $profileForm->photos2 = $photos2FilePath ? '/assets/images/dateROrganized-photos/' . $photos2FilePath->getFilename() : null;
         $profileForm->internalP = $validatedData['internalP'] ?? null;
         $profileForm->internalP_file = $internalPFilePath ? '/internalPolicy/' . $internalPFilePath->getFilename() : null;
         $profileForm->fisherfolkR = $validatedData['fisherfolkR'] ?? null;
@@ -110,21 +108,21 @@ class ProfileForm_Controller extends Controller
         $profileForm->fisheriesP_file = $fisheriesPFilePath ? '/fisheriesProfile/' . $fisheriesPFilePath->getFilename() : null;
         $profileForm->formulationR = $validatedData['formulationR'] ?? null;
         $profileForm->formulationR_file = $formulationRFilePath ? '/formulationResolution/' . $formulationRFilePath->getFilename() : null;
+        $profileForm->photos1 = $photos1FilePath ? '/assets/images/dateOrganized-photos/' . $photos1FilePath->getFilename() : null;
+        $profileForm->photos2 = $photos2FilePath ? '/assets/images/dateReOrganized-photos/' . $photos2FilePath->getFilename() : null;
         $profileForm->minutes1 = $minutes1FilePath ? '/dateOrganized-minutes/' . $minutes1FilePath->getFilename() : null;
         $profileForm->minutes2 = $minutes2FilePath ? '/dateReOrganized-minutes/' . $minutes2FilePath->getFilename() : null;
         $profileForm->attendance1 = $attendance1FilePath ? '/dateOrganized-attendance/' . $attendance1FilePath->getFilename() : null;
         $profileForm->attendance2 = $attendance2FilePath ? '/dateReOrganized-attendance/' . $attendance2FilePath->getFilename() : null;
-
+        
         $profileForm->save();
-
-
+        
         if ($profileForm) {
             return redirect('/officers-form/' . $profileForm->id)->with('success', 'Success!');
         } else {
             return redirect()->back()->with('failed', 'error');
         }
     }
-
     public function addOfficer(Request $request, $id)
     {
         // Validate the form data
@@ -236,12 +234,11 @@ class ProfileForm_Controller extends Controller
         $nullFields = collect($secretariat->toArray())->filter(function ($value, $key) {
             return $value === null;
         })->keys()->toArray();
-        
+
         if (!empty($nullFields)) {
             return view('LoD.Level1.L1_Incomplete', compact('nullFields'));
         } else {
             return view('LoD.Level1.L1_Completed');
         }
-        
     }
 }

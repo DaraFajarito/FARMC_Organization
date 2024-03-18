@@ -44,17 +44,18 @@
                         <a href="{{ url ('/committee') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br>
                         <br>
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-block">
-                                    <hr>
-                                    <div class="grid-material bg-general"><b>B. MFARMC Committee</b>
-                                    </div>
-                                    <hr>
-                                    @foreach($secretariat as $item)
-                                    <form method="POST" action="{{url('/add-secretariat/' . $item->id)}}" enctype="multipart/form-data" id="yourFormId">
-                                        @csrf
-                                        @method('PUT')
+                        @foreach($secretariat as $item)
+                        <form method="POST" action="{{url('/add-secretariat/' . $item->id)}}" enctype="multipart/form-data" id="yourFormId">
+                            @csrf
+                            @method('PUT')
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-block">
+                                        <hr>
+                                        <div class="grid-material bg-general"><b>B. MFARMC Committee</b>
+                                        </div>
+                                        <hr>
+
                                         <div class="card-header">
                                             <table class="table">
                                                 <thead>
@@ -83,34 +84,34 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2 text-right">
-                                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
                                             </div>
                                         </div>
-                                    </form>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to submit now?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                        <button type="button" class="btn btn-primary" onclick="submitForm()">Yes</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to submit now?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        @endforeach
                     </div>
                 </div>
             </div>
