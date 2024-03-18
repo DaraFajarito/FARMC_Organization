@@ -15,7 +15,7 @@ class Committee_Controller extends Controller
 
     public function createCommittee(Request $request)
     {
-        $profile = ProfileForm_Model::first();
+        $profile = ProfileForm_Model::latest()->first();
 
         $validatedData = $request->validate([
             'category' => 'NULLABLE', // Add any other validation rules you need

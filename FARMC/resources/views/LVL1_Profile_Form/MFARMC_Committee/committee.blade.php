@@ -78,14 +78,14 @@
                                                 <div class="col-md-3">
                                                     <select name="category" class="js-example-basic-single form-control">
                                                         <optgroup label="Committee  ">
-                                                            <option value="AL">Faw Enforcement & Prosecution </option>
-                                                            <option value="WY">Rehabilitation and Conservation</option>
-                                                            <option value="WY">Livelihood</option>
-                                                            <option value="WY">Research Education and Training</option>
-                                                            <option value="WY">Legislation</option>
-                                                            <option value="WY">Land and Water Use</option>
-                                                            <option value="WY">Fisherfol Resettlement</option>
-                                                            <option value="WY">Other, if any</option>
+                                                            <option value="Law Enforcement & Prosecution">Law Enforcement & Prosecution </option>
+                                                            <option value="Rehabilitation and Conservation">Rehabilitation and Conservation</option>
+                                                            <option value="Livelihood">Livelihood</option>
+                                                            <option value="Research Education and Training">Research Education and Training</option>
+                                                            <option value="Legislation">Legislation</option>
+                                                            <option value="Land and Water Use">Land and Water Use</option>
+                                                            <option value="Fisherfol Resettlement">Fisherfol Resettlement</option>
+                                                            <option value="Other, if any">Other, if any</option>
                                                         </optgroup>
                                                     </select>
                                                 </div>
@@ -124,7 +124,7 @@
                                                 <button class="btn btn-primary" type="submit">Add another</button>
                                             </div>
                                             <div class="col-md-2 text-right">
-                                                <a href="{{ url ('/secretariat-form/' . $profile->id) }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                                <a href="{{ url ('/secretariat-form') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </form>

@@ -90,11 +90,11 @@ Route::view('/org_membership', 'FARMC_Membership.org_membership');
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
 Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'display_mandatedOfficer_form']);
 Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
-Route::get('/secretariat-form/{id}', [ProfileForm_Controller::class,'display_sectariat_form']);
+Route::get('/secretariat-form', [ProfileForm_Controller::class,'display_sectariat_form']);
 Route::post('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
 Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
 Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);
-Route::put('/add-secretariat/{id}', [ProfileForm_Controller::class,'addSecretariat']);
+Route::put('/add-secretariat', [ProfileForm_Controller::class,'addSecretariat']);
 
 //Fisherfolk Representative
 Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);

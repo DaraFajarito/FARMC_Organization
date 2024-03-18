@@ -44,15 +44,15 @@
                         <a href="{{ url ('/committee') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br>
                         <br>
-                        @foreach($secretariat as $item)
-                        <form method="POST" action="{{url('/add-secretariat/' . $item->id)}}" enctype="multipart/form-data" id="yourFormId">
+                       
+                        <form method="POST" action="{{url('/add-secretariat')}}" enctype="multipart/form-data" id="yourFormId">
                             @csrf
                             @method('PUT')
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-block">
                                         <hr>
-                                        <div class="grid-material bg-general"><b>B. MFARMC Committee</b>
+                                        <div class="grid-material bg-general"><b>B. Secretariat</b>
                                         </div>
                                         <hr>
 
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </form>
-                        @endforeach
+                   
                     </div>
                 </div>
             </div>

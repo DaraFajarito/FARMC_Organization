@@ -181,17 +181,16 @@
                                         </div>
 
                                         <div class="col-md-7" style=" line-height:4rem">
-                                            <input id="inline3mail" type="file" name="internalP_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Approved Internal Policy</b></em></small>
                                             <br>
-                                            <input id="inline3mail" type="file" name="fisherfolkR_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-
+                                            <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Fisherfolk Registry</em></b></small>
                                             <br>
-                                            <input id="inline3mail" type="file" name="fisheriesP_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="fisheriesP_file" type="file" name="fisheriesP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Fisheries Profile</em></b></small>
                                             <br>
-                                            <input id="inline3mail" type="file" name="formulationR_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <input id="formulationR_file" type="file" name="formulationR_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             <small><b><em>Attach Files</em></b></small>
                                         </div>
                                         <div class="row">
@@ -199,8 +198,6 @@
                                                 <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
-
-
                                         <!-- </div> -->
                                     </div>
                                 </div>
@@ -231,6 +228,58 @@
             });
         });
     </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#internalP_file').change(function() {
+            if ($(this).val()) {
+                $('#checkbox').prop('checked', true);
+            } else {
+                $('#checkbox').prop('checked', false);
+            }
+        });
+        $('#fisherfolkR_file').change(function() {
+            if ($(this).val()) {
+                $('#checkbox-1').prop('checked', true);
+            } else {
+                $('#checkbox-1').prop('checked', false);
+            }
+        });
+        $('#fisheriesP_file').change(function() {
+            if ($(this).val()) {
+                $('#checkbox-2').prop('checked', true);
+            } else {
+                $('#checkbox-2').prop('checked', false);
+            }
+        });
+        $('#formulationR_file').change(function() {
+            if ($(this).val()) {
+                $('#checkbox-3').prop('checked', true);
+            } else {
+                $('#checkbox-3').prop('checked', false);
+            }
+        });
+
+        // Add similar change event listeners for other file inputs
+    });
+</script>
+     <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function setupCheckbox(checkboxId, hiddenInputId) {
+                    const checkbox = document.getElementById(checkboxId);
+                    const hiddenInput = document.getElementById(hiddenInputId);
+
+                    checkbox.addEventListener('change', function() {
+                        hiddenInput.value = this.checked ? '1' : null;
+                    });
+                }
+
+                setupCheckbox('checkbox', 'internalP_file');
+                setupCheckbox('checkbox-1', 'fisherfolkR_file');
+                setupCheckbox('checkbox-2', 'fisheriesP_file');
+                setupCheckbox('checkbox-3', 'formulationR_file');
+            });
+        </script>
 
 </body>
 

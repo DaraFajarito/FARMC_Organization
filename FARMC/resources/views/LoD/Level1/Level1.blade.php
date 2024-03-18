@@ -17,8 +17,6 @@
     <!-- side_navbar -->
 
     <div class="content-wrapper">
-        <!-- Container-fluid starts -->
-        <!-- Main content starts -->
         <div class="container-fluid">
             <div class="row">
                 <div class="main-header">
@@ -36,7 +34,6 @@
                             <span><a href="{{ url ('/basicStructure') }}"><button type="button" class="btn btn-primary">+New Form</button></a></span>
                         </div>
                     </ol>
-
                 </div>
             </div>
 

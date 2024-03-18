@@ -35,9 +35,9 @@ class ProfileForm_Controller extends Controller
             return view('LVL1_Profile_Form.Composition_OM.fisherfolk_representative', compact('officers'));
         }
     }
-    public function display_sectariat_form($id)
+    public function display_sectariat_form()
     {
-        $secretariat = ProfileForm_Model::where('id', $id)->get();
+        $secretariat = ProfileForm_Model::latest()->first();
         if (!$secretariat) {
             return redirect()->back()->with('failed', 'Officer record not found');
         } else {
@@ -58,7 +58,15 @@ class ProfileForm_Controller extends Controller
             'internalP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'fisherfolkR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'fisheriesP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
-            'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png    ',
+            'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'municipality' => 'nullable',
+            'date_organized' => 'nullable',
+            'date_reorganized' => 'nullable',
+            'internalP' => 'nullable',
+            'province' => 'nullable',
+            'fisherfolkR' => 'nullable',
+            'fisheriesP' => 'nullable',
+            'formulationR' => 'nullable',
         ], [
             'minutes1.max' => 'The minutes1 file may not be greater than 5MB.',
             'minutes2.max' => 'The minutes2 file may not be greater than 5MB.',
@@ -100,13 +108,13 @@ class ProfileForm_Controller extends Controller
         $profileForm->province = $validatedData['province'] ?? null;
         $profileForm->date_organized = $validatedData['date_organized'] ?? null;
         $profileForm->date_reorganized = $validatedData['date_reorganized'] ?? null;
-        $profileForm->internalP = $validatedData['internalP'] ?? null;
+        $profileForm->internalP = isset($validatedData['internalP']) ? 1 : 0;
         $profileForm->internalP_file = $internalPFilePath ? '/internalPolicy/' . $internalPFilePath->getFilename() : null;
-        $profileForm->fisherfolkR = $validatedData['fisherfolkR'] ?? null;
+        $profileForm->fisherfolkR = isset($validatedData['fisherfolkR']) ? 1 : 0;
         $profileForm->fisherfolkR_file = $fisherfolkRFilePath ? '/fisherfolkRegistry/' . $fisherfolkRFilePath->getFilename() : null;
-        $profileForm->fisheriesP = $validatedData['fisheriesP'] ?? null;
+        $profileForm->fisheriesP = isset($validatedData['fisheriesP']) ? 1 : 0;
         $profileForm->fisheriesP_file = $fisheriesPFilePath ? '/fisheriesProfile/' . $fisheriesPFilePath->getFilename() : null;
-        $profileForm->formulationR = $validatedData['formulationR'] ?? null;
+        $profileForm->formulationR = isset($validatedData['formulationR']) ? 1 : 0;
         $profileForm->formulationR_file = $formulationRFilePath ? '/formulationResolution/' . $formulationRFilePath->getFilename() : null;
         $profileForm->photos1 = $photos1FilePath ? '/assets/images/dateOrganized-photos/' . $photos1FilePath->getFilename() : null;
         $profileForm->photos2 = $photos2FilePath ? '/assets/images/dateReOrganized-photos/' . $photos2FilePath->getFilename() : null;
@@ -205,7 +213,7 @@ class ProfileForm_Controller extends Controller
         return redirect()->back()->with('failed', 'There was a problem updating the officers.');
     }
 
-    public function addSecretariat(Request $request, $id)
+    public function addSecretariat(Request $request)
     {
         // Validate the form data
         $validatedData = $request->validate([
@@ -217,8 +225,12 @@ class ProfileForm_Controller extends Controller
             'office_org2' => 'nullable',
         ]);
 
-        // Find the record
-        $secretariat = ProfileForm_Model::findOrFail($id);
+        // Find the latest ID
+        $latestId = ProfileForm_Model::latest('id')->pluck('id')->first();
+
+        // Find the record with the latest ID
+        $secretariat = ProfileForm_Model::find($latestId);
+        
 
         // Update the secre$secretariat' details
         $secretariat->name_sec = $validatedData['name_sec'];

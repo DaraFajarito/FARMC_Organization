@@ -203,7 +203,7 @@
                         <ul class="treeview-menu">
                             <li>
                                 <a class="waves-effect waves-dark" href="#!">
-                                    <i class="icon-arrow-right"></i>
+                                    <i class="icon-close"></i>
                                     3.1 Provincial Fisherfolk Representative
                                 </a>
                             </li>

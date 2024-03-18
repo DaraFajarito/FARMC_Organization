@@ -89,12 +89,12 @@
                                                 <div class="col-md-3 text-left">
                                                     <select name="category" class="js-example-basic-single form-control">
                                                         <optgroup label="Fisherfolk Representative">
-                                                            <option value="AL">Municipal Fisherfolk</option>
-                                                            <option value="WY">Fisherworker</option>
-                                                            <option value="WY">Commercial Fishing Operator</option>
-                                                            <option value="WY">Women Fisherfolk Sector Representative</option>
-                                                            <option value="WY">Youth Fisherfolk Sector Representative</option>
-                                                            <option value="WY">Indigenous Peoples(IP's) if any</option>
+                                                            <option value="Municipal Fisherfolk">Municipal Fisherfolk</option>
+                                                            <option value="Fisherworker">Fisherworker</option>
+                                                            <option value="Commercial Fishing Operator">Commercial Fishing Operator</option>
+                                                            <option value="Women Fisherfolk Sector Representative">Women Fisherfolk Sector Representative</option>
+                                                            <option value="Youth Fisherfolk Sector Representative">Youth Fisherfolk Sector Representative</option>
+                                                            <option value="Indigenous Peoples(IP's) if any">Indigenous Peoples(IP's) if any</option>
                                                         </optgroup>
                                                     </select>
                                                 </div>
@@ -109,18 +109,18 @@
                                                 </div>
                                             </div>
 
-                                             <div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
-                                                        <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk">
+                                                        <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk" onchange="toggleFileInput(this)">
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
-                                                </div>
-                                                <input type="hidden" name="endorsement_fisherfolk" id="endorsement_fisherfolk_input">
+                                                </div <input type="hidden" name="endorsement_fisherfolk" id="endorsement_fisherfolk_input">
+                                                <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="">
                                             </div>
                                             <div class="col-md-6" style="padding-left: 200px;">
-                                                <input id="inline3mail" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <input id="endorsement_fisherfolk_inputf" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             </div>
 
                                             <div class="col-md-12">
@@ -130,21 +130,21 @@
                                             <div class="col-md-6">
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
-                                                        <input type="checkbox" id="atleast_one_year_checkbox" name="atleast_one_year">
+                                                        <input type="checkbox" id="atleast_one_year_checkbox" name="atleast_one_year" onchange="toggleFileInput(this)">
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Atleast 1 year residency</div>
                                                 </div>
-                                                <input type="hidden" name="atleast_one_year" id="atleast_one_year_input">
+                                                <!-- <input type="hidden" name="atleast_one_year" id="atleast_one_year_input"> -->
                                             </div>
                                             <div class="col-md-6" style="padding-left: 200px;">
-                                                <input id="inline3mail" type="file" name="aoy_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <input id="atleast_one_year_inputf" type="file" name="aoy_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
-                                                        <input type="checkbox" id="source_of_income_checkbox" name="source_of_income">
+                                                        <input type="checkbox" id="source_of_income_checkbox" name="source_of_income" onchange="toggleFileInput(this)">
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Source of income (Capture/Culture/Processing)</div>
@@ -152,13 +152,13 @@
                                                 <input type="hidden" name="source_of_income" id="source_of_income_input">
                                             </div>
                                             <div class="col-md-6" style="padding-left: 200px;">
-                                                <input id="inline3mail" type="file" name="soi_attachment" namez class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <input id="source_of_income_inputf" type="file" name="soi_attachment" namez class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
-                                                        <input type="checkbox" id="good_moral_checkbox" name="good_moral">
+                                                        <input type="checkbox" id="good_moral_checkbox" name="good_moral" onchange="toggleFileInput(this)">
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Good Moral Character</div>
@@ -166,7 +166,7 @@
                                                 <input type="hidden" name="good_moral" id="good_moral_input">
                                             </div>
                                             <div class="col-md-6" style="padding-left: 200px;">
-                                                <input id="inline3mail" type="file" name="gmc_attachment" class="form-control" style="width:200px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <input id="good_moral_inputf" type="file" name="gmc_attachment" class="form-control" style="width:200px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                             </div>
 
                                             <div class="col-md-12">
@@ -253,6 +253,26 @@
                 setupCheckbox('atleast_one_year_checkbox', 'atleast_one_year_input');
                 setupCheckbox('source_of_income_checkbox', 'source_of_income_input');
                 setupCheckbox('good_moral_checkbox', 'good_moral_input');
+            });
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function toggleFileInput(checkbox) {
+                const fileInput = document.getElementById(checkbox.id + '_inputf');
+                fileInput.style.display = checkbox.checked ? 'block' : 'none';
+                const hiddenInput = document.getElementById(checkbox.id + '_input');
+                hiddenInput.value = checkbox.checked ? '1' : '';
+            }
+
+            document.querySelectorAll('input[type="file"]').forEach(fileInput => {
+                fileInput.addEventListener('change', function() {
+                    const checkboxId = this.id.replace('_inputf', '_checkbox');
+                    const checkbox = document.getElementById(checkboxId);
+                    checkbox.checked = true;
+                    const hiddenInput = document.getElementById(checkboxId + '_input');
+                    hiddenInput.value = '1';
+                });
             });
         </script>
 
