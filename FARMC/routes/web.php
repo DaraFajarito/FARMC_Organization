@@ -78,12 +78,16 @@ Route::view('/level4', 'LoD.Level4.Level4');
 Route::view('/L4Completed', 'LoD.Level4.L4_Completed');
 Route::view('/L4Incomplete', 'LoD.Level4.L4_Incomplete');
 
+Route::view('/sustainabilityMechanism', 'LVL4_Sustainability_Mechanism.sustainabilityMechanism');
+
 // ------------------------------------------------------------------------------
 
 //LevelFive
 Route::view('/level5', 'LoD.Level5.Level5');
 Route::view('/L5Completed', 'LoD.Level5.L5_Completed');
 Route::view('/L5Incomplete', 'LoD.Level5.L5_Incomplete');
+
+Route::view('/modelExcellence', 'LVL5_Model_of_Excellence.modelofExcellence');
 
 // ------------------------------------------------------------------------------
 

@@ -202,16 +202,16 @@
                                     </div>
                                     <br>
                                     <div class="col-md-6" style=" line-height:3rem">
-                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 150px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <small><b><em>Please attached list</b></em></small>
                                         <br>
-                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 150px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <small><b><em>Please attached list</em></b></small>
                                         <br>
-                                        <input id="fisheriesP_file" type="file" name="fisheriesP_file" class="form-control file-input" style="width: 150px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <input id="fisheriesP_file" type="file" name="fisheriesP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <small><b><em>Please attached list</em></b></small>
                                         <br>
-                                        <input id="formulationR_file" type="file" name="formulationR_file" class="form-control file-input" style="width: 150px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <input id="formulationR_file" type="file" name="formulationR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <small><b><em>Please attached list</em></b></small>
                                     </div>
 
