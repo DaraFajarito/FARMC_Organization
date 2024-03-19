@@ -36,8 +36,10 @@ Route::get('/dash', function () {
 //LevelOne
 Route::view('/level1', 'LoD.Level1.Level1');
 Route::view('/L1Incompletetbl', 'LoD.Level1.L1_Incompletetbl');
-Route::view('/L1Completedtbl', 'LoD.Level1.L1_Completed');
+Route::view('/L1Completedtbl', 'LoD.Level1.L1_Completedtbl');
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
+Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
+Route::view('/L1Viewform', 'LoD.Level1.L1_Viewform');
 
 
 
@@ -55,12 +57,19 @@ Route::view('/level2', 'LoD.Level2.Level2');
 Route::view('/L2Completed', 'LoD.Level2.L2_Completed');
 Route::view('/L2Incomplete', 'LoD.Level2.L2_Incomplete');
 
+Route::view('/basicFunction', 'LVL2_Basic_Function.basicFunction');
+
+
+
+
 // ------------------------------------------------------------------------------
 
 //LevelThree
 Route::view('/level3', 'LoD.Level3.Level3');
 Route::view('/L3Completed', 'LoD.Level3.L3_Completed');
 Route::view('/L3Incomplete', 'LoD.Level3.L3_Incomplete');
+
+Route::view('/fullyOperational', 'LVL3_Fully_Operational.fullyOperational');
 
 // ------------------------------------------------------------------------------
 

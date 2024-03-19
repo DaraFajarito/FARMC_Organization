@@ -8,6 +8,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        /* @media print {
+
+            #example th:nth-child(6),
+            #example td:nth-child(6) {
+                display: none;
+            }
+        } */
+        
+    </style>
 </head>
 
 <body>
@@ -31,7 +42,7 @@
                         <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 1</a>
                         </li>
                         <div class="text-right">
-                            <span><a href="{{ url ('/basicStructure') }}"><button type="button" class="btn btn-primary">+New Form</button></a></span>
+                            <span><a href="{{ url ('/basicStructure') }}"><button type="button" class="btn btn-primary">+ &nbsp;New Form</button></a></span>
                         </div>
                     </ol>
                 </div>
@@ -71,11 +82,11 @@
                             <div class="col-md-8">
                                 <div class="card-block">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label>MIMAROPA LEVELS OVERVIEW</label>
                                         </div>
-                                        <div class="col-md-6 text-right">
-                                            <a href="{{ url ('/L1Completed') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                        <div class="col-md-8 text-right">
+                                            <a href="{{ url ('/L1Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
                                             <a href="{{ url ('/L1Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
                                         </div>
                                     </div>
@@ -114,35 +125,26 @@
                                                     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                         <thead>
                                                             <tr>
-                                                                <th>Order</th>
-                                                                <th>Description</th>
-                                                                <th>Deadline</th>
+                                                                <th>Province</th>
+                                                                <th>Municipality</th>
+                                                                <th>Date of Organized</th>
+                                                                <th>Date of Re-organized</th>
                                                                 <th>Status</th>
-                                                                <th>Amount</th>
+                                                                <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td>Alphabet puzzle</td>
+                                                                <td>Oriental Mindoro</td>
+                                                                <td>Calapan City</td>
                                                                 <td>2016/01/15</td>
-                                                                <td>Done</td>
-                                                                <td data-order="1000">€1.000,00</td>
+                                                                <td>2020/11/25</td>
+                                                                <td style="color:green"><b>COMPLETE</b></td>
+                                                                <td style="text-align: center;">
+                                                                    <a href="{{ url('/L1Viewform') }}" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a>
+                                                                </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>Layout for poster</td>
-                                                                <td>2016/01/31</td>
-                                                                <td>Planned</td>
-                                                                <td data-order="1834">€1.834,00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>Image creation</td>
-                                                                <td>2016/01/23</td>
-                                                                <td>To Do</td>
-                                                                <td data-order="1500">€1.500,00</td>
-                                                            </tr>
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -204,35 +206,24 @@
                                                                 <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                                                     <thead>
                                                                         <tr>
-                                                                            <th>Order</th>
-                                                                            <th>Description</th>
-                                                                            <th>Deadline</th>
+                                                                            <th>Province</th>
+                                                                            <!-- <th>Municipality</th> -->
+                                                                            <th>Date of Organized</th>
+                                                                            <th>Date of Re-organized</th>
                                                                             <th>Status</th>
-                                                                            <th>Amount</th>
+                                                                            <th>Action</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td>1</td>
-                                                                            <td>Alphabet puzzle</td>
+                                                                            <td>Oriental Mindoro</td>
+                                                                            <!-- <td>Calapan City</td> -->
                                                                             <td>2016/01/15</td>
-                                                                            <td>Done</td>
-                                                                            <td data-order="1000">€1.000,00</td>
+                                                                            <td>2016/01/15</td>
+                                                                            <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                            <td><a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a></td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td>2</td>
-                                                                            <td>Layout for poster</td>
-                                                                            <td>2016/01/31</td>
-                                                                            <td>Planned</td>
-                                                                            <td data-order="1834">€1.834,00</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>3</td>
-                                                                            <td>Image creation</td>
-                                                                            <td>2016/01/23</td>
-                                                                            <td>To Do</td>
-                                                                            <td data-order="1500">€1.500,00</td>
-                                                                        </tr>
+
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -671,10 +662,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <br><br><br>
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-block">
-                                        <h6 class="card-title">Composition of Membership</h6>
+                                        <h6 class="card-title">All Level 1 <em> <small>(Incomplete & Complete)</small> </em></h6>
+                                       <br>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
                                                 <canvas id="bestSellers"></canvas>
@@ -682,11 +675,9 @@
                                             <div class="col-sm-12">
                                                 <ul class="graphl-legend-rectangle">
                                                     <br>
-                                                    <li><span class="btn btn-danger"></span> Municipal</li>
-                                                    <li><span class="btn btn-warning"></span> Fisherworker</li>
-                                                    <li><span class="btn btn-info"></span> Commercial</li>
-                                                    <li><span class="btn btn-primary"></span> Women/Youth</li>
-                                                    <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
+                                                    <li><span class="btn btn-danger"></span> Completed</li>
+                                                    <li><span class="btn btn-warning"></span> Incomplete</li>
+                                                <br>
                                                 </ul>
                                             </div>
                                         </div>

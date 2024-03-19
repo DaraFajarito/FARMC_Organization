@@ -2,7 +2,7 @@
     <html lang="en">
 
     <head>
-        <title>All Dashboard | BFAR - FARMC</title>
+        <title>Level 1 - Incomplete Table | BFAR - FARMC</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -46,35 +46,26 @@
                             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Order</th>
-                                        <th>Description</th>
-                                        <th>Deadline</th>
+                                        <th>Province</th>
+                                        <th>Municipality</th>
+                                        <th>Date of Organized</th>
+                                        <th>Date of Re-organized</th>
                                         <th>Status</th>
-                                        <th>Amount</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Alphabet puzzle</td>
+                                        <td>Oriental Mindoro</td>
+                                        <td>Calapan City</td>
                                         <td>2016/01/15</td>
-                                        <td>Done</td>
-                                        <td data-order="1000">€1.000,00</td>
+                                        <td>2020/11/25</td>
+                                        <td style="color:red"><b>INCOMPLETE</b></td>
+                                        <td style="text-align: center;">
+                                            <a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Layout for poster</td>
-                                        <td>2016/01/31</td>
-                                        <td>Planned</td>
-                                        <td data-order="1834">€1.834,00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Image creation</td>
-                                        <td>2016/01/23</td>
-                                        <td>To Do</td>
-                                        <td data-order="1500">€1.500,00</td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>

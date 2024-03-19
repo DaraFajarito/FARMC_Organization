@@ -198,6 +198,14 @@
                                                 <h6 class="captions">Fisherfolk Representative</h6>
                                             </b>
                                         </div>
+<br>
+<br>
+
+                                        <div>
+                                            <b>
+                                                <h6 class="captions">MFARMC Committee</h6>
+                                            </b>
+                                        </div>
 
                                   
                                         <div>
