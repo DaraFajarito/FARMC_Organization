@@ -8,6 +8,7 @@ $(document).ready(function () {
             "dom": '<"dt-buttons"Bf><"clear">lirtp',
             "paging": true,
             "autoWidth": true,
+            "lengthMenu": [ 10, 25, 50, 75, 100 ], // Specify the available page lengths
             "buttons": [
                 'colvis',
                 'copyHtml5',

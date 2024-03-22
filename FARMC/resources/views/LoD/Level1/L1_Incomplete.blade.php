@@ -43,7 +43,7 @@
                                     <p>Please provide these necessary requirements to complete Level One.</p>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <a href="{{ url('/level1') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit form</a>
+                                    <a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit form</a>
                                 </div>
                             </div>
 

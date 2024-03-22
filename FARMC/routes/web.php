@@ -34,12 +34,12 @@ Route::get('/dash', function () {
 //*LEVELS OF DEVELOPMENT*/
 
 //LevelOne
-Route::view('/level1', 'LoD.Level1.Level1');
+// Route::view('/level1', 'LoD.Level1.Level1');
 Route::view('/L1Incompletetbl', 'LoD.Level1.L1_Incompletetbl');
 Route::view('/L1Completedtbl', 'LoD.Level1.L1_Completedtbl');
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
 Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
-Route::view('/L1Viewform', 'LoD.Level1.L1_Viewform');
+// Route::view('/L1Viewform', 'LoD.Level1.L1_Viewform');
 
 
 
@@ -101,7 +101,9 @@ Route::view('/org_membership', 'FARMC_Membership.org_membership');
 
 //Profile Form
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
+Route::get('/level1', [ProfileForm_Controller::class,'displayAll']);
 Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'display_mandatedOfficer_form']);
+Route::get('/L1Viewform/{id}', [ProfileForm_Controller::class,'display_level1_info']);
 Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
 Route::get('/secretariat-form', [ProfileForm_Controller::class,'display_sectariat_form']);
 Route::post('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);

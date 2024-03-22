@@ -44,7 +44,7 @@
                         <a href="{{ url ('/committee') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br>
                         <br>
-                       
+
                         <form method="POST" action="{{url('/add-secretariat')}}" enctype="multipart/form-data" id="yourFormId">
                             @csrf
                             @method('PUT')
@@ -83,7 +83,7 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-2 text-right">
+                                            <div class="col-md-12 text-center">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </form>
-                   
+
                     </div>
                 </div>
             </div>

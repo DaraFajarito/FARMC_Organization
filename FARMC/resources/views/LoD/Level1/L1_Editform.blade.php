@@ -14,9 +14,7 @@
     <meta name="author" content="codedthemes">
 
     <style>
-        .form-control{
-          
-        }
+        .form-control {}
     </style>
 </head>
 
@@ -42,7 +40,9 @@
                     <div class="card-header">
                         <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
                         <hr>
-                        <div class="grid-material bg-general"> &nbsp&nbsp&nbsp<b>BASIC STRUCTURE</b></div>
+                        <div style="background-color: #415dfe;">
+                            <div class="grid-material bg-general" style="color: white;padding:10px"> &nbsp&nbsp&nbsp<b>BASIC STRUCTURE</b></div>
+                        </div>
                         <hr>
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
@@ -192,477 +192,478 @@
 
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="grid-material bg-general"><b>FARMC OFFICERS</b></div>
-                                <hr>
-                                <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
-                                <div class="grid-material bg-general"></div>
-                                <!-- <div class="card-block"> -->
-                                <div class="row">
-                                    <div class="col-sm-12 table-responsive">
-                                        <form method="POST" action="{{ url('/add-officer/') }}" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Position</th>
-                                                        <th>Name</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Chairperson</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="chairperson"></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Vice-Chairperson</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="vice_chairperson"></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Secretary</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="secretary"></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Assistant Secretary</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="asst_sec"></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Treasurer</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="treasurer"></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Assistant Treasurer</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="asst_treas"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>Auditor</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="auditor"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Assistant Auditor</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="asst_aud"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>6</td>
-                                                        <td>Press Relation Officer 1</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="pro1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Press Relation Officer 2</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="pro2"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>7</td>
-                                                        <td>Sgt-at-Arms 1</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="sgt_arms1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Sgt-at-Arms 2</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="sgt_arms2"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Sgt-at-Arms 3</td>
-                                                        <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="sgt_arms3"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </form>
 
-
                         <hr>
-                        <div class="grid-material bg-general"> &nbsp;&nbsp;&nbsp;<b>A. COMPOSITION OF MEMBERSHIP</b></div>
-                        <hr>
-                        <form method="POST" action="" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <div class="card-header">
-                                <label for="inline3mail" class="block form-control-label"><strong>1. Mandated member</strong></label>
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2">1.1 Chairperson SB/SP Committee of Agriculture and Fisheries</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="chairpersonSB">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">1.2 Municipal Planning and Development Council</th>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="mpdo">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">1.3 Representative from Municipal Development Council</th>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="repmdc">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">1.4 Representative from Department of Agriculture/MAO</th>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="repda">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">1.5 Representative from Non-Governmental Organization</th>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="repngo">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">1.6 Representative from Private Sector</th>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="repps">
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">1.7 Other: Please specify</th>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <input type="text" id="h-email" class="form-control" placeholder="" name="others">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </form>
-
-
-                        <!-- <div class="card-block"> -->
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                        <div style="background-color: #415dfe;">
+                            <div class="grid-material bg-general" style="color: white;padding:10px"><b>FARMC OFFICERS</b></div>
                         </div>
-                        @endif
-
-                        <form method="post" action="{{ url('/add-fisherfolk-rep') }}" enctype="multipart/form-data" id="yourFormId">
-                            @csrf
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <label for="inline3mail" class="block form-control-label"><strong>2. Fisherfolk Representative</strong></label>
-                                    </div>
-                                    <div class="col-md-3 text-left">
-                                        <select name="category" class="js-example-basic-single form-control">
-                                            <optgroup label="Fisherfolk Representative">
-                                                <option value="Municipal Fisherfolk">Municipal Fisherfolk</option>
-                                                <option value="Fisherworker">Fisherworker</option>
-                                                <option value="Commercial Fishing Operator">Commercial Fishing Operator</option>
-                                                <option value="Women Fisherfolk Sector Representative">Women Fisherfolk Sector Representative</option>
-                                                <option value="Youth Fisherfolk Sector Representative">Youth Fisherfolk Sector Representative</option>
-                                                <option value="Indigenous Peoples(IP's) if any">Indigenous Peoples(IP's) if any</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="col-md-12">
-                                    <div class="form-group row">
-                                        <label for="h-email" class="col-md-3 col-form-label form-control-label">Name of Representative</label>
-                                        <div class="col-md-2">
-                                            <input type="text" name="name" id="h-email" class="form-control" style="width:780px" placeholder="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                        <label class="input-checkbox checkbox-primary">
-                                            <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk" onchange="toggleFileInput(this)">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
-                                    </div>
-                                    <input type="hidden" name="endorsement_fisherfolk" id="endorsement_fisherfolk_input">
-                                    <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="">
-                                </div>
-                                <div class="col-md-6" style="padding-left: 200px;">
-                                    <input id="endorsement_fisherfolk_inputf" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label for="h-email" class="captions">Barangay Certification</label>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                        <label class="input-checkbox checkbox-primary">
-                                            <input type="checkbox" id="atleast_one_year_checkbox" name="atleast_one_year" onchange="toggleFileInput(this)">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <div class="captions">Atleast 1 year residency</div>
-                                    </div>
-                                    <!-- <input type="hidden" name="atleast_one_year" id="atleast_one_year_input"> -->
-                                </div>
-                                <div class="col-md-6" style="padding-left: 200px;">
-                                    <input id="atleast_one_year_inputf" type="file" name="aoy_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                        <label class="input-checkbox checkbox-primary">
-                                            <input type="checkbox" id="source_of_income_checkbox" name="source_of_income" onchange="toggleFileInput(this)">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <div class="captions">Source of income (Capture/Culture/Processing)</div>
-                                    </div>
-                                    <input type="hidden" name="source_of_income" id="source_of_income_input">
-                                </div>
-                                <div class="col-md-6" style="padding-left: 200px;">
-                                    <input id="source_of_income_inputf" type="file" name="soi_attachment" namez class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                        <label class="input-checkbox checkbox-primary">
-                                            <input type="checkbox" id="good_moral_checkbox" name="good_moral" onchange="toggleFileInput(this)">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <div class="captions">Good Moral Character</div>
-                                    </div>
-                                    <input type="hidden" name="good_moral" id="good_moral_input">
-                                </div>
-                                <div class="col-md-6" style="padding-left: 200px;">
-                                    <input id="good_moral_inputf" type="file" name="gmc_attachment" class="form-control" style="width:200px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                </div>
-
-                                <div class="col-md-12">
-                                    <br>
-                                    <div class="form-group row">
-                                        <label for="h-email" class="col-md-2 col-form-label form-control-label">Name of Organization</label>
-                                        <div class="col-md-2">
-                                            <input type="text" id="h-email" name="org_name" class="form-control" style="width:800px" placeholder="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6" style=" line-height:4rem">
-                                    <small><b><em>Date of Registration</b></em></small>
-                                    <input id="inline3mail" type="date" name="date_of_reg" class="form-control" style="width: 300px;" placeholder="">
-                                    <small><b><em>Date of Accreditation</em></b></small>
-                                    <input id="inline3mail" type="date" name="date_of_accreditation" class="form-control" style="width: 300px;" placeholder="">
-                                </div>
-                                <div class="col-md-6" style=" line-height:4rem">
-                                    <br>
-                                    <input id="inline3mail" type="file" name="dor_file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                    <br>
-                                    <input id="inline3mail" type="file" name="doa_file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                </div>
-                            </div>
+                        <hr>
+                        <div class="card-block">
+                            <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
+                            <div class="grid-material bg-general"></div>
+                            <!-- <div class="card-block"> -->
                             <div class="row">
-                                <br>
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Add another</button>
+                                <div class="col-sm-12 table-responsive">
+                                    <form method="POST" action="{{ url('/add-officer/') }}" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Position</th>
+                                                    <th>Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Chairperson</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="chairperson"></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Vice-Chairperson</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="vice_chairperson"></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Secretary</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="secretary"></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Assistant Secretary</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="asst_sec"></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Treasurer</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="treasurer"></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Assistant Treasurer</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="asst_treas"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Auditor</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="auditor"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Assistant Auditor</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="asst_aud"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Press Relation Officer 1</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="pro1"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Press Relation Officer 2</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="pro2"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>Sgt-at-Arms 1</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="sgt_arms1"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Sgt-at-Arms 2</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="sgt_arms2"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Sgt-at-Arms 3</td>
+                                                    <td><input type="text" id="h-email" class="form-control" style="width: 700px;" placeholder="" name="sgt_arms3"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
                                 </div>
-                                <!-- <div class="col-md-2 text-right">
-                                    <a href="{{url('/go-to-committee')}}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
-                                </div> -->
                             </div>
-                        </form>
+                        </div>
+
+
+
                         <hr>
-                        <div class="grid-material bg-general">&nbsp;&nbsp;&nbsp;<b>B. MFARMC Committee</b>
+                        <div style="background-color: #415dfe;">
+                            <div class="grid-material bg-general" style="color: white;padding:10px"><b>A. COMPOSITION OF MEMBERSHIP</b></div>
                         </div>
                         <hr>
+                        <div class="card-block">
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="card-header">
+                                    <label for="inline3mail" class="block form-control-label"><strong>1. Mandated member</strong></label>
 
-                        <form method="post" action="{{url('/add-committee')}}" enctype="multipart/form-data" id="yourFormId">
-                            @csrf
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="d-flex align-items-center"> <!-- Wrap the elements in a div -->
-                                            <select name="category" id="category" class="js-example-basic-single form-control">
-                                                <optgroup label="Committee">
-                                                    <option value="Law Enforcement & Prosecution">Law Enforcement & Prosecution </option>
-                                                    <option value="Rehabilitation and Conservation">Rehabilitation and Conservation</option>
-                                                    <option value="Livelihood">Livelihood</option>
-                                                    <option value="Research Education and Training">Research Education and Training</option>
-                                                    <option value="Legislation">Legislation</option>
-                                                    <option value="Land and Water Use">Land and Water Use</option>
-                                                    <option value="Fisherfol Resettlement">Fisherfol Resettlement</option>
-                                                    <option value="Other, if any">Other, if any</option>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">1.1 Chairperson SB/SP Committee of Agriculture and Fisheries</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="chairpersonSB">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th colspan="2">1.2 Municipal Planning and Development Council</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="mpdo">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th colspan="2">1.3 Representative from Municipal Development Council</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="repmdc">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th colspan="2">1.4 Representative from Department of Agriculture/MAO</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="repda">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th colspan="2">1.5 Representative from Non-Governmental Organization</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="repngo">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th colspan="2">1.6 Representative from Private Sector</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="repps">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th colspan="2">1.7 Other: Please specify</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="h-email" class="form-control" placeholder="" name="others">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </form>
+
+
+
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+
+                            <form method="post" action="{{ url('/add-fisherfolk-rep') }}" enctype="multipart/form-data" id="yourFormId">
+                                @csrf
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <label for="inline3mail" class="block form-control-label"><strong>2. Fisherfolk Representative</strong></label>
+                                        </div>
+                                        <div class="col-md-3 text-left">
+                                            <select name="category" class="js-example-basic-single form-control">
+                                                <optgroup label="Fisherfolk Representative">
+                                                    <option value="Municipal Fisherfolk">Municipal Fisherfolk</option>
+                                                    <option value="Fisherworker">Fisherworker</option>
+                                                    <option value="Commercial Fishing Operator">Commercial Fishing Operator</option>
+                                                    <option value="Women Fisherfolk Sector Representative">Women Fisherfolk Sector Representative</option>
+                                                    <option value="Youth Fisherfolk Sector Representative">Youth Fisherfolk Sector Representative</option>
+                                                    <option value="Indigenous Peoples(IP's) if any">Indigenous Peoples(IP's) if any</option>
                                                 </optgroup>
                                             </select>
                                         </div>
-                                        <br>
-                                        <input type="text" id="otherText" style="display: none;" placeholder="Please specify" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12">
+                                        <div class="form-group row">
+                                            <label for="h-email" class="col-md-3 col-form-label form-control-label">Name of Representative</label>
+                                            <div class="col-md-2">
+                                                <input type="text" name="name" id="h-email" class="form-control" style="width:780px" placeholder="">
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-9"></div>
+                                    <div class="col-md-6">
+                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                            <label class="input-checkbox checkbox-primary">
+                                                <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk" onchange="toggleFileInput(this)">
+                                                <span class="checkbox"></span>
+                                            </label>
+                                            <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
+                                        </div>
+                                        <input type="hidden" name="endorsement_fisherfolk" id="endorsement_fisherfolk_input">
+                                        <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="">
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 200px;">
+                                        <input id="endorsement_fisherfolk_inputf" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label for="h-email" class="captions">Barangay Certification</label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                            <label class="input-checkbox checkbox-primary">
+                                                <input type="checkbox" id="atleast_one_year_checkbox" name="atleast_one_year" onchange="toggleFileInput(this)">
+                                                <span class="checkbox"></span>
+                                            </label>
+                                            <div class="captions">Atleast 1 year residency</div>
+                                        </div>
+                                        <!-- <input type="hidden" name="atleast_one_year" id="atleast_one_year_input"> -->
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 200px;">
+                                        <input id="atleast_one_year_inputf" type="file" name="aoy_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                            <label class="input-checkbox checkbox-primary">
+                                                <input type="checkbox" id="source_of_income_checkbox" name="source_of_income" onchange="toggleFileInput(this)">
+                                                <span class="checkbox"></span>
+                                            </label>
+                                            <div class="captions">Source of income (Capture/Culture/Processing)</div>
+                                        </div>
+                                        <input type="hidden" name="source_of_income" id="source_of_income_input">
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 200px;">
+                                        <input id="source_of_income_inputf" type="file" name="soi_attachment" namez class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                            <label class="input-checkbox checkbox-primary">
+                                                <input type="checkbox" id="good_moral_checkbox" name="good_moral" onchange="toggleFileInput(this)">
+                                                <span class="checkbox"></span>
+                                            </label>
+                                            <div class="captions">Good Moral Character</div>
+                                        </div>
+                                        <input type="hidden" name="good_moral" id="good_moral_input">
+                                    </div>
+                                    <div class="col-md-6" style="padding-left: 200px;">
+                                        <input id="good_moral_inputf" type="file" name="gmc_attachment" class="form-control" style="width:200px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <br>
+                                        <div class="form-group row">
+                                            <label for="h-email" class="col-md-3 col-form-label form-control-label">Name of Organization</label>
+                                            <div class="col-md-2">
+                                                <input type="text" id="h-email" name="org_name" class="form-control" style="width:800px" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style=" line-height:4rem">
+                                        <small><b><em>Date of Registration</b></em></small>
+                                        <input id="inline3mail" type="date" name="date_of_reg" class="form-control" style="width: 300px;" placeholder="">
+                                        <small><b><em>Date of Accreditation</em></b></small>
+                                        <input id="inline3mail" type="date" name="date_of_accreditation" class="form-control" style="width: 300px;" placeholder="">
+                                    </div>
+                                    <div class="col-md-6" style=" line-height:4rem">
+                                        <br>
+                                        <input id="inline3mail" type="file" name="dor_file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <br>
+                                        <input id="inline3mail" type="file" name="doa_file" class="form-control" style="width:300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                    </div>
                                 </div>
-                                <br><br>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">Position</th>
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">Office / Organization</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Chairperson</td>
-                                            <td><input type="text" name="chairperson_name" id="h-email" class="form-control" placeholder=""></td>
-                                            <td><input type="text" name="chairperson_org" id="h-email" class="form-control" placeholder=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Secretary</td>
-                                            <td><input type="text" name="sec_name" id="h-email" class="form-control" placeholder=""></td>
-                                            <td><input type="text" name="sec_org" id="h-email" class="form-control" placeholder=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Member</td>
-                                            <td><input type="text" name="member_name" id="h-email" class="form-control" placeholder=""></td>
-                                            <td><input type="text" name="member_org" id="h-email" class="form-control" placeholder=""></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <button class="btn btn-primary" type="submit">Add another</button>
-                                </div>
-                                <!-- <div class="col-md-2 text-right">
-                                    <a href="{{ url ('/secretariat-form') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                <div class="row">
+                                    <br>
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Add another</button>
+                                    </div>
+                                    <!-- <div class="col-md-2 text-right">
+                                    <a href="{{url('/go-to-committee')}}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
                                 </div> -->
-                            </div>
-                        </form>
+                                </div>
+                            </form>
+                        </div>
+
+
 
                         <hr>
-                        <div class="grid-material bg-general">&nbsp;&nbsp;&nbsp;<b>C. Secretariat</b>
+                        <div style="background-color: #415dfe;">
+                            <div class="grid-material bg-general" style="color: white;padding:10px"><b>B. MFARMC COMMITTEE</b></div>
                         </div>
                         <hr>
-                        <form method="POST" action="{{url('/add-secretariat')}}" enctype="multipart/form-data" id="yourFormId">
-                            @csrf
-                            @method('PUT')
-                            <div class="card-header">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
+                        <div class="card-block">
+                            <form method="post" action="{{url('/add-committee')}}" enctype="multipart/form-data" id="yourFormId">
+                                @csrf
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center"> <!-- Wrap the elements in a div -->
+                                                <select name="category" id="category" class="js-example-basic-single form-control">
+                                                    <optgroup label="Committee">
+                                                        <option value="Law Enforcement & Prosecution">Law Enforcement & Prosecution </option>
+                                                        <option value="Rehabilitation and Conservation">Rehabilitation and Conservation</option>
+                                                        <option value="Livelihood">Livelihood</option>
+                                                        <option value="Research Education and Training">Research Education and Training</option>
+                                                        <option value="Legislation">Legislation</option>
+                                                        <option value="Land and Water Use">Land and Water Use</option>
+                                                        <option value="Fisherfol Resettlement">Fisherfol Resettlement</option>
+                                                        <option value="Other, if any">Other, if any</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <input type="text" id="otherText" style="display: none;" placeholder="Please specify" class="form-control">
+                                        </div>
 
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">Office / Organization</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="text" name="name_sec" id="h-email" class="form-control" placeholder=""></td>
-                                            <td><input type="text" name="office_org" id="h-email" class="form-control" placeholder=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" name="name_sec1" id="h-email" class="form-control" placeholder=""></td>
-                                            <td><input type="text" name="office_org1" id="h-email" class="form-control" placeholder=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" name="name_sec2" id="h-email" class="form-control" placeholder=""></td>
-                                            <td><input type="text" name="office_org2" id="h-email" class="form-control" placeholder=""></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SAVE</button>
+                                        <div class="col-md-9"></div>
+                                    </div>
+                                    <br><br>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Position</th>
+                                                <th class="text-center">Name</th>
+                                                <th class="text-center">Office / Organization</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Chairperson</td>
+                                                <td><input type="text" name="chairperson_name" id="h-email" class="form-control" placeholder=""></td>
+                                                <td><input type="text" name="chairperson_org" id="h-email" class="form-control" placeholder=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Secretary</td>
+                                                <td><input type="text" name="sec_name" id="h-email" class="form-control" placeholder=""></td>
+                                                <td><input type="text" name="sec_org" id="h-email" class="form-control" placeholder=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Member</td>
+                                                <td><input type="text" name="member_name" id="h-email" class="form-control" placeholder=""></td>
+                                                <td><input type="text" name="member_org" id="h-email" class="form-control" placeholder=""></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn btn-primary" type="submit">Add another</button>
+                                    </div>
+                                    <!-- <div class="col-md-2 text-right">
+                                    <a href="{{ url ('/secretariat-form') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                </div> -->
+                                </div>
+                            </form>
+                        </div>
 
-                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to submit now?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                            <button type="submit" class="btn btn-primary">Yes</button>
+                        <hr>
+                        <div style="background-color: #415dfe;">
+                            <div class="grid-material bg-general" style="color: white;padding:10px"><b>C. SECRETARIAT</b></div>
+                        </div>
+                        <hr>
+                        <div class="card-block">
+                            <form method="POST" action="{{url('/add-secretariat')}}" enctype="multipart/form-data" id="yourFormId">
+                                @csrf
+                                @method('PUT')
+                                <div class="card-header">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+
+                                                <th class="text-center">Name</th>
+                                                <th class="text-center">Office / Organization</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" name="name_sec" id="h-email" class="form-control" placeholder=""></td>
+                                                <td><input type="text" name="office_org" id="h-email" class="form-control" placeholder=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" name="name_sec1" id="h-email" class="form-control" placeholder=""></td>
+                                                <td><input type="text" name="office_org1" id="h-email" class="form-control" placeholder=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" name="name_sec2" id="h-email" class="form-control" placeholder=""></td>
+                                                <td><input type="text" name="office_org2" id="h-email" class="form-control" placeholder=""></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SAVE</button>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to submit now?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                <button type="submit" class="btn btn-primary">Yes</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+
                     </div>
 
 
 
-                    <!-- <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary">Next<i class="icon-arrow-right"></i></button>
-                                </div>
-                            </div> -->
 
-                    <!-- <div class="row">
-                                                <div class="col-md-12 text-right">
-                                                    <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
-                                                </div>
-                                            </div> -->
-
-                    <!-- <div class="row">
-                                            <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
-                                            </div>
-                                        </div> -->
-                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -746,7 +747,7 @@
     </script>
 
 
-<script>
+    <script>
         function submitFormAndAddAnother1() {
             // Submit the form
             document.getElementById("FormId").submit();

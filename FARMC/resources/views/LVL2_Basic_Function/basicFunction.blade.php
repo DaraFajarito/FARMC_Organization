@@ -298,10 +298,10 @@
                                     <div id="proof" class="col-md-5" style="display:none;">
                                         <label for=""><small><em><b>Attached proof of meeting</b></em></small></label>
                                         <br>
-                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 150px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <small><b><em>Minutes w/ attendance</b></em></small>
                                         <br>
-                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 150px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <small><b><em>Photo documentation</em></b></small>
                                         <br>
                                     </div>

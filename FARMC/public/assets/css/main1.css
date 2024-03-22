@@ -29,7 +29,7 @@ File: main.css
 @import url("../plugins/search/css/component.css");
 @import url("generic-class.css");
 @import url("svg-weather.css");
-@import url("menu.css");
+/* @import url("menu.css"); */
 
 body {
   font-size: 15px;

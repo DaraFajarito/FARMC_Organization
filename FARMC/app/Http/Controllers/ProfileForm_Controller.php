@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Committee_Model;
+use App\Models\FisherfolkRepresentative_Model;
 use App\Models\ProfileForm_Model;
 use Illuminate\Http\Request;
 
@@ -252,5 +254,19 @@ class ProfileForm_Controller extends Controller
         } else {
             return view('LoD.Level1.L1_Completed');
         }
+    }
+
+    public function displayAll(){
+        $data = ProfileForm_Model::get();
+
+        return view('LoD.Level1.Level1', compact('data'));
+    }
+
+    public function display_level1_info($id){
+        $data = ProfileForm_Model::where('id', $id)->get();
+        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $id)->get();
+        $committee = Committee_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level1.L1_Viewform', compact('data', 'fisherfolk', 'committee'));
     }
 }
