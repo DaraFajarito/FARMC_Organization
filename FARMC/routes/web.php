@@ -50,12 +50,18 @@ Route::view('/fisherfolkrep', 'LVL1_Profile_Form.Composition_OM.fisherfolk_repre
 Route::view('/committee', 'LVL1_Profile_Form.MFARMC_Committee.committee');
 // Route::view('/secretariat', 'LVL1_Profile_Form.Composition_OS.secretariat');
 
+// Route::get('/edit-profile-form/{id}', [ProfileForm_Controller::class, 'editProfileForm'])->name('edit-profile-form');
+// Route::post('/update-profile-form/{id}',  [ProfileForm_Controller::class, 'updateProfileForm'])->name('update-profile-form');
+
+
 // ------------------------------------------------------------------------------
 
 //LevelTwo
 Route::view('/level2', 'LoD.Level2.Level2');
-Route::view('/L2Completed', 'LoD.Level2.L2_Completed');
+Route::view('/L2Completedtbl', 'LoD.Level2.L2_Completedtbl');
+Route::view('/L2Incompletetbl', 'LoD.Level2.L2_Incompletetbl');
 Route::view('/L2Incomplete', 'LoD.Level2.L2_Incomplete');
+Route::view('/L2Editform', 'LoD.Level2.L2_Editform');
 
 Route::view('/basicFunction', 'LVL2_Basic_Function.basicFunction');
 

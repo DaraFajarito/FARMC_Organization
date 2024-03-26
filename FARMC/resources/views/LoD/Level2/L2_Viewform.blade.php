@@ -110,9 +110,9 @@
                                     <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_Final.png') }}" style="width: 55px;" alt="logo"></a>
                                     <a href="index.html" class="logo"><img src="{{ asset ('assets/images/bagongpilipinas.png') }}" style="width: 80px;" alt="logo"></a>
                                     <div>
-                                        LEVEL ONE: FARMC Organization Details Overview
+                                        LEVEL TWO: FARMC Organization Details Overview
                                         <br>
-                                        <span class="label label-default"> Basic Structure of the Council</span>
+                                        <small>Basic Functions of the FARMC</small>
                                     </div>
                                 </div>
                                 <!-- <div class="card-header"> -->

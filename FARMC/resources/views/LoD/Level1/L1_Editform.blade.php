@@ -515,7 +515,7 @@
                                 <div class="row">
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">Add another</button>
+                                        <button type="submit" class="btn btn-primary">Change</button>
                                     </div>
                                     <!-- <div class="col-md-2 text-right">
                                     <a href="{{url('/go-to-committee')}}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
@@ -587,7 +587,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <button class="btn btn-primary" type="submit">Add another</button>
+                                        <button class="btn btn-primary" type="submit">Change</button>
                                     </div>
                                     <!-- <div class="col-md-2 text-right">
                                     <a href="{{ url ('/secretariat-form') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
