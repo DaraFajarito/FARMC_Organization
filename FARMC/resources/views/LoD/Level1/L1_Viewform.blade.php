@@ -309,7 +309,7 @@
                                                             <td>1</td>
                                                             <td>Chairperson</td>
                                                             @if ($item->chairperson === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{ $item->chairperson }}</td>
                                                             @endif
@@ -319,7 +319,7 @@
                                                             <td>2</td>
                                                             <td>Vice-Chairperson</td>
                                                             @if ($item->vice_chairperson === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->vice_chairperson}}</td>
                                                             @endif
@@ -328,7 +328,7 @@
                                                             <td>3</td>
                                                             <td>Secretary</td>
                                                             @if ($item->secretary === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->secretary}}</td>
                                                             @endif
@@ -337,7 +337,7 @@
                                                             <td></td>
                                                             <td>Assistant Secretary</td>
                                                             @if ($item->asst_secretary === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->asst_secretary}}</td>
                                                             @endif
@@ -346,7 +346,7 @@
                                                             <td>4</td>
                                                             <td>Treasurer</td>
                                                             @if ($item->treasurer === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->treasurer}}</td>
                                                             @endif
@@ -355,7 +355,7 @@
                                                             <td></td>
                                                             <td>Assistant Treasurer</td>
                                                             @if ($item->asst_treas === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->asst_treas}}</td>
                                                             @endif
@@ -364,7 +364,7 @@
                                                             <td>5</td>
                                                             <td>Auditor</td>
                                                             @if ($item->auditor === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->auditor}}</td>
                                                             @endif
@@ -373,7 +373,7 @@
                                                             <td></td>
                                                             <td>Assistant Auditor</td>
                                                             @if ($item->asst_aud === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->asst_aud}}</td>
                                                             @endif
@@ -382,7 +382,7 @@
                                                             <td>6</td>
                                                             <td>Press Relation Officer 1</td>
                                                             @if ($item->pro1 === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->pro1}}</td>
                                                             @endif
@@ -391,7 +391,7 @@
                                                             <td></td>
                                                             <td>Press Relation Officer 2</td>
                                                             @if ($item->pro2 === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->pro2}}</td>
                                                             @endif
@@ -400,7 +400,7 @@
                                                             <td>7</td>
                                                             <td>Sgt-at-Arms 1</td>
                                                             @if ($item->sgt_arm1 === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->sgt_arm1}}</td>
                                                             @endif
@@ -409,7 +409,7 @@
                                                             <td></td>
                                                             <td>Sgt-at-Arms 2</td>
                                                             @if ($item->sgt_arm2 === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->sgt_arm2}}</td>
                                                             @endif
@@ -418,7 +418,7 @@
                                                             <td></td>
                                                             <td>Sgt-at-Arms 3</td>
                                                             @if ($item->sgt_arm3 === null)
-                                                            <td>no data</td>
+                                                            <td> <span style="color: red;"> no data</span></td>
                                                             @else
                                                             <td>{{$item->sgt_arm3}}</td>
                                                             @endif
@@ -518,28 +518,28 @@
                                                             <td> @if($item->endorsement_fisherfolk == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->atleast_one_year == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->source_of_income == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->good_moral == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $item->org_name }}</td>
@@ -580,28 +580,28 @@
                                                             <td> @if($item->endorsement_fisherfolk == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->atleast_one_year == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->source_of_income == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->good_moral == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $item->org_name }}</td>
@@ -641,28 +641,28 @@
                                                             <td> @if($item->endorsement_fisherfolk == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->atleast_one_year == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->source_of_income == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->good_moral == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $item->org_name }}</td>
@@ -701,28 +701,28 @@
                                                             <td> @if($item->endorsement_fisherfolk == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->atleast_one_year == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->source_of_income == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->good_moral == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $item->org_name }}</td>
@@ -761,28 +761,28 @@
                                                             <td> @if($item->endorsement_fisherfolk == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->atleast_one_year == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->source_of_income == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->good_moral == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $item->org_name }}</td>
@@ -820,28 +820,28 @@
                                                             <td> @if($item->endorsement_fisherfolk == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->atleast_one_year == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->source_of_income == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>
                                                                 @if($item->good_moral == 1)
                                                                 <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @else
-                                                                 <span style="color: red;">None</span>
+                                                                <span style="color: red;">None</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $item->org_name }}</td>
@@ -891,23 +891,111 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Chairperson</td>
-                                                        <td>{{ $item->chairperson_name}}</td>
-                                                        <td>{{ $item->chairperson_org}}</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+                                                        
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
                                                     </tr>
                                                     <tr>
                                                         <td>Secretary</td>
-                                                        <td>{{ $item->sec_name}}</td>
-                                                        <td>{{ $item->sec_org}}</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
                                                     </tr>
                                                     <tr>
                                                         <td>Member</td>
-                                                        <td>{{ $item->member_name}}</td>
-                                                        <td>{{ $item->member_org}}</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <br>
+
+
+                                        <label for="inline3mail" class="block form-control-label">Rehabilitation and Conservation</label>
+
+                                        @elseif($item->category == "Rehabilitation and Conservation")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+
+
                                         @endif
                                         @endforeach
                                     </div>
