@@ -142,7 +142,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="form-group row">
-                                                    <label for="province" class="col-md-12 col-form-label form-control-label">Province:{{$item->province}}</label>
+                                                    <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->province}}</label>
                                                     <!-- <div class="col-md-2">
                                                         <input type="text" id="province" name="province" class="form-control" style="width:900px" placeholder="">
                                                     </div> -->
@@ -152,133 +152,92 @@
                                                     <label for="date" class="block form-control-label">Date organized: <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td></label>
                                                     <!-- <input id="date" type="date" name="date_organized" class="form-control" style="width: 400px;" placeholder=""> -->
                                                 </div>
-
-                                                <div class="form-group m-r-15">
-                                                    <label for="minutes1" class="block form-control-label">Minutes:</label>
-
+                                                <br><br>
+                                                <label class="captions"><small>Proof:</small></label>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr style="font-size: 12px;">
+                                                                <th>Minutes</th>
+                                                                <th>Photos</th>
+                                                                <th>Attendance</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr style="font-size: 12px;">
+                                                                <td>{{ $item->minutes1 }}</td>
+                                                                <td>{{ $item->photos1 }}</td>
+                                                                <td>{{ $item->attendance1 }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                <div class="form-group m-r-15">
-                                                    <label for="inline3mail" class="block form-control-label">Photos:</label>
-
-                                                    <!-- <input id="photos1" type="file" name="photos1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    @error('photos1')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror -->
-
-                                                </div>
-                                                <div class="form-group m-r-15">
-                                                    <label for="inline3mail" class="block form-control-label">Attendance:</label>
-
-                                                    <!-- <input id="attendance1" type="file" name="attendance1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    @error('attendance1')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror -->
-                                                </div>
-                                                <br>
                                                 <br>
                                                 <div class="form-group m-r-15">
                                                     <label for="inline3mail" class="block form-control-label">Date of Reorganized: <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</label>
-                                                    <!-- <input id="date_reorganized" type="date" name="date_reorganized" class="form-control" style="width: 400px;" placeholder=""> -->
                                                 </div>
-                                                <div class="form-group m-r-15">
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <input type="checkbox" id="minutes2" name="minutes2" onchange="toggleFileInput(this)" {{ $item->minutes2 == 1 ? 'checked' : '' }}>
-                                                            <span class="checkbox"></span>
-                                                        </label>
-                                                        <label for="inline3mail" class="captions">Minutes</label>
-                                                    </div>
-                                                    <input type="hidden" name="minutes2" id="minutes2">
-                                                    <input type="hidden" id="minutes2_input" name="minutes2" value="">
-
-                                                    <!-- <input id="minutes2" type="file" name="minutes2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    @error('minutes2')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror -->
+                                                <br><br>
+                                                <label class="captions"><small>Proof:</small></label>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr style="font-size: 12px;">
+                                                                <th>Minutes</th>
+                                                                <th>Photos</th>
+                                                                <th>Attendance</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr style="font-size: 12px;">
+                                                                <td>{{ $item->minutes2 }}</td>
+                                                                <td>{{ $item->photos2 }}</td>
+                                                                <td>{{ $item->attendance2 }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                <div class="form-group m-r-15">
-                                                    <label for="inline3mail" class="block form-control-label">Photos:</label>
+                                                
 
-                                                    <!-- <input id="photos2" type="file" name="photos2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    @error('photos2')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror -->
-                                                </div>
-                                                <div class="form-group m-r-15">
-                                                    <label for="inline3mail" class="block form-control-label">Attendance:</label>
-
-                                                    <!-- <input id="attendance2" type="file" name="attendance2" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    @error('attendance2')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror -->
-                                                </div>
-                                                <br>
-
-                                                <!-- <div class="col-md-12"> -->
-                                                <br>
-                                                <div class="col-md-5">
+                                                <div class="col-md-12">
                                                     <br>
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <!-- <input type="checkbox" name="internalP" id="checkbox"> -->
-                                                            <!-- <span class="checkbox"></span> -->
-                                                        </label>
-                                                        <label for="inline3mail" class="block form-control-label">Internal Policy:</label>
-                                                        <!-- <div class="captions">Internal Policy</div> -->
-                                                    </div>
-                                                    <br><br><br>
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <!-- <input type="checkbox" name="fisherfolkR" id="checkbox-1">
-                                                            <span class="checkbox"></span> -->
-                                                        </label>
-                                                        <!-- <div class="captions">Fisherfolk Registry</div> -->
-                                                        <label for="inline3mail" class="block form-control-label">Fisherfolk Registry:</label>
-                                                    </div>
-                                                    <br><br><br>
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <!-- <input type="checkbox" name="fisheriesP" id="checkbox-2">
-                                                            <span class="checkbox"></span> -->
-                                                        </label>
-                                                        <!-- <div class="captions">Fisheries Profile</div> -->
-                                                        <label for="inline3mail" class="block form-control-label">Fisheries Profile</label>
-                                                    </div>
-                                                    <br><br><br>
-                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                        <label class="input-checkbox checkbox-primary">
-                                                            <!-- <input type="checkbox" name="formulationR" id="checkbox-3">
-                                                            <span class="checkbox"></span> -->
-                                                        </label>
-                                                        <!-- <div class="captions">Formulation of Resolution and propose ordinances initiated </div> -->
-                                                        <label for="inline3mail" class="block form-control-label">Formulation of Resolution and propose ordinances initiated:</label>
-                                                    </div>
-                                                </div>
+                                                    <table class="table" border="1">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Internal Policy</td>
+                                                                @if ($item->chairperson === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{ $item->chairperson }}</td>
+                                                                @endif
 
-                                                <div class="col-md-7" style=" line-height:4rem">
-                                                    <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    <small><b><em>Attach Approved Internal Policy</b></em></small>
-                                                    <br>
-                                                    <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    <small><b><em>Attach Fisherfolk Registry</em></b></small>
-                                                    <br>
-                                                    <input id="fisheriesP_file" type="file" name="fisheriesP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    <small><b><em>Attach Fisheries Profile</em></b></small>
-                                                    <br>
-                                                    <input id="formulationR_file" type="file" name="formulationR_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    <small><b><em>Attach Files</em></b></small>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Fisherfolk Registry</td>
+                                                                @if ($item->vice_chairperson === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->vice_chairperson}}</td>
+                                                                @endif
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Fisheries Profile</td>
+                                                                @if ($item->secretary === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->secretary}}</td>
+                                                                @endif
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Formulation of Resolution and propose ordinance initiated</td>
+                                                                @if ($item->asst_secretary === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->asst_secretary}}</td>
+                                                                @endif
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -896,7 +855,7 @@
                                                         @else
                                                         <td>{{ $item->chairperson_name }}</td>
                                                         @endif
-                                                        
+
                                                         @if ( $item->chairperson_org === null)
                                                         <td> <span style="color: red;"> no data</span></td>
                                                         @else
