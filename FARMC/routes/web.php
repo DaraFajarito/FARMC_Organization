@@ -14,7 +14,7 @@ Route::get('/registeracc', function () {
 });
 Route::get('/forgetpass', function () {
     return view('FARMC_Authentication/forgetpass');
-});  
+});
 
 //AUTHENTICATION
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -35,8 +35,7 @@ Route::get('/dash', function () {
 
 //LevelOne
 // Route::view('/level1', 'LoD.Level1.Level1');
-Route::view('/L1Incompletetbl', 'LoD.Level1.L1_Incompletetbl');
-Route::view('/L1Completedtbl', 'LoD.Level1.L1_Completedtbl');
+
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
 Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
 // Route::view('/L1Viewform', 'LoD.Level1.L1_Viewform');
@@ -116,6 +115,10 @@ Route::post('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm
 Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
 Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);
 Route::put('/add-secretariat', [ProfileForm_Controller::class,'addSecretariat']);
+Route::get('/L1Incompletetbl',[ProfileForm_Controller::class, 'display_level1_incomplete']);
+Route::get('/L1Completedtbl',[ProfileForm_Controller::class, 'display_level1_complete']);
+
+
 
 //Fisherfolk Representative
 Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);

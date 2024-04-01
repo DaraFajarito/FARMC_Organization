@@ -17,7 +17,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="main-header">
-                            <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{ asset('assets/images/Logo_BFAR.png') }}"
+                                    style=" width: 60px;" alt="logo"></a>
                             <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                             <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                                 <li class="breadcrumb-item">
@@ -27,11 +28,13 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 1 | COMPLETED</a>
+                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC |
+                                        Municipal / City FARMC • Level 1 | COMPLETED</a>
                                 </li>
                             </ol>
                             <br>
-                            <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 1</a>
+                            <a href="{{ url('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                                Go back to Level 1</a>
                         </div>
                     </div>
 
@@ -39,11 +42,13 @@
                         <div class="card-header">
                             <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
                             <!-- <hr> -->
-                            <div class="grid-material bg-general" style="text-align: center;"><b>All Complete Table</b></div>
+                            <div class="grid-material bg-general" style="text-align: center;"><b>All Complete Table</b>
+                            </div>
                             <hr>
 
 
-                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
+                                width="100%">
                                 <thead>
                                     <tr>
                                         <th>Province</th>
@@ -54,19 +59,21 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Oriental Mindoro</td>
-                                        <td>Calapan City</td>
-                                        <td>2016/01/15</td>
-                                        <td>2020/11/25</td>
-                                        <td style="color:green"><b>COMPLETED</b></td>
-                                        <td style="text-align: center;">
-                                            <a href="{{ url('/L1Viewform') }}" class="btn btn-warning btn-spacer"><i class="ti-eye"></i> &nbsp; View</a>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
+                                @foreach ($data as $item)
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $item->province }}</td>
+                                            <td>{{ $item->municipality }}</td>
+                                            <td>{{ $item->date_organized }}</td>
+                                            <td>{{ $item->date_reorganized }}</td>
+                                            <td style="color:green"><b>{{ $item->status }}</b></td>
+                                            <td style="text-align: center;">
+                                                <a href="{{ url('/L1Viewform') }}" class="btn btn-warning btn-spacer"><i
+                                                        class="ti-eye"></i> &nbsp; View</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -76,7 +83,8 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
         <!-- JavaScript -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

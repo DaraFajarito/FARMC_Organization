@@ -54,19 +54,20 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                @foreach ($data as $item)
                                 <tbody>
                                     <tr>
-                                        <td>Oriental Mindoro</td>
-                                        <td>Calapan City</td>
-                                        <td>2016/01/15</td>
-                                        <td>2020/11/25</td>
-                                        <td style="color:red"><b>INCOMPLETE</b></td>
+                                        <td>{{$item->province}}</td>
+                                        <td>{{$item->municipality}}</td>
+                                        <td>{{$item->date_organized}}</td>
+                                        <td>{{$item->date_reorganized}}</td>
+                                        <td style="color:red"><b>{{$item->status}}</b></td>
                                         <td style="text-align: center;">
                                             <a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a>
                                         </td>
                                     </tr>
-
                                 </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>

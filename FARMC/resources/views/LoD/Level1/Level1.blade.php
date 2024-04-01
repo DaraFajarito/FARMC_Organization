@@ -58,7 +58,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 1 | Completed</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$completed}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 1 | Incompleted</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$incomplete}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -141,7 +141,11 @@
                                                                 <td>{{$item->municipality}}</td>
                                                                 <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td>
                                                                 <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</td>
-                                                                <td style="color:green"><b>COMPLETE</b></td>
+                                                                @if ($item->status == "COMPLETED")
+                                                                <td style="color:green"><b>COMPLETED</b></td>
+                                                                @elseif ($item->status == "INCOMPLETE")
+                                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @endif
                                                                 <td style="text-align: center;">
                                                                     <a href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a>
                                                                 </td>

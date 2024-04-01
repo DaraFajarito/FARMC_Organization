@@ -28,7 +28,8 @@ class FisherfolkRepresentative_Model extends Model
         'date_of_reg',
         'date_of_accreditation',
         'dor_file',
-        'doa_file'
+        'doa_file',
+        'status'
     ];
 
     protected $casts = [
@@ -41,5 +42,14 @@ class FisherfolkRepresentative_Model extends Model
     public function profileForm()
     {
         return $this->belongsTo(ProfileForm_Model::class, 'id');
+    }
+    public function getNullFields()
+    {
+        return collect($this->toArray())
+            ->filter(function ($value, $key) {
+                return $value === null;
+            })
+            ->keys()
+            ->toArray();
     }
 }

@@ -9,7 +9,26 @@ use Illuminate\Http\Request;
 
 class ProfileForm_Controller extends Controller
 {
-    //FORM DISPLAY
+    //==========================================================================================================================================||
+    //=============================================== D I S P L A Y  D A T A ===================================================================||
+    public function allcomplete()
+    {
+        $completed = ProfileForm_Model::where('status', "COMPLETED")->get();
+        if (!$completed) {
+            return redirect()->back()->with('failed', 'Basic Structure record not found');
+        } else {
+            return view('LVL1_Profile_Form.FARMC_Officers.officers', compact('completed'));
+        }
+    }
+    public function allincomplete()
+    {
+        $completed = ProfileForm_Model::where('status', "INCOMPLETE")->get();
+        if (!$completed) {
+            return redirect()->back()->with('failed', 'Basic Structure record not found');
+        } else {
+            return view('LVL1_Profile_Form.FARMC_Officers.officers', compact('completed'));
+        }
+    }
     public function display_officer_form($id)
     {
         $officers = ProfileForm_Model::where('id', $id)->get();
@@ -46,8 +65,37 @@ class ProfileForm_Controller extends Controller
             return view('LVL1_Profile_Form.Composition_OS.secretariat', compact('secretariat'));
         }
     }
+    public function displayAll()
+    {
+        $data = ProfileForm_Model::get();
+        $completed = ProfileForm_Model::where('status', "COMPLETED")->count();
+        $incomplete = ProfileForm_Model::where('status', "INCOMPLETE")->count();
+
+        return view('LoD.Level1.Level1', compact('data', 'completed', 'incomplete'));
+    }
+    public function display_level1_info($id)
+    {
+        $data = ProfileForm_Model::where('id', $id)->get();
+        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $id)->get();
+        $committee = Committee_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level1.L1_Viewform', compact('data', 'fisherfolk', 'committee'));
+    }
+
+    public function display_level1_incomplete()
+    {
+        $data = ProfileForm_Model::where('status', 'INCOMPLETE')->get();
+        return view('LoD.Level1.L1_Incompletetbl', compact('data'));
+    }
+    public function display_level1_complete()
+    {
+        $data = ProfileForm_Model::where('status', 'COMPLETEd')->get();
+        return view('LoD.Level1.L1_Completedtbl', compact('data'));
+    }
 
 
+    //==========================================================================================================================================||
+    //================================================== A D D I N G  O F  D A T A =============================================================||
     public function createProfileForm(Request $request)
     {
         $validatedData = $request->validate([
@@ -124,9 +172,9 @@ class ProfileForm_Controller extends Controller
         $profileForm->minutes2 = $minutes2FilePath ? '/dateReOrganized-minutes/' . $minutes2FilePath->getFilename() : null;
         $profileForm->attendance1 = $attendance1FilePath ? '/dateOrganized-attendance/' . $attendance1FilePath->getFilename() : null;
         $profileForm->attendance2 = $attendance2FilePath ? '/dateReOrganized-attendance/' . $attendance2FilePath->getFilename() : null;
-        
+
         $profileForm->save();
-        
+
         if ($profileForm) {
             return redirect('/officers-form/' . $profileForm->id)->with('success', 'Success!');
         } else {
@@ -179,7 +227,6 @@ class ProfileForm_Controller extends Controller
 
         return redirect()->back()->with('failed', 'There was a problem updating the officers.');
     }
-
     public function addMandatedOfficer(Request $request, $id)
     {
         // Validate the form data
@@ -214,7 +261,6 @@ class ProfileForm_Controller extends Controller
 
         return redirect()->back()->with('failed', 'There was a problem updating the officers.');
     }
-
     public function addSecretariat(Request $request)
     {
         // Validate the form data
@@ -232,7 +278,7 @@ class ProfileForm_Controller extends Controller
 
         // Find the record with the latest ID
         $secretariat = ProfileForm_Model::find($latestId);
-        
+
 
         // Update the secre$secretariat' details
         $secretariat->name_sec = $validatedData['name_sec'];
@@ -245,9 +291,63 @@ class ProfileForm_Controller extends Controller
         // Save the updated officer details
         $secretariat->save();
 
-        $nullFields = collect($secretariat->toArray())->filter(function ($value, $key) {
-            return $value === null;
-        })->keys()->toArray();
+        $committee = Committee_Model::where('id', $secretariat->id)->get();
+        $fisherfolk = FisherfolkRepresentative_Model::where('id', $secretariat->id)->get();
+
+        // Check if the collections are empty
+        $committeeNull = $committee->isEmpty();
+        $fisherfolkNull = $fisherfolk->isEmpty();
+
+        // Check if theres null
+        foreach ($fisherfolk as $representative) {
+            if (
+                is_null($representative->category) ||
+                is_null($representative->name) ||
+                is_null($representative->endorsement_fisherfolk) ||
+                is_null($representative->endorsement_attachment) ||
+                is_null($representative->atleast_one_year) ||
+                is_null($representative->aoy_attachment) ||
+                is_null($representative->source_of_income) ||
+                is_null($representative->soi_attachment) ||
+                is_null($representative->good_moral) ||
+                is_null($representative->gmc_attachment) ||
+                is_null($representative->org_name) ||
+                is_null($representative->date_of_reg) ||
+                is_null($representative->date_of_accreditation) ||
+                is_null($representative->dor_file) ||
+                is_null($representative->doa_file)
+            ) {
+                $fisherfolkNull = true;
+                break;
+            }
+        }
+        $status = $committeeNull || $fisherfolkNull || $secretariat->hasNullValues() ? 'INCOMPLETE' : 'COMPLETED';
+
+        $secretariat->update(['status' => $status]);
+
+
+        // Retrieve the related fisherfolk_rep records
+        $fisherfolkReps = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
+
+        // Gather null fields from the ProfileForm_Model instance
+        $profileFormNullFields = $secretariat->getNullFields();
+
+        // Initialize an empty array to store null fields from related models
+        $relatedNullFields = [];
+
+        // Loop through the retrieved fisherfolk_rep records
+        foreach ($fisherfolkReps as $fisherfolkRep) {
+            // Gather null fields from each fisherfolk_rep record
+            $fisherfolkNullFields = $fisherfolkRep->getNullFields();
+            // Merge null fields from fisherfolk_rep into relatedNullFields
+            $relatedNullFields = array_merge($relatedNullFields, $fisherfolkNullFields);
+        }
+
+        // Merge null fields from all related models
+        $nullFields = array_merge($profileFormNullFields, $relatedNullFields);
+
+        // Remove duplicates
+        $nullFields = array_unique($nullFields);
 
         if (!empty($nullFields)) {
             return view('LoD.Level1.L1_Incomplete', compact('nullFields'));
@@ -256,17 +356,15 @@ class ProfileForm_Controller extends Controller
         }
     }
 
-    public function displayAll(){
-        $data = ProfileForm_Model::get();
+    //==========================================================================================================================================||
+    //================================================== C O U N T  O F  D A T A =============================================================||
 
-        return view('LoD.Level1.Level1', compact('data'));
-    }
+    public function level1Count()
+    {
+        $completed = ProfileForm_Model::where('status', "COMPLETED")->count();
+        $incomplete = ProfileForm_Model::where('status', "INCOMPLETE")->count();
 
-    public function display_level1_info($id){
-        $data = ProfileForm_Model::where('id', $id)->get();
-        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $id)->get();
-        $committee = Committee_Model::where('profileForm_id', $id)->get();
-
-        return view('LoD.Level1.L1_Viewform', compact('data', 'fisherfolk', 'committee'));
+        //chart for complete
+        return view('LoD.Level1.Level1', compact('completed, incomplete'));
     }
 }
