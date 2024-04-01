@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('committee', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profileForm_id')->constrained('profile_form'); 
-            $table->string('category');
-            $table->string('chairperson_name');
-            $table->string('chairperson_org');
-            $table->string('sec_name');
-            $table->string('sec_org');
-            $table->string('member_name');
-            $table->string('member_org');
+            $table->foreignId('profileForm_id')->constrained('profile_form');
+            $table->string('category')->nullable();
+            $table->string('chairperson_name')->nullable();
+            $table->string('chairperson_org')->nullable();
+            $table->string('sec_name')->nullable();
+            $table->string('sec_org')->nullable();
+            $table->string('member_name')->nullable();
+            $table->string('member_org')->nullable();
             $table->timestamps();
         });
     }

@@ -223,14 +223,6 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        <tr>
-                                                                            <td>Oriental Mindoro</td>
-                                                                            <td>Calapan City</td>
-                                                                            <td>2016/01/15</td>
-                                                                            <td>2016/01/15</td>
-                                                                            <td style="color:red"><b>INCOMPLETE</b></td>
-                                                                            <td><a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a></td>
-                                                                        </tr>
 
                                                                     </tbody>
                                                                 </table>
@@ -678,7 +670,7 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
-                                                <canvas id="bestSellers"></canvas>
+                                                <canvas id="level1chart"></canvas>
                                             </div>
                                             <div class="col-sm-12">
                                                 <ul class="graphl-legend-rectangle">
@@ -725,7 +717,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function() {
             $('#FARMC').DataTable({
@@ -747,6 +738,47 @@
                 ],
                 "pagingType": "full_numbers"
             });
+        });
+    </script>
+    <script>
+           var ctx = document.getElementById('level1chart').getContext('2d');
+         // Define data for the chart
+         var data = {
+            labels: ['Completed', 'Incomplete'],
+            datasets: [{
+                label: 'Task Completion',
+                data: [{{ $completed }}, {{ $incomplete }}],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.5)', // Green for completed tasks
+                    'rgba(255, 99, 132, 0.5)' // Red for incomplete tasks
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Define options for the chart
+        var options = {
+            cutoutPercentage: 70,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Completion Status',
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        };
+
+        // Create the chart
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
         });
     </script>
 
