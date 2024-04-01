@@ -185,11 +185,11 @@
 
                     <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-docs"></i><span>2. Fisherfolk Organization</span><i class="icon-arrow-down"></i></a>
                         <ul class="treeview-menu">
-                            <li><a class="waves-effect waves-dark" href="404.html" target="_blank"><i class="icon-arrow-right"></i>2.1 Municipal</a></li>
-                            <li><a class="waves-effect waves-dark" href="sample-page.html"><i class="icon-arrow-right"></i>2.2 Fishworker</a></li>
-                            <li><a class="waves-effect waves-dark" href="sample-page.html"><i class="icon-arrow-right"></i>2.3 Commercial</a></li>
-                            <li><a class="waves-effect waves-dark" href="sample-page.html"><i class="icon-arrow-right"></i>2.4. Women Fisherfolk</a></li>
-                            <li><a class="waves-effect waves-dark" href="sample-page.html"><i class="icon-arrow-right"></i>2.5 Youth Fisherfolk</a></li>
+                            <li><a class="waves-effect waves-dark" href="{{ url ('/FOMunicipal') }}"><i class="icon-arrow-right"></i>2.1 Municipal</a></li>
+                            <li><a class="waves-effect waves-dark" href="#!"><i class="icon-arrow-right"></i>2.2 Fishworker</a></li>
+                            <li><a class="waves-effect waves-dark" href="#!"><i class="icon-arrow-right"></i>2.3 Commercial</a></li>
+                            <li><a class="waves-effect waves-dark" href="#!"><i class="icon-arrow-right"></i>2.4. Women Fisherfolk</a></li>
+                            <li><a class="waves-effect waves-dark" href="#!"><i class="icon-arrow-right"></i>2.5 Youth Fisherfolk</a></li>
 
                         </ul>
                     </li>

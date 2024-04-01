@@ -128,3 +128,9 @@ Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'
 Route::post('/add-committee', [Committee_Controller::class,'createCommittee']);
 Route::get('/go-to-committee', [Committee_Controller::class,'display_committee_form']);
 
+//Fisherfolk Organization
+Route::view('/FOform1', 'Fisherfolk_Organization.form1');
+Route::view('/FOform2', 'Fisherfolk_Organization.form1');
+
+//Municipal 
+Route::view('/FOMunicipal', 'Fisherfolk_Organization.municipal');
