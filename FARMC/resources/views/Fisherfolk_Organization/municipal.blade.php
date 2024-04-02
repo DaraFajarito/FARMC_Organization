@@ -36,14 +36,14 @@
                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                         <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Fisherfolk ORganization</a>
+                        <li class="breadcrumb-item"><a href="#!">Fisherfolk Organization</a>
                         </li>
                         <li class="breadcrumb-item"><a href="tabs.html">Municipal Fisherfolk</a>
                         </li>
 
                         <div class="text-right">
-                            <span><a href="{{ url ('/FOform1') }}"><button type="button" class="btn btn-primary">+ Form 1</button></a></span>
-                            <span><a href="{{ url ('/FOform2') }}"><button type="button" class="btn btn-primary">+ Form 2</button></a></span>
+                            <span><a href="{{ url ('/FOform1') }}"><button type="button" class="btn btn-primary">+ Association Form</button></a></span>
+                            <span><a href="{{ url ('/FOform2') }}"><button type="button" class="btn btn-primary">+ Cooperative Form</button></a></span>
                         </div>
                     </ol>
 
@@ -57,7 +57,7 @@
                         <label for="">COUNT OVERVIEW</label>
                     </div>
                     <div class="row dashboard-header">
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-12 col-md-12">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Municipal Members</span>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+                        <!-- <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Organization</span>
@@ -76,7 +76,7 @@
                                     <i class="ti-layout-tab-v text-success-color"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <hr>
                 </div>

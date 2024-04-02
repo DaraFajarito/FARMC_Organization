@@ -87,15 +87,12 @@
 
                 <div class="card-header">
                     <div class="card inline-form-style">
-                        <br>
-                        <hr>
+                        <br><br>
                         <div class="grid-material bg-general" style="text-align:center; font-size:20px"><b>FISHERFOLK ASSOCIATION PROFILE</b></div>
                         <div class="captions" style="text-align:center; font-size:20px"> ( As of
                             <span style="display:inline-block;"><input id="inline3mail" type="email" class="md-form-control" style="width: 250px;"></span>)
                         </div>
-
-
-                        <hr>
+                        <br>
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
@@ -103,26 +100,22 @@
                         <!-- <div class="card-block"> -->
 
                         <div class="card-header">
-                            <div class="col-sm-6 col-xs-6 waves-effect waves-light">
-                                <div class="grid-material bg-general"><b>1. Personal Information</b></div>
-                            </div>
-                            <br>
-
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <form class="form-inline">
                                             <div class="form-group m-r-15">
-                                                <label for="inline3mail" class="block form-control-label">Name <em>(Family,given,middle & Ext.)</em></label>
-                                                <input id="inline3mail" type="email" class="form-control" style="width: 1000px;" placeholder="Enter name">
-                                            </div>
-                                        </form>
-                                        <br>
-
-                                        <form class="form-inline">
-                                            <div class="form-group m-r-15">
-                                                <label for="inline3mail" class="block form-control-label">Address <em>(Barangay, City/Municipality, Province & Region)</em></label>
-                                                <input id="inline3mail" type="email" class="form-control" style="width: 1000px;" placeholder="Enter name">
+                                                <div class="grid-material bg-general"><b>1. Name of Organization</b></div>
+                                                <div class="col-md-12">
+                                                    <input id="inline3mail" type="email" class="form-control" style="width: 1000px;" placeholder="Enter name">
+                                                    <br>
+                                                    <br>
+                                                    
+                                                    <div class="form-group m-r-15">
+                                                        <label for="inline3mail" class="block form-control-label">Address <em>(Barangay, City/Municipality, Province & Region)</em></label>
+                                                        <input id="inline3mail" type="email" class="form-control" style="width: 1000px;" placeholder="Enter name">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
