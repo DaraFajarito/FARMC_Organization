@@ -198,7 +198,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                
+
 
                                                 <div class="col-md-12">
                                                     <br>
@@ -206,36 +206,36 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Internal Policy</td>
-                                                                @if ($item->chairperson === null)
+                                                                <!-- @if ($item->chairperson === null)
                                                                 <td> <span style="color: red;"> no data</span></td>
                                                                 @else
                                                                 <td>{{ $item->chairperson }}</td>
-                                                                @endif
+                                                                @endif -->
 
                                                             </tr>
                                                             <tr>
                                                                 <td>Fisherfolk Registry</td>
-                                                                @if ($item->vice_chairperson === null)
+                                                                <!-- @if ($item->vice_chairperson === null)
                                                                 <td> <span style="color: red;"> no data</span></td>
                                                                 @else
                                                                 <td>{{$item->vice_chairperson}}</td>
-                                                                @endif
+                                                                @endif -->
                                                             </tr>
                                                             <tr>
                                                                 <td>Fisheries Profile</td>
-                                                                @if ($item->secretary === null)
+                                                                <!-- @if ($item->secretary === null)
                                                                 <td> <span style="color: red;"> no data</span></td>
                                                                 @else
                                                                 <td>{{$item->secretary}}</td>
-                                                                @endif
+                                                                @endif -->
                                                             </tr>
                                                             <tr>
                                                                 <td>Formulation of Resolution and propose ordinance initiated</td>
-                                                                @if ($item->asst_secretary === null)
+                                                                <!-- @if ($item->asst_secretary === null)
                                                                 <td> <span style="color: red;"> no data</span></td>
                                                                 @else
                                                                 <td>{{$item->asst_secretary}}</td>
-                                                                @endif
+                                                                @endif -->
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -955,6 +955,411 @@
                                         </div>
                                         <br>
 
+                                        <label for="inline3mail" class="block form-control-label">Livelihood</label>
+
+                                        @elseif($item->category == "Livelihood")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+                                        <label for="inline3mail" class="block form-control-label">Research Education and Training</label>
+
+                                        @elseif($item->category == "Research Education and Training")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+                                        <label for="inline3mail" class="block form-control-label">Legislation</label>
+
+                                        @elseif($item->category == "Legislation")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+                                        <label for="inline3mail" class="block form-control-label">Polution Control</label>
+
+                                        @elseif($item->category == "Polution Control")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+                                        <label for="inline3mail" class="block form-control-label">Land and Water Use</label>
+
+                                        @elseif($item->category == "Land and Water Use")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+                                        <label for="inline3mail" class="block form-control-label">Fisherfolk Resettlement</label>
+
+                                        @elseif($item->category == "Fisherfolk Resettlement")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
+
+                                        <label for="inline3mail" class="block form-control-label">Other, if any/label>
+
+                                        @elseif($item->category == "Other, if any")
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+                                                        <th>Position</th>
+                                                        <th>Name</th>
+                                                        <th>Office / Organization</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Chairperson</td>
+                                                        @if ( $item->chairperson_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_name }}</td>
+                                                        @endif
+
+                                                        @if ( $item->chairperson_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->chairperson_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Secretary</td>
+                                                        @if ( $item->sec_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_name }}</td>
+                                                        @endif
+                                                        @if ( $item->sec_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->sec_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Member</td>
+                                                        @if ( $item->member_name === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_name }}</td>
+                                                        @endif
+                                                        @if ( $item->member_org === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td>{{ $item->member_org }}</td>
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br>
 
 
                                         @endif

@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string('org_name')->nullable();
             $table->date('date_of_reg')->nullable();
             $table->date('date_of_accreditation')->nullable();
-            $table->boolean('dor_file')->nullable();
-            $table->boolean('doa_file')->nullable();
+            $table->string('dor_file')->nullable();
+            $table->string('doa_file')->nullable();
             $table->timestamps();
         });
     }

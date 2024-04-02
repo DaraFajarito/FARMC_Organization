@@ -139,9 +139,9 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td style="color:green"><b>COMPLETE</b></td>
-                                                                <td style="text-align: center;">
-                                                                    <a href="" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a>
+                                                                <td></td>
+                                                                <td>
+                                                                    <!-- <a href="" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a> -->
                                                                 </td>
                                                             </tr>
                                                         </tbody>

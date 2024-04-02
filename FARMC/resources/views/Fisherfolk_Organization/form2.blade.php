@@ -1,3 +1,5 @@
+Form1 blade
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +70,7 @@
                 <div class="row">
                     <div class="main-header">
                         <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
-                        <h4>M/C FARMC Municipal | <small>Fisherfolk Association Profile</small></h4>
+                        <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
                                 <a href="index.php">
@@ -77,7 +79,7 @@
                             </li>
                             <li class="breadcrumb-item"><a href="#">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Fisherfolk Organization | Municipal </a>
+                            <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 1</a>
                             </li>
                         </ol>
                         <br>
@@ -85,26 +87,13 @@
                     </div>
                 </div>
 
-                <div class="card-header">
+
+
+                <div class="card-block">
                     <div class="card inline-form-style">
-                        <br>
-                        <hr>
-                        <div class="grid-material bg-general" style="text-align:center; font-size:20px"><b>FISHERFOLK ASSOCIATION PROFILE</b></div>
-                        <div class="captions" style="text-align:center; font-size:20px"> ( As of
-                            <span style="display:inline-block;"><input id="inline3mail" type="email" class="md-form-control" style="width: 250px;"></span>)
-                        </div>
-
-
-                        <hr>
-                        <div class="col-sm-6 col-xs-6 waves-effect waves-light">
-                            <div class="grid-material bg-general"></div>
-                        </div>
-
-                        <!-- <div class="card-block"> -->
-
                         <div class="card-header">
                             <div class="col-sm-6 col-xs-6 waves-effect waves-light">
-                                <div class="grid-material bg-general"><b>1. Personal Information</b></div>
+                                <div class="grid-material bg-general">1. Personal Information</div>
                             </div>
                             <br>
 
@@ -164,8 +153,7 @@
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="grid-material bg-general"><b>2. Status of Registration</b></div>
-                                        <br>
+                                        <div class="grid-material bg-general"><em>2. Status of Registration</em></div>
                                         <form>
                                             <div class="form-radio">
                                                 <div class="radio radio-inline">
@@ -182,14 +170,14 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                            <div class="grid-material bg-general"><small><em>Specify,if yes</em></small></div>
-                                            <br>
+                                            <div class="grid-material bg-general"><small><em>Specify if yes,</em></small></div>
+
                                             <form>
                                                 <div class="form-radio">
                                                     <div class="radio radio-inline">
 
                                                         <label>
-                                                            <input type="radio" name="radio" /><i class="helper"></i>DOLE
+                                                            <input type="radio" name="radio" c /><i class="helper"></i>DOLE
                                                         </label>
                                                         <label>
                                                             <input type="radio" name="radio" /><i class="helper"></i>SEC
@@ -215,8 +203,6 @@
                                                     <label for="reg_no">Registration No.</label>
                                                     <input id="reg_no" type="text" class="form-control" placeholder="Registration No.">
                                                 </div>
-                                                <br>
-                                                <br>
                                                 <div class="form-group">
                                                     <label for="date">Date Registered</label><br>
                                                     <input id="date" type="date" class="form-control" placeholder="Date Registered">
@@ -224,15 +210,44 @@
                                             </form>
                                         </div>
                                     </div>
+
+
+                                    <!-- <div class="col-md-3">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <div class="grid-material bg-general"><em>Religion Affiliation</em></div>
+
+                                                    <form class="form-inline">
+                                                        <div class="form-check">
+                                                            <label for="islamRadio" class="form-check-label">
+                                                                <input type="radio" class="form-check-input" name="religionRadios" id="islamRadio" value="Islam" onchange="toggleTextBox('islamRadio');">
+                                                                Islam
+                                                            </label>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-check">
+                                                            <label for="christianRadio" class="form-check-label">
+                                                                <input type="radio" class="form-check-input" name="religionRadios" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');">
+                                                                Christian
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group" id="textBoxGroup" style="display: none;">
+                                                            <label for="inline3mail" class="block form-control-label">If Christian, please specify</label>
+                                                            <input id="inline3mail" type="email" class="form-control" placeholder="">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div> -->
+
+
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="grid-material bg-general"><b>3. Status of Accreditation</b></div>
-                                        <br>
+                                    <div class="col-md-3">
+                                        <div class="grid-material bg-general"><em>2. Status of Accreditation</em></div>
                                         <form>
                                             <div class="form-radio">
                                                 <div class="radio radio-inline">
+
                                                     <label>
                                                         <input type="radio" name="radio" c /><i class="helper"></i>Yes
                                                     </label>
@@ -243,10 +258,10 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                            <div class="grid-material bg-general"><small><em>Specify, if yes</em></small></div>
-                                            <br>
+                                            <div class="grid-material bg-general"><em>Specify if yes,</em></div>
+
                                             <form>
                                                 <div class="form-radio">
                                                     <div class="radio radio-inline">
@@ -269,16 +284,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="col-sm-12 col-xs-12 waves-effect waves-light">
                                             <div class="grid-material bg-general"><em></em></div>
-                                            <br>
+
                                             <form class="form-inline">
                                                 <div class="form-group">
                                                     <label for="reg_no">Accredition No.</label>
                                                     <input id="reg_no" type="text" class="form-control" placeholder="Accredition No.">
                                                 </div>
-                                                <br><br>
                                                 <div class="form-group">
                                                     <label for="date">Date Accredited</label>
                                                     <input id="date" type="text" class="form-control" placeholder="Date Accredited">
@@ -296,7 +310,7 @@
                                         <!-- <div class="form-group m-r-15"> -->
                                         <!-- <hr> -->
                                         <label for="inline3mail" class="block form-control-label">4. Officer and Management</em></label>
-                                        <label>4.1 Executive Officers</label>
+                                        <label style="font-size: small;">4.1 Executive Officers</label>
 
                                         <table id="dynamic-table">
                                             <thead>
@@ -316,15 +330,10 @@
                                                         <div style="width: 200px; font-size: small;">Chairperson</div>
                                                     </td>
                                                     <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                    &nbsp;
                                                     <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                    &nbsp;
                                                     <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                    &nbsp;
                                                     <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                    &nbsp;
                                                     <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                    &nbsp;
                                                     <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
                                                 </tr>
                                                 <tr>
@@ -399,10 +408,10 @@
                                 <!-- </div> -->
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label"></label>
-                                            <label>4.2 Board of Directors/Trustees</label>
+                                            <label style="font-size: small;">4.2 Board of Directors/Trustees</label>
                                             <table id="dytable" style="width: 1060px;">
                                                 <thead>
                                                     <tr style="width: 200px; font-size: small;">
@@ -417,7 +426,6 @@
                                                 <tbody id="dytable-body">
                                                     <tr>
                                                         <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
-
                                                         <td><input type="text" class="form-control" placeholder="Civil Status"></td>
                                                         <td><input type="text" class="form-control" placeholder="Gender"></td>
                                                         <td><input type="date" class="form-control" placeholder="Birthday"></td>
@@ -432,17 +440,16 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <hr>
                                 <div class="row">
-                                    <!-- <div class="col-md-12"> -->
                                     <div class="col-md-4">
                                         <div class="form-group m-r-15">
-
+                                            <!-- <hr> -->
                                             <label for="inline3mail" class="block form-control-label"></em></label>
-                                            <label>4.3 Committees</label>
-                                            <!-- <div class="col-md-12"> -->
-                                            <div> <!-- Added a margin top to create space -->
-                                                <label style="font-size: smaller;"><b>4.3.1 Membership Committee </b></label>
+                                            <label style="font-size: small;">4.3 Committees</label>
+                                            <div style="margin-top: 5px;"> <!-- Added a margin top to create space -->
+                                                <label style="font-size: smaller;">4.3.1 Membership Committee</label>
                                             </div>
 
                                             <table id="dynamic-table">
@@ -459,46 +466,38 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <div style="width: 200px; font-size: small;">Chairperson</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        &nbsp;
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Chairperson</td>
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;" style="width: 200px;">Secretary</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Secretary</td> <!-- Changed from Vice Chairperson to Secretary -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Member</td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Member</td> <!-- Changed from Secretary to Membership -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
+                                                    <!-- Remaining positions -->
                                                 </tbody>
                                             </table>
 
-                                            <div> <!-- Added a margin top to create space -->
-                                                <label style="font-size: smaller;"><b>4.3.2 Committee on Education and Research </b></label>
+                                            <div style="margin-top: 5px;"> <!-- Added a margin top to create space -->
+                                                <label style="font-size: smaller;">4.3.2 Committee on Education and Research</label>
                                             </div>
 
                                             <table id="dynamic-table">
@@ -515,46 +514,38 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <div style="width: 200px; font-size: small;">Chairperson</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        &nbsp;
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Chairperson</td>
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;" style="width: 200px;">Secretary</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Secretary</td> <!-- Changed from Vice Chairperson to Secretary -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Member</td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Member</td> <!-- Changed from Secretary to Membership -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
+                                                    <!-- Remaining positions -->
                                                 </tbody>
                                             </table>
 
-                                            <div> <!-- Added a margin top to create space -->
-                                                <label style="font-size: smaller;"><b>4.3.3 Election Committee</b></label>
+                                            <div style="margin-top: 5px;"> <!-- Added a margin top to create space -->
+                                                <label style="font-size: smaller;">4.3.3 Election Committee</label>
                                             </div>
 
                                             <table id="dynamic-table">
@@ -571,46 +562,38 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <div style="width: 200px; font-size: small;">Chairperson</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        &nbsp;
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Chairperson</td>
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;" style="width: 200px;">Secretary</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Secretary</td> <!-- Changed from Vice Chairperson to Secretary -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Member</td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Member</td> <!-- Changed from Secretary to Membership -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
+                                                    <!-- Remaining positions -->
                                                 </tbody>
                                             </table>
 
-                                            <div> <!-- Added a margin top to create space -->
-                                                <label style="font-size: smaller;"><b>4.3.4 Audit Committee</b></label>
+                                            <div style="margin-top: 5px;"> <!-- Added a margin top to create space -->
+                                                <label style="font-size: smaller;">4.3.4 Audit Committee</label>
                                             </div>
 
                                             <table id="dynamic-table">
@@ -627,46 +610,38 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <div style="width: 200px; font-size: small;">Chairperson</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        &nbsp;
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Chairperson</td>
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;" style="width: 200px;">Secretary</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Secretary</td> <!-- Changed from Vice Chairperson to Secretary -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Member</td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Member</td> <!-- Changed from Secretary to Membership -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
+                                                    <!-- Remaining positions -->
                                                 </tbody>
                                             </table>
 
-                                            <div> <!-- Added a margin top to create space -->
-                                                <label style="font-size: smaller;"><b>4.3.5 Others: please specify</b></label>
+                                            <div style="margin-top: 5px;"> <!-- Added a margin top to create space -->
+                                                <label style="font-size: smaller;">4.3.5 Others: please specify</label>
                                             </div>
 
                                             <table id="dynamic-table">
@@ -683,56 +658,50 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <div style="width: 200px; font-size: small;">Chairperson</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        &nbsp;
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Chairperson</td>
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;" style="width: 200px;">Secretary</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Secretary</td> <!-- Changed from Vice Chairperson to Secretary -->
+                                                        <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Member</td>
-                                                        <td><input id="name" type="text" class="form-control" style="width: 250px;" placeholder="Name"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="Civil Status"></td>
-                                                        <td><input type="text" class="form-control" style="width: 100px;" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                        <td><input type="text" class="form-control" style="width: 60px;" placeholder="Age"></td>
-                                                        <td><input type="text" class="form-control" style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
+                                                        <td style="font-size: small;">Member</td> <!-- Changed from Secretary to Membership -->
+                                                        <td><input id="name" type="text" class="form-control" placeholder="Name"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Civil Status"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Gender"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                        <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
+                                                    <!-- Remaining positions -->
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-
+                                <hr>
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group m-r-15">
-                                            <hr>
-                                            <label for="inline3mail" class="block form-control-label">5. List of Members</em></label>
-                                            <table id="dynamic" style="width: 1060px;">
+                                            <!-- <hr> -->
+                                            <label for="inline3mail" class="block form-control-label">List of members</em></label>
+                                            <!-- <label style="font-size: small;"></label> -->
+
+                                            <table id="dynamic">
                                                 <thead>
-                                                    <tr style="width: 200px; font-size: small;">
+                                                    <tr>
                                                         <th>Name</th>
                                                         <th>Civil Status</th>
                                                         <th>Gender</th>
@@ -741,54 +710,33 @@
                                                         <th>4ps/Ips/SC/PWD</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="dytable-body">
+                                                <tbody id="dy-table">
                                                     <tr>
                                                         <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
-
                                                         <td><input type="text" class="form-control" placeholder="Civil Status"></td>
                                                         <td><input type="text" class="form-control" placeholder="Gender"></td>
-                                                        <td><input type="date" class="form-control" placeholder="Birthday"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Birthday"></td>
                                                         <td><input type="text" class="form-control" placeholder="Age"></td>
                                                         <td><input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="text-center">
-                                                <button onclick="addRow('dynamic')" class="btn btn-primary">Add Row</button>
-                                            </div>
+                                            <button onclick="addRow('dynamic')">Add Row</button>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="text-right">
+                                    <a href="../../BFAR_FARMC/FARMC_MembersProfile_Form/FARMC_Membership.php" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                </div>
                             </div>
-                            <div class="col-md-12 text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT <i class="icon-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to submit now?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <a href="" class="btn btn-primary">Yes</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 

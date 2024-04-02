@@ -146,8 +146,10 @@
                                                                 @elseif ($item->status == "INCOMPLETE")
                                                                 <td style="color:red"><b>INCOMPLETE</b></td>
                                                                 @endif
-                                                                <td style="text-align: center;">
-                                                                    <a href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a>
+                                                                <td style=" display: flex; justify-content: space-between;">
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                                    <a style= "margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -675,8 +677,8 @@
                                             <div class="col-sm-12">
                                                 <ul class="graphl-legend-rectangle">
                                                     <br>
-                                                    <li><span class="btn btn-danger"></span> Completed</li>
-                                                    <li><span class="btn btn-warning"></span> Incomplete</li>
+                                                    <li><span class="btn btn-primary"></span> Completed</li>
+                                                    <li><span class="btn btn-danger"></span> Incomplete</li>
                                                     <br>
                                                 </ul>
                                             </div>

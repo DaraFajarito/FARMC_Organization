@@ -42,8 +42,8 @@
                         </li>
 
                         <div class="text-right">
-                            <span><a href="{{ url ('/personal_info') }}"><button type="button" class="btn btn-primary">+ Form 1</button></a></span>
-                            <span><a href="{{ url ('/personal_info') }}"><button type="button" class="btn btn-primary">+ Form 2</button></a></span>
+                            <span><a href="{{ url ('/FOform1') }}"><button type="button" class="btn btn-primary">+ Form 1</button></a></span>
+                            <span><a href="{{ url ('/FOform2') }}"><button type="button" class="btn btn-primary">+ Form 2</button></a></span>
                         </div>
                     </ol>
 
@@ -60,7 +60,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
-                                <span>FARMC Members</span>
+                                <span>Municipal Members</span>
                                 <h2 class="dashboard-total-products">0</h2>
                                 <div class="side-box ">
                                     <i class="ti-id-badge text-success-color"></i>
@@ -102,7 +102,6 @@
                                     </div>
                                 </div>
                                 <br>
-                                <!-- <div class="col-sm-12"> -->
                                     <ul class="graphl-legend-rectangle">
                                         <div class="col-sm-6">
                                             <li><span class="btn btn-danger"></span> Municipal</li>
@@ -114,7 +113,6 @@
                                             <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
                                         </div>
                                     </ul>
-                                <!-- </div> -->
                             </div>
                             <div class="col-lg-4">
                                 <div class="row">
