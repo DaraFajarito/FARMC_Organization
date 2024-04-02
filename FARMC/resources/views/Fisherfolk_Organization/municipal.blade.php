@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>FARMC Membership Overview | BFAR - FARMC</title>
+    <title> Municipal - Fisherfolk Organization | BFAR - FARMC</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <meta charset="utf-8">

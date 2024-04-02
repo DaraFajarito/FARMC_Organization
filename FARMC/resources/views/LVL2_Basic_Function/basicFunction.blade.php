@@ -59,13 +59,8 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
-                            @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
+                        <form class="form-inline" method="" action="" enctype="multipart/form-data">
+                         
 
                             <div class="card-block">
                                 <div class="row">
@@ -309,7 +304,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
+                                            <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right"></i></button>
                                         </div>
                                     </div>
                                     <!-- </div> -->
