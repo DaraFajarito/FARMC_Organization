@@ -88,7 +88,7 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url ('/FOform2GenInfo') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                        <a href="{{ url ('/FOform2GenInfo2') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                         <div class="card-block">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="grid-material bg-general"><b>II. &nbsp; Membership</b></div>
+                                    <div class="grid-material bg-general"><b>II. &nbsp; MEMBERSHIP</b></div>
                                     <br>
                                     <div class="col-md-12">
                                         <div class="grid-material bg-general">a. &nbsp; Common Bond:</div>
@@ -242,7 +242,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <a href="{{ url (('FOform2OrgStructure')) }}"> <button class="btn btn-primary">Next <i class="icon-arrow-right"></i></button></a>
+                                        <a href="{{ url (('FOform2OrgStructure2')) }}"> <button class="btn btn-primary">Next <i class="icon-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>

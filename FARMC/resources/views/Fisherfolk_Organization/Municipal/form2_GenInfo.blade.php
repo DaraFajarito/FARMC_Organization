@@ -170,7 +170,7 @@
                         <div class="card-block">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="grid-material bg-general"><b>I. &nbsp; General Information</b></div>
+                                    <div class="grid-material bg-general"><b>I. &nbsp; GENERAL INFORMATION</b></div>
                                     <br>
                                     <div class="grid-material bg-general">Registration Details:</div>
                                     <br>
