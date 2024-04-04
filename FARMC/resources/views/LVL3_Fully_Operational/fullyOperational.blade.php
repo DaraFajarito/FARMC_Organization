@@ -358,7 +358,7 @@
                                 </div>
                                 <div class="row" style="margin-top:2rem">
                                     <div class="col-md-12 text-right">
-                                        <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
                                 <!-- </div> -->

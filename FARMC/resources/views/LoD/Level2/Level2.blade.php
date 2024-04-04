@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="main-header">
-                    <h4>Level One Overview</h4> | <span class="label label-default">Basic Structure of the Council</span>
+                    <h4>Level Two Overview</h4> | <span class="label label-default">Basic Function of the FARMC</span>
                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                         <li class="breadcrumb-item"><a href="index.html"><i class="icofont icofont-home"></i></a>
                         </li>
@@ -140,9 +140,7 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>
-                                                                    <!-- <a href="" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a> -->
-                                                                </td>
+                                                                <td></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -670,7 +668,7 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-block">
-                                        <h6 class="card-title">All Level 1 <em> <small>(Incomplete & Complete)</small> </em></h6>
+                                        <h6 class="card-title">All Level 2 <em> <small>(Incomplete & Complete)</small> </em></h6>
                                         <br>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">

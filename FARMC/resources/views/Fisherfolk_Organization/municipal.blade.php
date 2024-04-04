@@ -43,7 +43,7 @@
 
                         <div class="text-right">
                             <span><a href="{{ url ('/FOform1') }}"><button type="button" class="btn btn-primary">+ Association Form</button></a></span>
-                            <span><a href="{{ url ('/FOform2') }}"><button type="button" class="btn btn-primary">+ Cooperative Form</button></a></span>
+                            <span><a href="{{ url ('/FOform2GenInfo') }}"><button type="button" class="btn btn-primary">+ Cooperative Form</button></a></span>
                         </div>
                     </ol>
 
@@ -89,32 +89,13 @@
 
 
                         <div class="card-block">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <h6 class="card-title">Member's Age</h6>
                                 <canvas id="salesDifference"></canvas>
                             </div>
 
-                            <div class="col-lg-4">
-                                <h6 class="card-title">Composition of Membership</h6>
-                                <div class="row">
-                                    <div class="col-sm-10 grid-margin">
-                                        <canvas id="bestSellers"></canvas>
-                                    </div>
-                                </div>
-                                <br>
-                                    <ul class="graphl-legend-rectangle">
-                                        <div class="col-sm-6">
-                                            <li><span class="btn btn-danger"></span> Municipal</li>
-                                            <li><span class="btn btn-warning"></span> Fisherworker</li>
-                                            <li><span class="btn btn-info"></span> Commercial</li>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <li><span class="btn btn-primary"></span> Women/Youth</li>
-                                            <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
-                                        </div>
-                                    </ul>
-                            </div>
-                            <div class="col-lg-4">
+                           
+                            <div class="col-lg-6">
                                 <div class="row">
 
                                     <div class="align-items-center justify-content-between">

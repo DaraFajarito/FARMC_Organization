@@ -297,10 +297,10 @@
                                                         <tr>
                                                             <td></td>
                                                             <td>Assistant Secretary</td>
-                                                            @if ($item->asst_secretary === null)
+                                                            @if ($item->asst_sec === null)
                                                             <td> <span style="color: red;"> no data</span></td>
                                                             @else
-                                                            <td>{{$item->asst_secretary}}</td>
+                                                            <td>{{$item->asst_sec}}</td>
                                                             @endif
                                                         </tr>
                                                         <tr>
@@ -360,28 +360,28 @@
                                                         <tr>
                                                             <td>7</td>
                                                             <td>Sgt-at-Arms 1</td>
-                                                            @if ($item->sgt_arm1 === null)
+                                                            @if ($item->sgt_arms1 === null)
                                                             <td> <span style="color: red;"> no data</span></td>
                                                             @else
-                                                            <td>{{$item->sgt_arm1}}</td>
+                                                            <td>{{$item->sgt_arms1}}</td>
                                                             @endif
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td>Sgt-at-Arms 2</td>
-                                                            @if ($item->sgt_arm2 === null)
+                                                            @if ($item->sgt_arms2 === null)
                                                             <td> <span style="color: red;"> no data</span></td>
                                                             @else
-                                                            <td>{{$item->sgt_arm2}}</td>
+                                                            <td>{{$item->sgt_arms2}}</td>
                                                             @endif
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td>Sgt-at-Arms 3</td>
-                                                            @if ($item->sgt_arm3 === null)
+                                                            @if ($item->sgt_arms3 === null)
                                                             <td> <span style="color: red;"> no data</span></td>
                                                             @else
-                                                            <td>{{$item->sgt_arm3}}</td>
+                                                            <td>{{$item->sgt_arms3}}</td>
                                                             @endif
                                                         </tr>
                                                     </tbody>
@@ -476,10 +476,11 @@
 
                                                         <tr style="font-size: 12px;">
                                                             <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                            <td> @if($item->endorsement_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -490,10 +491,10 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                                @if($item->soi_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -538,10 +539,11 @@
 
                                                         <tr style="font-size: 12px;">
                                                             <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                            <td> @if($item->endorsement_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -552,10 +554,10 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                                @if($item->soi_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -575,8 +577,9 @@
                                             <br>
 
 
-                                            <label for="inline3mail" class="block form-control-label">Commercial Fishing Operator</label>
                                             @elseif($item->category == "Commercial Fishing Operator")
+                                            <label for="inline3mail" class="block form-control-label">Commercial Fishing Operator</label>
+
                                             <div class="table-responsive">
                                                 <table class="table table-bordered">
                                                     <thead style="font-size: 12px;">
@@ -599,10 +602,11 @@
 
                                                         <tr style="font-size: 12px;">
                                                             <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                            <td> @if($item->endorsement_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -613,10 +617,10 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                                @if($item->soi_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -659,10 +663,10 @@
 
                                                         <tr style="font-size: 12px;">
                                                             <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                            <td> @if($item->endorsement_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -673,10 +677,10 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                                @if($item->soi_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -719,10 +723,11 @@
 
                                                         <tr style="font-size: 12px;">
                                                             <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                            <td> @if($item->endorsement_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -733,10 +738,10 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                                @if($item->soi_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -792,10 +797,10 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
+                                                                @if($item->soi_attachment == NULL)
                                                                 <span style="color: red;">None</span>
+                                                                @else
+                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -1247,7 +1252,7 @@
 
                                         <label for="inline3mail" class="block form-control-label">Fisherfolk Resettlement</label>
 
-                                        @elseif($item->category == "Fisherfolk Resettlement")
+                                        @elseif($item->category == "Fisherfol Resettlement")
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -1303,9 +1308,9 @@
                                         </div>
                                         <br>
 
-                                        <label for="inline3mail" class="block form-control-label">Other, if any/label>
+                                        <label for="inline3mail" class="block form-control-label">Other, if any</label>
 
-                                        @elseif($item->category == "Other, if any")
+                                        @else
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -1591,7 +1596,7 @@
                 jsPDF: {
                     unit: 'in',
                     format: 'letter',
-                    orientation: 'portrait'
+                    orientation: 'landscape'
                 },
                 // Add autoPaging option
                 // This will automatically add new pages as needed to fit the content

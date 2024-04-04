@@ -130,7 +130,13 @@ Route::get('/go-to-committee', [Committee_Controller::class,'display_committee_f
 
 //Fisherfolk Organization
 Route::view('/FOform1', 'Fisherfolk_Organization.form1');
-Route::view('/FOform2', 'Fisherfolk_Organization.form1');
+
+
+Route::view('/FOform2GenInfo', 'Fisherfolk_Organization.form2_GenInfo');
+Route::view('/FOform2MembershipAsset', 'Fisherfolk_Organization.form2_Membership&Asset');
+Route::view('/FOform2Officers', 'Fisherfolk_Organization.form2_Officers');
+Route::view('/FOform2OrgStructure', 'Fisherfolk_Organization.form2_OrgStructure');
 
 //Municipal 
 Route::view('/FOMunicipal', 'Fisherfolk_Organization.municipal');
+

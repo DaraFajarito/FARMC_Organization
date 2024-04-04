@@ -116,8 +116,7 @@
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
-                                                </div <input type="hidden" name="endorsement_fisherfolk" id="endorsement_fisherfolk_input">
-                                                <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="">
+                                                <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="1">
                                             </div>
                                             <div class="col-md-6" style="padding-left: 200px;">
                                                 <input id="endorsement_fisherfolk_inputf" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
@@ -149,7 +148,7 @@
                                                     </label>
                                                     <div class="captions">Source of income (Capture/Culture/Processing)</div>
                                                 </div>
-                                                <input type="hidden" name="source_of_income" id="source_of_income_input">
+                                                <input type="hidden" name="source_of_income" id="source_of_income_input" value="1">
                                             </div>
                                             <div class="col-md-6" style="padding-left: 200px;">
                                                 <input id="source_of_income_inputf" type="file" name="soi_attachment" namez class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
