@@ -131,4 +131,14 @@ class ProfileForm_Model extends Model
             ->keys()
             ->toArray();
     }
+
+    public function hasNullFields()
+    {
+        return collect($this->toArray())
+            ->filter(function ($value, $key) {
+                return $value === null;
+            })
+            ->isNotEmpty();
+    }
+
 }
