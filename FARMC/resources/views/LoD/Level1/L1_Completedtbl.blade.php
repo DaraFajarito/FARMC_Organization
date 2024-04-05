@@ -36,17 +36,13 @@
                             <a href="{{ url('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
                                 Go back to Level 1</a>
                         </div>
-                    </div>
+                    </div>z
 
                     <div class="card">
                         <div class="card-header">
-                            <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
-                            <!-- <hr> -->
                             <div class="grid-material bg-general" style="text-align: center;"><b>All Complete Table</b>
                             </div>
                             <hr>
-
-
                             <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
                                 width="100%">
                                 <thead>

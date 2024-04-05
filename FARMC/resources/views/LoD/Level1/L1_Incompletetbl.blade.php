@@ -59,8 +59,8 @@
                                     <tr>
                                         <td>{{$item->province}}</td>
                                         <td>{{$item->municipality}}</td>
-                                        <td>{{$item->date_organized}}</td>
-                                        <td>{{$item->date_reorganized}}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</td>
                                         <td style="color:red"><b>{{$item->status}}</b></td>
                                         <td style="text-align: center;">
                                             <a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a>

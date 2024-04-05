@@ -27,7 +27,7 @@ class Committee_Model extends Model
     {
         return $this->belongsTo(ProfileForm_Model::class, 'id');
     }
-    public function isNull()
+    public function isEmpty()
     {
         return is_null($this->category) ||
                is_null($this->chairperson_name) ||
@@ -37,13 +37,19 @@ class Committee_Model extends Model
                is_null($this->member_name) ||
                is_null($this->member_org);
     }
+    // public function getNullFields()
     public function getNullFields()
     {
-        return collect($this->toArray())
-            ->filter(function ($value, $key) {
-                return $value === null;
-            })
-            ->keys()
-            ->toArray();
+        $fillableFields = $this->fillable;
+        $nullFields = [];
+
+        foreach ($fillableFields as $field) {
+            if (is_null($this->{$field})) {
+                $nullFields[] = $field;
+            }
+        }
+
+        return $nullFields;
     }
+
 }
