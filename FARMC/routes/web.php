@@ -145,6 +145,12 @@ Route::view('/FOform2MembershipAsset', 'Fisherfolk_Organization.Municipal.form2_
 Route::view('/FOform2Officers', 'Fisherfolk_Organization.Municipal.form2_Officers');
 Route::view('/FOform2OrgStructure', 'Fisherfolk_Organization.Municipal.form2_OrgStructure');
 
+
+Route::view('/FOmregistered', 'Fisherfolk_Organization.Municipal.registeredtbl');
+Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredtbl');
+
+
+
 // ---------------------------------------------------------------------------------------//
 
 //Fishworker
