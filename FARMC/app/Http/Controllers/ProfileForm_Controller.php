@@ -292,13 +292,16 @@ class ProfileForm_Controller extends Controller
         $secretariat->save();
 
         $committee = Committee_Model::where('id', $secretariat->id)->get();
+
+        $committeeNull = $committee->isEmpty();
+
         $fisherfolk = FisherfolkRepresentative_Model::where('id', $secretariat->id)->get();
 
+
         // Check if the collections are empty
-        $committeeNull = $committee->isEmpty();
         $fisherfolkNull = $fisherfolk->isEmpty();
 
-        // Check if theres null
+        // Check if there's null in fisherfolk table
         foreach ($fisherfolk as $representative) {
             if (
                 is_null($representative->category) ||
@@ -321,36 +324,54 @@ class ProfileForm_Controller extends Controller
                 break;
             }
         }
-        $status = $committeeNull || $fisherfolkNull || $secretariat->hasNullValues() ? 'INCOMPLETE' : 'COMPLETED';
 
-        $secretariat->update(['status' => $status]);
+        // Check if all fields are null in the profileform table
+        $profileFormNull = $secretariat->hasNullValues();
 
+        // Check if any category in fisherfolkrep table is not within the specified options
+        $categoryOptions = [
+            'Municipal Fisherfolk',
+            'Fisherworker',
+            'Commercial Fishing Operator',
+            'Women Fisherfolk Sector Representative',
+            'Youth Fisherfolk Sector Representative',
+            "Indigenous Peoples(IP's) if any",
+        ];
 
-        // Retrieve the related fisherfolk_rep records
-        $fisherfolkReps = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
-
-        // Gather null fields from the ProfileForm_Model instance
-        $profileFormNullFields = $secretariat->getNullFields();
-
-        // Initialize an empty array to store null fields from related models
-        $relatedNullFields = [];
-
-        // Loop through the retrieved fisherfolk_rep records
-        foreach ($fisherfolkReps as $fisherfolkRep) {
-            // Gather null fields from each fisherfolk_rep record
-            $fisherfolkNullFields = $fisherfolkRep->getNullFields();
-            // Merge null fields from fisherfolk_rep into relatedNullFields
-            $relatedNullFields = array_merge($relatedNullFields, $fisherfolkNullFields);
+        $categoryMismatch = false;
+        foreach ($fisherfolk as $representative) {
+            if (!in_array($representative->category, $categoryOptions)) {
+                $categoryMismatch = true;
+                break;
+            }
         }
 
-        // Merge null fields from all related models
-        $nullFields = array_merge($profileFormNullFields, $relatedNullFields);
+        // Determine status
+        $status = $committeeNull || $fisherfolkNull || $profileFormNull || $categoryMismatch ? 'INCOMPLETE' : 'COMPLETED';
+        $secretariat->update(['status' => $status]);
 
-        // Remove duplicates
-        $nullFields = array_unique($nullFields);
+        // Get null fields for display
+        $profileFormNullFields = $secretariat->getNullFields();
 
-        if (!empty($nullFields)) {
-            return view('LoD.Level1.L1_Incomplete', compact('nullFields'));
+        // Find the latest committee
+        $committee = Committee_Model::where('profileForm_id', $secretariat->id)->latest()->first();
+
+        // Check if committee exists and get its null fields
+        $committeeNullFields = [];
+        if ($committee) {
+            $committeeNullFields = $committee->getNullFields();
+        }
+
+        $fisherfolkReps = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
+        $fisherfolkNullFields = [];
+        foreach ($fisherfolkReps as $fisherfolkRep) {
+            $fisherfolkNullFields = array_merge($fisherfolkNullFields, $fisherfolkRep->getNullFields());
+        }
+        $fisherfolkNullFields = array_unique($fisherfolkNullFields);
+
+
+        if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields) {
+            return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields'));
         } else {
             return view('LoD.Level1.L1_Completed');
         }
@@ -367,4 +388,9 @@ class ProfileForm_Controller extends Controller
         //chart for complete
         return view('LoD.Level1.Level1', compact('completed, incomplete'));
     }
+
+
+
+    //kung ang specific profileform_id ay walang record ng other category sa fisherfolktable, the profileform is INCOMPLETE.
+    //kung ang specific profileform_id ay walang record ng other category sa committee, the profileform is INCOMPLETE.
 }

@@ -50,6 +50,7 @@ class FisherfolkRepresentative_Model extends Model
                 return $value === null;
             })
             ->keys()
-            ->toArray();
+            ->toArray(); // Convert collection to array
     }
+
 }

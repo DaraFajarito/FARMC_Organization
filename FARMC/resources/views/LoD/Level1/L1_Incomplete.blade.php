@@ -63,82 +63,82 @@
                                                 <h6 class="captions">Basic Structures</h6>
                                             </b>
                                         </div>
-                                        @foreach ($nullFields as $field)
+                                        @foreach ($profileFormNullFields as $field)
                                             <b><i class="ti-check-box text-danger-color"></i></b>
                                             <span style="display: inline-block;">&nbsp; {{ ucfirst($field) }}</span><br>
                                         @endforeach
-                                        @if (in_array('municipality', $nullFields))
+                                        @if (in_array('municipality', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Municipality</span>
                                         @endif
                                         <br>
-                                        @if (in_array('province', $nullFields))
+                                        @if (in_array('province', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Province</span>
                                         @endif
                                         <br>
-                                        @if (in_array('date_organized', $nullFields))
+                                        @if (in_array('date_organized', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Date Organized</span>
                                         @endif
                                         <br>
-                                        @if (in_array('minutes1', $nullFields))
+                                        @if (in_array('minutes1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Minutes 1 <small><em>(date
                                                         organized)</em></small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('photos1', $nullFields))
+                                        @if (in_array('photos1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Photos 1 <small><em>(date
                                                         organized)</em></small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('attendance1', $nullFields))
+                                        @if (in_array('attendance1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Attendance 1 <small><em>(date
                                                         organized)</em></small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('date_reorganized', $nullFields))
+                                        @if (in_array('date_reorganized', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Date Reorganized</span>
                                         @endif
                                         <br>
-                                        @if (in_array('minutes2', $nullFields))
+                                        @if (in_array('minutes2', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Minutes 2 <small><em>(date
                                                         reorganized)</em></small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('photos2', $nullFields))
+                                        @if (in_array('photos2', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Photos 2 <small><em>(date
                                                         reorganized)</em></small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('attendance2', $nullFields))
+                                        @if (in_array('attendance2', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Attendance 2 <small><em>(date
                                                         reorganized)</em></small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('internalP_file', $nullFields))
+                                        @if (in_array('internalP_file', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp;Internal Policy </small></span>
                                         @endif
                                         <br>
-                                        @if (in_array('fisherfolkR_file', $nullFields))
+                                        @if (in_array('fisherfolkR_file', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Fisherfolk Registry</span>
                                         @endif
                                         <br>
-                                        @if (in_array('fisherfolkR_file', $nullFields))
+                                        @if (in_array('fisherfolkR_file', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp;Fisheries Profile</span>
                                         @endif
                                         <br>
-                                        @if (in_array('formulationR_file', $nullFields))
+                                        @if (in_array('formulationR_file', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Formulation of Resolution and
                                                 propose ordinance initiated </span>
@@ -154,37 +154,37 @@
                                             </b>
                                         </div>
                                         <!-- FARMC Officers -->
-                                        @if (in_array('chairperson', $nullFields))
+                                        @if (in_array('chairperson', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Chairperson </span>
                                         @endif
                                         <br>
-                                        @if (in_array('vice_chairperson', $nullFields))
+                                        @if (in_array('vice_chairperson', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Vice Chairperson </span>
                                         @endif
                                         <br>
-                                        @if (in_array('secretary', $nullFields))
+                                        @if (in_array('secretary', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Secretary </span>
                                         @endif
                                         <br>
-                                        @if (in_array('treasurer', $nullFields))
+                                        @if (in_array('treasurer', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Treasurer </span>
                                         @endif
                                         <br>
-                                        @if (in_array('auditor', $nullFields))
+                                        @if (in_array('auditor', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Auditor</span>
                                         @endif
                                         <br>
-                                        @if (in_array('pro1', $nullFields))
+                                        @if (in_array('pro1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; PRO </span>
                                         @endif
                                         <br>
-                                        @if (in_array('sgt_arms1', $nullFields))
+                                        @if (in_array('sgt_arms1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Sergeant-at-arms </span>
                                         @endif
@@ -199,42 +199,42 @@
                                             </b>
                                         </div>
 
-                                        @if (in_array('chairpersonSB', $nullFields))
+                                        @if (in_array('chairpersonSB', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Chairperson SB / SP</span>
                                         @endif
                                         <br>
-                                        @if (in_array('mpdo', $nullFields))
+                                        @if (in_array('mpdo', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Municipal Planning and Development
                                                 Officer</span>
                                         @endif
                                         <br>
-                                        @if (in_array('repmdc', $nullFields))
+                                        @if (in_array('repmdc', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Representative from Municipal
                                                 Development Council</span>
                                         @endif
                                         <br>
-                                        @if (in_array('repda', $nullFields))
+                                        @if (in_array('repda', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Representative from Department of
                                                 Agriculture</span>
                                         @endif
                                         <br>
-                                        @if (in_array('repngo', $nullFields))
+                                        @if (in_array('repngo', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Representative from
                                                 Non-Governmental Organization</span>
                                         @endif
                                         <br>
-                                        @if (in_array('repps', $nullFields))
+                                        @if (in_array('repps', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Representative from Private
                                                 Sector</span>
                                         @endif
                                         <br>
-                                        @if (in_array('others', $nullFields))
+                                        @if (in_array('others', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Others</span>
                                         @endif
@@ -243,9 +243,28 @@
                                         <div>
                                             <b>
                                                 <h6 class="captions">Fisherfolk Representative</h6>
-                                            </b>
+                                                @foreach ($committeeNullFields as $field)
+                                                    <b><i class="ti-check-box text-danger-color"></i></b>
+                                                    <span style="display: inline-block;">&nbsp; {{ ucfirst($field) }}</span><br>
+                                                @endforeach
+
+                                                @if (in_array('chairperson_name', $committeeNullFields))
+                                                    <b><i class="ti-check-box text-danger-color"></i></b>
+                                                    <span style="display: inline-block;">&nbsp; Chairperson Name</span>
+                                                @endif
                                         </div>
                                         <br>
+
+                                        <br>
+                                        @if (in_array('name', $fisherfolkNullFields))
+                                            <b> <i class="ti-check-box text-danger-color"></i></b><span
+                                                style="display: inline-block;">&nbsp; Name</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('endorsement_fisherfolk', $fisherfolkNullFields))
+                                            <b> <i class="ti-check-box text-danger-color"></i></b><span
+                                                style="display: inline-block;">&nbsp; Endorsement Fisherfolk</span>
+                                        @endif
                                         <br>
 
                                         <div>
@@ -261,32 +280,32 @@
                                             </b>
                                         </div>
                                         <!-- Secretariat -->
-                                        @if (in_array('name_sec', $nullFields))
+                                        @if (in_array('name_sec', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Secretary 1 </span>
                                         @endif
                                         <br>
-                                        @if (in_array('name_sec1', $nullFields))
+                                        @if (in_array('name_sec1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Secretary 2 </span>
                                         @endif
                                         <br>
-                                        @if (in_array('name_sec2', $nullFields))
+                                        @if (in_array('name_sec2', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Secretary 3 </span>
                                         @endif
                                         <br>
-                                        @if (in_array('office_org', $nullFields))
+                                        @if (in_array('office_org', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Office / Organization 1 </span>
                                         @endif
                                         <br>
-                                        @if (in_array('office_org1', $nullFields))
+                                        @if (in_array('office_org1', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Office / Organization 2</span>
                                         @endif
                                         <br>
-                                        @if (in_array('office_org2', $nullFields))
+                                        @if (in_array('office_org2', $profileFormNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span
                                                 style="display: inline-block;">&nbsp; Office / Organization 3</span>
                                         @endif
