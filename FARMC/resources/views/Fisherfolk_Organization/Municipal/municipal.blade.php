@@ -89,13 +89,31 @@
 
 
                         <div class="card-block">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <h6 class="card-title">Member's Age</h6>
                                 <canvas id="salesDifference"></canvas>
                             </div>
 
-
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
+                                <h6 class="card-title">Association / Cooperative</h6>
+                                <div class="row">
+                                    <div class="col-sm-10 grid-margin">
+                                        <canvas id="bestSellers"></canvas>
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- <div class="col-sm-12"> -->
+                                    <ul class="graphl-legend-rectangle">
+                                        <div class="col-sm-6">
+                                            <li><span class="btn btn-danger"></span> Association</li>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <li><span class="btn btn-primary"></span>Cooperative</li>
+                                        </div>
+                                    </ul>
+                                <!-- </div> -->
+                            </div>
+                            <div class="col-lg-4">
                                 <div class="row">
 
                                     <div class="align-items-center justify-content-between">
@@ -121,8 +139,8 @@
                                     <label>LIST OF OVERVIEW</label>
                                 </div>
                                 <div class="col-md-8 text-right">
-                                    <a href="{{ url ('/L1Completedtbl') }}"><button type="button" class="btn btn-primary">All Registered</button></a>
-                                    <a href="{{ url ('/L1Incompletetbl') }}"><button type="button" class="btn btn-danger">All Unregistered</button></a>
+                                    <a href="{{ url ('/FOmregistered') }}"><button type="button" class="btn btn-primary">All Registered</button></a>
+                                    <a href="{{ url ('/FOmunregistered') }}"><button type="button" class="btn btn-danger">All Unregistered</button></a>
                                 </div>
                             </div>
 

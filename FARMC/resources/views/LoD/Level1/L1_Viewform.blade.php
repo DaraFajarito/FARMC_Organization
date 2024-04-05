@@ -90,13 +90,17 @@
                         <h4>M/C FARMC Profile | <small>VIEW DETAILS</small></h4>
                         <br>
                         <br>
-                        <div style="display: flex; align-items: center;">
+                        <div style="display: flex;">
                             <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
-                            <div class="actions" style="margin-left: auto;">
+                            <div class="actions text-center" style="flex: 1;"> <!-- Added text-center class and flex: 1 -->
                                 <button class="btn btn-success" onclick="window.print()">Print</button>
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
+                            <div class="actions" style="margin-left: auto;">
+                                <a href="{{ url ('/basicFunction') }}"><button class="btn btn-primary">Proceed to Lvl 2</button></a>
+                            </div>
                         </div>
+
 
                     </div>
                 </div>
