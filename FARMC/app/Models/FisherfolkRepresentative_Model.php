@@ -29,7 +29,7 @@ class FisherfolkRepresentative_Model extends Model
         'date_of_accreditation',
         'dor_file',
         'doa_file',
-        'status'
+        // 'status'
     ];
 
     protected $casts = [
@@ -50,7 +50,8 @@ class FisherfolkRepresentative_Model extends Model
                 return $value === null;
             })
             ->keys()
-            ->toArray(); // Convert collection to array
+            ->toArray();
     }
+
 
 }

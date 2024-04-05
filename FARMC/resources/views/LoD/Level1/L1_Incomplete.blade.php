@@ -247,10 +247,14 @@
                                                     <b><i class="ti-check-box text-danger-color"></i></b>
                                                     <span style="display: inline-block;">&nbsp; {{ ucfirst($field) }}</span><br>
                                                 @endforeach
-
-                                                @if (in_array('chairperson_name', $committeeNullFields))
-                                                    <b><i class="ti-check-box text-danger-color"></i></b>
-                                                    <span style="display: inline-block;">&nbsp; Chairperson Name</span>
+                                                @if ($missingCategories)
+                                                    <ul>
+                                                        @foreach ($missingCategories as $category)
+                                                            <li>{{ $category }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @else
+                                                    <p>All categories are present.</p>
                                                 @endif
                                         </div>
                                         <br>

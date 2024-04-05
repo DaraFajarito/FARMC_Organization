@@ -291,11 +291,11 @@ class ProfileForm_Controller extends Controller
         // Save the updated officer details
         $secretariat->save();
 
-        $committee = Committee_Model::where('id', $secretariat->id)->get();
+        $committee = Committee_Model::where('profileForm_id', $secretariat->id)->get();
 
         $committeeNull = $committee->isEmpty();
 
-        $fisherfolk = FisherfolkRepresentative_Model::where('id', $secretariat->id)->get();
+        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
 
 
         // Check if the collections are empty
@@ -329,7 +329,7 @@ class ProfileForm_Controller extends Controller
         $profileFormNull = $secretariat->hasNullValues();
 
         // Check if any category in fisherfolkrep table is not within the specified options
-        $categoryOptions = [
+        $FisherfolkcategoryOptions = [
             'Municipal Fisherfolk',
             'Fisherworker',
             'Commercial Fishing Operator',
@@ -338,16 +338,39 @@ class ProfileForm_Controller extends Controller
             "Indigenous Peoples(IP's) if any",
         ];
 
-        $categoryMismatch = false;
+        $FisherfolkcategoryMismatch = false;
         foreach ($fisherfolk as $representative) {
-            if (!in_array($representative->category, $categoryOptions)) {
-                $categoryMismatch = true;
+            if (!in_array($representative->category, $FisherfolkcategoryOptions)) {
+                $FisherfolkcategoryMismatch = true;
                 break;
             }
         }
 
+        $categories = FisherfolkRepresentative_Model::pluck('category')->where('profileForm_id', $secretariat->id)->toArray();
+        $missingCategories = array_diff($FisherfolkcategoryOptions, $categories);
+        // Check if any category in fisherfolkrep table is not within the specified options
+        $CommitteeCategoryOptions = [
+            'Municipal Fisherfolk',
+            'Fisherworker',
+            'Commercial Fishing Operator',
+            'Women Fisherfolk Sector Representative',
+            'Youth Fisherfolk Sector Representative',
+            "Indigenous Peoples(IP's) if any",
+        ];
+
+        $CommitteeCategoryMismatch = false;
+        foreach ($fisherfolk as $representative) {
+            if (!in_array($representative->category, $CommitteeCategoryOptions)) {
+                $CommitteeCategoryMismatch = true;
+                break;
+            }
+        }
+
+        $categoriess = Committee_Model::pluck('category')->where('profileForm_id', $secretariat->id)->toArray();
+        $missingCCategories = array_diff($CommitteeCategoryOptions, $categoriess);
+
         // Determine status
-        $status = $committeeNull || $fisherfolkNull || $profileFormNull || $categoryMismatch ? 'INCOMPLETE' : 'COMPLETED';
+        $status = $committeeNull || $fisherfolkNull || $profileFormNull || $FisherfolkcategoryMismatch || $CommitteeCategoryMismatch ? 'INCOMPLETE' : 'COMPLETED';
         $secretariat->update(['status' => $status]);
 
         // Get null fields for display
@@ -369,9 +392,8 @@ class ProfileForm_Controller extends Controller
         }
         $fisherfolkNullFields = array_unique($fisherfolkNullFields);
 
-
         if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields) {
-            return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields'));
+            return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields', 'missingCategories'));
         } else {
             return view('LoD.Level1.L1_Completed');
         }
@@ -390,7 +412,10 @@ class ProfileForm_Controller extends Controller
     }
 
 
+    //==========================================================================================================================================||
+    //================================================== C O U N T  O F  D A T A =============================================================||
+    public function edit_incomplete_profile($id){
 
-    //kung ang specific profileform_id ay walang record ng other category sa fisherfolktable, the profileform is INCOMPLETE.
-    //kung ang specific profileform_id ay walang record ng other category sa committee, the profileform is INCOMPLETE.
+        $incomplete_data =
+    }
 }

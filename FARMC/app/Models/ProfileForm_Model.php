@@ -79,48 +79,21 @@ class ProfileForm_Model extends Model
     }
     public function hasNullValues()
     {
-        return is_null($this->municipality) ||
-               is_null($this->province) ||
-               is_null($this->date_organized) ||
-               is_null($this->minutes1) ||
-               is_null($this->photos1) ||
-               is_null($this->attendance1) ||
-               is_null($this->date_reorganized) ||
-               is_null($this->minutes2) ||
-               is_null($this->photos2) ||
-               is_null($this->attendance2) ||
-               is_null($this->internalP) ||
-               is_null($this->internalP_file) ||
-               is_null($this->fisherfolkR) ||
-               is_null($this->fisherfolkR_file) ||
-               is_null($this->formulationR) ||
-               is_null($this->formulationR_file) ||
-               is_null($this->chairperson) ||
-               is_null($this->vice_chairperson) ||
-               is_null($this->secretary) ||
-               is_null($this->asst_sec) ||
-               is_null($this->treasurer) ||
-               is_null($this->asst_treas) ||
-               is_null($this->auditor) ||
-               is_null($this->asst_aud) ||
-               is_null($this->pro1) ||
-               is_null($this->pro2) ||
-               is_null($this->sgt_arms1) ||
-               is_null($this->sgt_arms2) ||
-               is_null($this->sgt_arms3) ||
-               is_null($this->chairpersonSB) ||
-               is_null($this->mpdo) ||
-               is_null($this->repmdc) ||
-               is_null($this->repda) ||
-               is_null($this->repngo) ||
-               is_null($this->repps) ||
-               is_null($this->others) ||
-               is_null($this->name_sec) ||
-               is_null($this->name_sec1) ||
-               is_null($this->name_sec2) ||
-               is_null($this->office_org) ||
-               is_null($this->office_org1) ||
-               is_null($this->office_org2);
+        // Get all columns except the excluded assistant fields
+        $excludedFields = ['asst_sec', 'asst_treas', 'asst_aud'];
+        $columnsToCheck = array_diff($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()), $excludedFields);
+
+        // Query the database to check if all fields are null
+        $query = $this->select($columnsToCheck)
+            ->where(function ($query) use ($columnsToCheck) {
+                foreach ($columnsToCheck as $column) {
+                    $query->whereNull($column);
+                }
+            })
+            ->first();
+
+        // If the query returns null, all fields except the assistants are null
+        return $query === null;
     }
     public function getNullFields()
     {

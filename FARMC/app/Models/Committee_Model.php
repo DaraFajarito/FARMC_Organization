@@ -20,7 +20,7 @@ class Committee_Model extends Model
         'sec_org',
         'member_name',
         'member_org',
-        'status',
+        // 'status',
     ];
 
     public function profileForm()

@@ -43,18 +43,12 @@ Route::get('/dash', function () {
 // Route::view('/level1', 'LoD.Level1.Level1');
 
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
-Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
-// Route::view('/L1Viewform', 'LoD.Level1.L1_Viewform');
-
 Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
 Route::view('/officers', 'LVL1_Profile_Form.FARMC_Officers.officers');
 Route::view('/mandatedmem', 'LVL1_Profile_Form.Composition_OM.mandated_member');
 Route::view('/fisherfolkrep', 'LVL1_Profile_Form.Composition_OM.fisherfolk_representative');
 Route::view('/committee', 'LVL1_Profile_Form.MFARMC_Committee.committee');
-// Route::view('/secretariat', 'LVL1_Profile_Form.Composition_OS.secretariat');
 
-// Route::get('/edit-profile-form/{id}', [ProfileForm_Controller::class, 'editProfileForm'])->name('edit-profile-form');
-// Route::post('/update-profile-form/{id}',  [ProfileForm_Controller::class, 'updateProfileForm'])->name('update-profile-form');
 
 // ---------------------------------------------------------------------------------------//
 
@@ -102,6 +96,8 @@ Route::view('/modelExcellence', 'LVL5_Model_of_Excellence.modelofExcellence');
 
 //LEVEL ONE DATA//
 
+//
+
 //Profile Form
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
 Route::get('/level1', [ProfileForm_Controller::class,'displayAll']);
@@ -115,6 +111,8 @@ Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMand
 Route::put('/add-secretariat', [ProfileForm_Controller::class,'addSecretariat']);
 Route::get('/L1Incompletetbl',[ProfileForm_Controller::class, 'display_level1_incomplete']);
 Route::get('/L1Completedtbl',[ProfileForm_Controller::class, 'display_level1_complete']);
+Route::get('/L1Editform/{id}',[ProfileForm_Controller::class, 'edit_incomplete_profile']);
+Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
 
 //Fisherfolk Representative
 Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);
@@ -138,7 +136,7 @@ Route::view('/org_membership', 'FARMC_Membership.org_membership');
 //Fisherfolk Organization
 // ---------------------------------------------------------------------------------------//
 
-//Municipal 
+//Municipal
 Route::view('/FOMunicipal', 'Fisherfolk_Organization.Municipal.municipal');
 
 Route::view('/FOform1', 'Fisherfolk_Organization.Municipal.form1');

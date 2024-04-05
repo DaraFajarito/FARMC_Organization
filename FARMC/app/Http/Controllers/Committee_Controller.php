@@ -41,40 +41,6 @@ class Committee_Controller extends Controller
         $committee->member_org = $validatedData['member_org'] ?? null;
         $committee->save();
 
-        $fisherfolk = FisherfolkRepresentative_Model::where('id', $committee->profileForm_id)->get();
-        $committeeNull = $committee->isNull();
-        $fisherfolkNull = false; // Initialize as false
-
-        // Check if any relevant field is null for any fisherfolk representative
-        foreach ($fisherfolk as $representative) {
-            if (
-                is_null($representative->category) ||
-                is_null($representative->name) ||
-                is_null($representative->endorsement_fisherfolk) ||
-                is_null($representative->endorsement_attachment) ||
-                is_null($representative->atleast_one_year) ||
-                is_null($representative->aoy_attachment) ||
-                is_null($representative->source_of_income) ||
-                is_null($representative->soi_attachment) ||
-                is_null($representative->good_moral) ||
-                is_null($representative->gmc_attachment) ||
-                is_null($representative->org_name) ||
-                is_null($representative->date_of_reg) ||
-                is_null($representative->date_of_accreditation) ||
-                is_null($representative->dor_file) ||
-                is_null($representative->doa_file)
-            ) {
-                $fisherfolkNull = true;
-                break; // No need to continue checking if one representative is null
-            }
-        }
-
-        $profileForm = $profile->hasNullValues();
-        // Update status based on null values
-        $status = $committeeNull || $fisherfolkNull || $profileForm ? 'INCOMPLETE' : 'COMPLETED';
-
-        $profile->update(['status' => $status]);
-
         return view('LVL1_Profile_Form.MFARMC_Committee.committee')->with(compact('profile'))->with('success', 'Success!');
     }
 }
