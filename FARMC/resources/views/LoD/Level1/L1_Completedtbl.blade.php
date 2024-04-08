@@ -36,7 +36,7 @@
                             <a href="{{ url('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
                                 Go back to Level 1</a>
                         </div>
-                    </div>z
+                    </div>
 
                     <div class="card">
                         <div class="card-header">

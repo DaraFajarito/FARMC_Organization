@@ -27,11 +27,11 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 1 | INCOMPLETED</a>
+                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 2 | INCOMPLETED</a>
                                 </li>
                             </ol>
                             <br>
-                            <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 1</a>
+                            <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 2</a>
                         </div>
                     </div>
                     <div class="card">
@@ -40,7 +40,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <h5 class="card-title">You haven't provided the following:</h5>
-                                    <p>Please provide these necessary requirements to complete Level One.</p>
+                                    <p>Please provide these necessary requirements to complete Level Two.</p>
                                 </div>
                                 <div class="col-md-6 text-right">
                                     <a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit form</a>
@@ -240,6 +240,12 @@
                                         <br>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
                     </div>

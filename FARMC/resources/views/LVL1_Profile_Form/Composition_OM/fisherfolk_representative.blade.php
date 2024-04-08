@@ -108,18 +108,21 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                    <label class="input-checkbox checkbox-primary">
-                                                        <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk" onchange="toggleFileInput(this)">
-                                                        <span class="checkbox"></span>
-                                                    </label>
-                                                    <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
-                                                <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="1">
-                                            </div>
-                                            <div class="col-md-6" style="padding-left: 200px;">
-                                                <input id="endorsement_fisherfolk_inputf" type="file" name="endorsement_attachment" class="form-control" style="width:200px" accept="image/*,.pdf,.doc,.docx" placeholder="">
+<br>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                        <label class="input-checkbox checkbox-primary">
+                                                            <input type="checkbox" id="endorsement_fisherfolk_checkbox" name="endorsement_fisherfolk" onchange="toggleFileInput(this)">
+                                                            <span class="checkbox"></span>
+                                                        </label>
+                                                        <div class="captions">Endorsement of Fisherfolk Organization as their respective</div>
+                                                        <input type="hidden" id="endorsement_fisherfolk_input" name="endorsement_fisherfolk" value="1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input id="endorsement_fisherfolk_inputf" type="file" name="endorsement_attachment" class="form-control" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                </div>
                                             </div>
 
                                             <div class="col-md-12">

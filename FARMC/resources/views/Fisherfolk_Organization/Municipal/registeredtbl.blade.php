@@ -83,6 +83,53 @@
                                             </div>
                                             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                                 <div class="accordion-content accordion-desc">
+                                                <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-toggle="tab" href="#Ormin" role="tab">Baco</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin1" role="tab">Bansud</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin2" role="tab">Bongabong</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin3" role="tab">Bulalacao</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin4" role="tab">Calapan</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin5" role="tab">Gloria</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin6" role="tab">Mansalay</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin7" role="tab">Naujan</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin8" role="tab">Puerto Galera</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin9" role="tab">Pinamalayan</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin10" role="tab">Pola</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin11" role="tab">Roxas</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin12" role="tab">San Teodoro</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#Ormin13" role="tab">Socorro</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#ormin14" role="tab">Victoria</a>
+                                                    </li>
+                                                </ul>
                                                </div>
                                             </div>
                                         </div>
@@ -193,7 +240,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
         <!-- JavaScript -->
-        <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>

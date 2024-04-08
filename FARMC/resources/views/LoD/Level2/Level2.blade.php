@@ -81,12 +81,12 @@
                             <div class="col-md-8">
                                 <div class="card-block">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div style="display: flex;">
                                             <label>MIMAROPA LEVELS OVERVIEW</label>
-                                        </div>
-                                        <div class="col-md-8 text-right">
-                                            <a href="{{ url ('/L2Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L2Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                            <div class="col-md-8 text-right">
+                                                <a href="{{ url ('/L2Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                                <a href="{{ url ('/L2Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
