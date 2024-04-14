@@ -41,7 +41,6 @@ Route::get('/dash', function () {
 //LevelOne
 
 // Route::view('/level1', 'LoD.Level1.Level1');
-
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
 Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
 Route::view('/officers', 'LVL1_Profile_Form.FARMC_Officers.officers');
@@ -54,11 +53,12 @@ Route::view('/committee', 'LVL1_Profile_Form.MFARMC_Committee.committee');
 
 //LevelTwo
 
-Route::view('/level2', 'LoD.Level2.Level2');
+// Route::view('/level2', 'LoD.Level2.Level2');
 Route::view('/L2Completedtbl', 'LoD.Level2.L2_Completedtbl');
 Route::view('/L2Incompletetbl', 'LoD.Level2.L2_Incompletetbl');
 Route::view('/L2Incomplete', 'LoD.Level2.L2_Incomplete');
 Route::view('/L2Editform', 'LoD.Level2.L2_Editform');
+Route::view('/L2Viewform', 'LoD.Level2.L2_Viewform');
 
 Route::view('/basicFunction', 'LVL2_Basic_Function.basicFunction');
 
@@ -67,8 +67,11 @@ Route::view('/basicFunction', 'LVL2_Basic_Function.basicFunction');
 //LevelThree
 
 Route::view('/level3', 'LoD.Level3.Level3');
-Route::view('/L3Completed', 'LoD.Level3.L3_Completed');
+Route::view('/L3Completedtbl', 'LoD.Level3.L3_Completedtbl');
+Route::view('/L3Incompletetbl', 'LoD.Level3.L3_Incompletetbl');
 Route::view('/L3Incomplete', 'LoD.Level3.L3_Incomplete');
+Route::view('/L3Editform', 'LoD.Level3.L3_Editform');
+Route::view('/L3Viewform', 'LoD.Level3.L3_Viewform');
 
 Route::view('/fullyOperational', 'LVL3_Fully_Operational.fullyOperational');
 
@@ -77,8 +80,11 @@ Route::view('/fullyOperational', 'LVL3_Fully_Operational.fullyOperational');
 //LevelFour
 
 Route::view('/level4', 'LoD.Level4.Level4');
-Route::view('/L4Completed', 'LoD.Level4.L4_Completed');
+Route::view('/L4Completedtbl', 'LoD.Level4.L4_Completedtbl');
+Route::view('/L4Incompletetbl', 'LoD.Level4.L4_Incompletetbl');
 Route::view('/L4Incomplete', 'LoD.Level4.L4_Incomplete');
+Route::view('/L4Editform', 'LoD.Level4.L4_Editform');
+Route::view('/L4Viewform', 'LoD.Level4.L4_Viewform');
 
 Route::view('/sustainabilityMechanism', 'LVL4_Sustainability_Mechanism.sustainabilityMechanism');
 
@@ -87,16 +93,17 @@ Route::view('/sustainabilityMechanism', 'LVL4_Sustainability_Mechanism.sustainab
 //LevelFive
 
 Route::view('/level5', 'LoD.Level5.Level5');
-Route::view('/L5Completed', 'LoD.Level5.L5_Completed');
+Route::view('/L5Completedtbl', 'LoD.Level5.L5_Completedtbl');
+Route::view('/L5Incompletetbl', 'LoD.Level5.L5_Incompletetbl');
 Route::view('/L5Incomplete', 'LoD.Level5.L5_Incomplete');
+Route::view('/L5Editform', 'LoD.Level5.L5_Editform');
+Route::view('/L5Viewform', 'LoD.Level5.L5_Viewform');
 
 Route::view('/modelExcellence', 'LVL5_Model_of_Excellence.modelofExcellence');
 
 // ---------------------------------------------------------------------------------------//
-
 //LEVEL ONE DATA//
-
-//
+// ---------------------------------------------------------------------------------------//
 
 //Profile Form
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
@@ -120,6 +127,34 @@ Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'
 //Committee
 Route::post('/add-committee', [Committee_Controller::class,'createCommittee']);
 Route::get('/go-to-committee', [Committee_Controller::class,'display_committee_form']);
+
+// ---------------------------------------------------------------------------------------//
+//LEVEL TWO DATA//
+// ---------------------------------------------------------------------------------------//
+
+//Basic Function
+Route::get('/basicFunction/{id}', [ProfileForm_Controller::class,'display_level2']);
+Route::get('/level2', [ProfileForm_Controller::class,'level2Count']);
+Route::post('/add-basicFunction/{id}', [ProfileForm_Controller::class,'addBasicFunction']);
+Route::get('/L2Viewform/{id}', [ProfileForm_Controller::class,'display_level2_info']);
+
+Route::get('/L2Incompletetbl',[ProfileForm_Controller::class, 'display_level2_incomplete']);
+Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_complete']);
+
+// ---------------------------------------------------------------------------------------//
+//LEVEL TWO DATA//
+// ---------------------------------------------------------------------------------------//
+
+//Fully Functional 
+Route::get('/fullyoperational/{id}', [ProfileForm_Controller::class,'display_level3']);
+// Route::get('/level3', [ProfileForm_Controller::class,'level3Count']);
+// Route::post('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFullyOperational']);
+// Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_info']);
+
+// Route::get('/L3Incompletetbl',[ProfileForm_Controller::class, 'display_level3_incomplete']);
+// Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_complete']);
+
+// ---------------------------------------------------------------------------------------//
 
 // ---------------------------------------------------------------------------------------//
 //FARMC Membership

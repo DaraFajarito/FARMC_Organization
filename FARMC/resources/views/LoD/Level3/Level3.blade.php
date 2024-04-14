@@ -10,14 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
     <style>
-        /* @media print {
+        @media print {
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12px;
+            }
 
-            #example th:nth-child(6),
-            #example td:nth-child(6) {
+            .no-print {
+                display: none !important;
+                text-align: center;
+
+
+            }
+
+            table td,
+            table th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            table th {
+                background-color: #f2f2f2;
+            }
+
+            .rkmd-checkbox {
                 display: none;
             }
-        } */
-        
+        }
     </style>
 </head>
 
@@ -41,9 +61,9 @@
                         </li>
                         <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 3</a>
                         </li>
-                        <div class="text-right">
+                        <!-- <div class="text-right">
                             <span><a href="{{ url ('/fullyOperational') }}"><button type="button" class="btn btn-primary">+ &nbsp;Additional Form</button></a></span>
-                        </div>
+                        </div> -->
                     </ol>
                 </div>
             </div>
@@ -122,8 +142,8 @@
                                             <div class="tab-content tabs">
                                                 <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                                     <br>
-                                                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                        <thead>
+                                                    <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                        <thead style="font-size:12px">
                                                             <tr>
                                                                 <th>Province</th>
                                                                 <th>Municipality</th>
@@ -134,19 +154,23 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+
                                                             <tr>
                                                                 <td>Oriental Mindoro</td>
-                                                                <td>Calapan City</td>
-                                                                <td>2016/01/15</td>
-                                                                <td>2020/11/25</td>
-                                                                <td style="color:green"><b>COMPLETE</b></td>
-                                                                <td style="text-align: center;">
-                                                                    <a href="{{ url('/L1Viewform') }}" class="btn btn-warning"><i class="ti-eye"></i> &nbsp; View</a>
+                                                                <td>Naujan</td>
+                                                                <td>09/25/01</td>
+                                                                <td>05/10/25</td>
+                                                                <td style="color:red"><b>INCOMPLETE </b></td>
+                                                                <td style=" display: flex; justify-content: space-between;">
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Viewform') }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
-
                                                         </tbody>
                                                     </table>
+
+
                                                 </div>
                                                 <div class="tab-pane" id="mimaropa1" role="tabpanel">
                                                     <br>
@@ -203,11 +227,11 @@
                                                         <div class="tab-pane active" id="Ormin" role="tabpanel">
                                                             <br>
                                                             <div class="col-mb-12">
-                                                                <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                                    <thead>
+                                                                <table id="FARMC2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                                    <thead style="font-size:12px">
                                                                         <tr>
                                                                             <th>Province</th>
-                                                                            <!-- <th>Municipality</th> -->
+                                                                            <th>Municipality</th>
                                                                             <th>Date of Organized</th>
                                                                             <th>Date of Re-organized</th>
                                                                             <th>Status</th>
@@ -215,17 +239,20 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        <tr>
-                                                                            <td>Oriental Mindoro</td>
-                                                                            <!-- <td>Calapan City</td> -->
-                                                                            <td>2016/01/15</td>
-                                                                            <td>2016/01/15</td>
-                                                                            <td style="color:red"><b>INCOMPLETE</b></td>
-                                                                            <td><a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a></td>
-                                                                        </tr>
 
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                            <td style="text-align: center;">
+                                                                                <a href="{{ url ('/L2Editform') }}" class="btn btn-danger"><i class="ti-eye"></i> &nbsp; Edit</a>
+                                                                            </td>
+                                                                        </tr>
                                                                     </tbody>
                                                                 </table>
+
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane" id="Ormin1" role="tabpanel">
@@ -666,8 +693,8 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-block">
-                                        <h6 class="card-title">All Level 1 <em> <small>(Incomplete & Complete)</small> </em></h6>
-                                       <br>
+                                        <h6 class="card-title">All Level 3 <em> <small>(Incomplete & Complete)</small> </em></h6>
+                                        <br>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
                                                 <canvas id="bestSellers"></canvas>
@@ -677,7 +704,7 @@
                                                     <br>
                                                     <li><span class="btn btn-danger"></span> Completed</li>
                                                     <li><span class="btn btn-warning"></span> Incomplete</li>
-                                                <br>
+                                                    <br>
                                                 </ul>
                                             </div>
                                         </div>
@@ -693,6 +720,8 @@
 
             </div>
         </div>
+
+
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -713,34 +742,35 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-        <script>
+        <script type="text/javascript">
             $(document).ready(function() {
-                $('#example').DataTable({
+                $('#FARMC').DataTable({
                     dom: 'Bfrtip',
                     buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
+                        'copy', 'excel', 'pdf', 'print'
+                    ],
+                    "pagingType": "full_numbers"
                 });
             });
         </script>
 
-        <script>
+        <script type="text/javascript">
             $(document).ready(function() {
-                $('#example1').DataTable({
+                $('#FARMC2').DataTable({
                     dom: 'Bfrtip',
                     buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
+                        'copy', 'excel', 'pdf', 'print'
+                    ],
+                    "pagingType": "full_numbers"
                 });
             });
         </script>
+
 
         <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
 
         <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
         <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
-
-
 
 </body>
 

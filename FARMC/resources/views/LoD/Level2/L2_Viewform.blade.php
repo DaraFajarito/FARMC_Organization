@@ -46,18 +46,18 @@
     <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/responsive.css') }}">
 
     <style>
-        table.table td {
-            height: 20px;
-            /* Set the desired height for the table cells */
-            padding: 5px;
-            /* Add some padding to make the content look better */
-        }
-
         @media print {
             table {
                 width: 100%;
                 border-collapse: collapse;
                 font-size: 12px;
+            }
+
+            .no-print {
+                display: none !important;
+                text-align: center;
+
+
             }
 
             table td,
@@ -78,981 +78,251 @@
 </head>
 
 <body>
-
-
-
     <div class="wrapper">
         <div class="content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row no-print">
                     <div class="main-header">
-                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_Final.png') }}" style=" width: 50px;" alt="logo"></a>
                         <h4>M/C FARMC Profile | <small>VIEW DETAILS</small></h4>
                         <br>
                         <br>
-                        <div style="display: flex; align-items: center;">
-                            <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
-                            <div class="actions" style="margin-left: auto;">
+                        <div style="display: flex;">
+                            <a href="{{ url ('/level2') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                            <div class="actions text-center" style="flex: 1;"> <!-- Added text-center class and flex: 1 -->
                                 <button class="btn btn-success" onclick="window.print()">Print</button>
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
+                            <div class="actions" style="margin-left: auto;">
+                            @foreach($basics as $fully)
+                                <a href="{{ url ('/fullyoperational/'. $fully->id) }}"><button class="btn btn-primary">Proceed to Lvl 3</button></a>
+                            @endforeach
+                            </div>
                         </div>
-
                     </div>
                 </div>
 
                 @foreach($data as $item)
                 <div class="card">
                     <div id="content">
-                        <div class="card-header">
-                            <div style="border: 1px solid #ccc; padding: 10px;">
-                                <div class="text-center">
-                                    <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_Final.png') }}" style="width: 55px;" alt="logo"></a>
-                                    <a href="index.html" class="logo"><img src="{{ asset ('assets/images/bagongpilipinas.png') }}" style="width: 80px;" alt="logo"></a>
-                                    <div>
-                                        LEVEL TWO: FARMC Organization Details Overview
-                                        <br>
-                                        <small>Basic Functions of the FARMC</small>
-                                    </div>
+                        <div class="card-header" style="display: flex; justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <a class="logo"><img src="{{ asset ('assets/images/bagongpilipinas.png') }}" style="width: 160px; height:160px" alt="logo"></a>
+                                <a class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style="width: 170px; height:130px" alt="logo"></a>
+                                <div style="line-height: 1;">
+                                    <small><b>Republic of the Philippines</b></small>
+                                    <br>
+                                    <span><small>Department of Agriculture</small></span>
+                                    <br>
+                                    <span><small>BUREAU OF FISHERIES AND AQUATIC RESOURCES</small></span>
+                                    <br>
+                                    <span><small><b>Regional Field Office - MIMAROPA</b></small></span>
+                                    <br>
+                                    <span><small><b>Le Grace Bldg. Guinobatan, Calapan City, Oriental Mindoro</b></small></span>
+                                    <br>
+                                    <span><small><b>Tel. No. (043) 288-63050 | Mobile No. 0917-107-2189</b></small></span>
+                                    <br>
+                                    <span><small>ord.mimaropa@bfar.da.gov.ph</small></span>
+                                    <br>
+                                    <span><small>records.mimaropa@bfar.da.gov.ph</small></span>
                                 </div>
-                                <!-- <div class="card-header"> -->
-                                <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
-                                <hr>
-                                <div style="background-color: #415dfe;">
-                                    <div class="grid-material bg-general" style="color: white;padding:10px"> &nbsp&nbsp&nbsp<b>BASIC STRUCTURE</b></div>
-                                </div>
-                                <hr>
-                                <div class="col-sm-6 col-xs-6 waves-effect waves-light">
-                                    <div class="grid-material bg-general"></div>
-                                </div>
-                                <form class="form-inline" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    @if($errors->any())
-                                    <div class="alert alert-danger">
-                                        {{ $errors->first() }}
-                                    </div>
-                                    @endif
-
-                                    <div class="card-block">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group row">
-                                                    <label for="municipality" class="col-md-12 col-form-label form-control-label">Municipality / City: {{$item->municipality}}</label>
-                                                    <!-- <div class="col-md-2">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:900px;" placeholder="">
-                                                    </div> -->
-                                                </div>
-                                                <br>
-                                                <div class="form-group row">
-                                                    <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->province}}</label>
-                                                    <!-- <div class="col-md-2">
-                                                        <input type="text" id="province" name="province" class="form-control" style="width:900px" placeholder="">
-                                                    </div> -->
-                                                </div>
-                                                <br>
-                                                <div class="form-group m-r-15">
-                                                    <label for="date" class="block form-control-label">Date organized: <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td></label>
-                                                    <!-- <input id="date" type="date" name="date_organized" class="form-control" style="width: 400px;" placeholder=""> -->
-                                                </div>
-                                                <br><br>
-                                                <label class="captions"><small>Proof:</small></label>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr style="font-size: 12px;">
-                                                                <th>Minutes</th>
-                                                                <th>Photos</th>
-                                                                <th>Attendance</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td>{{ $item->minutes1 }}</td>
-                                                                <td>{{ $item->photos1 }}</td>
-                                                                <td>{{ $item->attendance1 }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <br>
-                                                <div class="form-group m-r-15">
-                                                    <label for="inline3mail" class="block form-control-label">Date of Reorganized: <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</label>
-                                                </div>
-                                                <br><br>
-                                                <label class="captions"><small>Proof:</small></label>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr style="font-size: 12px;">
-                                                                <th>Minutes</th>
-                                                                <th>Photos</th>
-                                                                <th>Attendance</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td>{{ $item->minutes2 }}</td>
-                                                                <td>{{ $item->photos2 }}</td>
-                                                                <td>{{ $item->attendance2 }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                
-
-                                                <div class="col-md-12">
-                                                    <br>
-                                                    <table class="table" border="1">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Internal Policy</td>
-                                                                @if ($item->chairperson === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{ $item->chairperson }}</td>
-                                                                @endif
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Fisherfolk Registry</td>
-                                                                @if ($item->vice_chairperson === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{$item->vice_chairperson}}</td>
-                                                                @endif
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Fisheries Profile</td>
-                                                                @if ($item->secretary === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{$item->secretary}}</td>
-                                                                @endif
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Formulation of Resolution and propose ordinance initiated</td>
-                                                                @if ($item->asst_secretary === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{$item->asst_secretary}}</td>
-                                                                @endif
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                                <hr>
-                                <div style="background-color: #415dfe;">
-                                    <div class="grid-material bg-general" style="color: white;padding:10px"><b>FARMC OFFICERS</b></div>
-                                </div>
-                                <hr>
-                                <div class="card-block">
-                                    <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
-                                    <div class="grid-material bg-general"></div>
-                                    <!-- <div class="card-block"> -->
-                                    <div class="row">
-                                        <div class="col-sm-12 table-responsive">
-                                            <form method="POST" enctype="multipart/form-data">
-                                                <table class="table" border="1">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Position</th>
-                                                            <th>Name</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Chairperson</td>
-                                                            @if ($item->chairperson === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{ $item->chairperson }}</td>
-                                                            @endif
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Vice-Chairperson</td>
-                                                            @if ($item->vice_chairperson === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->vice_chairperson}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Secretary</td>
-                                                            @if ($item->secretary === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->secretary}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Assistant Secretary</td>
-                                                            @if ($item->asst_secretary === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->asst_secretary}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>Treasurer</td>
-                                                            @if ($item->treasurer === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->treasurer}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Assistant Treasurer</td>
-                                                            @if ($item->asst_treas === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->asst_treas}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>Auditor</td>
-                                                            @if ($item->auditor === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->auditor}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Assistant Auditor</td>
-                                                            @if ($item->asst_aud === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->asst_aud}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td>6</td>
-                                                            <td>Press Relation Officer 1</td>
-                                                            @if ($item->pro1 === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->pro1}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Press Relation Officer 2</td>
-                                                            @if ($item->pro2 === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->pro2}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td>7</td>
-                                                            <td>Sgt-at-Arms 1</td>
-                                                            @if ($item->sgt_arm1 === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->sgt_arm1}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Sgt-at-Arms 2</td>
-                                                            @if ($item->sgt_arm2 === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->sgt_arm2}}</td>
-                                                            @endif
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Sgt-at-Arms 3</td>
-                                                            @if ($item->sgt_arm3 === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
-                                                            @else
-                                                            <td>{{$item->sgt_arm3}}</td>
-                                                            @endif
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <hr>
-                                <div style="background-color: #415dfe;">
-                                    <div class="grid-material bg-general" style="color: white;padding:10px"><b>A. COMPOSITION OF MEMBERSHIP</b></div>
-                                </div>
-                                <hr>
-                                <div class="card-block">
-                                    <form method="POST" action="" enctype="multipart/form-data">
-                                        <div class="card-header">
-                                            <label for="inline3mail" class="block form-control-label"><strong>1. Mandated member</strong></label>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr style="font-size: 12px;">
-                                                            <th>1.1 Chairperson SB/SP Committee of Agriculture and Fisheries</th>
-                                                            <th>1.2 Municipal Planning and Development Council</th>
-                                                            <th>1.3 Representative from Municipal Development Council</th>
-                                                            <th>1.4 Representative from Department of Agriculture/MAO</th>
-                                                            <th>1.5 Representative from Non-Governmental Organization</th>
-                                                            <th>1.6 Representative from Private Sector</th>
-                                                            <th>1.7 Other: Please specify</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->chairpersonSB }}</td>
-                                                            <td>{{ $item->mpdo }}</td>
-                                                            <td>{{ $item->repmdc }}</td>
-                                                            <td>{{ $item->repda }}</td>
-                                                            <td>{{ $item->repngo }}</td>
-                                                            <td>{{ $item->repps }}</td>
-                                                            <td>{{ $item->others }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </form>
-                                    @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    @endif
-
-
-                                    <form method="post" action="" enctype="multipart/form-data" id="yourFormId">
-                                        <div class="card-header">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <label for="inline3mail" class="block form-control-label"><strong>2. Fisherfolk Representative</strong></label>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <label for="inline3mail" class="block form-control-label">Municipal Fisherfolk</label>
-                                            @foreach($fisherfolk as $item)
-                                            @if($item->category == "Municipal Fisherfolk")
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead style="font-size: 12px;">
-                                                        <tr>
-                                                            <th colspan="8" class="text-center">Barangay Certification</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Name of Representative</th>
-                                                            <th>Endorsement of Fisherfolk Organization</th>
-                                                            <th>At least 1 year residency</th>
-                                                            <th>Source of income</th>
-                                                            <th>Good Moral Character</th>
-                                                            <th>Name of Organization</th>
-                                                            <th>Date of Registration</th>
-                                                            <th>Date of Accreditation</th>
-                                                        </tr>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->atleast_one_year == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->good_moral == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $item->org_name }}</td>
-                                                            <td>{{ $item->date_of_reg }}</td>
-                                                            <td>{{ $item->date_of_accreditation }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <br>
-
-
-                                            @elseif($item->category == "Fisherworker")
-                                            <label for="inline3mail" class="block form-control-label">Fisherworker</label>
-
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead style="font-size: 12px;">
-                                                        <tr>
-                                                            <th colspan="8" class="text-center">Barangay Certification</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Name of Representative</th>
-                                                            <th>Endorsement of Fisherfolk Organization</th>
-                                                            <th>At least 1 year residency</th>
-                                                            <th>Source of income</th>
-                                                            <th>Good Moral Character</th>
-                                                            <th>Name of Organization</th>
-                                                            <th>Date of Registration</th>
-                                                            <th>Date of Accreditation</th>
-                                                        </tr>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->atleast_one_year == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->good_moral == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $item->org_name }}</td>
-                                                            <td>{{ $item->date_of_reg }}</td>
-                                                            <td>{{ $item->date_of_accreditation }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <br>
-
-
-                                            <label for="inline3mail" class="block form-control-label">Commercial Fishing Operator</label>
-                                            @elseif($item->category == "Commercial Fishing Operator")
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead style="font-size: 12px;">
-                                                        <tr>
-                                                            <th colspan="8" class="text-center">Barangay Certification</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Name of Representative</th>
-                                                            <th>Endorsement of Fisherfolk Organization</th>
-                                                            <th>At least 1 year residency</th>
-                                                            <th>Source of income</th>
-                                                            <th>Good Moral Character</th>
-                                                            <th>Name of Organization</th>
-                                                            <th>Date of Registration</th>
-                                                            <th>Date of Accreditation</th>
-                                                        </tr>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->atleast_one_year == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->good_moral == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $item->org_name }}</td>
-                                                            <td>{{ $item->date_of_reg }}</td>
-                                                            <td>{{ $item->date_of_accreditation }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <br>
-
-                                            @elseif($item->category == "Women Fisherfolk Sector Representative")
-                                            <label for="inline3mail" class="block form-control-label">Women Fisherfolk Sector Representative</label>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead style="font-size: 12px;">
-                                                        <tr>
-                                                            <th colspan="8" class="text-center">Barangay Certification</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Name of Representative</th>
-                                                            <th>Endorsement of Fisherfolk Organization</th>
-                                                            <th>At least 1 year residency</th>
-                                                            <th>Source of income</th>
-                                                            <th>Good Moral Character</th>
-                                                            <th>Name of Organization</th>
-                                                            <th>Date of Registration</th>
-                                                            <th>Date of Accreditation</th>
-                                                        </tr>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->atleast_one_year == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->good_moral == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $item->org_name }}</td>
-                                                            <td>{{ $item->date_of_reg }}</td>
-                                                            <td>{{ $item->date_of_accreditation }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <br>
-
-                                            @elseif($item->category == "Indigenous Peoples(IP's) if any")
-                                            <label for="inline3mail" class="block form-control-label">Indigenous Peoples(IP's)</label>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead style="font-size: 12px;">
-                                                        <tr>
-                                                            <th colspan="8" class="text-center">Barangay Certification</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Name of Representative</th>
-                                                            <th>Endorsement of Fisherfolk Organization</th>
-                                                            <th>At least 1 year residency</th>
-                                                            <th>Source of income</th>
-                                                            <th>Good Moral Character</th>
-                                                            <th>Name of Organization</th>
-                                                            <th>Date of Registration</th>
-                                                            <th>Date of Accreditation</th>
-                                                        </tr>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->atleast_one_year == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->good_moral == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $item->org_name }}</td>
-                                                            <td>{{ $item->date_of_reg }}</td>
-                                                            <td>{{ $item->date_of_accreditation }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <br>
-                                            @elseif($item->category == "Youth Fisherfolk Sector Representative")
-                                            <label for="inline3mail" class="block form-control-label">Youth Fisherfolk Sector Representative</label>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead style="font-size: 12px;">
-                                                        <tr>
-                                                            <th colspan="8" class="text-center">Barangay Certification</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Name of Representative</th>
-                                                            <th>Endorsement of Fisherfolk Organization</th>
-                                                            <th>At least 1 year residency</th>
-                                                            <th>Source of income</th>
-                                                            <th>Good Moral Character</th>
-                                                            <th>Name of Organization</th>
-                                                            <th>Date of Registration</th>
-                                                            <th>Date of Accreditation</th>
-                                                        </tr>
-
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->name }}</td>
-                                                            <td> @if($item->endorsement_fisherfolk == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->atleast_one_year == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->source_of_income == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if($item->good_moral == 1)
-                                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
-                                                                @else
-                                                                <span style="color: red;">None</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $item->org_name }}</td>
-                                                            <td>{{ $item->date_of_reg }}</td>
-                                                            <td>{{ $item->date_of_accreditation }}</td>
-
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <br>
-                                            @endif
-                                            @endforeach
-                                        </div>
-                                    </form>
-                                </div>
-
-
-
-                                <hr>
-                                <div style="background-color: #415dfe;">
-                                    <div class="grid-material bg-general" style="color: white;padding:10px"><b>B. MFARMC COMMITTEE</b></div>
-                                </div>
-                                <hr>
-
-
-                                <form method="post" action="" enctype="multipart/form-data" id="yourFormId">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <label for="inline3mail" class="block form-control-label">Law Enforcement & Prosecution</label>
-                                            </div>
-
-                                        </div>
-                                        <br>
-                                        @foreach($committee as $item)
-                                        @if($item->category == "Law Enforcement & Prosecution")
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr style="font-size: 12px;">
-                                                        <th>Position</th>
-                                                        <th>Name</th>
-                                                        <th>Office / Organization</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Chairperson</td>
-                                                        @if ( $item->chairperson_name === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->chairperson_name }}</td>
-                                                        @endif
-
-                                                        @if ( $item->chairperson_org === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->chairperson_org }}</td>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Secretary</td>
-                                                        @if ( $item->sec_name === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->sec_name }}</td>
-                                                        @endif
-
-                                                        @if ( $item->sec_org === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->sec_org }}</td>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Member</td>
-                                                        @if ( $item->member_name === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->member_name }}</td>
-                                                        @endif
-                                                        @if ( $item->member_org === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->member_org }}</td>
-                                                        @endif
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <br>
-
-
-                                        <label for="inline3mail" class="block form-control-label">Rehabilitation and Conservation</label>
-
-                                        @elseif($item->category == "Rehabilitation and Conservation")
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr style="font-size: 12px;">
-                                                        <th>Position</th>
-                                                        <th>Name</th>
-                                                        <th>Office / Organization</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Chairperson</td>
-                                                        @if ( $item->chairperson_name === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->chairperson_name }}</td>
-                                                        @endif
-
-                                                        @if ( $item->chairperson_org === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->chairperson_org }}</td>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Secretary</td>
-                                                        @if ( $item->sec_name === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->sec_name }}</td>
-                                                        @endif
-                                                        @if ( $item->sec_org === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->sec_org }}</td>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Member</td>
-                                                        @if ( $item->member_name === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->member_name }}</td>
-                                                        @endif
-                                                        @if ( $item->member_org === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
-                                                        @else
-                                                        <td>{{ $item->member_org }}</td>
-                                                        @endif
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <br>
-
-
-
-                                        @endif
-                                        @endforeach
-                                    </div>
-                                </form>
-
-
-                                <hr>
-                                <div style="background-color: #415dfe;">
-                                    <div class="grid-material bg-general" style="color: white;padding:10px"><b>C. SECRETARIAT</b></div>
-                                </div>
-                                <hr>
-                                <div class="card-block">
-                                    @foreach($data as $item)
-                                    <form method="POST" enctype="multipart/form-data" id="yourFormId">
-
-                                        <div class="card-header">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-
-                                                        <th class="text-center">Name</th>
-                                                        <th class="text-center">Office / Organization</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="text-center">
-                                                    <tr>
-                                                        @if ($item->name_sec === null)
-                                                        <td class="{{ $item->name_sec === null ? 'text-danger' : '' }}">
-                                                            {{ $item->office_org2 ?? 'no data' }}
-                                                        </td>
-
-                                                        @else
-                                                        <td>{{$item->name_sec}}</td>
-                                                        @endif
-
-                                                        @if ($item->office_org === null)
-                                                        <td class="{{ $item->office_org === null ? 'text-danger' : '' }}">
-                                                            {{ $item->office_org2 ?? 'no data' }}
-                                                        </td>
-
-                                                        @else
-                                                        <td>{{$item->office_org}}</td>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if ($item->name_sec1 === null)
-                                                        <td class="{{ $item->name_sec1 === null ? 'text-danger' : '' }}">
-                                                            {{ $item->office_org2 ?? 'no data' }}
-                                                        </td>
-
-                                                        @else
-                                                        <td>{{$item->name_sec1}}</td>
-                                                        @endif
-
-                                                        @if ($item->office_org1 === null)
-                                                        <td class="{{ $item->office_org1 === null ? 'text-danger' : '' }}">
-                                                            {{ $item->office_org2 ?? 'no data' }}
-                                                        </td>
-
-                                                        @else
-                                                        <td>{{$item->office_org1}}</td>
-                                                        @endif
-                                                    </tr>
-                                                    <tr>
-                                                        @if ($item->name_sec2 === null)
-                                                        <td class="{{ $item->name2 === null ? 'text-danger' : '' }}">
-                                                            {{ $item->office_org2 ?? 'no data' }}
-                                                        </td>
-
-                                                        @else
-                                                        <td>{{$item->name_sec2}}</td>
-                                                        @endif
-
-                                                        @if ($item->office_org2 === null)
-                                                        <td class="{{ $item->office_org2 === null ? 'text-danger' : '' }}">
-                                                            {{ $item->office_org2 ?? 'no data' }}
-                                                        </td>
-                                                        @else
-                                                        <td>{{$item->office_org2}}</td>
-                                                        @endif
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </form>
-                                    @endforeach
-                                </div>
-
-
                             </div>
+                            <div style="display: flex; align-items: center; position: relative;  margin-left: auto;">
+                                <a class="logo"><img src="{{ asset ('assets/images/Logo_Final.png') }}" style="width: 140px; height:140px" alt="logo"></a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="text-center">
+                            LEVEL TWO: FARMC Organization Details Overview
                             <br>
+                            <span class="label label-default"> Basic Function of FARMC</span>
+                        </div>
+                        <hr>
+
+                        <div class="card-header">
+                            <div style="background-color: #545454">
+                                <div class="grid-material bg-general" style="color: white;padding:10px"> &nbsp&nbsp&nbsp<b>BASIC FUNCTION</b></div>
+                            </div>
+                            <hr>
+                            <div class="col-sm-6 col-xs-6 waves-effect waves-light">
+                                <div class="grid-material bg-general"></div>
+                            </div>
+
+                            <form class="form-inline" method="" action="" enctype="multipart/form-data">
+
+                                @foreach($basics as $item)
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group m-r-15">
+                                                <label for="date" class="block form-control-label">1. With Municipal Fisheries Development Plan (MFDP) <td></td></label>
+                                            </div>
+                                            <br><br>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr style="font-size: 13px;">
+                                                            <th colspan="1"></th>
+                                                            <th colspan="2" class="text-center">Proof</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr style="font-size: 12px;">
+                                                            <td class="text-center">{{$item->mfdp}}</td>
+                                                            <td class="text-center">{{$item->copy1_file}} attached copy</span>
+                                                            </td>
+                                                            <td class="text-center">{{$item->mindoc1_file}} attached minutes</span>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <br>
+                                            <div class="form-group m-r-15">
+                                                <label for="date" class="block form-control-label">2. With Municipal Fishery Ordinance (MFO)<td></td></label>
+                                            </div>
+                                            <br><br>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr style="font-size: 13px;">
+                                                            <th colspan="1"></th>
+                                                            <th colspan="2" class="text-center">Proof</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr style="font-size: 12px;">
+                                                            <td class="text-center">{{$item->mfo}}</td>
+                                                            <td class="text-center">{{$item->copy1_file}} attached copy</span>
+                                                            </td>
+                                                            <td class="text-center">{{$item->mindoc1_file}} attached minutes</span>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group m-r-15">
+                                                <label for="date" class="block form-control-label">3. Actively Assisting The Law Enforcement Activity<td></td></label>
+                                                <!-- <input id="date" type="date" name="date_organized" class="form-control" style="width: 400px;" placeholder=""> -->
+                                            </div>
+                                            <br><br>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            @if ($item->bantaydt === null)
+                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @else
+                                                            <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @endif
+                                                            <td>With Bantay Dagat Taskforce</td>
+                                                            <td class="text-center">{{$item->bantaydt_file}} View file</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            @if ($item->actfarmcbt === null)
+                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @else
+                                                            <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @endif
+                                                            <td>With list of activity undertaken by the FARMC-Bantay Dagat</td>
+                                                            <td class="text-center">{{$item->actfarmcbt_file}} View file</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            @if ($item->appfarmcbt === null)
+                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @else
+                                                            <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @endif
+                                                            <td>With list of apprehention conducted by the FARMC-Bantay Dagat</td>
+                                                            <td class="text-center">{{$item->appfarmcbt_file}} View file</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            @if ($item->appfarmcbt === null)
+                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @else
+                                                            <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @endif
+                                                            <td>With list of cases established and functional</td>
+                                                            <td class="text-center">{{$item->caseestablished_file}} View file</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group m-r-15">
+                                                <label for="date" class="block form-control-label">4. With MFARMC Office Established And Functional <td></td></label>
+                                            </div>
+                                            <br><br>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr style="font-size: 12px;">
+                                                            <td class="text-center">{{$item->mfarmcoffice}}</td>
+                                                            <td class="text-center">{{$item->copy3_file}} Attached copy</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group m-r-15">
+                                                <label for="date" class="block form-control-label">5. Actively Assisting The Law Enforcement Activity <td></td></label>
+                                            </div>
+                                            <br><br>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr style="font-size: 13px;">
+                                                            <th colspan="1"></th>
+                                                            <th colspan="1" class="text-center">If Yes, Schedule Of Regular Meeting</th>
+                                                            <th colspan="2" class="text-center">Attached Proof Of Meeting</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr style="font-size: 12px;">
+                                                            @if ($item->regmeet === null)
+                                                            <td> <span style="color: red;">NO</span></td>
+                                                            @else
+                                                            <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @endif
+                                                            <td class="text-center">{{$item->regmeet}}</td>
+
+                                                            <td class="text-center">{{$item->minatt_file}} Minutes w/ Attendance</span>
+                                                            </td>
+                                                            <td class="text-center">{{$item->photodoc_file}} Photo Docu</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <br>
+
+
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                            </form>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 

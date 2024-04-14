@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>All Dashboard | BFAR - FARMC</title>
+    <title>Level 2 Overview | BFAR - FARMC</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <meta charset="utf-8">
@@ -58,7 +58,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 2 | Completed</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$completed}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 2 | Incompleted</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$incomplete}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -81,12 +81,12 @@
                             <div class="col-md-8">
                                 <div class="card-block">
                                     <div class="row">
-                                        <div style="display: flex;">
+                                        <div class="col-md-4">
                                             <label>MIMAROPA LEVELS OVERVIEW</label>
-                                            <div class="col-md-8 text-right">
-                                                <a href="{{ url ('/L2Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                                <a href="{{ url ('/L2Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                            </div>
+                                        </div>
+                                        <div class="col-md-8 text-right">
+                                            <a href="{{ url ('/L2Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                            <a href="{{ url ('/L2Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -126,22 +126,31 @@
                                                             <tr>
                                                                 <th>Province</th>
                                                                 <th>Municipality</th>
-                                                                <th>Date of Organized</th>
-                                                                <th>Date of Re-organized</th>
+                                                                <th>MFDP</th>
+                                                                <th>MFO</th>
                                                                 <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-
+                                                            @foreach($data as $item)
                                                             <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <td>{{$item->province}}</td>
+                                                                <td>{{$item->municipality}}</td>
+                                                                <td>{{$item->mfdp}}</td>
+                                                                <td>{{$item->mfo}}</td>
+                                                                @if ($item->status == "COMPLETED")
+                                                                <td style="color:green"><b>COMPLETED</b></td>
+                                                                @elseif ($item->status == "INCOMPLETE")
+                                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @endif
+                                                                <td style=" display: flex; justify-content: space-between;">
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L2Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L2Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L2Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                                </td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
 
@@ -672,13 +681,13 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
-                                                <canvas id="bestSellers"></canvas>
+                                                <canvas id="level2chart"></canvas>
                                             </div>
                                             <div class="col-sm-12">
                                                 <ul class="graphl-legend-rectangle">
                                                     <br>
-                                                    <li><span class="btn btn-danger"></span> Completed</li>
-                                                    <li><span class="btn btn-warning"></span> Incomplete</li>
+                                                    <li><span class="btn btn-primary"></span> Completed</li>
+                                                    <li><span class="btn btn-danger"></span> Incomplete</li>
                                                     <br>
                                                 </ul>
                                             </div>
@@ -695,55 +704,109 @@
 
             </div>
         </div>
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <!-- DataTables CSS -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
-        <!-- DataTables JS -->
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
 
-        <!-- DataTables Buttons extension CSS -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+    <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
 
-        <!-- DataTables Buttons extension JS -->
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#FARMC').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'excel', 'pdf', 'print'
-                    ],
-                    "pagingType": "full_numbers"
-                });
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#FARMC').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "pagingType": "full_numbers"
             });
-        </script>
+        });
+    </script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#FARMC2').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'excel', 'pdf', 'print'
-                    ],
-                    "pagingType": "full_numbers"
-                });
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#FARMC2').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "pagingType": "full_numbers"
             });
-        </script>
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('level2chart').getContext('2d');
+        // Define data for the chart
+        var data = {
+            labels: ['Completed', 'Incomplete'],
+            datasets: [{
+                label: 'Task Completion',
+                data: [{
+                    {
+                        $completed
+                    }
+                }, {
+                    {
+                        $incomplete
+                    }
+                }],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.5)', // Green for completed tasks
+                    'rgba(255, 99, 132, 0.5)' // Red for incomplete tasks
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Define options for the chart
+        var options = {
+            cutoutPercentage: 70,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Completion Status',
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        };
+
+        // Create the chart
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
+        });
+    </script>
 
 
-        <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
 
-        <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
-        <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
+    <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
 
 
 

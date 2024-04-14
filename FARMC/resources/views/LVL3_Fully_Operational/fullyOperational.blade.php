@@ -52,7 +52,6 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
                         <hr>
                         <div class="grid-material bg-general" style="text-align:center; font-size:20px"><b>FULLY OPERATIONAL</b></div>
                         <hr>
@@ -312,17 +311,17 @@
                                         <div class="col-md-12" style="margin-top: 1rem;">
                                             <div class="form-group row">
                                                 <!-- <div class="col-md-12"> -->
-                                                    <div class="col-md-5">
-                                                        <label for="municipality" class="col-md-12 captions">5.1.1 Schedule of regular meeting of committee</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:220px" placeholder="">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached minutes</b></em></small>
-                                                    </div>
+                                                <div class="col-md-5">
+                                                    <label for="municipality" class="col-md-12 captions">5.1.1 Schedule of regular meeting of committee</label>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <input type="text" id="municipality" name="municipality" class="form-control" style="width:220px" placeholder="">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                    <small><b><em>Attached minutes</b></em></small>
+                                                </div>
+                                            </div>
                                             <!-- </div> -->
                                             <div class="col-md-12">
                                                 <div class="form-group row">

@@ -104,8 +104,12 @@
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
                             <div class="actions" style="margin-left: auto;">
-                                <a href="{{ url ('/basicFunction') }}"><button class="btn btn-primary">Proceed to Lvl 2</button></a>
+                                @foreach ($data as $basics)
+                                @if($basics->status == "COMPLETED")
+                                <a href="{{ url ('/basicFunction/' . $basics->id) }}"><button class="btn btn-primary">Proceed to Lvl 2</button></a>
+                                @endif
                             </div>
+                            @endforeach
                         </div>
 
 
@@ -152,7 +156,7 @@
                             <span class="label label-default"> Basic Structure of the Council</span>
                         </div>
                         <hr>
-                        <br>
+
                         <div class="card-header">
                             <div style="background-color: #415dfe;">
                                 <div class="grid-material bg-general" style="color: white;padding:10px"> &nbsp&nbsp&nbsp<b>BASIC STRUCTURE</b></div>
@@ -217,65 +221,62 @@
                                             <br><br>
                                             <label class="captions"><small>Proof:</small></label>
                                             <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr style="font-size: 12px;">
-                                                            <th>Minutes</th>
-                                                            <th>Photos</th>
-                                                            <th>Attendance</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr style="font-size: 12px;">
-                                                            <td>{{ $item->minutes2 }}</td>
-                                                            <td>{{ $item->photos2 }}</td>
-                                                            <td>{{ $item->attendance2 }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr style="font-size: 12px;">
+                                                                <th>Minutes</th>
+                                                                <th>Photos</th>
+                                                                <th>Attendance</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr style="font-size: 12px;">
+                                                                <td>{{ $item->minutes2 }}</td>
+                                                                <td>{{ $item->photos2 }}</td>
+                                                                <td>{{ $item->attendance2 }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                             </div>
 
 
-                                            <div class="col-md-12">
-                                                <br>
-                                                <table class="table" border="1">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Internal Policy</td>
-                                                            <!-- @if ($item->chairperson === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{ $item->chairperson }}</td>
-                                                                @endif -->
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fisherfolk Registry</td>
-                                                            <!-- @if ($item->vice_chairperson === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{$item->vice_chairperson}}</td>
-                                                                @endif -->
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fisheries Profile</td>
-                                                            <!-- @if ($item->secretary === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{$item->secretary}}</td>
-                                                                @endif -->
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Formulation of Resolution and propose ordinance initiated</td>
-                                                            <!-- @if ($item->asst_secretary === null)
-                                                                <td> <span style="color: red;"> no data</span></td>
-                                                                @else
-                                                                <td>{{$item->asst_secretary}}</td>
-                                                                @endif -->
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            <br>
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        @if ($item->internalP === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                        @endif
+                                                        <td>Internal Policy</td>
+                                                    </tr>
+                                                    <tr>
+                                                        @if ($item->fisherfolkR === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                        @endif
+                                                        <td>Fisherfolk Registry</td>
+                                                    </tr>
+                                                    <tr>
+                                                        @if ($item->fisheriesP === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                        @endif
+                                                        <td>Fisheries Profile</td>
+                                                    </tr>
+                                                    <tr>
+                                                        @if ($item->formulationR === null)
+                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @else
+                                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                        @endif
+                                                        <td>Formulation of Resolution and propose ordinance initiated</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -293,7 +294,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 table-responsive">
                                         <form method="POST" enctype="multipart/form-data">
-                                            <table class="table" border="1">
+                                            <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>

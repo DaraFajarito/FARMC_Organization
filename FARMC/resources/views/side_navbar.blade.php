@@ -276,14 +276,6 @@
         });
     </script>
 
-    <script>
-        function toggleSidebar(event) {
-            event.preventDefault(); // Prevent the default behavior of the anchor tag
-            // Optionally, you can add a class to the sidebar to indicate that it is expanded
-            document.querySelector('.main-sidebar').classList.add('sidebar-expanded');
-        }
-    </script>
-
 
 </body>
 

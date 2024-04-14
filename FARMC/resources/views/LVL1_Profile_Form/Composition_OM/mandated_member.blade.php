@@ -125,7 +125,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="others" value="{{$officer->others}}">
+                                                            <input type="text" id="h-email" class="form-control" placeholder="" name="others" value="N/A">
                                                         </td>
                                                     </tr>
                                                 </tbody>

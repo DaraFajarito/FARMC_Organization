@@ -228,58 +228,58 @@
             });
         });
     </script>
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-<script>
-    $(document).ready(function() {
-        $('#internalP_file').change(function() {
-            if ($(this).val()) {
-                $('#checkbox').prop('checked', true);
-            } else {
-                $('#checkbox').prop('checked', false);
-            }
-        });
-        $('#fisherfolkR_file').change(function() {
-            if ($(this).val()) {
-                $('#checkbox-1').prop('checked', true);
-            } else {
-                $('#checkbox-1').prop('checked', false);
-            }
-        });
-        $('#fisheriesP_file').change(function() {
-            if ($(this).val()) {
-                $('#checkbox-2').prop('checked', true);
-            } else {
-                $('#checkbox-2').prop('checked', false);
-            }
-        });
-        $('#formulationR_file').change(function() {
-            if ($(this).val()) {
-                $('#checkbox-3').prop('checked', true);
-            } else {
-                $('#checkbox-3').prop('checked', false);
-            }
-        });
-
-        // Add similar change event listeners for other file inputs
-    });
-</script>
-     <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                function setupCheckbox(checkboxId, hiddenInputId) {
-                    const checkbox = document.getElementById(checkboxId);
-                    const hiddenInput = document.getElementById(hiddenInputId);
-
-                    checkbox.addEventListener('change', function() {
-                        hiddenInput.value = this.checked ? '1' : null;
-                    });
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script>
+        $(document).ready(function() {
+            $('#internalP_file').change(function() {
+                if ($(this).val()) {
+                    $('#checkbox').prop('checked', true);
+                } else {
+                    $('#checkbox').prop('checked', false);
                 }
-
-                setupCheckbox('checkbox', 'internalP_file');
-                setupCheckbox('checkbox-1', 'fisherfolkR_file');
-                setupCheckbox('checkbox-2', 'fisheriesP_file');
-                setupCheckbox('checkbox-3', 'formulationR_file');
             });
-        </script>
+            $('#fisherfolkR_file').change(function() {
+                if ($(this).val()) {
+                    $('#checkbox-1').prop('checked', true);
+                } else {
+                    $('#checkbox-1').prop('checked', false);
+                }
+            });
+            $('#fisheriesP_file').change(function() {
+                if ($(this).val()) {
+                    $('#checkbox-2').prop('checked', true);
+                } else {
+                    $('#checkbox-2').prop('checked', false);
+                }
+            });
+            $('#formulationR_file').change(function() {
+                if ($(this).val()) {
+                    $('#checkbox-3').prop('checked', true);
+                } else {
+                    $('#checkbox-3').prop('checked', false);
+                }
+            });
+
+            // Add similar change event listeners for other file inputs
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function setupCheckbox(checkboxId, hiddenInputId) {
+                const checkbox = document.getElementById(checkboxId);
+                const hiddenInput = document.getElementById(hiddenInputId);
+
+                checkbox.addEventListener('change', function() {
+                    hiddenInput.value = this.checked ? '1' : null;
+                });
+            }
+
+            setupCheckbox('checkbox', 'internalP_file');
+            setupCheckbox('checkbox-1', 'fisherfolkR_file');
+            setupCheckbox('checkbox-2', 'fisheriesP_file');
+            setupCheckbox('checkbox-3', 'formulationR_file');
+        });
+    </script>
 
 </body>
 

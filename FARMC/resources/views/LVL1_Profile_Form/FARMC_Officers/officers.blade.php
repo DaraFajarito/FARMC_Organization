@@ -83,7 +83,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>Assistant Secretary</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="asst_sec" value="{{$officer->asst_sec}}"></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="Optional"  name="asst_sec" value="N/A"></td>
 
                                                     </tr>
                                                     <tr>
@@ -95,7 +95,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>Assistant Treasurer</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="asst_treas" value="{{$officer->asst_treas}}"></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="Optional"  name="asst_treas" value="N/A"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>5</td>
@@ -105,7 +105,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>Assistant Auditor</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="asst_aud" value="{{$officer->asst_aud}}"></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="Optional"  name="asst_aud" value="N/A"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>6</td>
@@ -115,7 +115,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>Press Relation Officer 2</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="pro2" value="{{$officer->pro2}}"></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="Optional"  name="pro2" value="N/A"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>7</td>
@@ -125,12 +125,12 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>Sgt-at-Arms 2</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="sgt_arms2" value="{{$officer->sgt_arms2}}"></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="Optional"  name="sgt_arms2" value="N/A"></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>Sgt-at-Arms 3</td>
-                                                        <td><input type="text" id="h-email" class="form-control" placeholder=""  name="sgt_arms3" value="{{$officer->sgt_arms3}}"></td>
+                                                        <td><input type="text" id="h-email" class="form-control" placeholder="Optional"  name="sgt_arms3" value="N/A"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

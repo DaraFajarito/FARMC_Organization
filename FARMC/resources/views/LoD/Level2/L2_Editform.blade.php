@@ -258,7 +258,7 @@
 
                                     <div class="col-md-12" style="margin-top:20px">
                                         <div class="form-group row">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">3. Actively assisting the law enforcement activity</label>
+                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">5. Conducted Regular Meeting</label>
                                         </div>
                                     </div>
 
@@ -269,10 +269,10 @@
                                         <div class="form-radio">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" value="yes" onclick="toggleSchedule(this)" /><i class="helper"></i>Yes
+                                                    <input type="radio" name="radio" value="yes"/><i class="helper"></i>Yes
                                                 </label>
                                                 <label>
-                                                    <input type="radio" name="radio" value="no" onclick="toggleSchedule(this)" /><i class="helper"></i>No
+                                                    <input type="radio" name="radio" value="no"/><i class="helper"></i>No
                                                 </label>
                                             </div>
                                         </div>
@@ -280,7 +280,7 @@
                                         <br>
                                     </div>
 
-                                    <div id="schedule" class="col-md-4" style="display:none;">
+                                    <div class="col-md-4">
                                         <label for=""><small><em><b>If yes, schedule of regular meeting</b></em></small></label>
                                         <div class="form-radio">
                                             <div class="radio radio-inline">
@@ -295,7 +295,7 @@
                                         <br>
                                         <br>
                                     </div>
-                                    <div id="proof" class="col-md-5" style="display:none;">
+                                    <div class="col-md-5">
                                         <label for=""><small><em><b>Attached proof of meeting</b></em></small></label>
                                         <br>
                                         <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
@@ -305,48 +305,51 @@
                                         <small><b><em>Photo documentation</em></b></small>
                                         <br>
                                     </div>
-
-
                                     <div class="row">
-                                        <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
+                                        <div class="col-md-12 text-center">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SAVE</button>
                                         </div>
                                     </div>
-                                    <!-- </div> -->
+
+
+
                                 </div>
                             </div>
+                             <!-- Modal -->
+                             <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to submit now?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <!-- </div> -->
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
+    
     <script>
-    function toggleSchedule(elem) {
-        var scheduleDiv = document.getElementById('schedule');
-        if (elem.value === 'yes') {
-            scheduleDiv.style.display = 'block';
-        } else {
-            scheduleDiv.style.display = 'none';
+        function submitFormAndAddAnother1() {
+            // Submit the form
+            document.getElementById("FormId").submit();
+            // Clear the form fields
+            document.getElementById("FormId").reset();
         }
-        // Hide proof if schedule is hidden
-        var proofDiv = document.getElementById('proof');
-        proofDiv.style.display = 'none';
-    }
-
-    function toggleProof(elem) {
-        var proofDiv = document.getElementById('proof');
-        if (elem.value === 'monthly' || elem.value === 'quarterly') {
-            proofDiv.style.display = 'block';
-        } else {
-            proofDiv.style.display = 'none';
-        }
-    }
-</script>
-
+    </script>
 
     <script type="text/javascript">
         SyntaxHighlighter.all();

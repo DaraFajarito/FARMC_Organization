@@ -221,20 +221,18 @@
                                             <b>
                                                 <h6 class="captions">Fisherfolk Representative</h6>
                                             </b>
-                                            @foreach ($committeeNullFields as $field)
-                                            <span style="display: inline-block;">&nbsp; {{ ucfirst($field) }}</span><br>
-                                            @endforeach
-                                            @if ($missingCategories)
+                                            @if (!empty($missingCategoriesArray))
+                                            <p>The following categories are missing:</p>
                                             <ul>
-                                                @foreach ($missingCategories as $category)
-                                                <li> <b><i class="ti-check-box text-danger-color"></i></b> &nbsp;{{ $category }}</li>
+                                                @foreach ($missingCategoriesArray as $category)
+                                                <li>{{ $category }}</li>
                                                 @endforeach
                                             </ul>
                                             @else
                                             <p>All categories are present.</p>
                                             @endif
-                                            <br>
 
+                                            <br>
                                             @if (in_array('name', $fisherfolkNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Name</span>
                                             @endif
@@ -250,6 +248,19 @@
                                             <div>
                                                 <b>
                                                     <h6 class="captions">MFARMC Committee</h6>
+
+                                                    @if (!empty($missingCommitteeCategoriesArray))
+                                                    <p>The following committee categories are missing:</p>
+                                                    <ul>
+                                                        @foreach ($missingCommitteeCategoriesArray as $category)
+                                                        <li>{{ $category }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                    @else
+                                                    <p>All committee categories are present.</p>
+                                                    @endif
+
+                                                    <br>
                                                 </b>
                                             </div>
 
@@ -290,10 +301,10 @@
                                 </div>
 
                                 <div class="row">
-                                            <div class="col-md-12 text-right">
-                                                <a href="{{ url ('/L1Incompletetbl') }}"> <button type="submit" class="btn btn-primary">OK</i></button></a>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-12 text-right">
+                                        <a href="{{ url ('/L1Incompletetbl') }}"> <button type="submit" class="btn btn-primary">OK</i></button></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

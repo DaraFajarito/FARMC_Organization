@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BasicFunction_Model;
 use App\Models\Committee_Model;
 use App\Models\FisherfolkRepresentative_Model;
 use App\Models\ProfileForm_Model;
+use App\Models\Fully_Operational_Model;
 use Illuminate\Http\Request;
 
 class ProfileForm_Controller extends Controller
@@ -73,6 +75,11 @@ class ProfileForm_Controller extends Controller
 
         return view('LoD.Level1.Level1', compact('data', 'completed', 'incomplete'));
     }
+
+     // ------------------------------------------------------------//
+    // ----------------------LEVEL I------------------------------//
+    // ------------------------------------------------------------//
+
     public function display_level1_info($id)
     {
         $data = ProfileForm_Model::where('id', $id)->get();
@@ -89,12 +96,53 @@ class ProfileForm_Controller extends Controller
     }
     public function display_level1_complete()
     {
-        $data = ProfileForm_Model::where('status', 'COMPLETEd')->get();
+        $data = ProfileForm_Model::where('status', 'COMPLETED')->get();
         return view('LoD.Level1.L1_Completedtbl', compact('data'));
     }
 
+    // ------------------------------------------------------------//
+    // ----------------------LEVEL II------------------------------//
+    // ------------------------------------------------------------//
+    
+    public function display_level2($id)
+    {
+        $data = ProfileForm_Model::where('id', $id)->first();
 
-    //==========================================================================================================================================||
+        return view('LVL2_Basic_Function.basicFunction', compact('data'));
+    }
+
+    public function display_level2_info($id)
+    {
+        $data = ProfileForm_Model::where('id', $id)->get();
+        $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level2.L2_Viewform', compact('data', 'basics'));
+    }
+
+    public function display_level2_incomplete()
+    {
+        $data = BasicFunction_Model::where('status', 'INCOMPLETE')->get();
+        return view('LoD.Level2.L2_Incompletetbl', compact('data'));
+    }
+    public function display_level2_complete()
+    {
+        $data = BasicFunction_Model::where('status', 'COMPLETED')->get();
+        return view('LoD.Level2.L2_Completedtbl', compact('data'));
+    }
+ 
+    // ------------------------------------------------------------//
+    // ----------------------LEVEL III------------------------------//
+    // ------------------------------------------------------------//
+    
+    public function display_level3($id)
+    {
+        // $data = ProfileForm_Model::where('id', $id)->first();
+        $basics = BasicFunction_Model::where('id', $id)->first();
+        return view('LVL3_Fully_Operational.fullyOperational', compact('basics'));
+    }
+
+
+    //=======================================   ===================================================================================================||
     //================================================== A D D I N G  O F  D A T A =============================================================||
     public function createProfileForm(Request $request)
     {
@@ -335,42 +383,50 @@ class ProfileForm_Controller extends Controller
             'Commercial Fishing Operator',
             'Women Fisherfolk Sector Representative',
             'Youth Fisherfolk Sector Representative',
-            "Indigenous Peoples(IP's) if any",
         ];
 
-        $FisherfolkcategoryMismatch = false;
-        foreach ($fisherfolk as $representative) {
-            if (!in_array($representative->category, $FisherfolkcategoryOptions)) {
-                $FisherfolkcategoryMismatch = true;
-                break;
-            }
-        }
+        $categories = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)
+            ->pluck('category')
+            ->toArray();
 
-        $categories = FisherfolkRepresentative_Model::pluck('category')->where('profileForm_id', $secretariat->id)->toArray();
         $missingCategories = array_diff($FisherfolkcategoryOptions, $categories);
-        // Check if any category in fisherfolkrep table is not within the specified options
-        $CommitteeCategoryOptions = [
-            'Municipal Fisherfolk',
-            'Fisherworker',
-            'Commercial Fishing Operator',
-            'Women Fisherfolk Sector Representative',
-            'Youth Fisherfolk Sector Representative',
-            "Indigenous Peoples(IP's) if any",
-        ];
 
-        $CommitteeCategoryMismatch = false;
-        foreach ($fisherfolk as $representative) {
-            if (!in_array($representative->category, $CommitteeCategoryOptions)) {
-                $CommitteeCategoryMismatch = true;
-                break;
-            }
+        // If you need to store the missing categories, you can do it like this:
+        $missingCategoriesArray = [];
+
+        foreach ($missingCategories as $category) {
+            $missingCategoriesArray[] = $category;
         }
 
-        $categoriess = Committee_Model::pluck('category')->where('profileForm_id', $secretariat->id)->toArray();
-        $missingCCategories = array_diff($CommitteeCategoryOptions, $categoriess);
+        // Define the options
+        $CommitteeCategoryOptions = [
+            'Law Enforcement & Prosecution',
+            'Rehabilitation and Conservation',
+            'Livelihood',
+            'Research Education and Training',
+            'Legislation',
+            'Land and Water Use',
+            'Fisherfolk Resettlement'
+        ];
+
+        // Retrieve categories from the database based on the given ID
+        $categories = Committee_Model::where('profileForm_id', $secretariat->id)
+            ->pluck('category')
+            ->toArray();
+
+        // Find missing categories
+        $missingCCategories = array_diff($CommitteeCategoryOptions, $categories);
+
+        // Store missing categories in an array
+        $missingCommitteeCategoriesArray = [];
+
+        foreach ($missingCCategories as $category) {
+            $missingCommitteeCategoriesArray[] = $category;
+        }
+
 
         // Determine status
-        $status = $committeeNull || $fisherfolkNull || $profileFormNull || $FisherfolkcategoryMismatch || $CommitteeCategoryMismatch ? 'INCOMPLETE' : 'COMPLETED';
+        $status = $committeeNull || $fisherfolkNull || $profileFormNull || $missingCategoriesArray || $missingCommitteeCategoriesArray ? 'INCOMPLETE' : 'COMPLETED';
         $secretariat->update(['status' => $status]);
 
         // Get null fields for display
@@ -392,30 +448,295 @@ class ProfileForm_Controller extends Controller
         }
         $fisherfolkNullFields = array_unique($fisherfolkNullFields);
 
-        if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields) {
-            return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields', 'missingCategories'));
+        if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields || $missingCategoriesArray || $missingCommitteeCategoriesArray) {
+            return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields', 'missingCategoriesArray', 'missingCommitteeCategoriesArray'));
         } else {
             return view('LoD.Level1.L1_Completed');
+        }
+    }
+
+    public function addBasicFunction(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'mfdp' => 'nullable|in:Approved,Formulated',
+            'copy1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mindoc1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mfo' => 'nullable|in:Approved,Formulated',
+            'copy2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mindoc2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'bantaydt' => 'nullable',
+            'bantaydt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'actfarmcbt' => 'nullable',
+            'actfarmcbt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'appfarmcbt' => 'nullable',
+            'appfarmcbt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'caseestablished' => 'nullable',
+            'caseestablished_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mfarmcoffice' => 'nullable',
+            'regmeet' => 'nullable',
+    
+
+        ], [
+            'copy1_file.max' => 'The copy1_file may not be greater than 5MB.',
+            'mindoc1_file.max' => 'The mindoc1_file may not be greater than 5MB.',
+            'copy2_file.max' => 'The copy2_file may not be greater than 5MB.',
+            'mindoc2_file.max' => 'The mindoc2_file may not be greater than 5MB.',
+            'bantaydt_file.max' => 'The bantaydt_file may not be greater than 5MB.',
+            'actfarmcbt_file.max' => 'The actfarmcbt_file may not be greater than 5MB.',
+            'appfarmcbt_file.max' => 'The appfarmcbt_file may not be greater than 5MB.',
+            'caseestablished_file.max' => 'The caseestablished_file may not be greater than 5MB.',
+        ]);
+
+        $approvedMFDPFilePath = $request->file('copy1_file') ? $request->file('copy1_file')->move(public_path('basic-function/copy1')) : null;
+        $impact1FilePath = $request->file('mindoc1_file') ? $request->file('mindoc1_file')->move(public_path('basic-function/mindoc1')) : null;
+        $copy2FilePath = $request->file('copy2_file') ? $request->file('copy2_file')->move(public_path('basic-function/copy2')) : null;
+        $mindoc2FilePath = $request->file('mindoc2_file') ? $request->file('mindoc2_file')->move(public_path('basic-function/mindoc2')) : null;
+        $bantaydtFilePath = $request->file('bantaydt_file') ? $request->file('bantaydt_file')->move(public_path('basic-function/bantaydt')) : null;
+        $actfarmcbtFilePath = $request->file('actfarmcbt_file') ? $request->file('actfarmcbt_file')->move(public_path('basic-function/actfarmcbt')) : null;
+        $appfarmcbtFilePath = $request->file('appfarmcbt_file') ? $request->file('appfarmcbt_file')->move(public_path('basic-function/appfarmcbt')) : null;
+        $caseestablishedFilePath = $request->file('caseestablished_file') ? $request->file('caseestablished_file')->move(public_path('basic-function/caseestablished')) : null;
+        $copy3FilePath = $request->file('copy3_file') ? $request->file('copy3_file')->move(public_path('basic-function/copy3')) : null;
+        $minattFilePath = $request->file('minatt_file') ? $request->file('minatt_file')->move(public_path('basic-function/minatt')) : null;
+        $photodocFilePath = $request->file('photodoc_file') ? $request->file('photodoc_file')->move(public_path('basic-function/photodoc')) : null;
+
+
+        $basicFunction = new BasicFunction_Model();
+        $basicFunction->profileForm_id = $id;
+        $basicFunction->mfdp = $validatedData['mfdp'] ?? null;
+        $basicFunction->copy1_file = $approvedMFDPFilePath ? '/basic-function/copy1/' . $approvedMFDPFilePath->getFilename() : null;
+        $basicFunction->mindoc1_file = $impact1FilePath ? '/basic-function/mindoc1/' . $impact1FilePath->getFilename() : null;
+        $basicFunction->mfo = $validatedData['mfo'] ?? null;
+        $basicFunction->copy2_file = $copy2FilePath ? '/basic-function/copy2/' . $copy2FilePath->getFilename() : null;
+        $basicFunction->mindoc2_file = $mindoc2FilePath ? '/basic-function/mindoc2/' . $mindoc2FilePath->getFilename() : null;
+        $basicFunction->bantaydt = isset($validatedData['bantaydt']) ? 1 : 0;
+        $basicFunction->bantaydt_file = $bantaydtFilePath ? '/basic-function/bantaydt/' . $bantaydtFilePath->getFilename() : null;
+        $basicFunction->actfarmcbt = isset($validatedData['actfarmcbt']) ? 1 : 0;
+        $basicFunction->actfarmcbt_file = $actfarmcbtFilePath ? '/basic-function/actfarmcbt/' . $actfarmcbtFilePath->getFilename() : null;
+        $basicFunction->appfarmcbt = isset($validatedData['appfarmcbt']) ? 1 : 0;
+        $basicFunction->appfarmcbt_file = $appfarmcbtFilePath ? '/basic-function/appfarmcbt/' . $appfarmcbtFilePath->getFilename() : null;
+        $basicFunction->caseestablished = isset($validatedData['caseestablished']) ? 1 : 0;
+        $basicFunction->caseestablished_file = $caseestablishedFilePath ? '/basic-function/caseestablished/' . $caseestablishedFilePath->getFilename() : null;
+        $basicFunction->mfarmcoffice = $validatedData['mfarmcoffice'] ?? null;
+        $basicFunction->copy3_file = $copy3FilePath ? '/basic-function/copy3/' . $copy3FilePath->getFilename() : ($request->has('copy3_file') ? 'N/A' : null);
+        $basicFunction->regmeet = $request->has('regmeet') ? $validatedData['regmeet'] : 'N/A';
+        $basicFunction->minatt_file = $minattFilePath   ? '/basic-function/minatt/' . $minattFilePath->getFilename() : ($request->has('minatt_file') ? 'N/A' : null);
+        $basicFunction->photodoc_file = $photodocFilePath ? '/basic-function/photodoc/' . $photodocFilePath->getFilename() : ($request->has('photodoc_file') ? 'N/A' : null);
+
+     
+        // Save the basicFunction record
+        $basicFunction->save();
+
+        // Check if any fields have null values
+        $basicNull = $basicFunction->hasNullValues();
+
+        // Determine the status based on null values
+        $status = $basicNull ? 'INCOMPLETE' : 'COMPLETED';
+
+        // Update the status field in the database
+        $basicFunction->status = $status;
+        $basicFunction->save();
+
+        // Retrieve fields with null values
+        $basicFunctionNull = $basicFunction->getNullFields();
+
+        // Redirect if null values are present, otherwise display the incomplete view
+        if ($basicNull) {
+            return redirect('/level2')->with('success', 'Success!');
+        } else {
+            return view('LoD.Level2.L2_Incomplete', ['basicFunctionNull' => $basicFunctionNull]);
+        }
+    }
+
+    public function addFullyOperational (Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'approved_MFDP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'imp_act1' => 'nullable',
+            'imp_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'imp_act2' => 'nullable',
+            'imp_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'imp_act3' => 'nullable',
+            'imp_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'pol_prop1' => 'nullable',
+            'pol_prop1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'pol_prop2' => 'nullable',
+            'pol_prop2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'pol_prop3' => 'nullable',
+            'pol_prop3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'rec_act1' => 'nullable',
+            'rec_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_act2' => 'nullable',
+            'rec_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_act3' => 'nullable',
+            'rec_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'rec_iss1' => 'nullable',
+            'rec_iss1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_iss2' => 'nullable',
+            'rec_iss2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_iss3' => 'nullable',
+            'rec_iss3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'part_act1' => 'nullable',
+            'part_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_act2' => 'nullable',
+            'part_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_act3' => 'nullable',
+            'part_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'part_LGU1' => 'nullable',
+            'part_LGU1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_LGU2' => 'nullable',
+            'part_LGU2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_LGU3' => 'nullable',
+            'part_LGU3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'name_com' => 'nullable',
+            'sched_regmeet' => 'nullable',
+            'sched_regmeet_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'wor_act1' => 'nullable',
+            'wor_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'wor_act2' => 'nullable',
+            'wor_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'wor_act3' => 'nullable',
+            'wor_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+        ], [
+            'approved_MFDP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            
+            'imp_act1_file.max' => 'The imp_act1_file may not be greater than 5MB.',
+            'imp_act2_file.max' => 'The imp_act2_file may not be greater than 5MB.',
+            'imp_act3_file.max' => 'The imp_act3_file may not be greater than 5MB.',
+
+            'pol_prop1_file.max' => 'The pol_prop1_file may not be greater than 5MB.',
+            'pol_prop2_file.max' => 'The pol_prop2_file may not be greater than 5MB.',
+            'pol_prop3_file.max' => 'The pol_prop3_file may not be greater than 5MB.',
+
+            'rec_act1_file.max' => 'The rec_act1_file may not be greater than 5MB.',
+            'rec_act2_file.max' => 'The rec_act2_file may not be greater than 5MB.',
+            'rec_act3_file.max' => 'The rec_act3_file may not be greater than 5MB.',
+
+            'rec_iss1_file.max' => 'The rec_iss1_file may not be greater than 5MB.',
+            'rec_iss2_file.max' => 'The rec_iss2_file may not be greater than 5MB.',
+            'rec_iss3_file.max' => 'The rec_iss3_file may not be greater than 5MB.',
+
+            'part_act1_file.max' => 'The part_act1_file may not be greater than 5MB.',
+            'part_act2_file.max' => 'The part_act2_file may not be greater than 5MB.',
+            'part_act3_file.max' => 'The part_act3_file may not be greater than 5MB.',
+
+            'part_LGU1_file.max' => 'The part_LGU1_file may not be greater than 5MB.',
+            'part_LGU2_file.max' => 'The part_LGU2_file may not be greater than 5MB.',
+            'part_LGU3_file.max' => 'The part_LGU3_file may not be greater than 5MB.',
+
+            'sched_regmeet.max' => 'The part_LGU3_file may not be greater than 5MB.',
+
+            'wor_act1_file.max' => 'The wor_act1_file may not be greater than 5MB.',
+            'wor_act2_file.max' => 'The wor_act2_file may not be greater than 5MB.',
+            'wor_act3_file.max' => 'The wor_act3_file may not be greater than 5MB.',
+        ]);
+        $approvedMFDPFilePath = $request->file('approved_MFDP_file') ? $request->file('approved_MFDP_file')->move(public_path('fullyOperational/approved_MFDP')) : null;
+      
+        $impact1FilePath = $request->file('imp_act1_file') ? $request->file('imp_act11_file')->move(public_path('fullyOperational/imp_act1')) : null;
+        $impact2FilePath = $request->file('imp_act2_file') ? $request->file('imp_act2_file')->move(public_path('fullyOperational/imp_act2')) : null;
+        $impact3FilePath = $request->file('imp_act3_file') ? $request->file('imp_act3_file')->move(public_path('fullyOperational/imp_act3')) : null;
+       
+        $polprop1FilePath = $request->file('pol_prop1_file') ? $request->file('pol_prop1_file')->move(public_path('fullyOperational/pol_prop1')) : null;
+        $polprop2FilePath = $request->file('pol_prop2_file') ? $request->file('pol_prop2_file')->move(public_path('fullyOperational/pol_prop2')) : null;
+        $polprop3FilePath = $request->file('pol_prop3_file') ? $request->file('pol_prop3_file')->move(public_path('fullyOperational/pol_prop3')) : null;
+      
+        $recact1FilePath = $request->file('rec_act1_file') ? $request->file('rec_act1_file')->move(public_path('fullyOperational/rec_act1')) : null;
+        $recact2FilePath = $request->file('rec_act2_file') ? $request->file('rec_act2_file')->move(public_path('fullyOperational/rec_act2')) : null;
+        $recact3FilePath = $request->file('rec_act3_file') ? $request->file('rec_act3_file')->move(public_path('fullyOperational/rec_act3')) : null;
+       
+        $reciss1FilePath = $request->file('rec_iss1_file') ? $request->file('rec_iss1_file')->move(public_path('fullyOperational/rec_iss1')) : null;
+        $reciss2FilePath = $request->file('rec_iss2_file') ? $request->file('rec_iss2_file')->move(public_path('fullyOperational/rec_iss2')) : null;
+        $reciss3FilePath = $request->file('rec_iss3_file') ? $request->file('rec_iss3_file')->move(public_path('fullyOperational/rec_iss3')) : null;
+      
+        $partact1FilePath = $request->file('part_act1_file') ? $request->file('part_act1_file')->move(public_path('fullyOperational/part_act1')) : null;
+        $partact2FilePath = $request->file('part_act2_file') ? $request->file('part_act2_file')->move(public_path('fullyOperational/part_act2')) : null;
+        $partact3FilePath = $request->file('part_act3_file') ? $request->file('part_act3_file')->move(public_path('fullyOperational/part_act3')) : null;
+        
+        $partLGU1FilePath = $request->file('part_LGU1_file') ? $request->file('part_LGU1_file')->move(public_path('fullyOperational/part_LGU1')) : null;
+        $partLGU2FilePath = $request->file('part_LGU2_file') ? $request->file('part_LGU2_file')->move(public_path('fullyOperational/part_LGU2')) : null;
+        $partLGU3FilePath = $request->file('part_LGU3_file') ? $request->file('part_LGU3_file')->move(public_path('fullyOperational/part_LGU3')) : null;
+
+        $schedregmeetFilePath = $request->file('sched_regmeet_file') ? $request->file('sched_regmeet_file')->move(public_path('fullyOperational/sched_regmeet')) : null;
+      
+        $woract1FilePath = $request->file('wor_act1_file') ? $request->file('wor_act1_file')->move(public_path('fullyOperational/wor_act1')) : null;
+        $woract2FilePath = $request->file('wor_act2_file') ? $request->file('wor_act2_file')->move(public_path('fullyOperational/wor_act2')) : null;
+        $woract3FilePath = $request->file('wor_act3_file') ? $request->file('wor_act3_file')->move(public_path('fullyOperational/wor_act3')) : null;
+
+
+        $fullyOperational = new Fully_Operational_Model();
+        $fullyOperational->profileForm_id = $id;
+        $fullyOperational->approved_MFDP_file = $approvedMFDPFilePath ? '/fullyOperational/approved_MFDP/' . $approvedMFDPFilePath->getFilename() : null;
+
+        $fullyOperational->imp_act1 = $validatedData['imp_act1'] ?? null;
+        $fullyOperational->imp_act1_file = $impact1FilePath ? '/fullyOperational/imp_act1/' . $impact1FilePath->getFilename() : null;
+        $fullyOperational->imp_act2 = $validatedData['imp_act2'] ?? null;
+        $fullyOperational->imp_act2_file = $impact2FilePath ? '/fullyOperational/imp_act2/' . $impact2FilePath->getFilename() : null;
+        $fullyOperational->imp_act3 = $validatedData['imp_act3'] ?? null;
+        $fullyOperational->imp_act3_file = $impact3FilePath ? '/fullyOperational/imp_act3/' . $impact3FilePath->getFilename() : null;
+       
+        $fullyOperational->pol_prop1 = $validatedData['pol_prop1'] ?? null;
+        $fullyOperational->pol_prop1_file = $polprop1FilePath ? '/fullyOperational/pol_prop1/' . $polprop1FilePath->getFilename() : null;
+        $fullyOperational->pol_prop2 = $validatedData['pol_prop2'] ?? null;
+        $fullyOperational->pol_prop2_file = $polprop2FilePath ? '/fullyOperational/pol_prop2/' . $polprop2FilePath->getFilename() : null;
+        $fullyOperational->pol_prop3 = $validatedData['pol_prop3'] ?? null;
+        $fullyOperational->pol_prop3_file = $polprop3FilePath ? '/fullyOperational/pol_prop3/' . $polprop3FilePath->getFilename() : null;
+       
+        $fullyOperational->rec_act1 = $validatedData['rec_act1'] ?? null;
+        $fullyOperational->rec_act1_file = $recact1FilePath ? '/fullyOperational/rec_act1/' . $recact1FilePath->getFilename() : null;
+        $fullyOperational->rec_act2 = $validatedData['rec_act2'] ?? null;
+        $fullyOperational->rec_act2_file = $recact2FilePath ? '/fullyOperational/rec_act2/' . $recact2FilePath->getFilename() : null;
+        $fullyOperational->rec_act3 = $validatedData['rec_act3'] ?? null;
+        $fullyOperational->rec_act3_file = $recact3FilePath   ? '/fullyOperational/rec_act3/' . $recact3FilePath->getFilename() : null;
+       
+        $fullyOperational->rec_iss1 = $validatedData['rec_iss1'] ?? null;
+        $fullyOperational->rec_iss1_file = $reciss1FilePath ? '/fullyOperational/rec_iss1/' . $reciss1FilePath->getFilename() : null;
+
+        // Save the fully operational record
+       $fullyOperational->save();
+
+        // Check if any fields have null values
+        $basicNull =$fullyOperational->hasNullValues();
+
+        // Determine the status based on null values
+        $status = $basicNull ? 'INCOMPLETE' : 'COMPLETED';
+
+        // Update the status field in the database
+       $fullyOperational->status = $status;
+       $fullyOperational->save();
+
+        // Retrieve fields with null values
+       $fullyOperationalNull =$fullyOperational->getNullFields();
+
+        // Redirect if null values are present, otherwise display the incomplete view
+        if ($basicNull) {
+            return redirect('/level2')->with('success', 'Success!');
+        } else {
+            return view('LoD.Level2.L2_Incomplete', ['fullyOperationalNull' =>$fullyOperationalNull]);
         }
     }
 
     //==========================================================================================================================================||
     //================================================== C O U N T  O F  D A T A =============================================================||
 
-    public function level1Count()
+    public function level2Count()
     {
-        $completed = ProfileForm_Model::where('status', "COMPLETED")->count();
-        $incomplete = ProfileForm_Model::where('status', "INCOMPLETE")->count();
+        $data = BasicFunction_Model::get();
+        $completed = BasicFunction_Model::where('status', "COMPLETED")->count();
+        $incomplete = BasicFunction_Model::where('status', "INCOMPLETE")->count();
 
         //chart for complete
-        return view('LoD.Level1.Level1', compact('completed, incomplete'));
+        return view('LoD.Level2.Level2', compact('completed', 'incomplete', 'data'));
     }
-
 
     //==========================================================================================================================================||
     //================================================== C O U N T  O F  D A T A =============================================================||
-    // public function edit_incomplete_profile($id){
 
-    //     $incomplete_data =
-    // }
+
+
 }

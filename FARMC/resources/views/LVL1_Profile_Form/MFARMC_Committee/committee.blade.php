@@ -85,7 +85,7 @@
                                                                 <option value="Research Education and Training">Research Education and Training</option>
                                                                 <option value="Legislation">Legislation</option>
                                                                 <option value="Land and Water Use">Land and Water Use</option>
-                                                                <option value="Fisherfol Resettlement">Fisherfol Resettlement</option>
+                                                                <option value="Fisherfolk Resettlement">Fisherfolk Resettlement</option>
                                                                 <option value="Other, if any">Other, if any</option>
                                                             </optgroup>
                                                         </select>

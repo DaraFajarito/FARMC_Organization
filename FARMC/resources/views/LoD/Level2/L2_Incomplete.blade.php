@@ -59,193 +59,81 @@
                                                 <h6 class="captions">Basic Structures</h6>
                                             </b>
                                         </div>
-                                        @if(in_array('municipality', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Municipality</span>
+                                        @if (in_array('mfdp', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP)</span>
                                         @endif
                                         <br>
-                                        @if(in_array('province', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Province</span>
+                                        @if (in_array('copy1_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Copy File</span>
+                                        @endif
+                                        @if (in_array('mindoc1_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('date_organized', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Date Organized</span>
+                                        @if (in_array('mfo', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; mfo</span>
                                         @endif
                                         <br>
-                                        @if(in_array('minutes1', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Minutes 1 <small><em>(date organized)</em></small></span>
+                                        @if (in_array('copy2_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('photos1', $nullFields) )
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Photos 1 <small><em>(date organized)</em></small></span>
+                                        @if (in_array('mindoc2_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('attendance1', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Attendance 1 <small><em>(date organized)</em></small></span>
+                                        @if (in_array('bantaydt', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('date_reorganized', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Date Reorganized</span>
+                                        @if (in_array('actfarmcbt', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('minutes2', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Minutes 2 <small><em>(date reorganized)</em></small></span>
+                                        @if (in_array('actfarmcbt_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('photos2', $nullFields) )
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Photos 2 <small><em>(date reorganized)</em></small></span>
+                                        @if (in_array('appfarmcbt', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('attendance2', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Attendance 2 <small><em>(date reorganized)</em></small></span>
+                                        @if (in_array('appfarmcbt_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
+                                        @endif
+                                        @if (in_array('caseestablished', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
+                                        @endif
+                                        @if (in_array('caseestablished_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-
-                                        @if(in_array('internalP_file', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;Internal Policy </small></span>
+                                        @if (in_array('mfarmcoffice', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('fisherfolkR_file', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Fisherfolk Registry</span>
+                                        @if (in_array('copy3_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('fisherfolkR_file', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;Fisheries Profile</span>
+                                        @if (in_array('regmeet', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('formulationR_file', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Formulation of Resolution and propose ordinance initiated </span>
+                                        @if (in_array('minatt_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        <br>
-
-                                        <div>
-                                            <b>
-                                                <h6 class="captions">FARMC Officers</h6>
-
-
-                                            </b>
-                                        </div>
-                                        <!-- FARMC Officers -->
-                                        @if(in_array('chairperson', $nullFields) )
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Chairperson </span>
+                                        @if (in_array('photodoc_file', $basicFunctionNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; No Municipal Fisheries Development Plan (MFDP) Attached Minutes or Documents</span>
                                         @endif
                                         <br>
-                                        @if(in_array('vice_chairperson', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Vice Chairperson </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('secretary', $nullFields) )
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Secretary </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('treasurer', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Treasurer </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('auditor', $nullFields) )
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Auditor</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('pro1', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; PRO </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('sgt_arms1', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Sergeant-at-arms </span>
-                                        @endif
                                         <br>
                                         <br>
                                     </div>
                                     <br>
-                                    <div class="col-md-6">
-                                        <div>
-                                            <b>
-                                                <h6 class="captions">Mandated Members</h6>
-                                            </b>
-                                        </div>
-
-                                        @if(in_array('chairpersonSB', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Chairperson SB / SP</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('mpdo', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Municipal Planning and Development Officer</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('repmdc', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Representative from Municipal Development Council</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('repda', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Representative from Department of Agriculture</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('repngo', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Representative from Non-Governmental Organization</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('repps', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Representative from Private Sector</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('others', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Others</span>
-                                        @endif
-                                        <br>
-                                        <br>
-                                        <div>
-                                            <b>
-                                                <h6 class="captions">Fisherfolk Representative</h6>
-                                            </b>
-                                        </div>
-<br>
-<br>
-
-                                        <div>
-                                            <b>
-                                                <h6 class="captions">MFARMC Committee</h6>
-                                            </b>
-                                        </div>
-
-                                  
-                                        <div>
-                                            <b>
-                                                <h6 class="captions">Secretariat</h6>
-                                            </b>
-                                        </div>
-                                        <!-- Secretariat -->
-                                        @if(in_array('name_sec', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Secretary 1 </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('name_sec1', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Secretary 2 </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('name_sec2', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Secretary 3 </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('office_org', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Office / Organization 1 </span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('office_org1', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Office / Organization 2</span>
-                                        @endif
-                                        <br>
-                                        @if(in_array('office_org2', $nullFields))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Office / Organization 3</span>
-                                        @endif
-                                        <br>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                            <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-primary">Next <i class="icon-arrow-right"></i></button>
-                                            </div>
-                                        </div>
                             </div>
                         </div>
                     </div>
