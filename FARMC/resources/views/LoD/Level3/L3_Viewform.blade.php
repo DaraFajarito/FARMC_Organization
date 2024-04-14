@@ -94,12 +94,13 @@
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
                             <div class="actions" style="margin-left: auto;">
-                                <a href="{{ url ('/fullyOperational') }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
+                                <a href="{{ url ('/sustainabilityMechanism') }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                @foreach($basics as $item)
                 <div class="card">
                     <div id="content">
                         <div class="card-header" style="display: flex; justify-content: space-between;">
@@ -148,20 +149,23 @@
 
                             <form class="form-inline" method="" action="" enctype="multipart/form-data">
 
-
+                                @foreach($fullyOp as $item)
                                 <div class="card-block">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr style="font-size: 13px;">
-                                                            <th colspan="1"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></th>
-                                                            <th colspan="2" class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                <span class="captions"> attached minutes</span>
-                                                            </th>
+                                                    <tbody>
+                                                        <tr style="font-size: 13px;" class="text-center">
+                                                            @if ($item->approved_MFDP_file === null)
+                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @else
+                                                            <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @endif
+                                                            <td colspan="2" class="text-center">{{$item->approved_MFDP_file}} attached minutes</span>
+                                                            </td>
                                                         </tr>
-                                                    </thead>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                             <br>
@@ -181,26 +185,65 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->imp_act1_file === null || $item->imp_act1 === null )
+                                                                <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->imp_act1 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->imp_act1}}</td>
+                                                                @endif
+
+                                                                @if ($item->imp_act1_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->imp_act1_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->imp_act2_file === null || $item->imp_act2 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->imp_act2 === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->imp_act2}}</td>
+                                                                @endif
+
+                                                                @if ($item->imp_act2_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->imp_act2_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
-                                                                </td>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->imp_act3_file === null || $item->imp_act3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->imp_act3 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->imp_act3}}</td>
+                                                                @endif
+
+
+                                                                @if ($item->imp_act3_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->imp_act3_file}}</td>
+                                                                @endif
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -223,26 +266,66 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->pol_prop1_file === null || $item->pol_prop1 === null )
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->pol_prop1 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->pol_prop1}}</td>
+                                                                @endif
+
+
+                                                                @if ($item->pol_prop1_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->pol_prop1_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->pol_prop2_file === null || $item->pol_prop2 === null)
+                                                                <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->pol_prop2 === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->pol_prop2}}</td>
+                                                                @endif
+
+
+                                                                @if ($item->pol_prop2_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->pol_prop2_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
-                                                                </td>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->pol_prop3_file === null || $item->pol_prop3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->pol_prop3 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->pol_prop3}}</td>
+                                                                @endif
+
+                                                                @if ($item->pol_prop3_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->pol_prop3_file}}</td>
+                                                                @endif
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -266,26 +349,65 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->rec_act1_file === null || $item->rec_act1 === null )
+                                                                <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->rec_act1 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_act1}}</td>
+                                                                @endif
+
+                                                                @if ($item->rec_act1_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_act1_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->rec_act2_file === null || $item->rec_act2 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->rec_act2 === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->rec_act2}}</td>
+                                                                @endif
+
+                                                                @if ($item->rec_act2_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_act2_file}}</td>
+                                                                @endif
+
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
-                                                                </td>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->rec_act3_file === null || $item->rec_act3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->rec_act3 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_act3}}</td>
+                                                                @endif
+
+                                                                @if ($item->rec_act3_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_act3_file}}</td>
+                                                                @endif
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -302,26 +424,65 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->rec_iss1_file === null || $item->rec_iss1 === null )
+                                                                <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->rec_iss1 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_iss1}}</td>
+                                                                @endif
+
+                                                                @if ($item->rec_iss1_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_iss1_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->rec_iss2_file === null || $item->rec_iss2 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->rec_iss2 === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->rec_iss2}}</td>
+                                                                @endif
+
+                                                                @if ($item->rec_iss2_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_iss2_file}}</td>
+                                                                @endif
+
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
-                                                                </td>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->rec_iss3_file === null || $item->rec_iss3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->rec_iss3 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_iss3}}</td>
+                                                                @endif
+
+                                                                @if ($item->rec_iss3_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->rec_iss3_file}}</td>
+                                                                @endif
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -345,26 +506,65 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->part_act1_file === null || $item->part_act1 === null )
+                                                                <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->part_act1 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_act1}}</td>
+                                                                @endif
+
+                                                                @if ($item->part_act1_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_act1_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->part_act2_file === null || $item->part_act2 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->part_act2 === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->part_act2}}</td>
+                                                                @endif
+
+                                                                @if ($item->part_act2_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_act2_file}}</td>
+                                                                @endif
+
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
-                                                                </td>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->part_act3_file === null || $item->part_act3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->part_act3 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_act3}}</td>
+                                                                @endif
+
+                                                                @if ($item->part_act3_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_act3_file}}</td>
+                                                                @endif
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -381,26 +581,65 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->part_LGU1_file === null || $item->part_LGU1 === null )
+                                                                <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->part_LGU1 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_LGU1}}</td>
+                                                                @endif
+
+                                                                @if ($item->part_LGU1_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_LGU1_file}}</td>
+                                                                @endif
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->part_LGU2_file === null || $item->part_LGU2 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->part_LGU2 === null)
+                                                                <td> <span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->part_LGU2}}</td>
+                                                                @endif
+
+                                                                @if ($item->part_LGU2_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_LGU2_file}}</td>
+                                                                @endif
+
                                                                 </td>
                                                             </tr>
-                                                            <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
-                                                                </td>
+                                                            <tr style="font-size: 12px;" class="text-center">
+                                                                @if ($item->part_LGU3_file === null || $item->part_LGU3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->part_LGU3 === null)
+                                                                <td> <span style="color: red;"> no data</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_LGU3}}</td>
+                                                                @endif
+
+                                                                @if ($item->part_LGU3_file === null)
+                                                                <td> <span style="color: red;"> no attached file</span> </td>
+                                                                @else
+                                                                <td>{{$item->part_LGU3_file}}</td>
+                                                                @endif
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -412,8 +651,8 @@
                                                 <label for="date" class="block form-control-label">5. Working Committee Active And Performing</label>
                                             </div>
                                             <br><br>
-                                            <label for="date" class="col-md-4 captions"><b>5.1 Name Of Committee:</b></label>
-                                            <label for="date" class="col-md-6 captions">**Name of the Committee**</label>
+                                            <label for="date" class="col-md-4 captions"><b>5.1 Name Of Committee: </b></label>
+                                            <label for="date" class="col-md-6 captions"> {{$item->name_com}}</label>
                                             <div class="table-responsive">
                                                 <br>
                                                 <div class="col-md-12" style="margin-bottom: 20px;">
@@ -428,11 +667,24 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr style="font-size: 12px;">
-                                                                    <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                    <td class="text-center"></td>
-                                                                    <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                        <span class="captions"> attached minutes</span>
+                                                                <tr style="font-size: 12px;" class="text-center">
+                                                                    @if ($item->sched_regmeet === null || $item->sched_regmeet_file === null )
+                                                                    <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                    @else
+                                                                    <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                    @endif
+
+                                                                    @if ($item->sched_regmeet === null)
+                                                                    <td> <span style="color: red;"> no data</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->sched_regmeet}}</td>
+                                                                    @endif
+
+                                                                    @if ($item->sched_regmeet_file === null)
+                                                                    <td> <span style="color: red;"> no attached file</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->sched_regmeet_file}}</td>
+                                                                    @endif
                                                                     </td>
                                                                 </tr>
 
@@ -451,26 +703,65 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr style="font-size: 12px;">
-                                                                    <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                    <td class="text-center"></td>
-                                                                    <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                        <span class="captions"> attached minutes</span>
+                                                                <tr style="font-size: 12px;" class="text-center">
+                                                                    @if ($item->wor_act1_file === null || $item->wor_act1 === null )
+                                                                    <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                    @else
+                                                                    <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                    @endif
+
+                                                                    @if ($item->wor_act1 === null)
+                                                                    <td> <span style="color: red;"> no data</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->wor_act1}}</td>
+                                                                    @endif
+
+                                                                    @if ($item->wor_act1_file === null)
+                                                                    <td> <span style="color: red;"> no attached file</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->wor_act1_file}}</td>
+                                                                    @endif
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="font-size: 12px;">
-                                                                    <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                    <td class="text-center"></td>
-                                                                    <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                        <span class="captions"> attached minutes</span>
+                                                                <tr style="font-size: 12px;" class="text-center">
+                                                                    @if ($item->wor_act2_file === null || $item->wor_act2 === null)
+                                                                    <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                    @else
+                                                                    <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                    @endif
+
+                                                                    @if ($item->wor_act2 === null)
+                                                                    <td> <span style="color: red;"> no data</span></td>
+                                                                    @else
+                                                                    <td>{{$item->wor_act2}}</td>
+                                                                    @endif
+
+                                                                    @if ($item->wor_act2_file === null)
+                                                                    <td> <span style="color: red;"> no attached file</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->wor_act2_file}}</td>
+                                                                    @endif
+
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="font-size: 12px;">
-                                                                    <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                    <td class="text-center"></td>
-                                                                    <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                        <span class="captions"> attached minutes</span>
-                                                                    </td>
+                                                                <tr style="font-size: 12px;" class="text-center">
+                                                                    @if ($item->wor_act3_file === null || $item->wor_act3 === null)
+                                                                    <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                    @else
+                                                                    <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                    @endif
+
+                                                                    @if ($item->wor_act3 === null)
+                                                                    <td> <span style="color: red;"> no data</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->wor_act3}}</td>
+                                                                    @endif
+
+                                                                    @if ($item->wor_act3_file === null)
+                                                                    <td> <span style="color: red;"> no attached file</span> </td>
+                                                                    @else
+                                                                    <td>{{$item->wor_act3_file}}</td>
+                                                                    @endif
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -482,152 +773,152 @@
                                     </div>
                                 </div>
                             </form>
+                            <@endforeach </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </div>
 
 
 
 
-    <!-- Required Jqurey -->
+            <!-- Required Jqurey -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-
-
-    <script src="{{ asset ('assets/plugins/Jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
-
-    <!-- Required Fremwork -->
-    <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-
-    <!-- Scrollbar JS-->
-    <script src="{{ asset ('assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
-    <script src="{{ asset ('assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js') }}"></script>
-
-    <!--classic JS-->
-    <script src="{{ asset ('assets/plugins/classie/classie.js') }}"></script>
-
-    <!-- notification -->
-    <script src="{{ asset ('assets/plugins/notification/js/bootstrap-growl.min.js') }}"></script>
-
-    <!-- Sparkline charts -->
-    <script src="{{ asset ('assets/plugins/jquery-sparkline/dist/jquery.sparkline.js') }}"></script>
-
-    <!-- Counter js  -->
-    <script src="{{ asset ('assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset ('assets/plugins/countdown/js/jquery.counterup.js') }}"></script>
-
-    <!-- Echart js -->
-    <script src="{{ asset ('assets/plugins/charts/echarts/js/echarts-all.js') }}"></script>
-
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-
-    <!-- custom js -->
-    <script type="text/javascript" src="{{ asset ('assets/js/main.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset ('assets/pages/dashboard.js') }}"></script>
-    <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
-    <script src="{{ asset ('assets/js/menu.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
 
-    <script type="text/javascript">
-        SyntaxHighlighter.all();
-    </script>
+            <script src="{{ asset ('assets/plugins/Jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+            <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
 
-    <script>
-        document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'IPoption') {
-                    document.getElementById('textBoxContainer').style.display = 'block';
-                } else {
-                    document.getElementById('textBoxContainer').style.display = 'none';
-                }
-            });
-        });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#internalP_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox').prop('checked', true);
-                } else {
-                    $('#checkbox').prop('checked', false);
-                }
-            });
-            $('#fisherfolkR_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox-1').prop('checked', true);
-                } else {
-                    $('#checkbox-1').prop('checked', false);
-                }
-            });
-            $('#fisheriesP_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox-2').prop('checked', true);
-                } else {
-                    $('#checkbox-2').prop('checked', false);
-                }
-            });
-            $('#formulationR_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox-3').prop('checked', true);
-                } else {
-                    $('#checkbox-3').prop('checked', false);
-                }
-            });
+            <!-- Required Fremwork -->
+            <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-            // Add similar change event listeners for other file inputs
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function setupCheckbox(checkboxId, hiddenInputId) {
-                const checkbox = document.getElementById(checkboxId);
-                const hiddenInput = document.getElementById(hiddenInputId);
+            <!-- Scrollbar JS-->
+            <script src="{{ asset ('assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+            <script src="{{ asset ('assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js') }}"></script>
 
-                checkbox.addEventListener('change', function() {
-                    hiddenInput.value = this.checked ? '1' : null;
+            <!--classic JS-->
+            <script src="{{ asset ('assets/plugins/classie/classie.js') }}"></script>
+
+            <!-- notification -->
+            <script src="{{ asset ('assets/plugins/notification/js/bootstrap-growl.min.js') }}"></script>
+
+            <!-- Sparkline charts -->
+            <script src="{{ asset ('assets/plugins/jquery-sparkline/dist/jquery.sparkline.js') }}"></script>
+
+            <!-- Counter js  -->
+            <script src="{{ asset ('assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+            <script src="{{ asset ('assets/plugins/countdown/js/jquery.counterup.js') }}"></script>
+
+            <!-- Echart js -->
+            <script src="{{ asset ('assets/plugins/charts/echarts/js/echarts-all.js') }}"></script>
+
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+            <!-- custom js -->
+            <script type="text/javascript" src="{{ asset ('assets/js/main.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('assets/pages/dashboard.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
+            <script src="{{ asset ('assets/js/menu.min.js') }}"></script>
+
+
+            <script type="text/javascript">
+                SyntaxHighlighter.all();
+            </script>
+
+            <script>
+                document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'IPoption') {
+                            document.getElementById('textBoxContainer').style.display = 'block';
+                        } else {
+                            document.getElementById('textBoxContainer').style.display = 'none';
+                        }
+                    });
                 });
-            }
+            </script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#internalP_file').change(function() {
+                        if ($(this).val()) {
+                            $('#checkbox').prop('checked', true);
+                        } else {
+                            $('#checkbox').prop('checked', false);
+                        }
+                    });
+                    $('#fisherfolkR_file').change(function() {
+                        if ($(this).val()) {
+                            $('#checkbox-1').prop('checked', true);
+                        } else {
+                            $('#checkbox-1').prop('checked', false);
+                        }
+                    });
+                    $('#fisheriesP_file').change(function() {
+                        if ($(this).val()) {
+                            $('#checkbox-2').prop('checked', true);
+                        } else {
+                            $('#checkbox-2').prop('checked', false);
+                        }
+                    });
+                    $('#formulationR_file').change(function() {
+                        if ($(this).val()) {
+                            $('#checkbox-3').prop('checked', true);
+                        } else {
+                            $('#checkbox-3').prop('checked', false);
+                        }
+                    });
 
-            setupCheckbox('checkbox', 'internalP_file');
-            setupCheckbox('checkbox-1', 'fisherfolkR_file');
-            setupCheckbox('checkbox-2', 'fisheriesP_file');
-            setupCheckbox('checkbox-3', 'formulationR_file');
-        });
-    </script>
+                    // Add similar change event listeners for other file inputs
+                });
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    function setupCheckbox(checkboxId, hiddenInputId) {
+                        const checkbox = document.getElementById(checkboxId);
+                        const hiddenInput = document.getElementById(hiddenInputId);
 
-    <script>
-        function downloadPdf() {
-            const element = document.getElementById('content');
-            html2pdf(element, {
-                margin: [0.50, 0, 1, 0],
-                filename: 'FARMC.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 0.98
-                },
-                html2canvas: {
-                    scale: 1
-                },
-                jsPDF: {
-                    unit: 'in',
-                    format: 'letter',
-                    orientation: 'portrait'
-                },
-                // Add autoPaging option
-                // This will automatically add new pages as needed to fit the content
-                // Note: This may affect the performance for large documents
-                autoPaging: true
-            });
-        }
-    </script>
+                        checkbox.addEventListener('change', function() {
+                            hiddenInput.value = this.checked ? '1' : null;
+                        });
+                    }
+
+                    setupCheckbox('checkbox', 'internalP_file');
+                    setupCheckbox('checkbox-1', 'fisherfolkR_file');
+                    setupCheckbox('checkbox-2', 'fisheriesP_file');
+                    setupCheckbox('checkbox-3', 'formulationR_file');
+                });
+            </script>
+
+            <script>
+                function downloadPdf() {
+                    const element = document.getElementById('content');
+                    html2pdf(element, {
+                        margin: [0.50, 0, 1, 0],
+                        filename: 'FARMC.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 1
+                        },
+                        jsPDF: {
+                            unit: 'in',
+                            format: 'letter',
+                            orientation: 'portrait'
+                        },
+                        // Add autoPaging option
+                        // This will automatically add new pages as needed to fit the content
+                        // Note: This may affect the performance for large documents
+                        autoPaging: true
+                    });
+                }
+            </script>
 
 
 </body>

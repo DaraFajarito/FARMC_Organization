@@ -79,7 +79,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 3 | Completed</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$completed}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -89,7 +89,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 3 | Incompleted</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$incomplete}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -106,8 +106,8 @@
                                             <label>MIMAROPA LEVELS OVERVIEW</label>
                                         </div>
                                         <div class="col-md-8 text-right">
-                                            <a href="{{ url ('/L1Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L1Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                            <a href="{{ url ('/L3Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                            <a href="{{ url ('/L3Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -143,34 +143,56 @@
                                                 <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                                     <br>
                                                     <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                        <thead style="font-size:12px">
+                                                        <thead style="font-size:10px">
                                                             <tr>
                                                                 <th>Province</th>
                                                                 <th>Municipality</th>
-                                                                <th>Date of Organized</th>
-                                                                <th>Date of Re-organized</th>
+                                                                <th>Approved MFDP</th>
+                                                                <th>Implementation of MFDP</th>
+                                                                <th>Policies Implemented By The LGU</th>
                                                                 <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-
+                                                        <tbody style="font-size:small">
+                                                            @foreach($data as $item)
                                                             <tr>
-                                                                <td>Oriental Mindoro</td>
-                                                                <td>Naujan</td>
-                                                                <td>09/25/01</td>
-                                                                <td>05/10/25</td>
-                                                                <td style="color:red"><b>INCOMPLETE </b></td>
+                                                                <td>{{$item->profileForm->province}}</td>
+                                                                <td>{{$item->profileForm->municipality}}</td>
+                                                                @if ($item->approved_MFDP_file === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i> </td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+                                                                @if ($item->imp_act1 === null || $item->imp_act2 === null || $item->imp_act3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+
+                                                                @if ($item->pol_prop1 === null || $item->pol_prop2 === null || $item->pol_prop3 === null)
+                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                                                @else
+                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                                @endif
+
+
+                                                                @if ($item->status == "COMPLETED")
+                                                                <td style="color:green"><b>COMPLETED</b></td>
+                                                                @elseif ($item->status == "INCOMPLETE")
+                                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @endif
                                                                 <td style=" display: flex; justify-content: space-between;">
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Viewform') }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L3Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L3Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
-
-
                                                 </div>
                                                 <div class="tab-pane" id="mimaropa1" role="tabpanel">
                                                     <br>

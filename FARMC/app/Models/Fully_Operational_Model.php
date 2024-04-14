@@ -60,6 +60,7 @@ class Fully_Operational_Model extends Model
         'wor_act2_file',
         'wor_act3',
         'wor_act3_file',
+        'status',
     ];
 
     protected $casts = [
@@ -79,5 +80,23 @@ class Fully_Operational_Model extends Model
             })
             ->keys()
             ->toArray();
-    }           
+    }
+
+    public function hasNullValues()
+    {
+        // Get all columns except the excluded assistant fields
+        $columnsToCheck = array_diff($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()));
+
+        // Query the database to check if all fields are null
+        $query = $this->select($columnsToCheck)
+            ->where(function ($query) use ($columnsToCheck) {
+                foreach ($columnsToCheck as $column) {
+                    $query->whereNull($column);
+                }
+            })
+            ->first();
+
+        // If the query returns null, all fields except the assistants are null
+        return $query === null;
+    }
 }

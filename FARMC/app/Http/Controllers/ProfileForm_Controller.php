@@ -110,10 +110,10 @@ class ProfileForm_Controller extends Controller
 
         return view('LVL2_Basic_Function.basicFunction', compact('data'));
     }
-
+    
     public function display_level2_info($id)
     {
-        $data = ProfileForm_Model::where('id', $id)->get();
+        $data = ProfileForm_Model::select('id')->where('id', $id)->get();
         $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
 
         return view('LoD.Level2.L2_Viewform', compact('data', 'basics'));
@@ -138,8 +138,30 @@ class ProfileForm_Controller extends Controller
     {
         // $data = ProfileForm_Model::where('id', $id)->first();
         $basics = BasicFunction_Model::where('id', $id)->first();
-        return view('LVL3_Fully_Operational.fullyOperational', compact('basics'));
+        return view('LVL3_Fully_Operational.fullyOperational', compact('basics',));
     }
+    
+    public function display_level3_info($id)
+    {
+        $basics = BasicFunction_Model::select('id')->where('id', $id)->get();
+        $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level3.L3_Viewform', compact('basics', 'fullyOp'));
+    }
+
+    public function display_level3_incomplete()
+    {
+        $basics = Fully_Operational_Model::where('status', 'INCOMPLETE')->get();
+        return view('LoD.Level3.L3_Incompletetbl', compact('basics'));
+    }
+    public function display_level3_complete()
+    {
+        $basics = Fully_Operational_Model::where('status', 'COMPLETED')->get();
+        return view('LoD.Level.3L3_Completedtbl', compact('basics'));
+    }
+ 
+
+    
 
 
     //=======================================   ===================================================================================================||
@@ -636,9 +658,10 @@ class ProfileForm_Controller extends Controller
             'wor_act2_file.max' => 'The wor_act2_file may not be greater than 5MB.',
             'wor_act3_file.max' => 'The wor_act3_file may not be greater than 5MB.',
         ]);
+        
         $approvedMFDPFilePath = $request->file('approved_MFDP_file') ? $request->file('approved_MFDP_file')->move(public_path('fullyOperational/approved_MFDP')) : null;
       
-        $impact1FilePath = $request->file('imp_act1_file') ? $request->file('imp_act11_file')->move(public_path('fullyOperational/imp_act1')) : null;
+        $impact1FilePath = $request->file('imp_act1_file') ? $request->file('imp_act1_file')->move(public_path('fullyOperational/imp_act1')) : null;
         $impact2FilePath = $request->file('imp_act2_file') ? $request->file('imp_act2_file')->move(public_path('fullyOperational/imp_act2')) : null;
         $impact3FilePath = $request->file('imp_act3_file') ? $request->file('imp_act3_file')->move(public_path('fullyOperational/imp_act3')) : null;
        
@@ -696,15 +719,44 @@ class ProfileForm_Controller extends Controller
        
         $fullyOperational->rec_iss1 = $validatedData['rec_iss1'] ?? null;
         $fullyOperational->rec_iss1_file = $reciss1FilePath ? '/fullyOperational/rec_iss1/' . $reciss1FilePath->getFilename() : null;
+        $fullyOperational->rec_iss2 = $validatedData['rec_iss2'] ?? null;
+        $fullyOperational->rec_iss2_file = $reciss2FilePath ? '/fullyOperational/rec_iss2/' . $reciss2FilePath->getFilename() : null;
+        $fullyOperational->rec_iss3 = $validatedData['rec_iss3'] ?? null;
+        $fullyOperational->rec_iss3_file = $reciss3FilePath ? '/fullyOperational/rec_iss3/' . $reciss3FilePath->getFilename() : null;
+        
+        $fullyOperational->part_act1 = $validatedData['part_act1'] ?? null;
+        $fullyOperational->part_act1_file = $partact1FilePath ? '/fullyOperational/part_act1/' . $partact1FilePath->getFilename() : null;
+        $fullyOperational->part_act2 = $validatedData['part_act2'] ?? null;
+        $fullyOperational->part_act2_file = $partact2FilePath ? '/fullyOperational/part_act2/' . $partact2FilePath->getFilename() : null;
+        $fullyOperational->part_act3 = $validatedData['part_act3'] ?? null;
+        $fullyOperational->part_act3_file = $partact3FilePath ? '/fullyOperational/part_act3/' . $partact3FilePath->getFilename() : null;
+
+        $fullyOperational->part_LGU1 = $validatedData['part_LGU1'] ?? null;
+        $fullyOperational->part_LGU1_file = $partLGU1FilePath ? '/fullyOperational/part_LGU1/' . $partLGU1FilePath->getFilename() : null;
+        $fullyOperational->part_LGU2 = $validatedData['part_LGU2'] ?? null;
+        $fullyOperational->part_LGU2_file = $partLGU2FilePath ? '/fullyOperational/part_LGU2/' . $partLGU2FilePath->getFilename() : null;
+        $fullyOperational->part_LGU3 = $validatedData['part_LGU3'] ?? null;
+        $fullyOperational->part_LGU3_file = $partLGU3FilePath ? '/fullyOperational/part_LGU3/' . $partLGU3FilePath->getFilename() : null;
+
+        $fullyOperational->name_com = $validatedData['name_com'] ?? null;
+        $fullyOperational->sched_regmeet = $validatedData['sched_regmeet'] ?? null;
+        $fullyOperational->sched_regmeet_file = $schedregmeetFilePath ? '/fullyOperational/sched_regmeet/' . $schedregmeetFilePath->getFilename() : null;
+
+        $fullyOperational->wor_act1 = $validatedData['wor_act1'] ?? null;
+        $fullyOperational->wor_act1_file = $woract1FilePath ? '/fullyOperational/wor_act1/' . $woract1FilePath->getFilename() : null;
+        $fullyOperational->wor_act2 = $validatedData['wor_act2'] ?? null;
+        $fullyOperational->wor_act2_file = $woract2FilePath ? '/fullyOperational/wor_act1/' . $woract2FilePath->getFilename() : null;
+        $fullyOperational->wor_act3 = $validatedData['wor_act3'] ?? null;
+        $fullyOperational->wor_act3_file = $woract3FilePath ? '/fullyOperational/wor_act1/' . $woract3FilePath->getFilename() : null;
 
         // Save the fully operational record
        $fullyOperational->save();
 
         // Check if any fields have null values
-        $basicNull =$fullyOperational->hasNullValues();
+        $fullyNull =$fullyOperational->hasNullValues();
 
         // Determine the status based on null values
-        $status = $basicNull ? 'INCOMPLETE' : 'COMPLETED';
+        $status = $fullyNull ? 'INCOMPLETE' : 'COMPLETED';
 
         // Update the status field in the database
        $fullyOperational->status = $status;
@@ -714,10 +766,10 @@ class ProfileForm_Controller extends Controller
        $fullyOperationalNull =$fullyOperational->getNullFields();
 
         // Redirect if null values are present, otherwise display the incomplete view
-        if ($basicNull) {
-            return redirect('/level2')->with('success', 'Success!');
+        if ($fullyNull) {
+            return redirect('/level3')->with('success', 'Success!');
         } else {
-            return view('LoD.Level2.L2_Incomplete', ['fullyOperationalNull' =>$fullyOperationalNull]);
+            return view('LoD.Level3.L3_Incomplete', ['fullyOperationalNull' =>$fullyOperationalNull]);
         }
     }
 
@@ -732,6 +784,16 @@ class ProfileForm_Controller extends Controller
 
         //chart for complete
         return view('LoD.Level2.Level2', compact('completed', 'incomplete', 'data'));
+    }
+
+    public function level3Count()
+    {
+        $data = Fully_Operational_Model::get();
+        $completed = Fully_Operational_Model::where('status', "COMPLETED")->count();
+        $incomplete = Fully_Operational_Model::where('status', "INCOMPLETE")->count();
+
+        //chart for complete
+        return view('LoD.Level3.Level3', compact('completed', 'incomplete', 'data'));
     }
 
     //==========================================================================================================================================||

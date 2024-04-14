@@ -147,12 +147,12 @@ Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_com
 
 //Fully Functional 
 Route::get('/fullyoperational/{id}', [ProfileForm_Controller::class,'display_level3']);
-// Route::get('/level3', [ProfileForm_Controller::class,'level3Count']);
-// Route::post('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFullyOperational']);
-// Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_info']);
+Route::get('/level3', [ProfileForm_Controller::class,'level3Count']);
+Route::post('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFullyOperational']);
+Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_info']);
 
-// Route::get('/L3Incompletetbl',[ProfileForm_Controller::class, 'display_level3_incomplete']);
-// Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_complete']);
+Route::get('/L3Incompletetbl',[ProfileForm_Controller::class, 'display_level3_incomplete']);
+Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_complete']);
 
 // ---------------------------------------------------------------------------------------//
 

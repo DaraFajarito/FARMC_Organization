@@ -135,8 +135,8 @@
                                                         <tbody>
                                                             @foreach($data as $item)
                                                             <tr>
-                                                                <td>{{$item->province}}</td>
-                                                                <td>{{$item->municipality}}</td>
+                                                                <td>{{$item->profileForm->province}}</td>
+                                                                <td>{{$item->profileForm->municipality}}</td>
                                                                 <td>{{$item->mfdp}}</td>
                                                                 <td>{{$item->mfo}}</td>
                                                                 @if ($item->status == "COMPLETED")

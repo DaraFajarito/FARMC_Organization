@@ -43,8 +43,9 @@
                             <hr>
 
 
-                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead>
+                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
+                                width="100%">
+                                <thead  style="font-size:12px">
                                     <tr>
                                         <th>Province</th>
                                         <th>Municipality</th>
@@ -55,18 +56,19 @@
                                     </tr>
                                 </thead>
                                 @foreach ($data as $item)
-                                <tbody>
-                                    <tr>
-                                        <td>{{$item->province}}</td>
-                                        <td>{{$item->municipality}}</td>
-                                        <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</td>
-                                        <td style="color:red"><b>{{$item->status}}</b></td>
-                                        <td style="text-align: center;">
-                                            <a href="{{ url('/L1Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit</a>
+                                    <tbody style="font-size:small">
+                                        <tr>
+                                            <td>{{ $item->province }}</td>
+                                            <td>{{ $item->municipality }}</td>
+                                            <td>{{ $item->date_organized }}</td>
+                                            <td>{{ $item->date_reorganized }}</td>
+                                            <td style="color:green"><b>{{ $item->status }}</b></td>
+                                            <td style=" display: flex; justify-content: space-between;">
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                         </td>
-                                    </tr>
-                                </tbody>
+                                    </tbody>
                                 @endforeach
                             </table>
                         </div>
@@ -75,31 +77,31 @@
             </div>
         </div>
 
-      <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
-    <!-- JavaScript -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+        <!-- JavaScript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#FARMC').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'excel', 'pdf', 'print'
-                ],
-                "pagingType": "full_numbers"
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#FARMC').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'excel', 'pdf', 'print'
+                    ],
+                    "pagingType": "full_numbers"
+                });
             });
-        });
-    </script>
+        </script>
     </body>
 
     </html>

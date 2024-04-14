@@ -27,7 +27,7 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 1 | INCOMPLETED</a>
+                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 2 | INCOMPLETED</a>
                                 </li>
                             </ol>
                             <br>
@@ -54,11 +54,11 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody style="font-size:small">
                                     @foreach($data as $item)
                                     <tr>
-                                        <td>{{$item->province}}</td>
-                                        <td>{{$item->municipality}}</td>
+                                        <td>{{$item->profileForm->province}}</td>
+                                        <td>{{$item->profileForm->municipality}}</td>
                                         <td>{{$item->mfdp}}</td>
                                         <td>{{$item->mfo}}</td>
                                         @if ($item->status == "COMPLETED")

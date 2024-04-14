@@ -46,8 +46,9 @@ class BasicFunction_Model extends Model
 
     public function profileForm()
     {
-        return $this->belongsTo(ProfileForm_Model::class, 'id');
+        return $this->belongsTo(ProfileForm_Model::class, 'profileForm_id');
     }
+    
     public function getNullFields()
     {
         return collect($this->toArray())

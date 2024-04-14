@@ -45,7 +45,7 @@
                             <hr>
                             <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
                                 width="100%">
-                                <thead>
+                                <thead  style="font-size:12px">
                                     <tr>
                                         <th>Province</th>
                                         <th>Municipality</th>
@@ -56,18 +56,18 @@
                                     </tr>
                                 </thead>
                                 @foreach ($data as $item)
-                                    <tbody>
+                                    <tbody style="font-size:small">
                                         <tr>
                                             <td>{{ $item->province }}</td>
                                             <td>{{ $item->municipality }}</td>
                                             <td>{{ $item->date_organized }}</td>
                                             <td>{{ $item->date_reorganized }}</td>
                                             <td style="color:green"><b>{{ $item->status }}</b></td>
-                                            <td style="text-align: center;">
-                                                <a href="{{ url('/L1Viewform') }}" class="btn btn-warning btn-spacer"><i
-                                                        class="ti-eye"></i> &nbsp; View</a>
-                                            </td>
-                                        </tr>
+                                            <td style=" display: flex; justify-content: space-between;">
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                        </td>
                                     </tbody>
                                 @endforeach
                             </table>
