@@ -126,29 +126,51 @@
                                                             <tr>
                                                                 <th>Province</th>
                                                                 <th>Municipality</th>
-                                                                <th>Date of Organized</th>
-                                                                <th>Date of Re-organized</th>
+                                                                <th>Undergone Training On FARMC</th>
+                                                                <th>Fish Catch Database System Installed</th>
+                                                                <th>Fisherfolk Registration Forms</th>
                                                                 <th>Status</th>
                                                                 <th>Action</th>
-                                                            </tr>
+                                                            </tr> 
                                                         </thead>
                                                         <tbody>
-
+                                                            @foreach($fullyOp as $item)
                                                             <tr>
-                                                                <td>Oriental Mindoro</td>
-                                                                <td>Naujan</td>
-                                                                <td>09/25/01</td>
-                                                                <td>05/10/25</td>
-                                                                <td style="color:red"><b>INCOMPLETE </b></td>
+                                                                <td>{{$item->profileForm->province}}</td>
+                                                                <td>{{$item->profileForm->municipality}}</td>
+                                                                @if ($item->data_training === 'No')
+                                                                <td> No </td>
+                                                                @else
+                                                                <td>Yes</td>
+                                                                @endif
+
+                                                                @if ($item->data_fishcatch === 'No')
+                                                                <td> No </td>
+                                                                @else
+                                                                <td>Yes</td>
+                                                                @endif
+
+                                                                @if ($item->data_regforms === 'No')
+                                                                <td> No </td>
+                                                                @else
+                                                                <td>Yes     </td>
+                                                                @endif
+
+                                                                @if ($item->status == "COMPLETED")
+                                                                <td style="color:green"><b>COMPLETED</b></td>
+                                                                @elseif ($item->status == "INCOMPLETE")
+                                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @endif
+
                                                                 <td style=" display: flex; justify-content: space-between;">
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Viewform') }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L4Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L4Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
-
 
                                                 </div>
                                                 <div class="tab-pane" id="mimaropa1" role="tabpanel">

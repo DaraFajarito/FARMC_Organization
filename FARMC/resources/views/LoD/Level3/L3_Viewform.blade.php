@@ -94,7 +94,9 @@
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
                             <div class="actions" style="margin-left: auto;">
-                                <a href="{{ url ('/sustainabilityMechanism') }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
+                            @foreach($fullyOp as $sus)
+                                <a href="{{ url ('/sustainability/'. $sus->id) }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
+                            @endforeach
                             </div>
                         </div>
                     </div>

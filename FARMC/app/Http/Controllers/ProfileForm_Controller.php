@@ -7,6 +7,7 @@ use App\Models\Committee_Model;
 use App\Models\FisherfolkRepresentative_Model;
 use App\Models\ProfileForm_Model;
 use App\Models\Fully_Operational_Model;
+use App\Models\Sustainability_Mechanism_Model;
 use Illuminate\Http\Request;
 
 class ProfileForm_Controller extends Controller
@@ -76,7 +77,7 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level1.Level1', compact('data', 'completed', 'incomplete'));
     }
 
-     // ------------------------------------------------------------//
+    // ------------------------------------------------------------//
     // ----------------------LEVEL I------------------------------//
     // ------------------------------------------------------------//
 
@@ -103,14 +104,14 @@ class ProfileForm_Controller extends Controller
     // ------------------------------------------------------------//
     // ----------------------LEVEL II------------------------------//
     // ------------------------------------------------------------//
-    
+
     public function display_level2($id)
     {
         $data = ProfileForm_Model::where('id', $id)->first();
 
         return view('LVL2_Basic_Function.basicFunction', compact('data'));
     }
-    
+
     public function display_level2_info($id)
     {
         $data = ProfileForm_Model::select('id')->where('id', $id)->get();
@@ -129,18 +130,18 @@ class ProfileForm_Controller extends Controller
         $data = BasicFunction_Model::where('status', 'COMPLETED')->get();
         return view('LoD.Level2.L2_Completedtbl', compact('data'));
     }
- 
+
     // ------------------------------------------------------------//
     // ----------------------LEVEL III------------------------------//
     // ------------------------------------------------------------//
-    
+
     public function display_level3($id)
     {
         // $data = ProfileForm_Model::where('id', $id)->first();
         $basics = BasicFunction_Model::where('id', $id)->first();
-        return view('LVL3_Fully_Operational.fullyOperational', compact('basics',));
+        return view('LVL3_Fully_Operational.fullyOperational', compact('basics'));
     }
-    
+
     public function display_level3_info($id)
     {
         $basics = BasicFunction_Model::select('id')->where('id', $id)->get();
@@ -157,11 +158,43 @@ class ProfileForm_Controller extends Controller
     public function display_level3_complete()
     {
         $basics = Fully_Operational_Model::where('status', 'COMPLETED')->get();
-        return view('LoD.Level.3L3_Completedtbl', compact('basics'));
+        return view('LoD.Level.L3_Completedtbl', compact('basics'));
     }
- 
 
-    
+    // ------------------------------------------------------------//
+    // ----------------------LEVEL IV------------------------------//
+    // ------------------------------------------------------------//
+
+    public function display_level4($id)
+    {
+        // $data = ProfileForm_Model::where('id', $id)->first();
+        $fullyOp = Fully_Operational_Model::where('id', $id)->first();
+        return view('LVL4_Sustainability_Mechanism.sustainabilityMechanism', compact('fullyOp'));
+    }
+
+    public function display_level4_info($id)
+    {
+        $fullyOp = Fully_Operational_Model::select('id')->where('id', $id)->get();
+        $ddata = Sustainability_Mechanism_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level4.L4_Viewform', compact('fullyOp', 'sustain'));
+    }
+
+    // public function display_level4_incomplete()
+    // {
+    //     $fullyOp = Sustainability_Mechanism_Model::where('status', 'INCOMPLETE')->get();
+    //     return view('LoD.Level4.L4_Incompletetbl', compact('fully'));
+    // }
+    // public function display_level4_complete()
+    // {
+    //     $fullyOp = Sustainability_Mechanism_Model::where('status', 'COMPLETED')->get();
+    //     return view('LoD.Level4.L4_Completedtbl', compact('fully'));
+    // }
+
+
+
+
+
 
 
     //=======================================   ===================================================================================================||
@@ -496,7 +529,7 @@ class ProfileForm_Controller extends Controller
             'caseestablished_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'mfarmcoffice' => 'nullable',
             'regmeet' => 'nullable',
-    
+
 
         ], [
             'copy1_file.max' => 'The copy1_file may not be greater than 5MB.',
@@ -544,7 +577,7 @@ class ProfileForm_Controller extends Controller
         $basicFunction->minatt_file = $minattFilePath   ? '/basic-function/minatt/' . $minattFilePath->getFilename() : ($request->has('minatt_file') ? 'N/A' : null);
         $basicFunction->photodoc_file = $photodocFilePath ? '/basic-function/photodoc/' . $photodocFilePath->getFilename() : ($request->has('photodoc_file') ? 'N/A' : null);
 
-     
+
         // Save the basicFunction record
         $basicFunction->save();
 
@@ -569,7 +602,7 @@ class ProfileForm_Controller extends Controller
         }
     }
 
-    public function addFullyOperational (Request $request, $id)
+    public function addFullyOperational(Request $request, $id)
     {
         $validatedData = $request->validate([
             'approved_MFDP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
@@ -627,7 +660,7 @@ class ProfileForm_Controller extends Controller
             'wor_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
         ], [
             'approved_MFDP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
-            
+
             'imp_act1_file.max' => 'The imp_act1_file may not be greater than 5MB.',
             'imp_act2_file.max' => 'The imp_act2_file may not be greater than 5MB.',
             'imp_act3_file.max' => 'The imp_act3_file may not be greater than 5MB.',
@@ -658,35 +691,35 @@ class ProfileForm_Controller extends Controller
             'wor_act2_file.max' => 'The wor_act2_file may not be greater than 5MB.',
             'wor_act3_file.max' => 'The wor_act3_file may not be greater than 5MB.',
         ]);
-        
+
         $approvedMFDPFilePath = $request->file('approved_MFDP_file') ? $request->file('approved_MFDP_file')->move(public_path('fullyOperational/approved_MFDP')) : null;
-      
+
         $impact1FilePath = $request->file('imp_act1_file') ? $request->file('imp_act1_file')->move(public_path('fullyOperational/imp_act1')) : null;
         $impact2FilePath = $request->file('imp_act2_file') ? $request->file('imp_act2_file')->move(public_path('fullyOperational/imp_act2')) : null;
         $impact3FilePath = $request->file('imp_act3_file') ? $request->file('imp_act3_file')->move(public_path('fullyOperational/imp_act3')) : null;
-       
+
         $polprop1FilePath = $request->file('pol_prop1_file') ? $request->file('pol_prop1_file')->move(public_path('fullyOperational/pol_prop1')) : null;
         $polprop2FilePath = $request->file('pol_prop2_file') ? $request->file('pol_prop2_file')->move(public_path('fullyOperational/pol_prop2')) : null;
         $polprop3FilePath = $request->file('pol_prop3_file') ? $request->file('pol_prop3_file')->move(public_path('fullyOperational/pol_prop3')) : null;
-      
+
         $recact1FilePath = $request->file('rec_act1_file') ? $request->file('rec_act1_file')->move(public_path('fullyOperational/rec_act1')) : null;
         $recact2FilePath = $request->file('rec_act2_file') ? $request->file('rec_act2_file')->move(public_path('fullyOperational/rec_act2')) : null;
         $recact3FilePath = $request->file('rec_act3_file') ? $request->file('rec_act3_file')->move(public_path('fullyOperational/rec_act3')) : null;
-       
+
         $reciss1FilePath = $request->file('rec_iss1_file') ? $request->file('rec_iss1_file')->move(public_path('fullyOperational/rec_iss1')) : null;
         $reciss2FilePath = $request->file('rec_iss2_file') ? $request->file('rec_iss2_file')->move(public_path('fullyOperational/rec_iss2')) : null;
         $reciss3FilePath = $request->file('rec_iss3_file') ? $request->file('rec_iss3_file')->move(public_path('fullyOperational/rec_iss3')) : null;
-      
+
         $partact1FilePath = $request->file('part_act1_file') ? $request->file('part_act1_file')->move(public_path('fullyOperational/part_act1')) : null;
         $partact2FilePath = $request->file('part_act2_file') ? $request->file('part_act2_file')->move(public_path('fullyOperational/part_act2')) : null;
         $partact3FilePath = $request->file('part_act3_file') ? $request->file('part_act3_file')->move(public_path('fullyOperational/part_act3')) : null;
-        
+
         $partLGU1FilePath = $request->file('part_LGU1_file') ? $request->file('part_LGU1_file')->move(public_path('fullyOperational/part_LGU1')) : null;
         $partLGU2FilePath = $request->file('part_LGU2_file') ? $request->file('part_LGU2_file')->move(public_path('fullyOperational/part_LGU2')) : null;
         $partLGU3FilePath = $request->file('part_LGU3_file') ? $request->file('part_LGU3_file')->move(public_path('fullyOperational/part_LGU3')) : null;
 
         $schedregmeetFilePath = $request->file('sched_regmeet_file') ? $request->file('sched_regmeet_file')->move(public_path('fullyOperational/sched_regmeet')) : null;
-      
+
         $woract1FilePath = $request->file('wor_act1_file') ? $request->file('wor_act1_file')->move(public_path('fullyOperational/wor_act1')) : null;
         $woract2FilePath = $request->file('wor_act2_file') ? $request->file('wor_act2_file')->move(public_path('fullyOperational/wor_act2')) : null;
         $woract3FilePath = $request->file('wor_act3_file') ? $request->file('wor_act3_file')->move(public_path('fullyOperational/wor_act3')) : null;
@@ -702,28 +735,28 @@ class ProfileForm_Controller extends Controller
         $fullyOperational->imp_act2_file = $impact2FilePath ? '/fullyOperational/imp_act2/' . $impact2FilePath->getFilename() : null;
         $fullyOperational->imp_act3 = $validatedData['imp_act3'] ?? null;
         $fullyOperational->imp_act3_file = $impact3FilePath ? '/fullyOperational/imp_act3/' . $impact3FilePath->getFilename() : null;
-       
+
         $fullyOperational->pol_prop1 = $validatedData['pol_prop1'] ?? null;
         $fullyOperational->pol_prop1_file = $polprop1FilePath ? '/fullyOperational/pol_prop1/' . $polprop1FilePath->getFilename() : null;
         $fullyOperational->pol_prop2 = $validatedData['pol_prop2'] ?? null;
         $fullyOperational->pol_prop2_file = $polprop2FilePath ? '/fullyOperational/pol_prop2/' . $polprop2FilePath->getFilename() : null;
         $fullyOperational->pol_prop3 = $validatedData['pol_prop3'] ?? null;
         $fullyOperational->pol_prop3_file = $polprop3FilePath ? '/fullyOperational/pol_prop3/' . $polprop3FilePath->getFilename() : null;
-       
+
         $fullyOperational->rec_act1 = $validatedData['rec_act1'] ?? null;
         $fullyOperational->rec_act1_file = $recact1FilePath ? '/fullyOperational/rec_act1/' . $recact1FilePath->getFilename() : null;
         $fullyOperational->rec_act2 = $validatedData['rec_act2'] ?? null;
         $fullyOperational->rec_act2_file = $recact2FilePath ? '/fullyOperational/rec_act2/' . $recact2FilePath->getFilename() : null;
         $fullyOperational->rec_act3 = $validatedData['rec_act3'] ?? null;
         $fullyOperational->rec_act3_file = $recact3FilePath   ? '/fullyOperational/rec_act3/' . $recact3FilePath->getFilename() : null;
-       
+
         $fullyOperational->rec_iss1 = $validatedData['rec_iss1'] ?? null;
         $fullyOperational->rec_iss1_file = $reciss1FilePath ? '/fullyOperational/rec_iss1/' . $reciss1FilePath->getFilename() : null;
         $fullyOperational->rec_iss2 = $validatedData['rec_iss2'] ?? null;
         $fullyOperational->rec_iss2_file = $reciss2FilePath ? '/fullyOperational/rec_iss2/' . $reciss2FilePath->getFilename() : null;
         $fullyOperational->rec_iss3 = $validatedData['rec_iss3'] ?? null;
         $fullyOperational->rec_iss3_file = $reciss3FilePath ? '/fullyOperational/rec_iss3/' . $reciss3FilePath->getFilename() : null;
-        
+
         $fullyOperational->part_act1 = $validatedData['part_act1'] ?? null;
         $fullyOperational->part_act1_file = $partact1FilePath ? '/fullyOperational/part_act1/' . $partact1FilePath->getFilename() : null;
         $fullyOperational->part_act2 = $validatedData['part_act2'] ?? null;
@@ -750,26 +783,99 @@ class ProfileForm_Controller extends Controller
         $fullyOperational->wor_act3_file = $woract3FilePath ? '/fullyOperational/wor_act1/' . $woract3FilePath->getFilename() : null;
 
         // Save the fully operational record
-       $fullyOperational->save();
+        $fullyOperational->save();
 
         // Check if any fields have null values
-        $fullyNull =$fullyOperational->hasNullValues();
+        $fullyNull = $fullyOperational->hasNullValues();
 
         // Determine the status based on null values
         $status = $fullyNull ? 'INCOMPLETE' : 'COMPLETED';
 
         // Update the status field in the database
-       $fullyOperational->status = $status;
-       $fullyOperational->save();
+        $fullyOperational->status = $status;
+        $fullyOperational->save();
 
         // Retrieve fields with null values
-       $fullyOperationalNull =$fullyOperational->getNullFields();
+        $fullyOperationalNull = $fullyOperational->getNullFields();
 
         // Redirect if null values are present, otherwise display the incomplete view
         if ($fullyNull) {
             return redirect('/level3')->with('success', 'Success!');
         } else {
-            return view('LoD.Level3.L3_Incomplete', ['fullyOperationalNull' =>$fullyOperationalNull]);
+            return view('LoD.Level3.L3_Incomplete', ['fullyOperationalNull' => $fullyOperationalNull]);
+        }
+    }
+
+    public function addSustainabilityMechanism(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'data_training' => 'nullable',
+            'data_fishcatch' => 'nullable',
+            'data_regforms' => 'nullable',
+            'est_funds' => 'nullable',
+            'est_funds_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'othersources1' => 'nullable|string',
+            'othersources1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'othersources2' => 'nullable|string',
+            'othersources2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'othersources3' => 'nullable|string',
+            'othersources3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+        ], [
+            'est_funds_file.max' => 'The est_funds_file may not be greater than 5MB.',
+            'othersources1_file.max' => 'The othersources1_file may not be greater than 5MB.',
+            'othersources2_file.max' => 'The othersources2_file may not be greater than 5MB.',
+            'othersources3_file.max' => 'The othersources3_file may not be greater than 5MB.',
+        ]);
+
+        $estfundsFilePath = $request->file('est_funds_file') ? $request->file('est_funds_file')->move(public_path('sustainabilityMechanism/est_funds')) : null;
+
+        $othersources1FilePath = $request->file('othersources1_file') ? $request->file('othersources1_file')->move(public_path('sustainabilityMechanism/othersources1')) : null;
+        $othersources2FilePath = $request->file('othersources2_file') ? $request->file('othersources2_file')->move(public_path('sustainabilityMechanism/othersources2')) : null;
+        $othersources3FilePath = $request->file('othersources3_file') ? $request->file('othersources3_file')->move(public_path('sustainabilityMechanism/othersources3')) : null;
+
+        $sustainabilityMech = new Sustainability_Mechanism_Model();
+        $sustainabilityMech->profileForm_id = $id;
+
+        $sustainabilityMech->data_training = $validatedData['data_training'] ?? null;
+        $sustainabilityMech->data_fishcatch = $validatedData['data_fishcatch'] ?? null;
+        $sustainabilityMech->data_regforms = $validatedData['data_regforms'] ?? null;
+        $sustainabilityMech->est_funds = $validatedData['est_funds'] ?? null;
+
+
+        // $sustainabilityMech->data_training = in_array($validatedData['data_training'], ['yes', 'no']) ? $validatedData['data_training'] : null;
+        // $sustainabilityMech->data_fishcatch = in_array($validatedData['data_fishcatch'], ['yes', 'no']) ? $validatedData['data_fishcatch'] : null;
+        // $sustainabilityMech->data_regforms = in_array($validatedData['data_regforms'], ['yes', 'no']) ? $validatedData['data_regforms'] : null;
+        // $sustainabilityMech->est_funds = in_array($validatedData['est_funds'], ['yes', 'no']) ? $validatedData['est_funds'] : null;
+        
+        $sustainabilityMech->est_funds_file = $estfundsFilePath ? '/sustainabilityMechanism/est_funds/' . $estfundsFilePath->getFilename() : null;
+        $sustainabilityMech->othersources1 = $validatedData['othersources1'] ?? null;
+        $sustainabilityMech->othersources1_file = $othersources1FilePath ? '/sustainabilityMechanism/othersources1/' . $othersources1FilePath->getFilename() : null;
+        $sustainabilityMech->othersources2 = $validatedData['othersources2'] ?? null;
+        $sustainabilityMech->othersources2_file = $othersources2FilePath ? '/sustainabilityMechanism/othersources2/' . $othersources2FilePath->getFilename() : null;
+        $sustainabilityMech->othersources3 = $validatedData['othersources3'] ?? null;
+        $sustainabilityMech->othersources3_file = $othersources3FilePath ? '/sustainabilityMechanism/othersources3/' . $othersources3FilePath->getFilename() : null;
+
+        // Save the fully operational record
+        $sustainabilityMech->save();
+
+        // Check if any fields have null values
+        $fullyNull = $sustainabilityMech->hasNullValues();
+
+        // Determine the status based on null values
+        $status = $fullyNull ? 'COMPLETED' : 'INCOMPLETE';
+
+        // Update the status field in the database
+        $sustainabilityMech->status = $status;
+        $sustainabilityMech->save();
+
+        // Retrieve fields with null values
+        $sustainabilityMechNull = $sustainabilityMech->getNullFields();
+
+        // Redirect if null values are present, otherwise display the incomplete view
+        if ($fullyNull) {
+            return redirect('/level4')->with('success', 'Success!');
+        } else {
+            return view('LoD.Level4.L4_Incomplete', ['sustainabilityMechNull' => $sustainabilityMechNull]);
         }
     }
 

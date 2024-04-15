@@ -225,7 +225,7 @@
                                             <p>The following categories are missing:</p>
                                             <ul>
                                                 @foreach ($missingCategoriesArray as $category)
-                                                <li>{{ $category }}</li>
+                                                <li><i class="ti-check-box text-danger-color"></i> &nbsp; {{ $category }}</li>
                                                 @endforeach
                                             </ul>
                                             @else
@@ -240,7 +240,6 @@
                                             @if (in_array('endorsement_fisherfolk', $fisherfolkNullFields))
                                             <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Endorsement Fisherfolk</span>
                                             @endif
-                                            <br>
                                             <!-- end of Fisherfolk Rep -->
 
 
@@ -248,20 +247,20 @@
                                             <div>
                                                 <b>
                                                     <h6 class="captions">MFARMC Committee</h6>
-
-                                                    @if (!empty($missingCommitteeCategoriesArray))
-                                                    <p>The following committee categories are missing:</p>
-                                                    <ul>
-                                                        @foreach ($missingCommitteeCategoriesArray as $category)
-                                                        <li>{{ $category }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                    @else
-                                                    <p>All committee categories are present.</p>
-                                                    @endif
-
-                                                    <br>
                                                 </b>
+                                                @if (!empty($missingCommitteeCategoriesArray))
+                                                <h6 class="captions">The following committee categories are missing:</h6>
+                                                <ul>
+                                                    @foreach ($missingCommitteeCategoriesArray as $category)
+                                                    <li><i class="ti-check-box text-danger-color"></i> &nbsp; {{ $category }}</li>
+                                                    @endforeach
+                                                </ul>
+                                                @else
+                                                <p>All committee categories are present.</p>
+                                                @endif
+
+                                                <br>
+
                                             </div>
 
                                             <!-- end of MFARMC Committee -->

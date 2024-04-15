@@ -165,14 +165,14 @@
                                                                 <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                                 @endif
 
-                                                                @if ($item->imp_act1 === null || $item->imp_act2 === null || $item->imp_act3 === null)
+                                                                @if ($item->imp_act1 === null || $item->imp_act1_file === null ||  $item->imp_act2 === null || $item->imp_act2_file === null ||  $item->imp_act3 === null ||  $item->imp_act3_file === null)
                                                                 <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                                 @else
                                                                 <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                                 @endif
 
 
-                                                                @if ($item->pol_prop1 === null || $item->pol_prop2 === null || $item->pol_prop3 === null)
+                                                                @if ($item->pol_prop1 === null || $item->pol_prop1_file === null || $item->pol_prop2 === null || $item->pol_prop2_file === null || $item->pol_prop3 === null || $item->pol_prop3_file === null )
                                                                 <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                                 @else
                                                                 <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>

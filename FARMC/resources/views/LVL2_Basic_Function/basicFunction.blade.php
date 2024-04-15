@@ -235,7 +235,7 @@
                                         <br><br>
                                     </div>
 
-                                    <<div class="col-md-8" style="margin-top: 50px;">
+                                    <div class="col-md-8" style="margin-top: 50px;">
                                         <div class="form-group m-r-15">
                                             <input id="copy3_file" type="file" name="copy3_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="" @if(!$errors->has('copy3_file') && !old('copy3_file')) value="N/A" @endif>
                                             @error('copy3_file')

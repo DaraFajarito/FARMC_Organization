@@ -142,7 +142,7 @@ Route::get('/L2Incompletetbl',[ProfileForm_Controller::class, 'display_level2_in
 Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_complete']);
 
 // ---------------------------------------------------------------------------------------//
-//LEVEL TWO DATA//
+//LEVEL THREE DATA//
 // ---------------------------------------------------------------------------------------//
 
 //Fully Functional 
@@ -153,6 +153,19 @@ Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_in
 
 Route::get('/L3Incompletetbl',[ProfileForm_Controller::class, 'display_level3_incomplete']);
 Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_complete']);
+
+// ---------------------------------------------------------------------------------------//
+//LEVEL FOUR DATA//
+// ---------------------------------------------------------------------------------------//
+
+//Sustainability Mechanism
+Route::get('/sustainability/{id}', [ProfileForm_Controller::class,'display_level4']);
+// Route::get('/level4', [ProfileForm_Controller::class,'level4Count']);
+Route::post('/add-sustainabilityMechanism/{id}', [ProfileForm_Controller::class,'addSustainabilityMechanism']);
+// Route::get('/L4Viewform/{id}', [ProfileForm_Controller::class,'display_level4_info']);
+
+// Route::get('/L4Incompletetbl',[ProfileForm_Controller::class, 'display_level4_incomplete']);
+// Route::get('/L4Completedtbl',[ProfileForm_Controller::class, 'display_level4_complete']);
 
 // ---------------------------------------------------------------------------------------//
 

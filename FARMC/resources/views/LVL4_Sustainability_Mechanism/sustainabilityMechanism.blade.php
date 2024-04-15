@@ -59,7 +59,7 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/add-sustainabilityMechanism/'. $fullyOp->id) }}" enctype="multipart/form-data">
                             @csrf
                             @if($errors->any())
                             <div class="alert alert-danger">
@@ -79,7 +79,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio" /><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_training" value="Yes"/><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio" /><i class="helper"></i>No
+                                                        <input type="radio" name="data_training" value="No"/><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -98,7 +98,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio1" /><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_fishcatch" value="Yes"/><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -106,7 +106,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio1" /><i class="helper"></i>No
+                                                        <input type="radio" name="data_fishcatch" value="No"/><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -117,7 +117,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio2" /><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_regforms" value="Yes"/><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -125,7 +125,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio2" /><i class="helper"></i>No
+                                                        <input type="radio" name="data_regforms" value="No"/><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -142,7 +142,7 @@
                                                 <div class="form-radio" style="display: inline-block;">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="radio4" /><i class="helper"></i>Yes
+                                                            <input type="radio" name="est_funds" value="Yes"/><i class="helper"></i>Yes
                                                         </label>
                                                     </div>
                                                 </div>
@@ -150,42 +150,42 @@
                                                 <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="radio4" /><i class="helper"></i>No
+                                                            <input type="radio" name="est_funds" value="No"/><i class="helper"></i>No
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
 
-                                                <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <input id="est_funds_file" type="file" name="est_funds_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                 <small><b><em> If yes, please attached document showing the MFARMC fund</b></em></small>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12" style="margin-top:1rem">
                                             <div class="form-group row">
-                                                <label for="municipality" class="col-md-12 captions">2.2 Other sources of funds obtained for the FARMC & its operation</label>
+                                                <label for="" class="col-md-12 captions">2.2 Other sources of funds obtained for the FARMC & its operation</label>
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="othersources1" name="othersources1" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="othersources1_file" type="file" name="othersources1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Attached report</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="othersources2" name="othersources2" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="othersources2_file" type="file" name="othersources2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Attached minutes</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="othersources3" name="othersources3" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="othersources3_file" type="file" name="othersources3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Attached photo documentation</b></em></small>
                                                     </div>
                                                 </div>
