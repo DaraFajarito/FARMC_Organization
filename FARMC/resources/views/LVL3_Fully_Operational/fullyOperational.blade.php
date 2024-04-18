@@ -58,7 +58,7 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-fullyOperational/' . $basics->id) }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/add-fullyOperational/' . $basics->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
                             @if($errors->any())
                             <div class="alert alert-danger">

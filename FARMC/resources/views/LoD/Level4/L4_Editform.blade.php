@@ -50,6 +50,7 @@
                         <a href="{{ url ('/level4') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
+                @foreach($sustain as $item)
                 <div class="card">
                     <div class="card-header">
                         <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
@@ -59,14 +60,9 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/edit-sustainabilityMechanism/'. $item->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
-
+                            @method('PUT')
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -74,12 +70,12 @@
                                             <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Data Bank/Databank system established and accesible</label>
                                         </div>
                                         <br>
-                                        <label for="municipality" class="col-md-12 captions">1.1 FARMC has undergone training on FARMC & Fish Catch DAtabase System</label>
+                                        <label for="municipality" class="col-md-12 captions">1.1 FARMC has undergone training on FARMC & Fish Catch Database System</label>
                                         <div class="col-md-12" style="margin-top: 10px;">
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio" /><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_training" value="Yes" {{ old('data_training', $item->data_training) == 'Yes' ? 'checked' : '' }} /><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -87,18 +83,18 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio" /><i class="helper"></i>No
+                                                        <input type="radio" name="data_training" value="No" {{ old('data_training', $item->data_training) == 'No' ? 'checked' : '' }} /><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <label for="municipality" class="col-md-12 captions" style="margin-top:1rem">1.2 FARMC & Fish Catch DAtabase System installed and operational in the FARMC Office Computer</label>
+                                        <label for="municipality" class="col-md-12 captions" style="margin-top:1rem">1.2 FARMC & Fish Catch Database System installed and operational in the FARMC Office Computer</label>
                                         <div class="col-md-12" style="margin-top: 10px;">
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio1" /><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_fishcatch" value="Yes" {{ old('data_fishcatch', $item->data_fishcatch) == 'Yes' ? 'checked' : '' }} /><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -106,7 +102,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio1" /><i class="helper"></i>No
+                                                        <input type="radio" name="data_fishcatch" value="No" {{ old('data_fishcatch', $item->data_fishcatch) == 'No' ? 'checked' : '' }} /><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -117,7 +113,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio2" /><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_regforms" value="Yes" {{ old('data_regforms', $item->data_regforms) == 'Yes' ? 'checked' : '' }} /><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -125,7 +121,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="radio2" /><i class="helper"></i>No
+                                                        <input type="radio" name="data_regforms" value="No" {{ old('data_regforms', $item->data_regforms) == 'No' ? 'checked' : '' }} /><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -133,7 +129,7 @@
 
 
                                         <div class="form-group row" style="margin-top: 1rem;">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Established financial capability and fund sourcing ability</label>
+                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">2. Established financial capability and fund sourcing ability</label>
                                         </div>
                                         <br>
                                         <label for="municipality" class="col-md-12 captions">2.1 Amount of MFARMC funds allocated by the LGU</label>
@@ -142,7 +138,7 @@
                                                 <div class="form-radio" style="display: inline-block;">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="radio4" /><i class="helper"></i>Yes
+                                                            <input type="radio" name="est_funds" value="Yes" {{ old('est_funds', $item->est_funds) == 'Yes' ? 'checked' : '' }} /><i class="helper"></i>Yes
                                                         </label>
                                                     </div>
                                                 </div>
@@ -150,43 +146,54 @@
                                                 <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="radio4" /><i class="helper"></i>No
+                                                            <input type="radio" name="est_funds" value="No" {{ old('est_funds', $item->est_funds) == 'No' ? 'checked' : '' }} /><i class="helper"></i>No
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-
-                                                <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                <small><b><em> If yes, please attached document showing the MFARMC fund</b></em></small>
+                                                <input id="est_funds_file" type="file" name="est_funds_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                <br>
+                                                @if ($item['est_funds_file'])
+                                                <small>Previous file: {{ $item['est_funds_file'] }}</small>
+                                                @endif
                                             </div>
                                         </div>
 
                                         <div class="col-md-12" style="margin-top:1rem">
                                             <div class="form-group row">
-                                                <label for="municipality" class="col-md-12 captions">2.2 Other sources of funds obtained for the FARMC & its operation</label>
+                                                <label for="" class="col-md-12 captions">2.2 Other sources of funds obtained for the FARMC & its operation</label>
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="othersources1" name="othersources1" class="form-control" style="width:520px" value="{{ old('othersources1', $item->othersources1) }}" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached report</b></em></small>
+                                                        <input id="othersources1_file" type="file" name="othersources1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
+                                                        @if ($item['othersources1_file'])
+                                                        <small>Previous file: {{ $item['othersources1_file'] }}</small>
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="othersources2" name="othersources2" class="form-control" style="width:520px" value="{{ old('othersources2', $item->othersources2) }}"  placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached minutes</b></em></small>
+                                                        <input id="othersources2_file" type="file" name="othersources2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
+                                                        @if ($item['othersources2_file'])
+                                                        <small>Previous file: {{ $item['othersources2_file'] }}</small>
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="othersources3" name="othersources3" class="form-control" style="width:520px" value="{{ old('othersources3', $item->othersources3) }}" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached photo documentation</b></em></small>
+                                                        <input id="othersources3_file" type="file" name="othersources3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
+                                                        @if ($item['othersources3_file'])
+                                                        <small>Previous file: {{ $item['othersources3_file'] }}</small>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,16 +202,37 @@
 
                                         <div class="row" style="margin-top: 270px;">
                                             <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to submit now?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

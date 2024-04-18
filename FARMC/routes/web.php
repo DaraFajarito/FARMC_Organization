@@ -99,7 +99,7 @@ Route::view('/L5Incomplete', 'LoD.Level5.L5_Incomplete');
 Route::view('/L5Editform', 'LoD.Level5.L5_Editform');
 Route::view('/L5Viewform', 'LoD.Level5.L5_Viewform');
 
-Route::view('/modelExcellence', 'LVL5_Model_of_Excellence.modelofExcellence');
+// Route::view('/modelExcellence', 'LVL5_Model_of_Excellence.modelofExcellence');
 
 // ---------------------------------------------------------------------------------------//
 //LEVEL ONE DATA//
@@ -140,6 +140,7 @@ Route::get('/L2Viewform/{id}', [ProfileForm_Controller::class,'display_level2_in
 
 Route::get('/L2Incompletetbl',[ProfileForm_Controller::class, 'display_level2_incomplete']);
 Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_complete']);
+Route::get('/dash', [ProfileForm_Controller::class,'allLevelCount']);
 
 // ---------------------------------------------------------------------------------------//
 //LEVEL THREE DATA//
@@ -160,14 +161,28 @@ Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_com
 
 //Sustainability Mechanism
 Route::get('/sustainability/{id}', [ProfileForm_Controller::class,'display_level4']);
-// Route::get('/level4', [ProfileForm_Controller::class,'level4Count']);
-Route::post('/add-sustainabilityMechanism/{id}', [ProfileForm_Controller::class,'addSustainabilityMechanism']);
-// Route::get('/L4Viewform/{id}', [ProfileForm_Controller::class,'display_level4_info']);
+Route::get('/level4', [ProfileForm_Controller::class,'level4Count']);
+Route::put('/add-sustainabilityMechanism/{id}', [ProfileForm_Controller::class,'addSustainabilityMechanism']);
+Route::put('/edit-sustainabilityMechanism/{id}', [ProfileForm_Controller::class, 'editSustainabilityMechanism']);
+Route::get('/L4Viewform/{id}', [ProfileForm_Controller::class,'display_level4_info']);
+Route::get('/L4Editform/{id}', [ProfileForm_Controller::class,'display_level4_edit']);
 
-// Route::get('/L4Incompletetbl',[ProfileForm_Controller::class, 'display_level4_incomplete']);
-// Route::get('/L4Completedtbl',[ProfileForm_Controller::class, 'display_level4_complete']);
+Route::get('/L4Incompletetbl',[ProfileForm_Controller::class, 'display_level4_incomplete']);
+Route::get('/L4Completedtbl',[ProfileForm_Controller::class, 'display_level4_complete']);
 
 // ---------------------------------------------------------------------------------------//
+//LEVEL FIVE DATA//
+// ---------------------------------------------------------------------------------------//
+
+//Sustainability Mechanism
+Route::get('/modelExcellence/{id}', [ProfileForm_Controller::class,'display_level5']);
+Route::get('/level5', [ProfileForm_Controller::class,'level5Count']);
+Route::post('/add-modelExcellence/{id}', [ProfileForm_Controller::class,'addmodelExcellence']);
+Route::get('/L5Viewform/{id}', [ProfileForm_Controller::class,'display_level5_info']);
+
+Route::get('/L5Incompletetbl',[ProfileForm_Controller::class, 'display_level5_incomplete']);
+Route::get('/L5Completedtbl',[ProfileForm_Controller::class, 'display_level5_complete']);
+
 
 // ---------------------------------------------------------------------------------------//
 //FARMC Membership

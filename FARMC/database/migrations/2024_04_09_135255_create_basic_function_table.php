@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('regmeet')->nullable();
             $table->string('minatt_file')->nullable();
             $table->string('photodoc_file')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

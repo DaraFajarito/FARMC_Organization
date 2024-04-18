@@ -59,7 +59,7 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/add-modelExcellence/' . $sustain->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
                             @if($errors->any())
                             <div class="alert alert-danger">
@@ -81,13 +81,13 @@
                                                 <label for="municipality" class="col-md-12 captions">1.1 List of governing bodies that recognises the MFARMC as a member</label>
                                                 <div class="col-md-12 text-center">
                                                     <div class="col-md-12" style="margin-bottom: 1rem;">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:1000px" placeholder="">
+                                                        <input type="text" id="rec_list1" name="rec_list1" class="form-control" style="width:1000px" placeholder="">
                                                     </div>
                                                     <div class="col-md-12" style="margin-bottom: 1rem;">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:1000px" placeholder="">
+                                                        <input type="text" id="rec_list2" name="rec_list2" class="form-control" style="width:1000px" placeholder="">
                                                     </div>
                                                     <div class="col-md-12" style="margin-bottom: 1rem;">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:1000px" placeholder="">
+                                                        <input type="text" id="rec_list3" name="rec_list3" class="form-control" style="width:1000px" placeholder="">
                                                     </div>
                                                 </div>
 
@@ -99,9 +99,9 @@
                                     <div class="col-md-12" style="margin-top:1rem">
                                         <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="municipality" class="col-md-12 captions">1.2 Please attached Communications / Reports on the representations of FARMCs in various fora, Assemblies, Dialogues and involvement in project planning, monitoring and evaluation.</label>
+                                                <label for="" class="col-md-12 captions">1.2 Please attached Communications / Reports on the representations of FARMCs in various fora, Assemblies, Dialogues and involvement in project planning, monitoring and evaluation.</label>
                                                 <div class="col-md-12 text-center">
-                                                    <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 400px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                    <input id="rec_attach_file" type="file" name="rec_attach_file" class="form-control file-input" style="width: 400px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                     <small><b><em>Please attached</b></em></small>
                                                 </div>
                                             </div>
@@ -121,24 +121,24 @@
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_plaq1" name="award_plaq1" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_plaq1_file" type="file" name="award_plaq1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_plaq2" name="award_plaq2" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_plaq2_file" type="file" name="award_plaq2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_plaq3" name="award_plaq3" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_plaq3_file" type="file" name="award_plaq3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                 </div>
@@ -153,24 +153,24 @@
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_cert1" name="award_cert1" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_cert1_file" type="file" name="award_cert1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_cert2" name="award_cert2" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_cert2_file" type="file" name="award_cert2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_cert3" name="award_cert3" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_cert3_file" type="file" name="award_cert3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                 </div>
@@ -185,24 +185,24 @@
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_proj1" name="award_proj1" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_proj1_file" type="file" name="award_proj1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_proj2" name="award_proj2" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_proj2_file" type="file" name="award_proj2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_proj3" name="award_proj3" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_proj3_file" type="file" name="award_proj3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                 </div>
@@ -217,24 +217,24 @@
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_trop1" name="award_trop1" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_trop1_file" type="file" name="award_trop1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_trop2" name="award_trop2" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_trop2_file" type="file" name="award_trop2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_trop3" name="award_trop3" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <input id="award_trop3_file" type="file" name="award_trop3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                                         <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                 </div>
@@ -254,70 +254,70 @@
                                             <div class="form-group row">
                                                 <label for="municipality" class="col-md-12 captions">3.1 IEC Materials of M/CFARMC success stories</label>
                                                 <div class="col-md-12">
-                                                <div class="col-md-6">
-                                        <br>
-                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                            <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="internalP" id="checkbox">
-                                                <span class="checkbox"></span>
-                                            </label>
-                                            <div class="captions">With Bantay Dagat Taskforce</div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                            <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="fisherfolkR" id="checkbox-1">
-                                                <span class="checkbox"></span>
-                                            </label>
-                                            <div class="captions">With list of activity undertaken by the FARMC-Bantay Dagat</div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                            <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="fisheriesP" id="checkbox-2">
-                                                <span class="checkbox"></span>
-                                            </label>
-                                            <div class="captions">With list of apprehention conducted by the FARMC-Bantay Dagat</div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                            <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="formulationR" id="checkbox-3">
-                                                <span class="checkbox"></span>
-                                            </label>
-                                            <div class="captions">With list of cases established and functional</div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="col-md-6" style=" line-height:3rem">
-                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</b></em></small>
-                                        <br>
-                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</em></b></small>
-                                        <br>
-                                        <input id="fisheriesP_file" type="file" name="fisheriesP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</em></b></small>
-                                        <br>
-                                        <input id="formulationR_file" type="file" name="formulationR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</em></b></small>
-                                    </div>
+                                                    <div class="col-md-5" style="margin-top: 20px;">
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_broch" id="checkbox">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Brochures</div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_hand" id="checkbox-1">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Handouts</div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_pub" id="checkbox-2">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Publication</div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_AVP" id="checkbox-3">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Audio Visual Production</div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-md-7" style=" line-height:3rem">
+                                                        <input id="iec_broch_file" type="file" name="iec_broch_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</b></em></small>
+                                                        <br>
+                                                        <input id="iec_hand_file" type="file" name="iec_hand_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <br>
+                                                        <input id="iec_pub_file" type="file" name="iec_pub_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <br>
+                                                        <input id="iec_AVP_file" type="file" name="iec_AVP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</em></b></small>
+                                                    </div>
 
                                                 </div>
-                                                    
 
-                                                  
-                                </div>
-                                <div class="row" style="margin-top:2rem">
-                                    <div class="col-md-12 text-right">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                                <!-- </div> -->
-                            </div>
+
+
+                                            </div>
+                                            <div class="row" style="margin-top:2rem">
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                            <!-- </div> -->
+                                        </div>
                         </form>
                     </div>
                 </div>
@@ -370,28 +370,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#internalP_file').change(function() {
+            $('#iec_broch_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox').prop('checked', true);
                 } else {
                     $('#checkbox').prop('checked', false);
                 }
             });
-            $('#fisherfolkR_file').change(function() {
+            $('#iec_hand_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox-1').prop('checked', true);
                 } else {
                     $('#checkbox-1').prop('checked', false);
                 }
             });
-            $('#fisheriesP_file').change(function() {
+            $('#iec_pub_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox-2').prop('checked', true);
                 } else {
                     $('#checkbox-2').prop('checked', false);
                 }
             });
-            $('#formulationR_file').change(function() {
+            $('#iec_AVP_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox-3').prop('checked', true);
                 } else {
@@ -413,10 +413,10 @@
                 });
             }
 
-            setupCheckbox('checkbox', 'internalP_file');
-            setupCheckbox('checkbox-1', 'fisherfolkR_file');
-            setupCheckbox('checkbox-2', 'fisheriesP_file');
-            setupCheckbox('checkbox-3', 'formulationR_file');
+            setupCheckbox('checkbox', 'iec_broch_file');
+            setupCheckbox('checkbox-1', 'iec_hand_file');
+            setupCheckbox('checkbox-2', 'iec_pub_file');
+            setupCheckbox('checkbox-3', 'iec_AVP_file');
         });
     </script>
 

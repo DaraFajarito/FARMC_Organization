@@ -178,16 +178,10 @@
                                         <div class="col-md-12">
                                             <div class="form-group row">
                                                 <label for="municipality" class="col-md-12 col-form-label form-control-label">Municipality / City: {{$item->municipality}}</label>
-                                                <!-- <div class="col-md-2">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:900px;" placeholder="">
-                                                    </div> -->
                                             </div>
                                             <br>
                                             <div class="form-group row">
-                                                <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->province}}</label>
-                                                <!-- <div class="col-md-2">
-                                                        <input type="text" id="province" name="province" class="form-control" style="width:900px" placeholder="">
-                                                    </div> -->
+                                                <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->province}}</label> 
                                             </div>
                                             <br>
                                             <div class="form-group m-r-15">
@@ -207,16 +201,30 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr style="font-size: 12px;">
-                                                            <td>{{ $item->minutes1 }}</td>
-                                                            <td>{{ $item->photos1 }}</td>
-                                                            <td>{{ $item->attendance1 }}</td>
+                                                            @if ($item->minutes1 === null)
+                                                            <td> <span style="color: red;"> &nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->minutes1 }} </td>
+                                                            @endif
+
+                                                            @if ($item->photos1 === null)
+                                                            <td> <span style="color: red;"> &nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->photos1 }} </td>
+                                                            @endif
+
+                                                            @if ($item->attendance1 === null)
+                                                            <td> <span style="color: red;"> &nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->attendance1 }} </td>
+                                                            @endif
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <br>
                                             <div class="form-group m-r-15">
-                                                <label for="inline3mail" class="block form-control-label">Date of Reorganized: <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</label>
+                                                <label for="inline3mail" class="block form-control-label">Date of Reorganized: {{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</label>
                                             </div>
                                             <br><br>
                                             <label class="captions"><small>Proof:</small></label>
@@ -231,49 +239,67 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr style="font-size: 12px;">
-                                                                <td>{{ $item->minutes2 }}</td>
-                                                                <td>{{ $item->photos2 }}</td>
-                                                                <td>{{ $item->attendance2 }}</td>
+                                                            @if ($item->minutes2 === null)
+                                                            <td> <span style="color: red;">&nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->minutes2 }} </td>
+                                                            @endif
+
+                                                            @if ($item->photos2 === null)
+                                                            <td> <span style="color: red;">&nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->photos2 }} </td>
+                                                            @endif
+
+                                                            @if ($item->attendance2 === null)
+                                                            <td> <span style="color: red;">&nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->attendance2 }} </td>
+                                                            @endif
+
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                             </div>
-
-
                                             <br>
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr>
-                                                        @if ($item->internalP === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @if ($item->internalP_file === null)
+                                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                         @else
                                                         <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                         @endif
                                                         <td>Internal Policy</td>
+                                                        <td>{{$item->internalP_file}}</td>
+
                                                     </tr>
                                                     <tr>
-                                                        @if ($item->fisherfolkR === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @if ($item->fisherfolkR_file === null)
+                                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                         @else
                                                         <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                         @endif
                                                         <td>Fisherfolk Registry</td>
+                                                        <td>{{$item->fisherfolkR_file}}</td>
                                                     </tr>
                                                     <tr>
-                                                        @if ($item->fisheriesP === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @if ($item->fisheriesP_file === null)
+                                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                         @else
                                                         <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                         @endif
                                                         <td>Fisheries Profile</td>
+                                                        <td>{{$item->fisheriesP_file}}</td>
                                                     </tr>
                                                     <tr>
-                                                        @if ($item->formulationR === null)
-                                                        <td> <span style="color: red;"> no data</span></td>
+                                                        @if ($item->formulationR_file === null)
+                                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                         @else
                                                         <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                         @endif
                                                         <td>Formulation of Resolution and propose ordinance initiated</td>
+                                                        <td>{{$item->formulationR_file}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -488,7 +514,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <label for="inline3mail" class="block form-control-label">Municipal Fisherfolk</label>
+                                        <!-- <label for="inline3mail" class="block form-control-label">Municipal Fisherfolk</label> -->
                                         @foreach($fisherfolk as $item)
                                         @if($item->category == "Municipal Fisherfolk")
                                         <div class="table-responsive">
@@ -886,12 +912,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -937,10 +963,6 @@
                                         </table>
                                     </div>
                                     <br>
-
-
-
-
                                     @elseif($item->category == "Rehabilitation and Conservation")
                                     <label for="inline3mail" class="block form-control-label">Rehabilitation and Conservation</label>
 
@@ -948,12 +970,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1006,12 +1028,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1063,12 +1085,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1120,12 +1142,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1178,12 +1200,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1235,12 +1257,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1292,12 +1314,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1348,12 +1370,12 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr style="font-size: 12px;">
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Office / Organization</th>
+                                                    <th style="text-align:center">Position</th>
+                                                    <th style="text-align:center">Name</th>
+                                                    <th style="text-align:center">Office / Organization</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  style="text-align: center;">
                                                 <tr>
                                                     <td>Chairperson</td>
                                                     @if ( $item->chairperson_name === null)
@@ -1398,8 +1420,6 @@
                                         </table>
                                     </div>
                                     <br>
-
-
                                     @endif
                                     @endforeach
                                 </div>

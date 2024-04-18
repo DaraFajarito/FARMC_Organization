@@ -2,7 +2,7 @@
     <html lang="en">
 
     <head>
-        <title>Level 1 - Incomplete Table | BFAR - FARMC</title>
+        <title>Level 3 - Completed Table | BFAR - FARMC</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -27,11 +27,11 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 1 | INCOMPLETED</a>
+                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 3 | COMPLETED</a>
                                 </li>
                             </ol>
                             <br>
-                            <a href="{{ url ('/level2') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 2</a>
+                            <a href="{{ url ('/level3') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 3</a>
                         </div>
                     </div>
 
@@ -44,32 +44,51 @@
 
 
                             <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead style="font-size:12px">
+                                <thead style="font-size:10px">
                                     <tr>
                                         <th>Province</th>
                                         <th>Municipality</th>
-                                        <th>MFDP</th>
-                                        <th>MFO</th>
+                                        <th>Approved MFDP</th>
+                                        <th>Implementation of MFDP</th>
+                                        <th>Policies Implemented By The LGU</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($data as $item)
+                                <tbody style="font-size:small">
+                                    @foreach($basics as $item)
                                     <tr>
                                         <td>{{$item->profileForm->province}}</td>
                                         <td>{{$item->profileForm->municipality}}</td>
-                                        <td>{{$item->mfdp}}</td>
-                                        <td>{{$item->mfo}}</td>
+                                        @if ($item->approved_MFDP_file === null)
+                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i> </td>
+                                        @else
+                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                        @endif
+
+                                        @if ($item->imp_act1 === null || $item->imp_act1_file === null || $item->imp_act2 === null || $item->imp_act2_file === null || $item->imp_act3 === null || $item->imp_act3_file === null)
+                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                        @else
+                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                        @endif
+
+
+                                        @if ($item->pol_prop1 === null || $item->pol_prop1_file === null || $item->pol_prop2 === null || $item->pol_prop2_file === null || $item->pol_prop3 === null || $item->pol_prop3_file === null )
+                                        <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
+                                        @else
+                                        <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                        @endif
+
+
                                         @if ($item->status == "COMPLETED")
                                         <td style="color:green"><b>COMPLETED</b></td>
                                         @elseif ($item->status == "INCOMPLETE")
                                         <td style="color:red"><b>INCOMPLETE</b></td>
                                         @endif
                                         <td style=" display: flex; justify-content: space-between;">
-                                            <a style="margin-left: 5px;" href="{{ url('/L2Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L2Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L2Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L3Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L3Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L3Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

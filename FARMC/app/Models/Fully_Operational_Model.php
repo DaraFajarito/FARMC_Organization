@@ -84,19 +84,19 @@ class Fully_Operational_Model extends Model
 
     public function hasNullValues()
     {
-        // Get all columns except the excluded assistant fields
-        $columnsToCheck = array_diff($this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable()));
-
-        // Query the database to check if all fields are null
-        $query = $this->select($columnsToCheck)
-            ->where(function ($query) use ($columnsToCheck) {
-                foreach ($columnsToCheck as $column) {
-                    $query->whereNull($column);
-                }
-            })
-            ->first();
-
-        // If the query returns null, all fields except the assistants are null
-        return $query === null;
+        // Get all columns of the table
+        $columns = $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    
+        // Query the database to check if any field is null
+        $query = $this->where(function ($query) use ($columns) {
+            foreach ($columns as $column) {
+                $query->orWhereNull($column);
+            }
+        })->first();
+    
+        // If the query returns null, all fields are null
+        return $query !== null;
     }
+    
+    
 }

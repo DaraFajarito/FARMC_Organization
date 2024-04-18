@@ -94,10 +94,12 @@
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
                             <div class="actions" style="margin-left: auto;">
-                            @foreach($basics as $fully)
-                                <a href="{{ url ('/fullyoperational/'. $fully->id) }}"><button class="btn btn-primary">Proceed to Lvl 3</button></a>
-                            @endforeach
+                                @foreach($basics as $item)
+                                @if($item->status == "COMPLETED")
+                                <a href="{{ url ('/fullyoperational/'. $item->id) }}"><button class="btn btn-primary">Proceed to Lvl 3</button></a>
+                                @endif
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -155,6 +157,15 @@
                                 <div class="card-block">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 col-form-label form-control-label">Municipality / City: {{$item->profileForm->municipality}}</label>
+                                            </div>
+                                            <br>
+                                            <div class="form-group row">
+                                                <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->profileForm->province}}</label>
+                                            </div>
+                                            <hr>
+                                            <br>
                                             <div class="form-group m-r-15">
                                                 <label for="date" class="block form-control-label">1. With Municipal Fisheries Development Plan (MFDP) <td></td></label>
                                             </div>
@@ -169,12 +180,23 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr style="font-size: 12px;">
-                                                            <td class="text-center">{{$item->mfdp}}</td>
-                                                            <td class="text-center">{{$item->copy1_file}} attached copy</span>
-                                                            </td>
-                                                            <td class="text-center">{{$item->mindoc1_file}} attached minutes</span>
-                                                            </td>
+                                                            @if ($item->mfdp === null)
+                                                            <td><span style="color: red;"> &nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->mfdp }}</td>
+                                                            @endif
 
+                                                            @if ($item->copy1_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->copy1_file}} </td>
+                                                            @endif
+
+                                                            @if ($item->mindoc1_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->mindoc1_file}} </td>
+                                                            @endif
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -195,11 +217,23 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr style="font-size: 12px;">
-                                                            <td class="text-center">{{$item->mfo}}</td>
-                                                            <td class="text-center">{{$item->copy1_file}} attached copy</span>
-                                                            </td>
-                                                            <td class="text-center">{{$item->mindoc1_file}} attached minutes</span>
-                                                            </td>
+                                                            @if ($item->mfo === null)
+                                                            <td><span style="color: red;"> &nbsp; no data</span></td>
+                                                            @else
+                                                            <td> {{ $item->mfo }}</td>
+                                                            @endif
+
+                                                            @if ($item->copy2_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->copy2_file}} </td>
+                                                            @endif
+
+                                                            @if ($item->mindoc2_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->mindoc2_file}} </td>
+                                                            @endif
 
                                                         </tr>
                                                     </tbody>
@@ -216,44 +250,57 @@
                                                 <table class="table table-bordered">
                                                     <tbody>
                                                         <tr>
-                                                            @if ($item->bantaydt === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @if ($item->bantaydt_file === null)
+                                                            <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                             @else
                                                             <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                             @endif
                                                             <td>With Bantay Dagat Taskforce</td>
-                                                            <td class="text-center">{{$item->bantaydt_file}} View file</span>
-                                                            </td>
+                                                            @if ($item->bantaydt_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->bantaydt_file}} </td>
+                                                            @endif
                                                         </tr>
                                                         <tr>
-                                                            @if ($item->actfarmcbt === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @if ($item->actfarmcbt_file === null)
+                                                            <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                             @else
                                                             <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                             @endif
                                                             <td>With list of activity undertaken by the FARMC-Bantay Dagat</td>
-                                                            <td class="text-center">{{$item->actfarmcbt_file}} View file</span>
-                                                            </td>
+
+                                                            @if ($item->actfarmcbt_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->actfarmcbt_file}} </td>
+                                                            @endif
                                                         </tr>
                                                         <tr>
-                                                            @if ($item->appfarmcbt === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @if ($item->appfarmcbt_file === null)
+                                                            <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                             @else
                                                             <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                             @endif
                                                             <td>With list of apprehention conducted by the FARMC-Bantay Dagat</td>
-                                                            <td class="text-center">{{$item->appfarmcbt_file}} View file</span>
-                                                            </td>
+                                                            @if ($item->appfarmcbt_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->appfarmcbt_file}} </td>
+                                                            @endif
                                                         </tr>
                                                         <tr>
-                                                            @if ($item->appfarmcbt === null)
-                                                            <td> <span style="color: red;"> no data</span></td>
+                                                            @if ($item->caseestablished_file === null)
+                                                            <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                             @else
                                                             <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                             @endif
                                                             <td>With list of cases established and functional</td>
-                                                            <td class="text-center">{{$item->caseestablished_file}} View file</span>
-                                                            </td>
+                                                            @if ($item->caseestablished_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->caseestablished_file}} </td>
+                                                            @endif
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -269,8 +316,16 @@
                                                 <table class="table table-bordered">
                                                     <tbody>
                                                         <tr style="font-size: 12px;">
-                                                            <td class="text-center">{{$item->mfarmcoffice}}</td>
-                                                            <td class="text-center">{{$item->copy3_file}} Attached copy</span>
+                                                            @if ($item->mfarmcoffice === null || $item->mfarmcoffice === 'None')
+                                                            <td><span style="color: red;"> &nbsp; None</span></td>
+                                                            @else
+                                                            <td> {{$item->mfarmcoffice}}</td>
+                                                            @endif
+                                                            @if ($item->copy3_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->copy3_file}} </td>
+                                                            @endif
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -301,17 +356,22 @@
                                                             @endif
                                                             <td class="text-center">{{$item->regmeet}}</td>
 
-                                                            <td class="text-center">{{$item->minatt_file}} Minutes w/ Attendance</span>
-                                                            </td>
-                                                            <td class="text-center">{{$item->photodoc_file}} Photo Docu</span>
-                                                            </td>
+                                                            @if ($item->minatt_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->minatt_file}} </td>
+                                                            @endif
+
+                                                            @if ($item->photodoc_file === null)
+                                                            <td><span style="color: red;"> &nbsp; no attached file</span></td>
+                                                            @else
+                                                            <td> {{$item->photodoc_file}} </td>
+                                                            @endif
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <br>
-
-
                                         </div>
                                         <!-- </div> -->
                                     </div>

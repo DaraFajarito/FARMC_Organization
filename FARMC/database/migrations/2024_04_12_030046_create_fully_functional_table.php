@@ -70,6 +70,7 @@ return new class extends Migration
             $table->string('wor_act2_file')->nullable();
             $table->string('wor_act3')->nullable();
             $table->string('wor_act3_file')->nullable();
+            $table->string('status')->nullable();
             
             $table->timestamps();
         });

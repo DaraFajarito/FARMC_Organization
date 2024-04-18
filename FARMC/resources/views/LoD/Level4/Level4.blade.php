@@ -58,7 +58,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 4 | Completed</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$completedsustain}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 4 | Incompleted</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$incompletesustain}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -122,7 +122,7 @@
                                                 <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                                     <br>
                                                     <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                        <thead style="font-size:12px">
+                                                        <thead style="font-size:10px">
                                                             <tr>
                                                                 <th>Province</th>
                                                                 <th>Municipality</th>
@@ -134,7 +134,7 @@
                                                             </tr> 
                                                         </thead>
                                                         <tbody>
-                                                            @foreach($fullyOp as $item)
+                                                            @foreach($data as $item)
                                                             <tr>
                                                                 <td>{{$item->profileForm->province}}</td>
                                                                 <td>{{$item->profileForm->municipality}}</td>
@@ -163,8 +163,8 @@
                                                                 @endif
 
                                                                 <td style=" display: flex; justify-content: space-between;">
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L4Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>

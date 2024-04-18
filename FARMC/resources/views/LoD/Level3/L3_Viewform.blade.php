@@ -94,9 +94,11 @@
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
                             <div class="actions" style="margin-left: auto;">
-                            @foreach($fullyOp as $sus)
-                                <a href="{{ url ('/sustainability/'. $sus->id) }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
-                            @endforeach
+                                @foreach($fullyOp as $item)
+                                @if($item->status == "COMPLETED")
+                                <a href="{{ url ('/sustainability/'. $item->id) }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
+                                @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -156,6 +158,18 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="table-responsive">
+                                                <div class="form-group row">
+                                                    <label for="municipality" class="col-md-12 col-form-label form-control-label">Municipality / City: {{$item->profileForm->municipality}}</label>
+                                                </div>
+                                                <br>
+                                                <div class="form-group row">
+                                                    <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->profileForm->province}}</label>
+                                                </div>
+                                                <hr>
+                                                <br>
+                                                <div class="form-group row">
+                                                    <label for="province" class="col-md-12 col-form-label form-control-label">APPROVED MUNICIPAL FISHERIES DEVELOPMENT PLAN (MFDP)</label>
+                                                </div>
                                                 <table class="table table-bordered">
                                                     <tbody>
                                                         <tr style="font-size: 13px;" class="text-center">
@@ -775,152 +789,153 @@
                                     </div>
                                 </div>
                             </form>
-                            <@endforeach </div>
+                            @endforeach
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
+        </div>
 
 
 
 
-            <!-- Required Jqurey -->
+        <!-- Required Jqurey -->
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-
-
-            <script src="{{ asset ('assets/plugins/Jquery/dist/jquery.min.js') }}"></script>
-            <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-            <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
-
-            <!-- Required Fremwork -->
-            <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-
-            <!-- Scrollbar JS-->
-            <script src="{{ asset ('assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
-            <script src="{{ asset ('assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js') }}"></script>
-
-            <!--classic JS-->
-            <script src="{{ asset ('assets/plugins/classie/classie.js') }}"></script>
-
-            <!-- notification -->
-            <script src="{{ asset ('assets/plugins/notification/js/bootstrap-growl.min.js') }}"></script>
-
-            <!-- Sparkline charts -->
-            <script src="{{ asset ('assets/plugins/jquery-sparkline/dist/jquery.sparkline.js') }}"></script>
-
-            <!-- Counter js  -->
-            <script src="{{ asset ('assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
-            <script src="{{ asset ('assets/plugins/countdown/js/jquery.counterup.js') }}"></script>
-
-            <!-- Echart js -->
-            <script src="{{ asset ('assets/plugins/charts/echarts/js/echarts-all.js') }}"></script>
-
-            <script src="https://code.highcharts.com/highcharts.js"></script>
-            <script src="https://code.highcharts.com/modules/exporting.js"></script>
-            <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-
-            <!-- custom js -->
-            <script type="text/javascript" src="{{ asset ('assets/js/main.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset ('assets/pages/dashboard.js') }}"></script>
-            <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
-            <script src="{{ asset ('assets/js/menu.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
 
-            <script type="text/javascript">
-                SyntaxHighlighter.all();
-            </script>
+        <script src="{{ asset ('assets/plugins/Jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
 
-            <script>
-                document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
-                    radio.addEventListener('change', function() {
-                        if (this.value === 'IPoption') {
-                            document.getElementById('textBoxContainer').style.display = 'block';
-                        } else {
-                            document.getElementById('textBoxContainer').style.display = 'none';
-                        }
-                    });
-                });
-            </script>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('#internalP_file').change(function() {
-                        if ($(this).val()) {
-                            $('#checkbox').prop('checked', true);
-                        } else {
-                            $('#checkbox').prop('checked', false);
-                        }
-                    });
-                    $('#fisherfolkR_file').change(function() {
-                        if ($(this).val()) {
-                            $('#checkbox-1').prop('checked', true);
-                        } else {
-                            $('#checkbox-1').prop('checked', false);
-                        }
-                    });
-                    $('#fisheriesP_file').change(function() {
-                        if ($(this).val()) {
-                            $('#checkbox-2').prop('checked', true);
-                        } else {
-                            $('#checkbox-2').prop('checked', false);
-                        }
-                    });
-                    $('#formulationR_file').change(function() {
-                        if ($(this).val()) {
-                            $('#checkbox-3').prop('checked', true);
-                        } else {
-                            $('#checkbox-3').prop('checked', false);
-                        }
-                    });
+        <!-- Required Fremwork -->
+        <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-                    // Add similar change event listeners for other file inputs
-                });
-            </script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    function setupCheckbox(checkboxId, hiddenInputId) {
-                        const checkbox = document.getElementById(checkboxId);
-                        const hiddenInput = document.getElementById(hiddenInputId);
+        <!-- Scrollbar JS-->
+        <script src="{{ asset ('assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js') }}"></script>
 
-                        checkbox.addEventListener('change', function() {
-                            hiddenInput.value = this.checked ? '1' : null;
-                        });
+        <!--classic JS-->
+        <script src="{{ asset ('assets/plugins/classie/classie.js') }}"></script>
+
+        <!-- notification -->
+        <script src="{{ asset ('assets/plugins/notification/js/bootstrap-growl.min.js') }}"></script>
+
+        <!-- Sparkline charts -->
+        <script src="{{ asset ('assets/plugins/jquery-sparkline/dist/jquery.sparkline.js') }}"></script>
+
+        <!-- Counter js  -->
+        <script src="{{ asset ('assets/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/countdown/js/jquery.counterup.js') }}"></script>
+
+        <!-- Echart js -->
+        <script src="{{ asset ('assets/plugins/charts/echarts/js/echarts-all.js') }}"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+        <!-- custom js -->
+        <script type="text/javascript" src="{{ asset ('assets/js/main.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset ('assets/pages/dashboard.js') }}"></script>
+        <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
+        <script src="{{ asset ('assets/js/menu.min.js') }}"></script>
+
+
+        <script type="text/javascript">
+            SyntaxHighlighter.all();
+        </script>
+
+        <script>
+            document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'IPoption') {
+                        document.getElementById('textBoxContainer').style.display = 'block';
+                    } else {
+                        document.getElementById('textBoxContainer').style.display = 'none';
                     }
-
-                    setupCheckbox('checkbox', 'internalP_file');
-                    setupCheckbox('checkbox-1', 'fisherfolkR_file');
-                    setupCheckbox('checkbox-2', 'fisheriesP_file');
-                    setupCheckbox('checkbox-3', 'formulationR_file');
                 });
-            </script>
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#internalP_file').change(function() {
+                    if ($(this).val()) {
+                        $('#checkbox').prop('checked', true);
+                    } else {
+                        $('#checkbox').prop('checked', false);
+                    }
+                });
+                $('#fisherfolkR_file').change(function() {
+                    if ($(this).val()) {
+                        $('#checkbox-1').prop('checked', true);
+                    } else {
+                        $('#checkbox-1').prop('checked', false);
+                    }
+                });
+                $('#fisheriesP_file').change(function() {
+                    if ($(this).val()) {
+                        $('#checkbox-2').prop('checked', true);
+                    } else {
+                        $('#checkbox-2').prop('checked', false);
+                    }
+                });
+                $('#formulationR_file').change(function() {
+                    if ($(this).val()) {
+                        $('#checkbox-3').prop('checked', true);
+                    } else {
+                        $('#checkbox-3').prop('checked', false);
+                    }
+                });
 
-            <script>
-                function downloadPdf() {
-                    const element = document.getElementById('content');
-                    html2pdf(element, {
-                        margin: [0.50, 0, 1, 0],
-                        filename: 'FARMC.pdf',
-                        image: {
-                            type: 'jpeg',
-                            quality: 0.98
-                        },
-                        html2canvas: {
-                            scale: 1
-                        },
-                        jsPDF: {
-                            unit: 'in',
-                            format: 'letter',
-                            orientation: 'portrait'
-                        },
-                        // Add autoPaging option
-                        // This will automatically add new pages as needed to fit the content
-                        // Note: This may affect the performance for large documents
-                        autoPaging: true
+                // Add similar change event listeners for other file inputs
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function setupCheckbox(checkboxId, hiddenInputId) {
+                    const checkbox = document.getElementById(checkboxId);
+                    const hiddenInput = document.getElementById(hiddenInputId);
+
+                    checkbox.addEventListener('change', function() {
+                        hiddenInput.value = this.checked ? '1' : null;
                     });
                 }
-            </script>
+
+                setupCheckbox('checkbox', 'internalP_file');
+                setupCheckbox('checkbox-1', 'fisherfolkR_file');
+                setupCheckbox('checkbox-2', 'fisheriesP_file');
+                setupCheckbox('checkbox-3', 'formulationR_file');
+            });
+        </script>
+
+        <script>
+            function downloadPdf() {
+                const element = document.getElementById('content');
+                html2pdf(element, {
+                    margin: [0.50, 0, 1, 0],
+                    filename: 'FARMC.pdf',
+                    image: {
+                        type: 'jpeg',
+                        quality: 0.98
+                    },
+                    html2canvas: {
+                        scale: 1
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    },
+                    // Add autoPaging option
+                    // This will automatically add new pages as needed to fit the content
+                    // Note: This may affect the performance for large documents
+                    autoPaging: true
+                });
+            }
+        </script>
 
 
 </body>

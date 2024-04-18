@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('othersources2_file')->nullable();
             $table->string('othersources3')->nullable();
             $table->string('othersources3_file')->nullable();
+            $table->string('status')->nullable();
 
             $table->timestamps();
         });

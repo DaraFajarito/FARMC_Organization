@@ -17,7 +17,6 @@
                 display: none;
             }
         } */
-        
     </style>
 </head>
 
@@ -59,7 +58,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 5 | Completed</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$completedmodel}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -69,7 +68,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 5 | Incompleted</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$incompletemodel}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -123,34 +122,55 @@
                                                 <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                                     <br>
                                                     <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                        <thead style="font-size:12px">
+                                                        <thead style="font-size:10px">
                                                             <tr>
                                                                 <th>Province</th>
                                                                 <th>Municipality</th>
-                                                                <th>Date of Organized</th>
-                                                                <th>Date of Re-organized</th>
+                                                                <th>List Of Governing Bodies That Recognises The MFARMC As A Member</th>
+                                                                <th>Plaque Of Recognition Received</th>
+                                                                <th>Certificate Of Merit, Recognition And Appreciation Received</th>
                                                                 <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-
+                                                            @foreach($data as $item)
                                                             <tr>
-                                                                <td>Oriental Mindoro</td>
-                                                                <td>Naujan</td>
-                                                                <td>09/25/01</td>
-                                                                <td>05/10/25</td>
-                                                                <td style="color:red"><b>INCOMPLETE </b></td>
+                                                                <td>{{$item->profileForm->province}}</td>
+                                                                <td>{{$item->profileForm->municipality}}</td>
+                                                                @if ($item->rec_list1 === NULL)
+                                                                <td><span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->rec_list1}}</td>
+                                                                @endif
+
+                                                                @if ($item->award_plaq1 === NULL)
+                                                                <td><span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->award_plaq1}}</td>
+                                                                @endif
+
+                                                                @if ($item->award_cert1 === NULL)
+                                                                <td><span style="color: red;"> no data</span></td>
+                                                                @else
+                                                                <td>{{$item->award_cert1}}</td>
+                                                                @endif
+
+                                                                @if ($item->status == "COMPLETED")
+                                                                <td style="color:green"><b>COMPLETED</b></td>
+                                                                @elseif ($item->status == "INCOMPLETE")
+                                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @endif
+
                                                                 <td style=" display: flex; justify-content: space-between;">
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L5Viewform') }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L5Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L5Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L5Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
-
-
                                                 </div>
                                                 <div class="tab-pane" id="mimaropa1" role="tabpanel">
                                                     <br>
@@ -674,7 +694,7 @@
                                 <div class="card">
                                     <div class="card-block">
                                         <h6 class="card-title">All Level 5 <em> <small>(Incomplete & Complete)</small> </em></h6>
-                                       <br>
+                                        <br>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
                                                 <canvas id="bestSellers"></canvas>
@@ -684,7 +704,7 @@
                                                     <br>
                                                     <li><span class="btn btn-danger"></span> Completed</li>
                                                     <li><span class="btn btn-warning"></span> Incomplete</li>
-                                                <br>
+                                                    <br>
                                                 </ul>
                                             </div>
                                         </div>

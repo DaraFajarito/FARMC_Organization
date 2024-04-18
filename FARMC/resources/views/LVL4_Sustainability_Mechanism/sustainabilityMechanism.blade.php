@@ -59,13 +59,9 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-sustainabilityMechanism/'. $fullyOp->id) }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/add-sustainabilityMechanism/'. $fullyOp->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
+                            @method('PUT')
 
                             <div class="card-block">
                                 <div class="row">
@@ -74,7 +70,7 @@
                                             <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Data Bank/Databank system established and accesible</label>
                                         </div>
                                         <br>
-                                        <label for="municipality" class="col-md-12 captions">1.1 FARMC has undergone training on FARMC & Fish Catch DAtabase System</label>
+                                        <label for="municipality" class="col-md-12 captions">1.1 FARMC has undergone training on FARMC & Fish Catch Database System</label>
                                         <div class="col-md-12" style="margin-top: 10px;">
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
@@ -93,7 +89,7 @@
                                             </div>
                                         </div>
 
-                                        <label for="municipality" class="col-md-12 captions" style="margin-top:1rem">1.2 FARMC & Fish Catch DAtabase System installed and operational in the FARMC Office Computer</label>
+                                        <label for="municipality" class="col-md-12 captions" style="margin-top:1rem">1.2 FARMC & Fish Catch Database System installed and operational in the FARMC Office Computer</label>
                                         <div class="col-md-12" style="margin-top: 10px;">
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
@@ -133,7 +129,7 @@
 
 
                                         <div class="form-group row" style="margin-top: 1rem;">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Established financial capability and fund sourcing ability</label>
+                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">2. Established financial capability and fund sourcing ability</label>
                                         </div>
                                         <br>
                                         <label for="municipality" class="col-md-12 captions">2.1 Amount of MFARMC funds allocated by the LGU</label>
@@ -195,10 +191,30 @@
 
                                         <div class="row" style="margin-top: 270px;">
                                             <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
                                             </div>
                                         </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Modal -->
+                             <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to submit now?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

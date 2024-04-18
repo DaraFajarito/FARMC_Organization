@@ -2,7 +2,7 @@
     <html lang="en">
 
     <head>
-        <title>Level 1 - Complete Table | BFAR - FARMC</title>
+        <title>Level 5 - Completed Table | BFAR - FARMC</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -17,8 +17,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="main-header">
-                            <a href="index.html" class="logo"><img src="{{ asset('assets/images/Logo_BFAR.png') }}"
-                                    style=" width: 60px;" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                             <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                             <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                                 <li class="breadcrumb-item">
@@ -28,46 +27,71 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC |
-                                        Municipal / City FARMC • Level 2 | COMPLETED</a>
+                                <li class="breadcrumb-item"><a href="#">FARMC Strengthening | Organized FARMC | Municipal / City FARMC • Level 5 | COMPLETED</a>
                                 </li>
                             </ol>
                             <br>
-                            <a href="{{ url('/level2') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
-                                Go back to Level 2</a>
+                            <a href="{{ url ('/level5') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 5</a>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="grid-material bg-general" style="text-align: center;"><b>All Complete Table</b>
-                            </div>
+                            <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
+                            <!-- <hr> -->
+                            <div class="grid-material bg-general" style="text-align: center;"><b>All Complete Table</b></div>
                             <hr>
-                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
-                                width="100%">
-                                <thead>
+                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead style="font-size:10px">
                                     <tr>
                                         <th>Province</th>
                                         <th>Municipality</th>
-                                        <th>Date of Organized</th>
-                                        <th>Date of Re-organized</th>
+                                        <th>List Of Governing Bodies That Recognises The MFARMC As A Member</th>
+                                        <th>Plaque Of Recognition Received</th>
+                                        <th>Certificate Of Merit, Recognition And Appreciation Received</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="color:green"><b></b></td>
-                                            <td style="text-align: center;">
-                                                <a href="{{ url('/L1Viewform') }}" class="btn btn-warning btn-spacer"><i
-                                                        class="ti-eye"></i> &nbsp; View</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                <tbody>
+                                    @foreach($sustain as $item)
+                                    <tr>
+                                        <td>{{$item->profileForm->province}}</td>
+                                        <td>{{$item->profileForm->municipality}}</td>
+
+                                        @if ($item->rec_list1 === 1)
+                                        <td><span style="color: red;"> no data</span></td>
+                                        @else
+                                        <td>{{$item->rec_list1}}</td>
+                                        @endif
+
+                                        
+                                        @if ($item->award_plaq1 === 1)
+                                        <td><span style="color: red;"> no data</span></td>
+                                        @else
+                                        <td>{{$item->award_plaq1}}</td>
+                                        @endif
+
+                                        @if ($item->award_cert1 === 1)
+                                        <td><span style="color: red;"> no data</span></td>
+                                        @else
+                                        <td>{{$item->award_cert1}}</td>
+                                        @endif
+
+                                        @if ($item->status == "COMPLETED")
+                                        <td style="color:green"><b>COMPLETED</b></td>
+                                        @elseif ($item->status == "INCOMPLETE")
+                                        <td style="color:red"><b>INCOMPLETE</b></td>
+                                        @endif
+
+                                        <td style=" display: flex; justify-content: space-between;">
+                                            <a style="margin-left: 5px;" href="{{ url('/L5Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L5Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L5Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -77,8 +101,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css"
-            href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
         <!-- JavaScript -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

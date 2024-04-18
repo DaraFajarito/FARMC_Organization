@@ -7,8 +7,10 @@ use App\Models\Committee_Model;
 use App\Models\FisherfolkRepresentative_Model;
 use App\Models\ProfileForm_Model;
 use App\Models\Fully_Operational_Model;
+use App\Models\Model_of_Excellence_Model;
 use App\Models\Sustainability_Mechanism_Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileForm_Controller extends Controller
 {
@@ -137,7 +139,6 @@ class ProfileForm_Controller extends Controller
 
     public function display_level3($id)
     {
-        // $data = ProfileForm_Model::where('id', $id)->first();
         $basics = BasicFunction_Model::where('id', $id)->first();
         return view('LVL3_Fully_Operational.fullyOperational', compact('basics'));
     }
@@ -158,7 +159,7 @@ class ProfileForm_Controller extends Controller
     public function display_level3_complete()
     {
         $basics = Fully_Operational_Model::where('status', 'COMPLETED')->get();
-        return view('LoD.Level.L3_Completedtbl', compact('basics'));
+        return view('LoD.Level3.L3_Completedtbl', compact('basics'));
     }
 
     // ------------------------------------------------------------//
@@ -167,7 +168,6 @@ class ProfileForm_Controller extends Controller
 
     public function display_level4($id)
     {
-        // $data = ProfileForm_Model::where('id', $id)->first();
         $fullyOp = Fully_Operational_Model::where('id', $id)->first();
         return view('LVL4_Sustainability_Mechanism.sustainabilityMechanism', compact('fullyOp'));
     }
@@ -175,29 +175,60 @@ class ProfileForm_Controller extends Controller
     public function display_level4_info($id)
     {
         $fullyOp = Fully_Operational_Model::select('id')->where('id', $id)->get();
-        $ddata = Sustainability_Mechanism_Model::where('profileForm_id', $id)->get();
+        $sustain = Sustainability_Mechanism_Model::where('profileForm_id', $id)->get();
 
         return view('LoD.Level4.L4_Viewform', compact('fullyOp', 'sustain'));
     }
 
-    // public function display_level4_incomplete()
-    // {
-    //     $fullyOp = Sustainability_Mechanism_Model::where('status', 'INCOMPLETE')->get();
-    //     return view('LoD.Level4.L4_Incompletetbl', compact('fully'));
-    // }
-    // public function display_level4_complete()
-    // {
-    //     $fullyOp = Sustainability_Mechanism_Model::where('status', 'COMPLETED')->get();
-    //     return view('LoD.Level4.L4_Completedtbl', compact('fully'));
-    // }
+    public function display_level4_edit($id)
+    {
+        $fullyOp = Fully_Operational_Model::select('id')->where('id', $id)->get();
+        $sustain = Sustainability_Mechanism_Model::where('profileForm_id', $id)->get();
 
+        return view('LoD.Level4.L4_Editform', compact('fullyOp', 'sustain'));
+    }
 
+    public function display_level4_incomplete()
+    {
+        $fullyOp = Sustainability_Mechanism_Model::where('status', 'INCOMPLETE')->get();
+        return view('LoD.Level4.L4_Incompletetbl', compact('fullyOp'));
+    }
+    public function display_level4_complete()
+    {
+        $fullyOp = Sustainability_Mechanism_Model::where('status', 'COMPLETED')->get();
+        return view('LoD.Level4.L4_Completedtbl', compact('fullyOp'));
+    }
 
+    // ------------------------------------------------------------//
+    // ----------------------LEVEL V------------------------------//
+    // ------------------------------------------------------------//
 
+    public function display_level5($id)
+    {
+        $sustain = Sustainability_Mechanism_Model::where('id', $id)->first();
+        return view('LVL5_Model_of_Excellence.modelofExcellence', compact('sustain'));
+    }
 
+    public function display_level5_info($id)
+    {
+        $sustain = Sustainability_Mechanism_Model::select('id')->where('id', $id)->get();
+        $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->get();
 
+        return view('LoD.Level5.L5_Viewform', compact('sustain', 'modelEx'));
+    }
 
-    //=======================================   ===================================================================================================||
+    public function display_level5_incomplete()
+    {
+        $sustain = Model_of_Excellence_Model::where('status', 'INCOMPLETE')->get();
+        return view('LoD.Level5.L5_Incompletetbl', compact('sustain'));
+    }
+    public function display_level5_complete()
+    {
+        $sustain = Model_of_Excellence_Model::where('status', 'COMPLETED')->get();
+        return view('LoD.Level5.L5_Completedtbl', compact('sustain'));
+    }
+
+    //==========================================================================================================================================||
     //================================================== A D D I N G  O F  D A T A =============================================================||
     public function createProfileForm(Request $request)
     {
@@ -479,7 +510,6 @@ class ProfileForm_Controller extends Controller
             $missingCommitteeCategoriesArray[] = $category;
         }
 
-
         // Determine status
         $status = $committeeNull || $fisherfolkNull || $profileFormNull || $missingCategoriesArray || $missingCommitteeCategoriesArray ? 'INCOMPLETE' : 'COMPLETED';
         $secretariat->update(['status' => $status]);
@@ -506,9 +536,10 @@ class ProfileForm_Controller extends Controller
         if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields || $missingCategoriesArray || $missingCommitteeCategoriesArray) {
             return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields', 'missingCategoriesArray', 'missingCommitteeCategoriesArray'));
         } else {
-            return view('LoD.Level1.L1_Completed');
+            return view('LoD.Level1.Level1');
         }
     }
+
 
     public function addBasicFunction(Request $request, $id)
     {
@@ -581,11 +612,22 @@ class ProfileForm_Controller extends Controller
         // Save the basicFunction record
         $basicFunction->save();
 
-        // Check if any fields have null values
-        $basicNull = $basicFunction->hasNullValues();
+        $requiredFields = [
+            'profileForm_id', 'mfdp', 'copy1_file', 'mindoc1_file', 'mfo', 'copy2_file', 'mindoc2_file', 'bantaydt', 'bantaydt_file', 'actfarmcbt', 'actfarmcbt_file', 'appfarmcbt', 'appfarmcbt_file', 'caseestablished', 'caseestablished_file', 'mfarmcoffice', 'copy3_file', 'regmeet',
+            'minatt_file', 'photodoc_file'
+        ];
+
+        // Check if any of the required fields are null
+        $incomplete = false;
+        foreach ($requiredFields as $field) {
+            if ($basicFunction->$field === null) {
+                $incomplete = true;
+                break;
+            }
+        }
 
         // Determine the status based on null values
-        $status = $basicNull ? 'INCOMPLETE' : 'COMPLETED';
+        $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
         // Update the status field in the database
         $basicFunction->status = $status;
@@ -595,7 +637,7 @@ class ProfileForm_Controller extends Controller
         $basicFunctionNull = $basicFunction->getNullFields();
 
         // Redirect if null values are present, otherwise display the incomplete view
-        if ($basicNull) {
+        if (!$incomplete) {
             return redirect('/level2')->with('success', 'Success!');
         } else {
             return view('LoD.Level2.L2_Incomplete', ['basicFunctionNull' => $basicFunctionNull]);
@@ -685,7 +727,7 @@ class ProfileForm_Controller extends Controller
             'part_LGU2_file.max' => 'The part_LGU2_file may not be greater than 5MB.',
             'part_LGU3_file.max' => 'The part_LGU3_file may not be greater than 5MB.',
 
-            'sched_regmeet.max' => 'The part_LGU3_file may not be greater than 5MB.',
+            'sched_regmeet_file.max' => 'The part_LGU3_file may not be greater than 5MB.',
 
             'wor_act1_file.max' => 'The wor_act1_file may not be greater than 5MB.',
             'wor_act2_file.max' => 'The wor_act2_file may not be greater than 5MB.',
@@ -786,10 +828,23 @@ class ProfileForm_Controller extends Controller
         $fullyOperational->save();
 
         // Check if any fields have null values
-        $fullyNull = $fullyOperational->hasNullValues();
+        $requiredFields = [
+            'profileForm_id', 'approved_MFDP_file', 'imp_act1', 'imp_act1_file', 'imp_act2', 'imp_act2_file', 'imp_act3', 'imp_act3_file', 'pol_prop1', 'pol_prop1_file', 'pol_prop2', 'pol_prop2_file', 'pol_prop3', 'pol_prop3_file', 'rec_act1', 'rec_act1_file', 'rec_act2_file', 'rec_act2', 'rec_act3',
+            'rec_act3_file', 'rec_iss1', 'rec_iss1_file', 'rec_iss2', 'rec_iss2_file', 'rec_iss3', 'rec_iss3_file', 'part_act1', 'part_act1_file', 'part_act2', 'part_act2_file', 'part_act3', 'part_act3_file', 'part_LGU1', 'part_LGU1_file', 'part_LGU2', 'part_LGU2_file', 'part_LGU3', 'part_LGU3_file',
+            'name_com', 'sched_regmeet', 'sched_regmeet_file', 'wor_act1', 'wor_act1_file', 'wor_act2', 'wor_act2_file', 'wor_act3', 'wor_act3_file'
+        ];
+
+        // Check if any of the required fields are null
+        $incomplete = false;
+        foreach ($requiredFields as $field) {
+            if ($fullyOperational->$field === null) {
+                $incomplete = true;
+                break;
+            }
+        }
 
         // Determine the status based on null values
-        $status = $fullyNull ? 'INCOMPLETE' : 'COMPLETED';
+        $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
         // Update the status field in the database
         $fullyOperational->status = $status;
@@ -799,7 +854,7 @@ class ProfileForm_Controller extends Controller
         $fullyOperationalNull = $fullyOperational->getNullFields();
 
         // Redirect if null values are present, otherwise display the incomplete view
-        if ($fullyNull) {
+        if (!$incomplete) {
             return redirect('/level3')->with('success', 'Success!');
         } else {
             return view('LoD.Level3.L3_Incomplete', ['fullyOperationalNull' => $fullyOperationalNull]);
@@ -840,13 +895,6 @@ class ProfileForm_Controller extends Controller
         $sustainabilityMech->data_fishcatch = $validatedData['data_fishcatch'] ?? null;
         $sustainabilityMech->data_regforms = $validatedData['data_regforms'] ?? null;
         $sustainabilityMech->est_funds = $validatedData['est_funds'] ?? null;
-
-
-        // $sustainabilityMech->data_training = in_array($validatedData['data_training'], ['yes', 'no']) ? $validatedData['data_training'] : null;
-        // $sustainabilityMech->data_fishcatch = in_array($validatedData['data_fishcatch'], ['yes', 'no']) ? $validatedData['data_fishcatch'] : null;
-        // $sustainabilityMech->data_regforms = in_array($validatedData['data_regforms'], ['yes', 'no']) ? $validatedData['data_regforms'] : null;
-        // $sustainabilityMech->est_funds = in_array($validatedData['est_funds'], ['yes', 'no']) ? $validatedData['est_funds'] : null;
-        
         $sustainabilityMech->est_funds_file = $estfundsFilePath ? '/sustainabilityMechanism/est_funds/' . $estfundsFilePath->getFilename() : null;
         $sustainabilityMech->othersources1 = $validatedData['othersources1'] ?? null;
         $sustainabilityMech->othersources1_file = $othersources1FilePath ? '/sustainabilityMechanism/othersources1/' . $othersources1FilePath->getFilename() : null;
@@ -858,11 +906,19 @@ class ProfileForm_Controller extends Controller
         // Save the fully operational record
         $sustainabilityMech->save();
 
-        // Check if any fields have null values
-        $fullyNull = $sustainabilityMech->hasNullValues();
+        $requiredFields = ['profileForm_id', 'data_training', 'data_fishcatch', 'data_regforms', 'est_funds', 'est_funds_file', 'othersources1', 'othersources1_file', 'othersources2', 'othersources2_file', 'othersources3', 'othersources3_file'];
+
+        // Check if any of the required fields are null
+        $incomplete = false;
+        foreach ($requiredFields as $field) {
+            if ($sustainabilityMech->$field === null) {
+                $incomplete = true;
+                break;
+            }
+        }
 
         // Determine the status based on null values
-        $status = $fullyNull ? 'COMPLETED' : 'INCOMPLETE';
+        $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
         // Update the status field in the database
         $sustainabilityMech->status = $status;
@@ -872,34 +928,342 @@ class ProfileForm_Controller extends Controller
         $sustainabilityMechNull = $sustainabilityMech->getNullFields();
 
         // Redirect if null values are present, otherwise display the incomplete view
-        if ($fullyNull) {
+        if (!$incomplete) {
             return redirect('/level4')->with('success', 'Success!');
         } else {
             return view('LoD.Level4.L4_Incomplete', ['sustainabilityMechNull' => $sustainabilityMechNull]);
         }
     }
 
+    public function addmodelExcellence(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'rec_list1' => 'nullable',
+            'rec_list2' => 'nullable',
+            'rec_list3' => 'nullable',
+            'rec_attach_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_plaq1' => 'nullable|string',
+            'award_plaq1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_plaq2' => 'nullable|string',
+            'award_plaq2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_plaq3' => 'nullable|string',
+            'award_plaq3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_cert1' => 'nullable|string',
+            'award_cert1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_cert2' => 'nullable|string',
+            'award_cert2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_cert3' => 'nullable|string',
+            'award_cert3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_proj1' => 'nullable|string',
+            'award_proj1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_proj2' => 'nullable|string',
+            'award_proj2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_proj3' => 'nullable|string',
+            'award_proj3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_trop1' => 'nullable|string',
+            'award_trop1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_trop2' => 'nullable|string',
+            'award_trop2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_trop3' => 'nullable|string',
+            'award_trop3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'iec_broch' => 'nullable|string',
+            'iec_broch_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'iec_hand' => 'nullable|string',
+            'iec_hand_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'iec_pub' => 'nullable|string',
+            'iec_pub_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'iec_AVP' => 'nullable|string',
+            'iec_AVP_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+        ], [
+            'rec_attach_file.max' => 'The rec_attach_file may not be greater than 5MB.',
+            'award_plaq1_file.max' => 'The award_plaq1_file may not be greater than 5MB.',
+            'award_plaq2_file.max' => 'The award_plaq2_file may not be greater than 5MB.',
+            'award_plaq3_file.max' => 'The award_plaq3_file may not be greater than 5MB.',
+            'award_cert1_file.max' => 'The award_cert1_file may not be greater than 5MB.',
+            'award_cert2_file.max' => 'The award_cert2_file may not be greater than 5MB.',
+            'award_cert3_file.max' => 'The award_cert3_file may not be greater than 5MB.',
+            'award_proj1_file.max' => 'The award_proj1_file may not be greater than 5MB.',
+            'award_proj2_file.max' => 'The award_proj2_file may not be greater than 5MB.',
+            'award_proj3_file.max' => 'The award_proj3_file may not be greater than 5MB.',
+            'award_trop1_file.max' => 'The award_trop1_file may not be greater than 5MB.',
+            'award_trop2_file.max' => 'The award_trop2_file may not be greater than 5MB.',
+            'award_trop3_file.max' => 'The award_trop3_file may not be greater than 5MB.',
+            'iec_broch_file.max' => 'The iec_broch_file may not be greater than 5MB.',
+            'iec_hand_file.max' => 'The iec_hand_file may not be greater than 5MB.',
+            'iec_pub_file.max' => 'The iec_pub_file may not be greater than 5MB.',
+            'iec_AVP_file.max' => 'The iec_AVP_file may not be greater than 5MB.',
+        ]);
+
+        $recattachFilePath = $request->file('rec_attach_file') ? $request->file('rec_attach_file')->move(public_path('modelofExcellence/rec_attach')) : null;
+
+        $awardplaq1FilePath = $request->file('award_plaq1_file') ? $request->file('award_plaq1_file')->move(public_path('modelofExcellence/award_plaq1')) : null;
+        $awardplaq2FilePath = $request->file('award_plaq2_file') ? $request->file('award_plaq2_file')->move(public_path('modelofExcellence/award_plaq2')) : null;
+        $awardplaq3FilePath = $request->file('award_plaq3_file') ? $request->file('award_plaq3_file')->move(public_path('modelofExcellence/award_plaq3')) : null;
+
+        $awardcert1FilePath = $request->file('award_cert1_file') ? $request->file('award_cert1_file')->move(public_path('modelofExcellence/award_cert1')) : null;
+        $awardcert2FilePath = $request->file('award_cert2_file') ? $request->file('award_cert2_file')->move(public_path('modelofExcellence/award_cert2')) : null;
+        $awardcert3FilePath = $request->file('award_cert3_file') ? $request->file('award_cert3_file')->move(public_path('modelofExcellence/award_cert3')) : null;
+
+        $awardproj1FilePath = $request->file('award_proj1_file') ? $request->file('award_proj1_file')->move(public_path('modelofExcellence/award_proj1')) : null;
+        $awardproj2FilePath = $request->file('award_proj2_file') ? $request->file('award_proj2_file')->move(public_path('modelofExcellence/award_proj2')) : null;
+        $awardproj3FilePath = $request->file('award_proj3_file') ? $request->file('award_proj3_file')->move(public_path('modelofExcellence/award_proj3')) : null;
+
+        $awardtrop1FilePath = $request->file('award_trop1_file') ? $request->file('award_trop1_file')->move(public_path('modelofExcellence/award_trop1')) : null;
+        $awardtrop2FilePath = $request->file('award_trop2_file') ? $request->file('award_trop2_file')->move(public_path('modelofExcellence/award_trop2')) : null;
+        $awardtrop3FilePath = $request->file('award_trop3_file') ? $request->file('award_trop3_file')->move(public_path('modelofExcellence/award_trop3')) : null;
+
+        $iecbrochFilePath = $request->file('iec_broch_file') ? $request->file('iec_broch_file')->move(public_path('modelofExcellence/iec_broch')) : null;
+        $iechandFilePath = $request->file('iec_hand_file') ? $request->file('iec_hand_file')->move(public_path('modelofExcellence/iec_hand')) : null;
+        $iecpubFilePath = $request->file('iec_pub_file') ? $request->file('iec_pub_file')->move(public_path('modelofExcellence/iec_pub')) : null;
+        $iecAVPFilePath = $request->file('iec_AVP_file') ? $request->file('iec_AVP_file')->move(public_path('modelofExcellence/iec_AVP')) : null;
+
+
+        $modelofExcellence = new Model_of_Excellence_Model();
+        $modelofExcellence->profileForm_id = $id;
+        $modelofExcellence->rec_list1 = $validatedData['rec_list1'] ?? null;
+        $modelofExcellence->rec_list2 = $validatedData['rec_list2'] ?? null;
+        $modelofExcellence->rec_list3 = $validatedData['rec_list3'] ?? null;
+        $modelofExcellence->rec_attach_file = $recattachFilePath ? '/modelofExcellence/rec_attach/' . $recattachFilePath->getFilename() : null;
+
+        $modelofExcellence->award_plaq1 = $validatedData['award_plaq1'] ?? null;
+        $modelofExcellence->award_plaq1_file = $awardplaq1FilePath ? '/modelofExcellence/award_plaq1/' . $awardplaq1FilePath->getFilename() : null;
+        $modelofExcellence->award_plaq2 = $validatedData['award_plaq2'] ?? null;
+        $modelofExcellence->award_plaq2_file = $awardplaq2FilePath ? '/modelofExcellence/award_plaq2/' . $awardplaq2FilePath->getFilename() : null;
+        $modelofExcellence->award_plaq3 = $validatedData['award_plaq3'] ?? null;
+        $modelofExcellence->award_plaq3_file = $awardplaq3FilePath ? '/modelofExcellence/award_plaq3/' . $awardplaq3FilePath->getFilename() : null;
+
+        $modelofExcellence->award_cert1 = $validatedData['award_cert1'] ?? null;
+        $modelofExcellence->award_cert1_file = $awardcert1FilePath ? '/modelofExcellence/award_cert1/' . $awardcert1FilePath->getFilename() : null;
+        $modelofExcellence->award_cert2 = $validatedData['award_cert2'] ?? null;
+        $modelofExcellence->award_cert2_file = $awardcert2FilePath ? '/modelofExcellence/award_cert2/' . $awardcert2FilePath->getFilename() : null;
+        $modelofExcellence->award_cert3 = $validatedData['award_cert3'] ?? null;
+        $modelofExcellence->award_cert3_file = $awardcert3FilePath ? '/modelofExcellence/award_cert3/' . $awardcert3FilePath->getFilename() : null;
+
+        $modelofExcellence->award_proj1 = $validatedData['award_proj1'] ?? null;
+        $modelofExcellence->award_proj1_file = $awardproj1FilePath ? '/modelofExcellence/award_proj1/' . $awardproj1FilePath->getFilename() : null;
+        $modelofExcellence->award_proj2 = $validatedData['award_proj2'] ?? null;
+        $modelofExcellence->award_proj2_file = $awardproj2FilePath ? '/modelofExcellence/award_proj2/' . $awardproj2FilePath->getFilename() : null;
+        $modelofExcellence->award_proj3 = $validatedData['award_proj3'] ?? null;
+        $modelofExcellence->award_proj3_file = $awardproj3FilePath ? '/modelofExcellence/award_proj3/' . $awardproj3FilePath->getFilename() : null;
+
+        $modelofExcellence->award_trop1 = $validatedData['award_trop1'] ?? null;
+        $modelofExcellence->award_trop1_file = $awardtrop1FilePath ? '/modelofExcellence/award_trop1/' . $awardtrop1FilePath->getFilename() : null;
+        $modelofExcellence->award_trop2 = $validatedData['award_trop2'] ?? null;
+        $modelofExcellence->award_trop2_file = $awardtrop2FilePath ? '/modelofExcellence/award_trop2/' . $awardtrop2FilePath->getFilename() : null;
+        $modelofExcellence->award_trop3 = $validatedData['award_trop3'] ?? null;
+        $modelofExcellence->award_trop3_file = $awardtrop3FilePath ? '/modelofExcellence/award_trop3/' . $awardtrop3FilePath->getFilename() : null;
+
+        $modelofExcellence->iec_broch = isset($validatedData['iec_broch']) ? 1 : 0;
+        $modelofExcellence->iec_broch_file = $iecbrochFilePath ? '/modelofExcellence/iec_broch/' . $iecbrochFilePath->getFilename() : null;
+
+        $modelofExcellence->iec_hand = isset($validatedData['iec_hand']) ? 1 : 0;
+        $modelofExcellence->iec_hand_file = $iechandFilePath ? '/modelofExcellence/iec_hand/' . $iechandFilePath->getFilename() : null;
+
+        $modelofExcellence->iec_pub = isset($validatedData['iec_pub']) ? 1 : 0;
+        $modelofExcellence->iec_pub_file = $iecpubFilePath ? '/modelofExcellence/iec_pub/' . $iecpubFilePath->getFilename() : null;
+
+        $modelofExcellence->iec_AVP = isset($validatedData['iec_AVP']) ? 1 : 0;
+        $modelofExcellence->iec_AVP_file = $iecAVPFilePath ? '/modelofExcellence/iec_AVP/' . $iecAVPFilePath->getFilename() : null;
+
+        // Save the fully operational record
+        $modelofExcellence->save();
+
+        $requiredFields = [
+            'profileForm_id', 'rec_list1', 'rec_list2', 'rec_list3', 'rec_attach_file', 'award_plaq1', 'award_plaq1_file', 'award_plaq2', 'award_plaq2_file', 'award_plaq3', 'award_plaq3_file',
+            'award_cert1', 'award_cert1_file', 'award_cert2', 'award_cert2_file', 'award_cert3', 'award_cert3_file', 'award_proj1', 'award_proj1_file', 'award_proj2', 'award_proj2_file', 'award_proj3', 'award_proj3_file',
+            'award_trop1', 'award_trop1_file', 'award_trop2', 'award_trop2_file', 'award_trop3', 'award_trop3_file', 'iec_broch', 'iec_broch_file', 'iec_hand', 'iec_hand_file', 'iec_pub', 'iec_pub_file', 'iec_AVP', 'iec_AVP_file'
+        ];
+
+        // Check if any of the required fields are null
+        $incomplete = false;
+        foreach ($requiredFields as $field) {
+            if ($modelofExcellence->$field === null) {
+                $incomplete = true;
+                break;
+            }
+        }
+
+        // Determine the status based on null values
+        $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
+
+        // Update the status field in the database
+        $modelofExcellence->status = $status;
+        $modelofExcellence->save();
+
+        // Retrieve fields with null values
+        $modelofExcellenceNull = $modelofExcellence->getNullFields();
+
+        // Redirect if null values are present, otherwise display the incomplete view
+        if ($incomplete) {
+            return redirect('/level5')->with('success', 'Success!');
+        } else {
+            // return view('LoD.Level5.L5_Incomplete', ['modelofExcellenceNull' => $sustainabilityMechNull]);
+            return redirect('/level5');
+        }
+    }
+
+    //==========================================================================================================================================||
+    //================================================== E D I T I N G  O F  D A T A =============================================================||
+
+
+    public function editSustainabilityMechanism(Request $request, $profileFormId)
+    {
+        $validatedData = $request->validate([
+            'data_training' => 'nullable',
+            'data_fishcatch' => 'nullable',
+            'data_regforms' => 'nullable',
+            'est_funds' => 'nullable',
+            'est_funds_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'othersources1' => 'nullable|string',
+            'othersources1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'othersources2' => 'nullable|string',
+            'othersources2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'othersources3' => 'nullable|string',
+            'othersources3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+        ], [
+            'est_funds_file.max' => 'The est_funds_file may not be greater than 5MB.',
+            'othersources1_file.max' => 'The othersources1_file may not be greater than 5MB.',
+            'othersources2_file.max' => 'The othersources2_file may not be greater than 5MB.',
+            'othersources3_file.max' => 'The othersources3_file may not be greater than 5MB.',
+        ]);
+
+        // $sustainabilityMech = Sustainability_Mechanism_Model::findOrFail($id);
+
+        $sustainabilityMech = Sustainability_Mechanism_Model::where('profileForm_id', $profileFormId)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('est_funds_file')) {
+            if ($sustainabilityMech->est_funds_file) {
+                Storage::delete($sustainabilityMech->est_funds_file);
+            }
+            $estfundsFilePath = $request->file('est_funds_file')->store('sustainabilityMechanism/est_funds');
+            $sustainabilityMech->est_funds_file = $estfundsFilePath;
+        }
+
+        if ($request->hasFile('othersources1_file')) {
+            if ($sustainabilityMech->othersources1_file) {
+                Storage::delete($sustainabilityMech->othersources1_file);
+            }
+            $othersources1FilePath = $request->file('othersources1_file')->store('sustainabilityMechanism/othersources1');
+            $sustainabilityMech->othersources1_file = $othersources1FilePath;
+        }
+
+        if ($request->hasFile('othersources2_file')) {
+            if ($sustainabilityMech->othersources2_file) {
+                Storage::delete($sustainabilityMech->othersources2_file);
+            }
+            $othersources2FilePath = $request->file('othersources2_file')->store('sustainabilityMechanism/othersources2');
+            $sustainabilityMech->othersources2_file = $othersources2FilePath;
+        }
+
+        if ($request->hasFile('othersources3_file')) {
+            if ($sustainabilityMech->othersources3_file) {
+                Storage::delete($sustainabilityMech->othersources3_file);
+            }
+            $othersources3FilePath = $request->file('othersources3_file')->store('sustainabilityMechanism/othersources3');
+            $sustainabilityMech->othersources3_file = $othersources3FilePath;
+        }
+
+        // Update other fields
+        $sustainabilityMech->data_training = $validatedData['data_training'] ?? null;
+        $sustainabilityMech->data_fishcatch = $validatedData['data_fishcatch'] ?? null;
+        $sustainabilityMech->data_regforms = $validatedData['data_regforms'] ?? null;
+        $sustainabilityMech->est_funds = $validatedData['est_funds'] ?? null;
+        $sustainabilityMech->othersources1 = $validatedData['othersources1'] ?? null;
+        $sustainabilityMech->othersources2 = $validatedData['othersources2'] ?? null;
+        $sustainabilityMech->othersources3 = $validatedData['othersources3'] ?? null;
+
+        // Save the updated record
+        $sustainabilityMech->save();
+
+        $fields = [
+            'data_training', 'data_fishcatch', 'data_regforms', 'est_funds', 'othersources1', 'othersources1_file',
+            'othersources2', 'othersources2_file', 'othersources3', 'othersources3_file'
+        ];
+    
+        $allFieldsFilled = true;
+        foreach ($fields as $field) {
+            if (empty($validatedData[$field])) {
+                $allFieldsFilled = false;
+                break;
+            }
+        }
+        // Update status to 'COMPLETED' if all fields are filled
+        if ($allFieldsFilled) {
+            $sustainabilityMech->status = 'COMPLETED';
+            $sustainabilityMech->save();
+        }
+    
+        // Check if any changes were made and redirect accordingly
+        if ($sustainabilityMech->wasChanged()) {
+            return redirect('/L4Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
+
+
     //==========================================================================================================================================||
     //================================================== C O U N T  O F  D A T A =============================================================||
+
+
 
     public function level2Count()
     {
         $data = BasicFunction_Model::get();
-        $completed = BasicFunction_Model::where('status', "COMPLETED")->count();
-        $incomplete = BasicFunction_Model::where('status', "INCOMPLETE")->count();
+        $completedbasic = BasicFunction_Model::where('status', "COMPLETED")->count();
+        $incompletebasic = BasicFunction_Model::where('status', "INCOMPLETE")->count();
 
         //chart for complete
-        return view('LoD.Level2.Level2', compact('completed', 'incomplete', 'data'));
+        return view('LoD.Level2.Level2', compact('completedbasic', 'incompletebasic', 'data'));
     }
 
     public function level3Count()
     {
         $data = Fully_Operational_Model::get();
-        $completed = Fully_Operational_Model::where('status', "COMPLETED")->count();
-        $incomplete = Fully_Operational_Model::where('status', "INCOMPLETE")->count();
+        $completedfully = Fully_Operational_Model::where('status', "COMPLETED")->count();
+        $incompletefully = Fully_Operational_Model::where('status', "INCOMPLETE")->count();
 
         //chart for complete
-        return view('LoD.Level3.Level3', compact('completed', 'incomplete', 'data'));
+        return view('LoD.Level3.Level3', compact('completedfully', 'incompletefully', 'data'));
+    }
+
+    public function level4Count()
+    {
+        $data = Sustainability_Mechanism_Model::get();
+        $completedsustain = Sustainability_Mechanism_Model::where('status', "COMPLETED")->count();
+        $incompletesustain = Sustainability_Mechanism_Model::where('status', "INCOMPLETE")->count();
+
+        //chart for complete
+        return view('LoD.Level4.Level4', compact('completedsustain', 'incompletesustain', 'data'));
+    }
+
+    public function level5Count()
+    {
+        $data = Model_of_Excellence_Model::get();
+        $completedmodel = Model_of_Excellence_Model::where('status', "COMPLETED")->count();
+        $incompletemodel = Model_of_Excellence_Model::where('status', "INCOMPLETE")->count();
+
+        //chart for complete
+        return view('LoD.Level5.Level5', compact('completedmodel', 'incompletemodel', 'data'));
+    }
+
+
+    public function allLevelCount()
+    {
+        $allcominc1 = ProfileForm_Model::count();
+        $allcominc2 = BasicFunction_Model::count();
+        $allcominc3 = Fully_Operational_Model::count();
+        $allcominc4 = Sustainability_Mechanism_Model::count();
+        $allcominc5 = Model_of_Excellence_Model::count();
+
+        //chart for complete
+        return view('dashboard', compact('allcominc1', 'allcominc2', 'allcominc3', 'allcominc4', 'allcominc5'));
     }
 
     //==========================================================================================================================================||

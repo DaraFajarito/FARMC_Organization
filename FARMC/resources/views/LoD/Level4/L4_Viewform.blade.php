@@ -94,7 +94,9 @@
                                 <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
                             </div>
                             <div class="actions" style="margin-left: auto;">
-                                <a href="{{ url ('/fullyOperational') }}"><button class="btn btn-primary">Proceed to Lvl 5</button></a>
+                                @foreach($sustain as $item)
+                                <a href="{{ url ('/modelExcellence/' . $item->id) }}"><button class="btn btn-primary">Proceed to Lvl 5</button></a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -148,28 +150,48 @@
 
                             <form class="form-inline" method="" action="" enctype="multipart/form-data">
 
-
+                                @foreach($sustain as $item)
                                 <div class="card-block">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 col-form-label form-control-label">Municipality / City: {{$item->profileForm->municipality}}</label>
+                                            </div>
+                                            <br>
+                                            <div class="form-group row">
+                                                <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->profileForm->province}}</label>
+                                            </div>
+                                            <hr>
+                                            <br>
                                             <div class="form-group m-r-15">
                                                 <label for="date" class="block form-control-label">1. Implementation of MFDP</label>
                                             </div>
                                             <br><br>
                                             <div class="col-md-12">
-                                                <label for="date" class="captions">1.1 FARMC Has Undergone Training On FARMC & Fish Catch DAtabase System &nbsp; &nbsp; <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> **Yes**
-                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i> **No**</label>
-
+                                                <label for="date" class="captions">1.1 FARMC Has Undergone Training On FARMC & Fish Catch DAtabase System &nbsp; &nbsp;</label>
+                                                @if ($item->data_training === 'No')
+                                                <i class="ti-close" style="color: red; font-size: 1.5em;"></i> No
+                                                @else
+                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> Yes
+                                                @endif
                                             </div>
                                             <br><br>
                                             <div class="col-md-12">
-                                                <label for="date" class="captions">1.2 FARMC & Fish Catch DAtabase System Installed And Operational In The FARMC Office Computer &nbsp; &nbsp; <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> **Yes**
-                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i> **No**</label>
+                                                <label for="date" class="captions">1.2 FARMC & Fish Catch DAtabase System Installed And Operational In The FARMC Office Computer &nbsp; &nbsp; </label>
+                                                @if ($item->data_fishcatch === 'No')
+                                                <i class="ti-close" style="color: red; font-size: 1.5em;"></i> No
+                                                @else
+                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> Yes
+                                                @endif
                                             </div>
                                             <br><br>
                                             <div class="col-md-12">
-                                                <label for="date" class="captions">1.3 Fisherfolk Registration Forms Duly Accomplished And Encoded In The FARMC Database System &nbsp; &nbsp; <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> **Yes**
-                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i> **No**</label>
+                                                <label for="date" class="captions">1.3 Fisherfolk Registration Forms Duly Accomplished And Encoded In The FARMC Database System &nbsp; &nbsp; </label>
+                                                @if ($item->data_regforms === 'No')
+                                                <i class="ti-close" style="color: red; font-size: 1.5em;"></i> No
+                                                @else
+                                                <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> Yes
+                                                @endif
                                             </div>
                                             <br><br><br>
                                             <div class="form-group m-r-15">
@@ -178,10 +200,20 @@
                                             <br><br>
                                             <div class="table-responsive">
                                                 <div>
-                                                    <label for="date" class="col-md-6 captions">2.1 Amount Of MFARMC Funds Allocated By The LGU &nbsp; &nbsp; <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> **Yes**
-                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i> **No**</label>
-                                                    <input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                        <span class="captions"><em><small> proof of MFARMC fund</small></em></span>
+                                                    <div class="col-md-6">
+                                                        <label for="date" class="captions">2.1 Amount Of MFARMC Funds Allocated By The LGU &nbsp; &nbsp; </label>
+                                                        @if ($item->est_funds === 'No')
+                                                        <i class="ti-close" style="color: red; font-size: 1.5em;"></i> No
+                                                        @else
+                                                        <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> Yes
+                                                        @endif
+                                                    </div>
+
+                                                    @if ($item->est_funds_file === null)
+                                                    <i class="ti-close" style="color: red; font-size: 1em;"></i> &nbsp; No proof of MFARMC fund
+                                                    @else
+                                                    <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i> {{$item->est_funds_file}}
+                                                    @endif
                                                 </div>
                                                 <br>
 
@@ -198,24 +230,72 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached reports</span>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources1 === null || $item->othersources1_file === null)
+                                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i>
+                                                                    @else
+                                                                    <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+                                                                    @endif
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources1 === null)
+                                                                    <div style="color:red"> no data </div>
+                                                                    @else
+                                                                    {{$item->othersources1}}
+                                                                    @endif
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources1_file === null)
+                                                                    <i class="ti-close" style="color: red; font-size: 1em;"></i> <span style="font-size: small;">&nbsp; No attach report</span>
+                                                                    @else
+                                                                    {{$item->othersources1_file}}
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached minutes</span>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources2 === null || $item->othersources2_file === null)
+                                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i>
+                                                                    @else
+                                                                    <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+                                                                    @endif
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources2 === null)
+                                                                    <div style="color:red"> no data </div>
+                                                                    @else
+                                                                    {{$item->othersources2}}
+                                                                    @endif
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources2_file === null)
+                                                                    <i class="ti-close" style="color: red; font-size: 1em;"></i> <span style="font-size: small;">&nbsp; No attach report</span>
+                                                                    @else
+                                                                    {{$item->othersources1_file}}
+                                                                    @endif </small></em></span>
                                                                 </td>
                                                             </tr>
                                                             <tr style="font-size: 12px;">
-                                                                <td class="text-center"><i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center"><input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 250px; padding: 5px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                                    <span class="captions"> attached photo documentation</span>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources3 === null || $item->othersources3_file === null)
+                                                                    <i class="ti-close" style="color: red; font-size: 1.5em;"></i>
+                                                                    @else
+                                                                    <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i>
+                                                                    @endif
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources3 === null)
+                                                                    <div style="color:red"> no data </div>
+                                                                    @else
+                                                                    {{$item->othersources3}}
+                                                                    @endif
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    @if ($item->othersources3_file === null)
+                                                                    <i class="ti-close" style="color: red; font-size: 1em;"></i> <span style="font-size: small;">&nbsp; No attach report</span>
+                                                                    @else
+                                                                    {{$item->othersources1_file}}
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -225,7 +305,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </form>
+
                         </div>
                     </div>
                 </div>

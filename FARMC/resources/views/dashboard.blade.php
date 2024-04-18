@@ -63,7 +63,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card dashboard-product">
                                 <span>Level One</span>
-                                <h2 class="dashboard-total-products"><span>0</span></h2>
+                                <h2 class="dashboard-total-products"><span>{{$allcominc1}}</span></h2>
                                 <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#" id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle">1</div>
@@ -74,7 +74,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card dashboard-product">
                                 <span>Level Two</span>
-                                <h2 class="dashboard-total-products"><span>0</span></h2>
+                                <h2 class="dashboard-total-products"><span>{{$allcominc2}}</span></h2>
                                 <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#" id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle1">2</div>
@@ -84,7 +84,7 @@
                         <div class="col-lg-2 col-md-6">
                             <div class="card dashboard-product">
                                 <span>Level Three</span>
-                                <h2 class="dashboard-total-products"><span>0</span></h2>
+                                <h2 class="dashboard-total-products"><span>{{$allcominc3}}</span></h2>
                                 <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#" id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle2">3</div>
@@ -94,7 +94,7 @@
                         <div class="col-lg-2 col-md-6">
                             <div class="card dashboard-product">
                                 <span>Level Four</span>
-                                <h2 class="dashboard-total-products"><span>0</span></h2>
+                                <h2 class="dashboard-total-products"><span>{{$allcominc4}}</span></h2>
                                 <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#" id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle3">4</div>
@@ -104,7 +104,7 @@
                         <div class="col-lg-2 col-md-6">
                             <div class="card dashboard-product">
                                 <span>Level Five</span>
-                                <h2 class="dashboard-total-products"><span>0</span></h2>
+                                <h2 class="dashboard-total-products"><span>{{$allcominc5}}</span></h2>
                                 <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#" id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle4">5</div>
@@ -151,7 +151,7 @@
                                                 <table class="table m-b-0 photo-table">
                                                     <thead>
                                                         <tr class="text-uppercase">
-                                                            <th>Photo</th>
+                                                            <!-- <th>Photo</th> -->
                                                             <th>Province</th>
                                                             <th>Municipality</th>
                                                             <th>Status</th>
@@ -161,9 +161,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th>
+                                                            <!-- <th>
                                                                 <img class="img-fluid img-circle" src="assets/images/avatar-2.png" alt="User">
-                                                            </th>
+                                                            </th> -->
                                                             <td>Appestia Project
                                                                 <p><i class="icofont icofont-clock-time"></i>Created 14.9.2016</p>
                                                             </td>
