@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Level 1 - Edit Form | FARMC - BFAR</title>
+    <title>Level 1 - EDIT FORM | Basic Structure | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
@@ -13,9 +13,6 @@
     <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="codedthemes">
 
-    <style>
-        .form-control {}
-    </style>
 </head>
 
 <body>

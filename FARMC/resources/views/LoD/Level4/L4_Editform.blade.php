@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Level 2 - Basic Function | FARMC - BFAR</title>
+    <title>Level 4 - EDIT FORM | Sustainability Mechanism | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->

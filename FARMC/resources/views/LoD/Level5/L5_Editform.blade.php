@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Level 2 - Basic Function | FARMC - BFAR</title>
+    <title>Level 5 - EDIT FORM | Model of Excellence | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
@@ -50,161 +50,279 @@
                         <a href="{{ url ('/level4') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
+
+                @foreach($modelEx as $item)
                 <div class="card">
                     <div class="card-header">
                         <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
                         <hr>
-                        <div class="grid-material bg-general" style="text-align:center; font-size:20px"><b>SUSTAINABILITY MECHANISM</b></div>
+                        <div class="grid-material bg-general" style="text-align:center; font-size:20px"><b>MODEL OF EXCELLENCE</b></div>
                         <hr>
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/edit-modelExcellence/'. $item->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
+                            @method ('PUT')
 
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group row">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Data Bank/Databank system established and accesible</label>
+                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Recognized by the LGU & community as a strong and dynamic partner in the management of municipal waters</label>
                                         </div>
-                                        <br>
-                                        <label for="municipality" class="col-md-12 captions">1.1 FARMC has undergone training on FARMC & Fish Catch DAtabase System</label>
-                                        <div class="col-md-12" style="margin-top: 10px;">
-                                            <div class="form-radio" style="display: inline-block;">
-                                                <div class="radio radio-inline">
-                                                    <label>
-                                                        <input type="radio" name="radio" /><i class="helper"></i>Yes
-                                                    </label>
-                                                </div>
-                                            </div>
+                                    </div>
 
-                                            <div class="form-radio" style="display: inline-block;margin-left:50px;">
-                                                <div class="radio radio-inline">
-                                                    <label>
-                                                        <input type="radio" name="radio" /><i class="helper"></i>No
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <label for="municipality" class="col-md-12 captions" style="margin-top:1rem">1.2 FARMC & Fish Catch DAtabase System installed and operational in the FARMC Office Computer</label>
-                                        <div class="col-md-12" style="margin-top: 10px;">
-                                            <div class="form-radio" style="display: inline-block;">
-                                                <div class="radio radio-inline">
-                                                    <label>
-                                                        <input type="radio" name="radio1" /><i class="helper"></i>Yes
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-radio" style="display: inline-block;margin-left:50px;">
-                                                <div class="radio radio-inline">
-                                                    <label>
-                                                        <input type="radio" name="radio1" /><i class="helper"></i>No
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <label for="municipality" class="col-md-12 captions" style="margin-top:1rem">1.3 Fisherfolk Registration Forms duly accomplished and encoded in the FARMC Database System</label>
-                                        <div class="col-md-12" style="margin-top: 10px;">
-                                            <div class="form-radio" style="display: inline-block;">
-                                                <div class="radio radio-inline">
-                                                    <label>
-                                                        <input type="radio" name="radio2" /><i class="helper"></i>Yes
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-radio" style="display: inline-block;margin-left:50px;">
-                                                <div class="radio radio-inline">
-                                                    <label>
-                                                        <input type="radio" name="radio2" /><i class="helper"></i>No
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group row" style="margin-top: 1rem;">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">1. Established financial capability and fund sourcing ability</label>
-                                        </div>
-                                        <br>
-                                        <label for="municipality" class="col-md-12 captions">2.1 Amount of MFARMC funds allocated by the LGU</label>
-                                        <div class="col-md-12" style="margin-top: 10px;">
-                                            <div class="col-md-4">
-                                                <div class="form-radio" style="display: inline-block;">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="radio4" /><i class="helper"></i>Yes
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-radio" style="display: inline-block;margin-left:50px;">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="radio4" /><i class="helper"></i>No
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-
-                                                <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                <small><b><em> If yes, please attached document showing the MFARMC fund</b></em></small>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12" style="margin-top:1rem">
+                                    <div class="col-md-12" style="margin-top:1rem">
+                                        <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="municipality" class="col-md-12 captions">2.2 Other sources of funds obtained for the FARMC & its operation</label>
+                                                <label for="municipality" class="col-md-12 captions">1.1 List of governing bodies that recognises the MFARMC as a member</label>
+                                                <div class="col-md-12 text-center">
+                                                    <div class="col-md-12" style="margin-bottom: 1rem;">
+                                                        <input type="text" id="rec_list1" name="rec_list1" class="form-control" style="width:1000px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-12" style="margin-bottom: 1rem;">
+                                                        <input type="text" id="rec_list2" name="rec_list2" class="form-control" style="width:1000px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-12" style="margin-bottom: 1rem;">
+                                                        <input type="text" id="rec_list3" name="rec_list3" class="form-control" style="width:1000px" placeholder="">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12" style="margin-top:1rem">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="" class="col-md-12 captions">1.2 Please attached Communications / Reports on the representations of FARMCs in various fora, Assemblies, Dialogues and involvement in project planning, monitoring and evaluation.</label>
+                                                <div class="col-md-12 text-center">
+                                                    <input id="rec_attach_file" type="file" name="rec_attach_file" class="form-control file-input" style="width: 400px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                    <small><b><em>Please attached</b></em></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="margin-top: 1rem;">
+                                        <div class="form-group row">
+                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">2. Awards and citations/recognitions for exemplary performance received</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 captions">2.1 Plaque of Recognition received</label>
                                                 <div class="col-md-12">
 
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_plaq1" name="award_plaq1" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached report</b></em></small>
+                                                        <input id="award_plaq1_file" type="file" name="award_plaq1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_plaq2" name="award_plaq2" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached minutes</b></em></small>
+                                                        <input id="award_plaq2_file" type="file" name="award_plaq2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="municipality" name="municipality" class="form-control" style="width:520px" placeholder="">
+                                                        <input type="text" id="award_plaq3" name="award_plaq3" class="form-control" style="width:520px" placeholder="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Attached photo documentation</b></em></small>
+                                                        <input id="award_plaq3_file" type="file" name="award_plaq3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <div class="col-md-12" style="margin-top:2rem;">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 captions">2.2 Certificate of Merit, Recognition and Appreciation received</label>
+                                                <div class="col-md-12">
 
-                                        <div class="row" style="margin-top: 270px;">
-                                            <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_cert1" name="award_cert1" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_cert1_file" type="file" name="award_cert1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_cert2" name="award_cert2" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_cert2_file" type="file" name="award_cert2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_cert3" name="award_cert3" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_cert3_file" type="file" name="award_cert3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <div class="col-md-12" style="margin-top: 2rem;">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 captions">2.3 Approved project and cash incentives received</label>
+                                                <div class="col-md-12">
+
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_proj1" name="award_proj1" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_proj1_file" type="file" name="award_proj1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_proj2" name="award_proj2" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_proj2_file" type="file" name="award_proj2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_proj3" name="award_proj3" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_proj3_file" type="file" name="award_proj3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="margin-top: 2rem;">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 captions">2.4 Trophies received</label>
+                                                <div class="col-md-12">
+
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_trop1" name="award_trop1" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_trop1_file" type="file" name="award_trop1_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_trop2" name="award_trop2" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_trop2_file" type="file" name="award_trop2_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" id="award_trop3" name="award_trop3" class="form-control" style="width:520px" placeholder="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="award_trop3_file" type="file" name="award_trop3_file" class="form-control file-input" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached</b></em></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12" style="margin-top: 1rem;">
+                                        <div class="form-group row">
+                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">3. Brochures / handouts / publications of success stories printed / documented</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="municipality" class="col-md-12 captions">3.1 IEC Materials of M/CFARMC success stories</label>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-5" style="margin-top: 20px;">
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_broch" id="checkbox">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Brochures</div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_hand" id="checkbox-1">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Handouts</div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_pub" id="checkbox-2">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Publication</div>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                            <label class="input-checkbox checkbox-primary">
+                                                                <input type="checkbox" name="iec_AVP" id="checkbox-3">
+                                                                <span class="checkbox"></span>
+                                                            </label>
+                                                            <div class="captions">Audio Visual Production</div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-md-7" style=" line-height:3rem">
+                                                        <input id="iec_broch_file" type="file" name="iec_broch_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</b></em></small>
+                                                        <br>
+                                                        <input id="iec_hand_file" type="file" name="iec_hand_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <br>
+                                                        <input id="iec_pub_file" type="file" name="iec_pub_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <br>
+                                                        <input id="iec_AVP_file" type="file" name="iec_AVP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <small><b><em>Please attached copy</em></b></small>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="row" style="margin-top:2rem">
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                            <!-- </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Committee_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FARMC_Authentication\AuthController;
+use App\Http\Controllers\FarmcMembership_Controller;
 use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
 
@@ -105,6 +106,10 @@ Route::view('/L5Viewform', 'LoD.Level5.L5_Viewform');
 //LEVEL ONE DATA//
 // ---------------------------------------------------------------------------------------//
 
+
+Route::get('/dash', [ProfileForm_Controller::class,'allLevelCount']);
+
+
 //Profile Form
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
 Route::get('/level1', [ProfileForm_Controller::class,'displayAll']);
@@ -135,12 +140,13 @@ Route::get('/go-to-committee', [Committee_Controller::class,'display_committee_f
 //Basic Function
 Route::get('/basicFunction/{id}', [ProfileForm_Controller::class,'display_level2']);
 Route::get('/level2', [ProfileForm_Controller::class,'level2Count']);
-Route::post('/add-basicFunction/{id}', [ProfileForm_Controller::class,'addBasicFunction']);
+Route::put('/add-basicFunction/{id}', [ProfileForm_Controller::class,'addBasicFunction']);
+Route::put('/edit-basicFunction/{id}', [ProfileForm_Controller::class,'editBasicFunction']);
 Route::get('/L2Viewform/{id}', [ProfileForm_Controller::class,'display_level2_info']);
+Route::get('/L2Editform/{id}', [ProfileForm_Controller::class,'display_level2_edit']);
 
 Route::get('/L2Incompletetbl',[ProfileForm_Controller::class, 'display_level2_incomplete']);
 Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_complete']);
-Route::get('/dash', [ProfileForm_Controller::class,'allLevelCount']);
 
 // ---------------------------------------------------------------------------------------//
 //LEVEL THREE DATA//
@@ -149,8 +155,10 @@ Route::get('/dash', [ProfileForm_Controller::class,'allLevelCount']);
 //Fully Functional 
 Route::get('/fullyoperational/{id}', [ProfileForm_Controller::class,'display_level3']);
 Route::get('/level3', [ProfileForm_Controller::class,'level3Count']);
-Route::post('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFullyOperational']);
+Route::put('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFullyOperational']);
+Route::put('/edit-fullyOperational/{id}', [ProfileForm_Controller::class,'editFullyOperational']);
 Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_info']);
+Route::get('/L3Editform/{id}', [ProfileForm_Controller::class,'display_level3_edit']);
 
 Route::get('/L3Incompletetbl',[ProfileForm_Controller::class, 'display_level3_incomplete']);
 Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_complete']);
@@ -177,8 +185,10 @@ Route::get('/L4Completedtbl',[ProfileForm_Controller::class, 'display_level4_com
 //Sustainability Mechanism
 Route::get('/modelExcellence/{id}', [ProfileForm_Controller::class,'display_level5']);
 Route::get('/level5', [ProfileForm_Controller::class,'level5Count']);
-Route::post('/add-modelExcellence/{id}', [ProfileForm_Controller::class,'addmodelExcellence']);
+Route::put('/add-modelExcellence/{id}', [ProfileForm_Controller::class,'addmodelExcellence']);
+Route::put('/edit-modelExcellence/{id}', [ProfileForm_Controller::class,'editmodelExcellence']);
 Route::get('/L5Viewform/{id}', [ProfileForm_Controller::class,'display_level5_info']);
+Route::get('/L5Editform/{id}', [ProfileForm_Controller::class,'display_level5_edit']);
 
 Route::get('/L5Incompletetbl',[ProfileForm_Controller::class, 'display_level5_incomplete']);
 Route::get('/L5Completedtbl',[ProfileForm_Controller::class, 'display_level5_complete']);
@@ -190,8 +200,8 @@ Route::get('/L5Completedtbl',[ProfileForm_Controller::class, 'display_level5_com
 
 Route::view('/farmc_membership', 'FARMC_Membership.FARMC_Membership');
 Route::view('/personal_info', 'FARMC_Membership.personal_info');
-Route::view('/membership', 'FARMC_Membership.membership');
-Route::view('/org_membership', 'FARMC_Membership.org_membership');
+// Route::view('/membership', 'FARMC_Membership.membership');
+// Route::view('/org_membership', 'FARMC_Membership.org_membership');
 
 // ---------------------------------------------------------------------------------------//
 
@@ -257,4 +267,8 @@ Route::view('/FOform2Officers4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2
 Route::view('/FOform2OrgStructure4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_OrgStructure');
 
 // ---------------------------------------------------------------------------------------//
-
+// ------------------------------ FARMC MEMBERSHIP ---------------------------------------//
+Route::post('/add-personal-info', [FarmcMembership_Controller::class,'addFARMC_PersonalInfo']);
+Route::get('/membership/{id}', [FarmcMembership_Controller::class,'displayMembershipForm']);
+Route::post('/add-membership/{id}', [FarmcMembership_Controller::class,'addFARMC_Membership']);
+Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOrgMembershipForm']);

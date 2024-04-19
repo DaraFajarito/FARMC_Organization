@@ -122,6 +122,14 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level2.L2_Viewform', compact('data', 'basics'));
     }
 
+    public function display_level2_edit($id)
+    {
+        $data = ProfileForm_Model::select('id')->where('id', $id)->get();
+        $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level2.L2_Editform', compact('data', 'basics'));
+    }
+
     public function display_level2_incomplete()
     {
         $data = BasicFunction_Model::where('status', 'INCOMPLETE')->get();
@@ -149,6 +157,14 @@ class ProfileForm_Controller extends Controller
         $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
 
         return view('LoD.Level3.L3_Viewform', compact('basics', 'fullyOp'));
+    }
+
+    public function display_level3_edit($id)
+    {
+        $basics = BasicFunction_Model::select('id')->where('id', $id)->get();
+        $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level3.L3_Editform', compact('basics', 'fullyOp'));
     }
 
     public function display_level3_incomplete()
@@ -215,6 +231,14 @@ class ProfileForm_Controller extends Controller
         $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->get();
 
         return view('LoD.Level5.L5_Viewform', compact('sustain', 'modelEx'));
+    }
+
+    public function display_level5_edit($id)
+    {
+        $sustain = Sustainability_Mechanism_Model::select('id')->where('id', $id)->get();
+        $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level5.L5_Editform', compact('sustain', 'modelEx'));
     }
 
     public function display_level5_incomplete()
@@ -540,7 +564,6 @@ class ProfileForm_Controller extends Controller
         }
     }
 
-
     public function addBasicFunction(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -560,6 +583,8 @@ class ProfileForm_Controller extends Controller
             'caseestablished_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'mfarmcoffice' => 'nullable',
             'regmeet' => 'nullable',
+            'minatt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'photodoc_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
 
 
         ], [
@@ -571,10 +596,12 @@ class ProfileForm_Controller extends Controller
             'actfarmcbt_file.max' => 'The actfarmcbt_file may not be greater than 5MB.',
             'appfarmcbt_file.max' => 'The appfarmcbt_file may not be greater than 5MB.',
             'caseestablished_file.max' => 'The caseestablished_file may not be greater than 5MB.',
+            'minatt_file.max' => 'The caseestablished_file may not be greater than 5MB.',
+            'photodoc_file.max' => 'The caseestablished_file may not be greater than 5MB.',
         ]);
 
-        $approvedMFDPFilePath = $request->file('copy1_file') ? $request->file('copy1_file')->move(public_path('basic-function/copy1')) : null;
-        $impact1FilePath = $request->file('mindoc1_file') ? $request->file('mindoc1_file')->move(public_path('basic-function/mindoc1')) : null;
+        $copy1FilePath = $request->file('copy1_file') ? $request->file('copy1_file')->move(public_path('basic-function/copy1')) : null;
+        $mindoc1FilePath = $request->file('mindoc1_file') ? $request->file('mindoc1_file')->move(public_path('basic-function/mindoc1')) : null;
         $copy2FilePath = $request->file('copy2_file') ? $request->file('copy2_file')->move(public_path('basic-function/copy2')) : null;
         $mindoc2FilePath = $request->file('mindoc2_file') ? $request->file('mindoc2_file')->move(public_path('basic-function/mindoc2')) : null;
         $bantaydtFilePath = $request->file('bantaydt_file') ? $request->file('bantaydt_file')->move(public_path('basic-function/bantaydt')) : null;
@@ -589,8 +616,8 @@ class ProfileForm_Controller extends Controller
         $basicFunction = new BasicFunction_Model();
         $basicFunction->profileForm_id = $id;
         $basicFunction->mfdp = $validatedData['mfdp'] ?? null;
-        $basicFunction->copy1_file = $approvedMFDPFilePath ? '/basic-function/copy1/' . $approvedMFDPFilePath->getFilename() : null;
-        $basicFunction->mindoc1_file = $impact1FilePath ? '/basic-function/mindoc1/' . $impact1FilePath->getFilename() : null;
+        $basicFunction->copy1_file = $copy1FilePath ? '/basic-function/copy1/' . $copy1FilePath->getFilename() : null;
+        $basicFunction->mindoc1_file = $mindoc1FilePath ? '/basic-function/mindoc1/' . $mindoc1FilePath->getFilename() : null;
         $basicFunction->mfo = $validatedData['mfo'] ?? null;
         $basicFunction->copy2_file = $copy2FilePath ? '/basic-function/copy2/' . $copy2FilePath->getFilename() : null;
         $basicFunction->mindoc2_file = $mindoc2FilePath ? '/basic-function/mindoc2/' . $mindoc2FilePath->getFilename() : null;
@@ -1111,6 +1138,536 @@ class ProfileForm_Controller extends Controller
     //================================================== E D I T I N G  O F  D A T A =============================================================||
 
 
+    public function editBasicFunction(Request $request, $profileFormId)
+    {
+        $validatedData = $request->validate([
+            'mfdp' => 'nullable|in:Approved,Formulated',
+            'copy1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mindoc1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mfo' => 'nullable|in:Approved,Formulated',
+            'copy2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mindoc2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'bantaydt' => 'nullable',
+            'bantaydt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'actfarmcbt' => 'nullable',
+            'actfarmcbt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'appfarmcbt' => 'nullable',
+            'appfarmcbt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'caseestablished' => 'nullable',
+            'caseestablished_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'mfarmcoffice' => 'nullable',
+            'regmeet' => 'nullable',
+            
+        ], [
+            'copy1_file.max' => 'The copy1_file may not be greater than 5MB.',
+            'mindoc1_file.max' => 'The mindoc1_file may not be greater than 5MB.',
+            'copy2_file.max' => 'The copy2_file may not be greater than 5MB.',
+            'mindoc2_file.max' => 'The mindoc2_file may not be greater than 5MB.',
+            'bantaydt_file.max' => 'The bantaydt_file may not be greater than 5MB.',
+            'actfarmcbt_file.max' => 'The actfarmcbt_file may not be greater than 5MB.',
+            'appfarmcbt_file.max' => 'The appfarmcbt_file may not be greater than 5MB.',
+            'caseestablished_file.max' => 'The caseestablished_file may not be greater than 5MB.',
+        ]);
+
+
+
+        $basicFunction = BasicFunction_Model::where('profileForm_id', $profileFormId)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('copy1_file')) {
+            if ($basicFunction->copy1_file) {
+                Storage::delete($basicFunction->copy1_file);
+            }
+            $copy1FilePath = $request->file('copy1_file')->store('basicFunction/copy1');
+            $basicFunction->copy1_file = $copy1FilePath;
+        }
+
+        if ($request->hasFile('mindoc1_file')) {
+            if ($basicFunction->mindoc1_file) {
+                Storage::delete($basicFunction->mindoc1_file);
+            }
+            $mindoc1FilePath = $request->file('mindoc1_file')->store('basicFunction/mindoc1');
+            $basicFunction->mindoc1_file = $mindoc1FilePath;
+        }
+
+        if ($request->hasFile('copy2_file')) {
+            if ($basicFunction->copy2_file) {
+                Storage::delete($basicFunction->copy2_file);
+            }
+            $copy2FilePath = $request->file('copy2_file')->store('basicFunction/copy2');
+            $basicFunction->copy2_file = $copy2FilePath;
+        }
+
+        if ($request->hasFile('mindoc2FilePath')) {
+            if ($basicFunction->mindoc2FilePath) {
+                Storage::delete($basicFunction->mindoc2FilePath);
+            }
+            $mindoc2_file = $request->file('mindoc2FilePath')->store('basicFunction/mindoc2');
+            $basicFunction->mindoc2FilePath = $mindoc2_file;
+        }
+
+        if ($request->hasFile('bantaydt_file')) {
+            if ($basicFunction->bantaydt_file) {
+                Storage::delete($basicFunction->bantaydt_file);
+            }
+            $bantaydtFilePath = $request->file('bantaydt_file')->store('basicFunction/bantaydt');
+            $basicFunction->bantaydt_file = $bantaydtFilePath;
+        }
+
+        if ($request->hasFile('actfarmcbt_file')) {
+            if ($basicFunction->actfarmcbt_file) {
+                Storage::delete($basicFunction->actfarmcbt_file);
+            }
+            $actfarmcbtFilePath = $request->file('actfarmcbt_file')->store('basicFunction/actfarmcbt');
+            $basicFunction->actfarmcbt_file = $actfarmcbtFilePath;
+        }
+
+        if ($request->hasFile('appfarmcbt_file')) {
+            if ($basicFunction->appfarmcbt_file) {
+                Storage::delete($basicFunction->appfarmcbt_file);
+            }
+            $appfarmcbtFilePath = $request->file('appfarmcbt_file')->store('basicFunction/appfarmcbt');
+            $basicFunction->appfarmcbt_file = $appfarmcbtFilePath;
+        }
+
+        if ($request->hasFile('caseestablished_file')) {
+            if ($basicFunction->caseestablished_file) {
+                Storage::delete($basicFunction->caseestablished_file);
+            }
+            $caseestablishedFilePath = $request->file('caseestablished_file')->store('basicFunction/caseestablished');
+            $basicFunction->caseestablished_file = $caseestablishedFilePath;
+        }
+
+        if ($request->hasFile('minatt_file')) {
+            if ($basicFunction->minatt_file) {
+                Storage::delete($basicFunction->minatt_file);
+            }
+            $minattFilePath = $request->file('minatt_file')->store('basicFunction/minatt');
+            $basicFunction->minatt_file = $minattFilePath;
+        }
+
+        if ($request->hasFile('photodoc_file')) {
+            if ($basicFunction->photodoc_file) {
+                Storage::delete($basicFunction->photodoc_file);
+            }
+            $photodocFilePath = $request->file('photodoc_file')->store('basicFunction/photodoc');
+            $basicFunction->photodoc_file = $photodocFilePath;
+        }
+        
+        // Update other fields
+        $basicFunction->mfdp = $validatedData['mfdp'] ?? null;
+        $basicFunction->mfo = $validatedData['mfo'] ?? null;
+        $basicFunction->mfarmcoffice = $validatedData['mfarmcoffice'] ?? null;
+        $basicFunction->regmeet = $validatedData['regmeet'] ?? null;
+        
+
+        // Save the updated record
+        $basicFunction->save();
+
+        if (
+            // Check if all fields are filled
+            $basicFunction->mfdp && 
+            $basicFunction->mfo &&
+            $basicFunction->bantaydt &&
+            $basicFunction->actfarmcbt &&
+            $basicFunction->appfarmcbt &&
+            $basicFunction->caseestablished &&
+            $basicFunction->mfarmcoffice &&
+            $basicFunction->regmeet &&
+            // Check if all files are uploaded
+            $basicFunction->copy1_file &&
+            $basicFunction->mindoc1_file &&
+            $basicFunction->copy2_file &&
+            $basicFunction->mindoc2_file &&
+            $basicFunction->bantaydt_file &&
+            $basicFunction->actfarmcbt_file &&
+            $basicFunction->appfarmcbt_file &&
+            $basicFunction->caseestablished_file &&
+            $basicFunction->minatt_file &&
+            $basicFunction->photodoc_file
+        ) {
+            // Update status to completed
+            $basicFunction->status = 'COMPLETED';
+        }
+
+        // Save the updated status
+        $basicFunction->save();
+
+        // Check if any changes were made and redirect accordingly
+        if ($basicFunction->wasChanged()) {
+            return redirect('/L2Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
+    public function editFullyOperational(Request $request, $profileFormId)
+    {
+        $validatedData = $request->validate([
+            'approved_MFDP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'imp_act1' => 'nullable',
+            'imp_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'imp_act2' => 'nullable',
+            'imp_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'imp_act3' => 'nullable',
+            'imp_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'pol_prop1' => 'nullable',
+            'pol_prop1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'pol_prop2' => 'nullable',
+            'pol_prop2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'pol_prop3' => 'nullable',
+            'pol_prop3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'rec_act1' => 'nullable',
+            'rec_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_act2' => 'nullable',
+            'rec_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_act3' => 'nullable',
+            'rec_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'rec_iss1' => 'nullable',
+            'rec_iss1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_iss2' => 'nullable',
+            'rec_iss2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'rec_iss3' => 'nullable',
+            'rec_iss3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'part_act1' => 'nullable',
+            'part_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_act2' => 'nullable',
+            'part_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_act3' => 'nullable',
+            'part_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'part_LGU1' => 'nullable',
+            'part_LGU1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_LGU2' => 'nullable',
+            'part_LGU2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'part_LGU3' => 'nullable',
+            'part_LGU3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'name_com' => 'nullable',
+            'sched_regmeet' => 'nullable',
+            'sched_regmeet_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'wor_act1' => 'nullable',
+            'wor_act1_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'wor_act2' => 'nullable',
+            'wor_act2_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'wor_act3' => 'nullable',
+            'wor_act3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+        ], [
+            'approved_MFDP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'imp_act1_file.max' => 'The imp_act1_file may not be greater than 5MB.',
+            'imp_act2_file.max' => 'The imp_act2_file may not be greater than 5MB.',
+            'imp_act3_file.max' => 'The imp_act3_file may not be greater than 5MB.',
+
+            'pol_prop1_file.max' => 'The pol_prop1_file may not be greater than 5MB.',
+            'pol_prop2_file.max' => 'The pol_prop2_file may not be greater than 5MB.',
+            'pol_prop3_file.max' => 'The pol_prop3_file may not be greater than 5MB.',
+
+            'rec_act1_file.max' => 'The rec_act1_file may not be greater than 5MB.',
+            'rec_act2_file.max' => 'The rec_act2_file may not be greater than 5MB.',
+            'rec_act3_file.max' => 'The rec_act3_file may not be greater than 5MB.',
+
+            'rec_iss1_file.max' => 'The rec_iss1_file may not be greater than 5MB.',
+            'rec_iss2_file.max' => 'The rec_iss2_file may not be greater than 5MB.',
+            'rec_iss3_file.max' => 'The rec_iss3_file may not be greater than 5MB.',
+
+            'part_act1_file.max' => 'The part_act1_file may not be greater than 5MB.',
+            'part_act2_file.max' => 'The part_act2_file may not be greater than 5MB.',
+            'part_act3_file.max' => 'The part_act3_file may not be greater than 5MB.',
+
+            'part_LGU1_file.max' => 'The part_LGU1_file may not be greater than 5MB.',
+            'part_LGU2_file.max' => 'The part_LGU2_file may not be greater than 5MB.',
+            'part_LGU3_file.max' => 'The part_LGU3_file may not be greater than 5MB.',
+
+            'sched_regmeet_file.max' => 'The part_LGU3_file may not be greater than 5MB.',
+
+            'wor_act1_file.max' => 'The wor_act1_file may not be greater than 5MB.',
+            'wor_act2_file.max' => 'The wor_act2_file may not be greater than 5MB.',
+            'wor_act3_file.max' => 'The wor_act3_file may not be greater than 5MB.',
+        ]);
+
+
+        $fullyOperational = Fully_Operational_Model::where('profileForm_id', $profileFormId)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('approved_MFDP_file')) {
+            if ($fullyOperational->approved_MFDP_file) {
+                Storage::delete($fullyOperational->approved_MFDP_file);
+            }
+            $approvedMFDPFilePath = $request->file('approved_MFDP_file')->store('fullyOperational/approved_MFDP');
+            $fullyOperational->approved_MFDP_file = $approvedMFDPFilePath;
+        }
+
+        if ($request->hasFile('imp_act1_file')) {
+            if ($fullyOperational->imp_act1_file) {
+                Storage::delete($fullyOperational->imp_act1_file);
+            }
+            $impact1FilePath = $request->file('imp_act1_file')->store('fullyOperational/imp_act');
+            $fullyOperational->imp_act1_file = $impact1FilePath;
+        }
+
+        if ($request->hasFile('imp_act2_file')) {
+            if ($fullyOperational->imp_act2_file) {
+                Storage::delete($fullyOperational->imp_act2_file);
+            }
+            $impact2FilePath = $request->file('imp_act2_file')->store('fullyOperational/imp_act2');
+            $fullyOperational->imp_act2_file = $impact2FilePath;
+        }
+
+        if ($request->hasFile('imp_act3_file')) {
+            if ($fullyOperational->imp_act3_file) {
+                Storage::delete($fullyOperational->imp_act3_file);
+            }
+            $impact3FilePath = $request->file('imp_act3_file')->store('fullyOperational/imp_act3');
+            $fullyOperational->imp_act3_file = $impact3FilePath;
+        }
+
+        if ($request->hasFile('pol_prop1_file')) {
+            if ($fullyOperational->pol_prop1_file) {
+                Storage::delete($fullyOperational->pol_prop1_file);
+            }
+            $polprop1FilePath = $request->file('pol_prop1_file')->store('fullyOperational/pol_prop1');
+            $fullyOperational->pol_prop1_file = $polprop1FilePath;
+        }
+
+        if ($request->hasFile('pol_prop2_file')) {
+            if ($fullyOperational->pol_prop2_file) {
+                Storage::delete($fullyOperational->pol_prop2_file);
+            }
+            $polprop2FilePath = $request->file('pol_prop2_file')->store('fullyOperational/pol_prop2');
+            $fullyOperational->pol_prop2_file = $polprop2FilePath;
+        }
+
+        if ($request->hasFile('pol_prop3_file')) {
+            if ($fullyOperational->pol_prop3_file) {
+                Storage::delete($fullyOperational->pol_prop3_file);
+            }
+            $polprop3FilePath = $request->file('pol_prop3_file')->store('fullyOperational/pol_prop3');
+            $fullyOperational->pol_prop3_file = $polprop3FilePath;
+        }
+
+        if ($request->hasFile('rec_act1_file')) {
+            if ($fullyOperational->rec_act1_file) {
+                Storage::delete($fullyOperational->rec_act1_file);
+            }
+            $recact1FilePath = $request->file('rec_act1_file')->store('fullyOperational/rec_act1');
+            $fullyOperational->rec_act1_file = $recact1FilePath;
+        }
+
+        if ($request->hasFile('rec_act2_file')) {
+            if ($fullyOperational->rec_act2_file) {
+                Storage::delete($fullyOperational->rec_act2_file);
+            }
+            $recact2FilePath = $request->file('rec_act2_file')->store('fullyOperational/rec_act2');
+            $fullyOperational->rec_act2_file = $recact2FilePath;
+        }
+
+        if ($request->hasFile('rec_act3_file')) {
+            if ($fullyOperational->rec_act3_file) {
+                Storage::delete($fullyOperational->rec_act3_file);
+            }
+            $recact3FilePath = $request->file('rec_act3_file')->store('fullyOperational/rec_act3');
+            $fullyOperational->rec_act3_file = $recact3FilePath;
+        }
+
+        if ($request->hasFile('rec_iss1_file')) {
+            if ($fullyOperational->rec_iss1_file) {
+                Storage::delete($fullyOperational->rec_iss1_file);
+            }
+            $reciss1FilePath = $request->file('rec_iss1_file')->store('fullyOperational/rec_iss1');
+            $fullyOperational->rec_iss1_file = $reciss1FilePath;
+        }
+
+        if ($request->hasFile('rec_iss2_file')) {
+            if ($fullyOperational->rec_iss2_file) {
+                Storage::delete($fullyOperational->rec_iss2_file);
+            }
+            $reciss2FilePath = $request->file('rec_iss2_file')->store('fullyOperational/rec_iss2');
+            $fullyOperational->rec_iss2_file = $reciss2FilePath;
+        }
+
+        if ($request->hasFile('rec_iss3_file')) {
+            if ($fullyOperational->rec_iss3_file) {
+                Storage::delete($fullyOperational->rec_iss3_file);
+            }
+            $reciss3FilePath = $request->file('rec_iss3_file')->store('fullyOperational/rec_iss3');
+            $fullyOperational->rec_iss3_file = $reciss3FilePath;
+        }
+
+        if ($request->hasFile('part_act1_file')) {
+            if ($fullyOperational->part_act1_file) {
+                Storage::delete($fullyOperational->part_act1_file);
+            }
+            $partact1FilePath = $request->file('part_act1_file')->store('fullyOperational/part_act1');
+            $fullyOperational->part_act1_file = $partact1FilePath;
+        }
+
+        if ($request->hasFile('part_act2_file')) {
+            if ($fullyOperational->part_act2_file) {
+                Storage::delete($fullyOperational->part_act2_file);
+            }
+            $partact2FilePath = $request->file('part_act2_file')->store('fullyOperational/part_act2');
+            $fullyOperational->part_act2_file = $partact2FilePath;
+        }
+
+        if ($request->hasFile('part_act3_file')) {
+            if ($fullyOperational->part_act3_file) {
+                Storage::delete($fullyOperational->part_act3_file);
+            }
+            $partact3FilePath = $request->file('part_act3_file')->store('fullyOperational/part_act3');
+            $fullyOperational->part_act3_file = $partact3FilePath;
+        }
+
+        if ($request->hasFile('part_LGU1_file')) {
+            if ($fullyOperational->part_LGU1_file) {
+                Storage::delete($fullyOperational->part_LGU1_file);
+            }
+            $partLGU1FilePath = $request->file('part_LGU1_file')->store('fullyOperational/part_LGU1');
+            $fullyOperational->part_LGU1_file = $partLGU1FilePath;
+        }
+
+        if ($request->hasFile('part_LGU2_file')) {
+            if ($fullyOperational->part_LGU2_file) {
+                Storage::delete($fullyOperational->part_LGU2_file);
+            }
+            $partLGU2FilePath = $request->file('part_LGU2_file')->store('fullyOperational/part_LGU2');
+            $fullyOperational->part_LGU2_file = $partLGU2FilePath;
+        }
+
+        if ($request->hasFile('part_LGU3_file')) {
+            if ($fullyOperational->part_LGU3_file) {
+                Storage::delete($fullyOperational->part_LGU3_file);
+            }
+            $partLGU3FilePath = $request->file('part_LGU3_file')->store('fullyOperational/part_LGU3');
+            $fullyOperational->part_LGU3_file = $partLGU3FilePath;
+        }
+
+        if ($request->hasFile('sched_regmeet_file')) {
+            if ($fullyOperational->sched_regmeet_file) {
+                Storage::delete($fullyOperational->sched_regmeet_file);
+            }
+            $schedregmeetFilePath = $request->file('sched_regmeet_file')->store('fullyOperational/sched_regmeet');
+            $fullyOperational->sched_regmeet_file = $schedregmeetFilePath;
+        }
+
+        if ($request->hasFile('wor_act1_file')) {
+            if ($fullyOperational->wor_act1_file) {
+                Storage::delete($fullyOperational->wor_act1_file);
+            }
+            $woract1FilePath = $request->file('wor_act1_file')->store('fullyOperational/wor_act1');
+            $fullyOperational->wor_act1_file = $woract1FilePath;
+        }
+
+        if ($request->hasFile('wor_act2_file')) {
+            if ($fullyOperational->wor_act2_file) {
+                Storage::delete($fullyOperational->wor_act2_file);
+            }
+            $woract2FilePath = $request->file('wor_act2_file')->store('fullyOperational/wor_act2');
+            $fullyOperational->wor_act2_file = $woract2FilePath;
+        }
+
+        if ($request->hasFile('wor_act3_file')) {
+            if ($fullyOperational->wor_act3_file) {
+                Storage::delete($fullyOperational->wor_act3_file);
+            }
+            $woract3FilePath = $request->file('wor_act3_file')->store('fullyOperational/wor_act3');
+            $fullyOperational->wor_act3_file = $woract3FilePath;
+        }
+
+        // Update other fields
+        $fullyOperational->imp_act1 = $validatedData['imp_act1'] ?? null;
+        $fullyOperational->imp_act2 = $validatedData['imp_act2'] ?? null;
+        $fullyOperational->imp_act3 = $validatedData['imp_act3'] ?? null;
+
+        $fullyOperational->pol_prop1 = $validatedData['pol_prop1'] ?? null;
+        $fullyOperational->pol_prop2 = $validatedData['pol_prop2'] ?? null;
+        $fullyOperational->pol_prop3 = $validatedData['pol_prop3'] ?? null;
+
+        $fullyOperational->rec_act1 = $validatedData['rec_act1'] ?? null;
+        $fullyOperational->rec_act2 = $validatedData['rec_act2'] ?? null;
+        $fullyOperational->rec_act3 = $validatedData['rec_act3'] ?? null;
+
+        $fullyOperational->rec_iss1 = $validatedData['rec_iss1'] ?? null;
+        $fullyOperational->rec_iss2 = $validatedData['rec_iss2'] ?? null;
+        $fullyOperational->rec_iss3 = $validatedData['rec_iss3'] ?? null;
+
+        $fullyOperational->part_act1 = $validatedData['part_act1'] ?? null;
+        $fullyOperational->part_act2 = $validatedData['part_act2'] ?? null;
+        $fullyOperational->part_act3 = $validatedData['part_act3'] ?? null;
+
+        $fullyOperational->part_LGU1 = $validatedData['part_LGU1'] ?? null;
+        $fullyOperational->part_LGU2 = $validatedData['part_LGU2'] ?? null;
+        $fullyOperational->part_LGU3 = $validatedData['part_LGU3'] ?? null;
+
+        $fullyOperational->name_com = $validatedData['name_com'] ?? null;
+        $fullyOperational->sched_regmeet = $validatedData['sched_regmeet'] ?? null;
+
+        $fullyOperational->wor_act1 = $validatedData['wor_act1'] ?? null;
+        $fullyOperational->wor_act2 = $validatedData['wor_act2'] ?? null;
+        $fullyOperational->wor_act3 = $validatedData['wor_act3'] ?? null;
+
+        // Save the updated record
+        $fullyOperational->save();
+
+        // $fields = [
+        //     'profileForm_id','approved_MFDP_file', 'imp_act1', 'imp_act1_file', 'imp_act2', 'imp_act2_file', 'imp_act3', 'imp_act3_file', 'pol_prop1', 'pol_prop1_file', 'pol_prop2', 'pol_prop2_file', 'pol_prop3', 'pol_prop3_file', 'rec_act1', 'rec_act1_file', 'rec_act2_file', 'rec_act2', 'rec_act3',
+        //     'rec_act3_file', 'rec_iss1', 'rec_iss1_file', 'rec_iss2', 'rec_iss2_file', 'rec_iss3', 'rec_iss3_file', 'part_act1', 'part_act1_file', 'part_act2', 'part_act2_file', 'part_act3', 'part_act3_file', 'part_LGU1', 'part_LGU1_file', 'part_LGU2', 'part_LGU2_file', 'part_LGU3', 'part_LGU3_file',
+        //     'name_com', 'sched_regmeet', 'sched_regmeet_file', 'wor_act1', 'wor_act1_file', 'wor_act2', 'wor_act2_file', 'wor_act3', 'wor_act3_file'
+        // ];
+
+        // $allFieldsFilled = true;
+        // foreach ($fields as $field) {
+        //     if (empty($validatedData[$field])) {
+        //         $allFieldsFilled = false;
+        //         break;
+        //     }
+        // }
+        // // Update status to 'COMPLETED' if all fields are filled
+        // if ($allFieldsFilled) {
+        //     $fullyOperational->status = 'COMPLETED';
+        //     $fullyOperational->save();
+        // }
+
+        if (
+            // Check if all fields are filled
+            $fullyOperational->imp_act1 && $fullyOperational->imp_act2 && $fullyOperational->imp_act3 &&
+            $fullyOperational->pol_prop1 && $fullyOperational->pol_prop2 && $fullyOperational->pol_prop3 &&
+            $fullyOperational->rec_act1 && $fullyOperational->rec_act2 && $fullyOperational->rec_act3 &&
+            $fullyOperational->rec_iss1 && $fullyOperational->rec_iss2 && $fullyOperational->rec_iss3 &&
+            $fullyOperational->part_act1 && $fullyOperational->part_act2 && $fullyOperational->part_act3 &&
+            $fullyOperational->part_LGU1 && $fullyOperational->part_LGU2 && $fullyOperational->part_LGU3 &&
+            $fullyOperational->name_com && $fullyOperational->sched_regmeet &&
+            $fullyOperational->wor_act1 && $fullyOperational->wor_act2 && $fullyOperational->wor_act3 &&
+            // Check if all files are uploaded
+            $fullyOperational->approved_MFDP_file &&
+            $fullyOperational->imp_act1_file && $fullyOperational->imp_act2_file && $fullyOperational->imp_act3_file &&
+            $fullyOperational->pol_prop1_file && $fullyOperational->pol_prop2_file && $fullyOperational->pol_prop3_file &&
+            $fullyOperational->rec_act1_file && $fullyOperational->rec_act2_file && $fullyOperational->rec_act3_file &&
+            $fullyOperational->rec_iss1_file && $fullyOperational->rec_iss2_file && $fullyOperational->rec_iss3_file &&
+            $fullyOperational->part_act1_file && $fullyOperational->part_act2_file && $fullyOperational->part_act3_file &&
+            $fullyOperational->part_LGU1_file && $fullyOperational->part_LGU2_file && $fullyOperational->part_LGU3_file &&
+            $fullyOperational->sched_regmeet_file &&
+            $fullyOperational->wor_act1_file && $fullyOperational->wor_act2_file && $fullyOperational->wor_act3_file
+        ) {
+            // Update status to completed
+            $fullyOperational->status = 'COMPLETED';
+        }
+
+        // Save the updated status
+        $fullyOperational->save();
+
+        // Check if any changes were made and redirect accordingly
+        if ($fullyOperational->wasChanged()) {
+            return redirect('/L3Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
+
     public function editSustainabilityMechanism(Request $request, $profileFormId)
     {
         $validatedData = $request->validate([
@@ -1132,7 +1689,6 @@ class ProfileForm_Controller extends Controller
             'othersources3_file.max' => 'The othersources3_file may not be greater than 5MB.',
         ]);
 
-        // $sustainabilityMech = Sustainability_Mechanism_Model::findOrFail($id);
 
         $sustainabilityMech = Sustainability_Mechanism_Model::where('profileForm_id', $profileFormId)->firstOrFail();
 
@@ -1185,7 +1741,7 @@ class ProfileForm_Controller extends Controller
             'data_training', 'data_fishcatch', 'data_regforms', 'est_funds', 'othersources1', 'othersources1_file',
             'othersources2', 'othersources2_file', 'othersources3', 'othersources3_file'
         ];
-    
+
         $allFieldsFilled = true;
         foreach ($fields as $field) {
             if (empty($validatedData[$field])) {
@@ -1198,7 +1754,7 @@ class ProfileForm_Controller extends Controller
             $sustainabilityMech->status = 'COMPLETED';
             $sustainabilityMech->save();
         }
-    
+
         // Check if any changes were made and redirect accordingly
         if ($sustainabilityMech->wasChanged()) {
             return redirect('/L4Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
@@ -1207,6 +1763,264 @@ class ProfileForm_Controller extends Controller
         }
     }
 
+    public function editmodelExcellence(Request $request, $profileFormId)
+    {
+        $validatedData = $request->validate([
+            'rec_list1' => 'nullable',
+            'rec_list2' => 'nullable',
+            'rec_list3' => 'nullable',
+            'rec_attach_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_plaq1' => 'nullable|string',
+            'award_plaq1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_plaq2' => 'nullable|string',
+            'award_plaq2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_plaq3' => 'nullable|string',
+            'award_plaq3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_cert1' => 'nullable|string',
+            'award_cert1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_cert2' => 'nullable|string',
+            'award_cert2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_cert3' => 'nullable|string',
+            'award_cert3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_proj1' => 'nullable|string',
+            'award_proj1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_proj2' => 'nullable|string',
+            'award_proj2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_proj3' => 'nullable|string',
+            'award_proj3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'award_trop1' => 'nullable|string',
+            'award_trop1_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_trop2' => 'nullable|string',
+            'award_trop2_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'award_trop3' => 'nullable|string',
+            'award_trop3_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+            'iec_broch' => 'nullable|string',
+            'iec_broch_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'iec_hand' => 'nullable|string',
+            'iec_hand_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'iec_pub' => 'nullable|string',
+            'iec_pub_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'iec_AVP' => 'nullable|string',
+            'iec_AVP_file' => 'nullable|file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+        ], [
+            'rec_attach_file.max' => 'The rec_attach_file may not be greater than 5MB.',
+            'award_plaq1_file.max' => 'The award_plaq1_file may not be greater than 5MB.',
+            'award_plaq2_file.max' => 'The award_plaq2_file may not be greater than 5MB.',
+            'award_plaq3_file.max' => 'The award_plaq3_file may not be greater than 5MB.',
+            'award_cert1_file.max' => 'The award_cert1_file may not be greater than 5MB.',
+            'award_cert2_file.max' => 'The award_cert2_file may not be greater than 5MB.',
+            'award_cert3_file.max' => 'The award_cert3_file may not be greater than 5MB.',
+            'award_proj1_file.max' => 'The award_proj1_file may not be greater than 5MB.',
+            'award_proj2_file.max' => 'The award_proj2_file may not be greater than 5MB.',
+            'award_proj3_file.max' => 'The award_proj3_file may not be greater than 5MB.',
+            'award_trop1_file.max' => 'The award_trop1_file may not be greater than 5MB.',
+            'award_trop2_file.max' => 'The award_trop2_file may not be greater than 5MB.',
+            'award_trop3_file.max' => 'The award_trop3_file may not be greater than 5MB.',
+            'iec_broch_file.max' => 'The iec_broch_file may not be greater than 5MB.',
+            'iec_hand_file.max' => 'The iec_hand_file may not be greater than 5MB.',
+            'iec_pub_file.max' => 'The iec_pub_file may not be greater than 5MB.',
+            'iec_AVP_file.max' => 'The iec_AVP_file may not be greater than 5MB.',
+        ]);
+
+        // $sustainabilityMech = Sustainability_Mechanism_Model::findOrFail($id);
+
+        $modelofExcellence = Model_of_Excellence_Model::where('profileForm_id', $profileFormId)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('rec_attach_file')) {
+            if ($modelofExcellence->rec_attach_file) {
+                Storage::delete($modelofExcellence->rec_attach_file);
+            }
+            $recattachFilePath = $request->file('rec_attach_file')->store('modelofExcellenceanism/rec_attach');
+            $modelofExcellence->rec_attach_file = $recattachFilePath;
+        }
+
+        if ($request->hasFile('award_plaq1_file')) {
+            if ($modelofExcellence->award_plaq1_file) {
+                Storage::delete($modelofExcellence->award_plaq1_file);
+            }
+            $awardplaq1FilePath = $request->file('award_plaq1_file')->store('modelofExcellenceanism/award_plaq1');
+            $modelofExcellence->award_plaq1_file = $awardplaq1FilePath;
+        }
+
+        if ($request->hasFile('award_plaq2_file')) {
+            if ($modelofExcellence->award_plaq2_file) {
+                Storage::delete($modelofExcellence->award_plaq2_file);
+            }
+            $awardplaq2FilePath = $request->file('award_plaq2_file')->store('modelofExcellenceanism/award_plaq2');
+            $modelofExcellence->award_plaq2_file = $awardplaq2FilePath;
+        }
+
+        if ($request->hasFile('award_plaq3_file')) {
+            if ($modelofExcellence->award_plaq3_file) {
+                Storage::delete($modelofExcellence->award_plaq3_file);
+            }
+            $awardplaq3FilePath = $request->file('award_plaq3_file')->store('modelofExcellenceanism/award_plaq3');
+            $modelofExcellence->award_plaq3_file = $awardplaq3FilePath;
+        }
+
+        if ($request->hasFile('award_cert1_file')) {
+            if ($modelofExcellence->award_cert1_file) {
+                Storage::delete($modelofExcellence->award_cert1_file);
+            }
+            $awardcert1FilePath = $request->file('award_cert1_file')->store('modelofExcellenceanism/award_cert1');
+            $modelofExcellence->award_cert1_file = $awardcert1FilePath;
+        }
+
+        if ($request->hasFile('award_cert2_file')) {
+            if ($modelofExcellence->award_cert2_file) {
+                Storage::delete($modelofExcellence->award_cert2_file);
+            }
+            $awardcert2FilePath = $request->file('award_cert2_file')->store('modelofExcellenceanism/award_cert2');
+            $modelofExcellence->award_cert2_file = $awardcert2FilePath;
+        }
+
+        if ($request->hasFile('award_cert3_file')) {
+            if ($modelofExcellence->award_cert3_file) {
+                Storage::delete($modelofExcellence->award_cert3_file);
+            }
+            $awardcert3FilePath = $request->file('award_cert3_file')->store('modelofExcellenceanism/award_cert3');
+            $modelofExcellence->award_cert3_file = $awardcert3FilePath;
+        }
+
+        if ($request->hasFile('award_proj1_file')) {
+            if ($modelofExcellence->award_proj1_file) {
+                Storage::delete($modelofExcellence->award_proj1_file);
+            }
+            $awardproj1FilePath = $request->file('award_proj1_file')->store('modelofExcellenceanism/award_proj1');
+            $modelofExcellence->award_proj1_file = $awardproj1FilePath;
+        }
+
+        if ($request->hasFile('award_proj2_file')) {
+            if ($modelofExcellence->award_proj2_file) {
+                Storage::delete($modelofExcellence->award_proj2_file);
+            }
+            $awardproj2FilePath = $request->file('award_proj2_file')->store('modelofExcellenceanism/award_proj2');
+            $modelofExcellence->award_proj2_file = $awardproj2FilePath;
+        }
+
+        if ($request->hasFile('award_proj3_file')) {
+            if ($modelofExcellence->award_proj3_file) {
+                Storage::delete($modelofExcellence->award_proj3_file);
+            }
+            $awardproj3FilePath = $request->file('award_proj3_file')->store('modelofExcellenceanism/award_proj3');
+            $modelofExcellence->award_proj3_file = $awardproj3FilePath;
+        }
+
+        if ($request->hasFile('award_trop1_file')) {
+            if ($modelofExcellence->award_trop1_file) {
+                Storage::delete($modelofExcellence->award_trop1_file);
+            }
+            $awardtrop1FilePath = $request->file('award_trop1_file')->store('modelofExcellenceanism/award_trop1');
+            $modelofExcellence->award_trop1_file = $awardtrop1FilePath;
+        }
+
+        if ($request->hasFile('award_trop2_file')) {
+            if ($modelofExcellence->award_trop2_file) {
+                Storage::delete($modelofExcellence->award_trop2_file);
+            }
+            $awardtrop2FilePath = $request->file('award_trop2_file')->store('modelofExcellenceanism/award_trop2');
+            $modelofExcellence->award_trop2_file = $awardtrop2FilePath;
+        }
+
+        if ($request->hasFile('award_trop3_file')) {
+            if ($modelofExcellence->award_trop3_file) {
+                Storage::delete($modelofExcellence->award_trop3_file);
+            }
+            $awardtrop3FilePath = $request->file('award_trop3_file')->store('modelofExcellenceanism/award_trop3');
+            $modelofExcellence->award_trop3_file = $awardtrop3FilePath;
+        }
+
+        if ($request->hasFile('iec_broch_file')) {
+            if ($modelofExcellence->iec_broch_file) {
+                Storage::delete($modelofExcellence->iec_broch_file);
+            }
+            $iecbrochFilePath = $request->file('iec_broch_file')->store('modelofExcellenceanism/iec_broch');
+            $modelofExcellence->iec_broch_file = $iecbrochFilePath;
+        }
+
+        if ($request->hasFile('iec_hand_file')) {
+            if ($modelofExcellence->iec_hand_file) {
+                Storage::delete($modelofExcellence->iec_hand_file);
+            }
+            $iechandFilePath = $request->file('iec_hand_file')->store('modelofExcellenceanism/iec_hand');
+            $modelofExcellence->iec_hand_file = $iechandFilePath;
+        }
+
+        if ($request->hasFile('iec_pub_file')) {
+            if ($modelofExcellence->iec_pub_file) {
+                Storage::delete($modelofExcellence->iec_pub_file);
+            }
+            $iecpubFilePath = $request->file('iec_pub_file')->store('modelofExcellenceanism/iec_pub');
+            $modelofExcellence->iec_pub_file = $iecpubFilePath;
+        }
+
+        if ($request->hasFile('iec_AVP_file')) {
+            if ($modelofExcellence->iec_AVP_file) {
+                Storage::delete($modelofExcellence->iec_AVP_file);
+            }
+            $iecAVPFilePath = $request->file('iec_AVP_file')->store('modelofExcellenceanism/iec_AVP');
+            $modelofExcellence->iec_AVP_file = $iecAVPFilePath;
+        }
+
+        // Update other fields
+        $modelofExcellence->rec_list1 = $validatedData['rec_list1'] ?? null;
+        $modelofExcellence->rec_list2 = $validatedData['rec_list2'] ?? null;
+        $modelofExcellence->rec_list3 = $validatedData['rec_list3'] ?? null;
+        $modelofExcellence->award_plaq1 = $validatedData['award_plaq1'] ?? null;
+        $modelofExcellence->award_plaq2 = $validatedData['award_plaq2'] ?? null;
+        $modelofExcellence->award_plaq3 = $validatedData['award_plaq3'] ?? null;
+        $modelofExcellence->award_cert1 = $validatedData['award_cert1'] ?? null;
+        $modelofExcellence->award_cert2 = $validatedData['award_cert2'] ?? null;
+        $modelofExcellence->award_cert3 = $validatedData['award_cert3'] ?? null;
+        $modelofExcellence->award_proj1 = $validatedData['award_proj1'] ?? null;
+        $modelofExcellence->award_proj2 = $validatedData['award_proj2'] ?? null;
+        $modelofExcellence->award_proj3 = $validatedData['award_proj3'] ?? null;
+        $modelofExcellence->award_trop1 = $validatedData['award_trop1'] ?? null;
+        $modelofExcellence->award_trop2 = $validatedData['award_trop2'] ?? null;
+        $modelofExcellence->award_trop3 = $validatedData['award_trop3'] ?? null;
+        $modelofExcellence->iec_broch = $validatedData['iec_broch'] ?? null;
+        $modelofExcellence->iec_hand = $validatedData['iec_hand'] ?? null;
+        $modelofExcellence->iec_pub = $validatedData['iec_pub'] ?? null;
+        $modelofExcellence->iec_AVP = $validatedData['iec_AVP'] ?? null;
+
+        // Save the updated record
+        $modelofExcellence->save();
+
+        if (
+            // Check if all fields are filled
+            $modelofExcellence->rec_list1 && $modelofExcellence->rec_list2 && $modelofExcellence->rec_list3 &&
+            $modelofExcellence->award_plaq1 && $modelofExcellence->award_plaq2 && $modelofExcellence->award_plaq3 &&
+            $modelofExcellence->award_cert1 && $modelofExcellence->award_cert2 && $modelofExcellence->award_cert3 &&
+            $modelofExcellence->award_proj1 && $modelofExcellence->award_proj2 && $modelofExcellence->award_proj3 &&
+            $modelofExcellence->award_trop1 && $modelofExcellence->award_trop2 && $modelofExcellence->award_trop3 &&
+            $modelofExcellence->iec_broch && $modelofExcellence->iec_hand && $modelofExcellence->iec_pub &&
+            $modelofExcellence->iec_AVP &&
+            // Check if all files are uploaded
+            $modelofExcellence->rec_attach_file &&
+            $modelofExcellence->award_plaq1_file && $modelofExcellence->award_plaq2_file && $modelofExcellence->award_plaq3_file &&
+            $modelofExcellence->award_cert1_file && $modelofExcellence->award_cert2_file && $modelofExcellence->award_cert3_file &&
+            $modelofExcellence->award_proj1_file && $modelofExcellence->award_proj2_file && $modelofExcellence->award_proj3_file &&
+            $modelofExcellence->award_trop1_file && $modelofExcellence->award_trop2_file && $modelofExcellence->award_trop3_file &&
+            $modelofExcellence->iec_broch_file && $modelofExcellence->iec_hand_file && $modelofExcellence->iec_pub_file &&
+            $modelofExcellence->iec_AVP_file
+        ) {
+            // Update status to completed
+            $modelofExcellence->status = 'COMPLETED';
+        }
+
+        // Check if any changes were made and redirect accordingly
+        if ($modelofExcellence->wasChanged()) {
+            return redirect('/L5Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
 
     //==========================================================================================================================================||
     //================================================== C O U N T  O F  D A T A =============================================================||

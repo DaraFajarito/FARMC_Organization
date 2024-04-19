@@ -62,6 +62,7 @@
 
                         <form class="form-inline" method="POST" action="{{ url ('/add-basicFunction/' . $data->id)}}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-12">

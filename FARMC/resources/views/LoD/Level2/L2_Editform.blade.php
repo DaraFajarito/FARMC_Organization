@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Level 2 - Basic Function | FARMC - BFAR</title>
+    <title>Level 2 - EDIT FORM | Basic Function | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
@@ -50,6 +50,7 @@
                         <a href="{{ url ('/level2') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
+                @foreach($basics as $item)
                 <div class="card">
                     <div class="card-header">
                         <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
@@ -59,25 +60,20 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/edit-basicFunction/'. $item->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
-
+                            @method('PUT')
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group row">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">1. With Municipal Fisheries Development Plan (MFDP)</label>
+                                            <label for="" class="col-md-12 col-form-label form-control-label">1. With Municipal Fisheries Development Plan (MFDP)</label>
                                         </div>
                                         <br>
                                         <div class="form-radio" style="display: inline-block;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" /><i class="helper"></i>Approved
+                                                    <input type="radio" name="mfdp" value="Approved" {{ old('mfdp', $item->mfdp) == 'Approved' ? 'checked' : '' }} /><i class="helper"></i>Approved
                                                 </label>
                                             </div>
                                         </div>
@@ -85,42 +81,40 @@
                                         <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" /><i class="helper"></i>Formulated
+                                                    <input type="radio" name="mfdp" value="Formulated" {{ old('mfdp', $item->mfdp) == 'Formulated' ? 'checked' : '' }} /><i class="helper"></i>Formulated
                                                 </label>
                                             </div>
                                         </div>
 
                                         <br><br>
                                         <div class="form-group m-r-15">
-                                            <label for="minutes1" class="block form-control-label">Attached copy</label>
-                                            <input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                            @error('minutes1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <label for="" class="block form-control-label">Attached copy</label>
+                                            <input id="copy1_file" type="file" name="copy1_file" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <br>
+                                            @if ($item['copy1_file'])
+                                            <small>Previous file: {{ $item['copy1_file'] }}</small>
+                                            @endif
                                         </div>
                                         <div class="form-group m-r-15">
-                                            <label for="inline3mail" class="block form-control-label">Attached minutes or documents</label>
-                                            <input id="photos1" type="file" name="photos1" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                            @error('photos1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <label for="" class="block form-control-label">Attached minutes or documents</label>
+                                            <input id="mindoc1_file" type="file" name="mindoc1_file" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <br>
+                                            @if ($item['mindoc1_file'])
+                                            <small>Previous file: {{ $item['mindoc1_file'] }}</small>
+                                            @endif
                                         </div>
                                         <br><br>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group row">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">2. With Municipal Fishery Ordinance (MFO)</label>
+                                            <label for="" class="col-md-12 col-form-label form-control-label">2. With Municipal Fishery Ordinance (MFO)</label>
                                         </div>
                                         <br>
                                         <div class="form-radio" style="display: inline-block;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" /><i class="helper"></i>Approved
+                                                    <input type="radio" name="mfo" value="Approved" {{ old('mfo', $item->mfo) == 'Approved' ? 'checked' : '' }} /><i class="helper"></i>Approved
                                                 </label>
                                             </div>
                                         </div>
@@ -128,29 +122,28 @@
                                         <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" /><i class="helper"></i>Formulated
+                                                    <input type="radio" name="mfo" value="Formulated" {{ old('mfo', $item->mfo) == 'Formulated' ? 'checked' : '' }} /><i class="helper"></i>Formulated
                                                 </label>
                                             </div>
                                         </div>
 
                                         <br><br>
                                         <div class="form-group m-r-15">
-                                            <label for="minutes1" class="block form-control-label">Attached copy</label>
-                                            <input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                            @error('minutes1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <label for="" class="block form-control-label">Attached copy</label>
+                                            <input id="copy2_file" type="file" name="copy2_file" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <br>
+                                            @if ($item['copy2_file'])
+                                            <small>Previous file: {{ $item['copy2_file'] }}</small>
+                                            @endif
                                         </div>
+
                                         <div class="form-group m-r-15">
-                                            <label for="inline3mail" class="block form-control-label">Attached minutes or documents</label>
-                                            <input id="photos1" type="file" name="photos1" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                            @error('photos1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <label for="" class="block form-control-label">Attached minutes or documents</label>
+                                            <input id="mindoc2_file" type="file" name="mindoc2_file" class="form-control" style="width: 500px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                            <br>
+                                            @if ($item['mindoc2_file'])
+                                            <small>Previous file: {{ $item['mindoc2_file'] }}</small>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -167,7 +160,7 @@
                                         <br>
                                         <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                             <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="internalP" id="checkbox">
+                                                <input type="checkbox" name="bantaydt" id="checkbox" {{ $item->bantaydt == 1 ? 'checked' : '' }}>
                                                 <span class="checkbox"></span>
                                             </label>
                                             <div class="captions">With Bantay Dagat Taskforce</div>
@@ -176,7 +169,7 @@
                                         <br>
                                         <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                             <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="fisherfolkR" id="checkbox-1">
+                                                <input type="checkbox" name="actfarmcbt" id="checkbox-1" {{ $item->actfarmcbt == 1 ? 'checked' : '' }}>
                                                 <span class="checkbox"></span>
                                             </label>
                                             <div class="captions">With list of activity undertaken by the FARMC-Bantay Dagat</div>
@@ -185,7 +178,7 @@
                                         <br>
                                         <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                             <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="fisheriesP" id="checkbox-2">
+                                                <input type="checkbox" name="appfarmcbt" id="checkbox-2" {{ $item->appfarmcbt == 1 ? 'checked' : '' }}>
                                                 <span class="checkbox"></span>
                                             </label>
                                             <div class="captions">With list of apprehention conducted by the FARMC-Bantay Dagat</div>
@@ -194,7 +187,7 @@
                                         <br>
                                         <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                             <label class="input-checkbox checkbox-primary">
-                                                <input type="checkbox" name="formulationR" id="checkbox-3">
+                                                <input type="checkbox" name="caseestablished" id="checkbox-3" {{ $item->caseestablished == 1 ? 'checked' : '' }}>
                                                 <span class="checkbox"></span>
                                             </label>
                                             <div class="captions">With list of cases established and functional</div>
@@ -202,29 +195,41 @@
                                     </div>
                                     <br>
                                     <div class="col-md-6" style=" line-height:3rem">
-                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</b></em></small>
+                                        <input id="bantaydt_file" type="file" name="bantaydt_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <br>
-                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</em></b></small>
+                                        @if ($item['bantaydt_file'])
+                                        <small>Previous file: {{ $item['bantaydt_file'] }}</small>
+                                        @endif
                                         <br>
-                                        <input id="fisheriesP_file" type="file" name="fisheriesP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</em></b></small>
+                                        <input id="actfarmcbt_file" type="file" name="actfarmcbt_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <br>
-                                        <input id="formulationR_file" type="file" name="formulationR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Please attached list</em></b></small>
+                                        @if ($item['actfarmcbt_file'])
+                                        <small>Previous file: {{ $item['actfarmcbt_file'] }}</small>
+                                        @endif
+                                        <br>
+                                        <input id="appfarmcbt_file" type="file" name="appfarmcbt_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <br>
+                                        @if ($item['appfarmcbt_file'])
+                                        <small>Previous file: {{ $item['appfarmcbt_file'] }}</small>
+                                        @endif
+                                        <br>
+                                        <input id="caseestablished_file" type="file" name="caseestablished_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                       <br>
+                                        @if ($item['caseestablished_file'])
+                                        <small>Previous file: {{ $item['caseestablished_file'] }}</small>
+                                        @endif
                                     </div>
 
                                     <!-- <div class="col-md-12"> -->
                                     <div class="col-md-4" style="margin-top:10px">
                                         <div class="form-group row">
-                                            <label for="municipality" class="col-md-12 col-form-label form-control-label">4. With MFARMC Office established and functional </label>
+                                            <label for="" class="col-md-12 col-form-label form-control-label">4. With MFARMC Office established and functional </label>
                                         </div>
                                         <br>
                                         <div class="form-radio" style="display: inline-block;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" /><i class="helper"></i>Yes
+                                                    <input type="radio" name="mfarmcoffice" value="Yes" {{ old('mfarmcoffice', $item->mfarmcoffice) == 'Yes' ? 'checked' : '' }} /><i class="helper"></i>Yes
                                                 </label>
                                             </div>
                                         </div>
@@ -232,7 +237,7 @@
                                         <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" /><i class="helper"></i>None
+                                                    <input type="radio" name="mfarmcoffice" value="None" {{ old('mfarmcoffice', $item->mfarmcoffice) == 'None' ? 'checked' : '' }} /><i class="helper"></i>None
                                                 </label>
                                             </div>
                                         </div>
@@ -243,15 +248,11 @@
 
                                     <div class="col-md-8" style="margin-top: 50px;">
                                         <div class="form-group m-r-15">
-                                            <input id="minutes1" type="file" name="minutes1" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                            @error('minutes1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                            <span>
-                                                <div class="captions"><small><em><b> &nbsp; Attached copy</b></em></small></div>
-                                            </span>
+                                            <input id="copy3_file" type="file" name="copy3_file" class="form-control" style="width: 300px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                           <br>
+                                            @if ($item['copy3_file'])
+                                            <small>Previous file: {{ $item['copy3_file'] }}</small>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -269,10 +270,10 @@
                                         <div class="form-radio">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="radio" value="yes"/><i class="helper"></i>Yes
+                                                    <input type="radio" name="regmeet" value="Yes" {{ old('regmeet', $item->regmeet) == 'Yes' ? 'checked' : '' }} /><i class="helper"></i>Yes
                                                 </label>
                                                 <label>
-                                                    <input type="radio" name="radio" value="no"/><i class="helper"></i>No
+                                                    <input type="radio" name="regmeet" value="No" {{ old('regmeet', $item->regmeet) == 'No' ? 'checked' : '' }} /><i class="helper"></i>No
                                                 </label>
                                             </div>
                                         </div>
@@ -285,10 +286,10 @@
                                         <div class="form-radio">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="schedule" value="monthly" onclick="toggleProof(this)" /><i class="helper"></i>Monthly
+                                                    <input type="radio" name="regmeet" value="monthly" {{ old('regmeet', $item->regmeet) == 'monthly' ? 'checked' : '' }} /><i class="helper"></i>Monthly
                                                 </label>
                                                 <label>
-                                                    <input type="radio" name="schedule" value="quarterly" onclick="toggleProof(this)" /><i class="helper"></i>Quarterly
+                                                    <input type="radio" name="regmeet" value="quarterly" {{ old('regmeet', $item->regmeet) == 'quarterly' ? 'checked' : '' }} /><i class="helper"></i>Quarterly
                                                 </label>
                                             </div>
                                         </div>
@@ -298,11 +299,17 @@
                                     <div class="col-md-5">
                                         <label for=""><small><em><b>Attached proof of meeting</b></em></small></label>
                                         <br>
-                                        <input id="internalP_file" type="file" name="internalP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Minutes w/ attendance</b></em></small>
+                                        <input id="minatt_file" type="file" name="minatt_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <br>
-                                        <input id="fisherfolkR_file" type="file" name="fisherfolkR_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                        <small><b><em>Photo documentation</em></b></small>
+                                        @if ($item['minatt_file'])
+                                        <small>Previous file: {{ $item['minatt_file'] }}</small>
+                                        @endif
+                                        <br>
+                                        <input id="photodoc_file" type="file" name="photodoc_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                        <br>
+                                        @if ($item['photodoc_file'])
+                                        <small>Previous file: {{ $item['photodoc_file'] }}</small>
+                                        @endif
                                         <br>
                                     </div>
                                     <div class="row">
@@ -315,8 +322,8 @@
 
                                 </div>
                             </div>
-                             <!-- Modal -->
-                             <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -338,10 +345,11 @@
                         </form>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
-    
+
     <script>
         function submitFormAndAddAnother1() {
             // Submit the form
@@ -369,28 +377,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#internalP_file').change(function() {
+            $('#bantaydt_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox').prop('checked', true);
                 } else {
                     $('#checkbox').prop('checked', false);
                 }
             });
-            $('#fisherfolkR_file').change(function() {
+            $('#actfarmcbt_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox-1').prop('checked', true);
                 } else {
                     $('#checkbox-1').prop('checked', false);
                 }
             });
-            $('#fisheriesP_file').change(function() {
+            $('#appfarmcbt_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox-2').prop('checked', true);
                 } else {
                     $('#checkbox-2').prop('checked', false);
                 }
             });
-            $('#formulationR_file').change(function() {
+            $('#caseestablished_file').change(function() {
                 if ($(this).val()) {
                     $('#checkbox-3').prop('checked', true);
                 } else {
@@ -412,10 +420,10 @@
                 });
             }
 
-            setupCheckbox('checkbox', 'internalP_file');
-            setupCheckbox('checkbox-1', 'fisherfolkR_file');
-            setupCheckbox('checkbox-2', 'fisheriesP_file');
-            setupCheckbox('checkbox-3', 'formulationR_file');
+            setupCheckbox('checkbox', 'bantaydt_file');
+            setupCheckbox('checkbox-1', 'actfarmcbt_file');
+            setupCheckbox('checkbox-2', 'appfarmcbt_file');
+            setupCheckbox('checkbox-3', 'caseestablished_file');
         });
     </script>
 

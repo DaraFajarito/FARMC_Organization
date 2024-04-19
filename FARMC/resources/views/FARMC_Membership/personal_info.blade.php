@@ -50,7 +50,8 @@
                         <a href="{{ url ('/farmc_membership') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br> <br>
 
-                        <form class="form-inline">
+                        <form class="form-inline" action="{{ url('/add-personal-info') }}" method="POST">
+                            @csrf
                             <div class="card">
                                 <div class="card-block">
                                     <div class="card inline-form-style">
@@ -67,28 +68,28 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name <em>(Family,given,middle & Ext.)</em></label>
-                                                        <input id="inline3mail" type="email" class="form-control" style="width: 500px;" placeholder="Enter name">
+                                                        <input id="inline3mail" name="name" type="text" class="form-control" style="width: 500px;" placeholder="Enter name">
                                                     </div>
                                                     <br><br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Address <em>(Barangay, City/Municipality, Province & Region)</em></label>
-                                                        <input id="inline3mail" type="email" class="form-control" style="width: 500px;" placeholder="Enter name">
+                                                        <input id="inline3mail" name="address" type="text" class="form-control" style="width: 500px;" placeholder="Enter name">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Landline No.</label>
-                                                        <input id="inline3mail" type="email" class="form-control" placeholder="Landline No.">
+                                                        <input id="inline3mail" name="landline_no" type="text" class="form-control" placeholder="Landline No.">
                                                     </div>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Mobile No.</label>
-                                                        <input id="inline3mail" type="email" class="form-control" placeholder="Mobile No.">
+                                                        <input id="inline3mail" name="mobile_no" type="text" class="form-control" placeholder="Mobile No.">
                                                     </div>
                                                     <br> <br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Email Add</label>
-                                                        <input id="inline3mail" type="email" class="form-control" style="width: 450px;" placeholder="Email Add">
+                                                        <input id="inline3mail" name="email" type="email" class="form-control" style="width: 450px;" placeholder="Email Add">
                                                     </div>
                                                 </div>
                                             </div>
@@ -101,16 +102,16 @@
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="radio" c /><i class="helper"></i>Single
+                                                                <input type="radio" name="civil_status" value="Single" c /><i class="helper"></i>Single
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Married
+                                                                <input type="radio" name="civil_status" value="Married" /><i class="helper"></i>Married
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Widow/Widower
+                                                                <input type="radio" name="civil_status" value="Widow/Widower" /><i class="helper"></i>Widow/Widower
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Separated
+                                                                <input type="radio" name="civil_status" value="Seperated" /><i class="helper"></i>Separated
                                                             </label>
                                                         </div>
                                                     </div>
@@ -121,10 +122,10 @@
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Male
+                                                                <input type="radio" name="gender" value="Male" /><i class="helper"></i>Male
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Female
+                                                                <input type="radio" name="gender" value="Female" /><i class="helper"></i>Female
                                                             </label>
                                                         </div>
                                                     </div>
@@ -135,11 +136,11 @@
                                                         <div class="grid-material bg-general">Birthdate</div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">Date</label>
-                                                            <input id="inline3mail" type="email" class="form-control" placeholder="Date">
+                                                            <input id="inline3mail" type="text" name="birthdate" class="form-control" placeholder="Date">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">Ages</label>
-                                                            <input id="inline3mail" type="email" class="form-control" placeholder="Ages">
+                                                            <input id="inline3mail" type="text" name="age" class="form-control" placeholder="Ages">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,11 +150,11 @@
                                                         <div class="grid-material bg-general">Birthplace</div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">City/Municipality</label>
-                                                            <input id="inline3mail" type="email" class="form-control" placeholder="Date">
+                                                            <input id="inline3mail" type="text" name="birthplace_municipality" class="form-control" placeholder="Date">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">Province</label>
-                                                            <input id="inline3mail" type="email" class="form-control" placeholder="Ages">
+                                                            <input id="inline3mail" type="text" name="birthplace_province" class="form-control" placeholder="Ages">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,10 +169,10 @@
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="radio" c /><i class="helper"></i>Yes
+                                                                <input type="radio" name="4ps" value="Yes" c /><i class="helper"></i>Yes
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>No
+                                                                <input type="radio" name="4ps" value="No" /><i class="helper"></i>No
                                                             </label>
                                                         </div>
                                                     </div>
@@ -182,14 +183,14 @@
 
                                                         <div class="form-check">
                                                             <label for="pwd" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Disability" value="yes" id="yes(pwd)">
+                                                                <input type="radio" class="form-check-input" name="pwd" value="Yes" id="yes(pwd)">
                                                                 Yes
                                                             </label>
                                                         </div>
                                                         <br>
                                                         <div class="form-check">
                                                             <label for="pwd" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="Disability" value="no" id="no (pwd)">
+                                                                <input type="radio" class="form-check-input" name="pwd" value="No" id="no (pwd)">
                                                                 No
                                                             </label>
                                                         </div>
@@ -206,14 +207,14 @@
 
                                                         <div class="form-check">
                                                             <label for="optionsRadios2" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="culturalCommunity" value="yes" id="optionsRadios3">
+                                                                <input type="radio" class="form-check-input" name="IP" value="Yes" id="optionsRadios3">
                                                                 Yes
                                                             </label>
                                                         </div>
                                                         <br>
                                                         <div class="form-check">
                                                             <label for="optionsRadios2" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="culturalCommunity" value="no" id="optionsRadios4">
+                                                                <input type="radio" class="form-check-input" name="culturalCommunity" value="No" id="optionsRadios4">
                                                                 No
                                                             </label>
                                                         </div>
@@ -231,20 +232,20 @@
 
                                                         <div class="form-check">
                                                             <label for="islamRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="religionRadios" id="islamRadio" value="Islam" onchange="toggleTextBox('islamRadio');">
+                                                                <input type="radio" class="form-check-input" name="reg_affiliation" id="islamRadio" value="Islam" onchange="toggleTextBox('islamRadio');">
                                                                 Islam
                                                             </label>
                                                         </div>
                                                         <br>
                                                         <div class="form-check">
                                                             <label for="christianRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="religionRadios" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');">
+                                                                <input type="radio" class="form-check-input" name="reg_affiliation" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');">
                                                                 Christian
                                                             </label>
                                                         </div>
                                                         <div class="form-group" id="textBoxGroup" style="display: none;">
                                                             <label for="inline3mail" class="block form-control-label">If Christian, please specify</label>
-                                                            <input id="inline3mail" type="email" class="form-control" placeholder="">
+                                                            <input id="inline3mail" type="text" name="reg_affiliation" class="form-control" placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,7 +255,7 @@
                                                 <div class="col-md-8">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name Spouse<em>(Family, Given, Middle)</em></label>
-                                                        <input id="inline3mail" type="email" class="form-control" style="width: 650px;" placeholder="Enter name">
+                                                        <input id="inline3mail" type="text" name="spouse_name" class="form-control" style="width: 650px;" placeholder="Enter name">
                                                     </div>
                                                 </div>
 
@@ -263,7 +264,7 @@
                                                         <form>
                                                             <div class="form-group">
                                                                 <label for="inline3mail" class="block form-control-label">Occupation</label>
-                                                                <input id="inline3mail" style="width: 310px;" type="email" class="form-control">
+                                                                <input id="inline3mail" style="width: 310px;" type="text" name="occupation" class="form-control">
                                                             </div>
                                                     </div>
                                                 </div>
@@ -297,18 +298,18 @@
                                                             <div class="form-inline">
                                                                 <div>
                                                                     <label>
-                                                                        <input type="number" class="form-control" placeholder="" style="width:150px">
+                                                                        <input type="number" class="form-control" name="dependent_male" placeholder="" style="width:150px">
                                                                     </label>
                                                                     <br>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="number" class="form-control" placeholder="" style="width:150px">
+                                                                        <input type="number" class="form-control" name="dependent_female" placeholder="" style="width:150px">
 
                                                                     </label>
                                                                     <br>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="number" class="form-control" placeholder="" style="width:150px">
+                                                                        <input type="number" class="form-control" name="dependent_other" placeholder="" style="width:150px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -323,15 +324,15 @@
                                                                 <div class="radio radio-inline">
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio" name="radio1" /><i class="helper"></i>Primary
+                                                                        <input type="radio" name="educational_attainment" value="Primary" /><i class="helper"></i>Primary
                                                                     </label>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio" name="radio2" /><i class="helper"></i>Secondary
+                                                                        <input type="radio" name="educational_attainment" value="Secondary" /><i class="helper"></i>Secondary
                                                                     </label>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio" name="radio3" /><i class="helper"></i>Vocational
+                                                                        <input type="radio" name="educational_attainment" value="Vocational" /><i class="helper"></i>Vocational
                                                                     </label>
                                                                     <br>
                                                                 </div>
@@ -342,22 +343,22 @@
                                                                 <div class="radio radio-inline">
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio" name="radio4" onclick="showTertiaryTextbox();" /><i class="helper"></i>Tertiary
+                                                                        <input type="radio" name="educational_attainment" value="Tertiary" onclick="showTextbox('tertiaryTextboxGroup');" /><i class="helper"></i>Tertiary
                                                                     </label>
                                                                     <div id="tertiaryTextboxGroup" class="form-group" style="display: none;">
                                                                         <div>
                                                                             <label for="tertiaryTextbox" class="captions"><small>Specify Tertiary</small></label>
-                                                                            <textarea rows="2" style="width: 200px; border: 1px solid #ccc;"></textarea>
+                                                                            <textarea rows="2" style="width: 200px; border: 1px solid #ccc;" id="tertiaryTextbox" name="tertiary"></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio" name="radio5" onclick="showTesdaTextbox();" /><i class="helper"></i>TESDA
+                                                                        <input type="radio" name="educational_attainment" value="TESDA" onclick="showTextbox('tesdaTextboxGroup');" /><i class="helper"></i>TESDA
                                                                     </label>
                                                                     <div id="tesdaTextboxGroup" class="form-group" style="display: none;">
                                                                         <div>
-                                                                            <label for="tertiaryTextbox" class="captions"><small>Specify TESDA</small></label>
-                                                                            <textarea rows="2" style="width: 200px; border: 1px solid #ccc;"></textarea>
+                                                                            <label for="tesdaTextbox" class="captions"><small>Specify TESDA</small></label>
+                                                                            <textarea rows="2" style="width: 200px; border: 1px solid #ccc;" id="tesdaTextbox" name="tesda"></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <br>
@@ -375,15 +376,15 @@
                                                                     <div class="radio radio-inline">
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="radio" /><i class="helper"></i>Salary
+                                                                            <input type="radio" name="other_source_of_livelihood" value="Salary" /><i class="helper"></i>Salary
                                                                         </label>
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="radio" /><i class="helper"></i>Farming
+                                                                            <input type="radio" name="other_source_of_livelihood" value="Farming" /><i class="helper"></i>Farming
                                                                         </label>
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="radio" /><i class="helper"></i>Business
+                                                                            <input type="radio" name="other_source_of_livelihood" value="Business" /><i class="helper"></i>Business
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -393,7 +394,7 @@
                                                                     <div class="radio radio-inline" style="margin-left: 60px;">
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="radio" /><i class="helper"></i>Other,<small><em>specify</em></small>
+                                                                            <input type="radio" name="other_source_of_livelihood" /><i class="helper"></i>Other,<small><em>specify</em></small>
                                                                         </label>
                                                                     </div>
                                                                     <div style="margin-left: 60px;">
@@ -406,7 +407,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-right">
-                                                <a href="{{ url ('/membership')}}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                                <button type="submit" class="btn btn-primary">Next<i class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -416,54 +417,62 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <script>
-                document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-                    radio.addEventListener('change', function() {
-                        if (this.value === 'yes') {
-                            document.getElementById('culturalCommunityDetails').style.display = 'block';
-                        } else {
-                            document.getElementById('culturalCommunityDetails').style.display = 'none';
-                        }
-                    });
-                });
-            </script>
-
-            <script>
-                document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-                    radio.addEventListener('change', function() {
-                        if (this.value === 'yes') {
-                            document.getElementById('DisabilityDetails').style.display = 'block';
-                        } else {
-                            document.getElementById('DisabilityDetails').style.display = 'none';
-                        }
-                    });
-                });
-            </script>
-
-
-            <script>
-                function toggleTextBox(radioId) {
-                    var textBoxGroup = document.getElementById('textBoxGroup');
-                    if (radioId === 'christianRadio') {
-                        textBoxGroup.style.display = 'block';
-                    } else {
-                        textBoxGroup.style.display = 'none';
-                    }
+    <script>
+        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (this.value === 'yes') {
+                    document.getElementById('culturalCommunityDetails').style.display = 'block';
+                } else {
+                    document.getElementById('culturalCommunityDetails').style.display = 'none';
                 }
-            </script>
+            });
+        });
+    </script>
 
-            <script>
-                function showTertiaryTextbox() {
-                    document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-                    document.getElementById('tesdaTextboxGroup').style.display = 'none';
+    <script>
+        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (this.value === 'yes') {
+                    document.getElementById('DisabilityDetails').style.display = 'block';
+                } else {
+                    document.getElementById('DisabilityDetails').style.display = 'none';
                 }
+            });
+        });
+    </script>
 
-                function showTesdaTextbox() {
-                    document.getElementById('tesdaTextboxGroup').style.display = 'block';
-                    document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-                }
-            </script>
+
+    <script>
+        function toggleTextBox(radioId) {
+            var textBoxGroup = document.getElementById('textBoxGroup');
+            if (radioId === 'christianRadio') {
+                textBoxGroup.style.display = 'block';
+            } else {
+                textBoxGroup.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script>
+        function showTextbox(groupName) {
+            // Hide all textboxes first
+            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
+            document.getElementById('tesdaTextboxGroup').style.display = 'none';
+
+            // Show the selected textbox
+            document.getElementById(groupName).style.display = 'block';
+
+            // Clear the unselected textbox value
+            if (groupName === 'tertiaryTextboxGroup') {
+                document.getElementById('tesdaTextbox').value = '';
+            } else {
+                document.getElementById('tertiaryTextbox').value = '';
+            }
+        }
+    </script>
 
 
 </body>

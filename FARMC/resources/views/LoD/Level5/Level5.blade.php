@@ -164,7 +164,7 @@
 
                                                                 <td style=" display: flex; justify-content: space-between;">
                                                                     <a style="margin-left: 5px;" href="{{ url('/L5Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L5Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L5Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L5Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>

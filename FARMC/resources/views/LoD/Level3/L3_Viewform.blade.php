@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>VIEW FORM | FARMC - BFAR</title>
+    <title>Level 2 - VIEW FORM | Fully Operational | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
@@ -178,7 +178,7 @@
                                                             @else
                                                             <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                             @endif
-                                                            <td colspan="2" class="text-center">{{$item->approved_MFDP_file}} attached minutes</span>
+                                                            <td colspan="2" class="text-center">{{$item->approved_MFDP_file}}</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>

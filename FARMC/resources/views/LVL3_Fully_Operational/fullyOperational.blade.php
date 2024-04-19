@@ -60,11 +60,12 @@
                         </div>
                         <form class="form-inline" method="POST" action="{{ url('/add-fullyOperational/' . $basics->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
+                            @method('PUT')
+                            <!-- @if($errors->any())
                             <div class="alert alert-danger">
                                 {{ $errors->first() }}
                             </div>
-                            @endif
+                            @endif -->
 
                             <div class="card-block">
                                 <div class="row">

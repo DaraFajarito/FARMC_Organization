@@ -61,11 +61,7 @@
                         </div>
                         <form class="form-inline" method="POST" action="{{ url('/add-modelExcellence/' . $sustain->profileForm_id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
+                            @method ('PUT')
 
                             <div class="card-block">
                                 <div class="row">
