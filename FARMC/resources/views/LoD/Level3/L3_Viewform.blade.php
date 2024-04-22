@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Level 2 - VIEW FORM | Fully Operational | FARMC - BFAR</title>
+    <title>Level 3 - VIEW FORM | Fully Operational | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->

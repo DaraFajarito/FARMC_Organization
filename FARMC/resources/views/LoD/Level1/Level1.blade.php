@@ -79,18 +79,17 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="card-block">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>MIMAROPA LEVELS OVERVIEW</label>
-                                        </div>
-                                        <div class="col-md-8 text-right">
-                                            <a href="{{ url ('/L1Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L1Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>MIMAROPA LEVELS OVERVIEW</label>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <a href="{{ url ('/L1Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                        <a href="{{ url ('/L1Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                        <a href="{{ url ('/L1Archivetbl') }}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="row">
                                     <!-- <div class="col-xl-12 col-lg-12"> -->
                                     <div class="card">
@@ -149,7 +148,7 @@
                                                                 <td style=" display: flex; justify-content: space-between;">
                                                                     <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L1Editform/' . $item->id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                                    <a style= "margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -743,13 +742,21 @@
         });
     </script>
     <script>
-           var ctx = document.getElementById('level1chart').getContext('2d');
-         // Define data for the chart
-         var data = {
+        var ctx = document.getElementById('level1chart').getContext('2d');
+        // Define data for the chart
+        var data = {
             labels: ['Completed', 'Incomplete'],
             datasets: [{
                 label: 'Task Completion',
-                data: [{{ $completed }}, {{ $incomplete }}],
+                data: [{
+                    {
+                        $completed
+                    }
+                }, {
+                    {
+                        $incomplete
+                    }
+                }],
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.5)', // Green for completed tasks
                     'rgba(255, 99, 132, 0.5)' // Red for incomplete tasks

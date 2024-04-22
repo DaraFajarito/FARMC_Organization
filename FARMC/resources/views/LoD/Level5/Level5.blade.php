@@ -79,18 +79,18 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="card-block">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>MIMAROPA LEVELS OVERVIEW</label>
-                                        </div>
-                                        <div class="col-md-8 text-right">
-                                            <a href="{{ url ('/L5Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L5Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>MIMAROPA LEVELS OVERVIEW</label>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <a href="{{ url ('/L5Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                        <a href="{{ url ('/L5Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                        <a href="{{ url ('/L5Archivedtbl') }}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
                                     </div>
                                 </div>
-
+                                <br>
+                                
                                 <div class="row">
                                     <!-- <div class="col-xl-12 col-lg-12"> -->
                                     <div class="card">
@@ -135,6 +135,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach($data as $item)
+                                                            @if($item->status !== "ARCHIVED")
                                                             <tr>
                                                                 <td>{{$item->profileForm->province}}</td>
                                                                 <td>{{$item->profileForm->municipality}}</td>
@@ -160,14 +161,17 @@
                                                                 <td style="color:green"><b>COMPLETED</b></td>
                                                                 @elseif ($item->status == "INCOMPLETE")
                                                                 <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @elseif ($item->status == "ARCHIVED")
+                                                                <td style="color:red"><b>ARCHIVED</b></td>
                                                                 @endif
 
                                                                 <td style=" display: flex; justify-content: space-between;">
                                                                     <a style="margin-left: 5px;" href="{{ url('/L5Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L5Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L5Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L5Archivedtbl/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endif
                                                             @endforeach
                                                         </tbody>
                                                     </table>

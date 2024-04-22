@@ -100,18 +100,17 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="card-block">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>MIMAROPA LEVELS OVERVIEW</label>
-                                        </div>
-                                        <div class="col-md-8 text-right">
-                                            <a href="{{ url ('/L3Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L3Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>MIMAROPA LEVELS OVERVIEW</label>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <a href="{{ url ('/L3Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                        <a href="{{ url ('/L3Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                        <a href="{{ url ('/L3Archivedtbl') }}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="row">
                                     <!-- <div class="col-xl-12 col-lg-12"> -->
                                     <div class="card">
@@ -156,6 +155,7 @@
                                                         </thead>
                                                         <tbody style="font-size:small">
                                                             @foreach($data as $item)
+                                                            @if ($item->status !== "ARCHIVED")
                                                             <tr>
                                                                 <td>{{$item->profileForm->province}}</td>
                                                                 <td>{{$item->profileForm->municipality}}</td>
@@ -165,7 +165,7 @@
                                                                 <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                                 @endif
 
-                                                                @if ($item->imp_act1 === null || $item->imp_act1_file === null ||  $item->imp_act2 === null || $item->imp_act2_file === null ||  $item->imp_act3 === null ||  $item->imp_act3_file === null)
+                                                                @if ($item->imp_act1 === null || $item->imp_act1_file === null || $item->imp_act2 === null || $item->imp_act2_file === null || $item->imp_act3 === null || $item->imp_act3_file === null)
                                                                 <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                                 @else
                                                                 <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
@@ -183,13 +183,17 @@
                                                                 <td style="color:green"><b>COMPLETED</b></td>
                                                                 @elseif ($item->status == "INCOMPLETE")
                                                                 <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @elseif ($item->status == "ARCHIVED")
+                                                                <td style="color:orange"><b>ARCHIVED</b></td>
                                                                 @endif
+
                                                                 <td style=" display: flex; justify-content: space-between;">
                                                                     <a style="margin-left: 5px;" href="{{ url('/L3Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L3Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Archivedtbl/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endif
                                                             @endforeach
                                                         </tbody>
                                                     </table>

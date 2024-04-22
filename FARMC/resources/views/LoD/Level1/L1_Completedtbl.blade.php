@@ -17,8 +17,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="main-header">
-                            <a href="index.html" class="logo"><img src="{{ asset('assets/images/Logo_BFAR.png') }}"
-                                    style=" width: 60px;" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{ asset('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
                             <h4>M/C FARMC Profile | <small>PROFILE FORM</small></h4>
                             <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                                 <li class="breadcrumb-item">
@@ -43,9 +42,8 @@
                             <div class="grid-material bg-general" style="text-align: center;"><b>All Complete Table</b>
                             </div>
                             <hr>
-                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
-                                width="100%">
-                                <thead  style="font-size:12px">
+                            <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead style="font-size:12px">
                                     <tr>
                                         <th>Province</th>
                                         <th>Municipality</th>
@@ -56,19 +54,23 @@
                                     </tr>
                                 </thead>
                                 @foreach ($data as $item)
-                                    <tbody style="font-size:small">
-                                        <tr>
-                                            <td>{{ $item->province }}</td>
-                                            <td>{{ $item->municipality }}</td>
-                                            <td>{{ $item->date_organized }}</td>
-                                            <td>{{ $item->date_reorganized }}</td>
-                                            <td style="color:green"><b>{{ $item->status }}</b></td>
-                                            <td style=" display: flex; justify-content: space-between;">
+                                <tbody style="font-size:small">
+                                    <tr>
+                                        <td>{{ $item->province }}</td>
+                                        <td>{{ $item->municipality }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</td>
+                                        @if ($item->status == "COMPLETED")
+                                        <td style="color:green"><b>COMPLETED</b></td>
+                                        @elseif ($item->status == "INCOMPLETE")
+                                        <td style="color:red"><b>INCOMPLETE</b></td>
+                                        @endif
+                                        <td style=" display: flex; justify-content: space-between;">
                                             <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                             <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
                                             <a style="margin-left: 5px;" href="{{ url('/L1Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                         </td>
-                                    </tbody>
+                                </tbody>
                                 @endforeach
                             </table>
                         </div>
@@ -79,8 +81,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css"
-            href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
         <!-- JavaScript -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

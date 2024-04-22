@@ -60,8 +60,8 @@
                                         <tr>
                                             <td>{{ $item->province }}</td>
                                             <td>{{ $item->municipality }}</td>
-                                            <td>{{ $item->date_organized }}</td>
-                                            <td>{{ $item->date_reorganized }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</td>
                                             <td style="color:green"><b>{{ $item->status }}</b></td>
                                             <td style=" display: flex; justify-content: space-between;">
                                             <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>

@@ -141,6 +141,12 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level2.L2_Completedtbl', compact('data'));
     }
 
+    public function display_level2_archived()
+    {
+        $data = BasicFunction_Model::where('status', 'ARCHIVED')->get();
+        return view('LoD.Level2.L2_Archivetbl', compact('data'));
+    }
+
     // ------------------------------------------------------------//
     // ----------------------LEVEL III------------------------------//
     // ------------------------------------------------------------//
@@ -178,6 +184,13 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level3.L3_Completedtbl', compact('basics'));
     }
 
+    public function display_level3_archived()
+    {
+        $basics = Fully_Operational_Model::where('status', 'ARCHIVED')->get();
+        return view('LoD.Level3.L3_Archivetbl', compact('basics'));
+    }
+
+
     // ------------------------------------------------------------//
     // ----------------------LEVEL IV------------------------------//
     // ------------------------------------------------------------//
@@ -209,10 +222,17 @@ class ProfileForm_Controller extends Controller
         $fullyOp = Sustainability_Mechanism_Model::where('status', 'INCOMPLETE')->get();
         return view('LoD.Level4.L4_Incompletetbl', compact('fullyOp'));
     }
+
     public function display_level4_complete()
     {
         $fullyOp = Sustainability_Mechanism_Model::where('status', 'COMPLETED')->get();
         return view('LoD.Level4.L4_Completedtbl', compact('fullyOp'));
+    }
+
+    public function display_level4_archived()
+    {
+        $fullyOp = Sustainability_Mechanism_Model::where('status', 'ARCHIVED')->get();
+        return view('LoD.Level4.L4_Archivetbl', compact('fullyOp'));
     }
 
     // ------------------------------------------------------------//
@@ -250,6 +270,12 @@ class ProfileForm_Controller extends Controller
     {
         $sustain = Model_of_Excellence_Model::where('status', 'COMPLETED')->get();
         return view('LoD.Level5.L5_Completedtbl', compact('sustain'));
+    }
+
+    public function display_level5_archived()
+    {
+        $sustain = Model_of_Excellence_Model::where('status', 'ARCHIVED')->get();
+        return view('LoD.Level4.L4_Archivetbl', compact('sustain'));
     }
 
     //==========================================================================================================================================||
@@ -1157,7 +1183,7 @@ class ProfileForm_Controller extends Controller
             'caseestablished_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'mfarmcoffice' => 'nullable',
             'regmeet' => 'nullable',
-            
+
         ], [
             'copy1_file.max' => 'The copy1_file may not be greater than 5MB.',
             'mindoc1_file.max' => 'The mindoc1_file may not be greater than 5MB.',
@@ -1253,20 +1279,20 @@ class ProfileForm_Controller extends Controller
             $photodocFilePath = $request->file('photodoc_file')->store('basicFunction/photodoc');
             $basicFunction->photodoc_file = $photodocFilePath;
         }
-        
+
         // Update other fields
         $basicFunction->mfdp = $validatedData['mfdp'] ?? null;
         $basicFunction->mfo = $validatedData['mfo'] ?? null;
         $basicFunction->mfarmcoffice = $validatedData['mfarmcoffice'] ?? null;
         $basicFunction->regmeet = $validatedData['regmeet'] ?? null;
-        
+
 
         // Save the updated record
         $basicFunction->save();
 
         if (
             // Check if all fields are filled
-            $basicFunction->mfdp && 
+            $basicFunction->mfdp &&
             $basicFunction->mfo &&
             $basicFunction->bantaydt &&
             $basicFunction->actfarmcbt &&
@@ -1984,10 +2010,7 @@ class ProfileForm_Controller extends Controller
         $modelofExcellence->award_trop1 = $validatedData['award_trop1'] ?? null;
         $modelofExcellence->award_trop2 = $validatedData['award_trop2'] ?? null;
         $modelofExcellence->award_trop3 = $validatedData['award_trop3'] ?? null;
-        $modelofExcellence->iec_broch = $validatedData['iec_broch'] ?? null;
-        $modelofExcellence->iec_hand = $validatedData['iec_hand'] ?? null;
-        $modelofExcellence->iec_pub = $validatedData['iec_pub'] ?? null;
-        $modelofExcellence->iec_AVP = $validatedData['iec_AVP'] ?? null;
+
 
         // Save the updated record
         $modelofExcellence->save();
@@ -1999,8 +2022,7 @@ class ProfileForm_Controller extends Controller
             $modelofExcellence->award_cert1 && $modelofExcellence->award_cert2 && $modelofExcellence->award_cert3 &&
             $modelofExcellence->award_proj1 && $modelofExcellence->award_proj2 && $modelofExcellence->award_proj3 &&
             $modelofExcellence->award_trop1 && $modelofExcellence->award_trop2 && $modelofExcellence->award_trop3 &&
-            $modelofExcellence->iec_broch && $modelofExcellence->iec_hand && $modelofExcellence->iec_pub &&
-            $modelofExcellence->iec_AVP &&
+
             // Check if all files are uploaded
             $modelofExcellence->rec_attach_file &&
             $modelofExcellence->award_plaq1_file && $modelofExcellence->award_plaq2_file && $modelofExcellence->award_plaq3_file &&
@@ -2014,6 +2036,9 @@ class ProfileForm_Controller extends Controller
             $modelofExcellence->status = 'COMPLETED';
         }
 
+        // Save the updated status
+        $modelofExcellence->save();
+
         // Check if any changes were made and redirect accordingly
         if ($modelofExcellence->wasChanged()) {
             return redirect('/L5Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
@@ -2023,7 +2048,70 @@ class ProfileForm_Controller extends Controller
     }
 
     //==========================================================================================================================================||
-    //================================================== C O U N T  O F  D A T A =============================================================||
+    //================================================== A R C H I V I N G  O F  D A T A ===============================================================||
+
+    public function L2moveToArchived($id)
+    {
+        $dataEntry = BasicFunction_Model::find($id);
+
+        if ($dataEntry) {
+            $dataEntry->status = 'ARCHIVED';
+            $dataEntry->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found.');
+        }
+    }
+
+    public function L3moveToArchived($id)
+    {
+        $dataEntry = Fully_Operational_Model::find($id);
+
+        if ($dataEntry) {
+            $dataEntry->status = 'ARCHIVED';
+            $dataEntry->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found.');
+        }
+    }
+
+    public function L4moveToArchived($id)
+    {
+        $dataEntry = Sustainability_Mechanism_Model::find($id);
+
+        if ($dataEntry) {
+            $dataEntry->status = 'ARCHIVED';
+            $dataEntry->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found.');
+        }
+    }
+
+    public function L5moveToArchived($id)
+    {
+        $dataEntry = Model_of_Excellence_Model::find($id);
+
+        if ($dataEntry) {
+            $dataEntry->status = 'ARCHIVED';
+            $dataEntry->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found.');
+        }
+    }
+
+    
+
+
+
+    //==========================================================================================================================================||
+    //================================================== C O U N T  O F  D A T A ===============================================================||
 
 
 
@@ -2070,11 +2158,11 @@ class ProfileForm_Controller extends Controller
 
     public function allLevelCount()
     {
-        $allcominc1 = ProfileForm_Model::count();
-        $allcominc2 = BasicFunction_Model::count();
-        $allcominc3 = Fully_Operational_Model::count();
-        $allcominc4 = Sustainability_Mechanism_Model::count();
-        $allcominc5 = Model_of_Excellence_Model::count();
+        $allcominc1 = ProfileForm_Model::where('status', '!=', 'ARCHIVED')->count();
+        $allcominc2 = BasicFunction_Model::where('status', '!=', 'ARCHIVED')->count();
+        $allcominc3 = Fully_Operational_Model::where('status', '!=', 'ARCHIVED')->count();
+        $allcominc4 = Sustainability_Mechanism_Model::where('status', '!=', 'ARCHIVED')->count();
+        $allcominc5 = Model_of_Excellence_Model::where('status', '!=', 'ARCHIVED')->count();
 
         //chart for complete
         return view('dashboard', compact('allcominc1', 'allcominc2', 'allcominc3', 'allcominc4', 'allcominc5'));

@@ -125,6 +125,7 @@ Route::get('/L1Incompletetbl',[ProfileForm_Controller::class, 'display_level1_in
 Route::get('/L1Completedtbl',[ProfileForm_Controller::class, 'display_level1_complete']);
 Route::get('/L1Editform/{id}',[ProfileForm_Controller::class, 'edit_incomplete_profile']);
 Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
+Route::view('/L1Archivetbl', 'LoD.Level1.L1_Archivetbl');
 
 //Fisherfolk Representative
 Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);
@@ -145,6 +146,8 @@ Route::put('/edit-basicFunction/{id}', [ProfileForm_Controller::class,'editBasic
 Route::get('/L2Viewform/{id}', [ProfileForm_Controller::class,'display_level2_info']);
 Route::get('/L2Editform/{id}', [ProfileForm_Controller::class,'display_level2_edit']);
 
+Route::get('/L2Archivedtbl',[ProfileForm_Controller::class, 'display_level2_archived']);
+Route::get('/L2Archivedtbl/{id}', [ProfileForm_Controller::class, 'L2moveToArchived']);
 Route::get('/L2Incompletetbl',[ProfileForm_Controller::class, 'display_level2_incomplete']);
 Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_complete']);
 
@@ -160,6 +163,8 @@ Route::put('/edit-fullyOperational/{id}', [ProfileForm_Controller::class,'editFu
 Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_info']);
 Route::get('/L3Editform/{id}', [ProfileForm_Controller::class,'display_level3_edit']);
 
+Route::get('/L3Archivedtbl',[ProfileForm_Controller::class, 'display_level3_archived']);
+Route::get('/L3Archivedtbl/{id}', [ProfileForm_Controller::class, 'L3moveToArchived']);
 Route::get('/L3Incompletetbl',[ProfileForm_Controller::class, 'display_level3_incomplete']);
 Route::get('/L3Completedtbl',[ProfileForm_Controller::class, 'display_level3_complete']);
 
@@ -175,6 +180,8 @@ Route::put('/edit-sustainabilityMechanism/{id}', [ProfileForm_Controller::class,
 Route::get('/L4Viewform/{id}', [ProfileForm_Controller::class,'display_level4_info']);
 Route::get('/L4Editform/{id}', [ProfileForm_Controller::class,'display_level4_edit']);
 
+Route::get('/L4Archivedtbl',[ProfileForm_Controller::class, 'display_level4_archived']);
+Route::get('/L4Archivedtbl/{id}', [ProfileForm_Controller::class, 'L4moveToArchived']);
 Route::get('/L4Incompletetbl',[ProfileForm_Controller::class, 'display_level4_incomplete']);
 Route::get('/L4Completedtbl',[ProfileForm_Controller::class, 'display_level4_complete']);
 
@@ -190,6 +197,8 @@ Route::put('/edit-modelExcellence/{id}', [ProfileForm_Controller::class,'editmod
 Route::get('/L5Viewform/{id}', [ProfileForm_Controller::class,'display_level5_info']);
 Route::get('/L5Editform/{id}', [ProfileForm_Controller::class,'display_level5_edit']);
 
+Route::get('/L5Archivedtbl',[ProfileForm_Controller::class, 'display_level5_archived']);
+Route::get('/L5Archivedtbl/{id}', [ProfileForm_Controller::class, 'L5moveToArchived']);
 Route::get('/L5Incompletetbl',[ProfileForm_Controller::class, 'display_level5_incomplete']);
 Route::get('/L5Completedtbl',[ProfileForm_Controller::class, 'display_level5_complete']);
 

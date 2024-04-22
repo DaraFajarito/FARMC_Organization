@@ -79,18 +79,17 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="card-block">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>MIMAROPA LEVELS OVERVIEW</label>
-                                        </div>
-                                        <div class="col-md-8 text-right">
-                                            <a href="{{ url ('/L4Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                            <a href="{{ url ('/L4Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>MIMAROPA LEVELS OVERVIEW</label>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <a href="{{ url ('/L4Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
+                                        <a href="{{ url ('/L4Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
+                                        <a href="{{ url ('/L4Archivedtbl') }}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
                                     </div>
                                 </div>
-
+                                <br>
                                 <div class="row">
                                     <!-- <div class="col-xl-12 col-lg-12"> -->
                                     <div class="card">
@@ -131,10 +130,11 @@
                                                                 <th>Fisherfolk Registration Forms</th>
                                                                 <th>Status</th>
                                                                 <th>Action</th>
-                                                            </tr> 
+                                                            </tr>
                                                         </thead>
                                                         <tbody>
                                                             @foreach($data as $item)
+                                                            @if ($item->status !== "ARCHIVED")
                                                             <tr>
                                                                 <td>{{$item->profileForm->province}}</td>
                                                                 <td>{{$item->profileForm->municipality}}</td>
@@ -153,24 +153,28 @@
                                                                 @if ($item->data_regforms === 'No')
                                                                 <td> No </td>
                                                                 @else
-                                                                <td>Yes     </td>
+                                                                <td>Yes </td>
                                                                 @endif
 
                                                                 @if ($item->status == "COMPLETED")
                                                                 <td style="color:green"><b>COMPLETED</b></td>
                                                                 @elseif ($item->status == "INCOMPLETE")
                                                                 <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                @elseif ($item->status == "ARCHIVED")
+                                                                <td style="color:orange"><b>ARCHIVED</b></td>
                                                                 @endif
 
                                                                 <td style=" display: flex; justify-content: space-between;">
                                                                     <a style="margin-left: 5px;" href="{{ url('/L4Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
                                                                     <a style="margin-left: 5px;" href="{{ url('/L4Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Archivedtbl/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endif
                                                             @endforeach
                                                         </tbody>
                                                     </table>
+
 
                                                 </div>
                                                 <div class="tab-pane" id="mimaropa1" role="tabpanel">
@@ -741,6 +745,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
+        <script>
+            function removeRow(btn) {
+                var row = btn.closest('tr');
+                row.remove();
+            }
+        </script>
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#FARMC').DataTable({
@@ -769,6 +780,13 @@
 
         <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
         <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
+
+        <script>
+            function removeFromTable(row) {
+                row.parentNode.parentNode.remove(); // Remove the row from the table
+            }
+        </script>
+
 
 
 
