@@ -14,7 +14,6 @@
     <meta name="author" content="codedthemes">
 </head>
 
-
 <style>
     input.form-control {
         border: 1px solid #AAAAAA;
@@ -72,12 +71,12 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name of Association/Organization/Cooperative <em></em></label>
-                                                        <input id="inline3mail" type="text" class="form-control" name="org_mem_name" style="width: 830px;" placeholder="">
+                                                        <input id="inline3mail" type="text" class="form-control" name="org_mem_name" style="width: 1100px;" placeholder="">
                                                     </div>
-                                                    <br>
+                                                    <br><br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Address of Association/Organization/Cooperative <em></em></label>
-                                                        <input id="inline3mail" type="text" class="form-control" name="add_acc" style="width: 830px;" placeholder="">
+                                                        <input id="inline3mail" type="text" class="form-control" name="add_acc" style="width: 1100px;" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,20 +112,20 @@
                                                     <br>
                                                     <div class="form-check">
                                                         <label for="radio1" class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="agency" id="radio1" value="Yes" onchange="toggleTextBox('radio1');">
+                                                            <input type="radio" class="form-check-input" name="reg_ass" id="radio1" value="Yes" onchange="toggleTextBox('radio1');">
                                                             Yes
                                                         </label>
                                                     </div>
                                                     <br>
                                                     <div class="form-check">
                                                         <label for="" class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="agency" id="radio1" value="No">
+                                                            <input type="radio" class="form-check-input" name="reg_ass" id="radio1" value="No">
                                                             No
                                                         </label>
                                                     </div>
                                                     <div class="form-group" id="textBoxGroup" style="display: none;">
                                                         <label for="inline3mail" class="block form-control-label">If Yes, please specify</label>
-                                                        <input id="inline3mail" type="text" name="agency" class="form-control" placeholder="">
+                                                        <input id="inline3mail" type="text" name="reg_ass" class="form-control" placeholder="">
                                                     </div>
                                                 </div>
 
@@ -176,21 +175,21 @@
                                                     <br>
                                                     <div class="form-check">
                                                         <label for="radio2" class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="officer_association" id="radio2" value="Yes" onchange="toggleTextBox1('radio2');">
+                                                            <input type="radio" class="form-check-input" name="officer_ass" id="radio2" value="Yes" onchange="toggleTextBox1('radio2');">
                                                             Yes
                                                         </label>
                                                     </div>
                                                     <br>
                                                     <div class="form-check">
                                                         <label for="" class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="officer_association" id="radio2" value="No">
+                                                            <input type="radio" class="form-check-input" name="officer_ass" id="radio2" value="No">
                                                             No
                                                         </label>
                                                     </div>
                                                     <br>
                                                     <div class="form-check">
                                                         <label for="" class="form-check-label">
-                                                            <input type="radio" class="form-check-input" name="officer_association" id="radio2" value="Member only">
+                                                            <input type="radio" class="form-check-input" name="officer_ass" id="radio2" value="Member only">
                                                             Member only
                                                         </label>
                                                     </div>
@@ -226,15 +225,15 @@
                                                     <div class="form-inline">
                                                         <div>
                                                             <label>
-                                                                <input type="text" class="form-control" name="year_elected" placeholder="" style="width:150px">
+                                                            <input id="year_el" type="text" class="form-control" name="year_el" placeholder="" style="width:150px">
                                                             </label>
                                                             <br>
                                                             <label>
-                                                                <input type="text" class="form-control" name="year_elected" placeholder="" style="width:150px">
+                                                                <input id="year_el" type="text" class="form-control" name="year_el" placeholder="" style="width:150px">
                                                             </label>
                                                             <br>
                                                             <label>
-                                                                <input type="yexy" class="form-control" name="year_elected" placeholder="" style="width:150px">
+                                                                <input id="year_el" type="text" class="form-control" name="year_el" placeholder="" style="width:150px">
                                                             </label>
                                                         </div>
                                                     </div>

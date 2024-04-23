@@ -10,13 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
     <style>
-        /* @media print {
 
-            #example th:nth-child(6),
-            #example td:nth-child(6) {
-                display: none;
-            }
-        } */
     </style>
 </head>
 
@@ -90,7 +84,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                
+
                                 <div class="row">
                                     <!-- <div class="col-xl-12 col-lg-12"> -->
                                     <div class="card">

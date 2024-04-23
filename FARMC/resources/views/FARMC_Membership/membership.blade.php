@@ -83,10 +83,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="mfarmc_officer" onclick="toggleTextBox('otherTextBox2')" value="yes" /> <i class="helper"></i> Yes
+                                                                <input type="radio" name="mfarmc_off" onclick="toggleTextBox('otherTextBox2')" value="Yes" /> <i class="helper"></i> Yes
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="mfarmc_officer" value="no" /> <i class="helper"></i> No
+                                                                <input type="radio" name="mfarmc_off" value="No" /> <i class="helper"></i> No
                                                             </label>
                                                         </div>
                                                     </div>
@@ -162,23 +162,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sector" value="Women Sector" /> <i class="helper"></i> Women Sector
+                                                                <input type="radio" name="sect" value="Women Sector" /> <i class="helper"></i> Women Sector
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="sector" value="Youth Sector" /> <i class="helper"></i> Youth Sector
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em></em></div>
-                                                    <div class="form-radio">
-                                                        <div class="radio radio-inline">
-                                                            <label>
-                                                                <input type="radio" name="sector" value="Private Sector" /> <i class="helper"></i> Private Sector
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="sector" value="NGO Representative" /> <i class="helper"></i> NGO Representative
+                                                                <input type="radio" name="sect" value="Youth Sector" /> <i class="helper"></i> Youth Sector
                                                             </label>
                                                         </div>
                                                     </div>
@@ -188,7 +175,20 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sector" value="Cultural Community (IP's)" /> <i class="helper"></i>Cultural Community (IP's)
+                                                                <input type="radio" name="sect" value="Private Sector" /> <i class="helper"></i> Private Sector
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="sect" value="NGO Representative" /> <i class="helper"></i> NGO Representative
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em></em></div>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="sect" value="Cultural Community (IP's)" /> <i class="helper"></i>Cultural Community (IP's)
                                                             </label>
                                                             <label>
                                                                 <input type="radio" value="Other" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
@@ -196,7 +196,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="sector">
+                                                        <input id="otherInput" type="text" class="form-control" name="sect">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
@@ -210,10 +210,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="Igu_rep"  value="SB, Committee on Fisheries"/> <i class="helper"></i> SB, Committee on Fisheries
+                                                                <input type="radio" name="LGU_rep"  value="SB, Committee on Fisheries"/> <i class="helper"></i> SB, Committee on Fisheries
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="lgu_rep" value="Municipal/City Planning Office"/> <i class="helper"></i> Municipal/City Planning Office
+                                                                <input type="radio" name="LGU_rep" value="Municipal/City Planning Office"/> <i class="helper"></i> Municipal/City Planning Office
                                                             </label>
                                                         </div>
                                                     </div>
@@ -226,10 +226,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="lgu_rep" value="Municipal/City Dev't. Council" /> <i class="helper"></i> Municipal/City Dev't. Council
+                                                                <input type="radio" name="LGU_rep" value="Municipal/City Dev't. Council" /> <i class="helper"></i> Municipal/City Dev't. Council
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="lgu_rep" value="Municipal/City Agriculture Office" /> <i class="helper"></i> Municipal/City Agriculture Office
+                                                                <input type="radio" name="LGU_rep" value="Municipal/City Agriculture Office" /> <i class="helper"></i> Municipal/City Agriculture Office
                                                             </label>
                                                         </div>
                                                     </div>
@@ -239,12 +239,12 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="lgu_rep" onclick="toggleTextBox('otherTextBox1')" /> <i class="helper"></i> Others, Please specify
+                                                                <input type="radio" name="LGU_rep" onclick="toggleTextBox('otherTextBox1')" /> <i class="helper"></i> Others, Please specify
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox1" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="lgu_rep">
+                                                        <input id="otherInput" type="text" class="form-control" name="LGU_rep">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
@@ -262,7 +262,7 @@
             </div>
         </div>
     </div>
-    
+
         <script>
             function toggleTextBox(textboxId) {
                 var textBox = document.getElementById(textboxId);

@@ -12,6 +12,12 @@
 
 </head>
 
+<style>
+    input.form-control {
+        border: 1px solid #AAAAAA;
+    }
+</style>
+
 <body>
 
     <!-- side_navbar -->
@@ -25,7 +31,7 @@
             <div class="row">
                 <div class="main-header">
                     <a href="index.html" class="logo" style="display: inline-block; vertical-align: middle;">
-                        <img src="{{ asset ('assets/images/newlogo.png') }}" style="width: 40px;" alt="logo">
+                        <img src="{{ asset('assets/images/newlogo.png') }}" style="width: 40px;" alt="logo">
                     </a>
                     <span style="display: inline-block; vertical-align: middle; margin-top:10px">
                         <div>
@@ -42,7 +48,8 @@
                         </li>
 
                         <div class="text-right">
-                            <span><a href="{{ url ('/personal_info') }}"><button type="button" class="btn btn-primary">+ New Form</button></a></span>
+                            <span><a href="{{ url('/personal_info') }}"><button type="button"
+                                        class="btn btn-primary">+ New Form</button></a></span>
                         </div>
                     </ol>
 
@@ -60,7 +67,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>FARMC Members</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$memberCount}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-id-badge text-success-color"></i>
                                 </div>
@@ -70,7 +77,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Organization</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$farmcCount}}</h2>
                                 <div class="side-box ">
                                     <i class="ti-layout-tab-v text-success-color"></i>
                                 </div>
@@ -133,6 +140,7 @@
             </div>
 
             <div class="col-md-12" style="margin-bottom: 30px;">
+                <a href="#!"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
                 <a href="#!"><button type="button" class="btn btn-primary">View All Members</button></a>
             </div>
             <div class="row">
@@ -141,10 +149,12 @@
                         <div class="card-block">
                             <ul class="nav nav-tabs  tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">FARMC Members</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">FARMC
+                                        Members</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">FARMC Organizations</a>
+                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">FARMC
+                                        Organizations</a>
                                 </li>
                             </ul>
 
@@ -153,39 +163,39 @@
                                 <div class="tab-pane active" id="members" role="tabpanel">
                                     <br>
                                     <!-- <a href="#!"><button type="button" class="btn btn-primary">View details</button> -->
-                                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
+                                    <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
+                                        width="100%">
+                                        <thead style="font-size:12px">
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Address</th>
-                                                <th>FARMC Organization</th>
-                                                <th>Date</th>
+                                                <th>Landline Number</th>
+                                                <th>Mobile Number</th>
+                                                <th>Email</th>
+                                                <th>Civil Status</th>
+                                                <th>Gender</th>
+                                                <th>Birthdate</th>
                                                 <th>Action</th>
-                                                <!-- <th>Amount</th> -->
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody style="font-size:11px">
+                                            @foreach($data as $item)
                                             <tr>
-                                                <td>Ms. Darlene Angel G. Fajarito</td>
-                                                <td>Alphabet puzzle</td>
-                                                <td>2014/11/21</td>
-                                                <td data-order="1000">€1.000,00</td>
-                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->address}}</td>
+                                                <td>{{$item->landline_no}}</td>
+                                                <td>{{$item->mobile_no}}</td>
+                                                <td>{{$item->email}}</td>
+                                                <td>{{$item->civil_status}}</td>
+                                                <td>{{$item->gender}}</td>
+                                                <td>{{$item->birthdate}}</td>
+                                                <td style=" display: flex; justify-content: space-between;">
+                                                    <a  href="#!" class="btn btn-success"><i class="ti-eye"></i></a>
+                                                    <a  href="#!" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                    <a  href="#!" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Mr. Antonio Montallana</td>
-                                                <td>Layout for poster</td>
-                                                <td>2016/01/31</td>
-                                                <td data-order="1834">€1.834,00</td>
-                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Philip Arguelles</td>
-                                                <td>Image creation</td>
-                                                <td>2016/01/23</td>
-                                                <td data-order="1500">€1.500,00</td>
-                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -194,44 +204,33 @@
                                 <!-- <div class="tab-content tabs"> -->
                                 <div class="tab-pane" id="organization" role="tabpanel">
                                     <br>
-                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <!-- <th>Name</th> -->
-                                                <th>FARMC Organization</th>
-                                                <th>Address of Organization</th>
-                                                <th>Date</th>
-                                                <!-- <th>Action</th> -->
-                                                <!-- <th>Amount</th> -->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Ms. Darlene Angel G. Fajarito</td>
-                                                <td>Alphabet puzzle</td>
-                                                <td></td>
-                                                <!-- <td>2014/11/21</td> -->
-                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
-                                                <!-- <td data-order="1000">€1.000,00</td> -->
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Antonio Montallana</td>
-                                                <td>Layout for poster</td>
-                                                <td></td>
-                                                <!-- <td>2016/01/31</td> -->
-                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
-                                                <!-- <td data-order="1834">€1.834,00</td> -->
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Philip Arguelles</td>
-                                                <td>Image creation</td>
-                                                <td></td>
-                                                <!-- <td>2016/01/23</td> -->
-                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
-                                                <!-- <td data-order="1500">€1.500,00</td> -->
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <table id="FARMC2" class="table table-striped table-bordered" cellspacing="0"
+                                    width="100%">
+                                    <thead style="font-size:12px">
+                                        <tr>
+                                            <th>Province</th>
+                                            <th>Municipality</th>
+                                            <th>Date of Organized</th>
+                                            <th>Date of Re-organized</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="color:red"><b>INCOMPLETE</b></td>
+                                            <td style="text-align: center;">
+                                                <a href="{{ url('/L2Editform') }}" class="btn btn-danger"><i
+                                                        class="ti-eye"></i> &nbsp; Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
 
@@ -243,6 +242,7 @@
     </div>
 
     <!-- jQuery -->
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- DataTables CSS -->
@@ -252,7 +252,8 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <!-- DataTables Buttons extension CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 
     <!-- DataTables Buttons extension JS -->
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
@@ -262,35 +263,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#example').DataTable({
+            $('#FARMC').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "pagingType": "full_numbers"
             });
         });
     </script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#example1').DataTable({
+            $('#FARMC2').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "pagingType": "full_numbers"
             });
         });
     </script>
 
-    <!-- <script src="{{ asset ('assets/vendors/base/vendor.bundle.base.js') }}"></script> -->
+
+
+    <!-- <script src="{{ asset('assets/vendors/base/vendor.bundle.base.js') }}"></script> -->
 
     <!-- Custom js for this page-->
-    <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
-    <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
+    <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
 
 
 </body>

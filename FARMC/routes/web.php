@@ -158,7 +158,7 @@ Route::get('/L2Completedtbl',[ProfileForm_Controller::class, 'display_level2_com
 //LEVEL THREE DATA//
 // ---------------------------------------------------------------------------------------//
 
-//Fully Functional 
+//Fully Functional
 Route::get('/fullyoperational/{id}', [ProfileForm_Controller::class,'display_level3']);
 Route::get('/level3', [ProfileForm_Controller::class,'level3Count']);
 Route::put('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFullyOperational']);
@@ -286,3 +286,4 @@ Route::get('/membership/{id}', [FarmcMembership_Controller::class,'displayMember
 Route::post('/add-membership/{id}', [FarmcMembership_Controller::class,'addFARMC_Membership']);
 Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOrgMembershipForm']);
 Route::post('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);
+Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);

@@ -205,7 +205,7 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level3.L3_Archivetbl', compact('basics'));
     }
 
-    
+
 
 
     // ------------------------------------------------------------//
@@ -706,7 +706,7 @@ class ProfileForm_Controller extends Controller
         if ($basicFunction != null){
             $profile = ProfileForm_Model::find($id);
             $profile->status = 'ARCHIVED';
-            $profile->save(); 
+            $profile->save();
         }
 
         // Retrieve fields with null values
@@ -935,7 +935,7 @@ class ProfileForm_Controller extends Controller
                 // Handle the case where $basicFunction is null
             }
         }
-        
+
 
         // Retrieve fields with null values
         $fullyOperationalNull = $fullyOperational->getNullFields();
@@ -1018,7 +1018,7 @@ class ProfileForm_Controller extends Controller
                 $fullyOperational->status = 'ARCHIVED';
                 $fullyOperational->save();
             } else {
-                
+
             }
         }
 
@@ -1199,7 +1199,7 @@ class ProfileForm_Controller extends Controller
                 $sustainabilityMech->status = 'ARCHIVED';
                 $sustainabilityMech->save();
             } else {
-                
+
             }
         }
 
@@ -1437,9 +1437,9 @@ class ProfileForm_Controller extends Controller
 
         $fields = [
             'municipality', 'province', 'date_organized', 'date_reorganized', 'internalP', 'fisherfolkR',
-            'fisheriesP', 'formulationR','minutes1', 'minutes2' , 'photos1' ,'photos2' , 'attendance1' , 'attendance2' , 'internalP_file' , 'fisherfolkR_file' , 'fisheriesP_file' , 'formulationR_file' , 
+            'fisheriesP', 'formulationR','minutes1', 'minutes2' , 'photos1' ,'photos2' , 'attendance1' , 'attendance2' , 'internalP_file' , 'fisherfolkR_file' , 'fisheriesP_file' , 'formulationR_file' ,
             'chairperson', 'vicechairperson', 'chairperson' ,'vice_chairperson' ,'secretary' ,'asst_sec' ,'treasurer' ,'asst_treas' ,'auditor' ,'asst_aud' ,'pro1' ,'pro2' ,'sgt_arms1' ,'sgt_arms2' ,'sgt_arms3' ,
-            'chairpersonSB' ,'mpdo' ,'repmdc' ,'repda' ,'repngo' ,'repps' ,'others' ,'name_sec' ,'name_sec1' ,'name_sec2' ,'office_org' ,'office_org1' , 'office_org2' 
+            'chairpersonSB' ,'mpdo' ,'repmdc' ,'repda' ,'repngo' ,'repps' ,'others' ,'name_sec' ,'name_sec1' ,'name_sec2' ,'office_org' ,'office_org1' , 'office_org2'
         ];
 
         $allFieldsFilled = true;
@@ -2419,7 +2419,7 @@ class ProfileForm_Controller extends Controller
         }
     }
 
-    
+
 
 
 

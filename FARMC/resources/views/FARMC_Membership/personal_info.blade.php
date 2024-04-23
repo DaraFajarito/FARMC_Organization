@@ -102,7 +102,7 @@
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="civil_status" value="Single" c /><i class="helper"></i>Single
+                                                                <input type="radio" name="civil_status" value="Single" /><i class="helper"></i>Single
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="civil_status" value="Married" /><i class="helper"></i>Married
@@ -140,7 +140,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">Ages</label>
-                                                            <input id="inline3mail" type="text" name="age" class="form-control" placeholder="Ages">
+                                                            <input id="inline3mail" type="text" name="age" class="form-control" placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -232,20 +232,20 @@
 
                                                         <div class="form-check">
                                                             <label for="islamRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="religion_affiliation" id="islamRadio" value="Islam">
+                                                                <input type="radio" class="form-check-input" name="religion" value="Islam" />
                                                                 Islam
                                                             </label>
                                                         </div>
-                                                        <br>    
+                                                        <br>
                                                         <div class="form-check">
                                                             <label for="christianRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="religion_affiliation" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');">
+                                                                <input type="radio" class="form-check-input" name="religion" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');"/>
                                                                 Christian
                                                             </label>
                                                         </div>
                                                         <div class="form-group" id="textBoxGroup" style="display: none;">
                                                             <label for="inline3mail" class="block form-control-label">If Christian, please specify</label>
-                                                            <input id="inline3mail" type="text" name="religion_affiliation" class="form-control" placeholder="">
+                                                            <input id="inline3mail" type="text" name="religion" class="form-control" placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -376,16 +376,17 @@
                                                                     <div class="radio radio-inline">
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="other_source_of_livelihood" value="Salary" /><i class="helper"></i>Salary
+                                                                            <input type="radio" name="other_source" value="Salary" /><i class="helper"></i>Salary
                                                                         </label>
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="other_source_of_livelihood" value="Farming" /><i class="helper"></i>Farming
+                                                                            <input type="radio" name="other_source" value="Farming" /><i class="helper"></i>Farming
                                                                         </label>
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="other_source_of_livelihood" value="Business" /><i class="helper"></i>Business
+                                                                            <input type="radio" name="other_source" value="Business" /><i class="helper"></i>Business
                                                                         </label>
+                                                                        <br>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -394,11 +395,11 @@
                                                                     <div class="radio radio-inline" style="margin-left: 60px;">
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" /><i class="helper"></i>Other,<small><em>specify</em></small>
+                                                                            <input type="radio" name="other_source" value="Other" /><i class="helper"></i>Other,<small>specify</small>
                                                                         </label>
                                                                     </div>
                                                                     <div style="margin-left: 60px;">
-                                                                        <textarea rows="4" name="other_source_of_livelihood" style="width: 200px; border: 1px solid #ccc;"></textarea>
+                                                                        <textarea rows="4" name="other_source" style="width: 200px; border: 1px solid #ccc;"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
