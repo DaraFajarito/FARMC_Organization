@@ -102,17 +102,17 @@
                                 </div>
                                 <br>
                                 <!-- <div class="col-sm-12"> -->
-                                    <ul class="graphl-legend-rectangle">
-                                        <div class="col-sm-6">
-                                            <li><span class="btn btn-danger"></span> Municipal</li>
-                                            <li><span class="btn btn-warning"></span> Fisherworker</li>
-                                            <li><span class="btn btn-info"></span> Commercial</li>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <li><span class="btn btn-primary"></span> Women/Youth</li>
-                                            <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
-                                        </div>
-                                    </ul>
+                                <ul class="graphl-legend-rectangle">
+                                    <div class="col-sm-6">
+                                        <li><span class="btn btn-danger"></span> Municipal</li>
+                                        <li><span class="btn btn-warning"></span> Fisherworker</li>
+                                        <li><span class="btn btn-info"></span> Commercial</li>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <li><span class="btn btn-primary"></span> Women/Youth</li>
+                                        <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
+                                    </div>
+                                </ul>
                                 <!-- </div> -->
                             </div>
                             <div class="col-lg-4">
@@ -132,6 +132,9 @@
                 </div>
             </div>
 
+            <div class="col-md-12" style="margin-bottom: 30px;">
+                <a href="#!"><button type="button" class="btn btn-primary">View All Members</button></a>
+            </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="card">

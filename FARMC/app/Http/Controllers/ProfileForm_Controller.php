@@ -92,6 +92,15 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level1.L1_Viewform', compact('data', 'fisherfolk', 'committee'));
     }
 
+    public function display_level1_edit($id)
+    {
+        $data = ProfileForm_Model::select('id')->where('id', $id)->get();
+        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $id)->get();
+        $committee = Committee_Model::where('profileForm_id', $id)->get();
+
+        return view('LoD.Level1.L1_Editform', compact('data', 'fisherfolk', 'committee'));
+    }
+
     public function display_level1_incomplete()
     {
         $data = ProfileForm_Model::where('status', 'INCOMPLETE')->get();
@@ -101,6 +110,12 @@ class ProfileForm_Controller extends Controller
     {
         $data = ProfileForm_Model::where('status', 'COMPLETED')->get();
         return view('LoD.Level1.L1_Completedtbl', compact('data'));
+    }
+
+    public function display_level1_archived()
+    {
+        $data = ProfileForm_Model::where('status', 'ARCHIVED')->get();
+        return view('LoD.Level1.L1_Archivetbl', compact('data'));
     }
 
     // ------------------------------------------------------------//
@@ -190,6 +205,8 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level3.L3_Archivetbl', compact('basics'));
     }
 
+    
+
 
     // ------------------------------------------------------------//
     // ----------------------LEVEL IV------------------------------//
@@ -275,7 +292,7 @@ class ProfileForm_Controller extends Controller
     public function display_level5_archived()
     {
         $sustain = Model_of_Excellence_Model::where('status', 'ARCHIVED')->get();
-        return view('LoD.Level4.L4_Archivetbl', compact('sustain'));
+        return view('LoD.Level5.L5_Archivetbl', compact('sustain'));
     }
 
     //==========================================================================================================================================||
@@ -686,6 +703,12 @@ class ProfileForm_Controller extends Controller
         $basicFunction->status = $status;
         $basicFunction->save();
 
+        if ($basicFunction != null){
+            $profile = ProfileForm_Model::find($id);
+            $profile->status = 'ARCHIVED';
+            $profile->save(); 
+        }
+
         // Retrieve fields with null values
         $basicFunctionNull = $basicFunction->getNullFields();
 
@@ -903,6 +926,17 @@ class ProfileForm_Controller extends Controller
         $fullyOperational->status = $status;
         $fullyOperational->save();
 
+        if ($fullyOperational != null) {
+            $basicFunction = BasicFunction_Model::where('profileForm_id', $id)->first();
+            if ($basicFunction != null) {
+                $basicFunction->status = 'ARCHIVED';
+                $basicFunction->save();
+            } else {
+                // Handle the case where $basicFunction is null
+            }
+        }
+        
+
         // Retrieve fields with null values
         $fullyOperationalNull = $fullyOperational->getNullFields();
 
@@ -976,6 +1010,17 @@ class ProfileForm_Controller extends Controller
         // Update the status field in the database
         $sustainabilityMech->status = $status;
         $sustainabilityMech->save();
+
+
+        if ($sustainabilityMech != null) {
+            $fullyOperational = Fully_Operational_Model::where('profileForm_id', $id)->first();
+            if ($fullyOperational != null) {
+                $fullyOperational->status = 'ARCHIVED';
+                $fullyOperational->save();
+            } else {
+                
+            }
+        }
 
         // Retrieve fields with null values
         $sustainabilityMechNull = $sustainabilityMech->getNullFields();
@@ -1148,6 +1193,17 @@ class ProfileForm_Controller extends Controller
         $modelofExcellence->status = $status;
         $modelofExcellence->save();
 
+        if ($modelofExcellence != null) {
+            $sustainabilityMech = Sustainability_Mechanism_Model::where('profileForm_id', $id)->first();
+            if ($sustainabilityMech != null) {
+                $sustainabilityMech->status = 'ARCHIVED';
+                $sustainabilityMech->save();
+            } else {
+                
+            }
+        }
+
+
         // Retrieve fields with null values
         $modelofExcellenceNull = $modelofExcellence->getNullFields();
 
@@ -1163,6 +1219,249 @@ class ProfileForm_Controller extends Controller
     //==========================================================================================================================================||
     //================================================== E D I T I N G  O F  D A T A =============================================================||
 
+
+    public function editBasicStructure(Request $request, $Id, $profileFormId)
+    {
+        $validatedData = $request->validate([
+            'minutes1' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'minutes2' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'photos1' => 'file|max:5242880|mimes:jpeg,png',
+            'photos2' => 'file|max:5242880|mimes:jpeg,png',
+            'attendance1' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'attendance2' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'internalP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'fisherfolkR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'fisheriesP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'municipality' => 'nullable',
+            'date_organized' => 'nullable',
+            'date_reorganized' => 'nullable',
+            'internalP' => 'nullable',
+            'province' => 'nullable',
+            'fisherfolkR' => 'nullable',
+            'fisheriesP' => 'nullable',
+            'formulationR' => 'nullable',
+
+            'chairperson' => 'nullable',
+            'vice_chairperson' => 'nullable',
+            'secretary' => 'nullable',
+            'asst_sec' => 'nullable',
+            'treasurer' => 'nullable',
+            'asst_treas' => 'nullable',
+            'auditor' => 'nullable',
+            'asst_aud' => 'nullable',
+            'pro1' => 'nullable',
+            'pro2' => 'nullable',
+            'sgt_arms1' => 'nullable',
+            'sgt_arms2' => 'nullable',
+            'sgt_arms3' => 'nullable',
+
+            'chairpersonSB' => 'nullable',
+            'mpdo' => 'nullable',
+            'repmdc' => 'nullable',
+            'repda' => 'nullable',
+            'repngo' => 'nullable',
+            'repps' => 'nullable',
+            'others' => 'nullable',
+
+            'name_sec' => 'nullable',
+            'name_sec1' => 'nullable',
+            'name_sec2' => 'nullable',
+            'office_org' => 'nullable',
+            'office_org1' => 'nullable',
+            'office_org2' => 'nullable',
+        ], [
+            'minutes1.max' => 'The minutes1 file may not be greater than 5MB.',
+            'minutes2.max' => 'The minutes2 file may not be greater than 5MB.',
+            'photos1.max' => 'The photos1 file may not be greater than 5MB.',
+            'photos2.max' => 'The photos2 file may not be greater than 5MB.',
+            'attendance1.max' => 'The attendance1 file may not be greater than 5MB.',
+            'attendance2.max' => 'The attendance2 file may not be greater than 5MB.',
+            'internalP_file.max' => 'The internalP file may not be greater than 5MB.',
+            'fisherfolkR_file.max' => 'The fisherfolkR file may not be greater than 5MB.',
+            'fisheriesP_file.max' => 'The fisheriesP file may not be greater than 5MB.',
+            'formulationR_file.max' => 'The formulationR file may not be greater than 5MB.',
+            'minutes1.mimes' => 'The minutes1 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'minutes2.mimes' => 'The minutes2 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'photos1.mimes' => 'The photos1 file must be a file of type: jpeg, png.',
+            'photos2.mimes' => 'The photos2 file must be a file of type: jpeg, png.',
+            'attendance1.mimes' => 'The attendance1 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'attendance2.mimes' => 'The attendance2 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'internalP_file.mimes' => 'The internalP file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'fisherfolkR_file.mimes' => 'The fisherfolkR file must be a file of type: pdf, doc, docx.,jpeg,png',
+            'fisheriesP_file.mimes' => 'The fisheriesP file must be a file of type: pdf, doc, docx.,,jpeg,png',
+            'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.,,jpeg,png',
+        ]);
+
+        $profileForm = ProfileForm_Model::where('id', $Id)->firstOrFail();
+        $officers = ProfileForm_Model::where('profileForm', $profileFormId)->firstOrFail();
+        $secretariat = ProfileForm_Model::where('profileForm', $profileFormId)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('minutes1')) {
+            if ($profileForm->minute1) {
+                Storage::delete($profileForm->minute1);
+            }
+            $minutes1FilePath = $request->file('minute1')->store('profileForm/minute1');
+            $profileForm->minute1 = $minutes1FilePath;
+        }
+
+        if ($request->hasFile('minutes2')) {
+            if ($profileForm->minutes2) {
+                Storage::delete($profileForm->minutes2);
+            }
+            $minutes2FilePath = $request->file('minutes2')->store('profileForm/minutes2');
+            $profileForm->minutes2 = $minutes2FilePath;
+        }
+
+        if ($request->hasFile('photos1')) {
+            if ($profileForm->photos1) {
+                Storage::delete($profileForm->photos1);
+            }
+            $photos1FilePath = $request->file('photos1')->store('profileForm/photos1');
+            $profileForm->photos1 = $photos1FilePath;
+        }
+
+        if ($request->hasFile('photos2')) {
+            if ($profileForm->photos2) {
+                Storage::delete($profileForm->photos2);
+            }
+            $photos2FilePath = $request->file('photos2')->store('profileForm/photos2');
+            $profileForm->photos2 = $photos2FilePath;
+        }
+
+        if ($request->hasFile('attendance1')) {
+            if ($profileForm->attendance1) {
+                Storage::delete($profileForm->attendance1);
+            }
+            $attendance1FilePath = $request->file('attendance1')->store('profileForm/attendance1');
+            $profileForm->attendance1 = $attendance1FilePath;
+        }
+
+        if ($request->hasFile('attendance2')) {
+            if ($profileForm->attendance2) {
+                Storage::delete($profileForm->attendance2);
+            }
+            $attendance2FilePath = $request->file('attendance2')->store('profileForm/attendance2');
+            $profileForm->attendance2 = $attendance2FilePath;
+        }
+
+        if ($request->hasFile('attendance1')) {
+            if ($profileForm->attendance1) {
+                Storage::delete($profileForm->attendance1);
+            }
+            $attendance1FilePath = $request->file('attendance1')->store('profileForm/attendance1');
+            $profileForm->attendance1 = $attendance1FilePath;
+        }
+
+        if ($request->hasFile('attendance2')) {
+            if ($profileForm->attendance2) {
+                Storage::delete($profileForm->attendance2);
+            }
+            $attendance2FilePath = $request->file('attendance2')->store('profileForm/attendance2');
+            $profileForm->attendance2 = $attendance2FilePath;
+        }
+
+        if ($request->hasFile('internalP_file')) {
+            if ($profileForm->internalP_file) {
+                Storage::delete($profileForm->internalP_file);
+            }
+            $internalPFilePath = $request->file('internalP_file')->store('profileForm/internalP');
+            $profileForm->internalP_file = $internalPFilePath;
+        }
+
+        if ($request->hasFile('fisherfolkR_file')) {
+            if ($profileForm->fisherfolkR_file) {
+                Storage::delete($profileForm->fisherfolkR_file);
+            }
+            $fisherfolkRFilePath = $request->file('fisherfolkR_file')->store('profileForm/fisherfolkR');
+            $profileForm->fisherfolkR_file = $fisherfolkRFilePath;
+        }
+
+        if ($request->hasFile('fisheriesP_file')) {
+            if ($profileForm->fisheriesP_file) {
+                Storage::delete($profileForm->fisheriesP_file);
+            }
+            $fisheriesPFilePath = $request->file('fisheriesP_file')->store('profileForm/fisheriesP');
+            $profileForm->fisheriesP_file = $fisheriesPFilePath;
+        }
+
+        if ($request->hasFile('formulationR_file')) {
+            if ($profileForm->formulationR_file) {
+                Storage::delete($profileForm->formulationR_file);
+            }
+            $formulationRFilePath = $request->file('formulationR_file')->store('profileForm/formulationR');
+            $profileForm->formulationR_file = $formulationRFilePath;
+        }
+        // Update other fields
+        $profileForm->municipality = $validatedData['municipality'] ?? null;
+        $profileForm->province = $validatedData['province'] ?? null;
+        $profileForm->date_organized = $validatedData['date_organized'] ?? null;
+        $profileForm->date_reorganized = $validatedData['date_reorganized'] ?? null;
+        // $profileForm->internalP = $validatedData['internalP'] ?? null;
+        // $profileForm->fisherfolkR = $validatedData['fisherfolkR'] ?? null;
+        // $profileForm->fisheriesP = $validatedData['fisheriesP'] ?? null;
+        // $profileForm->formulationR = $validatedData['formulationR'] ?? null;
+
+        $officers->chairperson = $validatedData['chairperson'] ?? null;
+        $officers->vice_chairperson = $validatedData['vice_chairperson'] ?? null;
+        $officers->secretary = $validatedData['secretary'] ?? null;
+        $officers->asst_sec = $validatedData['asst_sec'] ?? null;
+        $officers->treasurer = $validatedData['treasurer'] ?? null;
+        $officers->asst_treas = $validatedData['asst_treas'] ?? null;
+        $officers->auditor = $validatedData['auditor'] ?? null;
+        $officers->asst_aud = $validatedData['asst_aud'] ?? null;
+        $officers->pro1 = $validatedData['pro1'] ?? null;
+        $officers->pro2 = $validatedData['pro2'] ?? null;
+        $officers->sgt_arms1 = $validatedData['sgt_arms1'] ?? null;
+        $officers->sgt_arms2 = $validatedData['sgt_arms2'] ?? null;
+        $officers->sgt_arms3 = $validatedData['sgt_arms3'] ?? null;
+
+        $officers->chairpersonSB = $validatedData['chairpersonSB'] ?? null;
+        $officers->mpdo = $validatedData['mpdo'] ?? null;
+        $officers->repmdc = $validatedData['repmdc'] ?? null;
+        $officers->repda = $validatedData['repda'] ?? null;
+        $officers->repngo = $validatedData['repngo'] ?? null;
+        $officers->repps = $validatedData['repps'] ?? null;
+        $officers->others = $validatedData['others'] ?? null;
+
+        $secretariat->name_sec = $validatedData['name_sec'] ?? null;
+        $secretariat->name_sec1 = $validatedData['name_sec1'] ?? null;
+        $secretariat->name_sec2 = $validatedData['name_sec2'] ?? null;
+        $secretariat->office_org = $validatedData['office_org'] ?? null;
+        $secretariat->office_org1 = $validatedData['office_org1'] ?? null;
+        $secretariat->office_org2 = $validatedData['office_org2'] ?? null;
+
+        // Save the updated record
+        $profileForm->save();
+
+        $fields = [
+            'municipality', 'province', 'date_organized', 'date_reorganized', 'internalP', 'fisherfolkR',
+            'fisheriesP', 'formulationR','minutes1', 'minutes2' , 'photos1' ,'photos2' , 'attendance1' , 'attendance2' , 'internalP_file' , 'fisherfolkR_file' , 'fisheriesP_file' , 'formulationR_file' , 
+            'chairperson', 'vicechairperson', 'chairperson' ,'vice_chairperson' ,'secretary' ,'asst_sec' ,'treasurer' ,'asst_treas' ,'auditor' ,'asst_aud' ,'pro1' ,'pro2' ,'sgt_arms1' ,'sgt_arms2' ,'sgt_arms3' ,
+            'chairpersonSB' ,'mpdo' ,'repmdc' ,'repda' ,'repngo' ,'repps' ,'others' ,'name_sec' ,'name_sec1' ,'name_sec2' ,'office_org' ,'office_org1' , 'office_org2' 
+        ];
+
+        $allFieldsFilled = true;
+        foreach ($fields as $field) {
+            if (empty($validatedData[$field])) {
+                $allFieldsFilled = false;
+                break;
+            }
+        }
+        // Update status to 'COMPLETED' if all fields are filled
+        if ($allFieldsFilled) {
+            $profileForm->status = 'COMPLETED';
+            $profileForm->save();
+        }
+
+        // Check if any changes were made and redirect accordingly
+        if ($profileForm->wasChanged()) {
+            return redirect('/L1Viewform/' . $Id)->with('success', 'Basic Structure updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
 
     public function editBasicFunction(Request $request, $profileFormId)
     {
@@ -2049,6 +2348,20 @@ class ProfileForm_Controller extends Controller
 
     //==========================================================================================================================================||
     //================================================== A R C H I V I N G  O F  D A T A ===============================================================||
+
+    public function L1moveToArchived($id)
+    {
+        $dataEntry = ProfileForm_Model::find($id);
+
+        if ($dataEntry) {
+            $dataEntry->status = 'ARCHIVED';
+            $dataEntry->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found.');
+        }
+    }
 
     public function L2moveToArchived($id)
     {

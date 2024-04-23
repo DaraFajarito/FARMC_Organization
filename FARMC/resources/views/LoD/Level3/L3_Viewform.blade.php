@@ -95,7 +95,7 @@
                             </div>
                             <div class="actions" style="margin-left: auto;">
                                 @foreach($fullyOp as $item)
-                                @if($item->status == "COMPLETED")
+                                @if($item->status == "COMPLETED" && $item->status != "ARCHIVED")
                                 <a href="{{ url ('/sustainability/'. $item->id) }}"><button class="btn btn-primary">Proceed to Lvl 4</button></a>
                                 @endif
                                 @endforeach

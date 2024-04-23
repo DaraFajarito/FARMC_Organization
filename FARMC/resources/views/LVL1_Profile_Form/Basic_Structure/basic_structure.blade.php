@@ -14,6 +14,12 @@
     <meta name="author" content="codedthemes">
 </head>
 
+<style>
+    input.form-control{
+        border: 1px solid #AAAAAA;
+    }
+</style>
+
 <body>
 
     <!-- side_navbar -->
@@ -53,11 +59,7 @@
                         </div>
                         <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
+                            @method('PUT')
 
                             <div class="card-block">
                                 <div class="row">

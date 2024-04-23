@@ -68,12 +68,12 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name <em>(Family,given,middle & Ext.)</em></label>
-                                                        <input id="inline3mail" name="name" type="text" class="form-control" style="width: 500px;" placeholder="Enter name">
+                                                        <input id="inline3mail" name="name" type="text" class="form-control" style="width: 500px;" placeholder="">
                                                     </div>
                                                     <br><br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Address <em>(Barangay, City/Municipality, Province & Region)</em></label>
-                                                        <input id="inline3mail" name="address" type="text" class="form-control" style="width: 500px;" placeholder="Enter name">
+                                                        <input id="inline3mail" name="address" type="text" class="form-control" style="width: 500px;" placeholder="">
                                                     </div>
                                                 </div>
 
@@ -150,11 +150,11 @@
                                                         <div class="grid-material bg-general">Birthplace</div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">City/Municipality</label>
-                                                            <input id="inline3mail" type="text" name="birthplace_municipality" class="form-control" placeholder="Date">
+                                                            <input id="inline3mail" type="text" name="birthplace_municipality" class="form-control" placeholder="">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inline3mail" class="block form-control-label">Province</label>
-                                                            <input id="inline3mail" type="text" name="birthplace_province" class="form-control" placeholder="Ages">
+                                                            <input id="inline3mail" type="text" name="birthplace_province" class="form-control" placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -214,7 +214,7 @@
                                                         <br>
                                                         <div class="form-check">
                                                             <label for="optionsRadios2" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="culturalCommunity" value="No" id="optionsRadios4">
+                                                                <input type="radio" class="form-check-input" name="IP" value="No" id="optionsRadios4">
                                                                 No
                                                             </label>
                                                         </div>
@@ -232,20 +232,20 @@
 
                                                         <div class="form-check">
                                                             <label for="islamRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="reg_affiliation" id="islamRadio" value="Islam" onchange="toggleTextBox('islamRadio');">
+                                                                <input type="radio" class="form-check-input" name="religion_affiliation" id="islamRadio" value="Islam">
                                                                 Islam
                                                             </label>
                                                         </div>
-                                                        <br>
+                                                        <br>    
                                                         <div class="form-check">
                                                             <label for="christianRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="reg_affiliation" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');">
+                                                                <input type="radio" class="form-check-input" name="religion_affiliation" id="christianRadio" value="Christian" onchange="toggleTextBox('christianRadio');">
                                                                 Christian
                                                             </label>
                                                         </div>
                                                         <div class="form-group" id="textBoxGroup" style="display: none;">
                                                             <label for="inline3mail" class="block form-control-label">If Christian, please specify</label>
-                                                            <input id="inline3mail" type="text" name="reg_affiliation" class="form-control" placeholder="">
+                                                            <input id="inline3mail" type="text" name="religion_affiliation" class="form-control" placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -255,7 +255,7 @@
                                                 <div class="col-md-8">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name Spouse<em>(Family, Given, Middle)</em></label>
-                                                        <input id="inline3mail" type="text" name="spouse_name" class="form-control" style="width: 650px;" placeholder="Enter name">
+                                                        <input id="inline3mail" type="text" name="name_spouse" class="form-control" style="width: 650px;" placeholder="Enter name">
                                                     </div>
                                                 </div>
 
@@ -309,7 +309,7 @@
                                                                     <br>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="number" class="form-control" name="dependent_other" placeholder="" style="width:150px">
+                                                                        <input type="number" class="form-control" name="dependent_others" placeholder="" style="width:150px">
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -394,11 +394,11 @@
                                                                     <div class="radio radio-inline" style="margin-left: 60px;">
                                                                         <br>
                                                                         <label>
-                                                                            <input type="radio" name="other_source_of_livelihood" /><i class="helper"></i>Other,<small><em>specify</em></small>
+                                                                            <input type="radio" /><i class="helper"></i>Other,<small><em>specify</em></small>
                                                                         </label>
                                                                     </div>
                                                                     <div style="margin-left: 60px;">
-                                                                        <textarea rows="4" style="width: 200px; border: 1px solid #ccc;"></textarea>
+                                                                        <textarea rows="4" name="other_source_of_livelihood" style="width: 200px; border: 1px solid #ccc;"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>

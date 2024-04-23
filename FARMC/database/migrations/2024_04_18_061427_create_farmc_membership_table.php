@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('4ps')->nullable();
             $table->string('pwd')->nullable();
             $table->string('IP')->nullable();
+            $table->string('name_spouse')->nullable();
+            $table->string('occupation')->nullable();
             $table->string('religion_affiliation')->nullable();
             $table->string('dependent_male')->nullable();
             $table->string('dependent_female')->nullable();

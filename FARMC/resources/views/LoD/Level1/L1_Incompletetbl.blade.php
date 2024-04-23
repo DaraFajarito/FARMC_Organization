@@ -62,11 +62,11 @@
                                             <td>{{ $item->municipality }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->date_organized)->format('Y/m/d') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y/m/d') }}</td>
-                                            <td style="color:green"><b>{{ $item->status }}</b></td>
+                                            <td style="color:red"><b>{{ $item->status }}</b></td>
                                             <td style=" display: flex; justify-content: space-between;">
                                             <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                            <!-- <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a> -->
                                         </td>
                                     </tbody>
                                 @endforeach

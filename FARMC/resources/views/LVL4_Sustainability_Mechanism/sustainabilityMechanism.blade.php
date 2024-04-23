@@ -20,6 +20,10 @@
         vertical-align: middle;
         /* margin-left: 10px; Adjust as needed */
     }
+      
+    input.form-control{
+        border: 1px solid #AAAAAA;
+    }
 </style>
 
 <body>
@@ -75,7 +79,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="data_training" value="Yes"/><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_training" value="Yes"  /><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -83,7 +87,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="data_training" value="No"/><i class="helper"></i>No
+                                                        <input type="radio" name="data_training" value="No" /><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -94,7 +98,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="data_fishcatch" value="Yes"/><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_fishcatch" value="Yes" /><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -102,7 +106,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="data_fishcatch" value="No"/><i class="helper"></i>No
+                                                        <input type="radio" name="data_fishcatch" value="No" /><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -113,7 +117,7 @@
                                             <div class="form-radio" style="display: inline-block;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="data_regforms" value="Yes"/><i class="helper"></i>Yes
+                                                        <input type="radio" name="data_regforms" value="Yes" /><i class="helper"></i>Yes
                                                     </label>
                                                 </div>
                                             </div>
@@ -121,7 +125,7 @@
                                             <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="data_regforms" value="No"/><i class="helper"></i>No
+                                                        <input type="radio" name="data_regforms" value="No" /><i class="helper"></i>No
                                                     </label>
                                                 </div>
                                             </div>
@@ -138,7 +142,7 @@
                                                 <div class="form-radio" style="display: inline-block;">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="est_funds" value="Yes"/><i class="helper"></i>Yes
+                                                            <input type="radio" name="est_funds" value="Yes" /><i class="helper"></i>Yes
                                                         </label>
                                                     </div>
                                                 </div>
@@ -146,7 +150,7 @@
                                                 <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="est_funds" value="No"/><i class="helper"></i>No
+                                                            <input type="radio" name="est_funds" value="No" /><i class="helper"></i>No
                                                         </label>
                                                     </div>
                                                 </div>
@@ -191,15 +195,15 @@
 
                                         <div class="row" style="margin-top: 270px;">
                                             <div class="col-md-12 text-right">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                             <!-- Modal -->
-                             <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -316,6 +320,26 @@
             setupCheckbox('checkbox-3', 'formulationR_file');
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dataBankYes = document.getElementById('data_bank_yes');
+            var dataBankNo = document.getElementById('data_bank_no');
+
+            dataBankYes.addEventListener('change', function() {
+                if (dataBankYes.checked) {
+                    document.getElementById('data_bank_sections').style.display = 'none';
+                }
+            });
+
+            dataBankNo.addEventListener('change', function() {
+                if (dataBankNo.checked) {
+                    document.getElementById('data_bank_sections').style.display = 'block';
+                }
+            });
+        });
+    </script>
+
 
 </body>
 

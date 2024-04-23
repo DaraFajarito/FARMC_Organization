@@ -33,6 +33,7 @@
                         <a href="{{ url ('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
+                @foreach($data as $item)
                 <div class="card">
                     <div class="card-header">
                         <!-- <div class="col-sm-12 col-xs-12 waves-effect waves-light"> -->
@@ -44,21 +45,16 @@
                         <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                             <div class="grid-material bg-general"></div>
                         </div>
-                        <form class="form-inline" method="POST" action="{{ url('/add-basic-info') }}" enctype="multipart/form-data">
+                        <form class="form-inline" method="POST" action="{{ url('/edit-profileForm/' . $item->id) }}" enctype="multipart/form-data">
                             @csrf
-                            @if($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                            @endif
-
+                            @method('PUT')
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group row">
                                             <label for="municipality" class="col-md-2 col-form-label form-control-label">Municipality / City</label>
                                             <div class="col-md-2">
-                                                <input type="text" id="municipality" name="municipality" class="form-control" style="width:900px;" placeholder="">
+                                                <input type="text" id="municipality" name="municipality" class="form-control" style="width:900px;" value="{{ old('municipality', $item->municipality) }}" placeholder="">
                                             </div>
                                         </div>
                                         <br>
@@ -662,6 +658,7 @@
 
 
                 </div>
+                @endforeach
             </div>
         </div>
         <!-- </div> -->

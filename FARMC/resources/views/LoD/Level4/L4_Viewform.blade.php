@@ -95,7 +95,9 @@
                             </div>
                             <div class="actions" style="margin-left: auto;">
                                 @foreach($sustain as $item)
+                                @if($item->status == "COMPLETED" && $item->status != "ARCHIVED")
                                 <a href="{{ url ('/modelExcellence/' . $item->id) }}"><button class="btn btn-primary">Proceed to Lvl 5</button></a>
+                                @endif
                                 @endforeach
                             </div>
                         </div>

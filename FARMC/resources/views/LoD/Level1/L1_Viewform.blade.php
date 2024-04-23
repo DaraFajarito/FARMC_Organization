@@ -108,8 +108,8 @@
                                 @if($basics->status == "COMPLETED")
                                 <a href="{{ url ('/basicFunction/' . $basics->id) }}"><button class="btn btn-primary">Proceed to Lvl 2</button></a>
                                 @endif
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
 
 

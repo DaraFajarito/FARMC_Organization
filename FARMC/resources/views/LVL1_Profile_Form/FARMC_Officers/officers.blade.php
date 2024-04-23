@@ -10,6 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 </head>
 
+
+<style>
+    input.form-control{
+        border: 1px solid #AAAAAA;
+    }
+</style>
+
 <body>
 
     <!-- side_navbar -->

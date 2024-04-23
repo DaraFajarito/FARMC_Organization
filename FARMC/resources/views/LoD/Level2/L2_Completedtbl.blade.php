@@ -68,8 +68,8 @@
                                         @endif
                                         <td style=" display: flex; justify-content: space-between;">
                                             <a style="margin-left: 5px;" href="{{ url('/L2Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L2Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L2Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a>
+                                            <!-- <a style="margin-left: 5px;" href="{{ url('/L2Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                            <a style="margin-left: 5px;" href="{{ url('/L2Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a> -->
                                         </td>
                                     </tr>
                                     @endforeach

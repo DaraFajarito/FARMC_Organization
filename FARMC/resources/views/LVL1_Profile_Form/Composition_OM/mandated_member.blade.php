@@ -14,6 +14,12 @@
 
 </head>
 
+<style>
+      input.form-control{
+        border: 1px solid #AAAAAA;
+    }
+</style>
+
 <body>
     <!-- side_navbar -->
     @include ('side_navbar')

@@ -49,7 +49,7 @@
                         <a href="{{ url ('/personal_info') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br><br>
 
-                        <form class="form-inline" action="{{url('/add-membership/' . $data->id)}}" method="POSt">
+                        <form class="form-inline" action="{{url('/add-membership/' . $data->id)}}" method="POST">
                             @csrf
                             <div class="card">
                                 <div class="card-block">
@@ -83,16 +83,15 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="mfarmc_officer" onclick="showOfficerDetails('')" value="yes" /> <i class="helper"></i> Yes
+                                                                <input type="radio" name="mfarmc_officer" onclick="toggleTextBox('otherTextBox2')" value="yes" /> <i class="helper"></i> Yes
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="mfarmc_officer" onclick="showOfficerDetails('')" value="no" /> <i class="helper"></i> No
+                                                                <input type="radio" name="mfarmc_officer" value="no" /> <i class="helper"></i> No
                                                             </label>
-                                                            <div class="form-group" id="officerDetails" style="display:none;">
-                                                                <label for="inline3mail" class="block form-control-label">Specified, if yes</label>
-                                                                <input id="mfarmc_officer_specified" type="text" name="mfarmc_officer_specified" class="form-control" placeholder="">
-                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group" id="otherTextBox2" style="display:none;">
+                                                        <input id="otherInput" type="text" class="form-control" name="mfarmc_officer">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -163,23 +162,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio" value="Women Sector" /> <i class="helper"></i> Women Sector
+                                                                <input type="radio" name="sector" value="Women Sector" /> <i class="helper"></i> Women Sector
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" value="Youth Sector" /> <i class="helper"></i> Youth Sector
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em></em></div>
-                                                    <div class="form-radio">
-                                                        <div class="radio radio-inline">
-                                                            <label>
-                                                                <input type="radio" name="radio" value="Private Sector" onclick="toggleTextBox('')" /> <i class="helper"></i> Private Sector
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="radio" value="NGO Representative" onclick="toggleTextBox('')" /> <i class="helper"></i> NGO Representative
+                                                                <input type="radio" name="sector" value="Youth Sector" /> <i class="helper"></i> Youth Sector
                                                             </label>
                                                         </div>
                                                     </div>
@@ -189,15 +175,28 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio" value="Cultural Community (IP's)" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i>Cultural Community (IP's)
+                                                                <input type="radio" name="sector" value="Private Sector" /> <i class="helper"></i> Private Sector
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" value="Other" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
+                                                                <input type="radio" name="sector" value="NGO Representative" /> <i class="helper"></i> NGO Representative
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"><em></em></div>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="sector" value="Cultural Community (IP's)" /> <i class="helper"></i>Cultural Community (IP's)
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" value="Other" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="other_specify">
+                                                        <input id="otherInput" type="text" class="form-control" name="sector">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
@@ -211,10 +210,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> SB, Committee on Fisheries
+                                                                <input type="radio" name="Igu_rep"  value="SB, Committee on Fisheries"/> <i class="helper"></i> SB, Committee on Fisheries
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> Municipal/City Planning Office
+                                                                <input type="radio" name="lgu_rep" value="Municipal/City Planning Office"/> <i class="helper"></i> Municipal/City Planning Office
                                                             </label>
                                                         </div>
                                                     </div>
@@ -227,10 +226,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> Municipal/City Dev't. Council
+                                                                <input type="radio" name="lgu_rep" value="Municipal/City Dev't. Council" /> <i class="helper"></i> Municipal/City Dev't. Council
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> Municipal/City Agriculture Office
+                                                                <input type="radio" name="lgu_rep" value="Municipal/City Agriculture Office" /> <i class="helper"></i> Municipal/City Agriculture Office
                                                             </label>
                                                         </div>
                                                     </div>
@@ -240,16 +239,18 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="radio" onclick="toggleTextBox('')" /> <i class="helper"></i> Others, Please specify
+                                                                <input type="radio" name="lgu_rep" onclick="toggleTextBox('otherTextBox1')" /> <i class="helper"></i> Others, Please specify
                                                             </label>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group" id="otherTextBox1" style="display:none;">
+                                                        <input id="otherInput" type="text" class="form-control" name="lgu_rep">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
                                             </div>
-
                                             <div class="text-right">
-                                                <a href="{{ url ('/org_membership') }}" class="btn btn-primary">Next<i class="icon-arrow-right"></i></a>
+                                                <button type="submit" class="btn btn-primary">Next<i class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -260,19 +261,8 @@
                 </div>
             </div>
         </div>
-        <!-- 
-        <script>
-            document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'yes') {
-                        document.getElementById('culturalCommunityDetails').style.display = 'block';
-                    } else {
-                        document.getElementById('culturalCommunityDetails').style.display = 'none';
-                    }
-                });
-            });
-        </script> -->
-
+    </div>
+    
         <script>
             function toggleTextBox(textboxId) {
                 var textBox = document.getElementById(textboxId);

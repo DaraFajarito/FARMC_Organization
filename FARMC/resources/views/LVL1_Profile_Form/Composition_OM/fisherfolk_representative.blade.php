@@ -35,6 +35,12 @@
 
 </head>
 
+<style>
+    input.form-control{
+        border: 1px solid #AAAAAA;
+    }
+</style>
+
 <body>
     <!-- side_navbar -->
     @include ('side_navbar')
@@ -81,6 +87,7 @@
 
                                     <form method="post" action="{{ url('/add-fisherfolk-rep') }}" enctype="multipart/form-data" id="yourFormId">
                                         @csrf
+                                        @method('PUT')
                                         <div class="card-header">
                                             <div class="row">
                                                 <div class="col-md-9">

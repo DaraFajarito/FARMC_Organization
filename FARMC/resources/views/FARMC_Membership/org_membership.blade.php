@@ -12,8 +12,14 @@
     <meta name="description" content="codedthemes">
     <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="codedthemes">
-
 </head>
+
+
+<style>
+    input.form-control {
+        border: 1px solid #AAAAAA;
+    }
+</style>
 
 <body>
     <!-- side_navbar -->
@@ -50,10 +56,11 @@
 
                     <div class="col-lg-12 inline-forms">
 
-                        <a href="{{ url ('/membership')}}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                        <a class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                         <br> <br>
 
-                        <form class="form-inline">
+                        <form class="form-inline" action="{{ url('/add-orgmembership/' . $data->id) }}" method="POST"  enctype="multipart/form-data">
+                            @csrf
                             <div class="card">
                                 <div class="card-block">
                                     <div class="card inline-form-style">
@@ -65,12 +72,12 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Name of Association/Organization/Cooperative <em></em></label>
-                                                        <input id="inline3mail" type="email" class="form-control" style="width: 830px;" placeholder="">
+                                                        <input id="inline3mail" type="text" class="form-control" name="org_mem_name" style="width: 830px;" placeholder="">
                                                     </div>
                                                     <br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Address of Association/Organization/Cooperative <em></em></label>
-                                                        <input id="inline3mail" type="email" class="form-control" style="width: 830px;" placeholder="">
+                                                        <input id="inline3mail" type="text" class="form-control" name="add_acc" style="width: 830px;" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,70 +91,80 @@
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="radio" c /><i class="helper"></i>Municipal
+                                                                <input type="radio" name="comp_mem" value="Municipal" /><i class="helper"></i>Municipal
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Fishworker
+                                                                <input type="radio" name="comp_mem" value="Fishworker" /><i class="helper"></i>Fishworker
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Cultural Community (IP's)
+                                                                <input type="radio" name="comp_mem" value="Cultural Community (IP's)" /><i class="helper"></i>Cultural Community (IP's)
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Commercial
+                                                                <input type="radio" name="comp_mem" value="Commercial" /><i class="helper"></i>Commercial
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Women/Youth
+                                                                <input type="radio" name="comp_mem" value="Women/Youth" /><i class="helper"></i>Women/Youth
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="grid-material bg-general"><em>Registration of Association</em></div>
                                                     <br>
-                                                    <div class="form-radio">
-                                                        <div class="radio radio-inline">
-
-                                                            <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Yes
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>No
-                                                            </label>
-                                                        </div>
+                                                    <div class="form-check">
+                                                        <label for="radio1" class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="agency" id="radio1" value="Yes" onchange="toggleTextBox('radio1');">
+                                                            Yes
+                                                        </label>
                                                     </div>
-                                                    <div class="form-inline">
-                                                        <div>
-                                                            <label for="textBox">If yes, what agency</label>
-                                                            <br>
-                                                            <label>
-                                                                <input type="text" class="form-control" placeholder="" style="width:150px">
-                                                            </label>
-
-                                                        </div>
+                                                    <br>
+                                                    <div class="form-check">
+                                                        <label for="" class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="agency" id="radio1" value="No">
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group" id="textBoxGroup" style="display: none;">
+                                                        <label for="inline3mail" class="block form-control-label">If Yes, please specify</label>
+                                                        <input id="inline3mail" type="text" name="agency" class="form-control" placeholder="">
                                                     </div>
                                                 </div>
 
-
-                                                <div class="col-md-4">
+                                                <div class="col-md-5">
                                                     <div class="grid-material bg-general"><em>LGU Accreditation</em></div>
                                                     <br>
-                                                    <div class="radio-container">
-                                                        <div class="form-group">
-                                                            <input type="radio" class="form-check-input" name="option" value="yes" id="yes_radio">
-                                                            <label class="form-check-label" for="yes_radio">Yes</label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="radio" class="form-check-input" name="option" value="no" id="no_radio">
-                                                            <label class="form-check-label" for="no_radio">No</label>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-radio">
+                                                                    <div class="radio radio-inline">
+                                                                        <label>
+                                                                            <input type="radio" name="lgu_accre" value="Yes" onclick="toggleTextBox('otherTextBox')" /><i class="helper"></i>Yes
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-radio">
+                                                                    <div class="radio radio-inline">
+                                                                        <label>
+                                                                            <input type="radio" name="lgu_accre" value="No" /><i class="helper"></i>No
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="reg_no">Reg. No.</label>
-                                                        <input id="reg_no" type="text" class="form-control" placeholder="Reg. No.">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="date">Date</label>
-                                                        <input id="date" type="text" class="form-control" placeholder="Date">
+                                                    <br><br>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-6">
+                                                            <label for="reg_no">Reg. No.</label>
+                                                            <input id="reg_no" type="text" class="form-control" name="reg_no" placeholder="Reg. No.">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="date">Date</label>
+                                                            <input id="date" type="text" class="form-control" name="date" placeholder="Date">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -157,45 +174,48 @@
                                                 <div class="col-md-4">
                                                     <div class="grid-material bg-general"><em>Officer of Association</em></div>
                                                     <br>
-                                                    <div class="form-radio">
-                                                        <div class="radio radio-inline">
-
-                                                            <label>
-                                                                <input type="radio" name="radio" c /><i class="helper"></i>Yes
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>No
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="radio" /><i class="helper"></i>Member only
-                                                            </label>
-                                                        </div>
+                                                    <div class="form-check">
+                                                        <label for="radio2" class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="officer_association" id="radio2" value="Yes" onchange="toggleTextBox1('radio2');">
+                                                            Yes
+                                                        </label>
                                                     </div>
-                                                    <div class="form-inline">
-                                                        <div>
-                                                            <label for="textBox">Specify, if yes</label>
-                                                            <label>
-                                                                <input type="text" class="form-control" placeholder="" style="width:150px">
-                                                            </label>
-
-                                                        </div>
+                                                    <br>
+                                                    <div class="form-check">
+                                                        <label for="" class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="officer_association" id="radio2" value="No">
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-check">
+                                                        <label for="" class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="officer_association" id="radio2" value="Member only">
+                                                            Member only
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group" id="textBoxGroup1" style="display: none;">
+                                                        <label for="inline3mail" class="block form-control-label">Specify, If yes</label>
+                                                        <input id="inline3mail" type="text" name="position" class="form-control" placeholder="">
                                                     </div>
                                                 </div>
+
+
 
                                                 <div class="col-md-4">
                                                     <div class="grid-material bg-general"><em>Involvement in Mangingisdang Director Program</em></div>
                                                     <br>
                                                     <div class="radio-container">
                                                         <div class="form-group">
-                                                            <input type="radio" class="form-check-input" name="option" value="pro" id="pro_radio">
+                                                            <input type="radio" class="form-check-input" name="involvement_mdo" value="Provincial Fisherfolk Representative" id="pro_radio">
                                                             <label class="form-check-label" for="pro_radio">Provincial Fisherfolk Representative</label>
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="radio" class="form-check-input" name="option" value="re" id="re_radio">
+                                                            <input type="radio" class="form-check-input" name="involvement_mdo" value="Regional Fisherfolk Director" id="re_radio">
                                                             <label class="form-check-label" for="re_radio">Regional Fisherfolk Director</label>
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="radio" class="form-check-input" name="option" value="na" id="na_radio">
+                                                            <input type="radio" class="form-check-input" name="involvement_mdo" value="National Fisherfolk Director" id="na_radio">
                                                             <label class="form-check-label" for="na_radio">National Fisherfolk Director</label>
                                                         </div>
                                                     </div>
@@ -206,15 +226,15 @@
                                                     <div class="form-inline">
                                                         <div>
                                                             <label>
-                                                                <input type="text" class="form-control" placeholder="" style="width:150px">
+                                                                <input type="text" class="form-control" name="year_elected" placeholder="" style="width:150px">
                                                             </label>
                                                             <br>
                                                             <label>
-                                                                <input type="text" class="form-control" placeholder="" style="width:150px">
+                                                                <input type="text" class="form-control" name="year_elected" placeholder="" style="width:150px">
                                                             </label>
                                                             <br>
                                                             <label>
-                                                                <input type="yexy" class="form-control" placeholder="" style="width:150px">
+                                                                <input type="yexy" class="form-control" name="year_elected" placeholder="" style="width:150px">
                                                             </label>
                                                         </div>
                                                     </div>
@@ -226,7 +246,8 @@
                                                     <div style="display: flex; justify-content: center;">
                                                         <div style="width: 300px; text-align: center;" class="signature-container">
                                                             <p style="margin: 0;">I hereby certify that the above information is true and correct to the best of my knowledge and belief.</p>
-                                                            <input type="file" id="signatureFile" accept="image/*" style="margin-top: 10px; position: relative;">
+                                                            <br><br>
+                                                            <div style="border-bottom: 1px solid black; margin-bottom: 10px;"></div>
                                                             <label for="signatureFile" class="signature-line" style="text-align: center;">Member's Signature</label>
                                                         </div>
                                                     </div>
@@ -245,13 +266,15 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div style="margin-left: 100px; width: 130px; height: 120px; border: 1px solid black; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
-                                                        <input type="file" id="photo1x1" accept="image/*" style="display: none;">
-                                                        <label for="photo1x1" style="cursor: pointer;">1x1 Photo</label> <!-- 1x1 photo box -->
+                                                        <input type="file" id="photo1x1" accept="image/*" name="photo" style="display: none;">
+                                                        <label for="photo1x1" id="label1x1" style="cursor: pointer;">1x1 Photo</label> <!-- 1x1 photo box -->
+                                                        <img id="preview1x1" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 100%; cursor: pointer;">
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <div class="text-right">
-                                                <a href="{{ url ('/farmc_membership') }}" class="btn btn-primary">SUBMIT</i></a>
+                                                <button type="submit" class="btn btn-primary">Submit<i class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -265,51 +288,57 @@
     </div>
 
     <script>
-        // Add JavaScript code here to handle file uploads
-        document.querySelector('.signature-line').addEventListener('click', function() {
-            document.getElementById('signatureFile').click();
-        });
+        const photoInput = document.getElementById('photo1x1');
+        const photoLabel = document.getElementById('label1x1');
+        const photoPreview = document.getElementById('preview1x1');
 
-        document.getElementById('signatureFile').addEventListener('change', function() {
-            const file = this.files[0];
+        // Function to handle file input change
+        function handleFileInputChange() {
+            const file = photoInput.files[0];
             if (file) {
-                // Handle the uploaded signature file
-                console.log('Uploaded signature file:', file);
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                    photoPreview.style.display = 'block';
+                    photoLabel.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
             }
+        }
+
+        // Trigger file input click when the image is clicked
+        photoPreview.addEventListener('click', function() {
+            photoInput.click();
         });
 
-        document.getElementById('photo1x1').addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                // Handle the uploaded 1x1 photo file
-                console.log('Uploaded 1x1 photo file:', file);
-            }
-        });
+        // Listen for file input change
+        photoInput.addEventListener('change', handleFileInputChange);
     </script>
-
-    <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
 
     <script>
         function toggleTextBox(radioId) {
             var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
+            var radio = document.getElementById(radioId);
+            if (radio.value === 'Yes') {
                 textBoxGroup.style.display = 'block';
             } else {
                 textBoxGroup.style.display = 'none';
             }
         }
     </script>
+
+    <script>
+        function toggleTextBox1(radioId) {
+            var textBoxGroup1 = document.getElementById('textBoxGroup1');
+            var radio = document.getElementById(radioId);
+            if (radio.value === 'Yes') {
+                textBoxGroup1.style.display = 'block';
+            } else {
+                textBoxGroup1.style.display = 'none';
+            }
+        }
+    </script>
+
 
     <script>
         function showTertiaryTextbox() {

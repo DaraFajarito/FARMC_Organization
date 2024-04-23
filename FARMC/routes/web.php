@@ -117,21 +117,24 @@ Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'displ
 Route::get('/L1Viewform/{id}', [ProfileForm_Controller::class,'display_level1_info']);
 Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
 Route::get('/secretariat-form', [ProfileForm_Controller::class,'display_sectariat_form']);
-Route::post('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
+Route::put('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
 Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
 Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);
 Route::put('/add-secretariat', [ProfileForm_Controller::class,'addSecretariat']);
 Route::get('/L1Incompletetbl',[ProfileForm_Controller::class, 'display_level1_incomplete']);
 Route::get('/L1Completedtbl',[ProfileForm_Controller::class, 'display_level1_complete']);
-Route::get('/L1Editform/{id}',[ProfileForm_Controller::class, 'edit_incomplete_profile']);
-Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
-Route::view('/L1Archivetbl', 'LoD.Level1.L1_Archivetbl');
+Route::get('/L1Archivedtbl',[ProfileForm_Controller::class, 'display_level1_archived']);
+Route::get('/L1Archivedtbl/{id}', [ProfileForm_Controller::class, 'L1moveToArchived']);
+Route::get('/L1Editform/{id}',[ProfileForm_Controller::class, 'display_level1_edit']);
+Route::put('/edit-profileForm/{id}', [ProfileForm_Controller::class,'editBasicStructure']);
+
+// Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
 
 //Fisherfolk Representative
-Route::post('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);
+Route::put('/add-fisherfolk-rep', [FisherfolkRepresentative_Controller::class,'createFisherfolkRep']);
 
 //Committee
-Route::post('/add-committee', [Committee_Controller::class,'createCommittee']);
+Route::put('/add-committee', [Committee_Controller::class,'createCommittee']);
 Route::get('/go-to-committee', [Committee_Controller::class,'display_committee_form']);
 
 // ---------------------------------------------------------------------------------------//
@@ -162,6 +165,7 @@ Route::put('/add-fullyOperational/{id}', [ProfileForm_Controller::class,'addFull
 Route::put('/edit-fullyOperational/{id}', [ProfileForm_Controller::class,'editFullyOperational']);
 Route::get('/L3Viewform/{id}', [ProfileForm_Controller::class,'display_level3_info']);
 Route::get('/L3Editform/{id}', [ProfileForm_Controller::class,'display_level3_edit']);
+Route::get('/L3Inc-edit/{id}', [ProfileForm_Controller::class,'inc_edit3']);
 
 Route::get('/L3Archivedtbl',[ProfileForm_Controller::class, 'display_level3_archived']);
 Route::get('/L3Archivedtbl/{id}', [ProfileForm_Controller::class, 'L3moveToArchived']);
@@ -209,8 +213,8 @@ Route::get('/L5Completedtbl',[ProfileForm_Controller::class, 'display_level5_com
 
 Route::view('/farmc_membership', 'FARMC_Membership.FARMC_Membership');
 Route::view('/personal_info', 'FARMC_Membership.personal_info');
-// Route::view('/membership', 'FARMC_Membership.membership');
-// Route::view('/org_membership', 'FARMC_Membership.org_membership');
+Route::view('/membership', 'FARMC_Membership.membership');
+Route::view('/org_membership', 'FARMC_Membership.org_membership');
 
 // ---------------------------------------------------------------------------------------//
 
@@ -281,3 +285,4 @@ Route::post('/add-personal-info', [FarmcMembership_Controller::class,'addFARMC_P
 Route::get('/membership/{id}', [FarmcMembership_Controller::class,'displayMembershipForm']);
 Route::post('/add-membership/{id}', [FarmcMembership_Controller::class,'addFARMC_Membership']);
 Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOrgMembershipForm']);
+Route::post('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);

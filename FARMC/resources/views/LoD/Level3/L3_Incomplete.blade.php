@@ -43,7 +43,7 @@
                                     <p>Please provide these necessary requirements to complete Level Three.</p>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <a href="{{ url('/L3Editform') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit form</a>
+                                    <a href="{{ url('/L3Inc-edit') }}" class="btn btn-danger"><i class="ti-write"></i> &nbsp; Edit form</a>
                                 </div>
                             </div>
 
@@ -93,7 +93,7 @@
                                         <br>
 
                                         @if (in_array('pol_prop1_file', $fullyOperationalNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Policies Propose By The MFARMC Implemented By LGU 1    (Reports/Minutes/Photo Docu)</span>
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Policies Propose By The MFARMC Implemented By LGU 1 (Reports/Minutes/Photo Docu)</span>
                                         @endif
                                         <br>
 

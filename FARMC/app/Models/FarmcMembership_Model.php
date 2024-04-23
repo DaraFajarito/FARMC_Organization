@@ -27,8 +27,7 @@ class FarmcMembership_Model extends Model
         '4ps',
         'pwd',
         'IP',
-        'religion_affiliation',
-        'spouse_name',
+        'name_spouse',
         'occupation',
         'religion_affiliation',
         'dependent_male',
@@ -38,7 +37,7 @@ class FarmcMembership_Model extends Model
         'tertiary',
         'tesda',
         'other_source_of_livelihood',
-        
+
         'farmc_name',
         'farmc_add',
         'mfarmc_officer',
@@ -49,20 +48,20 @@ class FarmcMembership_Model extends Model
         'farmc_rep',
         'sector',
         'lgu_rep',
-       
-       
+
+
         'org_mem_name',
-       'add_acc',
-       'comp_mem',
-       'agency',
-       'lgu_accre',
-       'reg_no',
-       'date',
-       'officer_association',
-       'position',
-       'involvement_mdo',
-       'year_elected',
-       'photo',
-       'status',
+        'add_acc',
+        'comp_mem',
+        'agency',
+        'lgu_accre',
+        'reg_no',
+        'date',
+        'officer_association',
+        'position',
+        'involvement_mdo',
+        'year_elected',
+        'photo',
+        'status',
     ];
 }
