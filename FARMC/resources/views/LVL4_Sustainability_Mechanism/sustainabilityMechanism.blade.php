@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Level 2 - Basic Function | FARMC - BFAR</title>
+    <title>Level 4 - Sustainability Mechanism | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
@@ -20,7 +20,7 @@
         vertical-align: middle;
         /* margin-left: 10px; Adjust as needed */
     }
-      
+
     input.form-control{
         border: 1px solid #AAAAAA;
     }

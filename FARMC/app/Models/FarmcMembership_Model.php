@@ -24,7 +24,7 @@ class FarmcMembership_Model extends Model
         'age',
         'birthplace_municipality',
         'birthplace_province',
-        '4ps',
+        'fourps',
         'pwd',
         'IP',
         'name_spouse',

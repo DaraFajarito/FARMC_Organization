@@ -9,6 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -48,8 +51,8 @@
                         </li>
 
                         <div class="text-right">
-                            <span><a href="{{ url('/personal_info') }}"><button type="button"
-                                        class="btn btn-primary">+ New Form</button></a></span>
+                            <span><a href="{{ url('/personal_info') }}"><button type="button" class="btn btn-primary">+
+                                        New Form</button></a></span>
                         </div>
                     </ol>
 
@@ -67,7 +70,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>FARMC Members</span>
-                                <h2 class="dashboard-total-products">{{$memberCount}}</h2>
+                                <h2 class="dashboard-total-products">{{ $memberCount }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-id-badge text-success-color"></i>
                                 </div>
@@ -77,7 +80,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Organization</span>
-                                <h2 class="dashboard-total-products">{{$farmcCount}}</h2>
+                                <h2 class="dashboard-total-products">{{ $farmcCount }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-layout-tab-v text-success-color"></i>
                                 </div>
@@ -96,41 +99,38 @@
 
                         <div class="card-block">
                             <div class="col-lg-4">
-                                <h6 class="card-title">Member's Age</h6>
-                                <canvas id="salesDifference"></canvas>
+                                <h6 class="card-title text-center">Member's Age</h6>
+                                <div class="col-sm-12" style="margin-bottom: 20px">
+                                    <canvas id="ageRangeChart" width="600" height="500"></canvas>
+                                </div>
+                                {{-- <ul class="graphl-legend-rectangle" style="line-height: 12px"> --}}
+                                    <div class="col-sm-12">
+                                        <li style="font-size: 13px"><span></span> &nbsp; (0
+                                            - 18) Children</li>
+                                        <li style="font-size: 13px"><span></span> &nbsp; (19
+                                            - 25) Youth / Teenagers</li>
+                                        <li style="font-size: 13px"><span></span> &nbsp; (26
+                                            - 35) Young Adults</li>
+                                        <li style="font-size: 13px"><span></span> &nbsp; (36
+                                            - 50) Adults</li>
+                                        <li style="font-size: 13px"><span></span> &nbsp;
+                                            (51+) Elderly & Senior Citizens</li>
+                                    </div>
+                                {{-- </ul> --}}
                             </div>
 
                             <div class="col-lg-4">
-                                <h6 class="card-title">Composition of Membership</h6>
+                                <h6 class="card-title text-center">Composition of Membership</h6>
                                 <div class="row">
-                                    <div class="col-sm-10 grid-margin">
-                                        <canvas id="bestSellers"></canvas>
-                                    </div>
+                                    <canvas id="compMemChart"  width="20" height="20" ></canvas>
                                 </div>
-                                <br>
-                                <!-- <div class="col-sm-12"> -->
-                                <ul class="graphl-legend-rectangle">
-                                    <div class="col-sm-6">
-                                        <li><span class="btn btn-danger"></span> Municipal</li>
-                                        <li><span class="btn btn-warning"></span> Fisherworker</li>
-                                        <li><span class="btn btn-info"></span> Commercial</li>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <li><span class="btn btn-primary"></span> Women/Youth</li>
-                                        <li><span class="btn btn-success"></span>Cultural Community (IPs)</li>
-                                    </div>
-                                </ul>
-                                <!-- </div> -->
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="row">
 
-                                    <div class="align-items-center justify-content-between">
-                                        <h6 class="card-title">Member's Gender</h6>
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                    <h6 class="card-title text-center">Member's Gender</h6>
+                                    <div class="col-sm-12" style="margin-bottom: 30px">
+                                        <canvas id="genderChart" width="1" height="1"></canvas>
                                     </div>
-                                    <!-- <div id="support-tracker-legend" class="support-tracker-legend"></div> -->
-                                    <canvas id="supportTracker"></canvas>
-                                </div>
                             </div>
                         </div>
                         <!-- </div> -->
@@ -149,7 +149,8 @@
                         <div class="card-block">
                             <ul class="nav nav-tabs  tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">FARMC
+                                    <a class="nav-link active" data-toggle="tab" href="#members"
+                                        role="tab">FARMC
                                         Members</a>
                                 </li>
                                 <li class="nav-item">
@@ -175,26 +176,31 @@
                                                 <th>Civil Status</th>
                                                 <th>Gender</th>
                                                 <th>Birthdate</th>
+                                                <th>Age</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody style="font-size:11px">
-                                            @foreach($data as $item)
-                                            <tr>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->address}}</td>
-                                                <td>{{$item->landline_no}}</td>
-                                                <td>{{$item->mobile_no}}</td>
-                                                <td>{{$item->email}}</td>
-                                                <td>{{$item->civil_status}}</td>
-                                                <td>{{$item->gender}}</td>
-                                                <td>{{$item->birthdate}}</td>
-                                                <td style=" display: flex; justify-content: space-between;">
-                                                    <a  href="#!" class="btn btn-success"><i class="ti-eye"></i></a>
-                                                    <a  href="#!" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                    <a  href="#!" class="btn btn-danger"><i class="ti-trash"></i></a>
-                                                </td>
-                                            </tr>
+                                            @foreach ($data as $item)
+                                                <tr>
+                                                    <td>{{ $item->name }}</td>
+                                                    <td>{{ $item->address }}</td>
+                                                    <td>{{ $item->landline_no }}</td>
+                                                    <td>{{ $item->mobile_no }}</td>
+                                                    <td>{{ $item->email }}</td>
+                                                    <td>{{ $item->civil_status }}</td>
+                                                    <td>{{ $item->gender }}</td>
+                                                    <td>{{ $item->birthdate }}</td>
+                                                    <td>{{ $item->age }}</td>
+                                                    <td style=" display: flex; justify-content: space-between;">
+                                                        <a href="{{url ('/FARMCViewform/' . $item->id)}}" class="btn btn-success"><i
+                                                                class="ti-eye"></i></a>
+                                                        <a href="#!" class="btn btn-warning"><i
+                                                                class="ti-pencil"></i></a>
+                                                        <a href="#!" class="btn btn-danger"><i
+                                                                class="ti-trash"></i></a>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -205,32 +211,32 @@
                                 <div class="tab-pane" id="organization" role="tabpanel">
                                     <br>
                                     <table id="FARMC2" class="table table-striped table-bordered" cellspacing="0"
-                                    width="100%">
-                                    <thead style="font-size:12px">
-                                        <tr>
-                                            <th>Province</th>
-                                            <th>Municipality</th>
-                                            <th>Date of Organized</th>
-                                            <th>Date of Re-organized</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                        width="100%">
+                                        <thead style="font-size:12px">
+                                            <tr>
+                                                <th>Province</th>
+                                                <th>Municipality</th>
+                                                <th>Date of Organized</th>
+                                                <th>Date of Re-organized</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="color:red"><b>INCOMPLETE</b></td>
-                                            <td style="text-align: center;">
-                                                <a href="{{ url('/L2Editform') }}" class="btn btn-danger"><i
-                                                        class="ti-eye"></i> &nbsp; Edit</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                <td style="text-align: center;">
+                                                    <a href="{{ url('/L2Editform') }}" class="btn btn-danger"><i
+                                                            class="ti-eye"></i> &nbsp; Edit</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
@@ -243,10 +249,14 @@
 
     <!-- jQuery -->
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -275,6 +285,44 @@
         });
     </script>
 
+    <script>
+        var ctx = document.getElementById('compMemChart').getContext('2d');
+
+        var data = {
+            labels: <?php echo json_encode($labelscomp); ?>,
+            datasets: [{
+                data: <?php echo json_encode($data_comp); ?>,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)', // Red
+                    'rgba(54, 162, 235, 0.5)', // Blue
+                    'rgba(255, 206, 86, 0.5)', // Yellow
+                    'rgba(75, 192, 192, 0.5)', // Green
+                    'rgba(153, 102, 255, 0.5)', // Purple
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            cutoutPercentage: 70,
+
+        };
+
+        var compMemChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
+        });
+    </script>
+
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#FARMC2').DataTable({
@@ -288,14 +336,81 @@
     </script>
 
 
+    <script>
+        var ctx = document.getElementById('ageRangeChart').getContext('2d');
 
-    <!-- <script src="{{ asset('assets/vendors/base/vendor.bundle.base.js') }}"></script> -->
+        var data = {
+            labels: <?php echo json_encode($labelsage); ?>,
+            datasets: [{
+                label: 'Members Count',
+                data: <?php echo json_encode($data_age); ?>,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color for bars
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
 
-    <!-- Custom js for this page-->
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+        var options = {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        };
 
-    <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
+        var ageRangeChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('genderChart').getContext('2d');
+
+        var data = {
+            labels: ['Male', 'Female', 'Others'],
+            datasets: [{
+                label: 'Gender Count',
+                data: <?php echo json_encode($data_gen); ?>,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)', // Blue for male
+                    'rgba(255, 99, 132, 0.5)', // Red for female
+                    'rgba(255, 206, 86, 0.5)', // Yellow for others
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)',
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+        };
+
+        var genderChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+    </script>
+
 
 
 </body>

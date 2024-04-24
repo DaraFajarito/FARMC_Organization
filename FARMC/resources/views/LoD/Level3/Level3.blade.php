@@ -62,7 +62,7 @@
                         <li class="breadcrumb-item active"><a href="tabs.html">Municipal / City FARMC | Level 3</a>
                         </li>
                         <!-- <div class="text-right">
-                            <span><a href="{{ url ('/fullyOperational') }}"><button type="button" class="btn btn-primary">+ &nbsp;Additional Form</button></a></span>
+                            <span><a href="{{ url('/fullyOperational') }}"><button type="button" class="btn btn-primary">+ &nbsp;Additional Form</button></a></span>
                         </div> -->
                     </ol>
                 </div>
@@ -79,7 +79,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 3 | Completed</span>
-                                <h2 class="dashboard-total-products">{{$completedfully}}</h2>
+                                <h2 class="dashboard-total-products">{{ $completedfully }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -89,7 +89,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 3 | Incompleted</span>
-                                <h2 class="dashboard-total-products">{{$incompletefully}}</h2>
+                                <h2 class="dashboard-total-products">{{ $incompletefully }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -105,9 +105,12 @@
                                         <label>MIMAROPA LEVELS OVERVIEW</label>
                                     </div>
                                     <div class="col-md-8 text-right">
-                                        <a href="{{ url ('/L3Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                        <a href="{{ url ('/L3Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                        <a href="{{ url ('/L3Archivedtbl') }}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
+                                        <a href="{{ url('/L3Completedtbl') }}"><button type="button"
+                                                class="btn btn-primary">All Completed</button></a>
+                                        <a href="{{ url('/L3Incompletetbl') }}"><button type="button"
+                                                class="btn btn-danger">All Incomplete</button></a>
+                                        <a href="{{ url('/L3Archivedtbl') }}"><button type="button"
+                                                class="btn btn-warning"><i class="ti-archive"></i></button></a>
                                     </div>
                                 </div>
                                 <br>
@@ -117,22 +120,28 @@
                                         <div class="card-block">
                                             <ul class="nav nav-tabs  tabs" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#mimaropa" role="tab">All</a>
+                                                    <a class="nav-link active" data-toggle="tab" href="#mimaropa"
+                                                        role="tab">All</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa1" role="tab">Oriental Mindoro</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa1"
+                                                        role="tab">Oriental Mindoro</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa2" role="tab">Occidental Mindoro</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa2"
+                                                        role="tab">Occidental Mindoro</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa3" role="tab">Marinduque</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa3"
+                                                        role="tab">Marinduque</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa4" role="tab">Romblon</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa4"
+                                                        role="tab">Romblon</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa5" role="tab">Palawan</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#mimaropa5"
+                                                        role="tab">Palawan</a>
                                                 </li>
 
 
@@ -141,7 +150,8 @@
                                             <div class="tab-content tabs">
                                                 <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                                     <br>
-                                                    <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                    <table id="FARMC" class="table table-striped table-bordered"
+                                                        cellspacing="0" width="100%">
                                                         <thead style="font-size:10px">
                                                             <tr>
                                                                 <th>Province</th>
@@ -154,46 +164,83 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody style="font-size:small">
-                                                            @foreach($data as $item)
-                                                            @if ($item->status !== "ARCHIVED")
-                                                            <tr>
-                                                                <td>{{$item->profileForm->province}}</td>
-                                                                <td>{{$item->profileForm->municipality}}</td>
-                                                                @if ($item->approved_MFDP_file === null)
-                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i> </td>
-                                                                @else
-                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
+                                                            @foreach ($data as $item)
+                                                                @if ($item->status !== 'ARCHIVED')
+                                                                    <tr>
+                                                                        <td>{{ $item->profileForm->province }}</td>
+                                                                        <td>{{ $item->profileForm->municipality }}</td>
+                                                                        @if ($item->approved_MFDP_file === null)
+                                                                            <td> <i class="ti-close"
+                                                                                    style="color: red; font-size: 1.5em;"></i>
+                                                                            </td>
+                                                                        @else
+                                                                            <td> <i class="ti-check-box"
+                                                                                    style="color: green; font-size: 1.5em;"></i>
+                                                                            </td>
+                                                                        @endif
+
+                                                                        @if (
+                                                                            $item->imp_act1 === null ||
+                                                                                $item->imp_act1_file === null ||
+                                                                                $item->imp_act2 === null ||
+                                                                                $item->imp_act2_file === null ||
+                                                                                $item->imp_act3 === null ||
+                                                                                $item->imp_act3_file === null)
+                                                                            <td> <i class="ti-close"
+                                                                                    style="color: red; font-size: 1.5em;"></i>
+                                                                            </td>
+                                                                        @else
+                                                                            <td> <i class="ti-check-box"
+                                                                                    style="color: green; font-size: 1.5em;"></i>
+                                                                            </td>
+                                                                        @endif
+
+
+                                                                        @if (
+                                                                            $item->pol_prop1 === null ||
+                                                                                $item->pol_prop1_file === null ||
+                                                                                $item->pol_prop2 === null ||
+                                                                                $item->pol_prop2_file === null ||
+                                                                                $item->pol_prop3 === null ||
+                                                                                $item->pol_prop3_file === null)
+                                                                            <td> <i class="ti-close"
+                                                                                    style="color: red; font-size: 1.5em;"></i>
+                                                                            </td>
+                                                                        @else
+                                                                            <td> <i class="ti-check-box"
+                                                                                    style="color: green; font-size: 1.5em;"></i>
+                                                                            </td>
+                                                                        @endif
+
+
+                                                                        @if ($item->status == 'COMPLETED')
+                                                                            <td style="color:green"><b>COMPLETED</b>
+                                                                            </td>
+                                                                        @elseif ($item->status == 'INCOMPLETE')
+                                                                            <td style="color:red"><b>INCOMPLETE</b>
+                                                                            </td>
+                                                                        @elseif ($item->status == 'ARCHIVED')
+                                                                            <td style="color:orange"><b>ARCHIVED</b>
+                                                                            </td>
+                                                                        @endif
+
+                                                                        <td
+                                                                            style=" display: flex; justify-content: space-between;">
+                                                                            <a style="margin-left: 5px;"
+                                                                                href="{{ url('/L3Viewform/' . $item->profileForm_id) }}"
+                                                                                class="btn btn-success"><i
+                                                                                    class="ti-eye"></i></a>
+                                                                            <a style="margin-left: 5px;"
+                                                                                href="{{ url('/L3Editform/' . $item->profileForm_id) }}"
+                                                                                class="btn btn-warning"><i
+                                                                                    class="ti-pencil"></i></a>
+                                                                            <a style="margin-left: 5px;"
+                                                                                href="{{ url('/L3Archivedtbl/' . $item->id) }}"
+                                                                                class="btn btn-danger"><i
+                                                                                    class="ti-trash"></i></a>
+                                                                        </td>
+                                                                    </tr>
                                                                 @endif
-
-                                                                @if ($item->imp_act1 === null || $item->imp_act1_file === null || $item->imp_act2 === null || $item->imp_act2_file === null || $item->imp_act3 === null || $item->imp_act3_file === null)
-                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
-                                                                @else
-                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                @endif
-
-
-                                                                @if ($item->pol_prop1 === null || $item->pol_prop1_file === null || $item->pol_prop2 === null || $item->pol_prop2_file === null || $item->pol_prop3 === null || $item->pol_prop3_file === null )
-                                                                <td> <i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
-                                                                @else
-                                                                <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
-                                                                @endif
-
-
-                                                                @if ($item->status == "COMPLETED")
-                                                                <td style="color:green"><b>COMPLETED</b></td>
-                                                                @elseif ($item->status == "INCOMPLETE")
-                                                                <td style="color:red"><b>INCOMPLETE</b></td>
-                                                                @elseif ($item->status == "ARCHIVED")
-                                                                <td style="color:orange"><b>ARCHIVED</b></td>
-                                                                @endif
-
-                                                                <td style=" display: flex; justify-content: space-between;">
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L3Archivedtbl/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            @endif
                                                             @endforeach
                                                         </tbody>
                                                     </table>
@@ -202,49 +249,64 @@
                                                     <br>
                                                     <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#Ormin" role="tab">Baco</a>
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                href="#Ormin" role="tab">Baco</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin1" role="tab">Bansud</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin1"
+                                                                role="tab">Bansud</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin2" role="tab">Bongabong</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin2"
+                                                                role="tab">Bongabong</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin3" role="tab">Bulalacao</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin3"
+                                                                role="tab">Bulalacao</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin4" role="tab">Calapan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin4"
+                                                                role="tab">Calapan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin5" role="tab">Gloria</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin5"
+                                                                role="tab">Gloria</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin6" role="tab">Mansalay</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin6"
+                                                                role="tab">Mansalay</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin7" role="tab">Naujan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin7"
+                                                                role="tab">Naujan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin8" role="tab">Puerto Galera</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin8"
+                                                                role="tab">Puerto Galera</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin9" role="tab">Pinamalayan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin9"
+                                                                role="tab">Pinamalayan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin10" role="tab">Pola</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin10"
+                                                                role="tab">Pola</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin11" role="tab">Roxas</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin11"
+                                                                role="tab">Roxas</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin12" role="tab">San Teodoro</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin12"
+                                                                role="tab">San Teodoro</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Ormin13" role="tab">Socorro</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Ormin13"
+                                                                role="tab">Socorro</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#ormin14" role="tab">Victoria</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#ormin14"
+                                                                role="tab">Victoria</a>
                                                         </li>
 
                                                     </ul>
@@ -253,7 +315,9 @@
                                                         <div class="tab-pane active" id="Ormin" role="tabpanel">
                                                             <br>
                                                             <div class="col-mb-12">
-                                                                <table id="FARMC2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                                <table id="FARMC2"
+                                                                    class="table table-striped table-bordered"
+                                                                    cellspacing="0" width="100%">
                                                                     <thead style="font-size:12px">
                                                                         <tr>
                                                                             <th>Province</th>
@@ -271,9 +335,13 @@
                                                                             <td></td>
                                                                             <td></td>
                                                                             <td></td>
-                                                                            <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                            <td style="color:red"><b>INCOMPLETE</b>
+                                                                            </td>
                                                                             <td style="text-align: center;">
-                                                                                <a href="{{ url ('/L2Editform') }}" class="btn btn-danger"><i class="ti-eye"></i> &nbsp; Edit</a>
+                                                                                <a href="{{ url('/L2Editform') }}"
+                                                                                    class="btn btn-danger"><i
+                                                                                        class="ti-eye"></i> &nbsp;
+                                                                                    Edit</a>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -330,40 +398,52 @@
                                                     <br>
                                                     <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#OcciMin" role="tab">Abra de Ilog</a>
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                href="#OcciMin" role="tab">Abra de Ilog</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin1" role="tab">Calintaan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin1"
+                                                                role="tab">Calintaan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin2" role="tab">Looc</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin2"
+                                                                role="tab">Looc</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin3" role="tab">Lubang</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin3"
+                                                                role="tab">Lubang</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin4" role="tab">Magsaysay</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin4"
+                                                                role="tab">Magsaysay</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin5" role="tab">Mamburao</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin5"
+                                                                role="tab">Mamburao</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin6" role="tab">Paluan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin6"
+                                                                role="tab">Paluan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin7" role="tab">Rizal</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin7"
+                                                                role="tab">Rizal</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin8" role="tab"></a>Sablayan
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin8"
+                                                                role="tab"></a>Sablayan
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin9" role="tab">Pinamalayan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin9"
+                                                                role="tab">Pinamalayan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin10" role="tab">San Jose</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin10"
+                                                                role="tab">San Jose</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin11" role="tab">Santa Cruz</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#OcciMin11"
+                                                                role="tab">Santa Cruz</a>
                                                         </li>
 
 
@@ -412,22 +492,28 @@
                                                     <br>
                                                     <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#Marinduque" role="tab">Boac</a>
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                href="#Marinduque" role="tab">Boac</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque1" role="tab">Buenavista</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque1"
+                                                                role="tab">Buenavista</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque2" role="tab">Gasan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque2"
+                                                                role="tab">Gasan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque3" role="tab">Mogpog</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque3"
+                                                                role="tab">Mogpog</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque4" role="tab">Sta. Cruz</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque4"
+                                                                role="tab">Sta. Cruz</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque5" role="tab">Torrijos</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Marinduque5"
+                                                                role="tab">Torrijos</a>
                                                         </li>
                                                     </ul>
                                                     <!-- Tab panes -->
@@ -456,55 +542,72 @@
                                                     <br>
                                                     <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#Romblon" role="tab">Alcantara</a>
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                href="#Romblon" role="tab">Alcantara</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon1" role="tab">Banton</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon1"
+                                                                role="tab">Banton</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon2" role="tab">Cajidiocan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon2"
+                                                                role="tab">Cajidiocan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon3" role="tab">Calatrava</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon3"
+                                                                role="tab">Calatrava</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon4" role="tab">Concepcion</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon4"
+                                                                role="tab">Concepcion</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon5" role="tab">Corcuera</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon5"
+                                                                role="tab">Corcuera</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon6" role="tab">Ferrol</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon6"
+                                                                role="tab">Ferrol</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon7" role="tab">Looc</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon7"
+                                                                role="tab">Looc</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon8" role="tab"></a>Magdiwang
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon8"
+                                                                role="tab"></a>Magdiwang
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon9" role="tab">Odiongan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon9"
+                                                                role="tab">Odiongan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon10" role="tab">Romblon</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon10"
+                                                                role="tab">Romblon</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon11" role="tab">San Agustin</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon11"
+                                                                role="tab">San Agustin</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon13" role="tab"></a>San Andres
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon13"
+                                                                role="tab"></a>San Andres
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon14" role="tab">San Fernando</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon14"
+                                                                role="tab">San Fernando</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon15" role="tab">San Jose</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon15"
+                                                                role="tab">San Jose</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon16" role="tab">Santa Fe</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon16"
+                                                                role="tab">Santa Fe</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Romblon17" role="tab">Santa Maria</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Romblon17"
+                                                                role="tab">Santa Maria</a>
                                                         </li>
 
                                                     </ul>
@@ -567,73 +670,96 @@
                                                     <br>
                                                     <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#Palawan" role="tab">Aborlan</a>
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                href="#Palawan" role="tab">Aborlan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan1" role="tab">Agutaya</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan1"
+                                                                role="tab">Agutaya</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan2" role="tab">Aracelli</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan2"
+                                                                role="tab">Aracelli</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan3" role="tab">Balabac</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan3"
+                                                                role="tab">Balabac</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan4" role="tab">Bataraza</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan4"
+                                                                role="tab">Bataraza</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan5" role="tab">Brooke's Point</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan5"
+                                                                role="tab">Brooke's Point</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan6" role="tab">Busuanga</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan6"
+                                                                role="tab">Busuanga</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan7" role="tab">Cagayancillo</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan7"
+                                                                role="tab">Cagayancillo</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan8" role="tab"></a>Coron
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan8"
+                                                                role="tab"></a>Coron
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan9" role="tab">Culion</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan9"
+                                                                role="tab">Culion</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan10" role="tab">Cuyo</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan10"
+                                                                role="tab">Cuyo</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan11" role="tab">Dumaran</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan11"
+                                                                role="tab">Dumaran</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan13" role="tab"></a>El Nido
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan13"
+                                                                role="tab"></a>El Nido
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan14" role="tab">Kalayaan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan14"
+                                                                role="tab">Kalayaan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan15" role="tab">Linapacan</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan15"
+                                                                role="tab">Linapacan</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan16" role="tab">Magsaysay</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan16"
+                                                                role="tab">Magsaysay</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan17" role="tab">Narra</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan17"
+                                                                role="tab">Narra</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan18" role="tab">Quezon</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan18"
+                                                                role="tab">Quezon</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan19" role="tab">Rizal</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan19"
+                                                                role="tab">Rizal</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan20" role="tab">Roxas</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan20"
+                                                                role="tab">Roxas</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan21" role="tab">San Vicente</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan21"
+                                                                role="tab">San Vicente</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan22" role="tab">Sofronio Espaniola</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan22"
+                                                                role="tab">Sofronio Espaniola</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#Palawan23" role="tab">Taytay</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#Palawan23"
+                                                                role="tab">Taytay</a>
                                                         </li>
 
                                                     </ul>
@@ -719,19 +845,11 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-block">
-                                        <h6 class="card-title">All Level 3 <em> <small>(Incomplete & Complete)</small> </em></h6>
-                                        <br>
+                                        <h6 class="card-title">All Level 3 <em> <small>(Incomplete & Complete)</small>
+                                            </em></h6>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
-                                                <canvas id="bestSellers"></canvas>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <ul class="graphl-legend-rectangle">
-                                                    <br>
-                                                    <li><span class="btn btn-danger"></span> Completed</li>
-                                                    <li><span class="btn btn-warning"></span> Incomplete</li>
-                                                    <br>
-                                                </ul>
+                                                <canvas id="level3chart"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -749,25 +867,25 @@
 
 
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
-        <!-- DataTables CSS -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
-        <!-- DataTables JS -->
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <!-- DataTables Buttons extension CSS -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
-
-        <!-- DataTables Buttons extension JS -->
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
-
+        <!-- JavaScript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#FARMC').DataTable({
@@ -793,10 +911,47 @@
         </script>
 
 
-        <script src="{{ asset ('assets/js/dashboard.js') }}"></script>
+        <script>
+            // Get the canvas element
+            var ctx = document.getElementById('level3chart').getContext('2d');
 
-        <script src="{{ asset ('assets/vendors/chart.js/Chart.min.js') }}"></script>
-        <script src="{{ asset ('assets/vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js') }}"></script>
+            // Define data for the chart
+            var completedfully = <?php echo $completedfully; ?>;
+            var incompletefully = <?php echo $incompletefully; ?>;
+            var data = {
+                labels: ['Completed', 'Incomplete'],
+                datasets: [{
+                    label: 'Task Completion',
+                    data: [completedfully, incompletefully],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.5)', // Green for completed tasks
+                        'rgba(255, 99, 132, 0.5)' // Red for incomplete tasks
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            // Define options for the chart
+            var options = {
+                cutoutPercentage: 40,
+                plugins: {
+                    title: {
+                        display: true,
+                    }
+                }
+            };
+
+            // Create the chart
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+        </script>
 
 </body>
 

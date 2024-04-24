@@ -19,10 +19,10 @@ class FarmcMembership_Controller extends Controller
             'civil_status' => 'nullable|string',
             'gender' => 'nullable|string',
             'birthdate' => 'nullable|string',
-            'age' => 'nullable|string',
+            'age' => 'nullable|integer',
             'birthplace_municipality' => 'nullable|string',
             'birthplace_province' => 'nullable|string',
-            '4ps' => 'nullable|string',
+            'fourps' => 'nullable|string',
             'pwd' => 'nullable|string',
             'IP' => 'nullable|string',
             'name_spouse' =>  'nullable|string',
@@ -57,6 +57,7 @@ class FarmcMembership_Controller extends Controller
             'farmc_name' => 'nullable|string',
             'farmc_add' => 'nullable|string',
             'mfarmc_off' => 'nullable|string',
+            'inc_officer1' => 'nullable|string',
             'inc_officer2' => 'nullable|string',
             'inc_member1' => 'nullable|string',
             'inc_member2' => 'nullable|string',
@@ -121,13 +122,72 @@ class FarmcMembership_Controller extends Controller
         return redirect('/farmc_membership');
     }
 
+    //==========================================================================================================================================||
+    //================================================== C O U N T  O F  D A T A ===============================================================||
+
+
     public function farmc_membership_count()
     {
         $data = FarmcMembership_Model::get();
         $memberCount = FarmcMembership_Model::whereNotNull('name')->count();
         $farmcCount = FarmcMembership_Model::whereNotNull('farmc_name')->count();
+        // $compMemCount = FarmcMembership_Model::whereNotNull('comp_mem')->count();
 
-        //chart for complete
-        return view('FARMC_Membership.FARMC_Membership', compact('memberCount', 'farmcCount', 'data'));
+        // Age Count
+
+        $ageRanges = [
+            '0-18' => FarmcMembership_Model::whereBetween('age', [0, 18])->get()->count(),
+            '19-25' => FarmcMembership_Model::whereBetween('age', [19, 25])->get()->count(),
+            '26-35' => FarmcMembership_Model::whereBetween('age', [26, 35])->get()->count(),
+            '36-50' => FarmcMembership_Model::whereBetween('age', [36, 50])->get()->count(),
+            '51+' => FarmcMembership_Model::where('age', '>', 50)->get()->count(),
+        ];
+        $labelsage = array_keys($ageRanges);
+        $data_age = array_values($ageRanges);
+
+        // Composition of Membership Count and Categ
+
+        $municipalCount = FarmcMembership_Model::where('comp_mem', 'Municipal')->count();
+        $fishworkerCount = FarmcMembership_Model::where('comp_mem', 'Fishworker')->count();
+        $culturalCount = FarmcMembership_Model::where('comp_mem', 'Cultural Community (IP\'s)')->count();
+        $commercialCount = FarmcMembership_Model::where('comp_mem', 'Commercial')->count();
+        $womenYouthCount = FarmcMembership_Model::where('comp_mem', 'Women / Youth')->count();
+
+        $memCount = [
+            'Municipal' => $municipalCount,
+            'Fishworker' => $fishworkerCount,
+            'Cultural Community (IP\'s)' => $culturalCount,
+            'Commercial' => $commercialCount,
+            'Women / Youth' => $womenYouthCount
+        ];
+
+        $labelscomp = array_keys($memCount);
+        $data_comp = array_values($memCount);
+
+        $gen_male = FarmcMembership_Model::where('gender', 'Male')->count();
+        $gen_female = FarmcMembership_Model::where('gender', 'Female')->count();
+        $gen_other = FarmcMembership_Model::where('gender', 'Others')->count();
+
+        $genderCount = [
+            'Male' => $gen_male,
+            'Female' => $gen_female,
+            'Others' => $gen_other,
+        ];
+
+        $labelsgen = array_keys($genderCount);
+        $data_gen = array_values($genderCount);
+
+        return view('FARMC_Membership.FARMC_Membership', compact('memberCount', 'farmcCount', 'data', 'data_age', 'labelsage', 'data_comp', 'labelscomp', 'labelsgen', 'data_gen'));
     }
+
+     //==========================================================================================================================================||
+    //================================================== D I S P L A Y I N G  O F  D A T A ===============================================================||
+
+    public function display_mem_Viewform($id)
+    {
+        $farmc_mem = FarmcMembership_Model::where('id', $id)->get();
+
+        return view('FARMC_Membership.FARMC_Viewform', compact('farmc_mem'));
+    }
+
 }

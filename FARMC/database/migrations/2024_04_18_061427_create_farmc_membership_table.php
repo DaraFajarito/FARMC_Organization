@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('age')->nullable();
             $table->string('birthplace_municipality')->nullable();
             $table->string('birthplace_province')->nullable();
-            $table->string('4ps')->nullable();
+            $table->string('fourps')->nullable();
             $table->string('pwd')->nullable();
             $table->string('IP')->nullable();
             $table->string('name_spouse')->nullable();
@@ -45,6 +45,7 @@ return new class extends Migration
             $table->string('farmc_name')->nullable();
             $table->string('farmc_add')->nullable();
             $table->string('mfarmc_off')->nullable();
+            $table->string('inc_officer1')->nullable();
             $table->string('inc_officer2')->nullable();
             $table->string('inc_member1')->nullable();
             $table->string('inc_member2')->nullable();

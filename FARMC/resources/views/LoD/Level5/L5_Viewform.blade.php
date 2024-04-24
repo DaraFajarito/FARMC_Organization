@@ -555,7 +555,7 @@
                                                                 @else
                                                                 <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                                 @endif
-                                                                <td>pubouts</td>
+                                                                <td>Publication</td>
                                                                 <td>{{$item->iec_pub_file}}</td>
                                                             </tr>
                                                             <tr>

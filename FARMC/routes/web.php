@@ -287,3 +287,4 @@ Route::post('/add-membership/{id}', [FarmcMembership_Controller::class,'addFARMC
 Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOrgMembershipForm']);
 Route::post('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);
 Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);
+Route::get('/FARMCViewform/{id}', [FarmcMembership_Controller::class,'display_mem_Viewform']);

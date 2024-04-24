@@ -91,7 +91,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox2" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="mfarmc_officer">
+                                                        <input id="otherInput" type="text" class="form-control" name="mfarmc_off">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
