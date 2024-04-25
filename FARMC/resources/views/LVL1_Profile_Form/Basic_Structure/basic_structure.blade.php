@@ -95,11 +95,11 @@
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the Photos</label>
                                             <input id="photos1" type="file" name="photos1" class="form-control" style="width: 195px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                            @error('photos1')
+                                            {{-- @error('photos1')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                            @enderror
+                                            @enderror --}}
                                         </div>
                                         <div class="form-group m-r-15">
                                             <label for="inline3mail" class="block form-control-label">Attach the Attendance</label>

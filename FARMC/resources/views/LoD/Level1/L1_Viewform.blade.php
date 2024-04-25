@@ -181,7 +181,7 @@
                                             </div>
                                             <br>
                                             <div class="form-group row">
-                                                <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->province}}</label> 
+                                                <label for="province" class="col-md-12 col-form-label form-control-label">Province: {{$item->province}}</label>
                                             </div>
                                             <br>
                                             <div class="form-group m-r-15">
@@ -1645,7 +1645,7 @@
                 jsPDF: {
                     unit: 'in',
                     format: 'letter',
-                    orientation: 'landscape'
+                    orientation: 'portrait'
                 },
                 // Add autoPaging option
                 // This will automatically add new pages as needed to fit the content

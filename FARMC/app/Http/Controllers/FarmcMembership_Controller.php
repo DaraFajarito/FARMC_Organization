@@ -24,17 +24,21 @@ class FarmcMembership_Controller extends Controller
             'birthplace_province' => 'nullable|string',
             'fourps' => 'nullable|string',
             'pwd' => 'nullable|string',
+            'pwd_yes' => 'nullable|string',
             'IP' => 'nullable|string',
+            'IP_yes' => 'nullable|string',
             'name_spouse' =>  'nullable|string',
             'occupation' =>  'nullable|string',
             'religion' => 'nullable|string',
+            'religion_christ' => 'nullable|string',
             'dependent_male' => 'nullable|integer',
             'dependent_female' => 'nullable|integer',
             'dependent_others' => 'nullable|integer',
             'educational_attainment' => 'nullable|string',
             'tesda' => 'nullable|string',
             'tertiary' => 'nullable|string',
-            'other_source' => 'nullable|string'
+            'other_source' => 'nullable|string',
+            'other_source_other' => 'nullable|string'
         ]);
 
         $farmcMembership = FarmcMembership_Model::create($validatedData);
@@ -57,13 +61,16 @@ class FarmcMembership_Controller extends Controller
             'farmc_name' => 'nullable|string',
             'farmc_add' => 'nullable|string',
             'mfarmc_off' => 'nullable|string',
+            'mfarmc_off_yes' => 'nullable|string',
             'inc_officer1' => 'nullable|string',
             'inc_officer2' => 'nullable|string',
             'inc_member1' => 'nullable|string',
             'inc_member2' => 'nullable|string',
             'farmc_rep' => 'nullable|string',
             'sect' => 'nullable|string',
+            'sect_other' => 'nullable|string',
             'LGU_rep' => 'nullable|string',
+            'LGU_rep_other' => 'nullable|string',
         ]);
 
         $farmcMembership = FarmcMembership_Model::find($id);
@@ -92,13 +99,16 @@ class FarmcMembership_Controller extends Controller
             'add_acc' => 'nullable|string',
             'comp_mem' => 'nullable|string',
             'reg_ass' => 'nullable|string',
+            'reg_ass_yes' => 'nullable|string',
             'lgu_accre' => 'nullable|string',
             'reg_no' => 'nullable|string',
             'date' => 'nullable|string',
             'officer_ass' => 'nullable|string',
             'position' => 'nullable|string',
             'involvement_mdo' => 'nullable|string',
-            'year_el' => 'nullable|string',
+            'year1' => 'nullable|string',
+            'year2' => 'nullable|string',
+            'year3' => 'nullable|string',
             'photo' => 'file|max:10485760|mimes:pdf,doc,docx,jpeg,png',
         ], [
             'photo.max' => 'The photo may not be greater than 10MB.',
@@ -130,7 +140,7 @@ class FarmcMembership_Controller extends Controller
     {
         $data = FarmcMembership_Model::get();
         $memberCount = FarmcMembership_Model::whereNotNull('name')->count();
-        $farmcCount = FarmcMembership_Model::whereNotNull('farmc_name')->count();
+        $farmcCount = FarmcMembership_Model::whereNotNull('org_mem_name')->count();
         // $compMemCount = FarmcMembership_Model::whereNotNull('comp_mem')->count();
 
         // Age Count
@@ -188,6 +198,29 @@ class FarmcMembership_Controller extends Controller
         $farmc_mem = FarmcMembership_Model::where('id', $id)->get();
 
         return view('FARMC_Membership.FARMC_Viewform', compact('farmc_mem'));
+    }
+
+    public function display_membership_archived()
+    {
+        $mem_archived = FarmcMembership_Model::where('status', 'ARCHIVED')->get();
+        return view('FARMC_Membership.archive_membership', compact('mem_archived'));
+    }
+
+   //==========================================================================================================================================||
+    //================================================== A R C H I V I N G  O F  D A T A ===============================================================||
+
+    public function moveToMem_archived($id)
+    {
+        $mem_archived = FarmcMembership_Model::find($id);
+
+        if ($mem_archived) {
+            $mem_archived->status = 'ARCHIVED';
+            $mem_archived->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found.');
+        }
     }
 
 }

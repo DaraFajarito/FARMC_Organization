@@ -140,8 +140,8 @@
             </div>
 
             <div class="col-md-12" style="margin-bottom: 30px;">
-                <a href="#!"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
-                <a href="#!"><button type="button" class="btn btn-primary">View All Members</button></a>
+                <a href="{{ url ('/membership_archived')}}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i> Archived Members</button></a>
+                <a href="#!"><button type="button" class="btn btn-primary" style="margin-left: 10px">View All Members</button></a>
             </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
@@ -177,11 +177,13 @@
                                                 <th>Gender</th>
                                                 <th>Birthdate</th>
                                                 <th>Age</th>
+                                                <th hidden >Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody style="font-size:11px">
                                             @foreach ($data as $item)
+                                            @if ($item->status != 'ARCHIVED')
                                                 <tr>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->address }}</td>
@@ -192,15 +194,17 @@
                                                     <td>{{ $item->gender }}</td>
                                                     <td>{{ $item->birthdate }}</td>
                                                     <td>{{ $item->age }}</td>
+                                                    <td hidden>{{ $item->status }}</td>
                                                     <td style=" display: flex; justify-content: space-between;">
                                                         <a href="{{url ('/FARMCViewform/' . $item->id)}}" class="btn btn-success"><i
                                                                 class="ti-eye"></i></a>
                                                         <a href="#!" class="btn btn-warning"><i
                                                                 class="ti-pencil"></i></a>
-                                                        <a href="#!" class="btn btn-danger"><i
+                                                        <a href="{{url ('/membership_archived/' . $item->id) }}" class="btn btn-danger"><i
                                                                 class="ti-trash"></i></a>
                                                     </td>
                                                 </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -212,29 +216,49 @@
                                     <br>
                                     <table id="FARMC2" class="table table-striped table-bordered" cellspacing="0"
                                         width="100%">
-                                        <thead style="font-size:12px">
+                                        <thead style="font-size:11px">
                                             <tr>
-                                                <th>Province</th>
-                                                <th>Municipality</th>
-                                                <th>Date of Organized</th>
-                                                <th>Date of Re-organized</th>
-                                                <th>Status</th>
+                                                <th>Member's Name</th>
+                                                <th>Name of Association / Organization / Cooperative</th>
+                                                <th>Address of Association / Organization / Cooperative</th>
+                                                <th>Composition of Membership</th>
+                                                <th>Registration of Association</th>
+                                                <th>LGU Accreditation</th>
+                                                <th>Officer of Association</th>
+                                                <th>Involvement in Mangingisdang Director Program</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-
+                                        <tbody style="font-size:12px">
+                                            @foreach ($data as $item)
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="color:red"><b>INCOMPLETE</b></td>
+                                                <td>{{$item->name}}</td>
+                                                <td>{{$item->org_mem_name}}</td>
+                                                <td>{{$item->add_acc}}</td>
+                                                <td>{{$item->comp_mem}}</td>
+
+                                                @if ($item->reg_ass === 'No')
+                                                <td>No</td>
+                                                @elseif ($item->reg_ass === 'Yes')
+                                                <td>Yes , {{$item->reg_ass_yes}}</td>
+                                                @endif
+
+                                                <td>{{$item->lgu_accre}}</td>
+
+                                                @if ($item->officer_ass === 'No')
+                                                <td>No</td>
+                                                @elseif ($item->officer_ass === 'Yes')
+                                                <td>Yes , {{$item->position}}</td>
+                                                @endif
+
+                                                <td>{{$item->involvement_mdo}},  {{$item->year1}} {{$item->year2}} {{$item->year3}}  </td>
+
                                                 <td style="text-align: center;">
-                                                    <a href="{{ url('/L2Editform') }}" class="btn btn-danger"><i
-                                                            class="ti-eye"></i> &nbsp; Edit</a>
+                                                    <a href="" class="btn btn-success"><i
+                                                            class="ti-eye"></i> &nbsp; View</a>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

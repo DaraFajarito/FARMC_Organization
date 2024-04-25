@@ -231,17 +231,16 @@
                                                     <div style="margin-top: 20px"></div>
                                                     <div class="form-group">
                                                         <label for=""
-                                                            class="col-md-12 col-form-label form-control-label"
-                                                            style="line-height: 10px">Person w/
-                                                            Disability (PWD): &nbsp; {{ $item->pwd }}</label>
+                                                            class="col-md-12 col-form-label form-control-label">Person w/
+                                                            Disability (PWD): &nbsp; {{ $item->pwd }}  {{ $item->pwd_yes }} </label>
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label"
                                                             style="line-height: 10px">Cultural
-                                                            Community (IP's): &nbsp; {{ $item->IP }}
+                                                            Community (IP's): &nbsp; {{ $item->IP }}  {{ $item->IP_yes }}
                                                         </label>
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Religion
-                                                            Affliation: &nbsp; {{ $item->religion }}
+                                                            Affliation: &nbsp; {{ $item->religion }}  {{ $item->religion_christ }}
                                                         </label>
                                                     </div>
                                                 </div>
@@ -300,11 +299,11 @@
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Educational
                                                             Attainment/Level: &nbsp;
-                                                            {{ $item->educational_attainment }}</label>
+                                                            {{ $item->educational_attainment }}  {{ $item->tertiary}}  {{ $item->tesda }}</label>
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Other
                                                             Source of livelihood: &nbsp;
-                                                            {{ $item->other_source }}</label>
+                                                            {{ $item->other_source }}  {{ $item->other_source_other }} </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -328,7 +327,7 @@
                                                         FARMC: &nbsp; {{ $item->farmc_add }}</label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Officer of
-                                                        FARMC: &nbsp; {{ $item->mfarmc_off }}</label>
+                                                        FARMC: &nbsp; {{ $item->mfarmc_off }}  {{ $item->mfarmc_off_yes }} </label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -356,19 +355,18 @@
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label"
                                                         style="line-height: 10px">Sector
-                                                        Represented: &nbsp; {{ $item->sect }}</label>
+                                                        Represented: &nbsp; {{ $item->sect }}  {{ $item->sect_other }} </label>
                                                     <label for=""
-                                                        class="col-md-12 col-form-label form-control-label"
-                                                        style="line-height: 10px">LGU
-                                                        Representative: &nbsp; {{ $item->LGU_rep }}</label>
+                                                        class="col-md-12 col-form-label form-control-label">LGU
+                                                        Representative: &nbsp; {{ $item->LGU_rep }}  {{ $item->LGU_rep_other }} </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
                                         <hr>
                                         <div style="background-color: #706d69">
                                             <div class="grid-material bg-general" style="color: white;padding:10px">
-                                                &nbsp&nbsp&nbsp<b>2. FARMC Membership</b></div>
+                                                &nbsp&nbsp&nbsp<b>3. Organizational Membership</b></div>
                                         </div>
                                         <hr>
                                         <div class="col-md-12">
@@ -394,7 +392,7 @@
                                                 <div class="form-group" style="line-height: 10px">
                                                     <label for="municipality"
                                                         class="col-md-12 col-form-label form-control-label">Registration
-                                                        of Association: &nbsp; {{ $item->reg_ass }}
+                                                        of Association: &nbsp; {{ $item->reg_ass }}  {{ $item->reg_ass_yes }}
                                                     </label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">LGU
@@ -402,7 +400,7 @@
                                                     </label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Officer of
-                                                        Association: &nbsp; {{ $item->reg_no }}
+                                                        Association: &nbsp; {{ $item->officer_ass }}
                                                     </label>
                                                 </div>
                                             </div>
@@ -414,11 +412,11 @@
                                                 <div class="form-group" style="line-height: 10px">
                                                     <label for="municipality"
                                                         class="col-md-12 col-form-label form-control-label">Position:
-                                                        &nbsp; {{ $item->position }}
+                                                        &nbsp; {{ $item->involvement_mdo }}
                                                     </label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Year
-                                                        Elected: &nbsp; {{ $item->year_els }}</label>
+                                                        Elected: &nbsp; {{ $item->year1 }}  {{ $item->year2 }}  {{ $item->year3 }}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -460,9 +458,8 @@
                                                 <div
                                                     style="margin-left: 100px; width: 130px; height: 120px; border: 1px solid black; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
                                                     <input type="file" id="photo1x1" accept="image/*"
-                                                        name="photo" style="display: none;">
-                                                    <label for="photo1x1" id="label1x1" style="cursor: pointer;">1x1
-                                                        Photo</label> <!-- 1x1 photo box -->
+                                                        name="photo" style="display: none;" >
+                                                    <label for="photo1x1" id="label1x1" style="cursor: pointer;"> <img src="{{ $item->photo }}" alt="Item Photo"></label> <!-- 1x1 photo box -->
                                                     <img id="preview1x1" src="#" alt="Preview"
                                                         style="display: none; max-width: 100%; max-height: 100%; cursor: pointer;">
                                                 </div>

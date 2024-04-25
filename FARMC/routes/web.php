@@ -6,8 +6,7 @@ use App\Http\Controllers\FARMC_Authentication\AuthController;
 use App\Http\Controllers\FarmcMembership_Controller;
 use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
-
-
+use App\Models\FarmcMembership_Model;
 
 Route::get('/', function () {
     return view('FARMC_Authentication/login');
@@ -288,3 +287,6 @@ Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOr
 Route::post('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);
 Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);
 Route::get('/FARMCViewform/{id}', [FarmcMembership_Controller::class,'display_mem_Viewform']);
+
+Route::get('/membership_archived',[FarmcMembership_Controller::class, 'display_membership_archived']);
+Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'moveToMem_archived']);

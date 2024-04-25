@@ -91,7 +91,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox2" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="mfarmc_off">
+                                                        <input id="otherInput" type="text" class="form-control" name="mfarmc_off_yes">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -146,10 +146,10 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sector" value="Fisherfolk/Fishworker" /> <i class="helper"></i> Fisherfolk/Fishworker
+                                                                <input type="radio" name="sect" value="Fisherfolk/Fishworker" /> <i class="helper"></i> Fisherfolk/Fishworker
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="sector" value="Commercial Operator" /> <i class="helper"></i> Commercial Operator
+                                                                <input type="radio" name="sect" value="Commercial Operator" /> <i class="helper"></i> Commercial Operator
                                                             </label>
                                                         </div>
                                                     </div>
@@ -191,12 +191,12 @@
                                                                 <input type="radio" name="sect" value="Cultural Community (IP's)" /> <i class="helper"></i>Cultural Community (IP's)
                                                             </label>
                                                             <label>
-                                                                <input type="radio" value="Other" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
+                                                                <input type="radio" value="sect" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="sect">
+                                                        <input id="otherInput" type="text" class="form-control" name="sect_other">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
@@ -244,7 +244,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group" id="otherTextBox1" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="LGU_rep">
+                                                        <input id="otherInput" type="text" class="form-control" name="LGU_rep_other">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->

@@ -100,7 +100,7 @@
                                                     <br> <br>
                                                     <div class="form-group m-r-15">
                                                         <label for="inline3mail" class="block form-control-label">Email
-                                                            Add</label>
+                                                            Address</label>
                                                         <input id="inline3mail" name="email" type="email"
                                                             class="form-control" style="width: 450px;"
                                                             placeholder="Email Add">
@@ -223,7 +223,7 @@
                                                         <div class="form-check">
                                                             <label for="pwd" class="form-check-label">
                                                                 <input type="radio" class="form-check-input"
-                                                                    name="pwd"  value="Yes"
+                                                                    name="pwd" value="Yes"
                                                                     onchange="toggleTextBox1('pwd');" />
                                                                 Yes
                                                             </label>
@@ -241,7 +241,7 @@
                                                             <label for="inline3mail"
                                                                 class="block form-control-label">Specify, if
                                                                 yes</label>
-                                                            <input id="inline3mail" type="text" name="pwd"
+                                                            <input id="inline3mail" type="text" name="pwd_yes"
                                                                 class="form-control" placeholder="">
                                                         </div>
                                                     </div>
@@ -270,13 +270,13 @@
                                                             </label>
                                                         </div>
                                                         <div class="form-group" id="textBoxGroup2"
-                                                        style="display: none;">
-                                                        <label for="inline3mail"
-                                                            class="block form-control-label">Specify, if
-                                                            yes</label>
-                                                        <input id="inline3mail" type="text" name="IP"
-                                                            class="form-control" placeholder="">
-                                                    </div>
+                                                            style="display: none;">
+                                                            <label for="inline3mail"
+                                                                class="block form-control-label">Specify, if
+                                                                yes</label>
+                                                            <input id="inline3mail" type="text" name="IP_yes"
+                                                                class="form-control" placeholder="">
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -308,8 +308,9 @@
                                                             <label for="inline3mail"
                                                                 class="block form-control-label">If Christian, please
                                                                 specify</label>
-                                                            <input id="inline3mail" type="text" name="religion"
-                                                                class="form-control" placeholder="">
+                                                            <input id="inline3mail" type="text"
+                                                                name="religion_christ" class="form-control"
+                                                                placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -347,26 +348,33 @@
                                                         <!-- <hr> -->
                                                         <label for="inline3mail" class="block form-control-label">No.
                                                             of Dependent/s</em></label>
-                                                        <div class="col-md-3">
-                                                            <div class="form-radio">
-                                                                <div class="radio radio-inline">
-                                                                    <br>
-                                                                    <label>
-                                                                        <input type="radio" name="radio" /><i
-                                                                            class="helper"></i>Male
-                                                                    </label>
-                                                                    <br>
-                                                                    <label>
-                                                                        <input type="radio" name="radio" /><i
-                                                                            class="helper"></i>Female
-                                                                    </label>
-                                                                    <br>
-                                                                    <label>
-                                                                        <input type="radio" name="radio" /><i
-                                                                            class="helper"></i>Others
-                                                                    </label>
-
-                                                                </div>
+                                                            <br>
+                                                        <div class="col-md-4">
+                                                            <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                                <label class="input-checkbox checkbox-primary">
+                                                                    <input type="checkbox" name="internalP"
+                                                                        id="checkbox">
+                                                                    <span class="checkbox"></span>
+                                                                </label>
+                                                                <div class="captions">Male</div>
+                                                            </div>
+                                                            <br><br><br>
+                                                            <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                                <label class="input-checkbox checkbox-primary">
+                                                                    <input type="checkbox" name="fisherfolkR"
+                                                                        id="checkbox-1">
+                                                                    <span class="checkbox"></span>
+                                                                </label>
+                                                                <div class="captions">Female</div>
+                                                            </div>
+                                                            <br><br><br>
+                                                            <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
+                                                                <label class="input-checkbox checkbox-primary">
+                                                                    <input type="checkbox" name="fisheriesP"
+                                                                        id="checkbox-2">
+                                                                    <span class="checkbox"></span>
+                                                                </label>
+                                                                <div class="captions">Others</div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-1">
@@ -516,7 +524,7 @@
                                                                         </label>
                                                                     </div>
                                                                     <div style="margin-left: 60px;">
-                                                                        <textarea rows="4" name="other_source" style="width: 200px; border: 1px solid #ccc;"></textarea>
+                                                                        <textarea rows="4" name="other_source_other" style="width: 200px; border: 1px solid #ccc;"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
