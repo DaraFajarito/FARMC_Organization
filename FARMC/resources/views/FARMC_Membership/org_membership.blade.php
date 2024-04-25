@@ -63,6 +63,7 @@
                         <form class="form-inline" action="{{ url('/add-orgmembership/' . $data->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
                                     <div class="card inline-form-style">

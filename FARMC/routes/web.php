@@ -209,11 +209,20 @@ Route::get('/L5Completedtbl',[ProfileForm_Controller::class, 'display_level5_com
 // ---------------------------------------------------------------------------------------//
 //FARMC Membership
 // ---------------------------------------------------------------------------------------//
-
-Route::view('/farmc_membership', 'FARMC_Membership.FARMC_Membership');
 Route::view('/personal_info', 'FARMC_Membership.personal_info');
-Route::view('/membership', 'FARMC_Membership.membership');
-Route::view('/org_membership', 'FARMC_Membership.org_membership');
+Route::put('/add-personal-info', [FarmcMembership_Controller::class,'addFARMC_PersonalInfo']);
+Route::get('/membership/{id}', [FarmcMembership_Controller::class,'displayMembershipForm']);
+Route::put('/add-membership/{id}', [FarmcMembership_Controller::class,'addFARMC_Membership']);
+Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOrgMembershipForm']);
+Route::put('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);
+Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);
+Route::get('/FARMCViewform/{id}', [FarmcMembership_Controller::class,'display_mem_Viewform']);
+
+Route::put('/edit-membership/{id}', [FarmcMembership_Controller::class,'editFARMC_Membership']);
+Route::get('/membership_edit/{id}', [FarmcMembership_Controller::class,'display_membership_edit']);
+
+Route::get('/membership_archived',[FarmcMembership_Controller::class, 'display_membership_archived']);
+Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'moveToMem_archived']);
 
 // ---------------------------------------------------------------------------------------//
 
@@ -280,13 +289,3 @@ Route::view('/FOform2OrgStructure4', 'Fisherfolk_Organization.Youth_Fisherfolk.f
 
 // ---------------------------------------------------------------------------------------//
 // ------------------------------ FARMC MEMBERSHIP ---------------------------------------//
-Route::post('/add-personal-info', [FarmcMembership_Controller::class,'addFARMC_PersonalInfo']);
-Route::get('/membership/{id}', [FarmcMembership_Controller::class,'displayMembershipForm']);
-Route::post('/add-membership/{id}', [FarmcMembership_Controller::class,'addFARMC_Membership']);
-Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOrgMembershipForm']);
-Route::post('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);
-Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);
-Route::get('/FARMCViewform/{id}', [FarmcMembership_Controller::class,'display_mem_Viewform']);
-
-Route::get('/membership_archived',[FarmcMembership_Controller::class, 'display_membership_archived']);
-Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'moveToMem_archived']);

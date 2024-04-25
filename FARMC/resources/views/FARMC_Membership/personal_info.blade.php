@@ -54,6 +54,7 @@
 
                         <form class="form-inline" action="{{ url('/add-personal-info') }}" method="POST">
                             @csrf
+                            @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
                                     <div class="card inline-form-style">
@@ -255,7 +256,7 @@
                                                         <div class="form-check">
                                                             <label for="pwd" class="form-check-label">
                                                                 <input type="radio" class="form-check-input"
-                                                                    name="IP" id="pwd" value="Yes"
+                                                                    name="IP" id="IP" value="Yes"
                                                                     onchange="toggleTextBox2('IP');" />
                                                                 Yes
                                                             </label>

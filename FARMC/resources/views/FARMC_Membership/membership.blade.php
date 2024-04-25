@@ -51,6 +51,7 @@
 
                         <form class="form-inline" action="{{url('/add-membership/' . $data->id)}}" method="POST">
                             @csrf
+                            @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
                                     <div class="card inline-form-style">
@@ -188,7 +189,7 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sect" value="Cultural Community (IP's)" /> <i class="helper"></i>Cultural Community (IP's)
+                                                                <input type="radio" name="sect" value="Cultural Community (IPs)" /> <i class="helper"></i>Cultural Community (IP's)
                                                             </label>
                                                             <label>
                                                                 <input type="radio" value="sect" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
@@ -210,7 +211,7 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="LGU_rep"  value="SB, Committee on Fisheries"/> <i class="helper"></i> SB, Committee on Fisheries
+                                                                <input type="radio" name="LGU_rep"  value="SB Committee on Fisheries"/> <i class="helper"></i> SB Committee on Fisheries
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="LGU_rep" value="Municipal/City Planning Office"/> <i class="helper"></i> Municipal/City Planning Office
@@ -226,7 +227,7 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="LGU_rep" value="Municipal/City Dev't. Council" /> <i class="helper"></i> Municipal/City Dev't. Council
+                                                                <input type="radio" name="LGU_rep" value="Municipal/City Devt. Council" /> <i class="helper"></i> Municipal/City Development Council
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="LGU_rep" value="Municipal/City Agriculture Office" /> <i class="helper"></i> Municipal/City Agriculture Office

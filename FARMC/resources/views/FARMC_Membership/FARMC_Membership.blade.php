@@ -198,7 +198,7 @@
                                                     <td style=" display: flex; justify-content: space-between;">
                                                         <a href="{{url ('/FARMCViewform/' . $item->id)}}" class="btn btn-success"><i
                                                                 class="ti-eye"></i></a>
-                                                        <a href="#!" class="btn btn-warning"><i
+                                                        <a href="{{url ('/membership_edit/' . $item->id)}}" class="btn btn-warning"><i
                                                                 class="ti-pencil"></i></a>
                                                         <a href="{{url ('/membership_archived/' . $item->id) }}" class="btn btn-danger"><i
                                                                 class="ti-trash"></i></a>
@@ -254,7 +254,7 @@
                                                 <td>{{$item->involvement_mdo}},  {{$item->year1}} {{$item->year2}} {{$item->year3}}  </td>
 
                                                 <td style="text-align: center;">
-                                                    <a href="" class="btn btn-success"><i
+                                                    <a href="{{url ('/FARMCViewform/' . $item->id)}}" class="btn btn-success"><i
                                                             class="ti-eye"></i> &nbsp; View</a>
                                                 </td>
                                             </tr>
@@ -340,7 +340,7 @@
         };
 
         var compMemChart = new Chart(ctx, {
-            type: 'doughnut',
+            type: 'pie',
             data: data,
             options: options
         });

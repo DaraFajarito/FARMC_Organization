@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\FarmcMembership_Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+
 
 class FarmcMembership_Controller extends Controller
 {
@@ -206,6 +208,13 @@ class FarmcMembership_Controller extends Controller
         return view('FARMC_Membership.archive_membership', compact('mem_archived'));
     }
 
+    public function display_membership_edit($id)
+    {
+        $edit_mem = FarmcMembership_Model::where('id', $id)->get();
+
+        return view('FARMC_Membership.edit_membership', compact('edit_mem'));
+    }
+
    //==========================================================================================================================================||
     //================================================== A R C H I V I N G  O F  D A T A ===============================================================||
 
@@ -222,5 +231,161 @@ class FarmcMembership_Controller extends Controller
             return redirect()->back()->with('error', 'Data entry not found.');
         }
     }
+
+    //==========================================================================================================================================||
+    //================================================== E D I T I N G  O F  D A T A ===============================================================||
+
+
+    public function editFARMC_Membership(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'nullable|string',
+            'address' => 'nullable|string',
+            'landline_no' => 'nullable|string',
+            'mobile_no' => 'nullable|string',
+            'email' => 'nullable|string',
+            'civil_status' => 'nullable|in:Single,Married,Widow/Widower,Separated',
+            'gender' => 'nullable|in:Male,Female,Others',
+            'birthdate' => 'nullable|string',
+            'age' => 'nullable|string',
+            'birthplace_municipality' => 'nullable|string',
+            'birthplace_province' => 'nullable|string',
+            'fourps' => 'nullable|in:Yes,No',
+            'pwd' => 'nullable|in:Yes,No',
+            'pwd_yes' => 'nullable|string',
+            'IP' => 'nullable|in:Yes,No',
+            'IP_yes' => 'nullable|string',
+            'name_spouse' => 'nullable|string',
+            'occupation' => 'nullable|string',
+            'religion' => 'nullable|in:Islam,Christian',
+            'religion_christ' => 'nullable|string',
+            'dependent_male' => 'nullable|integer',
+            'dependent_female' => 'nullable|integer',
+            'dependent_others' => 'nullable|integer',
+            'educational_attainment' => 'nullable|in:Primary,Secondary,Vocational',
+            'tertiary' => 'nullable|string',
+            'tesda' => 'nullable|string',
+            'other_source' => 'nullable|string',
+            'other_source_other' => 'nullable|string',
+
+            'farmc_name' => 'nullable|string',
+            'farmc_add' => 'nullable|string',
+            'mfarmc_off' => 'nullable|in:Yes,No',
+            'mfarmc_off_yes' => 'nullable|string',
+            'inc_officer1' => 'nullable|string',
+            'inc_officer2' => 'nullable|string',
+            'inc_member1' => 'nullable|string',
+            'inc_member2' => 'nullable|string',
+            'farmc_rep' => 'nullable|in:Provincial Fisherfolk Representative, Regional Fisherfolk Representative',
+            'sect' => 'nullable|in:Fisherfolk/Fishworker,Commercial Operator,Women Sector,Youth Sector,Private Sector,NGO Representative,Cultural Community (IPs)',
+            'sect_other' => 'nullable|string',
+            'LGU_rep' => 'nullable|in:SB Committee on Fisheries,Municipal/City Planning Office,Municipal/City Devt. Council,Municipal/City Agriculture Office',
+            'LGU_rep_other' => 'nullable|string',
+
+            'org_mem_name' => 'nullable|string',
+            'add_acc' => 'nullable|string',
+            'comp_mem' => 'nullable|in:Municipal,Fishworker,Cultural Community (IPs),Commercial,Women/Youth',
+            'reg_ass' => 'nullable|string',
+            'reg_ass_yes' => 'nullable|in:Yes,No',
+            'lgu_accre' => 'nullable|in:Yes,No',
+            'reg_no' => 'nullable|string',
+            'date' => 'nullable|date',
+            'officer_ass' => 'nullable|in:Yes,No,Member Only',
+            'position' => 'nullable|string',
+            'involvement_mdo' => 'nullable|in:Provincial Fisherfolk Representative,Regional Fisherfolk Representative,National Fisherfolk Representative',
+            'year1' => 'nullable|string',
+            'year2' => 'nullable|string',
+            'year3' => 'nullable|string',
+            'photo' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+        ], [
+            'photo.max' => 'The photo may not be greater than 5MB.',
+        ]);
+
+
+        $farmc_mem = FarmcMembership_Model::where('id', $id)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('photo')) {
+            if ($farmc_mem->photo) {
+                Storage::delete($farmc_mem->photo);
+            }
+            $photoPath = $request->file('photo')->store('storage');
+            $farmc_mem->photo = $photoPath;
+        }
+
+
+        // Update other fields
+        $farmc_mem->name = $validatedData['name'] ?? null;
+        $farmc_mem->address = $validatedData['address'] ?? null;
+        $farmc_mem->landline_no = $validatedData['landline_no'] ?? null;
+        $farmc_mem->mobile_no = $validatedData['mobile_no'] ?? null;
+        $farmc_mem->email = $validatedData['email'] ?? null;
+        $farmc_mem->civil_status = $validatedData['civil_status'] ?? null;
+        $farmc_mem->gender = $validatedData['gender'] ?? null;
+        $farmc_mem->birthdate = $validatedData['birthdate'] ?? null;
+        $farmc_mem->age = $validatedData['age'] ?? null;
+        $farmc_mem->birthplace_province = $validatedData['birthplace_province'] ?? null;
+        $farmc_mem->birthplace_province = $validatedData['birthplace_province'] ?? null;
+        $farmc_mem->fourps = $validatedData['fourps'] ?? null;
+        $farmc_mem->pwd = $validatedData['pwd'] ?? null;
+        $farmc_mem->pwd_yes = $validatedData['pwd_yes'] ?? null;
+        $farmc_mem->IP = $validatedData['IP'] ?? null;
+        $farmc_mem->IP_yes = $validatedData['IP_yes'] ?? null;
+        $farmc_mem->name_spouse = $validatedData['name_spouse'] ?? null;
+        $farmc_mem->occupation = $validatedData['occupation'] ?? null;
+        $farmc_mem->religion = $validatedData['religion'] ?? null;
+        $farmc_mem->religion_christ = $validatedData['religion_christ'] ?? null;
+        $farmc_mem->dependent_male = $validatedData['dependent_male'] ?? null;
+        $farmc_mem->dependent_female = $validatedData['dependent_female'] ?? null;
+        $farmc_mem->dependent_others = $validatedData['dependent_others'] ?? null;
+        $farmc_mem->educational_attainment = $validatedData['educational_attainment'] ?? null;
+        $farmc_mem->tertiary = $validatedData['tertiary'] ?? null;
+        $farmc_mem->tesda = $validatedData['tesda'] ?? null;
+        $farmc_mem->other_source = $validatedData['other_source'] ?? null;
+        $farmc_mem->other_source_other = $validatedData['other_source_other'] ?? null;
+
+        $farmc_mem->farmc_name = $validatedData['farmc_name'] ?? null;
+        $farmc_mem->farmc_add = $validatedData['farmc_add'] ?? null;
+        $farmc_mem->mfarmc_off = $validatedData['mfarmc_off'] ?? null;
+        $farmc_mem->mfarmc_off_yes = $validatedData['mfarm_off_yes'] ?? null;
+        $farmc_mem->inc_officer1 = $validatedData['inc_officer1'] ?? null;
+        $farmc_mem->inc_officer2 = $validatedData['inc_officer2'] ?? null;
+        $farmc_mem->inc_member1 = $validatedData['inc_member1'] ?? null;
+        $farmc_mem->inc_member2 = $validatedData['inc_member2'] ?? null;
+        $farmc_mem->farmc_rep = $validatedData['farmc_rep'] ?? null;
+        $farmc_mem->sect = $validatedData['sect'] ?? null;
+        $farmc_mem->sect_other = $validatedData['sect_other'] ?? null;
+        $farmc_mem->farmc_rep = $validatedData['farmc_rep'] ?? null;
+        $farmc_mem->LGU_rep = $validatedData['LGU_rep'] ?? null;
+        $farmc_mem->LGU_rep_other = $validatedData['LGU_rep_other'] ?? null;
+
+        $farmc_mem->org_mem_name = $validatedData['org_mem_name'] ?? null;
+        $farmc_mem->add_acc = $validatedData['add_acc'] ?? null;
+        $farmc_mem->comp_mem = $validatedData['comp_mem'] ?? null;
+        $farmc_mem->reg_ass = $validatedData['reg_ass'] ?? null;
+        $farmc_mem->reg_ass_yes = $validatedData['reg_ass_yes'] ?? null;
+        $farmc_mem->lgu_accre = $validatedData['lgu_accre'] ?? null;
+        $farmc_mem->reg_no = $validatedData['reg_no'] ?? null;
+        $farmc_mem->date = $validatedData['date'] ?? null;
+        $farmc_mem->officer_ass = $validatedData['officer_ass'] ?? null;
+        $farmc_mem->position = $validatedData['position'] ?? null;
+        $farmc_mem->involvement_mdo = $validatedData['involvement_mdo'] ?? null;
+        $farmc_mem->year1 = $validatedData['year1'] ?? null;
+        $farmc_mem->year2 = $validatedData['year2'] ?? null;
+        $farmc_mem->year3 = $validatedData['year3'] ?? null;
+        $farmc_mem->photo = $validatedData['photo'] ?? null;
+
+        // Save the updated record
+        $farmc_mem->save();
+
+        // Check if any changes were made and redirect accordingly
+        if ($farmc_mem->wasChanged()) {
+            return redirect('/FARMCViewform/' . $id)->with('success', 'FARMC Membership updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
+
 
 }
