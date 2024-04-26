@@ -201,13 +201,14 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em>4P's Member</em></div>
+                                                    <div class="grid-material bg-general"><em>4P's Member</em>
+                                                    </div>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="fourps" value="Yes"
-                                                                    c /><i class="helper"></i>Yes
+                                                                <input type="radio" name="fourps"
+                                                                    value="Yes" /><i class="helper"></i>Yes
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="fourps"
@@ -218,100 +219,95 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general"><em>Person w/ Disabiliy
-                                                                (PWD)</em></div>
+                                                        <div class="grid-material bg-general"><em>Person w/
+                                                                Disability
+                                                                (PWD)
+                                                            </em></div>
 
-                                                        <div class="form-check">
-                                                            <label for="pwd" class="form-check-label">
-                                                                <input type="radio" class="form-check-input"
-                                                                    name="pwd" value="Yes"
-                                                                    onchange="toggleTextBox1('pwd');" />
-                                                                Yes
-                                                            </label>
+                                                        <div class="form-radio">
+                                                            <div class="radio radio-inline">
+                                                                <label>
+                                                                    <input type="radio" name="pwd"
+                                                                        value="Yes"
+                                                                        onclick="toggleTextBox('otherTextBox8');" />
+                                                                    <i class="helper"></i> Yes
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="pwd"
+                                                                        value="No" />
+                                                                    <i class="helper"></i> No
+                                                                </label>
+                                                            </div>
                                                         </div>
-                                                        <br>
-                                                        <div class="form-check">
-                                                            <label for="pwd" class="form-check-label">
-                                                                <input type="radio" class="form-check-input"
-                                                                    name="pwd" value="No">
-                                                                No
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group" id="textBoxGroup1"
-                                                            style="display: none;">
+                                                        <div class="form-group" id="otherTextBox8"
+                                                            style="display:none;">
                                                             <label for="inline3mail"
-                                                                class="block form-control-label">Specify, if
-                                                                yes</label>
-                                                            <input id="inline3mail" type="text" name="pwd_yes"
-                                                                class="form-control" placeholder="">
+                                                                class="block form-control-label"><small>If
+                                                                    If Yes, please specify</small></label>
+                                                            <input id="otherInput" type="text" value=""
+                                                                class="form-control" name="pwd_yes">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general"><em>Cultural Community
-                                                                (IP's)</em></div>
+                                                        <div class="grid-material bg-general"><em>Cultural
+                                                                Community
+                                                                (IPs)</em></div>
 
-                                                        <div class="form-check">
-                                                            <label for="pwd" class="form-check-label">
-                                                                <input type="radio" class="form-check-input"
-                                                                    name="IP" id="IP" value="Yes"
-                                                                    onchange="toggleTextBox2('IP');" />
-                                                                Yes
-                                                            </label>
+                                                        <div class="form-radio">
+                                                            <div class="radio radio-inline">
+                                                                <label>
+                                                                    <input type="radio" name="IP"
+                                                                        value="Yes"
+                                                                        onclick="toggleTextBox('otherTextBox7');" />
+                                                                    <i class="helper"></i> Yes
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="IP"
+                                                                        value="No" />
+                                                                    <i class="helper"></i> No
+                                                                </label>
+                                                            </div>
                                                         </div>
-                                                        <br>
-                                                        <div class="form-check">
-                                                            <label for="optionsRadios2" class="form-check-label">
-                                                                <input type="radio" class="form-check-input"
-                                                                    name="IP" value="No"
-                                                                    id="optionsRadios4">
-                                                                No
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group" id="textBoxGroup2"
-                                                            style="display: none;">
+                                                        <div class="form-group" id="otherTextBox7"
+                                                            style="display:none;">
                                                             <label for="inline3mail"
-                                                                class="block form-control-label">Specify, if
-                                                                yes</label>
-                                                            <input id="inline3mail" type="text" name="IP_yes"
-                                                                class="form-control" placeholder="">
+                                                                class="block form-control-label"><small>If
+                                                                    If Yes, please specify</small></label>
+                                                            <input id="otherInput" type="text" value=""
+                                                                class="form-control" name="IP_yes">
                                                         </div>
                                                     </div>
                                                 </div>
-
 
                                                 <div class="col-md-3">
                                                     <div class="col-sm-12 col-xs-12 waves-effect waves-light">
                                                         <div class="grid-material bg-general"><em>Religion
                                                                 Affiliation</em></div>
-
-                                                        <div class="form-check">
-                                                            <label for="islamRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input"
-                                                                    name="religion" value="Islam" />
-                                                                Islam
-                                                            </label>
+                                                        <div class="form-radio">
+                                                            <div class="radio radio-inline">
+                                                                <label>
+                                                                    <input type="radio" name="religion"
+                                                                        value="Islam" />
+                                                                    <i class="helper"></i> Islam
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="religion"
+                                                                        value="Christian"
+                                                                        onclick="toggleTextBox('otherTextBox6');" />
+                                                                    <i class="helper"></i> Christian
+                                                                </label>
+                                                            </div>
                                                         </div>
-                                                        <br>
-                                                        <div class="form-check">
-                                                            <label for="christianRadio" class="form-check-label">
-                                                                <input type="radio" class="form-check-input"
-                                                                    name="religion" id="christianRadio"
-                                                                    value="Christian"
-                                                                    onchange="toggleTextBox('christianRadio');" />
-                                                                Christian
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group" id="textBoxGroup"
-                                                            style="display: none;">
+                                                        <div class="form-group" id="otherTextBox6"
+                                                            style="display:none;">
                                                             <label for="inline3mail"
-                                                                class="block form-control-label">If Christian, please
-                                                                specify</label>
-                                                            <input id="inline3mail" type="text"
-                                                                name="religion_christ" class="form-control"
-                                                                placeholder="">
+                                                                class="block form-control-label"><small>
+                                                                    If Christian, please specify</small></label>
+                                                            <input id="otherInput" type="text" value=""
+                                                                class="form-control" name="religion_christ">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -349,7 +345,7 @@
                                                         <!-- <hr> -->
                                                         <label for="inline3mail" class="block form-control-label">No.
                                                             of Dependent/s</em></label>
-                                                            <br>
+                                                        <br>
                                                         <div class="col-md-4">
                                                             <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                                 <label class="input-checkbox checkbox-primary">
@@ -439,45 +435,44 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-3" style="margin-top:21px">
                                                             <div class="form-radio">
                                                                 <div class="radio radio-inline">
-                                                                    <br>
                                                                     <label>
                                                                         <input type="radio"
                                                                             name="educational_attainment"
                                                                             value="Tertiary"
-                                                                            onclick="showTextbox('tertiaryTextboxGroup');" /><i
-                                                                            class="helper"></i>Tertiary
+                                                                            onclick="toggleTextBox('otherTextBox9');" />
+                                                                        <i class="helper"></i> Tertiary
                                                                     </label>
-                                                                    <div id="tertiaryTextboxGroup" class="form-group"
-                                                                        style="display: none;">
-                                                                        <div>
-                                                                            <label for="tertiaryTextbox"
-                                                                                class="captions"><small>Specify
-                                                                                    Tertiary</small></label>
-                                                                            <textarea rows="2" style="width: 200px; border: 1px solid #ccc;" id="tertiaryTextbox" name="tertiary"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group" id="otherTextBox9"
+                                                                style="display:none;">
+                                                                <label for="inline3mail"
+                                                                    class="block form-control-label"><small>Specify,Tertiary</small></label>
+                                                                <input id="otherInput" type="text"
+                                                                    class="form-control" name="tertiary">
+                                                            </div>
+
+                                                            <div class="form-radio" style="margin-top: 23px">
+                                                                <div class="radio radio-inline">
                                                                     <label>
                                                                         <input type="radio"
                                                                             name="educational_attainment"
-                                                                            value="TESDA"
-                                                                            onclick="showTextbox('tesdaTextboxGroup');" /><i
-                                                                            class="helper"></i>TESDA
+                                                                            value="Tesda"
+                                                                            onclick="toggleTextBox('otherTextBox10');" />
+                                                                        <i class="helper"></i> TESDA
                                                                     </label>
-                                                                    <div id="tesdaTextboxGroup" class="form-group"
-                                                                        style="display: none;">
-                                                                        <div>
-                                                                            <label for="tesdaTextbox"
-                                                                                class="captions"><small>Specify
-                                                                                    TESDA</small></label>
-                                                                            <textarea rows="2" style="width: 200px; border: 1px solid #ccc;" id="tesdaTextbox" name="tesda"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                    <br>
                                                                 </div>
+                                                            </div>
+
+                                                            <div class="form-group" id="otherTextBox10"
+                                                                style="display:none;">
+                                                                <label for="inline3mail"
+                                                                    class="block form-control-label"><small>Specify,TESDA</small></label>
+                                                                <input id="otherInput" type="text"
+                                                                    class="form-control" name="tesda">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -488,7 +483,7 @@
                                                             <label for="inline3mail"
                                                                 class="block form-control-label">Other source of
                                                                 livelihood</label>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-5">
                                                                 <div class="form-radio">
                                                                     <div class="radio radio-inline">
                                                                         <br>
@@ -513,34 +508,39 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-3">
-                                                                <div class="form-radio">
-                                                                    <div class="radio radio-inline"
-                                                                        style="margin-left: 60px;">
-                                                                        <br>
+                                                            <div class="col-md-2">
+                                                                <div class="form-radio" style="margin-top: 23px">
+                                                                    <div class="radio radio-inline">
                                                                         <label>
                                                                             <input type="radio" name="other_source"
-                                                                                value="Other" /><i
-                                                                                class="helper"></i>Other,<small>specify</small>
+                                                                                value="Other"
+                                                                                onclick="toggleTextBox('otherTextBox11');" />
+                                                                            <i class="helper"></i> Others
                                                                         </label>
                                                                     </div>
-                                                                    <div style="margin-left: 60px;">
-                                                                        <textarea rows="4" name="other_source_other" style="width: 200px; border: 1px solid #ccc;"></textarea>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="otherTextBox11"
+                                                                    style="display:none;">
+                                                                    <label for="inline3mail"
+                                                                        class="block form-control-label"><small>Please
+                                                                            specify</small></label>
+                                                                    <input id="otherInput" type="text"
+                                                                        style="width: 180px"
+                                                                        class="form-control"
+                                                                        name="other_source_other">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="text-right">
-                                                <button type="submit" class="btn btn-primary">Next<i
-                                                        class="icon-arrow-right"></i></button>
+                                                <div class="text-right">
+                                                    <button type="submit" class="btn btn-primary">Next<i
+                                                            class="icon-arrow-right"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -594,6 +594,17 @@
             }
         }
     </script>
+
+    <script>
+        function toggleTextBox(textboxId) {
+            var textBox = document.getElementById(textboxId);
+
+            if (textBox) {
+                textBox.style.display = 'block';
+            }
+        }
+    </script>
+
 
     <script>
         function toggleTextBox2(radioId) {

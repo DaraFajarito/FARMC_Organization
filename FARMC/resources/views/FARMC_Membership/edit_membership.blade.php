@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Personal Information | FARMC- BFAR</title>
+    <title>FARMC Membership - EDIT FORM | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <meta charset="utf-8">
@@ -255,32 +255,31 @@
                                                                     (PWD)
                                                                 </em></div>
 
-                                                            <div class="form-check">
-                                                                <label for="pwd" class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
-                                                                        name="pwd" value="Yes"
-                                                                        {{ old('pwd', $item->pwd) == 'Yes' ? 'checked' : '' }}
-                                                                        onchange="toggleTextBox1('pwd');" />
-                                                                    Yes
-                                                                </label>
+                                                            <div class="form-radio">
+                                                                <div class="radio radio-inline">
+                                                                    <label>
+                                                                        <input type="radio" name="pwd"
+                                                                            value="Yes"
+                                                                            onclick="toggleTextBox('otherTextBox8');"
+                                                                            {{ old('pwd', $item->pwd) == 'Yes' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> Yes
+                                                                    </label>
+                                                                    <label>
+                                                                        <input type="radio" name="pwd"
+                                                                            value="No"
+                                                                            {{ old('pwd', $item->pwd) == 'No' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> No
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                            <br>
-                                                            <div class="form-check">
-                                                                <label for="pwd" class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
-                                                                        name="pwd" value="No"
-                                                                        {{ old('pwd', $item->pwd) == 'No' ? 'checked' : '' }}>
-                                                                    No
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-group" id="textBoxGroup1"
-                                                                style="display: none;">
+                                                            <div class="form-group" id="otherTextBox8"
+                                                                style="display:none;">
                                                                 <label for="inline3mail"
-                                                                    class="block form-control-label">Specify, if
-                                                                    yes</label>
-                                                                <input id="inline3mail" type="text" name="pwd_yes"
-                                                                    class="form-control" placeholder=""
-                                                                    value="{{ old('pwd_yes', $item->pwd_yes) }}">
+                                                                    class="block form-control-label"><small>
+                                                                        If Yes, please specify</small></label>
+                                                                <input id="otherInput" type="text"
+                                                                    value="{{ old('pwd_yes', $item->pwd_yes) }}"
+                                                                    class="form-control" name="pwd_yes">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -291,73 +290,64 @@
                                                                     Community
                                                                     (IPs)</em></div>
 
-                                                            <div class="form-check">
-                                                                <label for="pwd" class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
-                                                                        name="IP" id="IP"
-                                                                        onchange="toggleTextBox2('IP');"
-                                                                        value="Yes"
-                                                                        {{ old('IP', $item->IP) == 'Yes' ? 'checked' : '' }} />
-                                                                    Yes
-                                                                </label>
+                                                            <div class="form-radio">
+                                                                <div class="radio radio-inline">
+                                                                    <label>
+                                                                        <input type="radio" name="IP"
+                                                                            value="Yes"
+                                                                            onclick="toggleTextBox('otherTextBox7');"
+                                                                            {{ old('IP', $item->IP) == 'Yes' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> Yes
+                                                                    </label>
+                                                                    <label>
+                                                                        <input type="radio" name="IP"
+                                                                            value="No"
+                                                                            {{ old('IP', $item->IP) == 'No' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> No
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                            <br>
-                                                            <div class="form-check">
-                                                                <label for="optionsRadios2" class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
-                                                                        name="IP" value="No"
-                                                                        {{ old('IP', $item->IP) == 'No' ? 'checked' : '' }}
-                                                                        id="optionsRadios4">
-                                                                    No
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-group" id="textBoxGroup2"
-                                                                style="display: none;">
+                                                            <div class="form-group" id="otherTextBox7"
+                                                                style="display:none;">
                                                                 <label for="inline3mail"
-                                                                    class="block form-control-label">Specify, if
-                                                                    yes</label>
-                                                                <input id="inline3mail" type="text" name="IP_yes"
+                                                                    class="block form-control-label"><small>
+                                                                        If Yes, please specify</small></label>
+                                                                <input id="otherInput" type="text"
                                                                     value="{{ old('IP_yes', $item->IP_yes) }}"
-                                                                    class="form-control" placeholder="">
+                                                                    class="form-control" name="IP_yes">
                                                             </div>
                                                         </div>
                                                     </div>
-
 
                                                     <div class="col-md-3">
                                                         <div class="col-sm-12 col-xs-12 waves-effect waves-light">
                                                             <div class="grid-material bg-general"><em>Religion
                                                                     Affiliation</em></div>
-
-                                                            <div class="form-check">
-                                                                <label for="islamRadio" class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
-                                                                        name="religion" value="Islam"
-                                                                        {{ old('religion', $item->religion) == 'Islam' ? 'checked' : '' }} />
-                                                                    Islam
-                                                                </label>
+                                                            <div class="form-radio">
+                                                                <div class="radio radio-inline">
+                                                                    <label>
+                                                                        <input type="radio" name="religion"
+                                                                            value="Islam"
+                                                                            {{ old('religion', $item->religion) == 'Islam' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> Islam
+                                                                    </label>
+                                                                    <label>
+                                                                        <input type="radio" name="religion"
+                                                                            value="Christian"
+                                                                            {{ old('religion', $item->religion) == 'Christian' ? 'checked' : '' }}
+                                                                            onclick="toggleTextBox('otherTextBox6');" />
+                                                                        <i class="helper"></i> Christian
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                            <br>
-                                                            <div class="form-check">
-                                                                <label for="christianRadio" class="form-check-label">
-                                                                    <input type="radio" class="form-check-input"
-                                                                        name="religion" id="christianRadio"
-                                                                        value="Christian"
-                                                                        {{ old('religion', $item->religion) == 'Christian' ? 'checked' : '' }}
-                                                                        onchange="toggleTextBox('christianRadio');" />
-                                                                    Christian
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-group" id="textBoxGroup"
-                                                                style="display: none;">
+                                                            <div class="form-group" id="otherTextBox6"
+                                                                style="display:none;">
                                                                 <label for="inline3mail"
-                                                                    class="block form-control-label">If Christian,
-                                                                    please
-                                                                    specify</label>
-                                                                <input id="inline3mail" type="text"
-                                                                    name="religion_christ" class="form-control"
+                                                                    class="block form-control-label"><small>
+                                                                        If Christian, please specify</small></label>
+                                                                <input id="otherInput" type="text"
                                                                     value="{{ old('religion_christ', $item->religion_christ) }}"
-                                                                    placeholder="">
+                                                                    class="form-control" name="religion_christ">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -484,47 +474,48 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-3" style="margin-top:21px">
                                                                 <div class="form-radio">
                                                                     <div class="radio radio-inline">
-                                                                        <br>
                                                                         <label>
                                                                             <input type="radio"
                                                                                 name="educational_attainment"
                                                                                 value="Tertiary"
                                                                                 {{ old('educational_attainment', $item->educational_attainment) == 'Tertiary' ? 'checked' : '' }}
-                                                                                onclick="showTextbox('tertiaryTextboxGroup');" /><i
-                                                                                class="helper"></i>Tertiary
+                                                                                onclick="toggleTextBox('otherTextBox9');" />
+                                                                            <i class="helper"></i> Tertiary
                                                                         </label>
-                                                                        <div id="tertiaryTextboxGroup"
-                                                                            class="form-group" style="display: none;">
-                                                                            <div>
-                                                                                <label for="tertiaryTextbox"
-                                                                                    class="captions"><small>Specify
-                                                                                        Tertiary</small></label>
-                                                                                <textarea rows="2" style="width: 200px; border: 1px solid #ccc;" id="tertiaryTextbox" name="tertiary"> {{ old('tertiary', $item->tertiary) }}</textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <br>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" id="otherTextBox9"
+                                                                    style="display:none;">
+                                                                    <label for="inline3mail"
+                                                                        class="block form-control-label"><small>Specify,Tertiary</small></label>
+                                                                    <input id="otherInput" type="text"
+                                                                        value="{{ old('tertiary', $item->tertiary) }}"
+                                                                        class="form-control" name="tertiary">
+                                                                </div>
+
+                                                                <div class="form-radio" style="margin-top: 23px">
+                                                                    <div class="radio radio-inline">
                                                                         <label>
                                                                             <input type="radio"
                                                                                 name="educational_attainment"
-                                                                                value="tesda"
-                                                                                {{ old('tesda', $item->tesda) == 'TESDA' ? 'checked' : '' }}
-                                                                                onclick="showTextbox('tesdaTextboxGroup');" /><i
-                                                                                class="helper"></i>TESDA
+                                                                                value="Tesda"
+                                                                                {{ old('educational_attainment', $item->educational_attainment) == 'Tesda' ? 'checked' : '' }}
+                                                                                onclick="toggleTextBox('otherTextBox10');" />
+                                                                            <i class="helper"></i> TESDA
                                                                         </label>
-                                                                        <div id="tesdaTextboxGroup" class="form-group"
-                                                                            style="display: none;">
-                                                                            <div>
-                                                                                <label for="tesdaTextbox"
-                                                                                    class="captions"><small>Specify
-                                                                                        TESDA</small></label>
-                                                                                <textarea rows="2" style="width: 200px; border: 1px solid #ccc;" id="tesdaTextbox" name="tesda">{{ old('tesda', $item->tesda) }}</textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <br>
                                                                     </div>
+                                                                </div>
+
+                                                                <div class="form-group" id="otherTextBox10"
+                                                                    style="display:none;">
+                                                                    <label for="inline3mail"
+                                                                        class="block form-control-label"><small>Specify,TESDA</small></label>
+                                                                    <input id="otherInput" type="text"
+                                                                        value="{{ old('tesda', $item->tesda) }}"
+                                                                        class="form-control" name="tesda">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -535,7 +526,7 @@
                                                                 <label for="inline3mail"
                                                                     class="block form-control-label">Other source of
                                                                     livelihood</label>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-5">
                                                                     <div class="form-radio">
                                                                         <div class="radio radio-inline">
                                                                             <br>
@@ -565,22 +556,29 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-radio">
-                                                                        <div class="radio radio-inline"
-                                                                            style="margin-left: 60px;">
-                                                                            <br>
+                                                                <div class="col-md-2">
+                                                                    <div class="form-radio" style="margin-top: 23px">
+                                                                        <div class="radio radio-inline">
                                                                             <label>
                                                                                 <input type="radio"
                                                                                     name="other_source"
-                                                                                    value="Other" /><i
-                                                                                    class="helper"></i>Other,<small>specify</small>
+                                                                                    value="Other"
+                                                                                    {{ old('other_source', $item->other_source) == 'Other' ? 'checked' : '' }}
+                                                                                    onclick="toggleTextBox('otherTextBox11');" />
+                                                                                <i class="helper"></i> Others
                                                                             </label>
                                                                         </div>
-                                                                        <div style="margin-left: 60px;">
-                                                                            <textarea rows="4" name="other_source_other" style="width: 200px; border: 1px solid #ccc;"> {{ old('other_source_other', $item->other) }}</textarea>
-                                                                        </div>
                                                                     </div>
+                                                                    <div class="form-group" id="otherTextBox11"
+                                                                        style="display:none;">
+                                                                        <label for="inline3mail"
+                                                                            class="block form-control-label"><small>Please specify</small></label>
+                                                                        <input id="otherInput" type="text" style="width: 180px"
+                                                                            value="{{ old('other_source_other', $item->other_source_other) }}"
+                                                                            class="form-control" name="other_source_other">
+                                                                    </div>
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -591,9 +589,10 @@
                                                     //================================================== F A R M C  M E M B E R S H I P ===============================================================||
                                                     //==================================================================================================================================================|| --}}
 
-<hr>
+                                                <hr>
                                                 <div class="col-sm--1 col-xs--1 waves-effect waves-light">
-                                                    <div class="grid-material bg-general text-center">FARMC Membership</div>
+                                                    <div class="grid-material bg-general">FARMC MEMBERSHIP
+                                                    </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
@@ -601,21 +600,23 @@
                                                         <div class="form-group m-r-15">
                                                             <label for="inline3mail"
                                                                 class="block form-control-label">Name
-                                                                of FARMC<em><em></label>
+                                                                of FARMC</label>
                                                             <input id="inline3mail" type="text"
                                                                 class="form-control" name="farmc_name"
-                                                                style="width: 1050px;" value="{{ old('farmc_name', $item->farmc_name) }}"
+                                                                style="width: 1050px;"
+                                                                value="{{ old('farmc_name', $item->farmc_name) }}"
                                                                 placeholder="Enter Name (First Name, Middle Initial, Last Name)">
                                                         </div>
-                                                        <br>
+                                                        <br><br>
 
                                                         <div class="form-group m-r-15">
                                                             <label for="inline3mail"
                                                                 class="block form-control-label">Address of
-                                                                FARMC<em></em></label>
+                                                                FARMC</label>
                                                             <input id="inline3mail" type="text"
                                                                 class="form-control" name="farmc_add"
-                                                                style="width: 1050px;"  value="{{ old('farmc_add', $item->farmc_add) }}"
+                                                                style="width: 1050px;"
+                                                                value="{{ old('farmc_add', $item->farmc_add) }}"
                                                                 placeholder="Enter Address ( Brgy., St., City, Province)">
                                                         </div>
                                                     </div>
@@ -634,18 +635,23 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="mfarmc_off"
-                                                                        onclick="toggleTextBox3('officer')"
-                                                                        value="Yes" {{old ('mfarmc_off', $item->mfarmc_off) == 'Yes' ? 'checked' : ''}} /> <i class="helper"></i> Yes
+                                                                        onclick="toggleTextBox('otherTextBox')"
+                                                                        value="Yes"
+                                                                        {{ old('mfarmc_off', $item->mfarmc_off) == 'Yes' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> Yes
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="mfarmc_off"
-                                                                        value="No"  {{old ('mfarmc_off', $item->mfarmc_off) == 'No' ? 'checked' : ''}}  /> <i class="helper"></i> No
+                                                                        value="No"
+                                                                        {{ old('mfarmc_off', $item->mfarmc_off) == 'No' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> No
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group" id="otherTextBox2"
+                                                        <div class="form-group" id="otherTextBox"
                                                             style="display:none;">
-                                                            <input id="otherInput" type="text" value="{{ old ('mfarmc_off_yes', $item->mfarmc_off_yes) }}"
+                                                            <input id="otherInput" type="text"
+                                                                value="{{ old('mfarmc_off_yes', $item->mfarmc_off_yes) }}"
                                                                 class="form-control" name="mfarmc_off_yes">
                                                         </div>
                                                     </div>
@@ -662,11 +668,13 @@
                                                                 <div class="col-md-3">
                                                                     <input id="inline3mail" type="text"
                                                                         name="inc_officer1" class="form-control"
-                                                                        style="width: 150px;" value="{{ old ('inc_officer1' , $item->inc_officer1) }}">
+                                                                        style="width: 150px;"
+                                                                        value="{{ old('inc_officer1', $item->inc_officer1) }}">
                                                                 </div>
                                                                 <div class="col-md-3" style="padding-left:100px">
                                                                     <input id="anotherInput" type="text"
-                                                                        name="inc_officer2" class="form-control" value="{{ old ('inc_officer2' , $item->inc_officer2) }}"
+                                                                        name="inc_officer2" class="form-control"
+                                                                        value="{{ old('inc_officer2', $item->inc_officer2) }}"
                                                                         style="width: 150px;">
                                                                 </div>
                                                             </div>
@@ -679,12 +687,14 @@
                                                             <div class="row">
                                                                 <div class="col-md-3">
                                                                     <input id="inline3mail" type="text"
-                                                                        name="inc_member1" class="form-control" value="{{ old ('inc_member1' , $item->inc_member1) }}"
+                                                                        name="inc_member1" class="form-control"
+                                                                        value="{{ old('inc_member1', $item->inc_member1) }}"
                                                                         style="width: 150px;">
                                                                 </div>
                                                                 <div class="col-md-3" style="padding-left:100px">
                                                                     <input id="anotherInput" type="text"
-                                                                        name="inc_member2" class="form-control" value="{{ old ('inc_member2' , $item->inc_member2) }}"
+                                                                        name="inc_member2" class="form-control"
+                                                                        value="{{ old('inc_member2', $item->inc_member2) }}"
                                                                         style="width: 150px;">
                                                                 </div>
                                                             </div>
@@ -700,14 +710,16 @@
                                                                 <div class="radio radio-inline">
                                                                     <label>
                                                                         <input type="radio" name="farmc_rep"
-                                                                            value="Provincial Fisherfolk Representative" {{ old ('farmc_rep', $item->farmc_rep) == 'Provincial Fisherfolk Representative' ? 'checked' : '' }} /><i
+                                                                            value="Provincial Fisherfolk Representative"
+                                                                            {{ old('farmc_rep', $item->farmc_rep) == 'Provincial Fisherfolk Representative' ? 'checked' : '' }} /><i
                                                                             class="helper"></i>Provincial
                                                                         Fisherfolk
                                                                         Representative
                                                                     </label>
                                                                     <label>
                                                                         <input type="radio" name="farmc_rep"
-                                                                            value="Regional Fisherfolk Representative" {{ old ('farmc_rep', $item->farmc_rep) == 'Regional Fisherfolk Representative' ? 'checked' : '' }} /><i
+                                                                            value="Regional Fisherfolk Representative"
+                                                                            {{ old('farmc_rep', $item->farmc_rep) == 'Regional Fisherfolk Representative' ? 'checked' : '' }} /><i
                                                                             class="helper"></i>Regional
                                                                         Fisherfolk
                                                                         Representative
@@ -727,14 +739,16 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="Fisherfolk/Fishworker" {{ old ('sect', $item->sect) == 'Fisherfolk/Fishworker' ? 'checked' : '' }} /> <i
-                                                                        class="helper"></i>
+                                                                        value="Fisherfolk/Fishworker"
+                                                                        {{ old('sect', $item->sect) == 'Fisherfolk/Fishworker' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i>
                                                                     Fisherfolk/Fishworker
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="Commercial Operator" {{ old ('sect', $item->sect) == 'Commercial Operator' ? 'checked' : '' }}  /> <i
-                                                                        class="helper"></i> Commercial Operator
+                                                                        value="Commercial Operator"
+                                                                        {{ old('sect', $item->sect) == 'Commercial Operator' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> Commercial Operator
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -748,12 +762,16 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="Women Sector"  {{ old ('sect', $item->sect) == 'Women Sector' ? 'checked' : '' }}  /> <i class="helper"></i>
+                                                                        value="Women Sector"
+                                                                        {{ old('sect', $item->sect) == 'Women Sector' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i>
                                                                     Women Sector
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="Youth Sector" {{ old ('sect', $item->sect) == 'Youth Sector' ? 'checked' : '' }}/> <i class="helper"></i>
+                                                                        value="Youth Sector"
+                                                                        {{ old('sect', $item->sect) == 'Youth Sector' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i>
                                                                     Youth Sector
                                                                 </label>
                                                             </div>
@@ -765,14 +783,16 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="Private Sector" /> <i
-                                                                        class="helper"></i>
+                                                                        value="Private Sector"
+                                                                        {{ old('sect', $item->sect) == 'Private Sector' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i>
                                                                     Private Sector
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="NGO Representative" /> <i
-                                                                        class="helper"></i> NGO Representative
+                                                                        value="NGO Representative"
+                                                                        {{ old('sect', $item->sect) == 'NGO Representative' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> NGO Representative
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -783,22 +803,26 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="sect"
-                                                                        value="Cultural Community (IPs)" /> <i
-                                                                        class="helper"></i>Cultural Community
+                                                                        value="Cultural Community (IPs)"
+                                                                        {{ old('sect', $item->sect) == 'Cultural Community (IPs)' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i>Cultural Community
                                                                     (IP's)
                                                                 </label>
                                                                 <label>
-                                                                    <input type="radio" value="sect"
-                                                                        onclick="toggleTextBox4('sector')" />
-                                                                    <i class="helper"></i> Other, Please
+                                                                    <input type="radio" value="Other"
+                                                                        {{ old('sect', $item->sect) == 'Other' ? 'checked' : '' }}
+                                                                        onclick="toggleTextBox('otherTextBox2')"
+                                                                        name="sect" /><i class="helper"></i> Other,
+                                                                    Please
                                                                     Specify
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group" id="otherTextBox"
+                                                        <div class="form-group" id="otherTextBox2"
                                                             style="display:none;">
                                                             <input id="otherInput" type="text"
-                                                                class="form-control" name="sect_other">
+                                                                class="form-control" name="sect_other"
+                                                                value="{{ old('sect_other', $item->sect_other) }}">
                                                         </div>
                                                     </div>
                                                     <!-- </div> -->
@@ -815,13 +839,15 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="LGU_rep"
-                                                                        value="SB Committee on Fisheries" />
+                                                                        value="SB Committee on Fisheries"
+                                                                        {{ old('LGU_rep', $item->LGU_rep) == 'SB Committee on Fisheries' ? 'checked' : '' }} />
                                                                     <i class="helper"></i> SB Committee on
                                                                     Fisheries
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="LGU_rep"
-                                                                        value="Municipal/City Planning Office" />
+                                                                        value="Municipal/City Planning Office"
+                                                                        {{ old('LGU_rep', $item->LGU_rep) == 'Municipal/City Planning Office' ? 'checked' : '' }} />
                                                                     <i class="helper"></i> Municipal/City
                                                                     Planning Office
                                                                 </label>
@@ -837,13 +863,15 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="LGU_rep"
-                                                                        value="Municipal/City Devt. Council" />
+                                                                        value="Municipal/City Development Council"
+                                                                        {{ old('LGU_rep', $item->LGU_rep) == 'Municipal/City Development Council' ? 'checked' : '' }} />
                                                                     <i class="helper"></i> Municipal/City
                                                                     Development Council
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="LGU_rep"
-                                                                        value="Municipal/City Agriculture Office" />
+                                                                        value="Municipal/City Agriculture Office"
+                                                                        {{ old('LGU_rep', $item->LGU_rep) == 'Municipal/City Agriculture Office' ? 'checked' : '' }} />
                                                                     <i class="helper"></i> Municipal/City
                                                                     Agriculture
                                                                     Office
@@ -857,19 +885,284 @@
                                                             <div class="radio radio-inline">
                                                                 <label>
                                                                     <input type="radio" name="LGU_rep"
-                                                                        onclick="toggleTextBox5('lgu')" />
+                                                                        onclick="toggleTextBox('otherTextBox3')"
+                                                                        value="Other"
+                                                                        {{ old('LGU_rep', $item->LGU_rep) == 'Other' ? 'checked' : '' }} />
                                                                     <i class="helper"></i> Others, Please
                                                                     specify
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group" id="otherTextBox1"
+                                                        <div class="form-group" id="otherTextBox3"
                                                             style="display:none;">
                                                             <input id="otherInput" type="text"
-                                                                class="form-control" name="LGU_rep_other">
+                                                                class="form-control" name="LGU_rep_other"
+                                                                value="{{ old('LGU_rep_other', $item->LGU_rep_other) }}">
                                                         </div>
                                                     </div>
-                                                    <!-- </div> -->
+                                                </div>
+
+                                                <br>
+                                                <hr>
+                                                <div class="col-sm--1 col-xs--1 waves-effect waves-light">
+                                                    <div class="grid-material bg-general">ORGANIZATIONAL MEMBERSHIP
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group m-r-15">
+                                                            <label for="inline3mail"
+                                                                class="block form-control-label">Name
+                                                                of Association/Organization/Cooperative
+                                                            </label>
+                                                            <input id="inline3mail" type="text"
+                                                                class="form-control" name="org_mem_name"
+                                                                value="{{ old('org_mem_name', $item->org_mem_name) }}"
+                                                                style="width: 1100px;" placeholder="">
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="form-group m-r-15">
+                                                            <label for="inline3mail"
+                                                                class="block form-control-label">Address of
+                                                                Association/Organization/Cooperative
+                                                            </label>
+                                                            <input id="inline3mail" type="text"
+                                                                class="form-control" name="add_acc"
+                                                                value="{{ old('add_acc', $item->add_acc) }}"
+                                                                style="width: 1100px;" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <!-- <div class="card-block"> -->
+                                                <div class="row">
+                                                    <div class="col-md-4    ">
+                                                        <div class="grid-material bg-general"><em>Composition of
+                                                                Membership</em></div>
+                                                        <br>
+                                                        <div class="form-radio">
+                                                            <div class="radio radio-inline">
+
+                                                                <label>
+                                                                    <input type="radio" name="comp_mem"
+                                                                        value="Municipal"
+                                                                        {{ old('comp_mem', $item->comp_mem) == 'Municipal' ? 'checked' : '' }} /><i
+                                                                        class="helper"></i>Municipal
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="comp_mem"
+                                                                        value="Fishworker"
+                                                                        {{ old('comp_mem', $item->comp_mem) == 'Fishworker' ? 'checked' : '' }} /><i
+                                                                        class="helper"></i>Fishworker
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="comp_mem"
+                                                                        value="Cultural Community (IPs)"
+                                                                        {{ old('comp_mem', $item->comp_mem) == 'Cultural Community (IPs)' ? 'checked' : '' }} /><i
+                                                                        class="helper"></i>Cultural Community
+                                                                    (IP's)
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="comp_mem"
+                                                                        value="Commercial"
+                                                                        {{ old('comp_mem', $item->comp_mem) == 'Commercial' ? 'checked' : '' }} /><i
+                                                                        class="helper"></i>Commercial
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="comp_mem"
+                                                                        value="Women/Youth"
+                                                                        {{ old('comp_mem', $item->comp_mem) == 'Women/Youth' ? 'checked' : '' }} /><i
+                                                                        class="helper"></i>Women/Youth
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="grid-material bg-general"><em>Registration of
+                                                                Association</em></div>
+                                                        <br>
+                                                            <div class="form-radio">
+                                                                <div class="radio radio-inline">
+                                                                    <label>
+                                                                        <input type="radio" name="reg_ass"
+                                                                            onclick="toggleTextBox('otherTextBox4')"
+                                                                            value="Yes"
+                                                                            {{ old('reg_ass', $item->reg_ass) == 'Yes' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> Yes
+                                                                    </label>
+                                                                    <label>
+                                                                        <input type="radio" name="reg_ass"
+                                                                            value="No"
+                                                                            {{ old('reg_ass', $item->reg_ass) == 'No' ? 'checked' : '' }} />
+                                                                        <i class="helper"></i> No
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group" id="otherTextBox4"
+                                                                style="display:none;">
+                                                                <label for="inline3mail"
+                                                                    class="block form-control-label"><small>If
+                                                                        Yes, please specify</small></label>
+                                                                <input id="otherInput" type="text" name="reg_ass_yes"
+                                                                    value="{{ old('reg_ass_yes', $item->reg_ass_yes) }}"
+                                                                    class="form-control">
+                                                            </div>
+                                                    </div>
+
+                                                    <div class="col-md-5">
+                                                        <div class="grid-material bg-general"><em>LGU
+                                                                Accreditation</em>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-radio">
+                                                                        <div class="radio radio-inline">
+                                                                            <label>
+                                                                                <input type="radio" name="lgu_accre"
+                                                                                    value="Yes"
+                                                                                    {{ old('lgu_accre', $item->lgu_accre) == 'Yes' ? 'checked' : '' }}><i
+                                                                                    class="helper"></i>Yes
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-radio">
+                                                                        <div class="radio radio-inline">
+                                                                            <label>
+                                                                                <input type="radio" name="lgu_accre"
+                                                                                    value="No"
+                                                                                    {{ old('lgu_accre', $item->lgu_accre) == 'No' ? 'checked' : '' }} /><i
+                                                                                    class="helper"></i>No
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-6">
+                                                                <label for="reg_no">Reg. No.</label>
+                                                                <input id="reg_no" type="text"
+                                                                    class="form-control" name="reg_no"
+                                                                    value="{{ old('reg_no', $item->reg_no) }}"
+                                                                    placeholder="Reg. No.">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="date">Date</label>
+                                                                <input id="date" type="text"
+                                                                    value="{{ old('date', $item->date) }}"
+                                                                    class="form-control" name="date"
+                                                                    placeholder="Date">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="grid-material bg-general"><em>Officer of
+                                                                Association</em></div>
+                                                        <br>
+
+                                                        <div class="form-radio">
+                                                            <div class="radio radio-inline">
+                                                                <label>
+                                                                    <input type="radio" name="officer_ass"
+                                                                        onclick="toggleTextBox('otherTextBox5')"
+                                                                        value="Yes"
+                                                                        {{ old('officer_ass', $item->officer_ass) == 'Yes' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> Yes
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="officer_ass"
+                                                                        value="No"
+                                                                        {{ old('officer_ass', $item->officer_ass) == 'No' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> No
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="officer_ass"
+                                                                        value="Member only"
+                                                                        {{ old('officer_ass', $item->officer_ass) == 'Member only' ? 'checked' : '' }} />
+                                                                    <i class="helper"></i> Member only
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" id="otherTextBox5"
+                                                            style="display:none;">
+                                                            <label for="inline3mail"
+                                                                class="block form-control-label"><small>If
+                                                                    Yes, please specify</small></label>
+                                                            <input id="otherInput" type="text"
+                                                                value="{{ old('position', $item->position) }}"
+                                                                class="form-control" name="position">
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                    <div class="col-md-4">
+                                                        <div class="grid-material bg-general"><em>Involvement in
+                                                                Mangingisdang Director Program</em></div>
+                                                        <br>
+                                                        <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="involvement_mdo"
+                                                                    value="Provincial Fisherfolk Representative"
+                                                                    {{ old('involvement_mdo', $item->involvement_mdo) == 'Provincial Fisherfolk Representative' ? 'checked' : '' }} />
+                                                                <i class="helper"></i> Provincial Fisherfolk Representative
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="involvement_mdo"
+                                                                value="Regional Fisherfolk Director"
+                                                                    {{ old('involvement_mdo', $item->involvement_mdo) == 'Regional Fisherfolk Director' ? 'checked' : '' }} />
+                                                                <i class="helper"></i> Regional Fisherfolk Director
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="involvement_mdo"
+                                                                value="National Fisherfolk Director"
+                                                                    {{ old('involvement_mdo', $item->involvement_mdo) == 'National Fisherfolk Director' ? 'checked' : '' }} />
+                                                                <i class="helper"></i> National Fisherfolk Director
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="grid-material bg-general"><em>Year Elected</em>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-inline" style="line-height: 0.3;">
+                                                            <div>
+                                                                <label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="year1" placeholder=""
+                                                                        value="{{ old('year1', $item->year1) }}"
+                                                                        style="width:150px">
+                                                                </label>
+                                                                <br><br>
+                                                                <label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="year2" placeholder=""
+                                                                        value="{{ old('year2', $item->year2) }}"
+                                                                        style="width:150px">
+                                                                </label>
+                                                                <br><br>
+                                                                <label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="year3" placeholder=""
+                                                                        value="{{ old('year3', $item->year3) }}"
+                                                                        style="width:150px">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <br>
                                                 <div class="text-right">
@@ -915,65 +1208,15 @@
 
 
 
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
-            }
-        }
-    </script>
+
+
 
     <script>
-        function toggleTextBox1(radioId) {
-            var textBoxGroup1 = document.getElementById('textBoxGroup1');
-            if (radioId === 'pwd') {
-                textBoxGroup1.style.display = 'block';
-            } else {
-                textBoxGroup1.style.display = 'none';
-            }
-        }
-    </script>
+        function toggleTextBox(textboxId) {
+            var textBox = document.getElementById(textboxId);
 
-    <script>
-        function toggleTextBox2(radioId) {
-            var textBoxGroup2 = document.getElementById('textBoxGroup2');
-            if (radioId === 'IP') {
-                textBoxGroup2.style.display = 'block';
-            } else {
-                textBoxGroup2.style.display = 'none';
-            }
-        }
-    </script>
-    <script>
-        function toggleTextBox3(radioId) {
-            var textBoxGroup3 = document.getElementById('textBoxGroup3');
-            if (radioId === 'officer') {
-                textBoxGroup3.style.display = 'block';
-            } else {
-                textBoxGroup3.style.display = 'none';
-            }
-        }
-    </script>
-    <script>
-        function toggleTextBox4(radioId) {
-            var textBoxGroup4 = document.getElementById('textBoxGroup4');
-            if (radioId === 'sector') {
-                textBoxGroup4.style.display = 'block';
-            } else {
-                textBoxGroup4.style.display = 'none';
-            }
-        }
-    </script>
-    <script>
-        function toggleTextBox5(radioId) {
-            var textBoxGroup5 = document.getElementById('textBoxGroup5');
-            if (radioId === 'lgu') {
-                textBoxGroup5.style.display = 'block';
-            } else {
-                textBoxGroup5.style.display = 'none';
+            if (textBox) {
+                textBox.style.display = 'block';
             }
         }
     </script>

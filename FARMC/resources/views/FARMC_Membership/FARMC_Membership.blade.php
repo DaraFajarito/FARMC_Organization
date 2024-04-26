@@ -104,33 +104,33 @@
                                     <canvas id="ageRangeChart" width="600" height="500"></canvas>
                                 </div>
                                 {{-- <ul class="graphl-legend-rectangle" style="line-height: 12px"> --}}
-                                    <div class="col-sm-12">
-                                        <li style="font-size: 13px"><span></span> &nbsp; (0
-                                            - 18) Children</li>
-                                        <li style="font-size: 13px"><span></span> &nbsp; (19
-                                            - 25) Youth / Teenagers</li>
-                                        <li style="font-size: 13px"><span></span> &nbsp; (26
-                                            - 35) Young Adults</li>
-                                        <li style="font-size: 13px"><span></span> &nbsp; (36
-                                            - 50) Adults</li>
-                                        <li style="font-size: 13px"><span></span> &nbsp;
-                                            (51+) Elderly & Senior Citizens</li>
-                                    </div>
+                                <div class="col-sm-12">
+                                    <li style="font-size: 13px"><span></span> &nbsp; (0
+                                        - 18) Children</li>
+                                    <li style="font-size: 13px"><span></span> &nbsp; (19
+                                        - 25) Youth / Teenagers</li>
+                                    <li style="font-size: 13px"><span></span> &nbsp; (26
+                                        - 35) Young Adults</li>
+                                    <li style="font-size: 13px"><span></span> &nbsp; (36
+                                        - 50) Adults</li>
+                                    <li style="font-size: 13px"><span></span> &nbsp;
+                                        (51+) Elderly & Senior Citizens</li>
+                                </div>
                                 {{-- </ul> --}}
                             </div>
 
                             <div class="col-lg-4">
                                 <h6 class="card-title text-center">Composition of Membership</h6>
                                 <div class="row">
-                                    <canvas id="compMemChart"  width="20" height="20" ></canvas>
+                                    <canvas id="compMemChart" width="20" height="20"></canvas>
                                 </div>
 
                             </div>
                             <div class="col-lg-4 text-center">
-                                    <h6 class="card-title text-center">Member's Gender</h6>
-                                    <div class="col-sm-12" style="margin-bottom: 30px">
-                                        <canvas id="genderChart" width="1" height="1"></canvas>
-                                    </div>
+                                <h6 class="card-title text-center">Member's Gender</h6>
+                                <div class="col-sm-12" style="margin-bottom: 30px">
+                                    <canvas id="genderChart" width="1" height="1"></canvas>
+                                </div>
                             </div>
                         </div>
                         <!-- </div> -->
@@ -140,8 +140,10 @@
             </div>
 
             <div class="col-md-12" style="margin-bottom: 30px;">
-                <a href="{{ url ('/membership_archived')}}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i> Archived Members</button></a>
-                <a href="#!"><button type="button" class="btn btn-primary" style="margin-left: 10px">View All Members</button></a>
+                <a href="{{ url('/membership_archived') }}"><button type="button" class="btn btn-warning"><i
+                            class="ti-archive"></i> Archived Members</button></a>
+                <a href="#!"><button type="button" class="btn btn-primary" style="margin-left: 10px">View All
+                        Members</button></a>
             </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
@@ -177,33 +179,78 @@
                                                 <th>Gender</th>
                                                 <th>Birthdate</th>
                                                 <th>Age</th>
-                                                <th hidden >Status</th>
+                                                <th hidden>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody style="font-size:11px">
                                             @foreach ($data as $item)
-                                            @if ($item->status != 'ARCHIVED')
-                                                <tr>
-                                                    <td>{{ $item->name }}</td>
-                                                    <td>{{ $item->address }}</td>
-                                                    <td>{{ $item->landline_no }}</td>
-                                                    <td>{{ $item->mobile_no }}</td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->civil_status }}</td>
-                                                    <td>{{ $item->gender }}</td>
-                                                    <td>{{ $item->birthdate }}</td>
-                                                    <td>{{ $item->age }}</td>
-                                                    <td hidden>{{ $item->status }}</td>
-                                                    <td style=" display: flex; justify-content: space-between;">
-                                                        <a href="{{url ('/FARMCViewform/' . $item->id)}}" class="btn btn-success"><i
-                                                                class="ti-eye"></i></a>
-                                                        <a href="{{url ('/membership_edit/' . $item->id)}}" class="btn btn-warning"><i
-                                                                class="ti-pencil"></i></a>
-                                                        <a href="{{url ('/membership_archived/' . $item->id) }}" class="btn btn-danger"><i
-                                                                class="ti-trash"></i></a>
-                                                    </td>
-                                                </tr>
+                                                @if ($item->status != 'ARCHIVED')
+                                                    <tr>
+                                                        @if ($item->name === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->name }}</td>
+                                                        @endif
+
+                                                        @if ($item->address === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->address }}</td>
+                                                        @endif
+
+                                                        @if ($item->landline_no === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->landline_no }}</td>
+                                                        @endif
+
+                                                        @if ($item->mobile_no === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->mobile_no }}</td>
+                                                        @endif
+
+                                                        @if ($item->email === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->email }}</td>
+                                                        @endif
+
+                                                        @if ($item->civil_status === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->civil_status }}</td>
+                                                        @endif
+
+                                                        @if ($item->gender === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->gender }}</td>
+                                                        @endif
+
+                                                        @if ($item->birthdate === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->birthdate }}</td>
+                                                        @endif
+
+                                                        @if ($item->age === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->age }}</td>
+                                                        @endif
+
+                                                        <td hidden>{{ $item->status }}</td>
+                                                        <td style=" display: flex; justify-content: space-between;">
+                                                            <a href="{{ url('/FARMCViewform/' . $item->id) }}"
+                                                                class="btn btn-success"><i class="ti-eye"></i></a>
+                                                            <a href="{{ url('/membership_edit/' . $item->id) }}"
+                                                                class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                            <a href="{{ url('/membership_archived/' . $item->id) }}"
+                                                                class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                        </td>
+                                                    </tr>
                                                 @endif
                                             @endforeach
                                         </tbody>
@@ -226,38 +273,81 @@
                                                 <th>LGU Accreditation</th>
                                                 <th>Officer of Association</th>
                                                 <th>Involvement in Mangingisdang Director Program</th>
+                                                <th hidden>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody style="font-size:12px">
                                             @foreach ($data as $item)
-                                            <tr>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->org_mem_name}}</td>
-                                                <td>{{$item->add_acc}}</td>
-                                                <td>{{$item->comp_mem}}</td>
+                                            @if ($item->status != 'ARCHIVED')
 
-                                                @if ($item->reg_ass === 'No')
-                                                <td>No</td>
-                                                @elseif ($item->reg_ass === 'Yes')
-                                                <td>Yes , {{$item->reg_ass_yes}}</td>
+                                                <tr>
+                                                    @if ($item->name === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->name }}</td>
+                                                    @endif
+
+                                                    @if ($item->org_mem_name === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->org_mem_name }}</td>
+                                                    @endif
+
+                                                    @if ($item->add_acc === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->add_acc }}</td>
+                                                    @endif
+
+                                                    @if ($item->comp_mem === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->comp_mem }}</td>
+                                                    @endif
+
+                                                    @if ($item->reg_ass === null)
+                                                        <td style="color:red">no data</td>
+                                                    @elseif ($item->reg_ass === 'No')
+                                                        <td>No</td>
+                                                    @elseif ($item->reg_ass === 'Yes')
+                                                        <td>Yes , {{ $item->reg_ass_yes }}</td>
+                                                    @endif
+
+                                                    @if ($item->lgu_accre === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->lgu_accre }}</td>
+                                                    @endif
+
+
+                                                    @if ($item->officer_ass === null)
+                                                        <td style="color:red">no data</td>
+                                                    @elseif ($item->officer_ass === 'No')
+                                                        <td>No , {{ $item->position }}</td>
+                                                    @elseif ($item->officer_ass === 'Yes')
+                                                        <td>Yes , {{ $item->position }}</td>
+                                                    @endif
+
+
+                                                    @if ($item->involvement_mdo === null)
+                                                        <td style="color:red">no data</td>
+                                                    @elseif ($item->involvement_mdo !== null && $item->year1 !== null && $item->year2 !== null && $item->year3 !== null)
+                                                        <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
+                                                            {{ $item->year2 }} {{ $item->year3 }}</td>
+                                                    @else
+                                                        <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
+                                                            {{ $item->year2 }} {{ $item->year3 }}</td>
+                                                    @endif
+                                                    <td hidden>{{ $item->status }}</td>
+
+                                                    <td style="text-align: center;">
+                                                        <a href="{{ url('/FARMCViewform/' . $item->id) }}"
+                                                            class="btn btn-success"><i class="ti-eye"></i> &nbsp;
+                                                            View</a>
+                                                    </td>
+                                                </tr>
                                                 @endif
-
-                                                <td>{{$item->lgu_accre}}</td>
-
-                                                @if ($item->officer_ass === 'No')
-                                                <td>No</td>
-                                                @elseif ($item->officer_ass === 'Yes')
-                                                <td>Yes , {{$item->position}}</td>
-                                                @endif
-
-                                                <td>{{$item->involvement_mdo}},  {{$item->year1}} {{$item->year2}} {{$item->year3}}  </td>
-
-                                                <td style="text-align: center;">
-                                                    <a href="{{url ('/FARMCViewform/' . $item->id)}}" class="btn btn-success"><i
-                                                            class="ti-eye"></i> &nbsp; View</a>
-                                                </td>
-                                            </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

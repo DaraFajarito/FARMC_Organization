@@ -161,9 +161,9 @@ class FarmcMembership_Controller extends Controller
 
         $municipalCount = FarmcMembership_Model::where('comp_mem', 'Municipal')->count();
         $fishworkerCount = FarmcMembership_Model::where('comp_mem', 'Fishworker')->count();
-        $culturalCount = FarmcMembership_Model::where('comp_mem', 'Cultural Community (IP\'s)')->count();
+        $culturalCount = FarmcMembership_Model::where('comp_mem', 'Cultural Community (IPs)')->count();
         $commercialCount = FarmcMembership_Model::where('comp_mem', 'Commercial')->count();
-        $womenYouthCount = FarmcMembership_Model::where('comp_mem', 'Women / Youth')->count();
+        $womenYouthCount = FarmcMembership_Model::where('comp_mem', 'Women/Youth')->count();
 
         $memCount = [
             'Municipal' => $municipalCount,
@@ -192,7 +192,7 @@ class FarmcMembership_Controller extends Controller
         return view('FARMC_Membership.FARMC_Membership', compact('memberCount', 'farmcCount', 'data', 'data_age', 'labelsage', 'data_comp', 'labelscomp', 'labelsgen', 'data_gen'));
     }
 
-     //==========================================================================================================================================||
+    //==========================================================================================================================================||
     //================================================== D I S P L A Y I N G  O F  D A T A ===============================================================||
 
     public function display_mem_Viewform($id)
@@ -215,7 +215,7 @@ class FarmcMembership_Controller extends Controller
         return view('FARMC_Membership.edit_membership', compact('edit_mem'));
     }
 
-   //==========================================================================================================================================||
+    //==========================================================================================================================================||
     //================================================== A R C H I V I N G  O F  D A T A ===============================================================||
 
     public function moveToMem_archived($id)
@@ -262,12 +262,11 @@ class FarmcMembership_Controller extends Controller
             'dependent_male' => 'nullable|integer',
             'dependent_female' => 'nullable|integer',
             'dependent_others' => 'nullable|integer',
-            'educational_attainment' => 'nullable|in:Primary,Secondary,Vocational',
+            'educational_attainment' => 'nullable|in:Primary,Secondary,Vocational,Tertiary,Tesda',
             'tertiary' => 'nullable|string',
             'tesda' => 'nullable|string',
             'other_source' => 'nullable|string',
             'other_source_other' => 'nullable|string',
-
             'farmc_name' => 'nullable|string',
             'farmc_add' => 'nullable|string',
             'mfarmc_off' => 'nullable|in:Yes,No',
@@ -277,22 +276,21 @@ class FarmcMembership_Controller extends Controller
             'inc_member1' => 'nullable|string',
             'inc_member2' => 'nullable|string',
             'farmc_rep' => 'nullable|in:Provincial Fisherfolk Representative,Regional Fisherfolk Representative',
-            'sect' => 'nullable|in:Fisherfolk/Fishworker,Commercial Operator,Women Sector,Youth Sector,Private Sector,NGO Representative,Cultural Community (IPs)',
+            'sect' => 'nullable|in:Fisherfolk/Fishworker,Commercial Operator,Women Sector,Youth Sector,Private Sector,NGO Representative,Cultural Community (IPs),Other',
             'sect_other' => 'nullable|string',
-            'LGU_rep' => 'nullable|in:SB Committee on Fisheries,Municipal/City Planning Office,Municipal/City Devt. Council,Municipal/City Agriculture Office',
+            'LGU_rep' => 'nullable|in:SB Committee on Fisheries,Municipal/City Planning Office,Municipal/City Development Council,Municipal/City Agriculture Office,Other',
             'LGU_rep_other' => 'nullable|string',
-
             'org_mem_name' => 'nullable|string',
             'add_acc' => 'nullable|string',
             'comp_mem' => 'nullable|in:Municipal,Fishworker,Cultural Community (IPs),Commercial,Women/Youth',
-            'reg_ass' => 'nullable|string',
-            'reg_ass_yes' => 'nullable|in:Yes,No',
+            'reg_ass' => 'nullable|in:Yes,No',
+            'reg_ass_yes' => 'nullable|string',
             'lgu_accre' => 'nullable|in:Yes,No',
             'reg_no' => 'nullable|string',
             'date' => 'nullable|date',
             'officer_ass' => 'nullable|in:Yes,No,Member Only',
             'position' => 'nullable|string',
-            'involvement_mdo' => 'nullable|in:Provincial Fisherfolk Representative,Regional Fisherfolk Representative,National Fisherfolk Representative',
+            'involvement_mdo' => 'nullable|in:Provincial Fisherfolk Representative,Regional Fisherfolk Director,National Fisherfolk Director',
             'year1' => 'nullable|string',
             'year2' => 'nullable|string',
             'year3' => 'nullable|string',
@@ -325,7 +323,7 @@ class FarmcMembership_Controller extends Controller
         $farmc_mem->gender = $validatedData['gender'] ?? null;
         $farmc_mem->birthdate = $validatedData['birthdate'] ?? null;
         $farmc_mem->age = $validatedData['age'] ?? null;
-        $farmc_mem->birthplace_province = $validatedData['birthplace_province'] ?? null;
+        $farmc_mem->birthplace_municipality = $validatedData['birthplace_municipality'] ?? null;
         $farmc_mem->birthplace_province = $validatedData['birthplace_province'] ?? null;
         $farmc_mem->fourps = $validatedData['fourps'] ?? null;
         $farmc_mem->pwd = $validatedData['pwd'] ?? null;
@@ -386,6 +384,4 @@ class FarmcMembership_Controller extends Controller
             return redirect()->back()->with('error', 'Failed to update. No changes were made.');
         }
     }
-
-
 }

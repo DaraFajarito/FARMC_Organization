@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="codedthemes">
-    <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="keywords"
+        content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="codedthemes">
 
 </head>
@@ -26,7 +27,7 @@
                 <div class="row">
                     <div class="main-header">
                         <a href="index.html" class="logo" style="display: inline-block; vertical-align: middle;">
-                            <img src="{{ asset ('assets/images/newlogo.png') }}" style="width: 40px;" alt="logo">
+                            <img src="{{ asset('assets/images/newlogo.png') }}" style="width: 40px;" alt="logo">
                         </a>
                         <span style="display: inline-block; vertical-align: middle; margin-top:10px">
                             <div>
@@ -46,10 +47,11 @@
                         </ol>
                     </div>
                     <div class="col-lg-12 inline-forms">
-                        <a href="{{ url ('/personal_info') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                        <a href="{{ url('/personal_info') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i> Back</a>
                         <br><br>
 
-                        <form class="form-inline" action="{{url('/add-membership/' . $data->id)}}" method="POST">
+                        <form class="form-inline" action="{{ url('/add-membership/' . $data->id) }}" method="POST">
                             @csrf
                             @method ('PUT')
                             <div class="card">
@@ -62,14 +64,21 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="block form-control-label">Name of FARMC<em><em></label>
-                                                        <input id="inline3mail" type="text" class="form-control" name="farmc_name" style="width: 1050px;" placeholder="Enter Name (First Name, Middle Initial, Last Name)">
+                                                        <label for="inline3mail" class="block form-control-label">Name
+                                                            of FARMC<em><em></label>
+                                                        <input id="inline3mail" type="text" class="form-control"
+                                                            name="farmc_name" style="width: 1050px;"
+                                                            placeholder="Enter Name (First Name, Middle Initial, Last Name)">
                                                     </div>
                                                     <br>
 
                                                     <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="block form-control-label">Address of FARMC<em></em></label>
-                                                        <input id="inline3mail" type="text" class="form-control" name="farmc_add" style="width: 1050px;" placeholder="Enter Address ( Brgy., St., City, Province)">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label">Address of
+                                                            FARMC<em></em></label>
+                                                        <input id="inline3mail" type="text" class="form-control"
+                                                            name="farmc_add" style="width: 1050px;"
+                                                            placeholder="Enter Address ( Brgy., St., City, Province)">
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,45 +88,66 @@
                                             <div class="row">
 
                                                 <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em>Officer of MFARMC</em></div>
+                                                    <div class="grid-material bg-general"><em>Officer of MFARMC</em>
+                                                    </div>
                                                     <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="mfarmc_off" onclick="toggleTextBox('otherTextBox2')" value="Yes" /> <i class="helper"></i> Yes
+                                                                <input type="radio" name="mfarmc_off"
+                                                                    onclick="toggleTextBox('otherTextBox')"
+                                                                    value="Yes" />
+                                                                <i class="helper"></i> Yes
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="mfarmc_off" value="No" /> <i class="helper"></i> No
+                                                                <input type="radio" name="mfarmc_off"
+                                                                    value="No" />
+                                                                <i class="helper"></i> No
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group" id="otherTextBox2" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="mfarmc_off_yes">
+                                                    <div class="form-group" id="otherTextBox" style="display:none;">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><small>
+                                                                If Yes, please specify</small></label>
+                                                        <input id="otherInput" type="text" class="form-control"
+                                                            name="mfarmc_off_yes">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <div class="grid-material bg-general"><em>Inclusive Dates/s of Membership</em></div>
+                                                    <div class="grid-material bg-general"><em>Inclusive Dates/s of
+                                                            Membership</em></div>
                                                     <br>
                                                     <div class="form-group">
-                                                        <label for="inline3mail" class="block form-control-label">As Officer</label>
+                                                        <label for="inline3mail" class="block form-control-label">As
+                                                            Officer</label>
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <input id="inline3mail" type="text" name="inc_officer1" class="form-control" style="width: 150px;">
+                                                                <input id="inline3mail" type="text"
+                                                                    name="inc_officer1" class="form-control"
+                                                                    style="width: 150px;">
                                                             </div>
                                                             <div class="col-md-3" style="padding-left:100px">
-                                                                <input id="anotherInput" type="text" name="inc_officer2" class="form-control" style="width: 150px;">
+                                                                <input id="anotherInput" type="text"
+                                                                    name="inc_officer2" class="form-control"
+                                                                    style="width: 150px;">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="inline3mail" class="block form-control-label">As Member</label>
+                                                        <label for="inline3mail" class="block form-control-label">As
+                                                            Member</label>
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <input id="inline3mail" type="text" name="inc_member1" class="form-control" style="width: 150px;">
+                                                                <input id="inline3mail" type="text"
+                                                                    name="inc_member1" class="form-control"
+                                                                    style="width: 150px;">
                                                             </div>
                                                             <div class="col-md-3" style="padding-left:100px">
-                                                                <input id="anotherInput" type="text" name="inc_member2" class="form-control" style="width: 150px;">
+                                                                <input id="anotherInput" type="text"
+                                                                    name="inc_member2" class="form-control"
+                                                                    style="width: 150px;">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -125,15 +155,22 @@
 
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <div class="grid-material bg-general"><em>FARMC Representation</em></div>
+                                                        <div class="grid-material bg-general"><em>FARMC
+                                                                Representation</em></div>
                                                         <br>
                                                         <div class="form-radio">
                                                             <div class="radio radio-inline">
                                                                 <label>
-                                                                    <input type="radio" name="farmc_rep" value="Provincial Fisherfolk Representative" /><i class="helper"></i>Provincial Fisherfolk Representative
+                                                                    <input type="radio" name="farmc_rep"
+                                                                        value="Provincial Fisherfolk Representative" /><i
+                                                                        class="helper"></i>Provincial Fisherfolk
+                                                                    Representative
                                                                 </label>
                                                                 <label>
-                                                                    <input type="radio" name="farmc_rep" value="Regional Fisherfolk Representative" /><i class="helper"></i>Regional Fisherfolk Representative
+                                                                    <input type="radio" name="farmc_rep"
+                                                                        value="Regional Fisherfolk Representative" /><i
+                                                                        class="helper"></i>Regional Fisherfolk
+                                                                    Representative
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -142,15 +179,20 @@
                                                 <hr>
                                                 <!-- <div class="row"> -->
                                                 <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em>Sector Represented</em></div>
+                                                    <div class="grid-material bg-general"><em>Sector Represented</em>
+                                                    </div>
                                                     <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sect" value="Fisherfolk/Fishworker" /> <i class="helper"></i> Fisherfolk/Fishworker
+                                                                <input type="radio" name="sect"
+                                                                    value="Fisherfolk/Fishworker" /> <i
+                                                                    class="helper"></i> Fisherfolk/Fishworker
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="sect" value="Commercial Operator" /> <i class="helper"></i> Commercial Operator
+                                                                <input type="radio" name="sect"
+                                                                    value="Commercial Operator" /> <i
+                                                                    class="helper"></i> Commercial Operator
                                                             </label>
                                                         </div>
                                                     </div>
@@ -163,10 +205,14 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sect" value="Women Sector" /> <i class="helper"></i> Women Sector
+                                                                <input type="radio" name="sect"
+                                                                    value="Women Sector" /> <i class="helper"></i>
+                                                                Women Sector
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="sect" value="Youth Sector" /> <i class="helper"></i> Youth Sector
+                                                                <input type="radio" name="sect"
+                                                                    value="Youth Sector" /> <i class="helper"></i>
+                                                                Youth Sector
                                                             </label>
                                                         </div>
                                                     </div>
@@ -176,10 +222,14 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sect" value="Private Sector" /> <i class="helper"></i> Private Sector
+                                                                <input type="radio" name="sect"
+                                                                    value="Private Sector" /> <i class="helper"></i>
+                                                                Private Sector
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="sect" value="NGO Representative" /> <i class="helper"></i> NGO Representative
+                                                                <input type="radio" name="sect"
+                                                                    value="NGO Representative" /> <i
+                                                                    class="helper"></i> NGO Representative
                                                             </label>
                                                         </div>
                                                     </div>
@@ -189,15 +239,24 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="sect" value="Cultural Community (IPs)" /> <i class="helper"></i>Cultural Community (IP's)
+                                                                <input type="radio" name="sect"
+                                                                    value="Cultural Community (IPs)"/>
+                                                                <i class="helper"></i>Cultural Community
+                                                                (IP's)
                                                             </label>
                                                             <label>
-                                                                <input type="radio" value="sect" onclick="toggleTextBox('otherTextBox')" /> <i class="helper"></i> Other, Please Specify
+                                                                <input type="radio" value="Other"
+                                                                    onclick="toggleTextBox('otherTextBox2')"
+                                                                    name="sect" /><i class="helper"></i> Other,
+                                                                Please
+                                                                Specify
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group" id="otherTextBox" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="sect_other">
+                                                    <div class="form-group" id="otherTextBox2" style="display:none;">
+                                                        <input id="otherInput" type="text" class="form-control"
+                                                            name="sect_other"
+                                                            value="">
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
@@ -206,15 +265,20 @@
 
                                                 <!-- <div class="row"> -->
                                                 <div class="col-md-4">
-                                                    <div class="grid-material bg-general"><em>LGU Representative, specify the office</em></div>
+                                                    <div class="grid-material bg-general"><em>LGU Representative,
+                                                            specify the office</em></div>
                                                     <br>
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="LGU_rep"  value="SB Committee on Fisheries"/> <i class="helper"></i> SB Committee on Fisheries
+                                                                <input type="radio" name="LGU_rep"
+                                                                    value="SB Committee on Fisheries" /> <i
+                                                                    class="helper"></i>SB Committee on Fisheries
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="LGU_rep" value="Municipal/City Planning Office"/> <i class="helper"></i> Municipal/City Planning Office
+                                                                <input type="radio" name="LGU_rep"
+                                                                    value="Municipal/City Planning Office" /> <i
+                                                                    class="helper"></i>Municipal/City Planning Office
                                                             </label>
                                                         </div>
                                                     </div>
@@ -227,10 +291,16 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="LGU_rep" value="Municipal/City Devt. Council" /> <i class="helper"></i> Municipal/City Development Council
+                                                                <input type="radio" name="LGU_rep"
+                                                                    value="Municipal/City Development Council" /> <i
+                                                                    class="helper"></i>Municipal/City Development
+                                                                Council
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="LGU_rep" value="Municipal/City Agriculture Office" /> <i class="helper"></i> Municipal/City Agriculture Office
+                                                                <input type="radio" name="LGU_rep"
+                                                                    value="Municipal/City Agriculture Office" /> <i
+                                                                    class="helper"></i> Municipal/City Agriculture
+                                                                Office
                                                             </label>
                                                         </div>
                                                     </div>
@@ -240,18 +310,25 @@
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
                                                             <label>
-                                                                <input type="radio" name="LGU_rep" onclick="toggleTextBox('otherTextBox1')" /> <i class="helper"></i> Others, Please specify
+                                                                <input type="radio" name="LGU_rep"
+                                                                    onclick="toggleTextBox('otherTextBox3')"
+                                                                    value="Other" />
+                                                                <i class="helper"></i> Others, Please
+                                                                specify
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group" id="otherTextBox1" style="display:none;">
-                                                        <input id="otherInput" type="text" class="form-control" name="LGU_rep_other">
+                                                    <div class="form-group" id="otherTextBox3"
+                                                        style="display:none;">
+                                                        <input id="otherInput" type="text"
+                                                            class="form-control" name="LGU_rep_other" />
                                                     </div>
                                                 </div>
                                                 <!-- </div> -->
                                             </div>
                                             <div class="text-right">
-                                                <button type="submit" class="btn btn-primary">Next<i class="icon-arrow-right"></i></button>
+                                                <button type="submit" class="btn btn-primary">Next<i
+                                                        class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -264,37 +341,16 @@
         </div>
     </div>
 
-        <script>
-            function toggleTextBox(textboxId) {
-                var textBox = document.getElementById(textboxId);
+    <script>
+        function toggleTextBox(textboxId) {
+            var textBox = document.getElementById(textboxId);
 
-                if (textBox) {
-                    textBox.style.display = 'block';
-                }
+            if (textBox) {
+                textBox.style.display = 'block';
             }
-        </script>
+        }
+    </script>
 
-        <script>
-            function showOfficerDetails(textboxId) {
-                var officerDetails = document.getElementById(textboxId);
-
-                if (textBox) {
-                    textBox.style.display = 'block';
-                }
-            }
-        </script>
-
-        <script>
-            function showTertiaryTextbox() {
-                document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-                document.getElementById('tesdaTextboxGroup').style.display = 'none';
-            }
-
-            function showTesdaTextbox() {
-                document.getElementById('tesdaTextboxGroup').style.display = 'block';
-                document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-            }
-        </script>
 </body>
 
 </html>

@@ -110,7 +110,7 @@
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="comp_mem"
-                                                                    value="Cultural Community (IP's)" /><i
+                                                                    value="Cultural Community (IPs)" /><i
                                                                     class="helper"></i>Cultural Community (IP's)
                                                             </label>
                                                             <label>
@@ -130,27 +130,27 @@
                                                     <div class="grid-material bg-general"><em>Registration of
                                                             Association</em></div>
                                                     <br>
-                                                    <div class="form-check">
-                                                        <label for="radio1" class="form-check-label">
-                                                            <input type="radio" class="form-check-input"
-                                                                name="reg_ass" id="radio1" value="Yes"
-                                                                onchange="toggleTextBox('radio1');">
-                                                            Yes
-                                                        </label>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="reg_ass"
+                                                                    onclick="toggleTextBox('otherTextBox4')"
+                                                                    value="Yes" />
+                                                                <i class="helper"></i> Yes
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="reg_ass"
+                                                                    value="No" />
+                                                                <i class="helper"></i> No
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                    <br>
-                                                    <div class="form-check">
-                                                        <label for="" class="form-check-label">
-                                                            <input type="radio" class="form-check-input"
-                                                                name="reg_ass" id="radio1" value="No">
-                                                            No
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-group" id="textBoxGroup" style="display: none;">
-                                                        <label for="inline3mail" class="block form-control-label">If
-                                                            Yes, please specify</label>
-                                                        <input id="inline3mail" type="text" name="reg_ass_yes"
-                                                            class="form-control" placeholder="">
+                                                    <div class="form-group" id="otherTextBox4" style="display:none;">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><small>If
+                                                                Yes, please specify</small></label>
+                                                        <input id="otherInput" type="text" name="reg_ass_yes"
+                                                            value="" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -207,37 +207,32 @@
                                                     <div class="grid-material bg-general"><em>Officer of
                                                             Association</em></div>
                                                     <br>
-                                                    <div class="form-check">
-                                                        <label for="radio2" class="form-check-label">
-                                                            <input type="radio" class="form-check-input"
-                                                                name="officer_ass" id="radio2" value="Yes"
-                                                                onchange="toggleTextBox1('radio2');">
-                                                            Yes
-                                                        </label>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="officer_ass"
+                                                                    onclick="toggleTextBox('otherTextBox5')"
+                                                                    value="Yes" />
+                                                                <i class="helper"></i> Yes
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="officer_ass"
+                                                                    value="No" />
+                                                                <i class="helper"></i> No
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="officer_ass"
+                                                                    value="Member only" />
+                                                                <i class="helper"></i> Member only
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                    <br>
-                                                    <div class="form-check">
-                                                        <label for="" class="form-check-label">
-                                                            <input type="radio" class="form-check-input"
-                                                                name="officer_ass" id="radio2" value="No">
-                                                            No
-                                                        </label>
-                                                    </div>
-                                                    <br>
-                                                    <div class="form-check">
-                                                        <label for="" class="form-check-label">
-                                                            <input type="radio" class="form-check-input"
-                                                                name="officer_ass" id="radio2"
-                                                                value="Member only">
-                                                            Member only
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-group" id="textBoxGroup1"
-                                                        style="display: none;">
+                                                    <div class="form-group" id="otherTextBox5" style="display:none;">
                                                         <label for="inline3mail"
-                                                            class="block form-control-label">Specify, If yes</label>
-                                                        <input id="inline3mail" type="text" name="position"
-                                                            class="form-control" placeholder="">
+                                                            class="block form-control-label"><small>If
+                                                                Yes, please specify</small></label>
+                                                        <input id="otherInput" type="text" value=""
+                                                            class="form-control" name="position">
                                                     </div>
                                                 </div>
 
@@ -279,7 +274,7 @@
                                                         <div>
                                                             <label>
                                                                 <input type="text" class="form-control"
-                                                                     name="year1" placeholder=""
+                                                                    name="year1" placeholder=""
                                                                     style="width:150px">
                                                             </label>
                                                             <br><br>
@@ -413,6 +408,15 @@
         }
     </script>
 
+    <script>
+        function toggleTextBox(textboxId) {
+            var textBox = document.getElementById(textboxId);
+
+            if (textBox) {
+                textBox.style.display = 'block';
+            }
+        }
+    </script>
 
     <script>
         function showTertiaryTextbox() {
