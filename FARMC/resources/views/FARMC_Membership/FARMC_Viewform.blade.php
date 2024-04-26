@@ -192,9 +192,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="col-md-4">
-                                                    <div style="margin-top: 7px"></div>
-                                                    <div class="form-group" style="line-height: 10px"
-                                                        style="margin-bottom: 30px">
+                                                    <diV></div>
+                                                    <div class="form-group" style="margin-bottom: 30px">
                                                         <br>
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Civil
@@ -212,7 +211,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div style="margin-top: 20px"></div>
-                                                    <div class="form-group" style="line-height: 10px">
+                                                    <div class="form-group">
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Birthplace:
                                                             &nbsp; {{ $item->birthplace_municipality }} ,
@@ -228,14 +227,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div style="margin-top: 20px"></div>
+                                                    <div style="margin-top: 18px"></div>
                                                     <div class="form-group">
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Person w/
                                                             Disability (PWD): &nbsp; {{ $item->pwd }}  {{ $item->pwd_yes }} </label>
                                                         <label for=""
-                                                            class="col-md-12 col-form-label form-control-label"
-                                                            style="line-height: 10px">Cultural
+                                                            class="col-md-12 col-form-label form-control-label">Cultural
                                                             Community (IP's): &nbsp; {{ $item->IP }}  {{ $item->IP_yes }}
                                                         </label>
                                                         <label for=""
@@ -616,6 +614,34 @@
                 autoPaging: true
             });
         }
+    </script>
+
+<script>
+        const photoInput = document.getElementById('photo1x1');
+        const photoLabel = document.getElementById('label1x1');
+        const photoPreview = document.getElementById('preview1x1');
+
+        // Function to handle file input change
+        function handleFileInputChange() {
+            const file = photoInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                    photoPreview.style.display = 'block';
+                    photoLabel.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Trigger file input click when the image is clicked
+        photoPreview.addEventListener('click', function() {
+            photoInput.click();
+        });
+
+        // Listen for file input change
+        photoInput.addEventListener('change', handleFileInputChange);
     </script>
 
 </body>

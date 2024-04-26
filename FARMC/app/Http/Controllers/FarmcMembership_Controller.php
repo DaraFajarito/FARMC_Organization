@@ -276,7 +276,7 @@ class FarmcMembership_Controller extends Controller
             'inc_officer2' => 'nullable|string',
             'inc_member1' => 'nullable|string',
             'inc_member2' => 'nullable|string',
-            'farmc_rep' => 'nullable|in:Provincial Fisherfolk Representative, Regional Fisherfolk Representative',
+            'farmc_rep' => 'nullable|in:Provincial Fisherfolk Representative,Regional Fisherfolk Representative',
             'sect' => 'nullable|in:Fisherfolk/Fishworker,Commercial Operator,Women Sector,Youth Sector,Private Sector,NGO Representative,Cultural Community (IPs)',
             'sect_other' => 'nullable|string',
             'LGU_rep' => 'nullable|in:SB Committee on Fisheries,Municipal/City Planning Office,Municipal/City Devt. Council,Municipal/City Agriculture Office',
