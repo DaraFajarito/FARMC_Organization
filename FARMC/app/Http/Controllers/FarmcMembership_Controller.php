@@ -146,7 +146,6 @@ class FarmcMembership_Controller extends Controller
         // $compMemCount = FarmcMembership_Model::whereNotNull('comp_mem')->count();
 
         // Age Count
-
         $ageRanges = [
             '0-18' => FarmcMembership_Model::whereBetween('age', [0, 18])->get()->count(),
             '19-25' => FarmcMembership_Model::whereBetween('age', [19, 25])->get()->count(),
@@ -154,6 +153,7 @@ class FarmcMembership_Controller extends Controller
             '36-50' => FarmcMembership_Model::whereBetween('age', [36, 50])->get()->count(),
             '51+' => FarmcMembership_Model::where('age', '>', 50)->get()->count(),
         ];
+
         $labelsage = array_keys($ageRanges);
         $data_age = array_values($ageRanges);
 
@@ -164,6 +164,26 @@ class FarmcMembership_Controller extends Controller
         $culturalCount = FarmcMembership_Model::where('comp_mem', 'Cultural Community (IPs)')->count();
         $commercialCount = FarmcMembership_Model::where('comp_mem', 'Commercial')->count();
         $womenYouthCount = FarmcMembership_Model::where('comp_mem', 'Women/Youth')->count();
+
+        // Check if any of the counts have the 'ARCHIVED' status and exclude them
+        if (FarmcMembership_Model::where('status', 'ARCHIVED')->exists()) {
+            $archivedCounts = FarmcMembership_Model::where('status', 'ARCHIVED')->whereIn('comp_mem', ['Municipal', 'Fishworker', 'Cultural Community (IPs)', 'Commercial', 'Women/Youth'])->pluck('comp_mem')->toArray();
+            if (in_array('Municipal', $archivedCounts)) {
+                $municipalCount -= FarmcMembership_Model::where('comp_mem', 'Municipal')->where('status', 'ARCHIVED')->count();
+            }
+            if (in_array('Fishworker', $archivedCounts)) {
+                $fishworkerCount -= FarmcMembership_Model::where('comp_mem', 'Fishworker')->where('status', 'ARCHIVED')->count();
+            }
+            if (in_array('Cultural Community (IPs)', $archivedCounts)) {
+                $culturalCount -= FarmcMembership_Model::where('comp_mem', 'Cultural Community (IPs)')->where('status', 'ARCHIVED')->count();
+            }
+            if (in_array('Commercial', $archivedCounts)) {
+                $commercialCount -= FarmcMembership_Model::where('comp_mem', 'Commercial')->where('status', 'ARCHIVED')->count();
+            }
+            if (in_array('Women/Youth', $archivedCounts)) {
+                $womenYouthCount -= FarmcMembership_Model::where('comp_mem', 'Women/Youth')->where('status', 'ARCHIVED')->count();
+            }
+        }
 
         $memCount = [
             'Municipal' => $municipalCount,
@@ -214,6 +234,19 @@ class FarmcMembership_Controller extends Controller
 
         return view('FARMC_Membership.edit_membership', compact('edit_mem'));
     }
+
+
+    public function display_all_members()
+    {
+        // $all_mem = FarmcMembership_Model::where('id', $id)->where('status', '!=', 'ARCHIVED')->get();
+        // $all_mem = FarmcMembership_Model::select('id')->where('status', '!=', 'ARCHIVED')->get();
+
+        $all_mem = FarmcMembership_Model::whereNull('status')->get();
+
+
+        return view('FARMC_Membership.view_all_membership', compact('all_mem'));
+    }
+
 
     //==========================================================================================================================================||
     //================================================== A R C H I V I N G  O F  D A T A ===============================================================||

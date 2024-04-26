@@ -142,7 +142,7 @@
             <div class="col-md-12" style="margin-bottom: 30px;">
                 <a href="{{ url('/membership_archived') }}"><button type="button" class="btn btn-warning"><i
                             class="ti-archive"></i> Archived Members</button></a>
-                <a href="#!"><button type="button" class="btn btn-primary" style="margin-left: 10px">View All
+                <a href="{{ url ('/viewall_members')}}"><button type="button" class="btn btn-primary" style="margin-left: 10px">View All
                         Members</button></a>
             </div>
             <div class="row">

@@ -217,6 +217,8 @@ Route::get('/org_membership/{id}', [FarmcMembership_Controller::class,'displayOr
 Route::put('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg_Membership']);
 Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);
 Route::get('/FARMCViewform/{id}', [FarmcMembership_Controller::class,'display_mem_Viewform']);
+Route::get('/viewall_members',[FarmcMembership_Controller::class, 'display_all_members']);
+
 
 Route::put('/edit-membership/{id}', [FarmcMembership_Controller::class,'editFARMC_Membership']);
 Route::get('/membership_edit/{id}', [FarmcMembership_Controller::class,'display_membership_edit']);
