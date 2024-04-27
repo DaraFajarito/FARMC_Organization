@@ -20,7 +20,7 @@
         vertical-align: middle;
         /* margin-left: 10px; Adjust as needed */
     }
-    
+
     input.form-control{
         border: 1px solid #AAAAAA;
     }
@@ -233,7 +233,7 @@
                                         <div class="form-radio" style="display: inline-block;margin-left:50px;">
                                             <div class="radio radio-inline">
                                                 <label>
-                                                    <input type="radio" name="mfarmcoffice" value="None" /><i class="helper"></i>None
+                                                    <input type="radio" name="mfarmcoffice" value="" /><i class="helper"></i>None
                                                 </label>
                                             </div>
                                         </div>
@@ -273,7 +273,7 @@
                                                 <input type="radio" name="regmeet" value="yes" onclick="toggleSchedule(this)" /><i class="helper"></i>Yes
                                             </label>
                                             <label>
-                                                <input type="radio" name="regmeet" value="no" onclick="toggleSchedule(this)" /><i class="helper"></i>No
+                                                <input type="radio" name="" value=""  /><i class="helper"></i>No
                                             </label>
                                         </div>
                                     </div>

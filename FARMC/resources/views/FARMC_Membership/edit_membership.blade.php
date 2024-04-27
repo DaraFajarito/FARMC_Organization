@@ -1087,8 +1087,8 @@
                                                                 </label>
                                                                 <label>
                                                                     <input type="radio" name="officer_ass"
-                                                                        value="Member only"
-                                                                        {{ old('officer_ass', $item->officer_ass) == 'Member only' ? 'checked' : '' }} />
+                                                                        value="Member Only"
+                                                                        {{ old('officer_ass', $item->officer_ass) == 'Member Only' ? 'checked' : '' }} />
                                                                     <i class="helper"></i> Member only
                                                                 </label>
                                                             </div>

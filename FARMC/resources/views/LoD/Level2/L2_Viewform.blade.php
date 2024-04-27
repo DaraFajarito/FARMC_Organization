@@ -182,7 +182,10 @@
                                                         <tr style="font-size: 12px;">
                                                             @if ($item->mfdp === null)
                                                             <td><span style="color: red;"> &nbsp; no data</span></td>
-                                                            @else
+                                                            @elseif  ($item->mfdp === 'Formulated')
+                                                            <td class="text-center"><span style="color: red;">Formulated</span></td>
+                                                            @elseif  ($item->mfdp === 'Approved')
+                                                            <td class="text-center"><span style="color: green;">Approved</span></td>
                                                             <td> {{ $item->mfdp }}</td>
                                                             @endif
 
@@ -219,7 +222,10 @@
                                                         <tr style="font-size: 12px;">
                                                             @if ($item->mfo === null)
                                                             <td><span style="color: red;"> &nbsp; no data</span></td>
-                                                            @else
+                                                            @elseif  ($item->mfo === 'Formulated')
+                                                            <td class="text-center"><span style="color: red;">Formulated</span></td>
+                                                            @elseif  ($item->mfo === 'Approved')
+                                                            <td class="text-center"><span style="color: green;">Approved</span></td>
                                                             <td> {{ $item->mfo }}</td>
                                                             @endif
 
@@ -350,11 +356,16 @@
                                                     <tbody>
                                                         <tr style="font-size: 12px;">
                                                             @if ($item->regmeet === null)
-                                                            <td> <span style="color: red;">NO</span></td>
+                                                            <td><i class="ti-close" style="color: red; font-size: 1.5em;"></i></td>
                                                             @else
                                                             <td> <i class="ti-check-box" style="color: green; font-size: 1.5em;"></i></td>
                                                             @endif
+
+                                                            @if ($item->regmeet === null)
+                                                            <td class="text-center"> <span style="color: red; ">no data</span></td>
+                                                            @else
                                                             <td class="text-center">{{$item->regmeet}}</td>
+                                                            @endif
 
                                                             @if ($item->minatt_file === null)
                                                             <td><span style="color: red;"> &nbsp; no attached file</span></td>

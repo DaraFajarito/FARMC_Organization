@@ -141,18 +141,47 @@ class FarmcMembership_Controller extends Controller
     public function farmc_membership_count()
     {
         $data = FarmcMembership_Model::get();
-        $memberCount = FarmcMembership_Model::whereNotNull('name')->count();
-        $farmcCount = FarmcMembership_Model::whereNotNull('org_mem_name')->count();
-        // $compMemCount = FarmcMembership_Model::whereNotNull('comp_mem')->count();
 
-        // Age Count
+        //Count all data names
+        $allNames = FarmcMembership_Model::whereNotNull('name')->get();
+
+        $filteredNames = $allNames->reject(function ($names) {
+            return $names->status === 'ARCHIVED';
+        });
+
+        $memberCount = $filteredNames->count();
+
+        //Count all data org_name
+        $allOrg = FarmcMembership_Model::whereNotNull('org_mem_name')->get();
+
+        $filterOrgname = $allOrg->reject(function ($orgname) {
+            return $orgname->status === 'ARCHIVED';
+        });
+
+        $farmcCount = $filterOrgname->count();
+
+
+        $allMembers = FarmcMembership_Model::whereIn('age', range(0, 18))
+            ->orWhereIn('age', range(19, 25))
+            ->orWhereIn('age', range(26, 35))
+            ->orWhereIn('age', range(36, 50))
+            ->orWhere('age', '>', 50)
+            ->get();
+
+        // Filter out 'ARCHIVED' members
+        $filteredMembers = $allMembers->reject(function ($member) {
+            return $member->status === 'ARCHIVED';
+        });
+
+        // Count members in each age range
         $ageRanges = [
-            '0-18' => FarmcMembership_Model::whereBetween('age', [0, 18])->get()->count(),
-            '19-25' => FarmcMembership_Model::whereBetween('age', [19, 25])->get()->count(),
-            '26-35' => FarmcMembership_Model::whereBetween('age', [26, 35])->get()->count(),
-            '36-50' => FarmcMembership_Model::whereBetween('age', [36, 50])->get()->count(),
-            '51+' => FarmcMembership_Model::where('age', '>', 50)->get()->count(),
+            '0-18' => $filteredMembers->whereBetween('age', [0, 18])->count(),
+            '19-25' => $filteredMembers->whereBetween('age', [19, 25])->count(),
+            '26-35' => $filteredMembers->whereBetween('age', [26, 35])->count(),
+            '36-50' => $filteredMembers->whereBetween('age', [36, 50])->count(),
+            '51+' => $filteredMembers->where('age', '>', 50)->count(),
         ];
+
 
         $labelsage = array_keys($ageRanges);
         $data_age = array_values($ageRanges);
@@ -199,6 +228,20 @@ class FarmcMembership_Controller extends Controller
         $gen_male = FarmcMembership_Model::where('gender', 'Male')->count();
         $gen_female = FarmcMembership_Model::where('gender', 'Female')->count();
         $gen_other = FarmcMembership_Model::where('gender', 'Others')->count();
+
+        // Check if any of the counts have the 'ARCHIVED' status and exclude them
+        if (FarmcMembership_Model::where('status', 'ARCHIVED')->exists()) {
+            $archivedgenCounts = FarmcMembership_Model::where('status', 'ARCHIVED')->whereIn('gender', ['Male', 'Female'])->pluck('gender')->toArray();
+            if (in_array('Male', $archivedgenCounts)) {
+                $gen_male -= FarmcMembership_Model::where('gender', 'Male')->where('status', 'ARCHIVED')->count();
+            }
+            if (in_array('Female', $archivedgenCounts)) {
+                $gen_female -= FarmcMembership_Model::where('gender', 'Female')->where('status', 'ARCHIVED')->count();
+            }
+            if (in_array('Others', $archivedgenCounts)) {
+                $gen_other -= FarmcMembership_Model::where('gender', 'Others')->where('status', 'ARCHIVED')->count();
+            }
+        }
 
         $genderCount = [
             'Male' => $gen_male,

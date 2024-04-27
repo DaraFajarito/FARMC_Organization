@@ -674,7 +674,7 @@ class ProfileForm_Controller extends Controller
         $basicFunction->caseestablished_file = $caseestablishedFilePath ? '/basic-function/caseestablished/' . $caseestablishedFilePath->getFilename() : null;
         $basicFunction->mfarmcoffice = $validatedData['mfarmcoffice'] ?? null;
         $basicFunction->copy3_file = $copy3FilePath ? '/basic-function/copy3/' . $copy3FilePath->getFilename() : ($request->has('copy3_file') ? 'N/A' : null);
-        $basicFunction->regmeet = $request->has('regmeet') ? $validatedData['regmeet'] : 'N/A';
+        $basicFunction->regmeet = $request->has('regmeet') ? $validatedData['regmeet'] : null;
         $basicFunction->minatt_file = $minattFilePath   ? '/basic-function/minatt/' . $minattFilePath->getFilename() : ($request->has('minatt_file') ? 'N/A' : null);
         $basicFunction->photodoc_file = $photodocFilePath ? '/basic-function/photodoc/' . $photodocFilePath->getFilename() : ($request->has('photodoc_file') ? 'N/A' : null);
 
@@ -683,7 +683,7 @@ class ProfileForm_Controller extends Controller
         $basicFunction->save();
 
         $requiredFields = [
-            'profileForm_id', 'mfdp', 'copy1_file', 'mindoc1_file', 'mfo', 'copy2_file', 'mindoc2_file', 'bantaydt', 'bantaydt_file', 'actfarmcbt', 'actfarmcbt_file', 'appfarmcbt', 'appfarmcbt_file', 'caseestablished', 'caseestablished_file', 'mfarmcoffice', 'copy3_file', 'regmeet',
+            'profileForm_id', 'copy1_file', 'mindoc1_file', 'copy2_file', 'mindoc2_file', 'bantaydt', 'bantaydt_file', 'actfarmcbt', 'actfarmcbt_file', 'appfarmcbt', 'appfarmcbt_file', 'caseestablished', 'caseestablished_file', 'mfarmcoffice', 'copy3_file', 'regmeet',
             'minatt_file', 'photodoc_file'
         ];
 
@@ -696,6 +696,17 @@ class ProfileForm_Controller extends Controller
             }
         }
 
+        // Set status to 'INCOMPLETE' if 'mfdp' is 'Formulated'
+        if ($basicFunction->mfdp === 'Formulated') {
+            $incomplete = true;
+        }
+
+        // Set status to 'INCOMPLETE' if 'mfdp' is 'Formulated'
+        if ($basicFunction->mfo === 'Formulated') {
+            $incomplete = true;
+        }
+
+
         // Determine the status based on null values
         $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
@@ -703,7 +714,7 @@ class ProfileForm_Controller extends Controller
         $basicFunction->status = $status;
         $basicFunction->save();
 
-        if ($basicFunction != null){
+        if ($basicFunction != null) {
             $profile = ProfileForm_Model::find($id);
             $profile->status = 'ARCHIVED';
             $profile->save();
@@ -712,11 +723,12 @@ class ProfileForm_Controller extends Controller
         // Retrieve fields with null values
         $basicFunctionNull = $basicFunction->getNullFields();
 
+
         // Redirect if null values are present, otherwise display the incomplete view
         if (!$incomplete) {
             return redirect('/level2')->with('success', 'Success!');
         } else {
-            return view('LoD.Level2.L2_Incomplete', ['basicFunctionNull' => $basicFunctionNull]);
+            return view('LoD.Level2.L2_Incomplete', ['basicFunctionNull' => $basicFunctionNull, 'basicFunction' => $basicFunction]);
         }
     }
 
@@ -1018,7 +1030,6 @@ class ProfileForm_Controller extends Controller
                 $fullyOperational->status = 'ARCHIVED';
                 $fullyOperational->save();
             } else {
-
             }
         }
 
@@ -1199,7 +1210,6 @@ class ProfileForm_Controller extends Controller
                 $sustainabilityMech->status = 'ARCHIVED';
                 $sustainabilityMech->save();
             } else {
-
             }
         }
 
@@ -1437,9 +1447,9 @@ class ProfileForm_Controller extends Controller
 
         $fields = [
             'municipality', 'province', 'date_organized', 'date_reorganized', 'internalP', 'fisherfolkR',
-            'fisheriesP', 'formulationR','minutes1', 'minutes2' , 'photos1' ,'photos2' , 'attendance1' , 'attendance2' , 'internalP_file' , 'fisherfolkR_file' , 'fisheriesP_file' , 'formulationR_file' ,
-            'chairperson', 'vicechairperson', 'chairperson' ,'vice_chairperson' ,'secretary' ,'asst_sec' ,'treasurer' ,'asst_treas' ,'auditor' ,'asst_aud' ,'pro1' ,'pro2' ,'sgt_arms1' ,'sgt_arms2' ,'sgt_arms3' ,
-            'chairpersonSB' ,'mpdo' ,'repmdc' ,'repda' ,'repngo' ,'repps' ,'others' ,'name_sec' ,'name_sec1' ,'name_sec2' ,'office_org' ,'office_org1' , 'office_org2'
+            'fisheriesP', 'formulationR', 'minutes1', 'minutes2', 'photos1', 'photos2', 'attendance1', 'attendance2', 'internalP_file', 'fisherfolkR_file', 'fisheriesP_file', 'formulationR_file',
+            'chairperson', 'vicechairperson', 'chairperson', 'vice_chairperson', 'secretary', 'asst_sec', 'treasurer', 'asst_treas', 'auditor', 'asst_aud', 'pro1', 'pro2', 'sgt_arms1', 'sgt_arms2', 'sgt_arms3',
+            'chairpersonSB', 'mpdo', 'repmdc', 'repda', 'repngo', 'repps', 'others', 'name_sec', 'name_sec1', 'name_sec2', 'office_org', 'office_org1', 'office_org2'
         ];
 
         $allFieldsFilled = true;
@@ -1481,7 +1491,11 @@ class ProfileForm_Controller extends Controller
             'caseestablished' => 'nullable',
             'caseestablished_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'mfarmcoffice' => 'nullable',
+            'copy3_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'regmeet' => 'nullable',
+            'minatt_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'photodoc_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
 
         ], [
             'copy1_file.max' => 'The copy1_file may not be greater than 5MB.',
@@ -1492,6 +1506,10 @@ class ProfileForm_Controller extends Controller
             'actfarmcbt_file.max' => 'The actfarmcbt_file may not be greater than 5MB.',
             'appfarmcbt_file.max' => 'The appfarmcbt_file may not be greater than 5MB.',
             'caseestablished_file.max' => 'The caseestablished_file may not be greater than 5MB.',
+            'copy3_file.max' => 'The copy3_file may not be greater than 5MB.',
+            'minatt_file.max' => 'The minatt_file may not be greater than 5MB.',
+            'photodoc_file.max' => 'The photodoc_file may not be greater than 5MB.',
+
         ]);
 
 
@@ -1563,6 +1581,14 @@ class ProfileForm_Controller extends Controller
             $basicFunction->caseestablished_file = $caseestablishedFilePath;
         }
 
+        if ($request->hasFile('copy3_file')) {
+            if ($basicFunction->copy3_file) {
+                Storage::delete($basicFunction->copy3_file);
+            }
+            $copy3FilePath = $request->file('copy3_file')->store('basicFunction/copy3');
+            $basicFunction->copy3_file = $copy3FilePath;
+        }
+
         if ($request->hasFile('minatt_file')) {
             if ($basicFunction->minatt_file) {
                 Storage::delete($basicFunction->minatt_file);
@@ -1589,8 +1615,7 @@ class ProfileForm_Controller extends Controller
         // Save the updated record
         $basicFunction->save();
 
-        if (
-            // Check if all fields are filled
+        $allFieldsFilled =
             $basicFunction->mfdp &&
             $basicFunction->mfo &&
             $basicFunction->bantaydt &&
@@ -1607,13 +1632,13 @@ class ProfileForm_Controller extends Controller
             $basicFunction->bantaydt_file &&
             $basicFunction->actfarmcbt_file &&
             $basicFunction->appfarmcbt_file &&
+            $basicFunction->copy3_file &&
             $basicFunction->caseestablished_file &&
             $basicFunction->minatt_file &&
-            $basicFunction->photodoc_file
-        ) {
-            // Update status to completed
-            $basicFunction->status = 'COMPLETED';
-        }
+            $basicFunction->photodoc_file;
+
+        // Update status to 'COMPLETED' if all fields are filled and files are uploaded, otherwise stay 'INCOMPLETE'
+        $basicFunction->status = $allFieldsFilled ? 'COMPLETED' : ($basicFunction->mfdp === 'Formulated' ? 'INCOMPLETE' : $basicFunction->status);
 
         // Save the updated status
         $basicFunction->save();
