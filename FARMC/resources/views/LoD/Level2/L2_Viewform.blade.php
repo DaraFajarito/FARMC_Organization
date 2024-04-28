@@ -186,7 +186,6 @@
                                                             <td class="text-center"><span style="color: red;">Formulated</span></td>
                                                             @elseif  ($item->mfdp === 'Approved')
                                                             <td class="text-center"><span style="color: green;">Approved</span></td>
-                                                            <td> {{ $item->mfdp }}</td>
                                                             @endif
 
                                                             @if ($item->copy1_file === null)
@@ -226,7 +225,6 @@
                                                             <td class="text-center"><span style="color: red;">Formulated</span></td>
                                                             @elseif  ($item->mfo === 'Approved')
                                                             <td class="text-center"><span style="color: green;">Approved</span></td>
-                                                            <td> {{ $item->mfo }}</td>
                                                             @endif
 
                                                             @if ($item->copy2_file === null)

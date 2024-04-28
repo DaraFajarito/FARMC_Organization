@@ -42,7 +42,7 @@
                         </li>
 
                         <div class="text-right">
-                            <span><a href="{{ url ('/FOform1') }}"><button type="button" class="btn btn-primary">+ Association Form</button></a></span>
+                            <span><a href="{{ url ('/FOform1_BasicInfo') }}"><button type="button" class="btn btn-primary">+ Association Form</button></a></span>
                             <span><a href="{{ url ('/FOform2GenInfo') }}"><button type="button" class="btn btn-primary">+ Cooperative Form</button></a></span>
                         </div>
                     </ol>

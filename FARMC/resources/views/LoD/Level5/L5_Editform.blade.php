@@ -274,7 +274,7 @@
                                                         <small>Previous file: {{ $item['award_trop3_file'] }}</small>
                                                         @endif
                                                     </div>
-                                                   
+
                                                 </div>
                                             </div>
                                         </div>
@@ -332,25 +332,21 @@
                                                     <br>
                                                     <div class="col-md-7" style=" line-height:3rem">
                                                         <input id="iec_broch_file" type="file" name="iec_broch_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <br>
                                                         @if ($item['iec_broch_file'])
                                                         <small>Previous file: {{ $item['iec_broch_file'] }}</small>
                                                         @endif
                                                         <br>
                                                         <input id="iec_hand_file" type="file" name="iec_hand_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <br>
                                                         @if ($item['iec_hand_file'])
                                                         <small>Previous file: {{ $item['iec_hand_file'] }}</small>
                                                         @endif
                                                         <br>
                                                         <input id="iec_pub_file" type="file" name="iec_pub_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <br>
                                                         @if ($item['iec_pub_file'])
                                                         <small>Previous file: {{ $item['iec_pub_file'] }}</small>
                                                         @endif
                                                         <br>
                                                         <input id="iec_AVP_file" type="file" name="iec_AVP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <br>
                                                         @if ($item['iec_AVP_file'])
                                                         <small>Previous file: {{ $item['iec_AVP_file'] }}</small>
                                                         @endif

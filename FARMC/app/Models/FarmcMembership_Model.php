@@ -11,7 +11,6 @@ class FarmcMembership_Model extends Model
     protected $table = 'farmc_membership';
     protected $primaryKey = 'id';
 
-
     protected $fillable = [
         'name',
         'address',

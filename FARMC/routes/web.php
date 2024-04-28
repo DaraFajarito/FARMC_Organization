@@ -6,6 +6,7 @@ use App\Http\Controllers\FARMC_Authentication\AuthController;
 use App\Http\Controllers\FarmcMembership_Controller;
 use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
+use App\Http\Controllers\FisherfolkOrganization_Controller;
 use App\Models\FarmcMembership_Model;
 
 Route::get('/', function () {
@@ -42,7 +43,6 @@ Route::get('/dash', function () {
 
 // Route::view('/level1', 'LoD.Level1.Level1');
 Route::view('/L1Incomplete', 'LoD.Level1.L1_Incomplete');
-Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
 Route::view('/officers', 'LVL1_Profile_Form.FARMC_Officers.officers');
 Route::view('/mandatedmem', 'LVL1_Profile_Form.Composition_OM.mandated_member');
 Route::view('/fisherfolkrep', 'LVL1_Profile_Form.Composition_OM.fisherfolk_representative');
@@ -110,12 +110,14 @@ Route::get('/dash', [ProfileForm_Controller::class,'allLevelCount']);
 
 
 //Profile Form
+Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
 Route::get('/officers-form/{id}', [ProfileForm_Controller::class,'display_officer_form']);
 Route::get('/level1', [ProfileForm_Controller::class,'displayAll']);
 Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'display_mandatedOfficer_form']);
 Route::get('/L1Viewform/{id}', [ProfileForm_Controller::class,'display_level1_info']);
 Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
 Route::get('/secretariat-form', [ProfileForm_Controller::class,'display_sectariat_form']);
+
 Route::put('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
 Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
 Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);
@@ -234,8 +236,19 @@ Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'mov
 
 //Municipal
 Route::view('/FOMunicipal', 'Fisherfolk_Organization.Municipal.municipal');
+Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Municipal.form1_BasicInfo');
 
-Route::view('/FOform1', 'Fisherfolk_Organization.Municipal.form1');
+Route::put('/Form1_add_BasicInfo', [FisherfolkOrganization_Controller::class,'createform1_basicInfo']);
+Route::get('/FOform1_ExecOff/{id}', [FisherfolkOrganization_Controller::class,'display_exec_off']);
+
+Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
+Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
+Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');
+Route::view('/FOform1_Capitalization', 'Fisherfolk_Organization.Municipal.form1_Capitalization');
+
+
+
+
 Route::view('/FOform2GenInfo', 'Fisherfolk_Organization.Municipal.form2_GenInfo');
 Route::view('/FOform2MembershipAsset', 'Fisherfolk_Organization.Municipal.form2_Membership&Asset');
 Route::view('/FOform2Officers', 'Fisherfolk_Organization.Municipal.form2_Officers');

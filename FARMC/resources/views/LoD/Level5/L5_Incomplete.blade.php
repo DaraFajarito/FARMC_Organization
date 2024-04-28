@@ -31,7 +31,7 @@
                                 </li>
                             </ol>
                             <br>
-                            <a href="{{ url ('/level4') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 4</a>
+                            <a href="{{ url ('/level5') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Go back to Level 4</a>
                         </div>
                     </div>
                     <div class="card">
@@ -54,59 +54,166 @@
                                     <div class="col-md-12" >
                                         <div>
                                             <b>
-                                                <h6 class="captions">Sustainability Mechanism</h6>
+                                                <h6 class="captions">Model of Excellence</h6>
                                             </b>
                                         </div>
                                         <br>
-                                        <p class="captions"><b>1) Data Bank/Databank System Established And Accesible</b></p>
-                                        @if (in_array('data_training', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; FARMC Has Undergone Training On FARMC & Fish Catch DAtabase System</span>
+                                        <p class="captions"><b>1) Recognized By The LGU & Community As A Strong And Dynamic Partner In The Management Of Municipal Waters</b></p>
+                                        @if (in_array('rec_list1', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;1.1 List Of Governing Bodies That Recognises The MFARMC As A Member 1</span>
                                         @endif
                                         <br>
-                                        @if (in_array('data_fishcatch', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; FARMC & Fish Catch Database System Installed And Operational In The FARMC Office Computer</span>
+                                        @if (in_array('data_fishcatch', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;2.2 List Of Governing Bodies That Recognises The MFARMC As A Member 2</span>
                                         @endif
                                         <br>
-                                        @if (in_array('data_regforms', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Fisherfolk Registration Forms Duly Accomplished And Encoded In The FARMC Database System</span>
-                                        @endif
-                                        <br>
-                                        <br>
-                                        <p class="captions"><b>2. Established Financial Capability And Fund Sourcing Ability</b></p>
-                                        @if (in_array('est_funds', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Amount Of MFARMC Funds Allocated By The LGU</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('est_funds_file', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Amount Of MFARMC Funds Allocated By The LGU (Document showing the MFARMC fund)</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('othersources1', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Other Sources Of Funds Obtained For The FARMC & Its Operation 1</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('othersources1_file', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Other Sources Of Funds Obtained For The FARMC & Its Operation 1 (Reports)</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('othersources2', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Other Sources Of Funds Obtained For The FARMC & Its Operation 2</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('othersources2_file', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Other Sources Of Funds Obtained For The FARMC & Its Operation 2 (Minutes)</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('othersources3', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Other Sources Of Funds Obtained For The FARMC & Its Operation 3</span>
-                                        @endif
-                                        <br>
-                                        @if (in_array('othersources3_file', $sustainabilityMechNull))
-                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Other Sources Of Funds Obtained For The FARMC & Its Operation 3 (Photo Documentation)</span>
+                                        @if (in_array('data_regforms', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;3.3 List Of Governing Bodies That Recognises The MFARMC As A Member 3</span>
                                         @endif
                                         <br>
                                         <br>
-                                        
+                                        @if (in_array('rec_attach_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Communications / Reports On The Representations Of FARMCs </span>
+                                        @endif
+                                        <br>
+
+                                        <p class="captions"><b>2) Awards And Citations/Recognitions For Exemplary Performance Received</b></p>
+
+                                        @if (in_array('award_plaq1', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Plaque Of Recognition Received 1</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_plaq1_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Plaque Of Recognition Received 1 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_plaq2', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Plaque Of Recognition Received 2</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_plaq2_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Plaque Of Recognition Received 2 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_plaq3', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Plaque Of Recognition Received 3</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_plaq3_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp; Plaque Of Recognition Received 3 (Attach file)</span>
+                                        @endif
+                                        <br>
+
+                                        @if (in_array('award_cert1', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Certificate Of Merit, Recognition And Appreciation Received 1</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_cert1_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Certificate Of Merit, Recognition And Appreciation Received 1 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_cert2', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Certificate Of Merit, Recognition And Appreciation Received 2</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_cert2_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Certificate Of Merit, Recognition And Appreciation Received 2 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_cert3', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Certificate Of Merit, Recognition And Appreciation Received 3</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_cert3_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Certificate Of Merit, Recognition And Appreciation Received 3 (Attach file)</span>
+                                        @endif
+                                        <br>
+
+                                        @if (in_array('award_proj1', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Approved Project And Cash Incentives Received 1</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_proj1_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Approved Project And Cash Incentives Received 1 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_proj2', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Approved Project And Cash Incentives Received 2</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_proj2_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Approved Project And Cash Incentives Received 2 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_proj3', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Approved Project And Cash Incentives Received 3</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_proj3_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Approved Project And Cash Incentives Received 3 (Attach file)</span>
+                                        @endif
+                                        <br>
+
+                                        @if (in_array('award_trop1', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Trophies Received 1</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_trop1_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Trophies Received 1 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_trop2', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Trophies Received 2</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_trop2_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Trophies Received 2 (Attach file)</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_trop3', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Trophies Received 3</span>
+                                        @endif
+                                        <br>
+                                        @if (in_array('award_trop3_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  Trophies Received 3 (Attach file)</span>
+                                        @endif
+                                        <br>
+
+                                        <p class="captions"><b>3) Brochures / Handouts / Publications Of Success Stories Printed / Documented</b></p>
+                                        {{-- @if (in_array('iec_broch', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories (Brochure)</span>
+                                        @endif --}}
+                                        {{-- <br> --}}
+                                        @if (in_array('iec_broch', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories (Brochure)</span>
+                                        @endif
+                                        <br>
+                                        {{-- @if (in_array('iec_hand', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories 3 (Photo Documentation)</span>
+                                        @endif --}}
+                                        {{-- <br> --}}
+                                        @if (in_array('iec_hand_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories (Handouts)</span>
+                                        @endif
+                                        <br>
+                                        {{-- @if (in_array('iec_pub', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories 3 (Photo Documentation)</span>
+                                        @endif --}}
+                                        {{-- <br> --}}
+                                        @if (in_array('iec_pub_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories (Publication)</span>
+                                        @endif
+                                        <br>
+                                        {{-- @if (in_array('iec_AVP', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories 3 (Photo Documentation)</span>
+                                        @endif --}}
+                                        {{-- <br> --}}
+                                        @if (in_array('iec_AVP_file', $modelofExcellenceNull))
+                                        <b> <i class="ti-check-box text-danger-color"></i></b><span style="display: inline-block;">&nbsp;  IEC Materials Of M/CFARMC Success Stories (Audio Visual Presentation)</span>
+                                        @endif
+                                        <br>
+                                        <br>
+
                                     </div>
                                     <br><br><br>
                                     <br>

@@ -55,7 +55,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Completed</span>
-                                <h2 class="dashboard-total-products">0</h2>
+                                <h2 class="dashboard-total-products">{{$completedCount}}</h2>
                             </div>
                         </div>
 

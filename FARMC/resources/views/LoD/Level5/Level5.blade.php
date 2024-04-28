@@ -127,7 +127,7 @@
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody style="font-size: 12px">
                                                             @foreach($data as $item)
                                                             @if($item->status !== "ARCHIVED")
                                                             <tr>

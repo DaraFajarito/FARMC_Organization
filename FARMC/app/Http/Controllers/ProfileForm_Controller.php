@@ -11,6 +11,7 @@ use App\Models\Model_of_Excellence_Model;
 use App\Models\Sustainability_Mechanism_Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ProfileForm_Controller extends Controller
 {
@@ -132,7 +133,8 @@ class ProfileForm_Controller extends Controller
     public function display_level2_info($id)
     {
         $data = ProfileForm_Model::select('id')->where('id', $id)->get();
-        $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
+        // $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
+        $basics = BasicFunction_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level2.L2_Viewform', compact('data', 'basics'));
     }
@@ -140,7 +142,8 @@ class ProfileForm_Controller extends Controller
     public function display_level2_edit($id)
     {
         $data = ProfileForm_Model::select('id')->where('id', $id)->get();
-        $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
+        // $basics = BasicFunction_Model::where('profileForm_id', $id)->get();
+        $basics = BasicFunction_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level2.L2_Editform', compact('data', 'basics'));
     }
@@ -175,7 +178,8 @@ class ProfileForm_Controller extends Controller
     public function display_level3_info($id)
     {
         $basics = BasicFunction_Model::select('id')->where('id', $id)->get();
-        $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
+        // $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
+        $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level3.L3_Viewform', compact('basics', 'fullyOp'));
     }
@@ -183,7 +187,8 @@ class ProfileForm_Controller extends Controller
     public function display_level3_edit($id)
     {
         $basics = BasicFunction_Model::select('id')->where('id', $id)->get();
-        $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
+        // $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
+        $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level3.L3_Editform', compact('basics', 'fullyOp'));
     }
@@ -221,7 +226,7 @@ class ProfileForm_Controller extends Controller
     public function display_level4_info($id)
     {
         $fullyOp = Fully_Operational_Model::select('id')->where('id', $id)->get();
-        $sustain = Sustainability_Mechanism_Model::where('profileForm_id', $id)->get();
+        $sustain = Sustainability_Mechanism_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level4.L4_Viewform', compact('fullyOp', 'sustain'));
     }
@@ -229,14 +234,15 @@ class ProfileForm_Controller extends Controller
     public function display_level4_edit($id)
     {
         $fullyOp = Fully_Operational_Model::select('id')->where('id', $id)->get();
-        $sustain = Sustainability_Mechanism_Model::where('profileForm_id', $id)->get();
+        $sustain = Sustainability_Mechanism_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
+
 
         return view('LoD.Level4.L4_Editform', compact('fullyOp', 'sustain'));
     }
 
     public function display_level4_incomplete()
     {
-        $fullyOp = Sustainability_Mechanism_Model::where('status', 'INCOMPLETE')->get();
+        $fullyOp = Sustainability_Mechanism_Model::where('status', 'INCOMPLETE', )->get();
         return view('LoD.Level4.L4_Incompletetbl', compact('fullyOp'));
     }
 
@@ -265,7 +271,7 @@ class ProfileForm_Controller extends Controller
     public function display_level5_info($id)
     {
         $sustain = Sustainability_Mechanism_Model::select('id')->where('id', $id)->get();
-        $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->get();
+        $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level5.L5_Viewform', compact('sustain', 'modelEx'));
     }
@@ -273,7 +279,7 @@ class ProfileForm_Controller extends Controller
     public function display_level5_edit($id)
     {
         $sustain = Sustainability_Mechanism_Model::select('id')->where('id', $id)->get();
-        $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->get();
+        $modelEx = Model_of_Excellence_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level5.L5_Editform', compact('sustain', 'modelEx'));
     }
@@ -1016,6 +1022,7 @@ class ProfileForm_Controller extends Controller
             }
         }
 
+
         // Determine the status based on null values
         $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
@@ -1218,11 +1225,11 @@ class ProfileForm_Controller extends Controller
         $modelofExcellenceNull = $modelofExcellence->getNullFields();
 
         // Redirect if null values are present, otherwise display the incomplete view
-        if ($incomplete) {
+        if (!$incomplete) {
             return redirect('/level5')->with('success', 'Success!');
         } else {
-            // return view('LoD.Level5.L5_Incomplete', ['modelofExcellenceNull' => $sustainabilityMechNull]);
-            return redirect('/level5');
+            return view('LoD.Level5.L5_Incomplete', ['modelofExcellenceNull' => $modelofExcellenceNull]);
+            // return redirect('/level5');
         }
     }
 
@@ -1541,12 +1548,12 @@ class ProfileForm_Controller extends Controller
             $basicFunction->copy2_file = $copy2FilePath;
         }
 
-        if ($request->hasFile('mindoc2FilePath')) {
-            if ($basicFunction->mindoc2FilePath) {
-                Storage::delete($basicFunction->mindoc2FilePath);
+        if ($request->hasFile('mindoc2_fule')) {
+            if ($basicFunction->mindoc2_fule) {
+                Storage::delete($basicFunction->mindoc2_fule);
             }
-            $mindoc2_file = $request->file('mindoc2FilePath')->store('basicFunction/mindoc2');
-            $basicFunction->mindoc2FilePath = $mindoc2_file;
+            $mindoc2FilePath = $request->file('mindoc2_fule')->store('basicFunction/mindoc2');
+            $basicFunction->mindoc2_fule = $mindoc2FilePath;
         }
 
         if ($request->hasFile('bantaydt_file')) {
@@ -1638,7 +1645,7 @@ class ProfileForm_Controller extends Controller
             $basicFunction->photodoc_file;
 
         // Update status to 'COMPLETED' if all fields are filled and files are uploaded, otherwise stay 'INCOMPLETE'
-        $basicFunction->status = $allFieldsFilled ? 'COMPLETED' : ($basicFunction->mfdp === 'Formulated' ? 'INCOMPLETE' : $basicFunction->status);
+        $basicFunction->status = $allFieldsFilled ? 'COMPLETED' : ($basicFunction->mfdp === 'Formulated' ? 'INCOMPLETE' : ($basicFunction->mfo === 'Formulated' ? 'INCOMPLETE' : $basicFunction->status));
 
         // Save the updated status
         $basicFunction->save();
@@ -2084,26 +2091,25 @@ class ProfileForm_Controller extends Controller
         $sustainabilityMech->othersources2 = $validatedData['othersources2'] ?? null;
         $sustainabilityMech->othersources3 = $validatedData['othersources3'] ?? null;
 
-        // Save the updated record
         $sustainabilityMech->save();
 
-        $fields = [
-            'data_training', 'data_fishcatch', 'data_regforms', 'est_funds', 'othersources1', 'othersources1_file',
-            'othersources2', 'othersources2_file', 'othersources3', 'othersources3_file'
-        ];
-
+        // Check if any of the required fields are empty
+        $requiredFields = ['data_training', 'data_fishcatch', 'data_regforms', 'est_funds', 'othersources1', 'othersources2', 'othersources3'];
         $allFieldsFilled = true;
-        foreach ($fields as $field) {
-            if (empty($validatedData[$field])) {
+        foreach ($requiredFields as $field) {
+            if (empty($sustainabilityMech->$field)) {
                 $allFieldsFilled = false;
                 break;
             }
         }
+
         // Update status to 'COMPLETED' if all fields are filled
         if ($allFieldsFilled) {
             $sustainabilityMech->status = 'COMPLETED';
-            $sustainabilityMech->save();
+        } else {
+            $sustainabilityMech->status = 'INCOMPLETE';
         }
+        $sustainabilityMech->save();
 
         // Check if any changes were made and redirect accordingly
         if ($sustainabilityMech->wasChanged()) {
@@ -2502,8 +2508,31 @@ class ProfileForm_Controller extends Controller
         $allcominc4 = Sustainability_Mechanism_Model::where('status', '!=', 'ARCHIVED')->count();
         $allcominc5 = Model_of_Excellence_Model::where('status', '!=', 'ARCHIVED')->count();
 
+        $completedCount = DB::table('basic_function')
+            ->selectRaw('count(*) as count')
+            ->where('status', 'COMPLETED')
+            ->union(
+                DB::table('fully_functional')
+                    ->selectRaw('count(*) as count')
+                    ->where('status', 'COMPLETED')
+            )
+            ->union(
+                DB::table('sustainability_mechanism')
+                    ->selectRaw('count(*) as count')
+                    ->where('status', 'COMPLETED')
+            )
+            ->union(
+                DB::table('model_excellence')
+                    ->selectRaw('count(*) as count')
+                    ->where('status', 'COMPLETED')
+            )
+            ->sum('count');
+
+        echo $completedCount;
+
+
         //chart for complete
-        return view('dashboard', compact('allcominc1', 'allcominc2', 'allcominc3', 'allcominc4', 'allcominc5'));
+        return view('dashboard', compact('allcominc1', 'allcominc2', 'allcominc3', 'allcominc4', 'allcominc5', 'completedCount'));
     }
 
     //==========================================================================================================================================||

@@ -61,7 +61,7 @@
                                 </li>
                             </ol>
                             <br>
-                            <a href="{{ url('/level1') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                            <a href="{{ url('/FOMunicipal') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
                                 back</a>
                         </div>
                     </div>
