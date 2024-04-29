@@ -141,7 +141,7 @@ class FO_OAM_BoardofDir_Controller extends Controller
         $board->save();
 
         if ($board) {
-            return redirect('/FOform1_BoardofDir/' . $board->id)->with('success', 'Success!');
+            return redirect('/FOform1_Committees/' . $board->id)->with('success', 'Success!');
         } else {
             return redirect()->back()->with('failed', 'error');
         }

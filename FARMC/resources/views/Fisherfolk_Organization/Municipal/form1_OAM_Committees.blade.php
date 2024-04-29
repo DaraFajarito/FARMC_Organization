@@ -82,138 +82,164 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOform1_OAM_BoardofDir') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                        <a href="{{ url('/FOform1_OAM_BoardofDir') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i>
                             Back</a>
                     </div>
                 </div>
-                <div class="card inline-form-style">
-                    <div class="card-header">
-                        <div class="card-block">
 
-                            <div class="row">
-                                <!-- <div class="col-md-12"> -->
-                                <div class="col-md-4">
-                                    <div class="form-group m-r-15">
-
-                                        <label for="" class="block form-control-label"></em></label>
-                                        <label>4.3 Committees</label>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="d-flex align-items-center" style="width: 300px">
-                                                    <!-- Wrap the elements in a div -->
-                                                    <select name="category" id="category"
-                                                        class="js-example-basic-single form-control">
-                                                        <optgroup label="Committee">
-                                                            <option value="Membership Committee">Membership Committee
-                                                            </option>
-                                                            <option value="Committee on Education and Research">
-                                                                Committee on Education and Research</option>
-                                                            <option value="Election Committee">Election Committee
-                                                            </option>
-                                                            <option value="Audit Committee">Audit Committee</option>
-                                                            <option value="Others: please specify">Others: please
-                                                                specify</option>
-                                                        </optgroup>
-                                                    </select>
+                @foreach ($committees as $comm)
+                    <form class="form-inline" method="POST" action="{{ url('/add_Committees') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method ('PUT')
+                        <div class="card inline-form-style">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group m-r-15">
+                                                <label for="" class="block form-control-label"></em></label>
+                                                <label>4.3 Committees</label>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="d-flex align-items-center" style="width: 300px">
+                                                            <select name="category" id="category"
+                                                                class="js-example-basic-single form-control">
+                                                                <optgroup label="Committee">
+                                                                    <option value="Membership Committee">Membership
+                                                                        Committee
+                                                                    </option>
+                                                                    <option value="Committee on Education and Research">
+                                                                        Committee on Education and Research</option>
+                                                                    <option value="Election Committee">Election
+                                                                        Committee
+                                                                    </option>
+                                                                    <option value="Audit Committee">Audit Committee
+                                                                    </option>
+                                                                    <option onchange="toggleOtherTextbox()"
+                                                                        value="Others: please specify">Others:
+                                                                        please
+                                                                        specify</option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </div>
+                                                        <br>
+                                                        <input type="text" id="otherText" style="width:300px"
+                                                            name="other_cat" style="display: none;"
+                                                            placeholder="Please specify" class="form-control">
+                                                    </div>
                                                 </div>
-                                                <br>
-                                                <input type="text" id="otherText" style="display: none;"
-                                                    placeholder="Please specify" class="form-control">
+
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Position</th>
+                                                            <th>Name</th>
+                                                            <th>Civil Status</th>
+                                                            <th>Gender</th>
+                                                            <th>Birthday</th>
+                                                            <th>Age</th>
+                                                            <th>4ps/Ips/SC/PWD</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-size: small;">Chairperson</div>
+                                                            </td>
+                                                            <td><input id="name" type="text"
+                                                                    class="form-control" style="width: 250px;"
+                                                                    placeholder="Name" name="name"></td>
+                                                            &nbsp;
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 150px;" placeholder="Civil Status"
+                                                                    name="civil_status">
+                                                            </td>
+                                                            &nbsp;
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 100px;" placeholder="Gender"
+                                                                    name="gender"></td>
+                                                            &nbsp;
+                                                            <td><input type="date" class="form-control"
+                                                                    placeholder="Birthday" name="birthday"></td>
+                                                            &nbsp;
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 60px;" placeholder="Age"
+                                                                    name="age"></td>
+                                                            &nbsp;
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                    name="fourps">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-size: small;">Secretary
+                                                                </div>
+                                                            </td>
+                                                            <td><input id="name" type="text"
+                                                                    class="form-control" style="width: 250px;"
+                                                                    placeholder="Name" name="name1"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 150px;" placeholder="Civil Status"
+                                                                    name="civil_status1">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 100px;" placeholder="Gender"
+                                                                    name="gender1"></td>
+                                                            <td><input type="date" class="form-control"
+                                                                    placeholder="Birthday" name="birthday1"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 60px;" placeholder="Age"
+                                                                    name="age1"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                    name="fourps1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-size: small;">Member</td>
+                                                            <td><input id="name" type="text"
+                                                                    class="form-control" style="width: 250px;"
+                                                                    placeholder="Name" name="name2"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 150px;" placeholder="Civil Status"
+                                                                    name="civil_status2">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 100px;" placeholder="Gender"
+                                                                    name="gender2"></td>
+                                                            <td><input type="date" class="form-control"
+                                                                    placeholder="Birthday" name="birthday2"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 60px;" placeholder="Age"
+                                                                    name="age2"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                     name="fourps2"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Position</th>
-                                                    <th>Name</th>
-                                                    <th>Civil Status</th>
-                                                    <th>Gender</th>
-                                                    <th>Birthday</th>
-                                                    <th>Age</th>
-                                                    <th>4ps/Ips/SC/PWD</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div style="font-size: small;">Chairperson</div>
-                                                    </td>
-                                                    <td><input id="name" type="text" class="form-control"
-                                                            style="width: 250px;" placeholder="Name"></td>
-                                                    &nbsp;
-                                                    <td><input type="text" class="form-control" style="width: 150px;"
-                                                            placeholder="Civil Status"></td>
-                                                    &nbsp;
-                                                    <td><input type="text" class="form-control" style="width: 100px;"
-                                                            placeholder="Gender"></td>
-                                                    &nbsp;
-                                                    <td><input type="date" class="form-control"
-                                                            placeholder="Birthday"></td>
-                                                    &nbsp;
-                                                    <td><input type="text" class="form-control" style="width: 60px;"
-                                                            placeholder="Age"></td>
-                                                    &nbsp;
-                                                    <td><input type="text" class="form-control" style="width: 150px;"
-                                                            placeholder="4ps/Ips/SC/PWD"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div style="font-size: small;">Secretary
-                                                        </div>
-                                                    </td>
-                                                    <td><input id="name" type="text" class="form-control"
-                                                            style="width: 250px;" placeholder="Name"></td>
-                                                    <td><input type="text" class="form-control" style="width: 150px;"
-                                                            placeholder="Civil Status"></td>
-                                                    <td><input type="text" class="form-control" style="width: 100px;"
-                                                            placeholder="Gender"></td>
-                                                    <td><input type="date" class="form-control"
-                                                            placeholder="Birthday"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            style="width: 60px;" placeholder="Age"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-size: small;">Member</td>
-                                                    <td><input id="name" type="text" class="form-control"
-                                                            style="width: 250px;" placeholder="Name"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            style="width: 150px;" placeholder="Civil Status"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            style="width: 100px;" placeholder="Gender"></td>
-                                                    <td><input type="date" class="form-control"
-                                                            placeholder="Birthday"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            style="width: 60px;" placeholder="Age"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-10 text-center">
+                                            <button class="btn btn-primary" type="submit">Add another</button>
+                                        </div>
+                                        <div class="col-md-12 text-right">
+                                            <a href="{{ '/FOform1_ListofMem' }}" <button type="button"
+                                                class="btn btn-primary">NEXT <i
+                                                    class="icon-arrow-right"></i></button></a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
-
-
-                            <br>
-                            <div class="row">
-                                <div class="col-md-10 text-center">
-                                    <button class="btn btn-primary" type="submit">Add another</button>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <a href="{{ '/FOform1_ListofMem' }}" <button type="button" class="btn btn-primary">NEXT <i
-                                            class="icon-arrow-right"></i></button></a>
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
-
-                </div>
+                    </form>
+                @endforeach
             </div>
         </div>
     </div>
@@ -239,59 +265,25 @@
             </div>
         </div>
     </div> --}}
-    </div>
-    </div>
-
 
     <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
+        function toggleOtherTextbox() {
+            var category = document.getElementById("category");
+            var otherText = document.getElementById("otherText");
+            if (category.value === "Others: please specify") {
+                otherText.style.display = "block";
             } else {
-                textBoxGroup.style.display = 'none';
+                otherText.style.display = "none";
             }
         }
     </script>
 
-    <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
-        }
 
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-        }
+
+
     </script>
 
-    <script>
+    {{-- <script>
         function addRow(dytable) {
             var table = document.getElementById(dytable);
             var tableBody = table.querySelector('tbody');
@@ -307,7 +299,7 @@
             var firstRow = tableBody.firstElementChild.cloneNode(true);
             tableBody.appendChild(firstRow);
         }
-    </script>
+    </script> --}}
 </body>
 
 </html>
