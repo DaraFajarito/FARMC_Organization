@@ -86,6 +86,7 @@
                             Back</a>
                     </div>
                 </div>
+                @foreach ($boardofDir)
                 <div class="card inline-form-style">
                     <div class="card-header">
                         <div class="card-block">

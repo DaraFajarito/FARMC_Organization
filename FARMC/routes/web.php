@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Committee_Controller;
+use App\Http\Controllers\FO_OAM_BoardofDir_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FARMC_Authentication\AuthController;
 use App\Http\Controllers\FarmcMembership_Controller;
@@ -8,6 +9,7 @@ use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
 use App\Http\Controllers\FisherfolkOrganization_Controller;
 use App\Models\FarmcMembership_Model;
+use App\Models\FO_OAM_BoardofDir_Model;
 
 Route::get('/', function () {
     return view('FARMC_Authentication/login');
@@ -240,7 +242,13 @@ Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Municipal.form1_Basic
 
 Route::put('/Form1_add_BasicInfo', [FisherfolkOrganization_Controller::class,'createform1_basicInfo']);
 Route::get('/FOform1_ExecOff/{id}', [FisherfolkOrganization_Controller::class,'display_exec_off']);
+Route::put('/add_ExecOff/{id}', [FisherfolkOrganization_Controller::class,'add_exec_off']);
+Route::get('/FOform1_BoardofDir/{id}', [FO_OAM_BoardofDir_Controller::class,'display_boardofDir']);
+Route::put('/add_BoardofDir/{id}', [FO_OAM_BoardofDir_Controller::class,'add_boardofDir']);
+// Route::get('/FOform1_Committees/{id}', [FO_OAM_Committees_Controller::class,'display_committees']);
 
+
+Route::view('/FOform1_ExecOff', 'Fisherfolk_Organization.Municipal.form1_OAM_ExecOff');
 Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
 Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
 Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');

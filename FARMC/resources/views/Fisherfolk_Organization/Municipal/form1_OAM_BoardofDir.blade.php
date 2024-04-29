@@ -82,63 +82,212 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOform1_ExecOff') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                        <a href="{{ url('/FOform1_ExecOff') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i>
                             Back</a>
                     </div>
                 </div>
-                <div class="card inline-form-style">
-                    <div class="card-header">
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-r-15">
-                                        <label for="" class="block form-control-label"></label>
-                                        <label>4.2 Board of Directors/Trustees</label>
-                                        <table id="dytable" style="width: 1060px;">
-                                            <thead>
-                                                <tr style="width: 200px; font-size: small;">
-                                                    <th>Name</th>
-                                                    <th>Civil Status</th>
-                                                    <th>Gender</th>
-                                                    <th>Birthday</th>
-                                                    <th>Age</th>
-                                                    <th>4ps/Ips/SC/PWD</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="dytable-body">
-                                                <tr>
-                                                    <td><input id="name" type="text" class="form-control"
-                                                            style="width: 200px;" placeholder="Name"></td>
+                @foreach ($boardofDir as $board)
+                    <form class="form-inline" method="POST" action="{{ url('/add_BoardofDir/' . $board->id) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method ('PUT')
+                        <div class="card inline-form-style">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group m-r-15">
+                                                <label for="" class="block form-control-label"></label>
+                                                <label>4.2 Board of Directors/Trustees</label>
+                                                <table style="width: 1060px;">
+                                                    <thead>
+                                                        <tr style="width: 200px; font-size: small;">
+                                                            <th>Name</th>
+                                                            <th>Civil Status</th>
+                                                            <th>Gender</th>
+                                                            <th>Birthday</th>
+                                                            <th>Age</th>
+                                                            <th>4ps/Ips/SC/PWD</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                    class="form-control" style="width: 200px;"
+                                                                    placeholder="Name" name="boardofDir_name1"></td>
 
-                                                    <td><input type="text" class="form-control"
-                                                            placeholder="Civil Status"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            placeholder="Gender"></td>
-                                                    <td><input type="date" class="form-control"
-                                                            placeholder="Birthday"></td>
-                                                    <td><input type="text" class="form-control" placeholder="Age">
-                                                    </td>
-                                                    <td><input type="text" class="form-control"
-                                                            placeholder="4ps/Ips/SC/PWD"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="text-center">
-                                            <button onclick="addRow('dytable')" class="btn btn-primary">Add
-                                                Row</button>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Civil Status" name="boardofDir_cs1">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Gender" name="boardofDir_gen1">
+                                                            </td>
+                                                            <td><input type="date" class="form-control"
+                                                                    placeholder="Birthday" name="boardofDir_birth1"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Age" name="boardofDir_age1">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="4ps/Ips/SC/PWD"
+                                                                    name="boardofDir_fourps1"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                    class="form-control" style="width: 200px;"
+                                                                    placeholder="Name" name="boardofDir_name2"></td>
+
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Civil Status" name="boardofDir_cs2">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Gender" name="boardofDir_gen2">
+                                                            </td>
+                                                            <td><input type="date" class="form-control"
+                                                                    placeholder="Birthday" name="boardofDir_birth2"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Age" name="boardofDir_age2">
+                                                            </td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="4ps/Ips/SC/PWD"
+                                                                    name="boardofDir_fourps2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                class="form-control" style="width: 200px;"
+                                                                placeholder="Name" name="boardofDir_name3"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" name="boardofDir_cs3">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" name="boardofDir_gen3">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth3"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Age" name="boardofDir_age3">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"
+                                                                name="boardofDir_fourps3"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                class="form-control" style="width: 200px;"
+                                                                placeholder="Name" name="boardofDir_name4"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" name="boardofDir_cs4">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" name="boardofDir_gen4">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth4"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Age" name="boardofDir_age4">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"
+                                                                name="boardofDir_fourps4"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                class="form-control" style="width: 200px;"
+                                                                placeholder="Name" name="boardofDir_name5"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" name="boardofDir_cs5">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" name="boardofDir_gen5">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth5"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Age" name="boardofDir_age5">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"
+                                                                name="boardofDir_fourps5"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                class="form-control" style="width: 200px;"
+                                                                placeholder="Name" name="boardofDir_name6"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" name="boardofDir_cs6">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" name="boardofDir_gen6">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth6"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Age" name="boardofDir_age6">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"
+                                                                name="boardofDir_fourps6"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                class="form-control" style="width: 200px;"
+                                                                placeholder="Name" name="boardofDir_name7"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" name="boardofDir_cs7">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" name="boardofDir_gen7">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth7"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Age" name="boardofDir_age7">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"
+                                                                name="boardofDir_fourps7"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="name" type="text"
+                                                                class="form-control" style="width: 200px;"
+                                                                placeholder="Name" name="boardofDir_name8"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" name="boardofDir_cs8">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" name="boardofDir_gen8">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth8"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Age" name="boardofDir_age8">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"
+                                                                name="boardofDir_fourps8"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="col-md-12 text-right">
+                                       <button type="submit"
+                                            class="btn btn-primary">NEXT <i class="icon-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
-
-                            <br>
-                            <div class="col-md-12 text-right">
-                               <a href="{{('/FOform1_OAM_Committees')}}" <button type="button" class="btn btn-primary">NEXT <i class="icon-arrow-right"></i></button></a>
-                            </div>
                         </div>
-                    </div>
-
-                </div>
+                    </form>
+                @endforeach
             </div>
         </div>
     </div>
@@ -214,7 +363,7 @@
         }
     </script>
 
-    <script>
+    {{-- <script>
         function addRow(dytable) {
             var table = document.getElementById(dytable);
             var tableBody = table.querySelector('tbody');
@@ -230,7 +379,7 @@
             var firstRow = tableBody.firstElementChild.cloneNode(true);
             tableBody.appendChild(firstRow);
         }
-    </script>
+    </script> --}}
 </body>
 
 </html>

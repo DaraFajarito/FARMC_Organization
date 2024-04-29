@@ -34,56 +34,56 @@ return new class extends Migration
             $table->string('OAM_EO_Chair_name')->nullable();
             $table->string('chair_cs')->nullable();
             $table->string('chair_gen')->nullable();
-            $table->string('chair_birth')->nullable();
+            $table->date('chair_birth')->nullable();
             $table->string('chair_age')->nullable();
             $table->string('chair_fourps')->nullable();
 
             $table->string('OAM_EO_Vicechair_name')->nullable();
             $table->string('vicechair_cs')->nullable();
             $table->string('vicechair_gen')->nullable();
-            $table->string('vicechair_birth')->nullable();
+            $table->date('vicechair_birth')->nullable();
             $table->string('vicechair_age')->nullable();
             $table->string('vicechair_fourps')->nullable();
 
             $table->string('OAM_EO_Sec_name')->nullable();
             $table->string('sec_cs')->nullable();
             $table->string('sec_gen')->nullable();
-            $table->string('sec_birth')->nullable();
+            $table->date('sec_birth')->nullable();
             $table->string('sec_age')->nullable();
             $table->string('sec_fourps')->nullable();
 
             $table->string('OAM_EO_Treas_name')->nullable();
             $table->string('treas_cs')->nullable();
             $table->string('treas_gen')->nullable();
-            $table->string('treas_birth')->nullable();
+            $table->date('treas_birth')->nullable();
             $table->string('treas_age')->nullable();
             $table->string('treas_fourps')->nullable();
 
             $table->string('OAM_EO_Aud_name')->nullable();
             $table->string('aud_cs')->nullable();
             $table->string('aud_gen')->nullable();
-            $table->string('aud_birth')->nullable();
+            $table->date('aud_birth')->nullable();
             $table->string('aud_age')->nullable();
             $table->string('aud_fourps')->nullable();
 
             $table->string('OAM_EO_PRO_name')->nullable();
             $table->string('pro_cs')->nullable();
             $table->string('pro_gen')->nullable();
-            $table->string('pro_birth')->nullable();
+            $table->date('pro_birth')->nullable();
             $table->string('pro_age')->nullable();
             $table->string('pro_fourps')->nullable();
 
             $table->string('OAM_EO_Sgt_name')->nullable();
             $table->string('sgt_cs')->nullable();
             $table->string('sgt_gen')->nullable();
-            $table->string('sgt_birth')->nullable();
+            $table->date('sgt_birth')->nullable();
             $table->string('sgt_age')->nullable();
             $table->string('sgt_fourps')->nullable();
 
             $table->string('OAM_EO_Other_name')->nullable();
             $table->string('other_cs')->nullable();
             $table->string('other_gen')->nullable();
-            $table->string('other_birth')->nullable();
+            $table->date('other_birth')->nullable();
             $table->string('other_age')->nullable();
             $table->string('other_fourps')->nullable();
 
