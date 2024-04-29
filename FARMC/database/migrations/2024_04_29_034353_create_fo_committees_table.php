@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('fo_committees', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('fisherfolkOrg_id')->constrained('fisherfolk_municipal_ass');
+            $table->string('category')->nullable();
+            $table->string('name')->nullable();
+            $table->string('civil_status')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('birthday')->nullable();
+            $table->string('age')->nullable();
+            $table->string('fourps')->nullable();
             $table->timestamps();
         });
     }

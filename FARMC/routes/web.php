@@ -248,6 +248,7 @@ Route::put('/add_BoardofDir/{id}', [FO_OAM_BoardofDir_Controller::class,'add_boa
 // Route::get('/FOform1_Committees/{id}', [FO_OAM_Committees_Controller::class,'display_committees']);
 
 
+Route::view('/FOform1_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
 Route::view('/FOform1_ExecOff', 'Fisherfolk_Organization.Municipal.form1_OAM_ExecOff');
 Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
 Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');

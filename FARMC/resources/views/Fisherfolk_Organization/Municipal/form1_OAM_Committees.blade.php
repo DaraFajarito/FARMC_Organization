@@ -86,7 +86,6 @@
                             Back</a>
                     </div>
                 </div>
-                @foreach ($boardofDir)
                 <div class="card inline-form-style">
                     <div class="card-header">
                         <div class="card-block">
@@ -106,9 +105,9 @@
                                                     <select name="category" id="category"
                                                         class="js-example-basic-single form-control">
                                                         <optgroup label="Committee">
-                                                            <option value=" Membership Committee">Membership Committee
+                                                            <option value="Membership Committee">Membership Committee
                                                             </option>
-                                                            <option value=" Committee on Education and Research">
+                                                            <option value="Committee on Education and Research">
                                                                 Committee on Education and Research</option>
                                                             <option value="Election Committee">Election Committee
                                                             </option>
@@ -124,7 +123,7 @@
                                             </div>
                                         </div>
 
-                                        <table id="dynamic-table">
+                                        <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th>Position</th>
@@ -139,7 +138,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <div style="width: 200px; font-size: small;">Chairperson</div>
+                                                        <div style="font-size: small;">Chairperson</div>
                                                     </td>
                                                     <td><input id="name" type="text" class="form-control"
                                                             style="width: 250px;" placeholder="Name"></td>
@@ -161,7 +160,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div style="font-size: small;" style="width: 200px;">Secretary
+                                                        <div style="font-size: small;">Secretary
                                                         </div>
                                                     </td>
                                                     <td><input id="name" type="text" class="form-control"
@@ -178,7 +177,7 @@
                                                             style="width: 150px;" placeholder="4ps/Ips/SC/PWD"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="font-size: small;" style="width: 200px;">Member</td>
+                                                    <td style="font-size: small;">Member</td>
                                                     <td><input id="name" type="text" class="form-control"
                                                             style="width: 250px;" placeholder="Name"></td>
                                                     <td><input type="text" class="form-control"

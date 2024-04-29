@@ -96,14 +96,13 @@
                             <div class="card-header">
                                 <div class="card-block">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-12">
                                             <label for="" class="block form-control-label">4. Officer and
-                                                Management</em></label>
+                                                Management</label>
                                             <label>4.1 Executive Officers</label>
-
-                                            <table id="dynamic-table">
-                                                <thead>
-                                                    <tr style="width: 200px; font-size: small;">
+                                            <table class="table">
+                                                <thead style="width: 200px; font-size:small">
+                                                    <tr>
                                                         <th>Position</th>
                                                         <th>Name</th>
                                                         <th>Civil Status</th>
@@ -116,8 +115,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <div style="width: 200px; font-size: small;">Chairperson
-                                                            </div>
+                                                            <div style="font-size: small;">Chairperson </div>
                                                         </td>
                                                         <td><input id="name" type="text" class="form-control"
                                                                 style="width: 250px;" placeholder="Name"
@@ -145,136 +143,170 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div style="font-size: small;" style="width: 200px;">Vice
+                                                            <div style="font-size: small;">Vice
                                                                 Chairperson </div>
                                                         </td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_Vicechair_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_Vicechair_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="vicechair_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="vicechair_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="vicechair_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="vicechair_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="vicechair_birth">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="vicechair_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="vicechair_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="vicechair_fourps"></td>
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="vicechair_fourps"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Secretary
+                                                        <td style="font-size: small;">Secretary
                                                         </td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_Sec_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_Sec_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="sec_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="sec_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="sec_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="sec_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="sec_birth"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="sec_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="sec_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="sec_fourps">
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="sec_fourps">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Treasurer
+                                                        <td style="font-size: small;">Treasurer
                                                         </td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_Treas_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_Treas_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="treas_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="treas_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="treas_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="treas_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="treas_birth"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="treas_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="treas_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="treas_fourps">
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="treas_fourps">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Auditor
+                                                        <td style="font-size: small;">Auditor
                                                         </td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_Aud_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_Aud_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="aud_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="aud_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="aud_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="aud_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="aud_birth"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="aud_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="aud_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="aud_fourps">
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="aud_fourps">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">PRO</td>
+                                                        <td style="font-size: small;">PRO</td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_PRO_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_PRO_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="pro_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="pro_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="pro_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="pro_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="pro_birth"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="pro_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="pro_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="pro_fourps">
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="pro_fourps">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">
+                                                        <td style="font-size: small;">
                                                             Sgt-at-Arms</td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_Sgt_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_Sgt_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="sgt_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="sgt_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="sgt_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="sgt_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="sgt_birth"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="sgt_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="sgt_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="sgt_fourps">
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="sgt_fourps">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;" style="width: 200px;">Others
+                                                        <td style="font-size: small;">Others
                                                         </td>
                                                         <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name" name="OAM_EO_Other_name"></td>
+                                                                style="width: 250px;" placeholder="Name"
+                                                                name="OAM_EO_Other_name"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status" name="other_cs"></td>
+                                                                style="width: 150px;" placeholder="Civil Status"
+                                                                name="other_cs"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender" name="other_gen"></td>
+                                                                style="width: 100px;" placeholder="Gender"
+                                                                name="other_gen"></td>
                                                         <td><input type="date" class="form-control"
                                                                 placeholder="Birthday" name="other_birth"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="other_age"></td>
+                                                                style="width: 60px;" placeholder="Age"
+                                                                name="other_age"></td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD" name="other_fourps">
+                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
+                                                                name="other_fourps">
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-
-                                    <br>
                                     <div class="col-md-12 text-right">
-                                        <button type="submit"
-                                            class="btn btn-primary">NEXT <i class="icon-arrow-right"></i></button>
+                                        <button type="submit" class="btn btn-primary">NEXT <i
+                                                class="icon-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 @endforeach
             </div>
