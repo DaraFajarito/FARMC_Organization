@@ -68,7 +68,6 @@ class FO_OAM_BoardofDir_Model extends Model
         'boardofDir_age8',
         'boardofDir_birth8',
         'boardofDir_fourps8',
-
         'status',
 
     ];

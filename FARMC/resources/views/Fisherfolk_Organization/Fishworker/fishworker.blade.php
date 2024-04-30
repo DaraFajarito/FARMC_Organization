@@ -41,10 +41,10 @@
                         <li class="breadcrumb-item"><a href="tabs.html"> Fishworker</a>
                         </li>
 
-                        <div class="text-right">
+                        {{-- <div class="text-right">
                             <span><a href="{{ url ('/FOfform1') }}"><button type="button" class="btn btn-primary">+ Association Form</button></a></span>
                             <span><a href="{{ url ('/FOform2GenInfo1') }}"><button type="button" class="btn btn-primary">+ Cooperative Form</button></a></span>
-                        </div>
+                        </div> --}}
                     </ol>
 
                 </div>
@@ -94,7 +94,7 @@
                                 <canvas id="salesDifference"></canvas>
                             </div>
 
-                           
+
                             <div class="col-lg-6">
                                 <div class="row">
 

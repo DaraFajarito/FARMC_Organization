@@ -196,5 +196,50 @@ class FisherfolkOrganization_Controller extends Controller
     }
 
     // FUNCTION TO DISPLAY THE BOARD OF DIRECTORS ARE IN THE FO_OAM_BOARDOFDIR
+
+    public function display_CapCon_off($id)
+    {
+        $capcon = FisherfolkOrganization_Model::where('id', $id)->get();
+        if (!$capcon) {
+            return redirect()->back()->with('failed', 'Form 1 Basic Info record not found');
+        } else {
+            return view('Fisherfolk_Organization.Municipal.form1_Capitalization', compact('capcon'));
+        }
+    }
+
+    public function add_CapCon(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'capmem_fee' => 'nullable',
+            'capmonthly_cont' => 'nullable',
+            'cap_donation' => 'nullable',
+            'cap_others' => 'nullable',
+            'captotal_cap' => 'nullable',
+            'CIcontact_person' => 'nullable',
+            'CIlandline' => 'nullable',
+            'CIMobile' => 'nullable',
+            'CIMess' => 'nullable',
+
+        ]);
+
+
+        $capCon = FisherfolkOrganization_Model::findOrFail($id);
+
+        $capCon->capmem_fee = $validatedData['capmem_fee'] ?? null;
+        $capCon->capmonthly_cont = $validatedData['capmonthly_cont'] ?? null;
+        $capCon->cap_donation = $validatedData['cap_donation'] ?? null;
+        $capCon->cap_others = $validatedData['cap_others'] ?? null;
+        $capCon->captotal_cap = $validatedData['captotal_cap'] ?? null;
+
+        $capCon->CIcontact_person = $validatedData['CIcontact_person'] ?? null;
+        $capCon->CIlandline = $validatedData['CIlandline'] ?? null;
+        $capCon->CIMobile = $validatedData['CIMobile'] ?? null;
+        $capCon->CIMess = $validatedData['CIMess'] ?? null;
+
+
+        $capCon->save();
+
+       return redirect('/FOMunicipal')->with('success', 'Success!');
+    }
 }
 

@@ -9,7 +9,9 @@ use App\Http\Controllers\FarmcMembership_Controller;
 use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
 use App\Http\Controllers\FisherfolkOrganization_Controller;
+use App\Http\Controllers\FO_ListofMem_Controller;
 use App\Models\FarmcMembership_Model;
+use App\Models\FO_ListofMem_Model;
 use App\Models\FO_OAM_BoardofDir_Model;
 use App\Models\FO_OAM_Committees_Model;
 
@@ -250,12 +252,18 @@ Route::put('/add_BoardofDir/{id}', [FO_OAM_BoardofDir_Controller::class,'add_boa
 Route::get('/FOform1_Committees/{id}', [FO_OAM_Committees_Controller::class,'display_committees']);
 Route::put('/add_Committees', [FO_OAM_Committees_Controller::class,'add_comm']);
 
+Route::post('/add_ListofMembers', [FO_ListofMem_Controller::class,'add_listofMem']);
+Route::get('/FOform1_ListofMem', [FO_ListofMem_Controller::class,'display_listofMem']);
+
+Route::get('/FOform1_Capcon/{id}', [FisherfolkOrganization_Controller::class,'display_CapCon_off']);
+Route::put('/add_Capcon/{id}', [FisherfolkOrganization_Controller::class,'add_CapCon']);
+
 
 Route::view('/FOform1_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
 Route::view('/FOform1_ExecOff', 'Fisherfolk_Organization.Municipal.form1_OAM_ExecOff');
 Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
 Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
-Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');
+// Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');
 Route::view('/FOform1_Capitalization', 'Fisherfolk_Organization.Municipal.form1_Capitalization');
 
 

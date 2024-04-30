@@ -82,144 +82,105 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOform1_OAM_Committees') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+
+                        <a href="{{ url('/FOform1_OAM_Committees') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i>
                             Back</a>
                     </div>
                 </div>
-                <div class="card inline-form-style">
-                    <div class="card-header">
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group m-r-15">
-                                        <label for="" class="block form-control-label">5. List of
-                                            Members</em></label>
-                                        <table id="dynamic" style="width: 1060px;">
-                                            <thead>
-                                                <tr style="width: 200px; font-size: small;">
-                                                    <th>Name</th>
-                                                    <th>Civil Status</th>
-                                                    <th>Gender</th>
-                                                    <th>Birthday</th>
-                                                    <th>Age</th>
-                                                    <th>4ps/Ips/SC/PWD</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="dytable-body">
-                                                <tr>
-                                                    <td><input id="name" type="text" class="form-control"
-                                                            style="width: 200px;" placeholder="Name"></td>
+                <form class="form-inline" method="POST" action="{{ url('/add_ListofMembers') }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="card inline-form-style">
+                        <div class="card-header">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group m-r-15">
+                                            <label for="" class="block form-control-label">5. List of
+                                                Members</em></label>
+                                            <table class="table" id="dynamic">
+                                                <thead>
+                                                    <tr style="width: 200px; font-size: small;">
+                                                        <th>Name</th>
+                                                        <th>Civil Status</th>
+                                                        <th>Gender</th>
+                                                        <th>Birthday</th>
+                                                        <th>Age</th>
+                                                        <th>4ps/Ips/SC/PWD</th>
+                                                        <th></th>
 
-                                                    <td><input type="text" class="form-control"
-                                                            placeholder="Civil Status"></td>
-                                                    <td><input type="text" class="form-control"
-                                                            placeholder="Gender"></td>
-                                                    <td><input type="date" class="form-control"
-                                                            placeholder="Birthday"></td>
-                                                    <td><input type="text" class="form-control" placeholder="Age">
-                                                    </td>
-                                                    <td><input type="text" class="form-control"
-                                                            placeholder="4ps/Ips/SC/PWD"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="text-center">
-                                            <button onclick="addRow('dynamic')" class="btn btn-primary">Add
-                                                Row</button>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="dytable-body">
+                                                    <tr>
+                                                        <td><input id="name" type="text" class="form-control"
+                                                                style="width: 230px;" placeholder="Name"
+                                                                name="mem_name[]"></td>
+
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="mem_cs[]"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="mem_gen[]">
+                                                        </td>
+                                                        <td><input type="date" class="form-control"
+                                                                placeholder="Birthday" name="mem_birth[]"></td>
+                                                        <td><input type="text" class="form-control" placeholder="Age"
+                                                                style="width: 100px" name="mem_age[]">
+                                                        </td>
+                                                        <td><input type="text" class="form-control"
+                                                                placeholder="4ps/Ips/SC/PWD"  style="width: 130px" name="mem_fourps[]"></td>
+
+                                                        <td><button type="button" onclick="deleteRow(this)"
+                                                                class="btn btn-default"> <i class="icofont icofont-close"></i></button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="text-center">
+                                                <button onclick="addRow('dynamic')" type="button"
+                                                    class="btn btn-primary">Add
+                                                    Row</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 text-right">
-                               <a href="{{('/FOform1_Capitalization')}}" <button type="button" class="btn btn-primary">NEXT <i class="icon-arrow-right"></i></button></a>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary">NEXT <i
+                                            class="icon-arrow-right"></i></button></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
+                </form>
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    {{-- <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to submit now?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <a href="" class="btn btn-primary">Yes</a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    </div>
-    </div>
-
-
-    <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
-            }
-        }
-    </script>
-
-    <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
-        }
-
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-        }
-    </script>
 
     <script>
         function addRow(dytable) {
             var table = document.getElementById(dytable);
             var tableBody = table.querySelector('tbody');
-            var firstRow = tableBody.firstElementChild.cloneNode(true);
-            tableBody.appendChild(firstRow);
+            var newRow = tableBody.firstElementChild.cloneNode(true);
+
+            // Reset input values in the cloned row
+            newRow.querySelectorAll('input').forEach(function(input) {
+                input.value = '';
+            });
+
+            // Reset input values in the cloned row
+            newRow.querySelectorAll('input').forEach(function(input) {
+                input.value = '';
+            });
+
+
+            tableBody.appendChild(newRow);
+        }
+
+        function deleteRow(button) {
+            var row = button.closest('tr');
+            row.remove();
         }
     </script>
 

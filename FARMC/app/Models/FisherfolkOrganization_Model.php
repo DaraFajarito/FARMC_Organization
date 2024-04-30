@@ -90,7 +90,7 @@ class FisherfolkOrganization_Model extends Model
         'capmonthly_cont',
         'cap_donation',
         'cap_others',
-        'cap_total_cap',
+        'captotal_cap',
         'CIcontact_person',
         'CIlandline',
         'CIMobile',

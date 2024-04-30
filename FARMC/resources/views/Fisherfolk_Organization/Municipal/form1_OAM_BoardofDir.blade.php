@@ -115,15 +115,23 @@
                                                                 placeholder="Name" name="boardofDir_name1"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px"  name="boardofDir_cs1">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs1">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen1">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen1">
                                                         </td>
-                                                        <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth1"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px" placeholder="Age"
-                                                                name="boardofDir_age1">
+
+                                                        <td>
+                                                            <input type="date" class="form-control"
+                                                                placeholder="Birthday" name="boardofDir_birth1"
+                                                                onchange="calculateAge(1)">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age1" id="age1" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD" name="boardofDir_fourps1">
@@ -134,15 +142,19 @@
                                                                 placeholder="Name" name="boardofDir_name2"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px"  name="boardofDir_cs2">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs2">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen2">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen2">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth2"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px" placeholder="Age"
-                                                                name="boardofDir_age2">
+                                                                placeholder="Birthday" name="boardofDir_birth2"
+                                                                onchange="calculateAge(2)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age2" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD" name="boardofDir_fourps2">
@@ -153,15 +165,19 @@
                                                                 placeholder="Name" name="boardofDir_name3"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px"  name="boardofDir_cs3">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs3">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen3">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen3">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth3"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px"
-                                                                placeholder="Age" name="boardofDir_age3">
+                                                                placeholder="Birthday" name="boardofDir_birth3"
+                                                                onchange="calculateAge(3)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age3" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"
@@ -172,16 +188,19 @@
                                                                 placeholder="Name" name="boardofDir_name4"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px" name="boardofDir_cs4">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs4">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen4">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen4">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth4"></td>
-
-                                                        <td><input type="text" class="form-control" style="width:100px"
-                                                                placeholder="Age" name="boardofDir_age4">
+                                                                placeholder="Birthday" name="boardofDir_birth4"
+                                                                onchange="calculateAge(4)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age4" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"
@@ -192,15 +211,19 @@
                                                                 placeholder="Name" name="boardofDir_name5"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px" name="boardofDir_cs5">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs5">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen5">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen5">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth5"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px"
-                                                                placeholder="Age" name="boardofDir_age5">
+                                                                placeholder="Birthday" name="boardofDir_birth5"
+                                                                onchange="calculateAge(5)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age5" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"
@@ -211,15 +234,19 @@
                                                                 placeholder="Name" name="boardofDir_name6"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px" name="boardofDir_cs6">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs6">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender"  style="width:150px" name="boardofDir_gen6">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen6">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth6"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px"
-                                                                placeholder="Age" name="boardofDir_age6">
+                                                                placeholder="Birthday" name="boardofDir_birth6"
+                                                                onchange="calculateAge(6)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age6" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"
@@ -230,15 +257,19 @@
                                                                 placeholder="Name" name="boardofDir_name7"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px" name="boardofDir_cs7">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs7">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen7">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen7">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth7"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px"
-                                                                placeholder="Age" name="boardofDir_age7">
+                                                                placeholder="Birthday" name="boardofDir_birth7"
+                                                                onchange="calculateAge(7)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age7" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"
@@ -249,15 +280,19 @@
                                                                 placeholder="Name" name="boardofDir_name8"></td>
 
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Civil Status" style="width:150px" name="boardofDir_cs8">
+                                                                placeholder="Civil Status" style="width:150px"
+                                                                name="boardofDir_cs8">
                                                         </td>
                                                         <td><input type="text" class="form-control"
-                                                                placeholder="Gender" style="width:150px" name="boardofDir_gen8">
+                                                                placeholder="Gender" style="width:150px"
+                                                                name="boardofDir_gen8">
                                                         </td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="boardofDir_birth8"></td>
-                                                        <td><input type="text" class="form-control" style="width:100px"
-                                                                 placeholder="Age" name="boardofDir_age8">
+                                                                placeholder="Birthday" name="boardofDir_birth8"
+                                                                onchange="calculateAge(8)"></td>
+                                                        <td><input type="text" class="form-control"
+                                                                style="width:100px" placeholder="Age"
+                                                                name="boardofDir_age8" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"
@@ -306,52 +341,36 @@
         </div>
     </div> --}}
 
+    {{-- <script>
+        function calculateAge(birthDateInput) {
+            var birthDate = new Date(birthDateInput.value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
 
-    <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
             }
+
+            // Update the corresponding age input field
+            var row = birthDateInput.closest('tr');
+            var ageInput = row.querySelector('[name="boardofDir_age1"]', '[name="boardofDir_age2"]', '[name="boardofDir_age3"]', '[name="boardofDir_age4"]', '[name="boardofDir_age5"]', '[name="boardofDir_age6"]', '[name="boardofDir_age7"]', '[name="boardofDir_age8"]');
+            ageInput.value = age;
         }
-    </script>
+    </script> --}}
+
 
     <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
-        }
-
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
+        function calculateAge(boardMemberNumber) {
+            let dob = document.querySelector('input[name="boardofDir_birth' + boardMemberNumber + '"]').value;
+            let today = new Date();
+            let birthDate = new Date(dob);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            let m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.querySelector('input[name="boardofDir_age' + boardMemberNumber + '"]').value = age;
         }
     </script>
 

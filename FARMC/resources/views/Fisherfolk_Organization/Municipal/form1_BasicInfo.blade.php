@@ -115,8 +115,9 @@
                                         <div class="form-group m-r-15">
                                             <div class="grid-material bg-general"><b>1. Name of Organization</b></div>
                                             <div class="col-md-12">
+                                                <br>
                                                 <input id="" name="name_of_org" type="text"
-                                                    class="form-control" style="width: 930px;" placeholder="">
+                                                    class="form-control" style="width: 1070px;" placeholder="">
                                                 <br><br>
 
                                                 <div class="form-group m-r-15">

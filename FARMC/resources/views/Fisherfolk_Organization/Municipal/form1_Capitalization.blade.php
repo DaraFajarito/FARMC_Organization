@@ -82,146 +82,134 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOform1_ListofMem') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                        <a href="{{ url('/FOform1_ListofMem') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i>
                             Back</a>
                     </div>
                 </div>
-                <div class="card inline-form-style">
-                    <div class="card-header">
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="" class="block form-control-label">6.
-                                        Capitalization</em></label>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>1. Membership Fee:</td>
-                                                <td><input id="" type="text" class="form-control"
-                                                        placeholder=""></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2. Monthly Contribution:</td>
-                                                <td><input id="" type="text" class="form-control"
-                                                        placeholder=""></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3. Donations:</td>
-                                                <td><input id="" type="text" class="form-control"
-                                                        placeholder=""></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4. Others:</td>
-                                                <td><input id="" type="text" class="form-control"
-                                                        placeholder=""></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Total Capital:</td>
-                                                <td><input id="" type="text" class="form-control"
-                                                        placeholder=""></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="" class="block form-control-label">7. Contact
-                                        Information</em></label>
-                                    <div class="form-group row">
+                @foreach ($capcon as $capcons)
+                    <form class="form-inline" method="POST" action="{{ url('/add_Capcon/' . $capcons->id) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method ('PUT')
+                        <div class="card inline-form-style">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="row">
                                         <div class="col-md-4">
-                                            <label for="" class="col-md-12 captions">Contact Person</label>
-                                            <div class="col-md-12">
-                                                <div class="col-md-6">
-                                                    <textarea type="text" rows="4" id="" name="" class="form-control" style="width:300px"
-                                                        placeholder=""></textarea>
+                                            <label for="" class="block form-control-label">6.
+                                                Capitalization</em></label>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1. Membership Fee:</td>
+                                                        <td><input id="" type="text" class="form-control"
+                                                                placeholder="₱" name="capmem_fee"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2. Monthly Contribution:</td>
+                                                        <td><input id="" type="text" class="form-control"
+                                                                placeholder="₱" name="capmonthly_cont"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3. Donations:</td>
+                                                        <td><input id="" type="text" class="form-control"
+                                                                placeholder="₱" name="cap_donation"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4. Others:</td>
+                                                        <td><input id="" type="text" class="form-control"
+                                                                placeholder="₱" name="cap_others"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Total Capital:</td>
+                                                        <td><input id="" type="text" class="form-control"
+                                                                placeholder="₱" name="captotal_cap"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="" class="block form-control-label">7. Contact
+                                                Information</em></label>
+                                            <div class="form-group row">
+                                                <div class="col-md-4">
+                                                    <label for="" class="col-md-12 captions">Contact
+                                                        Person</label>
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <input id="" type="text" class="form-control"
+                                                                placeholder="" style="width: 280px"
+                                                                name="CIcontact_person">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <label for="" class="col-md-12 captions">Landline</label>
+                                                    <br> <br>
+                                                    <label for="" class="col-md-12 captions">Mobile
+                                                        Phone</label>
+                                                    <br> <br>
+                                                    <label for="" class="col-md-12 captions">Messenger</label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" id=""
+                                                        class="form-control" style="width:300px" placeholder=""
+                                                        name="CIlandline">
+                                                    <input type="text" id=""
+                                                        class="form-control" style="width:300px" placeholder=""
+                                                        name="CIMobile">
+                                                    <input type="text" id=""
+                                                        class="form-control" style="width:300px" placeholder=""
+                                                        name="CIMess">
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-2">
-                                            <label for="" class="col-md-12 captions">Landline</label>
-                                            <br> <br>
-                                            <label for="" class="col-md-12 captions">Mobile Phone</label>
-                                            <br> <br>
-                                            <label for="" class="col-md-12 captions">Messenger</label>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <input type="text" id="" name="" class="form-control"
-                                                style="width:300px" placeholder="">
-                                            <input type="text" id="" name="" class="form-control"
-                                                style="width:300px" placeholder="">
-                                            <input type="text" id="" name="" class="form-control"
-                                                style="width:300px" placeholder="">
-                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12 text-right">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#confirmationModal">SUBMIT</button>
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div style="display: flex; justify-content: center;">
-                                        <div style="width: 300px;" class="signature-container">
-                                            <p style="margin: 0;">Prepared by:</p>
-                                            <br>
-                                            <input type="file" id="signatureFile" accept="image/*"
-                                                style="margin-top: 10px; position: relative;">
-                                            <label for="signatureFile" class=""
-                                                style="text-align: center;"><small>(Signature over printed name of
-                                                    Secretary)</small></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div style="display: flex;">
-                                        <div style="width: 300px;" class="signature-container">
-                                            <p style="margin: 0;">Noted by:</p>
-                                            <br>
-                                            <input type="file" id="signatureFile" accept="image/*"
-                                                style="margin-top: 10px; position: relative;">
-                                            <label for="signatureFile" class=""
-                                                style="text-align: center;"><small>(Signature over printed name of
-                                                    Chairperson)</small></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="col-md-12 text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#confirmationModal">SUBMIT</button>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to submit now?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                @endforeach
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to submit now?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <a href="" class="btn btn-primary">Yes</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
     </div>
     </div>
 

@@ -38,6 +38,7 @@
     <!-- Responsive.css-->
     <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/responsive.css') }}">
 
+
 </head>
 
 <body class="sidebar-mini fixed">
@@ -185,6 +186,25 @@
 
                     <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-docs"></i><span>2. Fisherfolk Organization</span><i class="icon-arrow-down"></i></a>
                         <ul class="treeview-menu">
+
+                            <li><a class="waves-effect waves-dark" href="{{ url ('/FOMunicipal') }}"><i class="icon-plus"></i>All Forms</a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a class="waves-effect waves-dark" href="{{ url ('/FOform1_BasicInfo') }}"">
+                                            <i class="icon-notebook"></i>
+                                            <span>2.1.1 Association Form</span>
+
+                                        </a>
+                                        <a class="waves-effect waves-dark" href="{{ url ('/FOform2GenInfo') }}">
+                                            <i class="icon-notebook"></i>
+                                            <span>2.1.2 Cooperative Form</span>
+                                        </a>
+
+                                    </li>
+
+                                </ul></li>
+
+
                             <li><a class="waves-effect waves-dark" href="{{ url ('/FOMunicipal') }}"><i class="icon-arrow-right"></i>2.1 Municipal</a></li>
                             <li><a class="waves-effect waves-dark" href="{{ url ('/FOFishworker') }}"><i class="icon-arrow-right"></i>2.2 Fishworker</a></li>
                             <li><a class="waves-effect waves-dark" href="{{ url ('/FOCommercial') }}"><i class="icon-arrow-right"></i>2.3 Commercial</a></li>
