@@ -85,17 +85,32 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="row">
                     <div class="card">
-                        <!-- <div class="card-body"> -->
-
-
                         <div class="card-block">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <h6 class="card-title">Member's Age</h6>
                                 <canvas id="salesDifference"></canvas>
                             </div>
 
-
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
+                                <h6 class="card-title">Association / Cooperative</h6>
+                                <div class="row">
+                                    <div class="col-sm-10 grid-margin">
+                                        <canvas id="bestSellers"></canvas>
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- <div class="col-sm-12"> -->
+                                <ul class="graphl-legend-rectangle">
+                                    <div class="col-sm-6">
+                                        <li><span class="btn btn-danger"></span> Association</li>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <li><span class="btn btn-primary"></span>Cooperative</li>
+                                    </div>
+                                </ul>
+                                <!-- </div> -->
+                            </div>
+                            <div class="col-lg-4">
                                 <div class="row">
 
                                     <div class="align-items-center justify-content-between">
@@ -116,102 +131,71 @@
                 <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-block">
-                            <ul class="nav nav-tabs  tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">FARMC Members</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">FARMC Organizations</a>
-                                </li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content tabs">
-                                <div class="tab-pane active" id="members" role="tabpanel">
-                                    <br>
-                                    <!-- <a href="#!"><button type="button" class="btn btn-primary">View details</button> -->
-                                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Address</th>
-                                                <th>FARMC Organization</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
-                                                <!-- <th>Amount</th> -->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Ms. Darlene Angel G. Fajarito</td>
-                                                <td>Alphabet puzzle</td>
-                                                <td>2014/11/21</td>
-                                                <td data-order="1000">€1.000,00</td>
-                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Antonio Montallana</td>
-                                                <td>Layout for poster</td>
-                                                <td>2016/01/31</td>
-                                                <td data-order="1834">€1.834,00</td>
-                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Philip Arguelles</td>
-                                                <td>Image creation</td>
-                                                <td>2016/01/23</td>
-                                                <td data-order="1500">€1.500,00</td>
-                                                <td> <a href="#!"><button type="button" class="btn btn-warning">View details</button></a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>LIST OF OVERVIEW</label>
                                 </div>
-                                <!-- </div> -->
-
-                                <!-- <div class="tab-content tabs"> -->
-                                <div class="tab-pane" id="organization" role="tabpanel">
-                                    <br>
-                                    <table id="example1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <!-- <th>Name</th> -->
-                                                <th>FARMC Organization</th>
-                                                <th>Address of Organization</th>
-                                                <th>Date</th>
-                                                <!-- <th>Action</th> -->
-                                                <!-- <th>Amount</th> -->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Ms. Darlene Angel G. Fajarito</td>
-                                                <td>Alphabet puzzle</td>
-                                                <td></td>
-                                                <!-- <td>2014/11/21</td> -->
-                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
-                                                <!-- <td data-order="1000">€1.000,00</td> -->
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Antonio Montallana</td>
-                                                <td>Layout for poster</td>
-                                                <td></td>
-                                                <!-- <td>2016/01/31</td> -->
-                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
-                                                <!-- <td data-order="1834">€1.834,00</td> -->
-                                            </tr>
-                                            <tr>
-                                                <td>Mr. Philip Arguelles</td>
-                                                <td>Image creation</td>
-                                                <td></td>
-                                                <!-- <td>2016/01/23</td> -->
-                                                <!-- <td> <a href="#!"><button type="button" class="btn btn-primary">View details</button></a></td> -->
-                                                <!-- <td data-order="1500">€1.500,00</td> -->
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="col-md-8 text-right">
+                                    <a href="{{ url('/FOmregistered') }}"><button type="button"
+                                            class="btn btn-primary">All Registered</button></a>
+                                    <a href="{{ url('/FOmunregistered') }}"><button type="button"
+                                            class="btn btn-danger">All Unregistered</button></a>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="card-block">
+                                    <ul class="nav nav-tabs  tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#members"
+                                                role="tab">All</a>
+                                        </li>
+                                    </ul>
 
+                                    <!-- Tab panes -->
+                                    <div class="tab-content tabs">
+                                        <div class="tab-pane active" id="members" role="tabpanel">
+                                            <br>
+                                            <table id="FARMC" class="table table-striped table-bordered"
+                                                cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name of Organization</th>
+                                                        <th>Address</th>
+                                                        <th>Sector Represented</th>
+                                                        <th>Status of Registration</th>
+                                                        <th>Status of Accreditation</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($data as $item)
+                                                        <tr>
+                                                            <td>{{ $item->name_of_org }}</td>
+                                                            <td>{{ $item->add_barangay }}, {{ $item->add_city }},
+                                                                {{ $item->add_province }}</td>
+                                                            <td>{{ $item->sector_rep }} {{ $item->sector_rep_yes }}</td>
+                                                            <td>{{ $item->status_of_reg }},
+                                                                {{ $item->status_of_reg_yes }} </td>
+                                                            <td>{{ $item->status_of_accre }},
+                                                                {{ $item->status_of_accre_yes }}</td>
+                                                            {{-- <td><b>REGISTERED</b></td> --}}
+                                                            <td
+                                                                style=" display: flex; justify-content: space-between;">
+                                                                <a href="" class="btn btn-success"><i
+                                                                        class="ti-eye"></i></a>
+                                                                <a href="" class="btn btn-warning"><i
+                                                                        class="ti-pencil"></i></a>
+                                                                <a href="" class="btn btn-danger"><i
+                                                                        class="ti-trash"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,28 +223,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#example').DataTable({
+            $('#FARMC').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "pagingType": "full_numbers"
             });
         });
     </script>
-
-    <script>
-        $(document).ready(function() {
-            $('#example1').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            });
-        });
-    </script>
-
     <!-- <script src="{{ asset ('assets/vendors/base/vendor.bundle.base.js') }}"></script> -->
 
     <!-- Custom js for this page-->

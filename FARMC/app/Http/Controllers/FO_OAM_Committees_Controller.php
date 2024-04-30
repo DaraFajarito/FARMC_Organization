@@ -12,7 +12,7 @@ class FO_OAM_Committees_Controller extends Controller
     {
         $committees = FisherfolkOrganization_Model::where('id', $id)->get();
 
-        return view('Fisherfolk_Organization.Municipal.form1_OAM_Committees', compact('committees'));
+        return view('Fisherfolk_Organization.Association_Form.form1_OAM_Committees', compact('committees'));
     }
 
     public function add_comm(Request $request)

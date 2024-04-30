@@ -29,7 +29,7 @@
                     </a>
                     <span style="display: inline-block; vertical-align: middle; margin-top:10px">
                         <div>
-                            <h4 style="margin: 0;">Women Fisherfolk</h4>
+                            <h4 style="margin: 0;">Indigenous People</h4>
                         </div>
                     </span>
 
@@ -38,7 +38,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Fisherfolk Organization</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="tabs.html"> Women Fisherfolk</a>
+                        <li class="breadcrumb-item"><a href="tabs.html"> Indigeous People</a>
                         </li>
 
                         {{-- <div class="text-right">
@@ -60,7 +60,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
-                                <span>Women Fisherfolk Members</span>
+                                <span>IPs Members</span>
                                 <h2 class="dashboard-total-products">0</h2>
                                 <div class="side-box ">
                                     <i class="ti-id-badge text-success-color"></i>

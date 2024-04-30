@@ -6,6 +6,7 @@ use App\Http\Controllers\FO_OAM_Committees_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FARMC_Authentication\AuthController;
 use App\Http\Controllers\FarmcMembership_Controller;
+use App\Http\Controllers\FisherfolkOrg_category;
 use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
 use App\Http\Controllers\FisherfolkOrganization_Controller;
@@ -241,8 +242,17 @@ Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'mov
 // ---------------------------------------------------------------------------------------//
 
 //Municipal
-Route::view('/FOMunicipal', 'Fisherfolk_Organization.Municipal.municipal');
-Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Municipal.form1_BasicInfo');
+Route::get('/FOMunicipal', [FisherfolkOrg_category::class,'display_municipal']);
+Route::get('/FOFishworker', [FisherfolkOrg_category::class,'display_fishworker']);
+Route::get('/FOCommercial', [FisherfolkOrg_category::class,'display_commercial']);
+Route::get('/FOWomenF', [FisherfolkOrg_category::class,'display_women']);
+Route::get('/FOYouth',  [FisherfolkOrg_category::class,'display_youth']);
+Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
+
+
+
+
+Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Association_Form.form1_BasicInfo');
 
 Route::put('/Form1_add_BasicInfo', [FisherfolkOrganization_Controller::class,'createform1_basicInfo']);
 Route::get('/FOform1_ExecOff/{id}', [FisherfolkOrganization_Controller::class,'display_exec_off']);
@@ -259,12 +269,21 @@ Route::get('/FOform1_Capcon/{id}', [FisherfolkOrganization_Controller::class,'di
 Route::put('/add_Capcon/{id}', [FisherfolkOrganization_Controller::class,'add_CapCon']);
 
 
-Route::view('/FOform1_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
-Route::view('/FOform1_ExecOff', 'Fisherfolk_Organization.Municipal.form1_OAM_ExecOff');
-Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
-Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
-// Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');
-Route::view('/FOform1_Capitalization', 'Fisherfolk_Organization.Municipal.form1_Capitalization');
+//MUNICIPAL
+
+
+
+
+
+
+
+
+// Route::view('/FOform1_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
+// Route::view('/FOform1_ExecOff', 'Fisherfolk_Organization.Municipal.form1_OAM_ExecOff');
+// Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
+// Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
+// // Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');
+// Route::view('/FOform1_Capitalization', 'Fisherfolk_Organization.Municipal.form1_Capitalization');
 
 
 
@@ -283,7 +302,6 @@ Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredt
 // ---------------------------------------------------------------------------------------//
 
 //Fishworker
-Route::view('/FOFishworker', 'Fisherfolk_Organization.Fishworker.fishworker');
 
 Route::view('/FOfform1', 'Fisherfolk_Organization.Fishworker.form1');
 Route::view('/FOform2GenInfo1', 'Fisherfolk_Organization.Fishworker.form2_GenInfo');
@@ -294,7 +312,6 @@ Route::view('/FOform2OrgStructure1', 'Fisherfolk_Organization.Fishworker.form2_O
 // ---------------------------------------------------------------------------------------//
 
 //Commercial
-Route::view('/FOCommercial', 'Fisherfolk_Organization.Commercial.commercial');
 
 Route::view('/FOcform1', 'Fisherfolk_Organization.Commercial.form1');
 Route::view('/FOform2GenInfo2', 'Fisherfolk_Organization.Commercial.form2_GenInfo');
@@ -304,7 +321,6 @@ Route::view('/FOform2OrgStructure2', 'Fisherfolk_Organization.Commercial.form2_O
 
 // ---------------------------------------------------------------------------------------//
 //Women Fisherfolk
-Route::view('/FOWomenF', 'Fisherfolk_Organization.Women_Fisherfolk.women_fisherfolk');
 
 Route::view('/FOwform1', 'Fisherfolk_Organization.Women_Fisherfolk.form1');
 Route::view('/FOform2GenInfo3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_GenInfo');
@@ -314,7 +330,6 @@ Route::view('/FOform2OrgStructure3', 'Fisherfolk_Organization.Women_Fisherfolk.f
 
 // ---------------------------------------------------------------------------------------//
 //Youth Fisherfolk
-Route::view('/FOYouth', 'Fisherfolk_Organization.Youth_Fisherfolk.youth_fisherfolk');
 
 Route::view('/FOyform1', 'Fisherfolk_Organization.Youth_Fisherfolk.form1');
 Route::view('/FOform2GenInfo4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_GenInfo');

@@ -210,6 +210,7 @@
                             <li><a class="waves-effect waves-dark" href="{{ url ('/FOCommercial') }}"><i class="icon-arrow-right"></i>2.3 Commercial</a></li>
                             <li><a class="waves-effect waves-dark" href="{{ url ('/FOWomenF') }}"><i class="icon-arrow-right"></i>2.4. Women Fisherfolk</a></li>
                             <li><a class="waves-effect waves-dark" href="{{ url ('/FOYouth') }}"><i class="icon-arrow-right"></i>2.5 Youth Fisherfolk</a></li>
+                            <li><a class="waves-effect waves-dark" href="{{ url ('/FOIPs') }}"><i class="icon-arrow-right"></i>2.6 IPs</a></li>
 
                         </ul>
                     </li>

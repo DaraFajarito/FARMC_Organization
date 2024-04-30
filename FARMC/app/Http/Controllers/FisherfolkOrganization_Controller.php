@@ -61,7 +61,7 @@ class FisherfolkOrganization_Controller extends Controller
         if (!$exec_off) {
             return redirect()->back()->with('failed', 'Form 1 Basic Info record not found');
         } else {
-            return view('Fisherfolk_Organization.Municipal.form1_OAM_ExecOff', compact('exec_off'));
+            return view('Fisherfolk_Organization.Association_Form.form1_OAM_ExecOff', compact('exec_off'));
         }
     }
 
@@ -203,7 +203,7 @@ class FisherfolkOrganization_Controller extends Controller
         if (!$capcon) {
             return redirect()->back()->with('failed', 'Form 1 Basic Info record not found');
         } else {
-            return view('Fisherfolk_Organization.Municipal.form1_Capitalization', compact('capcon'));
+            return view('Fisherfolk_Organization.Association_Form.form1_Capitalization', compact('capcon'));
         }
     }
 
@@ -239,7 +239,7 @@ class FisherfolkOrganization_Controller extends Controller
 
         $capCon->save();
 
-       return redirect('/FOMunicipal')->with('success', 'Success!');
+       return redirect('/FOform1_Capcon')->with('success', 'Success!');
     }
 }
 

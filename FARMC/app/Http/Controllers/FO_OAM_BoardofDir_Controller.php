@@ -12,7 +12,7 @@ class FO_OAM_BoardofDir_Controller extends Controller
     {
         $boardofDir = FisherfolkOrganization_Model::where('id', $id)->get();
 
-        return view('Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir', compact('boardofDir'));
+        return view('Fisherfolk_Organization.Association_Form.form1_OAM_BoardofDir', compact('boardofDir'));
     }
 
     public function add_boardofDir(Request $request)

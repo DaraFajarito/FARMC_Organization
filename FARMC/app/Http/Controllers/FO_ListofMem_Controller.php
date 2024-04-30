@@ -13,7 +13,7 @@ class FO_ListofMem_Controller extends Controller
         // $list = FO_ListofMem_Model::where('id', $id)->get();
         $fisherfolkOrg = FisherfolkOrganization_Model::latest()->first();
 
-        return view('Fisherfolk_Organization.Municipal.form1_ListofMem', compact('fisherfolkOrg' ));
+        return view('Fisherfolk_Organization.Association_Form.form1_ListofMem', compact('fisherfolkOrg' ));
     }
 
     public function add_listofMem(Request $request)
