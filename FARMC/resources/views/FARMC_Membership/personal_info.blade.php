@@ -347,30 +347,28 @@
                                                             of Dependent/s</em></label>
                                                         <br>
                                                         <div class="col-md-4">
-                                                            <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                                <label class="input-checkbox checkbox-primary">
+                                                            <div>
+
                                                                     <input type="checkbox" name="internalP"
                                                                         id="checkbox">
                                                                     <span class="checkbox"></span>
-                                                                </label>
                                                                 <div class="captions">Male</div>
                                                             </div>
-                                                            <br><br><br>
-                                                            <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                                <label class="input-checkbox checkbox-primary">
+                                                            <br><br>
+                                                            <div>
                                                                     <input type="checkbox" name="fisherfolkR"
                                                                         id="checkbox-1">
                                                                     <span class="checkbox"></span>
-                                                                </label>
                                                                 <div class="captions">Female</div>
                                                             </div>
-                                                            <br><br><br>
-                                                            <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
-                                                                <label class="input-checkbox checkbox-primary">
+                                                            <br><br>
+                                                            {{-- <div class="rkmd-checkbox checkbox-rotate checkbox-ripple"> --}}
+                                                            <div>
+                                                                {{-- <label class="input-checkbox checkbox-primary"> --}}
                                                                     <input type="checkbox" name="fisheriesP"
                                                                         id="checkbox-2">
                                                                     <span class="checkbox"></span>
-                                                                </label>
+                                                                {{-- </label> --}}
                                                                 <div class="captions">Others</div>
                                                             </div>
                                                         </div>

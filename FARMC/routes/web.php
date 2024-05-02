@@ -6,15 +6,14 @@ use App\Http\Controllers\FO_OAM_Committees_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FARMC_Authentication\AuthController;
 use App\Http\Controllers\FarmcMembership_Controller;
+use App\Http\Controllers\FC_GenInfo_Controller;
+use App\Http\Controllers\FC_Membership_Controller;
 use App\Http\Controllers\FisherfolkOrg_category;
 use App\Http\Controllers\FisherfolkRepresentative_Controller;
 use App\Http\Controllers\ProfileForm_Controller;
 use App\Http\Controllers\FisherfolkOrganization_Controller;
 use App\Http\Controllers\FO_ListofMem_Controller;
-use App\Models\FarmcMembership_Model;
-use App\Models\FO_ListofMem_Model;
-use App\Models\FO_OAM_BoardofDir_Model;
-use App\Models\FO_OAM_Committees_Model;
+use App\Http\Controllers\FC_Officers_Controller;
 
 Route::get('/', function () {
     return view('FARMC_Authentication/login');
@@ -253,7 +252,6 @@ Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
 
 
 Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Association_Form.form1_BasicInfo');
-
 Route::put('/Form1_add_BasicInfo', [FisherfolkOrganization_Controller::class,'createform1_basicInfo']);
 Route::get('/FOform1_ExecOff/{id}', [FisherfolkOrganization_Controller::class,'display_exec_off']);
 Route::put('/add_ExecOff/{id}', [FisherfolkOrganization_Controller::class,'add_exec_off']);
@@ -288,10 +286,21 @@ Route::put('/add_Capcon/{id}', [FisherfolkOrganization_Controller::class,'add_Ca
 
 
 
-Route::view('/FOform2GenInfo', 'Fisherfolk_Organization.Municipal.form2_GenInfo');
-Route::view('/FOform2MembershipAsset', 'Fisherfolk_Organization.Municipal.form2_Membership&Asset');
-Route::view('/FOform2Officers', 'Fisherfolk_Organization.Municipal.form2_Officers');
-Route::view('/FOform2OrgStructure', 'Fisherfolk_Organization.Municipal.form2_OrgStructure');
+Route::view('/FOform2GenInfo', 'Fisherfolk_Organization.Cooperative_Form.form2_GenInfo');
+Route::put('/Form2_add_GenInfo', [FC_GenInfo_Controller::class,'createform2_genInfo']);
+Route::get('/FOform2_Membership/{id}', [FC_Membership_Controller::class,'display_foMembership']);
+Route::put('/Form2_add_Membership/{id}', [FC_Membership_Controller::class,'add_foMembership']);
+Route::get('/FOform2_Officers/{id}', [FC_Officers_Controller::class,'display_foOfficers']);
+Route::put('/Form2_add_Officers/{id}', [FC_Officers_Controller::class,'add_foOfficers']);
+// Route::get('/FOform2_Officers1/{id}', [FC_Officers_Controller::class,'display_foOfficers1']);
+// Route::put('/Form2_add_Officers1/{id}', [FC_Officers_Controller::class,'add_foOfficers1']);
+
+// Route::get('/FOform2Membership', 'Fisherfolk_Organization.Cooperative_Form.form2_Membership&Asset');
+
+Route::view('/FOform2Officers', 'Fisherfolk_Organization.Cooperative_Form.form2_Officers');
+Route::view('/FOform2Officers_1', 'Fisherfolk_Organization.Cooperative_Form.form2_Officers_1');
+Route::view('/FOform2OrgStructure', 'Fisherfolk_Organization.Cooperative_Form.form2_OrgStructure');
+Route::view('/FOform2ListofMem', 'Fisherfolk_Organization.Cooperative_Form.form2_ListofMem');
 
 
 Route::view('/FOmregistered', 'Fisherfolk_Organization.Municipal.registeredtbl');

@@ -151,6 +151,7 @@ class FarmcMembership_Controller extends Controller
 
         $memberCount = $filteredNames->count();
 
+
         //Count all data org_name
         $allOrg = FarmcMembership_Model::whereNotNull('org_mem_name')->get();
 
@@ -159,6 +160,9 @@ class FarmcMembership_Controller extends Controller
         });
 
         $farmcCount = $filterOrgname->count();
+
+
+
 
 
         $allMembers = FarmcMembership_Model::whereIn('age', range(0, 18))

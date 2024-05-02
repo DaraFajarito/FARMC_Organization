@@ -97,6 +97,7 @@ return new class extends Migration
             $table->string('CIlandline')->nullable();
             $table->string('CIMobile')->nullable();
             $table->string('CIMess')->nullable();
+            $table->string('association')->nullable();
             $table->timestamps();
         });
     }

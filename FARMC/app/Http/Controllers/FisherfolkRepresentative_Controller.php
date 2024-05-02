@@ -24,8 +24,8 @@ class FisherfolkRepresentative_Controller extends Controller
             'date_of_accreditation' => 'nullable',
             'endorsement_attachment' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'aoy_attachment' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
-            'soi_attachment' => 'file|max:5242880|mimes:jpeg,png',
-            'gmc_attachment' => 'file|max:5242880|mimes:jpeg,png',
+            'soi_attachment' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'gmc_attachment' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'dor_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'doa_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
         ], [

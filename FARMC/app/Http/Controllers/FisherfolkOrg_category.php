@@ -11,7 +11,19 @@ class FisherfolkOrg_category extends Controller
     {
 
         $data = FisherfolkOrganization_Model::where('sector_rep', 'Municipal')->get();
-        return view('Fisherfolk_Organization.Municipal.municipal', compact('data'));
+
+        $associationCount = FisherfolkOrganization_Model::where('association', 'ASSOCIATION')->count();
+        // $fishworkerCount = FisherfolkOrganization_Model::where('comp_mem', 'Fishworker')->count();
+
+        $assCount = [
+            'ASSOCIATION' => $associationCount,
+        ];
+
+        $label_ass = array_keys($assCount);
+        $data_ass = array_values($assCount);
+
+
+        return view('Fisherfolk_Organization.Municipal.municipal', compact('data', 'label_ass', 'data_ass'));
     }
     public function display_fishworker()
     {

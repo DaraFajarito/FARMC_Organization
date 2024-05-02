@@ -98,7 +98,7 @@
                                 <h6 class="card-title">Association / Cooperative</h6>
                                 <div class="row">
                                     <div class="col-sm-10 grid-margin">
-                                        <canvas id="bestSellers"></canvas>
+                                        <canvas id="Ass_Coop"></canvas>
                                     </div>
                                 </div>
                                 <br>
@@ -843,6 +843,39 @@
             });
         });
     </script>
+
+<script>
+    var ctx = document.getElementById('Ass_Coop').getContext('2d');
+
+    var data = {
+        labels: <?php echo json_encode($label_ass); ?>,
+        datasets: [{
+            data: <?php echo json_encode($data_ass); ?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)', // Red
+                'rgba(54, 162, 235, 0.5)', // Blue
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    var options = {
+        cutoutPercentage: 70,
+
+    };
+
+    var compMemChart = new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: options
+    });
+</script>
 
     <!-- <script src="{{ asset('assets/vendors/base/vendor.bundle.base.js') }}"></script> -->
 

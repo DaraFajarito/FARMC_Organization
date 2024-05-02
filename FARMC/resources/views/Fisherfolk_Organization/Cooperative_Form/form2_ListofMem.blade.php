@@ -74,7 +74,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="main-header">
-                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset('assets/images/Logo_BFAR.png') }}"
+                                style=" width: 60px;" alt="logo"></a>
                         <h4>M/C FARMC Municipal | <small>Fisherfolk Association Profile</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
@@ -88,7 +89,8 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url ('/FOform2Officers') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                        <a href="{{ url('/FOform2Officers_1') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
 
@@ -98,66 +100,6 @@
                         <div class="card-block">
                             <div class="row">
                                 <div class="col-md-12">
-
-                                    <div class="grid-material bg-general"><b>VI. &nbsp; ORGANIZATIONAL STRUCTURE</b></div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general">Organizational Structure:</div>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <input id="" type="file" class="form-control" style="width: 100%" placeholder="">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="grid-material bg-general"><b>VI. &nbsp; CONTACT DETAILS</b></div>
-                                    <br>
-                                    <div class="row" style="margin-bottom: 20px;">
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Name:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Designation:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Tell / Cell No.:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Email Address:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Facebook Account:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div class="grid-material bg-general"><b>VII. &nbsp; LIST OF MEMBERSHIP </b></div>
                                     <br>
 
@@ -177,19 +119,27 @@
                                                     </thead>
                                                     <tbody id="dytable-body">
                                                         <tr>
-                                                            <td><input id="name" type="text" class="form-control" style="width: 200px;" placeholder="Name"></td>
+                                                            <td><input id="name" type="text"
+                                                                    class="form-control" style="width: 200px;"
+                                                                    placeholder="Name"></td>
 
-                                                            <td><input type="text" class="form-control" placeholder="Civil Status"></td>
-                                                            <td><input type="text" class="form-control" placeholder="Civil Status"></td>
-                                                            <td><input type="text" class="form-control" placeholder="Gender"></td>
-                                                            <td><input type="date" class="form-control" placeholder="Birthday"></td>
-                                                            <td><input type="text" class="form-control" placeholder="Age"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Civil Status"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Civil Status"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Gender"></td>
+                                                            <td><input type="date" class="form-control"
+                                                                    placeholder="Birthday"></td>
+                                                            <td><input type="text" class="form-control"
+                                                                    placeholder="Age"></td>
 
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                                 <div class="text-center">
-                                                    <button onclick="addRow('dytable')" class="btn btn-primary">Add Row</button>
+                                                    <button onclick="addRow('dytable')" class="btn btn-primary">Add
+                                                        Row</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -200,7 +150,8 @@
 
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">SUBMIT</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#confirmationModal">SUBMIT</button>
                                     </div>
                                 </div>
                             </div>
@@ -208,11 +159,12 @@
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
