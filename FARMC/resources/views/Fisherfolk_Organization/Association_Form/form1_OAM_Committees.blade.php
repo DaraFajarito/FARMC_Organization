@@ -161,12 +161,11 @@
                                                                     style="width: 100px;" placeholder="Gender"
                                                                     name="gender"></td>
                                                             &nbsp;
-                                                            <td><input type="date" class="form-control"
-                                                                    placeholder="Birthday" name="birthday"></td>
+                                                            <td><input type="date" class="form-control" placeholder="Birthday" name="birthday" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             &nbsp;
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 60px;" placeholder="Age"
-                                                                    name="age"></td>
+                                                                    name="age" readonly></td>
                                                             &nbsp;
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
@@ -188,11 +187,10 @@
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 100px;" placeholder="Gender"
                                                                     name="gender1"></td>
-                                                            <td><input type="date" class="form-control"
-                                                                    placeholder="Birthday" name="birthday1"></td>
+                                                                    <td><input type="date" class="form-control" placeholder="Birthday" name="birthday1" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 60px;" placeholder="Age"
-                                                                    name="age1"></td>
+                                                                    name="age1" readonly></td>
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                     name="fourps1"></td>
@@ -209,11 +207,10 @@
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 100px;" placeholder="Gender"
                                                                     name="gender2"></td>
-                                                            <td><input type="date" class="form-control"
-                                                                    placeholder="Birthday" name="birthday2"></td>
+                                                                    <td><input type="date" class="form-control" placeholder="Birthday" name="birthday2" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 60px;" placeholder="Age"
-                                                                    name="age2"></td>
+                                                                    name="age2" readonly></td>
                                                             <td><input type="text" class="form-control"
                                                                     style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                     name="fourps2"></td>
@@ -256,11 +253,18 @@
         }
     </script>
 
-
-
-
+    <script>
+        function calculateAge(birthDateInput, ageInput) {
+            var birthDate = new Date(birthDateInput.value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            ageInput.value = age;
+        }
     </script>
-
     {{-- <script>
         function addRow(dytable) {
             var table = document.getElementById(dytable);

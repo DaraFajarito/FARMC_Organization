@@ -191,11 +191,11 @@
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="date"
                                                                             class="form-control"
-                                                                            style="width: 120px; margin: auto;" name="chair_birth"></td>
+                                                                            style="width: 120px; margin: auto;" name="chair_birth" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 80px; margin: auto;" name="chair_age"></td>
+                                                                            style="width: 80px; margin: auto;" name="chair_age" readonly></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Secretary</td>
@@ -214,11 +214,11 @@
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="date"
                                                                             class="form-control"
-                                                                            style="width: 120px; margin: auto;" name="sec_birth"></td>
+                                                                            style="width: 120px; margin: auto;" name="sec_birth" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 80px; margin: auto;" name="sec_age"></td>
+                                                                            style="width: 80px; margin: auto;" name="sec_age" readonly></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Member</td>
@@ -237,11 +237,11 @@
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="date"
                                                                             class="form-control"
-                                                                            style="width: 120px; margin: auto;" name="mem_birth"></td>
+                                                                            style="width: 120px; margin: auto;" name="mem_birth" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 80px; margin: auto;" name="mem_age"></td>
+                                                                            style="width: 80px; margin: auto;" name="mem_age" readonly></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -272,6 +272,19 @@
         </div>
     </div>
     </div>
+
+    <script>
+        function calculateAge(birthDateInput, ageInput) {
+            var birthDate = new Date(birthDateInput.value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            ageInput.value = age;
+        }
+    </script>
 
     <script>
         function toggleOtherTextbox() {

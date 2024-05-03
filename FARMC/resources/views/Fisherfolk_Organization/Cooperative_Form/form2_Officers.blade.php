@@ -135,11 +135,11 @@
                                                             </td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
-                                                                    style="width: 120px; margin: auto;" name="birth1">
+                                                                    style="width: 120px; margin: auto;" name="birth1" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
                                                             </td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age1">
+                                                                    style="width: 80px; margin: auto;" name="age1" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -159,10 +159,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth2"></td>
+                                                                    name="birth2" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age2">
+                                                                    style="width: 80px; margin: auto;" name="age2" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -182,10 +182,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth3"></td>
+                                                                    name="birth3" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age3">
+                                                                    style="width: 80px; margin: auto;" name="age3" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -205,10 +205,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth4"></td>
+                                                                    name="birth4" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age4">
+                                                                    style="width: 80px; margin: auto;" name="age4" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -228,10 +228,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth5"></td>
+                                                                    name="birth5" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age5">
+                                                                    style="width: 80px; margin: auto;" name="age5" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -251,10 +251,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth6"></td>
+                                                                    name="birth6" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age6">
+                                                                    style="width: 80px; margin: auto;" name="age6" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -274,10 +274,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth7"></td>
+                                                                    name="birth7" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age7">
+                                                                    style="width: 80px; margin: auto;" name="age7" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -297,10 +297,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth8"></td>
+                                                                    name="birth8" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age8">
+                                                                    style="width: 80px; margin: auto;" name="age8" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -320,10 +320,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth9"></td>
+                                                                    name="birth9" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age9">
+                                                                    style="width: 80px; margin: auto;" name="age9" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -343,10 +343,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth10"></td>
+                                                                    name="birth10" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age10">
+                                                                    style="width: 80px; margin: auto;" name="age10" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -366,10 +366,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth11"></td>
+                                                                    name="birth11" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age11">
+                                                                    style="width: 80px; margin: auto;" name="age11" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -389,10 +389,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth12"></td>
+                                                                    name="birth12" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age12">
+                                                                    style="width: 80px; margin: auto;" name="age12" readonly>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -412,10 +412,10 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="date" class="form-control"
                                                                     style="width: 120px; margin: auto;"
-                                                                    name="birth13"></td>
+                                                                    name="birth13" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;" name="age13">
+                                                                    style="width: 80px; margin: auto;" name="age13" readonly>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -440,52 +440,18 @@
     </div>
 
     <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
+        function calculateAge(birthDateInput, ageInput) {
+            var birthDate = new Date(birthDateInput.value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
             }
+            ageInput.value = age;
         }
     </script>
 
-    <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
-        }
-
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-        }
-    </script>
 
     <script>
         function addRow(dytable) {

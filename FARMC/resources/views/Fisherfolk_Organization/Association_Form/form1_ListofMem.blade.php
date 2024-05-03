@@ -127,7 +127,7 @@
                                                         </td>
                                                         <td><input type="date" class="form-control" placeholder="Birthday" name="mem_birth[]" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                         <td><input type="text" class="form-control" placeholder="Age"
-                                                                style="width: 100px" name="mem_age[]">
+                                                                style="width: 100px" name="mem_age[]" readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 placeholder="4ps/Ips/SC/PWD"  style="width: 130px" name="mem_fourps[]"></td>
