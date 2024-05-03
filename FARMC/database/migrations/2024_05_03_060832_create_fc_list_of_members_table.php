@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('listmem_name')->nullable();
             $table->string('listmem_type')->nullable();
             $table->string('listmem_cs')->nullable();
+            $table->string('listmem_gen')->nullable();
             $table->date('listmem_birth')->nullable();
             $table->string('listmem_age')->nullable();
             $table->timestamps();

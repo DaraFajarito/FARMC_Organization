@@ -93,11 +93,11 @@
                                 class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
-                {{-- @foreach ($members as $memb) --}}
+                @foreach ($members as $memb)
                     <form class="form-inline" method="POST" action="{{ url('/Form2_add_Membership/' . $memb->id) }}"
                         enctype="multipart/form-data">
                         @csrf
-                        {{-- @method ('PUT') --}}
+                        @method ('PUT')
                         <div class="card inline-form-style">
                             <div class="card-header">
                                 <div class="card-block">

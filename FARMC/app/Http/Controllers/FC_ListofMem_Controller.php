@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class FC_ListofMem_Controller extends Controller
 {
-    public function display_fc_listofMem()
+    public function display_fc_listofMem($id)
     {
-        // $list = FO_ListofMem_Model::where('id', $id)->get();
-        $listofMem = FC_GenInfo_Model::latest()->first();
-
+        $listofMem = FC_GenInfo_Model::where('id', $id)->get();
+        // $listofMem = FC_GenInfo_Model::latest()->first();
+//
         return view('Fisherfolk_Organization.Cooperative_Form.form2_ListofMem', compact('listofMem'));
     }
 
@@ -52,7 +52,7 @@ class FC_ListofMem_Controller extends Controller
         }
 
         if ($listofMem) {
-            return redirect('/FOform2_ListofMem/' . $listofMem->fisherfolkOrg_id)->with('success', 'Success!');
+            return redirect('/FOform2_ListofMem/' . $listofMem->fisherfolkOrg_FC_id)->with('success', 'Success!');
         } else {
             return redirect()->back()->with('failed', 'error');
         }

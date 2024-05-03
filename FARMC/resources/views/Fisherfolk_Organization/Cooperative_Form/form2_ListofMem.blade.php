@@ -93,8 +93,8 @@
                                 class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
-                {{-- @foreach ($listofMem as $list) --}}
-                <form class="form-inline" method="POST" action="{{ url('/Form2_add_ListofMem') }}"
+                @foreach ($listofMem as $list)
+                <form class="form-inline" method="POST" action="{{ url('/Form2_add_ListofMem/'. $list->id) }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="card inline-form-style">
@@ -124,17 +124,17 @@
                                                             <tr>
                                                                 <td><input id="name" type="text"
                                                                         class="form-control" style="width: 230px;"
-                                                                        placeholder="Name"></td>
+                                                                        placeholder="Name" name="listmem_name[]"></td>
                                                                 <td><input type="text" class="form-control"
-                                                                        placeholder="Type of Membership" style="width:150px"></td>
+                                                                        placeholder="Type of Membership" style="width:150px" name="listmem_type[]"></td>
                                                                 <td><input type="text" class="form-control"
-                                                                        placeholder="Civil Status" style="width:150px"></td>
+                                                                        placeholder="Civil Status" style="width:150px" name="listmem_cs[]"></td>
                                                                 <td><input type="text" class="form-control"
-                                                                        placeholder="Gender" style="width:100px" ></td>
+                                                                        placeholder="Gender" style="width:100px" name="listmem_gen[]"></td>
                                                                 <td><input type="date" class="form-control"
-                                                                        placeholder="Birthday"></td>
+                                                                        placeholder="Birthday" name="listmem_birth[]"></td>
                                                                 <td><input type="text" class="form-control"
-                                                                        placeholder="Age"></td>
+                                                                        placeholder="Age" name="listmem_age[]"></td>
 
                                                             </tr>
                                                         </tbody>
@@ -185,7 +185,7 @@
                         </div>
                     </div>
                 </form>
-                {{-- @endforeach --}}
+                @endforeach
             </div>
         </div>
     </div>
