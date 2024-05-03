@@ -131,11 +131,10 @@
                                                                         placeholder="Civil Status" style="width:150px" name="listmem_cs[]"></td>
                                                                 <td><input type="text" class="form-control"
                                                                         placeholder="Gender" style="width:100px" name="listmem_gen[]"></td>
-                                                                <td><input type="date" class="form-control"
-                                                                        placeholder="Birthday" name="listmem_birth[]"></td>
+                                                                        <td><input type="date" class="form-control" placeholder="Birthday" name="listmem_birth[]"
+                                                                            onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                                 <td><input type="text" class="form-control"
                                                                         placeholder="Age" name="listmem_age[]"></td>
-
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -192,58 +191,33 @@
     </div>
 
     <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
-
-    <script>
-        function submitFormAndAddAnother1() {
-            // Submit the form
-            document.getElementById("FormId").submit();
-            // Clear the form fields
-            document.getElementById("FormId").reset();
-        }
-    </script>
-
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
+        function calculateAge(birthDateInput, ageInput) {
+            var birthDate = new Date(birthDateInput.value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
             }
-        }
-    </script>
-
-    <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
+            ageInput.value = age;
         }
 
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
+        function addRow(tableID) {
+            var table = document.getElementById(tableID);
+            var newRow = table.insertRow();
+            var cells = [
+                '<input type="text" class="form-control" style="width: 230px;" placeholder="Name" name="listmem_name[]">',
+                '<input type="text" class="form-control" placeholder="Type of Membership" style="width:150px" name="listmem_type[]">',
+                '<input type="text" class="form-control" placeholder="Civil Status" style="width:150px" name="listmem_cs[]">',
+                '<input type="text" class="form-control" placeholder="Gender" style="width:100px" name="listmem_gen[]">',
+                '<input type="date" class="form-control" placeholder="Birthday" name="listmem_birth[]" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">',
+                '<input type="text" class="form-control" placeholder="Age" name="listmem_age[]">'
+            ];
+
+            for (var i = 0; i < cells.length; i++) {
+                var cell = newRow.insertCell(i);
+                cell.innerHTML = cells[i];
+            }
         }
     </script>
 

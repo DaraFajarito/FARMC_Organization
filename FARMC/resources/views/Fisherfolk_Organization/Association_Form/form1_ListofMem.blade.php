@@ -125,8 +125,7 @@
                                                                 placeholder="Gender" style="width:150px"
                                                                 name="mem_gen[]">
                                                         </td>
-                                                        <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="mem_birth[]"></td>
+                                                        <td><input type="date" class="form-control" placeholder="Birthday" name="mem_birth[]" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
                                                         <td><input type="text" class="form-control" placeholder="Age"
                                                                 style="width: 100px" name="mem_age[]">
                                                         </td>
@@ -157,6 +156,43 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function calculateAge(birthDateInput, ageInput) {
+            var birthDate = new Date(birthDateInput.value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            ageInput.value = age;
+        }
+
+        function addRow(tableID) {
+            var table = document.getElementById(tableID);
+            var newRow = table.insertRow();
+            var cells = [
+                '<input type="text" class="form-control" style="width: 230px;" placeholder="Name" name="mem_name[]">',
+                '<input type="text" class="form-control" placeholder="Civil Status" style="width:150px" name="mem_cs[]">',
+                '<input type="text" class="form-control" placeholder="Gender" style="width:150px" name="mem_gen[]">',
+                '<input type="date" class="form-control" placeholder="Birthday" name="mem_birth[]" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">',
+                '<input type="text" class="form-control" placeholder="Age" style="width: 100px" name="mem_age[]">',
+                '<input type="text" class="form-control" placeholder="4ps/Ips/SC/PWD" style="width: 130px" name="mem_fourps[]">',
+                '<button type="button" onclick="deleteRow(this)" class="btn btn-default"> <i class="icofont icofont-close"></i></button>'
+            ];
+
+            for (var i = 0; i < cells.length; i++) {
+                var cell = newRow.insertCell(i);
+                cell.innerHTML = cells[i];
+            }
+        }
+
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
 
     <script>
         function addRow(dytable) {
