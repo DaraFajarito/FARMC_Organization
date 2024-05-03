@@ -186,7 +186,7 @@ class FC_Officers_Controller extends Controller
         $off->save();
 
         if ($off) {
-            return redirect('/FOform2_Officers/' . $off->fisherfolkOrg_FC_id)->with('success', 'Success!');
+            return redirect('/FOform2_Officers1/' . $off->fisherfolkOrg_FC_id)->with('success', 'Success!');
         } else {
             return redirect()->back()->with('failed', 'error');
         }

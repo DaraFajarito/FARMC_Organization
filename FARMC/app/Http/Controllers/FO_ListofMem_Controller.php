@@ -34,6 +34,7 @@ class FO_ListofMem_Controller extends Controller
         $rowCount = count($request->mem_cs);
         $rowCount = count($request->mem_gen);
         $rowCount = count($request->mem_age);
+        $rowCount = count($request->mem_birth);
         $rowCount = count($request->mem_fourps);
 
         // Loop through the rows to save each member
@@ -43,7 +44,7 @@ class FO_ListofMem_Controller extends Controller
             $listofMem->mem_name = $validatedData['mem_name'][$i] ?? null;
             $listofMem->mem_cs = $validatedData['mem_cs'][$i] ?? null;
             $listofMem->mem_gen = $validatedData['mem_gen'][$i] ?? null;
-
+            $listofMem->mem_birth = $validatedData['mem_birth'][$i] ?? null;
             $listofMem->mem_age = $validatedData['mem_age'][$i] ?? null;
             $listofMem->mem_fourps = $validatedData['mem_fourps'][$i] ?? null;
 

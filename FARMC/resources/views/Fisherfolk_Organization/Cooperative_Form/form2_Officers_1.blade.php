@@ -94,141 +94,180 @@
                     </div>
                 </div>
 
-                <!-- <div class="card-header"> -->
-                <div class="card inline-form-style">
-                    <div class="card-header">
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-12" style="margin-bottom: 20px;">
-                                        <div class="row">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="d-flex align-items-center" style="width: 300px">
-                                                        <select name="category" id="category"
-                                                            class="js-example-basic-single form-control">
-                                                            <optgroup label="Committee">
-                                                                <option value="Audit & Inventory Committee">Audit &
-                                                                    Inventory Committee
-                                                                </option>
-                                                                <option value="Election Committee">
-                                                                    Election Committee</option>
-                                                                </option>
-                                                                <option value="Mediation & Concilliation Committee">
-                                                                    Mediation & Concilliation Committee
-                                                                </option>
-                                                                <option value="Education Committee">Education
-                                                                    Committee
-                                                                </option>
-                                                                <option value="Membership Committee">Membership
-                                                                    Committee
-                                                                </option>
-                                                                <option value="Marketing Committee">Marketing Committee
-                                                                </option>
-                                                                <option value="GAD Committee">GAD Committee
-                                                                </option>
-                                                                <option onchange="toggleOtherTextbox()"
-                                                                    value="Others: please specify">Others:
-                                                                    please
-                                                                    specify</option>
-                                                            </optgroup>
-                                                        </select>
+                @foreach ($officers_commit as $offi)
+                    <form class="form-inline" method="POST" action="{{ url ('/Form2_add_Officers1') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method ('PUT')
+                        <div class="card inline-form-style">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                                <div class="row">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="d-flex align-items-center" style="width: 300px">
+                                                                <select name="category" id="category"
+                                                                    class="js-example-basic-single form-control">
+                                                                    <optgroup label="Committee">
+                                                                        <option value="Audit & Inventory Committee">
+                                                                            Audit &
+                                                                            Inventory Committee
+                                                                        </option>
+                                                                        <option value="Election Committee">
+                                                                            Election Committee</option>
+                                                                        </option>
+                                                                        <option
+                                                                            value="Mediation & Concilliation Committee">
+                                                                            Mediation & Concilliation Committee
+                                                                        </option>
+                                                                        <option value="Ethics Committee">Ethics
+                                                                            Committee
+                                                                        </option>
+                                                                        <option value="Audit Committee">Audit
+                                                                            Committee
+                                                                        </option>
+                                                                        <option value="Education Committee">Education
+                                                                            Committee
+                                                                        </option>
+                                                                        <option value="Membership Committee">Membership
+                                                                            Committee
+                                                                        </option>
+                                                                        <option value="Marketing Committee">Marketing
+                                                                            Committee
+                                                                        </option>
+                                                                        <option value="GAD Committee">GAD Committee
+                                                                        </option>
+                                                                        <option onchange="toggleOtherTextbox()"
+                                                                            value="Others: please specify">Others:
+                                                                            please
+                                                                            specify</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                            <br>
+                                                            <input type="text" id="otherText" style="width:300px"
+                                                                name="other_cat" style="display: none;"
+                                                                placeholder="Please specify" class="form-control">
+                                                        </div>
                                                     </div>
                                                     <br>
-                                                    <input type="text" id="otherText" style="width:300px"
-                                                        name="other_cat" style="display: none;"
-                                                        placeholder="Please specify" class="form-control">
+                                                    <div class="col-md-12" style="margin-bottom: 20px;">
+                                                        <table class="table table-bordered smaller-font">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col" style="text-align: center;">
+                                                                        Position</th>
+                                                                    <th scope="col" style="text-align: center;">Name
+                                                                    </th>
+                                                                    <th scope="col" style="text-align: center;">Civil
+                                                                        Status
+                                                                    </th>
+                                                                    <th scope="col" style="text-align: center;">
+                                                                        Gender</th>
+                                                                    <th scope="col" style="text-align: center;">
+                                                                        Birthday</th>
+                                                                    <th scope="col" style="text-align: center;">Age
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Chairman</td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="chairman_name"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="chair_cs"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="chair_gen"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="date"
+                                                                            class="form-control"
+                                                                            style="width: 120px; margin: auto;" name="chair_birth"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 80px; margin: auto;" name="chair_age"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Secretary</td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="sec_name"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="sec_cs"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="sec_gen"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="date"
+                                                                            class="form-control"
+                                                                            style="width: 120px; margin: auto;" name="sec_birth"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 80px; margin: auto;" name="sec_age"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Member</td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="mem_name"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="mem_cs"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 150px; margin: auto;" name="mem_gen"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="date"
+                                                                            class="form-control"
+                                                                            style="width: 120px; margin: auto;" name="mem_birth"></td>
+                                                                    <td style="text-align: center;"><input
+                                                                            id="" type="text"
+                                                                            class="form-control"
+                                                                            style="width: 80px; margin: auto;" name="mem_age"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <div class="col-md-12" style="margin-bottom: 20px;">
-                                                <table class="table table-bordered smaller-font">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col" style="text-align: center;">Position</th>
-                                                            <th scope="col" style="text-align: center;">Name</th>
-                                                            <th scope="col" style="text-align: center;">Civil Status
-                                                            </th>
-                                                            <th scope="col" style="text-align: center;">Gender</th>
-                                                            <th scope="col" style="text-align: center;">Birthday</th>
-                                                            <th scope="col" style="text-align: center;">Age</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Chairman</td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="date" class="form-control"
-                                                                    style="width: 120px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Secretary</td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="date" class="form-control"
-                                                                    style="width: 120px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Member</td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto; "></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 150px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="date" class="form-control"
-                                                                    style="width: 120px; margin: auto;"></td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
-                                                                    style="width: 80px; margin: auto;"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="row">
+                                                <div class="col-md-10 text-center">
+                                                    <button class="btn btn-primary" type="submit">Add
+                                                        another</button>
+                                                </div>
+                                                <div class="col-md-12 text-right">
+                                                    @foreach ($officers_commit as $offi)
+                                                    <a href="{{ url('/FOform2_OrgStruct/' .$offi->id) }}"> <button
+                                                        class="btn btn-primary" type="button">Next <i
+                                                                class="icon-arrow-right"></i></button></a>
+                                                    @endforeach
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-10 text-center">
-                                            <button class="btn btn-primary" type="submit">Add another</button>
-                                        </div>
-                                        <div class="col-md-12 text-right">
-                                            <a href="{{ url('FOform2OrgStructure') }}"> <button
-                                                    class="btn btn-primary">Next <i
-                                                        class="icon-arrow-right"></i></button></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                @endforeach
             </div>
         </div>
     </div>

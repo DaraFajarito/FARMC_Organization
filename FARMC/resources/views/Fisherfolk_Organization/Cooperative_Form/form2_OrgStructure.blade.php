@@ -74,7 +74,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="main-header">
-                        <a href="index.html" class="logo"><img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style=" width: 60px;" alt="logo"></a>
+                        <a href="index.html" class="logo"><img src="{{ asset('assets/images/Logo_BFAR.png') }}"
+                                style=" width: 60px;" alt="logo"></a>
                         <h4>M/C FARMC Municipal | <small>Fisherfolk Association Profile</small></h4>
                         <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                             <li class="breadcrumb-item">
@@ -88,85 +89,102 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url ('/FOform2Officers') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                        <a href="{{ url('/FOform2Officers') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i> Back</a>
                     </div>
                 </div>
 
-                <!-- <div class="card-header"> -->
-                <div class="card inline-form-style">
-                    <div class="card-header">
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="grid-material bg-general"><b>VI. &nbsp; ORGANIZATIONAL STRUCTURE</b></div>
-                                    <br>
+                @foreach ($orgstruct as $orgs)
+                    <form class="form-inline" method="POST" action="{{ url('/Form2_add_OrgStruct/'. $orgs->id) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method ('PUT')
+                        <div class="card inline-form-style">
+                            <div class="card-header">
+                                <div class="card-block">
                                     <div class="row">
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general">Organizational Structure:</div>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <input id="" type="file" class="form-control" style="width: 100%" placeholder="">
+                                        <div class="col-md-12">
 
+                                            <div class="grid-material bg-general"><b>VI. &nbsp; ORGANIZATIONAL
+                                                    STRUCTURE</b></div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                                    <div class="col-md-3">
+                                                        <div class="grid-material bg-general">Organizational Structure:
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input id="" type="file" class="form-control"
+                                                            style="width: 100%" placeholder="" name="orgstruct_file">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="grid-material bg-general"><b>VI. &nbsp; CONTACT DETAILS</b>
+                                            </div>
+                                            <br>
+                                            <div class="row" style="margin-bottom: 20px;">
+                                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                                    <div class="col-md-2">
+                                                        <div class="grid-material bg-general">Name:</div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <input id="" type="text" class="form-control"
+                                                            style="width: 100%;" placeholder="" name="CD_name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                                    <div class="col-md-2">
+                                                        <div class="grid-material bg-general">Designation:</div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <input id="" type="text" class="form-control"
+                                                            style="width: 100%;" placeholder="" name="CD_design">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                                    <div class="col-md-2">
+                                                        <div class="grid-material bg-general">Tell / Cell No.:</div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <input id="" type="text" class="form-control"
+                                                            style="width: 100%;" placeholder="" name="CD_tell">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                                    <div class="col-md-2">
+                                                        <div class="grid-material bg-general">Email Address:</div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <input id="" type="email" class="form-control"
+                                                            style="width: 100%;" placeholder="" name="CD_email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin-bottom: 10px;">
+                                                    <div class="col-md-2">
+                                                        <div class="grid-material bg-general">Facebook Account:</div>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <input id="" type="text" class="form-control"
+                                                            style="width: 100%;" placeholder="" name="CD_FBacc">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <br>
-                                    <div class="grid-material bg-general"><b>VI. &nbsp; CONTACT DETAILS</b></div>
-                                    <br>
-                                    <div class="row" style="margin-bottom: 20px;">
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Name:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
+                                        <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                 <button class="btn btn-primary" type="submit">Next <i
+                                                            class="icon-arrow-right"></i></button></a>
                                             </div>
                                         </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Designation:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Tell / Cell No.:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Email Address:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="margin-bottom: 10px;">
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general">Facebook Account:</div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input id="" type="text" class="form-control" style="width: 100%;" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 text-right">
-                                        <a href="{{ url (('FOform2ListofMem')) }}"> <button class="btn btn-primary">Next <i class="icon-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                @endforeach
             </div>
         </div>
     </div>
