@@ -247,11 +247,28 @@ Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'mov
 
 //Municipal
 Route::get('/FOMunicipal', [FisherfolkOrg_category::class,'display_municipal']);
+Route::get('/viewMunAssociation/{id}', [FisherfolkOrg_category::class,'display_MunAssociation_viewform']);
+// Route::view('/viewAssociation', 'Fisherfolk_Organization.Municipal.viewAssociation');
+
+
+
 Route::get('/FOFishworker', [FisherfolkOrg_category::class,'display_fishworker']);
+Route::get('/viewFishAssociation/{id}', [FisherfolkOrg_category::class,'display_Fisher_Association_viewform']);
+
 Route::get('/FOCommercial', [FisherfolkOrg_category::class,'display_commercial']);
+Route::get('/viewComAssociation/{id}', [FisherfolkOrg_category::class,'display_Com_Association_viewform']);
+
 Route::get('/FOWomenF', [FisherfolkOrg_category::class,'display_women']);
+Route::get('/viewWomAssociation/{id}', [FisherfolkOrg_category::class,'display_Wom_Association_viewform']);
+
 Route::get('/FOYouth',  [FisherfolkOrg_category::class,'display_youth']);
+Route::get('/viewYouthAssociation/{id}', [FisherfolkOrg_category::class,'display_Youth_Association_viewform']);
+
+
 Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
+Route::get('/viewIPAssociation/{id}', [FisherfolkOrg_category::class,'display_IPs_Association_viewform']);
+
+
 
 
 

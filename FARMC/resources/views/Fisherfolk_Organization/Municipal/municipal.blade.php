@@ -118,7 +118,7 @@
                             </div>
 
                             <div class="col-lg-4">
-                                <h6 class="card-title">Association / Cooperative</h6>
+                                <h6 class="card-title text-center">Association / Cooperative</h6>
                                 <div class="row">
                                     <br>
                                     <div class="col-sm-10 grid-margin">
@@ -131,7 +131,7 @@
                                 <div class="row">
 
                                     <div class="align-items-center justify-content-between">
-                                        <h6 class="card-title">Member's Gender</h6>
+                                        <h6 class="card-title text-center">Member's Gender</h6>
                                     </div>
                                     <!-- <div id="support-tracker-legend" class="support-tracker-legend"></div> -->
                                     <canvas id="genderChart" width="1" height="1"></canvas>
@@ -152,12 +152,12 @@
                                 <div class="col-md-4">
                                     <label>LIST OF OVERVIEW</label>
                                 </div>
-                                <div class="col-md-8 text-right">
+                                {{-- <div class="col-md-8 text-right">
                                     <a href="{{ url('/FOmregistered') }}"><button type="button"
                                             class="btn btn-primary">All Registered</button></a>
                                     <a href="{{ url('/FOmunregistered') }}"><button type="button"
                                             class="btn btn-danger">All Unregistered</button></a>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="row">
@@ -205,7 +205,7 @@
                                                                     {{ $item->add_province }}</td>
                                                             @endif
 
-                                                            @if ($item->sector_rep === null || $item->sector_rep_yes === null)
+                                                            @if ($item->sector_rep === null)
                                                                 <td style="color:red">no data</td>
                                                             @else
                                                                 <td>{{ $item->sector_rep }} -
@@ -228,7 +228,7 @@
                                                             {{-- <td><b>REGISTERED</b></td> --}}
                                                             <td
                                                                 style=" display: flex; justify-content: space-between;">
-                                                                <a href="" class="btn btn-success"><i
+                                                                <a href="{{ url ('/viewMunAssociation/' . $item->id)}}" class="btn btn-success"><i
                                                                         class="ti-eye"></i></a>
                                                                 <a href="" class="btn btn-warning"><i
                                                                         class="ti-pencil"></i></a>
@@ -276,7 +276,7 @@
                                                                         {{ $item->add_province }}</td>
                                                                 @endif
 
-                                                                @if ($item->sector_rep === null || $item->sector_rep_yes === null)
+                                                                @if ($item->sector_rep === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->sector_rep }} -
