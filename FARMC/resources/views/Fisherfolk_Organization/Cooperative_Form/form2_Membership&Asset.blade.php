@@ -181,7 +181,7 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="NRMem_total"></td>
+                                                                    name="NRMem_total" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Number of Association members</td>
@@ -196,22 +196,22 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="NAMem_total"></td>
+                                                                    name="NAMem_total" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Total number of members</td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="CoM_TotalMem_male"></td>
+                                                                    name="CoM_TotalMem_male" readonly></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="TMem_female"></td>
+                                                                    name="TMem_female" readonly></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="TMem_total"></td>
+                                                                    name="TMem_total" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Target / Potential Membership (current year)</td>
@@ -283,7 +283,7 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="Fulltime_total"></td>
+                                                                    name="Fulltime_total" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Part-time</td>
@@ -298,7 +298,7 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="Parttime_total"></td>
+                                                                    name="Parttime_total" readonly></td>
                                                         </tr>
 
 
@@ -307,15 +307,15 @@
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="NoE_Total_male"></td>
+                                                                    name="NoE_Total_male" readonly></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="TotalEmp_female"></td>
+                                                                    name="TotalEmp_female" readonly></td>
                                                             <td style="text-align: center;"><input id=""
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="TotalEmp_total"></td>
+                                                                    name="TotalEmp_total" readonly></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -336,8 +336,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-right">
-                                               <button class="btn btn-primary" type="submit"> Next <i
-                                                            class="icon-arrow-right"></i></button></a>
+                                                <button class="btn btn-primary" type="submit"> Next <i
+                                                        class="icon-arrow-right"></i></button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -352,70 +352,118 @@
     </div>
 
     <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nrMaleInput = document.querySelector('input[name="CoM_NRMem_male"]');
+            const nrFemaleInput = document.querySelector('input[name="NRMem_female"]');
+            const nrTotalInput = document.querySelector('input[name="NRMem_total"]');
 
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
+            const naMaleInput = document.querySelector('input[name="CoM_NAMem_male"]');
+            const naFemaleInput = document.querySelector('input[name="NAMem_female"]');
+            const naTotalInput = document.querySelector('input[name="NAMem_total"]');
 
+            const totalMaleInput = document.querySelector('input[name="CoM_TotalMem_male"]');
+            const totalFemaleInput = document.querySelector('input[name="TMem_female"]');
+            const totalTotalInput = document.querySelector('input[name="TMem_total"]');
 
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
+            function calculateAndSetTotal(maleInput, femaleInput, totalInput) {
+                const maleCount = parseInt(maleInput.value) || 0;
+                const femaleCount = parseInt(femaleInput.value) || 0;
+                totalInput.value = maleCount + femaleCount;
             }
-        }
+
+            function calculateTotalMembers() {
+                const totalMaleCount = (parseInt(nrMaleInput.value) || 0) + (parseInt(naMaleInput.value) || 0);
+                const totalFemaleCount = (parseInt(nrFemaleInput.value) || 0) + (parseInt(naFemaleInput.value) ||
+                0);
+                totalMaleInput.value = totalMaleCount;
+                totalFemaleInput.value = totalFemaleCount;
+                totalTotalInput.value = totalMaleCount + totalFemaleCount;
+            }
+
+            nrMaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(nrMaleInput, nrFemaleInput, nrTotalInput);
+                calculateTotalMembers();
+            });
+
+            nrFemaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(nrMaleInput, nrFemaleInput, nrTotalInput);
+                calculateTotalMembers();
+            });
+
+            naMaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(naMaleInput, naFemaleInput, naTotalInput);
+                calculateTotalMembers();
+            });
+
+            naFemaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(naMaleInput, naFemaleInput, naTotalInput);
+                calculateTotalMembers();
+            });
+
+            // Initial calculation
+            calculateAndSetTotal(nrMaleInput, nrFemaleInput, nrTotalInput);
+            calculateAndSetTotal(naMaleInput, naFemaleInput, naTotalInput);
+            calculateTotalMembers();
+        });
     </script>
 
     <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const ftMaleInput = document.querySelector('input[name="NoE_Fulltime_male"]');
+            const ftFemaleInput = document.querySelector('input[name="Fulltime_female"]');
+            const ftTotalInput = document.querySelector('input[name="Fulltime_total"]');
 
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-        }
+            const ptMaleInput = document.querySelector('input[name="NoE_Parttime_male"]');
+            const ptFemaleInput = document.querySelector('input[name="Parttime_female"]');
+            const ptTotalInput = document.querySelector('input[name="Parttime_total"]');
+
+            const totalMaleInput = document.querySelector('input[name="NoE_Total_male"]');
+            const totalFemaleInput = document.querySelector('input[name="TotalEmp_female"]');
+            const totalTotalInput = document.querySelector('input[name="TotalEmp_total"]');
+
+            function calculateAndSetTotal(maleInput, femaleInput, totalInput) {
+                const maleCount = parseInt(maleInput.value) || 0;
+                const femaleCount = parseInt(femaleInput.value) || 0;
+                totalInput.value = maleCount + femaleCount;
+            }
+
+            function calculateTotalEmployees() {
+                const totalMaleCount = (parseInt(ftMaleInput.value) || 0) + (parseInt(ptMaleInput.value) || 0);
+                const totalFemaleCount = (parseInt(ftFemaleInput.value) || 0) + (parseInt(ptFemaleInput.value) ||
+                0);
+                totalMaleInput.value = totalMaleCount;
+                totalFemaleInput.value = totalFemaleCount;
+                totalTotalInput.value = totalMaleCount + totalFemaleCount;
+            }
+
+            ftMaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(ftMaleInput, ftFemaleInput, ftTotalInput);
+                calculateTotalEmployees();
+            });
+
+            ftFemaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(ftMaleInput, ftFemaleInput, ftTotalInput);
+                calculateTotalEmployees();
+            });
+
+            ptMaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(ptMaleInput, ptFemaleInput, ptTotalInput);
+                calculateTotalEmployees();
+            });
+
+            ptFemaleInput.addEventListener('input', function() {
+                calculateAndSetTotal(ptMaleInput, ptFemaleInput, ptTotalInput);
+                calculateTotalEmployees();
+            });
+
+            // Initial calculation
+            calculateAndSetTotal(ftMaleInput, ftFemaleInput, ftTotalInput);
+            calculateAndSetTotal(ptMaleInput, ptFemaleInput, ptTotalInput);
+            calculateTotalEmployees();
+        });
     </script>
 
-    <script>
-        function addRow(dytable) {
-            var table = document.getElementById(dytable);
-            var tableBody = table.querySelector('tbody');
-            var firstRow = tableBody.firstElementChild.cloneNode(true);
-            tableBody.appendChild(firstRow);
-        }
-    </script>
 
-    <script>
-        function addRow(dynamic) {
-            var table = document.getElementById(dynamic);
-            var tableBody = table.querySelector('tbody');
-            var firstRow = tableBody.firstElementChild.cloneNode(true);
-            tableBody.appendChild(firstRow);
-        }
-    </script>
 </body>
 
 </html>

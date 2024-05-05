@@ -81,10 +81,10 @@
                             <li class="breadcrumb-item"><a href="#">Fisherfolk Organization | Municipal </a>
                             </li>
                         </ol>
-                        <br>
-                        <a href="{{ url('/FOform1_OAM_BoardofDir') }}" class="btn btn-secondary"> <i
+                        <hr>
+                        {{-- <a href="{{ url('/FOform1_OAM_BoardofDir') }}" class="btn btn-secondary"> <i
                                 class="icon-arrow-left"></i>
-                            Back</a>
+                            Back</a> --}}
                     </div>
                 </div>
 

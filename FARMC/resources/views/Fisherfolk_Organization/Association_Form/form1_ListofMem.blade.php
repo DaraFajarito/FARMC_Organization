@@ -81,11 +81,13 @@
                             <li class="breadcrumb-item"><a href="#">Fisherfolk Organization | Municipal </a>
                             </li>
                         </ol>
-                        <br>
-
+                        <hr>
+{{--
                         <a href="{{ url('/FOform1_OAM_Committees') }}" class="btn btn-secondary"> <i
                                 class="icon-arrow-left"></i>
-                            Back</a>
+                            Back</a> --}}
+
+                        <div class="captions" style="font-size: smaller">➤ "<b>Please note:</b>  Only 'Female', 'Male', and 'Others' are accepted inputs in the <b>GENDER</b> field. Inputs that starts with lowercase letter such as <span style="color: red"><b> 'male', 'female', and 'others' </b> </span> will not be saved in the database."
                     </div>
                 </div>
                 <form class="form-inline" method="POST" action="{{ url('/add_ListofMembers') }}"

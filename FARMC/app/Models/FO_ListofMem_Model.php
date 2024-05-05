@@ -22,4 +22,8 @@ class FO_ListofMem_Model extends Model
         'mem_fourps',
     ];
 
+    public function association()
+    {
+        return $this->belongsTo(FisherfolkOrganization_Model::class, 'fisherfolkOrg_id');
+    }
 }

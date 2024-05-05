@@ -81,10 +81,10 @@
                             <li class="breadcrumb-item"><a href="#">Fisherfolk Organization | Municipal </a>
                             </li>
                         </ol>
-                        <br>
-                        <a href="{{ url('/FOform1_BasicInfo') }}" class="btn btn-secondary"> <i
+                        <hr>
+                        {{-- <a href="{{ url('/FOform1_BasicInfo') }}" class="btn btn-secondary"> <i
                                 class="icon-arrow-left"></i>
-                            Back</a>
+                            Back</a> --}}
                     </div>
                 </div>
                 @foreach ($exec_off as $exec)
@@ -130,11 +130,13 @@
                                                                 name="chair_gen"></td>
                                                         &nbsp;
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="chair_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                                placeholder="Birthday" name="chair_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
                                                         </td>
                                                         &nbsp;
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="chair_age" readonly>
+                                                                style="width: 60px;" placeholder="Age" name="chair_age"
+                                                                readonly>
                                                         </td>
                                                         &nbsp;
                                                         <td><input type="text" class="form-control"
@@ -156,7 +158,8 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="vicechair_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="vicechair_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                                placeholder="Birthday" name="vicechair_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
@@ -178,10 +181,12 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="sec_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="sec_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                placeholder="Birthday" name="sec_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                        </td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age"
-                                                                name="sec_age" readonly></td>
+                                                                style="width: 60px;" placeholder="Age" name="sec_age"
+                                                                readonly></td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="sec_fourps">
@@ -200,7 +205,9 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="treas_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="treas_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                placeholder="Birthday" name="treas_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                        </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
                                                                 name="treas_age" readonly></td>
@@ -222,10 +229,12 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="aud_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="aud_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                placeholder="Birthday" name="aud_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                        </td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age"
-                                                                name="aud_age" readonly></td>
+                                                                style="width: 60px;" placeholder="Age" name="aud_age"
+                                                                readonly></td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="aud_fourps">
@@ -243,10 +252,12 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="pro_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="pro_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                placeholder="Birthday" name="pro_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                        </td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age"
-                                                                name="pro_age" readonly></td>
+                                                                style="width: 60px;" placeholder="Age" name="pro_age"
+                                                                readonly></td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="pro_fourps">
@@ -265,10 +276,12 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="sgt_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="sgt_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                placeholder="Birthday" name="sgt_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                        </td>
                                                         <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age"
-                                                                name="sgt_age" readonly></td>
+                                                                style="width: 60px;" placeholder="Age" name="sgt_age"
+                                                                readonly></td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="sgt_fourps">
@@ -287,7 +300,9 @@
                                                                 style="width: 100px;" placeholder="Gender"
                                                                 name="other_gen"></td>
                                                         <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="other_birth"  onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                placeholder="Birthday" name="other_birth"
+                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                        </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
                                                                 name="other_age" readonly></td>

@@ -81,10 +81,10 @@
                             <li class="breadcrumb-item"><a href="#">Fisherfolk Organization | Municipal </a>
                             </li>
                         </ol>
-                        <br>
-                        <a href="{{ url('/FOform1_ListofMem') }}" class="btn btn-secondary"> <i
+                        <hr>
+                        {{-- <a href="{{ url('/FOform1_ListofMem') }}" class="btn btn-secondary"> <i
                                 class="icon-arrow-left"></i>
-                            Back</a>
+                            Back</a> --}}
                     </div>
                 </div>
                 @foreach ($capcon as $capcons)
@@ -103,29 +103,28 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>1. Membership Fee:</td>
-                                                        <td><input id="" type="text" class="form-control"
-                                                                placeholder="₱" name="capmem_fee"></td>
+                                                        <td><input id="mem_fee" type="text" class="form-control"
+                                                                placeholder="" name="capmem_fee"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2. Monthly Contribution:</td>
-                                                        <td><input id="" type="text" class="form-control"
-                                                                placeholder="₱" name="capmonthly_cont"></td>
+                                                        <td><input id="monthly_cont" type="text" class="form-control"
+                                                                placeholder="" name="capmonthly_cont"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3. Donations:</td>
-                                                        <td><input id="" type="text" class="form-control"
-                                                                placeholder="₱" name="cap_donation"></td>
+                                                        <td><input id="donation" type="text" class="form-control"
+                                                                placeholder="" name="cap_donation"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4. Others:</td>
-                                                        <td><input id="" type="text" class="form-control"
-                                                                placeholder="₱" name="cap_others"></td>
+                                                        <td><input id="others" type="text" class="form-control"
+                                                                placeholder="" name="cap_others"></td>
                                                     </tr>
-
                                                     <tr>
                                                         <td>Total Capital:</td>
-                                                        <td><input id="" type="text" class="form-control"
-                                                                placeholder="₱" name="captotal_cap"></td>
+                                                        <td><input id="total_cap" type="text" class="form-control"
+                                                                placeholder="" name="captotal_cap" readonly></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -158,15 +157,12 @@
                                                     <label for="" class="col-md-12 captions">Messenger</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" id=""
-                                                        class="form-control" style="width:300px" placeholder=""
-                                                        name="CIlandline">
-                                                    <input type="text" id=""
-                                                        class="form-control" style="width:300px" placeholder=""
-                                                        name="CIMobile">
-                                                    <input type="text" id=""
-                                                        class="form-control" style="width:300px" placeholder=""
-                                                        name="CIMess">
+                                                    <input type="text" id="" class="form-control"
+                                                        style="width:300px" placeholder="" name="CIlandline">
+                                                    <input type="text" id="" class="form-control"
+                                                        style="width:300px" placeholder="" name="CIMobile">
+                                                    <input type="text" id="" class="form-control"
+                                                        style="width:300px" placeholder="" name="CIMess">
                                                 </div>
                                             </div>
                                         </div>
@@ -198,7 +194,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">No</button>
-                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                        <button type="submit" class="btn btn-primary">Yes</button>
                                     </div>
                                 </div>
                             </div>
@@ -209,75 +205,30 @@
         </div>
     </div>
 
-
-    </div>
-    </div>
-
-
     <script>
-        document.querySelectorAll('input[name="culturalCommunity"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('culturalCommunityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('culturalCommunityDetails').style.display = 'none';
-                }
-            });
+        const memFeeInput = document.getElementById('mem_fee');
+        const monthlyContInput = document.getElementById('monthly_cont');
+        const donationInput = document.getElementById('donation');
+        const othersInput = document.getElementById('others');
+        const totalCapInput = document.getElementById('total_cap');
+
+        [memFeeInput, monthlyContInput, donationInput, othersInput].forEach(input => {
+            input.addEventListener('input', calculateTotalCapital);
         });
-    </script>
 
-    <script>
-        document.querySelectorAll('input[name="Disability"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    document.getElementById('DisabilityDetails').style.display = 'block';
-                } else {
-                    document.getElementById('DisabilityDetails').style.display = 'none';
-                }
-            });
-        });
-    </script>
+        function calculateTotalCapital() {
+            const memFee = parseFloat(memFeeInput.value) || 0;
+            const monthlyCont = parseFloat(monthlyContInput.value) || 0;
+            const donation = parseFloat(donationInput.value) || 0;
+            const others = parseFloat(othersInput.value) || 0;
 
+            const totalCapital = memFee + monthlyCont + donation + others;
 
-    <script>
-        function toggleTextBox(radioId) {
-            var textBoxGroup = document.getElementById('textBoxGroup');
-            if (radioId === 'christianRadio') {
-                textBoxGroup.style.display = 'block';
-            } else {
-                textBoxGroup.style.display = 'none';
-            }
-        }
-    </script>
-
-    <script>
-        function showTertiaryTextbox() {
-            document.getElementById('tertiaryTextboxGroup').style.display = 'block';
-            document.getElementById('tesdaTextboxGroup').style.display = 'none';
+            totalCapInput.value = isNaN(totalCapital) ? '' : '₱' + totalCapital.toFixed(2);
         }
 
-        function showTesdaTextbox() {
-            document.getElementById('tesdaTextboxGroup').style.display = 'block';
-            document.getElementById('tertiaryTextboxGroup').style.display = 'none';
-        }
-    </script>
-
-    <script>
-        function addRow(dytable) {
-            var table = document.getElementById(dytable);
-            var tableBody = table.querySelector('tbody');
-            var firstRow = tableBody.firstElementChild.cloneNode(true);
-            tableBody.appendChild(firstRow);
-        }
-    </script>
-
-    <script>
-        function addRow(dynamic) {
-            var table = document.getElementById(dynamic);
-            var tableBody = table.querySelector('tbody');
-            var firstRow = tableBody.firstElementChild.cloneNode(true);
-            tableBody.appendChild(firstRow);
-        }
+        // Initial calculation
+        calculateTotalCapital();
     </script>
 </body>
 

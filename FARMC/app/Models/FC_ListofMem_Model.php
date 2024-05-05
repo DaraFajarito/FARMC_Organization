@@ -23,4 +23,9 @@ class FC_ListofMem_Model extends Model
         'listmem_birth',
         'listmem_age',
     ];
+
+    public function cooperative()
+    {
+        return $this->belongsTo(FC_GenInfo_Model::class, 'fisherfolkOrg_FC_id');
+    }
 }

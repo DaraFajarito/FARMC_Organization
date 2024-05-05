@@ -89,101 +89,118 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOform2Officers_1') }}" class="btn btn-secondary"> <i
-                                class="icon-arrow-left"></i> Back</a>
+                        {{-- <a href="{{ url('/FOform2Officers_1') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i> Back</a> --}}
+
+                        <div class="captions" style="font-size: smaller">➤ "<b>Please note:</b> Only 'Female', 'Male',
+                            and 'Others' are accepted inputs in the <b>GENDER</b> field. Inputs that starts with lowercase letter
+                            such as <span style="color: red"><b> 'male', 'female', and 'others' </b> </span> will not be
+                            saved in the database."
+                        </div>
                     </div>
                 </div>
                 @foreach ($listofMem as $list)
-                <form class="form-inline" method="POST" action="{{ url('/Form2_add_ListofMem/'. $list->id) }}"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="card inline-form-style">
-                        <div class="card-header">
-                            <div class="card-block">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="grid-material bg-general"><b>VII. &nbsp; LIST OF MEMBERSHIP </b>
-                                        </div>
-                                        <br>
+                    <form class="form-inline" method="POST" action="{{ url('/Form2_add_ListofMem/' . $list->id) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="card inline-form-style">
+                            <div class="card-header">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="grid-material bg-general"><b>VII. &nbsp; LIST OF MEMBERSHIP </b>
+                                            </div>
+                                            <br>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group m-r-15">
-                                                    <table class="table" id="dynamic">
-                                                        <thead>
-                                                            <tr style="width: 200px; font-size: small;">
-                                                                <th>Name</th>
-                                                                <th>Type of Membership</th>
-                                                                <th>Civil Status</th>
-                                                                <th>Gender</th>
-                                                                <th>Birthday</th>
-                                                                <th>Age</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="dytable-body">
-                                                            <tr>
-                                                                <td><input id="name" type="text"
-                                                                        class="form-control" style="width: 230px;"
-                                                                        placeholder="Name" name="listmem_name[]"></td>
-                                                                <td><input type="text" class="form-control"
-                                                                        placeholder="Type of Membership" style="width:150px" name="listmem_type[]"></td>
-                                                                <td><input type="text" class="form-control"
-                                                                        placeholder="Civil Status" style="width:150px" name="listmem_cs[]"></td>
-                                                                <td><input type="text" class="form-control"
-                                                                        placeholder="Gender" style="width:100px" name="listmem_gen[]"></td>
-                                                                        <td><input type="date" class="form-control" placeholder="Birthday" name="listmem_birth[]"
-                                                                            onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
-                                                                <td><input type="text" class="form-control"
-                                                                        placeholder="Age" name="listmem_age[]" readonly></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="text-center">
-                                                        <button onclick="addRow('dynamic')" type="button"
-                                                            class="btn btn-primary">Add
-                                                            Row</button>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group m-r-15">
+                                                        <table class="table" id="dynamic">
+                                                            <thead>
+                                                                <tr style="width: 200px; font-size: small;">
+                                                                    <th>Name</th>
+                                                                    <th>Type of Membership</th>
+                                                                    <th>Civil Status</th>
+                                                                    <th>Gender</th>
+                                                                    <th>Birthday</th>
+                                                                    <th>Age</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="dytable-body">
+                                                                <tr>
+                                                                    <td><input id="name" type="text"
+                                                                            class="form-control" style="width: 230px;"
+                                                                            placeholder="Name" name="listmem_name[]">
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control"
+                                                                            placeholder="Type of Membership"
+                                                                            style="width:150px" name="listmem_type[]">
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control"
+                                                                            placeholder="Civil Status"
+                                                                            style="width:150px" name="listmem_cs[]">
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control"
+                                                                            placeholder="Gender" style="width:100px"
+                                                                            name="listmem_gen[]"></td>
+                                                                    <td><input type="date" class="form-control"
+                                                                            placeholder="Birthday"
+                                                                            name="listmem_birth[]"
+                                                                            onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control"
+                                                                            placeholder="Age" name="listmem_age[]"
+                                                                            readonly></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="text-center">
+                                                            <button onclick="addRow('dynamic')" type="button"
+                                                                class="btn btn-primary">Add
+                                                                Row</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
 
+
+                                        <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#confirmationModal">SUBMIT</button>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
 
-
-                                    <div class="row">
-                                        <div class="col-md-12 text-right">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#confirmationModal">SUBMIT</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to submit now?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-primary">Yes</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to submit now?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">No</button>
-                                        <button type="submit" class="btn btn-primary">Yes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 @endforeach
             </div>
         </div>

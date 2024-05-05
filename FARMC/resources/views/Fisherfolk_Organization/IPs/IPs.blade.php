@@ -147,7 +147,11 @@
                                     <ul class="nav nav-tabs  tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#members"
-                                                role="tab">All</a>
+                                                role="tab">Association</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#members1"
+                                                role="tab">Cooperative</a>
                                         </li>
                                     </ul>
 
@@ -193,6 +197,50 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <div class="tab-pane" id="members1" role="tabpanel">
+                                            <br>
+                                            <div class="col-mb-12">
+                                                <table id="FARMC1" class="table table-striped table-bordered"
+                                                    cellspacing="0" width="100%">
+                                                    <thead style="font-size: 13px">
+                                                        <tr>
+                                                            <th>Name of Cooperative</th>
+                                                            <th>Address</th>
+                                                            <th>Sector Represented</th>
+                                                            <th>Cooperative Identification Number (CIN)</th>
+                                                            <th>Date of Latest Amendment</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="font-size: 13px">
+                                                        @foreach ($data1 as $item)
+                                                            <tr>
+                                                                <td>{{ $item->name_of_coop }}</td>
+                                                                <td>{{ $item->add_barangay }}, {{ $item->add_city }},
+                                                                    {{ $item->add_province }}</td>
+                                                                <td>{{ $item->sector_rep }}
+                                                                    {{ $item->sector_rep_yes }}</td>
+                                                                <td>{{ $item->CIN }}</td>
+                                                                <td>{{ $item->date_of_amend }}</td>
+                                                                {{-- <td><b>REGISTERED</b></td> --}}
+                                                                <td
+                                                                    style=" display: flex; justify-content: space-between;">
+                                                                    <a href="" class="btn btn-success"><i
+                                                                            class="ti-eye"></i></a>
+                                                                    <a href="" class="btn btn-warning"><i
+                                                                            class="ti-pencil"></i></a>
+                                                                    <a href="" class="btn btn-danger"><i
+                                                                            class="ti-trash"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="members2" role="tabpanel">
+                                            <br>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -226,6 +274,18 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#FARMC').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "pagingType": "full_numbers"
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#FARMC1').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'excel', 'pdf', 'print'
