@@ -247,7 +247,7 @@
                                         class="icon-plus"></i>All Forms</a>
                                 <ul class="treeview-menu">
                                     <li>
-                                        <a class="waves-effect waves-dark" href="{{ url('/FOform1_BasicInfo') }}"">
+                                        <a class="waves-effect waves-dark" href="{{ url('/FDP_pers_info') }}"">
                                             <i class="icon-notebook"></i>
                                             <span>RFDP Form</span>
                                         </a>

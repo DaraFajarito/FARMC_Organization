@@ -270,8 +270,7 @@ Route::get('/viewIPAssociation/{id}', [FisherfolkOrg_category::class,'display_IP
 
 
 
-
-
+//ASSOCIATION FORM
 
 Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Association_Form.form1_BasicInfo');
 Route::put('/Form1_add_BasicInfo', [FisherfolkOrganization_Controller::class,'createform1_basicInfo']);
@@ -289,24 +288,7 @@ Route::get('/FOform1_Capcon/{id}', [FisherfolkOrganization_Controller::class,'di
 Route::put('/add_Capcon/{id}', [FisherfolkOrganization_Controller::class,'add_CapCon']);
 
 
-//MUNICIPAL
-
-
-
-
-
-
-
-
-// Route::view('/FOform1_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
-// Route::view('/FOform1_ExecOff', 'Fisherfolk_Organization.Municipal.form1_OAM_ExecOff');
-// Route::view('/FOform1_OAM_BoardofDir', 'Fisherfolk_Organization.Municipal.form1_OAM_BoardofDir');
-// Route::view('/FOform1_OAM_Committees', 'Fisherfolk_Organization.Municipal.form1_OAM_Committees');
-// // Route::view('/FOform1_ListofMem', 'Fisherfolk_Organization.Municipal.form1_ListofMem');
-// Route::view('/FOform1_Capitalization', 'Fisherfolk_Organization.Municipal.form1_Capitalization');
-
-
-
+//COOPERATIVE FORM
 
 Route::view('/FOform2GenInfo', 'Fisherfolk_Organization.Cooperative_Form.form2_GenInfo');
 Route::put('/Form2_add_GenInfo', [FC_GenInfo_Controller::class,'createform2_genInfo']);
@@ -323,13 +305,6 @@ Route::put('/Form2_add_OrgStruct/{id}', [FC_OrgStruct_Controller::class,'add_Org
 Route::get('/FOform2_ListofMem/{id}', [FC_ListofMem_Controller::class,'display_fc_listofMem']);
 Route::post('/Form2_add_ListofMem/{id}', [FC_ListofMem_Controller::class,'add_listofMem']);
 
-// Route::view('/FOform2ListofMem', 'Fisherfolk_Organization.Cooperative_Form.form2_ListofMem');
-
-// Route::get('/FOform2Membership', 'Fisherfolk_Organization.Cooperative_Form.form2_Membership&Asset');
-
-// Route::view('/FOform2Officers', 'Fisherfolk_Organization.Cooperative_Form.form2_Officers');
-// Route::view('/FOform2Officers_1', 'Fisherfolk_Organization.Cooperative_Form.form2_Officers_1');
-// Route::view('/FOform2OrgStructure', 'Fisherfolk_Organization.Cooperative_Form.form2_OrgStructure');
 
 
 Route::view('/FOmregistered', 'Fisherfolk_Organization.Municipal.registeredtbl');
@@ -337,43 +312,47 @@ Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredt
 
 
 
-// ---------------------------------------------------------------------------------------//
+// // ---------------------------------------------------------------------------------------//
+// //Fishworker
 
-//Fishworker
+// Route::view('/FOfform1', 'Fisherfolk_Organization.Fishworker.form1');
+// Route::view('/FOform2GenInfo1', 'Fisherfolk_Organization.Fishworker.form2_GenInfo');
+// Route::view('/FOform2MembershipAsset1', 'Fisherfolk_Organization.Fishworker.form2_Membership&Asset');
+// Route::view('/FOform2Officers1', 'Fisherfolk_Organization.Fishworker.form2_Officers');
+// Route::view('/FOform2OrgStructure1', 'Fisherfolk_Organization.Fishworker.form2_OrgStructure');
 
-Route::view('/FOfform1', 'Fisherfolk_Organization.Fishworker.form1');
-Route::view('/FOform2GenInfo1', 'Fisherfolk_Organization.Fishworker.form2_GenInfo');
-Route::view('/FOform2MembershipAsset1', 'Fisherfolk_Organization.Fishworker.form2_Membership&Asset');
-Route::view('/FOform2Officers1', 'Fisherfolk_Organization.Fishworker.form2_Officers');
-Route::view('/FOform2OrgStructure1', 'Fisherfolk_Organization.Fishworker.form2_OrgStructure');
+// // ---------------------------------------------------------------------------------------//
 
-// ---------------------------------------------------------------------------------------//
+// //Commercial
 
-//Commercial
+// Route::view('/FOcform1', 'Fisherfolk_Organization.Commercial.form1');
+// Route::view('/FOform2GenInfo2', 'Fisherfolk_Organization.Commercial.form2_GenInfo');
+// Route::view('/FOform2MembershipAsset2', 'Fisherfolk_Organization.Commercial.form2_Membership&Asset');
+// Route::view('/FOform2Officers2', 'Fisherfolk_Organization.Commercial.form2_Officers');
+// Route::view('/FOform2OrgStructure2', 'Fisherfolk_Organization.Commercial.form2_OrgStructure');
 
-Route::view('/FOcform1', 'Fisherfolk_Organization.Commercial.form1');
-Route::view('/FOform2GenInfo2', 'Fisherfolk_Organization.Commercial.form2_GenInfo');
-Route::view('/FOform2MembershipAsset2', 'Fisherfolk_Organization.Commercial.form2_Membership&Asset');
-Route::view('/FOform2Officers2', 'Fisherfolk_Organization.Commercial.form2_Officers');
-Route::view('/FOform2OrgStructure2', 'Fisherfolk_Organization.Commercial.form2_OrgStructure');
+// // ---------------------------------------------------------------------------------------//
+// //Women Fisherfolk
 
-// ---------------------------------------------------------------------------------------//
-//Women Fisherfolk
+// Route::view('/FOwform1', 'Fisherfolk_Organization.Women_Fisherfolk.form1');
+// Route::view('/FOform2GenInfo3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_GenInfo');
+// Route::view('/FOform2MembershipAsset3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_Membership&Asset');
+// Route::view('/FOform2Officers3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_Officers');
+// Route::view('/FOform2OrgStructure3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_OrgStructure');
 
-Route::view('/FOwform1', 'Fisherfolk_Organization.Women_Fisherfolk.form1');
-Route::view('/FOform2GenInfo3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_GenInfo');
-Route::view('/FOform2MembershipAsset3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_Membership&Asset');
-Route::view('/FOform2Officers3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_Officers');
-Route::view('/FOform2OrgStructure3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_OrgStructure');
+// // ---------------------------------------------------------------------------------------//
+// //Youth Fisherfolk
 
-// ---------------------------------------------------------------------------------------//
-//Youth Fisherfolk
+// Route::view('/FOyform1', 'Fisherfolk_Organization.Youth_Fisherfolk.form1');
+// Route::view('/FOform2GenInfo4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_GenInfo');
+// Route::view('/FOform2MembershipAsset4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_Membership&Asset');
+// Route::view('/FOform2Officers4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_Officers');
+// Route::view('/FOform2OrgStructure4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_OrgStructure');
 
-Route::view('/FOyform1', 'Fisherfolk_Organization.Youth_Fisherfolk.form1');
-Route::view('/FOform2GenInfo4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_GenInfo');
-Route::view('/FOform2MembershipAsset4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_Membership&Asset');
-Route::view('/FOform2Officers4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_Officers');
-Route::view('/FOform2OrgStructure4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_OrgStructure');
+// ---------------------------------------------------------------------------------------------------//
+// ------------------------------ FISHERFOLK DIRECTORS PROGRAM ---------------------------------------//
+// ---------------------------------------------------------------------------------------------------//
 
-// ---------------------------------------------------------------------------------------//
-// ------------------------------ FARMC MEMBERSHIP ---------------------------------------//
+Route::view('/FDP_pers_info', 'Fisherfolk_Directors_Program.RFDP_Form.RFDP_personal_info');
+Route::view('/FDP_orgMem', 'Fisherfolk_Directors_Program.RFDP_Form.RFDP_Org_Mem');
+
