@@ -56,7 +56,6 @@ class FarmcMembership_Controller extends Controller
         return view('FARMC_Membership.membership', compact('data'));
     }
 
-
     public function addFARMC_Membership(Request $request, $id)
     {
         $validatedData = $request->validate([

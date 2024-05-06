@@ -47,16 +47,15 @@
                         </ol>
                     </div>
                     <div class="col-lg-12 inline-forms">
-                        <a href="{{ url('/personal_info') }}" class="btn btn-secondary"> <i
+                        {{-- <a href="{{ url('/personal_info') }}" class="btn btn-secondary"> <i
                                 class="icon-arrow-left"></i> Back</a>
-                        <br><br>
+                        <br><br> --}}
 
                         <form class="form-inline" action="{{ url('/add-membership/' . $data->id) }}" method="POST">
                             @csrf
                             @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
-                                    <div class="card inline-form-style">
                                         <div class="card-header">
                                             <div class="col-sm--1 col-xs--1 waves-effect waves-light">
                                                 <div class="grid-material bg-general">FARMC Membership</div>

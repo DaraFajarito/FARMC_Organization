@@ -17,8 +17,10 @@ use App\Http\Controllers\FisherfolkOrganization_Controller;
 use App\Http\Controllers\FO_ListofMem_Controller;
 use App\Http\Controllers\FC_Officers_Controller;
 use App\Http\Controllers\FC_OrgStruct_Controller;
+use App\Http\Controllers\FDP_PersonalInfo_Controller;
 use App\Models\FC_ListofMem_Model;
 use App\Models\FC_Officers_Commit_Model;
+use App\Models\FDP_PersonalInfo_Model;
 
 Route::get('/', function () {
     return view('FARMC_Authentication/login');
@@ -354,5 +356,10 @@ Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredt
 // ---------------------------------------------------------------------------------------------------//
 
 Route::view('/FDP_pers_info', 'Fisherfolk_Directors_Program.RFDP_Form.RFDP_personal_info');
-Route::view('/FDP_orgMem', 'Fisherfolk_Directors_Program.RFDP_Form.RFDP_Org_Mem');
+Route::put('/add-personal-info1', [FDP_PersonalInfo_Controller::class,'addFDP_PersonalInfo']);
+Route::get('/FDP_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'displayFDP_orgMem']);
+Route::put('/add-fdp_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'addFDP_orgMem']);
 
+Route::get('/nationlFR', [FDP_PersonalInfo_Controller::class,'display_NFD']);
+
+// Route::get('/nationlFR', 'Fisherfolk_Directors_Program.National_FD.nationalFD');

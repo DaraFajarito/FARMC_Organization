@@ -276,7 +276,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="waves-effect waves-dark" href="#!">
+                                <a class="waves-effect waves-dark" href="{{ url ('/nationlFR')}}">
                                     <i class="icon-arrow-right"></i>
                                     3.3 National Fisherfolk Director
                                 </a>

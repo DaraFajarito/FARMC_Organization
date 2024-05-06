@@ -49,17 +49,17 @@
                             </li>
                             <li class="breadcrumb-item"><a href="#">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">Fisherfolk Directors Program | Organizational / FARMC Membership / Involvement of Mangingisdang Director Program
+                            <li class="breadcrumb-item"><a href="#">Fisherfolk Directors Program | Organizational
+                                    / FARMC Membership / Involvement of Mangingisdang Director Program
                                     Membership</a>
                             </li>
                         </ol>
                     </div>
 
                     <div class="col-lg-12 inline-forms">
-                        {{-- <a class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
-                        <br> <br> --}}
-                        <form class="form-inline" action="" method="" enctype="multipart/form-data">
-
+                        <form class="form-inline" action="{{ url('/add-fdp_orgMem/'. $data1->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
                                     <div class="card-header">
@@ -73,14 +73,14 @@
                                                     <label for="inline3mail" class="block form-control-label">Name
                                                         of Association</label>
                                                     <input id="inline3mail" type="text" class="form-control"
-                                                        name="org_mem_name" style="width: 1100px;" placeholder="">
+                                                        name="name_ass" style="width: 1100px;" placeholder="">
                                                 </div>
                                                 <br><br>
                                                 <div class="form-group m-r-15">
                                                     <label for="inline3mail" class="block form-control-label">Address of
                                                         Association </label>
                                                     <input id="inline3mail" type="text" class="form-control"
-                                                        name="add_acc" style="width: 1100px;" placeholder="">
+                                                        name="add_ass" style="width: 1100px;" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                                     <label for="inline3mail" class="block form-control-label"><small>If
                                                             Yes, please specify</small></label>
                                                     <input id="otherInput" type="text" value=""
-                                                        class="form-control" name="position">
+                                                        class="form-control" name="officer_ass_yes">
                                                 </div>
                                             </div>
 
@@ -128,24 +128,25 @@
                                                         <div class="col-md-6">
 
                                                             <label>
-                                                                <input type="radio" name="reg_ass"
-                                                                    value="Yes" />
+                                                                <input type="radio" name="reg_agency"
+                                                                    value="SEC" />
                                                                 <i class="helper"></i> SEC
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="reg_ass"
-                                                                    value="No" />
+                                                                <input type="radio" name="reg_agency"
+                                                                    value="DOLE" />
                                                                 <i class="helper"></i> DOLE
                                                             </label>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>
-                                                                <input type="radio" name="reg_ass"
-                                                                    value="No" />
+                                                                <input type="radio" name="reg_agency"
+                                                                    value="CDA" />
                                                                 <i class="helper"></i> CDA
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="reg_ass" value="No"
+                                                                <input type="radio" name="reg_agency"
+                                                                    value="Others"
                                                                     onclick="toggleTextBox('otherTextBox4')" />
                                                                 <i class="helper"></i> Others
                                                             </label>
@@ -156,7 +157,7 @@
                                                     <label for="inline3mail"
                                                         class="block form-control-label"><small>If
                                                             Yes, please specify</small></label>
-                                                    <input id="otherInput" type="text" name="reg_ass_yes"
+                                                    <input id="otherInput" type="text" name="reg_agency_others"
                                                         value="" class="form-control">
                                                 </div>
                                             </div>
@@ -167,15 +168,15 @@
                                                 <br>
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="reg_no">Number:</label>
-                                                        &nbsp; <input id="reg_no" type="text"
-                                                            class="form-control" name="reg_no"
+                                                        <label for="reg_info_no">Number:</label>
+                                                        &nbsp; <input id="reg_info_no" type="text"
+                                                            class="form-control" name="reg_info_no"
                                                             placeholder="Reg. No.">
                                                         <br><br>
-                                                        <label for="date">Date:</label>
+                                                        <label for="reg_info_date">Date:</label>
                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                                                            id="date" type="text" class="form-control"
-                                                            name="date" placeholder="Date">
+                                                            id="reg_info_date" type="text" class="form-control"
+                                                            name="reg_info_date" placeholder="Date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,7 +215,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label>
-                                                                <input type="radio" name="reg_ass" value="No"
+                                                                <input type="radio" name="comp_mem" value="No"
                                                                     onclick="toggleTextBox('otherTextBox6')" />
                                                                 <i class="helper"></i> Others
                                                             </label>
@@ -225,7 +226,7 @@
                                                     <label for="inline3mail"
                                                         class="block form-control-label"><small>If
                                                             Yes, please specify</small></label>
-                                                    <input id="otherInput" type="text" name="reg_ass_yes"
+                                                    <input id="otherInput" type="text" name="comp_mem_others"
                                                         value="" class="form-control">
                                                 </div>
                                             </div>
@@ -238,12 +239,12 @@
                                                         <div class="radio radio-inline">
 
                                                             <label>
-                                                                <input type="radio" name="comp_mem"
+                                                                <input type="radio" name="type_of_org"
                                                                     value="Municipal" /><i
                                                                     class="helper"></i>Association
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="comp_mem"
+                                                                <input type="radio" name="type_of_org"
                                                                     value="Fishworker" /><i
                                                                     class="helper"></i>Cooperative
                                                             </label>
@@ -263,7 +264,7 @@
                                                     <label for="inline3mail" class="block form-control-label">Name
                                                         of FARMC</label>
                                                     <input id="inline3mail" type="text" class="form-control"
-                                                        name="farmc_name" style="width: 1050px;"
+                                                        name="name_FARMC" style="width: 1050px;"
                                                         placeholder="Enter Name (First Name, Middle Initial, Last Name)">
                                                 </div>
                                                 <br>
@@ -273,7 +274,7 @@
                                                         of
                                                         FARMC</label>
                                                     <input id="inline3mail" type="text" class="form-control"
-                                                        name="farmc_add" style="width: 1050px;"
+                                                        name="add_FARMC" style="width: 1050px;"
                                                         placeholder="Enter Address ( Brgy., St., City, Province)">
                                                 </div>
                                             </div>
@@ -281,20 +282,21 @@
                                         <br>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="grid-material bg-general"><em>Officer of MFARMC</em>
                                                 </div>
                                                 <br>
                                                 <div class="form-radio">
                                                     <div class="radio radio-inline">
                                                         <label>
-                                                            <input type="radio" name="mfarmc_off"
+                                                            <input type="radio" name="officer_MFARMC"
                                                                 onclick="toggleTextBox('otherTextBox')"
                                                                 value="Yes" />
                                                             <i class="helper"></i> Yes
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="mfarmc_off" value="No" />
+                                                            <input type="radio" name="officer_MFARMC"
+                                                                value="No" />
                                                             <i class="helper"></i> No
                                                         </label>
                                                     </div>
@@ -303,90 +305,112 @@
                                                     <label for="inline3mail" class="block form-control-label"><small>
                                                             If Yes, please specify</small></label>
                                                     <input id="otherInput" type="text" class="form-control"
-                                                        name="mfarmc_off_yes">
+                                                        name="officer_MFARMC_yes">
                                                 </div>
                                             </div>
-                                            <!-- <div class="row"> -->
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general text-center"><em>Sector
-                                                        Represented</em>
+                                            <div class="col-md-9">
+                                                <div class="grid-material bg-general"><em>Registration of
+                                                        Information</em></div>
+                                                <br>
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <label for="reg_info_no">As Member:</label>
+                                                        &nbsp; <input id="reg_info_no" type="text"
+                                                            class="form-control" name="as_member"
+                                                            placeholder="">
+                                                            &nbsp;&nbsp;
+                                                        <label for="reg_info_date">As Officer:</label>
+                                                        &nbsp;&nbsp;<input
+                                                            id="reg_info_date" type="text" class="form-control"
+                                                            name="as_officer" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12" style="margin-top: 30px">
+                                                <div class="grid-material bg-general"><em>Sector
+                                                    Represented</em>
+                                            </div>
+                                                <div class="col-md-3">
+                                                    <br>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="Fisherfolk/Fishworker" /> <i
+                                                                    class="helper"></i> Fisherfolk/Fishworker
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="Commercial Operator" /> <i
+                                                                    class="helper"></i>
+                                                                Commercial Operator
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <br>
-                                                <div class="form-radio">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="Fisherfolk/Fishworker" /> <i
-                                                                class="helper"></i> Fisherfolk/Fishworker
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="Commercial Operator" /> <i class="helper"></i>
-                                                            Commercial Operator
-                                                        </label>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"></div>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="Women Sector" /> <i class="helper"></i>
+                                                                Women Sector
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="Youth Sector" /> <i class="helper"></i>
+                                                                Youth Sector
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"></div>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="Private Sector" /> <i class="helper"></i>
+                                                                Private Sector
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="NGO Representative" /> <i
+                                                                    class="helper"></i>
+                                                                NGO Representative
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="grid-material bg-general"></div>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="sector_rep"
+                                                                    value="Cultural Community (IPs)" />
+                                                                <i class="helper"></i>Cultural Community
+                                                                (IP's)
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" value="Other"
+                                                                    onclick="toggleTextBox('otherTextBox2')"
+                                                                    name="sector_rep" /><i class="helper"></i> Other,
+                                                                Please
+                                                                Specify
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="otherTextBox2" style="display:none;">
+                                                        <input id="otherInput" type="text" class="form-control"
+                                                            name="sector_rep_others" value="">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <br>
-                                            <div class="col-md-2">
-                                                <div class="grid-material bg-general"></div>
-                                                <div class="form-radio">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="Women Sector" /> <i class="helper"></i>
-                                                            Women Sector
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="Youth Sector" /> <i class="helper"></i>
-                                                            Youth Sector
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"></div>
-                                                <div class="form-radio">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="Private Sector" /> <i class="helper"></i>
-                                                            Private Sector
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="NGO Representative" /> <i class="helper"></i>
-                                                            NGO Representative
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="grid-material bg-general"></div>
-                                                <div class="form-radio">
-                                                    <div class="radio radio-inline">
-                                                        <label>
-                                                            <input type="radio" name="sect"
-                                                                value="Cultural Community (IPs)" />
-                                                            <i class="helper"></i>Cultural Community
-                                                            (IP's)
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" value="Other"
-                                                                onclick="toggleTextBox('otherTextBox2')"
-                                                                name="sect" /><i class="helper"></i> Other,
-                                                            Please
-                                                            Specify
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="otherTextBox2" style="display:none;">
-                                                    <input id="otherInput" type="text" class="form-control"
-                                                        name="sect_other" value="">
-                                                </div>
-                                            </div>
+
                                             <div class="col-md-12">
                                                 <hr>
                                                 <div class="col-sm--1 col-xs--1 waves-effect waves-light">
@@ -452,12 +476,12 @@
                                                         </label>
                                                         <br><br>
                                                         <label>
-                                                            <input type="text" class="form-control" name="year2"
+                                                            <input type="text" class="form-control" name="year3"
                                                                 placeholder="" style="width:150px">
                                                         </label>
                                                         <br><br>
                                                         <label>
-                                                            <input type="text" class="form-control" name="year3"
+                                                            <input type="text" class="form-control" name="year4"
                                                                 placeholder="" style="width:150px">
                                                         </label>
                                                     </div>
@@ -514,7 +538,7 @@
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <button type="button" class="btn btn-primary">SUBMIT</button>
+                                        <button type="submit" class="btn btn-primary">SUBMIT</button>
                                     </div>
                                 </div>
                             </div>

@@ -48,23 +48,15 @@
                         </ol>
                     </div>
                     <div class="col-lg-12 inline-forms">
-
-                        <a href="{{ url('/farmc_membership') }}" class="btn btn-secondary"> <i
-                                class="icon-arrow-left"></i> Back</a>
-                        <br> <br>
-
-                        <form class="form-inline" action="" method="">
-
+                        <form class="form-inline" action="{{ url('/add-personal-info1') }}" method="POST">
+                            @csrf
+                            @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
-                                    <div class="card inline-form-style">
                                         <div class="card-header">
                                             <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                                                 <div class="grid-material bg-general">Personal Information</div>
                                             </div>
-
-
-                                            <!-- <div class="card-block"> -->
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group m-r-15">
@@ -73,7 +65,7 @@
                                                             <em>(Family,given,middle & Ext.)</em></label>
                                                         <div class="col-md-4">
                                                             <div class="text-center">
-                                                                <input id="" name="add_barangay" type="text"
+                                                                <input id="" name="fam_name" type="text"
                                                                     class="form-control" style="width: 300px;"
                                                                     placeholder="">
                                                                 <label for=""><small> Family Name </small></label>
@@ -82,7 +74,7 @@
 
                                                         <div class="col-md-3">
                                                             <div class="text-center">
-                                                                <input id="" name="add_city" type="text"
+                                                                <input id="" name="given_name" type="text"
                                                                     class="form-control" style="width: 250px;"
                                                                     placeholder="">
                                                                 <label for=""><small> Given Name
@@ -91,7 +83,7 @@
                                                         </div>
                                                         <div class="col-md-3">
                                                             <div class="text-center">
-                                                                <input id="" name="add_province" type="text"
+                                                                <input id="" name="mid_name" type="text"
                                                                     class="form-control" style="width: 230px;"
                                                                     placeholder="">
                                                                 <label for=""><small> Middle Name </small></label>
@@ -99,7 +91,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="text-center">
-                                                                <input id="" name="add_province" type="text"
+                                                                <input id="" name="ext" type="text"
                                                                     class="form-control" style="width: 150px;"
                                                                     placeholder="">
                                                                 <label for=""><small> Ext. </small></label>
@@ -161,7 +153,7 @@
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="civil_status"
-                                                                    value="Seperated" /><i
+                                                                    value="Separated" /><i
                                                                     class="helper"></i>Separated
                                                             </label>
                                                         </div>
@@ -229,21 +221,19 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general"><em>Person w/
-                                                                Disability
-                                                                (PWD)
+                                                        <div class="grid-material bg-general"><em>Cultural Affiliation
                                                             </em></div>
 
                                                         <div class="form-radio">
                                                             <div class="radio radio-inline">
                                                                 <label>
-                                                                    <input type="radio" name="pwd"
+                                                                    <input type="radio" name="cul_af"
                                                                         value="Yes"
                                                                         onclick="toggleTextBox('otherTextBox8');" />
                                                                     <i class="helper"></i> Yes
                                                                 </label>
                                                                 <label>
-                                                                    <input type="radio" name="pwd"
+                                                                    <input type="radio" name="cul_af"
                                                                         value="No" />
                                                                     <i class="helper"></i> No
                                                                 </label>
@@ -255,7 +245,7 @@
                                                                 class="block form-control-label"><small>If
                                                                     If Yes, please specify</small></label>
                                                             <input id="otherInput" type="text" value=""
-                                                                class="form-control" name="pwd_yes">
+                                                                class="form-control" name="cul_af_yes">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -318,27 +308,23 @@
                                                         <br>
                                                         <div class="col-md-4">
                                                             <div>
-
-                                                                <input type="checkbox" name="internalP"
+                                                                <input type="checkbox" name=""
                                                                     id="checkbox">
                                                                 <span class="checkbox"></span>
                                                                 <div class="captions">Male</div>
                                                             </div>
                                                             <br><br>
                                                             <div>
-                                                                <input type="checkbox" name="fisherfolkR"
+                                                                <input type="checkbox" name=""
                                                                     id="checkbox-1">
                                                                 <span class="checkbox"></span>
                                                                 <div class="captions">Female</div>
                                                             </div>
                                                             <br><br>
-                                                            {{-- <div class="rkmd-checkbox checkbox-rotate checkbox-ripple"> --}}
                                                             <div>
-                                                                {{-- <label class="input-checkbox checkbox-primary"> --}}
-                                                                <input type="checkbox" name="fisheriesP"
+                                                                <input type="checkbox" name=""
                                                                     id="checkbox-2">
                                                                 <span class="checkbox"></span>
-                                                                {{-- </label> --}}
                                                                 <div class="captions">Others</div>
                                                             </div>
                                                         </div>
@@ -448,7 +434,7 @@
                                                                     <label>
                                                                         <input type="radio"
                                                                             name="educational_attainment"
-                                                                            value="Tesda"
+                                                                            value="Others"
                                                                             onclick="toggleTextBox('otherTextBox11');" />
                                                                         <i class="helper"></i> Others
                                                                     </label>
@@ -460,13 +446,13 @@
                                                                 <label for="inline3mail"
                                                                     class="block form-control-label"><small>Specify</small></label>
                                                                 <input id="otherInput" type="text"
-                                                                    class="form-control" name="tesda">
+                                                                    class="form-control" name="others">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="text-right">
-                                                   <a href="{{ url ('/FDP_orgMem')}}"> <button type="button" class="btn btn-primary">Next<i
+                                                  <button type="submit" class="btn btn-primary">Next<i
                                                             class="icon-arrow-right"></i></button></a>
                                                 </div>
                                             </div>

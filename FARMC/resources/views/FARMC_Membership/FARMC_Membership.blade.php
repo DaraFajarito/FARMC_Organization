@@ -95,8 +95,6 @@
                 <div class="row">
                     <div class="card">
                         <!-- <div class="card-body"> -->
-
-
                         <div class="card-block">
                             <div class="col-lg-4">
                                 <h6 class="card-title text-center">Member's Age</h6>
@@ -142,7 +140,8 @@
             <div class="col-md-12" style="margin-bottom: 30px;">
                 <a href="{{ url('/membership_archived') }}"><button type="button" class="btn btn-warning"><i
                             class="ti-archive"></i> Archived Members</button></a>
-                <a href="{{ url ('/viewall_members')}}"><button type="button" class="btn btn-primary" style="margin-left: 10px">View All
+                <a href="{{ url('/viewall_members') }}"><button type="button" class="btn btn-primary"
+                        style="margin-left: 10px">View All
                         Members</button></a>
             </div>
             <div class="row">
@@ -279,74 +278,73 @@
                                         </thead>
                                         <tbody style="font-size:12px">
                                             @foreach ($data as $item)
-                                            @if ($item->status != 'ARCHIVED')
+                                                @if ($item->status != 'ARCHIVED')
+                                                    <tr>
+                                                        @if ($item->name === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->name }}</td>
+                                                        @endif
 
-                                                <tr>
-                                                    @if ($item->name === null)
-                                                        <td style="color:red">no data</td>
-                                                    @else
-                                                        <td>{{ $item->name }}</td>
-                                                    @endif
+                                                        @if ($item->org_mem_name === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->org_mem_name }}</td>
+                                                        @endif
 
-                                                    @if ($item->org_mem_name === null)
-                                                        <td style="color:red">no data</td>
-                                                    @else
-                                                        <td>{{ $item->org_mem_name }}</td>
-                                                    @endif
+                                                        @if ($item->add_acc === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->add_acc }}</td>
+                                                        @endif
 
-                                                    @if ($item->add_acc === null)
-                                                        <td style="color:red">no data</td>
-                                                    @else
-                                                        <td>{{ $item->add_acc }}</td>
-                                                    @endif
+                                                        @if ($item->comp_mem === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->comp_mem }}</td>
+                                                        @endif
 
-                                                    @if ($item->comp_mem === null)
-                                                        <td style="color:red">no data</td>
-                                                    @else
-                                                        <td>{{ $item->comp_mem }}</td>
-                                                    @endif
+                                                        @if ($item->reg_ass === null)
+                                                            <td style="color:red">no data</td>
+                                                        @elseif ($item->reg_ass === 'No')
+                                                            <td>No</td>
+                                                        @elseif ($item->reg_ass === 'Yes')
+                                                            <td>Yes , {{ $item->reg_ass_yes }}</td>
+                                                        @endif
 
-                                                    @if ($item->reg_ass === null)
-                                                        <td style="color:red">no data</td>
-                                                    @elseif ($item->reg_ass === 'No')
-                                                        <td>No</td>
-                                                    @elseif ($item->reg_ass === 'Yes')
-                                                        <td>Yes , {{ $item->reg_ass_yes }}</td>
-                                                    @endif
-
-                                                    @if ($item->lgu_accre === null)
-                                                        <td style="color:red">no data</td>
-                                                    @else
-                                                        <td>{{ $item->lgu_accre }}</td>
-                                                    @endif
-
-
-                                                    @if ($item->officer_ass === null)
-                                                        <td style="color:red">no data</td>
-                                                    @elseif ($item->officer_ass === 'No')
-                                                        <td>No , {{ $item->position }}</td>
-                                                    @elseif ($item->officer_ass === 'Yes')
-                                                        <td>Yes , {{ $item->position }}</td>
-                                                    @endif
+                                                        @if ($item->lgu_accre === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->lgu_accre }}</td>
+                                                        @endif
 
 
-                                                    @if ($item->involvement_mdo === null)
-                                                        <td style="color:red">no data</td>
-                                                    @elseif ($item->involvement_mdo !== null && $item->year1 !== null && $item->year2 !== null && $item->year3 !== null)
-                                                        <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
-                                                            {{ $item->year2 }} {{ $item->year3 }}</td>
-                                                    @else
-                                                        <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
-                                                            {{ $item->year2 }} {{ $item->year3 }}</td>
-                                                    @endif
-                                                    <td hidden>{{ $item->status }}</td>
+                                                        @if ($item->officer_ass === null)
+                                                            <td style="color:red">no data</td>
+                                                        @elseif ($item->officer_ass === 'No')
+                                                            <td>No , {{ $item->position }}</td>
+                                                        @elseif ($item->officer_ass === 'Yes')
+                                                            <td>Yes , {{ $item->position }}</td>
+                                                        @endif
 
-                                                    <td style="text-align: center;">
-                                                        <a href="{{ url('/FARMCViewform/' . $item->id) }}"
-                                                            class="btn btn-success"><i class="ti-eye"></i> &nbsp;
-                                                            View</a>
-                                                    </td>
-                                                </tr>
+
+                                                        @if ($item->involvement_mdo === null)
+                                                            <td style="color:red">no data</td>
+                                                        @elseif ($item->involvement_mdo !== null && $item->year1 !== null && $item->year2 !== null && $item->year3 !== null)
+                                                            <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
+                                                                {{ $item->year2 }} {{ $item->year3 }}</td>
+                                                        @else
+                                                            <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
+                                                                {{ $item->year2 }} {{ $item->year3 }}</td>
+                                                        @endif
+                                                        <td hidden>{{ $item->status }}</td>
+
+                                                        <td style="text-align: center;">
+                                                            <a href="{{ url('/FARMCViewform/' . $item->id) }}"
+                                                                class="btn btn-success"><i class="ti-eye"></i> &nbsp;
+                                                                View</a>
+                                                        </td>
+                                                    </tr>
                                                 @endif
                                             @endforeach
                                         </tbody>

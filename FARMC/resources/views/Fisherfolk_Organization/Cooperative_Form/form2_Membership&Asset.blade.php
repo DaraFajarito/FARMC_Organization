@@ -214,34 +214,40 @@
                                                                     name="TMem_total" readonly></td>
                                                         </tr>
                                                         <tr>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Target / Potential Membership (current year)</td>
-                                                            <td style="text-align: center;"><input id=""
-                                                                    type="text" class="form-control"
+                                                            <td style="text-align: center;"><input
+                                                                    id="CoM_TargetMem_male" type="text"
+                                                                    class="form-control"
                                                                     style="width: 100px; margin: auto;"
                                                                     name="CoM_TargetMem_male"></td>
-                                                            <td style="text-align: center;"><input id=""
+                                                            <td style="text-align: center;"><input id="TarMem_female"
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
                                                                     name="TarMem_female"></td>
-                                                            <td style="text-align: center;"><input id=""
+                                                            <td style="text-align: center;"><input id="TarMem_total"
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
                                                                     name="TarMem_total"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Total Membership</td>
-                                                            <td style="text-align: center;"><input id=""
+                                                        <tr>
+                                                            <td>Total Membership</td>
+                                                            <td style="text-align: center;"><input id="Total_male"
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="CoM_Total_male"></td>
-                                                            <td style="text-align: center;"><input id=""
+                                                                    name="CoM_Total_male" readonly></td>
+                                                            <td style="text-align: center;"><input id="Total_female"
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="Total_female"></td>
-                                                            <td style="text-align: center;"><input id=""
+                                                                    name="Total_female" readonly></td>
+                                                            <td style="text-align: center;"><input id="Total_total"
                                                                     type="text" class="form-control"
                                                                     style="width: 100px; margin: auto;"
-                                                                    name="Total_total"></td>
+                                                                    name="Total_total" readonly></td>
+                                                        </tr>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -365,6 +371,14 @@
             const totalFemaleInput = document.querySelector('input[name="TMem_female"]');
             const totalTotalInput = document.querySelector('input[name="TMem_total"]');
 
+            const targetMaleInput = document.querySelector('input[name="CoM_TargetMem_male"]');
+            const targetFemaleInput = document.querySelector('input[name="TarMem_female"]');
+            const targetTotalInput = document.querySelector('input[name="TarMem_total"]');
+
+            const totalMale = document.querySelector('input[name="CoM_Total_male"]');
+            const totalFemale = document.querySelector('input[name="Total_female"]');
+            const totalTotal = document.querySelector('input[name="Total_total"]');
+
             function calculateAndSetTotal(maleInput, femaleInput, totalInput) {
                 const maleCount = parseInt(maleInput.value) || 0;
                 const femaleCount = parseInt(femaleInput.value) || 0;
@@ -378,6 +392,19 @@
                 totalMaleInput.value = totalMaleCount;
                 totalFemaleInput.value = totalFemaleCount;
                 totalTotalInput.value = totalMaleCount + totalFemaleCount;
+
+                const targetMaleCount = parseInt(targetMaleInput.value) || 0;
+                const targetFemaleCount = parseInt(targetFemaleInput.value) || 0;
+                targetTotalInput.value = targetMaleCount + targetFemaleCount;
+
+                totalMale.value = totalMaleCount + targetMaleCount;
+                totalFemale.value = totalFemaleCount + targetFemaleCount;
+                totalTotal.value = (totalMaleCount + targetMaleCount) + (totalFemaleCount + targetFemaleCount);
+
+                // Ensure there's only one zero in the totalTotal field
+                if (totalTotal.value === '0') {
+                    totalTotal.value = '0';
+                }
             }
 
             nrMaleInput.addEventListener('input', function() {
@@ -400,12 +427,29 @@
                 calculateTotalMembers();
             });
 
+            targetMaleInput.addEventListener('input', function() {
+                calculateTotalMembers();
+            });
+
+            targetFemaleInput.addEventListener('input', function() {
+                calculateTotalMembers();
+            });
+
             // Initial calculation
             calculateAndSetTotal(nrMaleInput, nrFemaleInput, nrTotalInput);
             calculateAndSetTotal(naMaleInput, naFemaleInput, naTotalInput);
             calculateTotalMembers();
         });
     </script>
+
+
+
+
+
+
+
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -430,7 +474,7 @@
             function calculateTotalEmployees() {
                 const totalMaleCount = (parseInt(ftMaleInput.value) || 0) + (parseInt(ptMaleInput.value) || 0);
                 const totalFemaleCount = (parseInt(ftFemaleInput.value) || 0) + (parseInt(ptFemaleInput.value) ||
-                0);
+                    0);
                 totalMaleInput.value = totalMaleCount;
                 totalFemaleInput.value = totalFemaleCount;
                 totalTotalInput.value = totalMaleCount + totalFemaleCount;

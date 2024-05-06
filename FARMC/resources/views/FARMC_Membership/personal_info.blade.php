@@ -57,7 +57,6 @@
                             @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
-                                    <div class="card inline-form-style">
                                         <div class="card-header">
                                             <div class="col-sm-6 col-xs-6 waves-effect waves-light">
                                                 <div class="grid-material bg-general">Personal Information</div>
