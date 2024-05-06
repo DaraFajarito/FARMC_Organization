@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FDP_PersonalInfo_Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FDP_PersonalInfo_Controller extends Controller
 {
@@ -198,8 +199,47 @@ class FDP_PersonalInfo_Controller extends Controller
 
 
 
+        // Prepare data for the chart
+        $cityCounts = FDP_PersonalInfo_Model::where('involvement_mdo', 'National Fisherfolk Director')
+            ->whereNotNull('add_city')
+            ->select('add_city', DB::raw('count(*) as count'))
+            ->groupBy('add_city')
+            ->get();
+
+        // Extract city names and counts
+        $labelsAdd = $cityCounts->pluck('add_city');
+        $dataAdd = $cityCounts->pluck('count');
+
+        // Generate random background colors
+        $backgroundColors = [];
+        foreach ($labelsAdd as $label) {
+            $backgroundColors[] = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        }
+
+        // Prepare data for the chart
+        $chartData = [
+            'labels' => $labelsAdd,
+            'datasets' => [
+                [
+                    'label' => 'City Count',
+                    'backgroundColor' => $backgroundColors, // Random colors for bars
+                    'data' => $dataAdd,
+                ],
+            ],
+        ];
+
+        $associationCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'National Fisherfolk Director')->where('type_of_org', 'Association')->count();
+        $cooperativeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'National Fisherfolk Director')->where('type_of_org', 'Cooperative')->count();
+
+        $assCount = [
+            'ASSOCIATION' => $associationCount,
+            'COOPERATIVE' => $cooperativeCount,
+        ];
+
+        $data_ass = array_values($assCount);
 
 
-        return view('Fisherfolk_Directors_Program.National_FD.nationalFD', compact('data', 'NFDMemCount', 'NFDOrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp'));
+
+        return view('Fisherfolk_Directors_Program.National_FD.nationalFD', compact('data', 'NFDMemCount', 'NFDOrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp', 'labelsAdd', 'dataAdd', 'backgroundColors', 'data_ass'));
     }
 }

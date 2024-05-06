@@ -133,14 +133,14 @@
                             <div class="col-lg-6">
                                 <h6 class="card-title text-center">Address</h6>
                                 <div class="row">
-                                    <canvas id="AddressChart" ></canvas>
+                                    <canvas id="addressChart" ></canvas>
                                 </div>
 
                             </div>
                             <div class="col-lg-6 text-center">
                                 <h6 class="card-title text-center">Sector Represented</h6>
                                 <div class="col-sm-12" style="margin-bottom: 30px">
-                                    <canvas id="genderChart" width="1" height="1"></canvas>
+                                    <canvas id="organizationChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -437,6 +437,67 @@
     </script>
 
 
+    <script>
+    // Data from PHP
+    var labels = <?php echo json_encode($labelsAdd); ?>;
+    var data = <?php echo json_encode($dataAdd); ?>;
+    var backgroundColors = <?php echo json_encode($backgroundColors); ?>;
+
+    // Create a bar chart
+    var ctx = document.getElementById('addressChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'City Count',
+                data: data,
+                backgroundColor: backgroundColors, // Use the dynamically generated colors
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById('organizationChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Association', 'Cooperative'],
+            datasets: [{
+                label: 'Organization Type Count',
+                data: <?php echo json_encode($data_ass); ?>,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)', // Red color for 'Association'
+                    'rgba(54, 162, 235, 0.6)', // Blue color for 'Cooperative'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 </body>
 
 </html>

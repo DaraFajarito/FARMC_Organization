@@ -215,7 +215,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label>
-                                                                <input type="radio" name="comp_mem" value="No"
+                                                                <input type="radio" name="comp_mem" value="Others"
                                                                     onclick="toggleTextBox('otherTextBox6')" />
                                                                 <i class="helper"></i> Others
                                                             </label>
@@ -240,7 +240,7 @@
 
                                                             <label>
                                                                 <input type="radio" name="type_of_org"
-                                                                    value="Municipal" /><i
+                                                                    value="Association" /><i
                                                                     class="helper"></i>Association
                                                             </label>
                                                             <label>
