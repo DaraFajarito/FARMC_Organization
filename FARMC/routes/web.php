@@ -361,5 +361,8 @@ Route::get('/FDP_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'displayFDP_o
 Route::put('/add-fdp_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'addFDP_orgMem']);
 
 Route::get('/nationlFR', [FDP_PersonalInfo_Controller::class,'display_NFD']);
+Route::get('/provincialFR', [FDP_PersonalInfo_Controller::class,'display_PFR']);
+Route::get('/regionalFD', [FDP_PersonalInfo_Controller::class,'display_RFD']);
+Route::get('/regionalFR', [FDP_PersonalInfo_Controller::class,'display_RFR']);
 
 // Route::get('/nationlFR', 'Fisherfolk_Directors_Program.National_FD.nationalFD');

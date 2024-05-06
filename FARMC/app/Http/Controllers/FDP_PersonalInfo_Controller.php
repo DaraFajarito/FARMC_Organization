@@ -242,4 +242,436 @@ class FDP_PersonalInfo_Controller extends Controller
 
         return view('Fisherfolk_Directors_Program.National_FD.nationalFD', compact('data', 'NFDMemCount', 'NFDOrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp', 'labelsAdd', 'dataAdd', 'backgroundColors', 'data_ass'));
     }
+
+    // ------------------------------------------------------------------//
+    // ----------------------PROVINCIAL FISHERFOLK REPRESENTATIVE -------------------------//
+    // ------------------------------------------------------------------//
+
+    public function display_PFR()
+    {
+        //DISPLAYING TABLE
+        $data = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->get();
+
+
+        $PFRMemCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->where(function ($query) {
+                $query->whereNotNull('fam_name')
+                    ->orWhereNotNull('given_name')
+                    ->orWhereNotNull('mid_name')
+                    ->orWhereNotNull('ext');
+            })->count();
+
+
+        $PFROrgCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->count('name_ass');
+
+        $PFRDAgeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->whereIn('age', range(0, 18))
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+                    ->whereIn('age', range(19, 25));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+                    ->whereIn('age', range(26, 35));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+                    ->whereIn('age', range(36, 50));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+                    ->where('age', '>', 50);
+            })
+            ->get();
+
+        // Count members in each age range
+        $ageRanges = [
+            '0-18' => $PFRDAgeCount->whereBetween('age', [0, 18])->count(),
+            '19-25' => $PFRDAgeCount->whereBetween('age', [19, 25])->count(),
+            '26-35' => $PFRDAgeCount->whereBetween('age', [26, 35])->count(),
+            '36-50' => $PFRDAgeCount->whereBetween('age', [36, 50])->count(),
+            '51+' => $PFRDAgeCount->where('age', '>', 50)->count(),
+        ];
+
+        $labelsage = array_keys($ageRanges);
+        $dataage = array_values($ageRanges);
+
+
+
+        $PFRmaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Male')->count();
+        $PFRfemaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Female')->count();
+        $PFRothersCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Others')->count();
+
+        $GenderCount = [
+            'Male' => $PFRmaleCount,
+            'Female' => $PFRfemaleCount,
+            'Others' => $PFRothersCount,
+        ];
+
+        $labelsgen = array_keys($GenderCount);
+        $datagen = array_values($GenderCount);
+
+
+        $municipalCount = FDP_PersonalInfo_Model::where('comp_mem', 'Municipal')
+            ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->count();
+        $fishworkerCount = FDP_PersonalInfo_Model::where('comp_mem', 'Fishworker')
+            ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->count();
+        $commercialCount = FDP_PersonalInfo_Model::where('comp_mem', 'Commercial')
+            ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->count();
+        $womenYouthCount = FDP_PersonalInfo_Model::where('comp_mem', 'Women/Youth')
+            ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->count();
+        $otherCount = FDP_PersonalInfo_Model::where('comp_mem', 'Others')
+            ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->count();
+
+        $memCount = [
+            'Municipal' => $municipalCount,
+            'Fishworker' => $fishworkerCount,
+            'Commercial' => $commercialCount,
+            'Women / Youth' => $womenYouthCount,
+            'Others' => $womenYouthCount
+        ];
+
+        $labelscomp = array_keys($memCount);
+        $datacomp = array_values($memCount);
+
+
+
+        // Prepare data for the chart
+        $cityCounts = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
+            ->whereNotNull('add_city')
+            ->select('add_city', DB::raw('count(*) as count'))
+            ->groupBy('add_city')
+            ->get();
+
+        // Extract city names and counts
+        $labelsAdd = $cityCounts->pluck('add_city');
+        $dataAdd = $cityCounts->pluck('count');
+
+        // Generate random background colors
+        $backgroundColors = [];
+        foreach ($labelsAdd as $label) {
+            $backgroundColors[] = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        }
+
+        // Prepare data for the chart
+        $chartData = [
+            'labels' => $labelsAdd,
+            'datasets' => [
+                [
+                    'label' => 'City Count',
+                    'backgroundColor' => $backgroundColors, // Random colors for bars
+                    'data' => $dataAdd,
+                ],
+            ],
+        ];
+
+        $associationCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('type_of_org', 'Association')->count();
+        $cooperativeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('type_of_org', 'Cooperative')->count();
+
+        $assCount = [
+            'ASSOCIATION' => $associationCount,
+            'COOPERATIVE' => $cooperativeCount,
+        ];
+
+        $data_ass = array_values($assCount);
+
+
+
+        return view('Fisherfolk_Directors_Program.Provincial_FR.provincialFR', compact('data', 'PFRMemCount', 'PFROrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp', 'labelsAdd', 'dataAdd', 'backgroundColors', 'data_ass'));
+    }
+
+    // ------------------------------------------------------------------//
+    // ----------------------REGIONAL FISHERFOLK REPRESENTATIVE-------------------------//
+    // ------------------------------------------------------------------//
+
+    public function display_RFR()
+    {
+        //DISPLAYING TABLE
+        $data = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->get();
+
+
+        $RFRMemCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->where(function ($query) {
+                $query->whereNotNull('fam_name')
+                    ->orWhereNotNull('given_name')
+                    ->orWhereNotNull('mid_name')
+                    ->orWhereNotNull('ext');
+            })->count();
+
+
+        $RFROrgCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->count('name_ass');
+
+        $RFRDAgeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->whereIn('age', range(0, 18))
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Representative')
+                    ->whereIn('age', range(19, 25));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Representative')
+                    ->whereIn('age', range(26, 35));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Representative')
+                    ->whereIn('age', range(36, 50));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Representative')
+                    ->where('age', '>', 50);
+            })
+            ->get();
+
+        // Count members in each age range
+        $ageRanges = [
+            '0-18' => $RFRDAgeCount->whereBetween('age', [0, 18])->count(),
+            '19-25' => $RFRDAgeCount->whereBetween('age', [19, 25])->count(),
+            '26-35' => $RFRDAgeCount->whereBetween('age', [26, 35])->count(),
+            '36-50' => $RFRDAgeCount->whereBetween('age', [36, 50])->count(),
+            '51+' => $RFRDAgeCount->where('age', '>', 50)->count(),
+        ];
+
+        $labelsage = array_keys($ageRanges);
+        $dataage = array_values($ageRanges);
+
+
+
+        $RFRmaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->where('gender', 'Male')->count();
+        $RFRfemaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->where('gender', 'Female')->count();
+        $RFRothersCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->where('gender', 'Others')->count();
+
+        $GenderCount = [
+            'Male' => $RFRmaleCount,
+            'Female' => $RFRfemaleCount,
+            'Others' => $RFRothersCount,
+        ];
+
+        $labelsgen = array_keys($GenderCount);
+        $datagen = array_values($GenderCount);
+
+
+        $municipalCount = FDP_PersonalInfo_Model::where('comp_mem', 'Municipal')
+            ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->count();
+        $fishworkerCount = FDP_PersonalInfo_Model::where('comp_mem', 'Fishworker')
+            ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->count();
+        $commercialCount = FDP_PersonalInfo_Model::where('comp_mem', 'Commercial')
+            ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->count();
+        $womenYouthCount = FDP_PersonalInfo_Model::where('comp_mem', 'Women/Youth')
+            ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->count();
+        $otherCount = FDP_PersonalInfo_Model::where('comp_mem', 'Others')
+            ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->count();
+
+        $memCount = [
+            'Municipal' => $municipalCount,
+            'Fishworker' => $fishworkerCount,
+            'Commercial' => $commercialCount,
+            'Women / Youth' => $womenYouthCount,
+            'Others' => $womenYouthCount
+        ];
+
+        $labelscomp = array_keys($memCount);
+        $datacomp = array_values($memCount);
+
+
+
+        // Prepare data for the chart
+        $cityCounts = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')
+            ->whereNotNull('add_city')
+            ->select('add_city', DB::raw('count(*) as count'))
+            ->groupBy('add_city')
+            ->get();
+
+        // Extract city names and counts
+        $labelsAdd = $cityCounts->pluck('add_city');
+        $dataAdd = $cityCounts->pluck('count');
+
+        // Generate random background colors
+        $backgroundColors = [];
+        foreach ($labelsAdd as $label) {
+            $backgroundColors[] = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        }
+
+        // Prepare data for the chart
+        $chartData = [
+            'labels' => $labelsAdd,
+            'datasets' => [
+                [
+                    'label' => 'City Count',
+                    'backgroundColor' => $backgroundColors, // Random colors for bars
+                    'data' => $dataAdd,
+                ],
+            ],
+        ];
+
+        $associationCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->where('type_of_org', 'Association')->count();
+        $cooperativeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')->where('type_of_org', 'Cooperative')->count();
+
+        $assCount = [
+            'ASSOCIATION' => $associationCount,
+            'COOPERATIVE' => $cooperativeCount,
+        ];
+
+        $data_ass = array_values($assCount);
+
+
+
+        return view('Fisherfolk_Directors_Program.Regional_FR.regionalFR', compact('data', 'RFRMemCount', 'RFROrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp', 'labelsAdd', 'dataAdd', 'backgroundColors', 'data_ass'));
+    }
+
+
+
+
+    // ------------------------------------------------------------------//
+    // ----------------------REGIONAL FISHERFOLK DIRECTOR-------------------------//
+    // ------------------------------------------------------------------//
+
+
+    public function display_RFD()
+    {
+        //DISPLAYING TABLE
+        $data = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->get();
+
+
+        $RFDMemCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->where(function ($query) {
+                $query->whereNotNull('fam_name')
+                    ->orWhereNotNull('given_name')
+                    ->orWhereNotNull('mid_name')
+                    ->orWhereNotNull('ext');
+            })->count();
+
+
+        $RFDOrgCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->count('name_ass');
+
+        $RFDDAgeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->whereIn('age', range(0, 18))
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Director')
+                    ->whereIn('age', range(19, 25));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Director')
+                    ->whereIn('age', range(26, 35));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Director')
+                    ->whereIn('age', range(36, 50));
+            })
+            ->orWhere(function ($query) {
+                $query->where('involvement_mdo', 'Regional Fisherfolk Director')
+                    ->where('age', '>', 50);
+            })
+            ->get();
+
+        // Count members in each age range
+        $ageRanges = [
+            '0-18' => $RFDDAgeCount->whereBetween('age', [0, 18])->count(),
+            '19-25' => $RFDDAgeCount->whereBetween('age', [19, 25])->count(),
+            '26-35' => $RFDDAgeCount->whereBetween('age', [26, 35])->count(),
+            '36-50' => $RFDDAgeCount->whereBetween('age', [36, 50])->count(),
+            '51+' => $RFDDAgeCount->where('age', '>', 50)->count(),
+        ];
+
+        $labelsage = array_keys($ageRanges);
+        $dataage = array_values($ageRanges);
+
+
+
+        $RFDmaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->where('gender', 'Male')->count();
+        $RFDfemaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->where('gender', 'Female')->count();
+        $RFDothersCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->where('gender', 'Others')->count();
+
+        $GenderCount = [
+            'Male' => $RFDmaleCount,
+            'Female' => $RFDfemaleCount,
+            'Others' => $RFDothersCount,
+        ];
+
+        $labelsgen = array_keys($GenderCount);
+        $datagen = array_values($GenderCount);
+
+
+        $municipalCount = FDP_PersonalInfo_Model::where('comp_mem', 'Municipal')
+            ->where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->count();
+        $fishworkerCount = FDP_PersonalInfo_Model::where('comp_mem', 'Fishworker')
+            ->where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->count();
+        $commercialCount = FDP_PersonalInfo_Model::where('comp_mem', 'Commercial')
+            ->where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->count();
+        $womenYouthCount = FDP_PersonalInfo_Model::where('comp_mem', 'Women/Youth')
+            ->where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->count();
+        $otherCount = FDP_PersonalInfo_Model::where('comp_mem', 'Others')
+            ->where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->count();
+
+        $memCount = [
+            'Municipal' => $municipalCount,
+            'Fishworker' => $fishworkerCount,
+            'Commercial' => $commercialCount,
+            'Women / Youth' => $womenYouthCount,
+            'Others' => $womenYouthCount
+        ];
+
+        $labelscomp = array_keys($memCount);
+        $datacomp = array_values($memCount);
+
+
+
+        // Prepare data for the chart
+        $cityCounts = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')
+            ->whereNotNull('add_city')
+            ->select('add_city', DB::raw('count(*) as count'))
+            ->groupBy('add_city')
+            ->get();
+
+        // Extract city names and counts
+        $labelsAdd = $cityCounts->pluck('add_city');
+        $dataAdd = $cityCounts->pluck('count');
+
+        // Generate random background colors
+        $backgroundColors = [];
+        foreach ($labelsAdd as $label) {
+            $backgroundColors[] = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        }
+
+        // Prepare data for the chart
+        $chartData = [
+            'labels' => $labelsAdd,
+            'datasets' => [
+                [
+                    'label' => 'City Count',
+                    'backgroundColor' => $backgroundColors, // Random colors for bars
+                    'data' => $dataAdd,
+                ],
+            ],
+        ];
+
+        $associationCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->where('type_of_org', 'Association')->count();
+        $cooperativeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')->where('type_of_org', 'Cooperative')->count();
+
+        $assCount = [
+            'ASSOCIATION' => $associationCount,
+            'COOPERATIVE' => $cooperativeCount,
+        ];
+
+        $data_ass = array_values($assCount);
+
+
+
+        return view('Fisherfolk_Directors_Program.Regional_FD.regionalFD', compact('data', 'RFDMemCount', 'RFDOrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp', 'labelsAdd', 'dataAdd', 'backgroundColors', 'data_ass'));
+    }
+
+
 }

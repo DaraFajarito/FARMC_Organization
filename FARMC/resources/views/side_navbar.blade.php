@@ -258,19 +258,19 @@
 
 
                             <li>
-                                <a class="waves-effect waves-dark" href="#!">
+                                <a class="waves-effect waves-dark" href="{{ url ('/provincialFR')}}">
                                     <i class="icon-arrow-right"></i>
                                     3.1 Provincial Fisherfolk Representative
                                 </a>
                             </li>
                             <li>
-                                <a class="waves-effect waves-dark" href="#!">
+                                <a class="waves-effect waves-dark" href="{{ url ('/regionalFR')}}">
                                     <i class="icon-arrow-right"></i>
                                     3.2 Regional Fisherfolk Representative
                                 </a>
                             </li>
                             <li>
-                                <a class="waves-effect waves-dark" href="#!">
+                                <a class="waves-effect waves-dark" href="{{ url ('/regionalFD')}}">
                                     <i class="icon-arrow-right"></i>
                                     3.2 Regional Fisherfolk Director
                                 </a>
