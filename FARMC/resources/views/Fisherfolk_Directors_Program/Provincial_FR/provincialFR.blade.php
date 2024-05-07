@@ -65,7 +65,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Provincial Fisherfolk Representative</span>
-                                <h2 class="dashboard-total-products">{{$PFRMemCount}}</h2>
+                                <h2 class="dashboard-total-products">{{ $PFRMemCount }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-id-badge text-success-color"></i>
                                 </div>
@@ -75,7 +75,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Association / Organization</span>
-                                <h2 class="dashboard-total-products">{{$PFROrgCount}}</h2>
+                                <h2 class="dashboard-total-products">{{ $PFROrgCount }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-layout-tab-v text-success-color"></i>
                                 </div>
@@ -133,7 +133,7 @@
                             <div class="col-lg-6">
                                 <h6 class="card-title text-center">Address</h6>
                                 <div class="row">
-                                    <canvas id="addressChart" ></canvas>
+                                    <canvas id="addressChart"></canvas>
                                 </div>
 
                             </div>
@@ -196,26 +196,28 @@
                                         </thead>
                                         <tbody style="font-size:11px">
                                             @foreach ($data as $item)
-                                            @if ($item->status != 'ARCHIVED')
-                                            <tr>
-                                                <td>{{$item->fam_name}}, {{$item->given_name}} {{$item->mid_name}} {{$item->ext}} </td>
-                                                <td>{{$item->add_barangay}}, {{$item->add_city}}, {{$item->add_province}}</td>
-                                                <td>{{$item->civil_status}}</td>
-                                                <td>{{$item->gender}}</td>
-                                                <td>{{$item->birthdate}}</td>
-                                                <td>{{$item->age}}</td>
-                                                <td>{{$item->fourps}}</td>
-                                                <td>{{$item->cul_af}} - {{$item->cul_af_yes}}</td>
-                                                <td style=" display: flex; justify-content: space-between;">
-                                                    <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success"><i
-                                                            class="ti-eye"></i></a>
-                                                    <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-warning"><i
-                                                            class="ti-pencil"></i></a>
-                                                    <a href="{{ url ('/archived_PFR/'. $item->id)}}" class="btn btn-danger"><i
-                                                            class="ti-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            @endif
+                                                @if ($item->status != 'ARCHIVED')
+                                                    <tr>
+                                                        <td>{{ $item->fam_name }}, {{ $item->given_name }}
+                                                            {{ $item->mid_name }} {{ $item->ext }} </td>
+                                                        <td>{{ $item->add_barangay }}, {{ $item->add_city }},
+                                                            {{ $item->add_province }}</td>
+                                                        <td>{{ $item->civil_status }}</td>
+                                                        <td>{{ $item->gender }}</td>
+                                                        <td>{{ $item->birthdate }}</td>
+                                                        <td>{{ $item->age }}</td>
+                                                        <td>{{ $item->fourps }}</td>
+                                                        <td>{{ $item->cul_af }} - {{ $item->cul_af_yes }}</td>
+                                                        <td style=" display: flex; justify-content: space-between;">
+                                                            <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
+                                                                class="btn btn-success"><i class="ti-eye"></i></a>
+                                                            <a href="{{ url('/rfdp_edit/' . $item->id) }}"
+                                                                class="btn btn-warning"><i class="ti-pencil"></i></a>
+                                                            <a href="{{ url('/archived_PFR/' . $item->id) }}"
+                                                                class="btn btn-danger"><i class="ti-trash"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -242,22 +244,27 @@
                                         </thead>
                                         <tbody style="font-size:12px">
                                             @foreach ($data as $item)
-                                                {{-- @if ($item->status != 'ARCHIVED')  --}}
-                                            <tr>
-                                                <td>{{$item->fam_name}}, {{$item->given_name}} {{$item->mid_name}} {{$item->ext}}</td>
-                                                <td>{{$item->name_ass}}</td>
-                                                <td>{{$item->add_ass}}</td>
-                                                <td>{{$item->officer_ass}} - {{$item->officer_ass_yes}}</td>
-                                                <td>{{$item->reg_agency}} - {{$item->reg_agency_others}} </td>
-                                                <td>{{$item->reg_info_no}}</td>
-                                                <td>{{$item->reg_info_date}}</td>
-                                                <td>{{$item->comp_mem}} - {{$item->comp_mem_others}}</td>
-                                                <td style="text-align: center;">
-                                                    <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success"><i class="ti-eye"></i>
-                                                        &nbsp;
-                                                        View</a>
-                                                </td>
-                                            </tr>
+                                                @if ($item->status != 'ARCHIVED')
+                                                    <tr>
+                                                        <td>{{ $item->fam_name }}, {{ $item->given_name }}
+                                                            {{ $item->mid_name }} {{ $item->ext }}</td>
+                                                        <td>{{ $item->name_ass }}</td>
+                                                        <td>{{ $item->add_ass }}</td>
+                                                        <td>{{ $item->officer_ass }} - {{ $item->officer_ass_yes }}
+                                                        </td>
+                                                        <td>{{ $item->reg_agency }} - {{ $item->reg_agency_others }}
+                                                        </td>
+                                                        <td>{{ $item->reg_info_no }}</td>
+                                                        <td>{{ $item->reg_info_date }}</td>
+                                                        <td>{{ $item->comp_mem }} - {{ $item->comp_mem_others }}</td>
+                                                        <td style="text-align: center;">
+                                                            <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
+                                                                class="btn btn-success"><i class="ti-eye"></i>
+                                                                &nbsp;
+                                                                View</a>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -321,43 +328,43 @@
         });
     </script>
 
-<script>
-    var ctx = document.getElementById('ageChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: <?php echo json_encode($labelsage); ?>,
-            datasets: [{
-                label: 'Age Count',
-                data: <?php echo json_encode($dataage); ?>,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    <script>
+        var ctx = document.getElementById('ageChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($labelsage); ?>,
+                datasets: [{
+                    label: 'Age Count',
+                    data: <?php echo json_encode($dataage); ?>,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<script>
+    <script>
         var ctx = document.getElementById('genderChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -428,66 +435,66 @@
 
 
     <script>
-    // Data from PHP
-    var labels = <?php echo json_encode($labelsAdd); ?>;
-    var data = <?php echo json_encode($dataAdd); ?>;
-    var backgroundColors = <?php echo json_encode($backgroundColors); ?>;
+        // Data from PHP
+        var labels = <?php echo json_encode($labelsAdd); ?>;
+        var data = <?php echo json_encode($dataAdd); ?>;
+        var backgroundColors = <?php echo json_encode($backgroundColors); ?>;
 
-    // Create a bar chart
-    var ctx = document.getElementById('addressChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'City Count',
-                data: data,
-                backgroundColor: backgroundColors, // Use the dynamically generated colors
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        // Create a bar chart
+        var ctx = document.getElementById('addressChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'City Count',
+                    data: data,
+                    backgroundColor: backgroundColors, // Use the dynamically generated colors
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<script>
-    var ctx = document.getElementById('organizationChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Association', 'Cooperative'],
-            datasets: [{
-                label: 'Organization Type Count',
-                data: <?php echo json_encode($data_ass); ?>,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.6)', // Red color for 'Association'
-                    'rgba(54, 162, 235, 0.6)', // Blue color for 'Cooperative'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+    <script>
+        var ctx = document.getElementById('organizationChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Association', 'Cooperative'],
+                datasets: [{
+                    label: 'Organization Type Count',
+                    data: <?php echo json_encode($data_ass); ?>,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)', // Red color for 'Association'
+                        'rgba(54, 162, 235, 0.6)', // Blue color for 'Cooperative'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 
 </html>

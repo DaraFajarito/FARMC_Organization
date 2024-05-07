@@ -28,8 +28,9 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Fisherfolk Directors Program | Provincial Fisherfolk Representative |
-                                     ARCHIVED</a>
+                                <li class="breadcrumb-item"><a href="#">Fisherfolk Directors Program | Provincial
+                                        Fisherfolk Representative |
+                                        ARCHIVED</a>
                                 </li>
                             </ol>
                             <br>
@@ -45,46 +46,45 @@
                             </div>
                             <hr>
                             <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
-                                        width="100%">
-                                        <thead style="font-size:12px">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Address</th>
-                                                <th>Civil Status</th>
-                                                <th>Gender</th>
-                                                <th>Birthdate</th>
-                                                <th>Age</th>
-                                                <th>4p's</th>
-                                                <th>Cultural Affliation</th>
-                                                {{-- <th hidden>Status</th> --}}
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody style="font-size:11px">
-                                            @foreach ($pfr_archived as $item)
-                                            {{-- @if ($item->status != 'ARCHIVED') --}}
-                                            <tr>
-                                                <td>{{$item->fam_name}}, {{$item->given_name}} {{$item->mid_name}} {{$item->ext}} </td>
-                                                <td>{{$item->add_barangay}}, {{$item->add_city}}, {{$item->add_province}}</td>
-                                                <td>{{$item->civil_status}}</td>
-                                                <td>{{$item->gender}}</td>
-                                                <td>{{$item->birthdate}}</td>
-                                                <td>{{$item->age}}</td>
-                                                <td>{{$item->fourps}}</td>
-                                                <td>{{$item->cul_af}} - {{$item->cul_af_yes}}</td>
-                                                <td style=" display: flex; justify-content: space-between;">
-                                                    <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success"><i
-                                                            class="ti-eye"></i></a>
-                                                    <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-warning"><i
-                                                            class="ti-pencil"></i></a>
-                                                    <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-danger"><i
-                                                            class="ti-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            {{-- @endif --}}
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                width="100%">
+                                <thead style="font-size:12px">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Civil Status</th>
+                                        <th>Gender</th>
+                                        <th>Birthdate</th>
+                                        <th>Age</th>
+                                        <th>4p's</th>
+                                        <th>Cultural Affliation</th>
+                                        {{-- <th hidden>Status</th> --}}
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-size:11px">
+                                    @foreach ($pfr_archived as $item)
+                                        {{-- @if ($item->status != 'ARCHIVED') --}}
+                                        <tr>
+                                            <td>{{ $item->fam_name }}, {{ $item->given_name }} {{ $item->mid_name }}
+                                                {{ $item->ext }} </td>
+                                            <td>{{ $item->add_barangay }}, {{ $item->add_city }},
+                                                {{ $item->add_province }}</td>
+                                            <td>{{ $item->civil_status }}</td>
+                                            <td>{{ $item->gender }}</td>
+                                            <td>{{ $item->birthdate }}</td>
+                                            <td>{{ $item->age }}</td>
+                                            <td>{{ $item->fourps }}</td>
+                                            <td>{{ $item->cul_af }} - {{ $item->cul_af_yes }}</td>
+                                            <td style=" display: flex; justify-content: space-between;">
+                                                <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
+                                                    class="btn btn-success"><i class="ti-eye"></i> View</a>
+
+                                            </td>
+                                        </tr>
+                                        {{-- @endif --}}
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

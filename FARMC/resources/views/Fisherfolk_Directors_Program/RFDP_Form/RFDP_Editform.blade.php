@@ -930,8 +930,8 @@
                                                             <input type="radio" class="form-check-input"
                                                                 name="involvement_mdo"
                                                                 value="Regional Fisherfolk Representative"
+                                                                {{ old('involvement_mdo', $item->involvement_mdo) == 'Regional Fisherfolk Representative' ? 'checked' : '' }}
                                                                 id="pro_radio">
-                                                            {{ old('involvement_mdo', $item->involvement_mdo) == 'Regional Fisherfolk Representative' ? 'checked' : '' }}
                                                             <label class="form-check-label" for="pro_radio">Regional
                                                                 Fisherfolk Representative</label>
                                                         </div>

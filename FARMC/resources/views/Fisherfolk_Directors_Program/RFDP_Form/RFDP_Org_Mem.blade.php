@@ -428,8 +428,8 @@
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
                                                             value="Provincial Fisherfolk Representative"
-                                                            id="pro_radio">
-                                                        <label class="form-check-label" for="pro_radio">Provincial
+                                                            id="">
+                                                        <label class="form-check-label" for="">Provincial
                                                             Fisherfolk Representative</label>
                                                     </div>
                                                     <br><br>
@@ -437,16 +437,16 @@
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
                                                             value="Regional Fisherfolk Representative"
-                                                            id="pro_radio">
-                                                        <label class="form-check-label" for="pro_radio">Regional
+                                                            id="">
+                                                        <label class="form-check-label" for="">Regional
                                                             Fisherfolk Representative</label>
                                                     </div>
                                                     <br><br>
                                                     <div class="form-group">
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
-                                                            value="Regional Fisherfolk Director" id="re_radio">
-                                                        <label class="form-check-label" for="re_radio">Regional
+                                                            value="Regional Fisherfolk Director" id="">
+                                                        <label class="form-check-label" for="">Regional
                                                             Fisherfolk Director</label>
                                                     </div>
                                                     <br><br>

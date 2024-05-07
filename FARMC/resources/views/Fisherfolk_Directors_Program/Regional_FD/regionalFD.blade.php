@@ -242,7 +242,7 @@
                                         </thead>
                                         <tbody style="font-size:12px">
                                             @foreach ($data as $item)
-                                                {{-- @if ($item->status != 'ARCHIVED')  --}}
+                                                @if ($item->status != 'ARCHIVED')
                                             <tr>
                                                 <td>{{$item->fam_name}}, {{$item->given_name}} {{$item->mid_name}} {{$item->ext}}</td>
                                                 <td>{{$item->name_ass}}</td>
@@ -258,6 +258,7 @@
                                                         View</a>
                                                 </td>
                                             </tr>
+                                            @endif
                                             @endforeach
                                         </tbody>
                                     </table>
