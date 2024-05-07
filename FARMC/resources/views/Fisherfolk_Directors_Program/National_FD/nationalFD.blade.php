@@ -151,7 +151,7 @@
             </div>
 
             <div class="col-md-12" style="margin-bottom: 30px;">
-                <a href="{{ url('/archived_NFR') }}"><button type="button" class="btn btn-warning"><i
+                <a href="{{ url('/archived_NFD') }}"><button type="button" class="btn btn-warning"><i
                             class="ti-archive"></i> Archived Members</button></a>
                 <a href="{{ url('/viewall_members') }}"><button type="button" class="btn btn-primary"
                         style="margin-left: 10px">View All

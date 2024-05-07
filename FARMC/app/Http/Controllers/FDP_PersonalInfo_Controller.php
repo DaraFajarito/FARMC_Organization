@@ -127,7 +127,10 @@ class FDP_PersonalInfo_Controller extends Controller
 
     public function display_NFD_archived()
     {
-        $nfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')->get();
+        $nfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'National Fisherfolk Director')
+                        ->get();
+
         return view('Fisherfolk_Directors_Program.National_FD.archivedNFD', compact('nfd_archived'));
     }
     public function display_NFD()

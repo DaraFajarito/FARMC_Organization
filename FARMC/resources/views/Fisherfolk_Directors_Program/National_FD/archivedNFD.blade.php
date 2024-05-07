@@ -73,8 +73,8 @@
                                     <td>{{$item->fourps}}</td>
                                     <td>{{$item->cul_af}} - {{$item->cul_af_yes}}</td>
                                     <td style=" display: flex; justify-content: space-between;">
-                                        <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success">View<i
-                                                class="ti-eye"></i></a>
+                                        <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success"><i
+                                                class="ti-eye"></i>View</a>
 
                                     </td>
                                 </tr>

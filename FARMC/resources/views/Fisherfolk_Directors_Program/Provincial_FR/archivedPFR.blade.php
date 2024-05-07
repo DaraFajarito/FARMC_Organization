@@ -77,7 +77,7 @@
                                                             class="ti-eye"></i></a>
                                                     <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-warning"><i
                                                             class="ti-pencil"></i></a>
-                                                    <a href="" class="btn btn-danger"><i
+                                                    <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-danger"><i
                                                             class="ti-trash"></i></a>
                                                 </td>
                                             </tr>

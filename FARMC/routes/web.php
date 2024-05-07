@@ -312,7 +312,7 @@ Route::get('/FDP_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'displayFDP_o
 Route::put('/add-fdp_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'addFDP_orgMem']);
 
 Route::get('/nationalFR', [FDP_PersonalInfo_Controller::class,'display_NFD']);
-Route::get('/archived_NFR',[FDP_PersonalInfo_Controller::class, 'display_NFD_archived']);
+Route::get('/archived_NFD',[FDP_PersonalInfo_Controller::class, 'display_NFD_archived']);
 Route::get('/archived_NFD/{id}', [FDP_PersonalInfo_Controller::class, 'moveToNFD_archived']);
 
 Route::get('/provincialFR', [FDP_PersonalInfo_Controller::class,'display_PFR']);
