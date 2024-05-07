@@ -196,7 +196,7 @@
                                         </thead>
                                         <tbody style="font-size:11px">
                                             @foreach ($data as $item)
-                                            {{-- @if ($item->status != 'ARCHIVED') --}}
+                                            @if ($item->status != 'ARCHIVED')
                                             <tr>
                                                 <td>{{$item->fam_name}}, {{$item->given_name}} {{$item->mid_name}} {{$item->ext}} </td>
                                                 <td>{{$item->add_barangay}}, {{$item->add_city}}, {{$item->add_province}}</td>
@@ -211,11 +211,11 @@
                                                             class="ti-eye"></i></a>
                                                     <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-warning"><i
                                                             class="ti-pencil"></i></a>
-                                                    <a href="" class="btn btn-danger"><i
+                                                    <a href="{{ url ('/archived_RFR/'. $item->id)}}" class="btn btn-danger"><i
                                                             class="ti-trash"></i></a>
                                                 </td>
                                             </tr>
-                                            {{-- @endif --}}
+                                            @endif
                                             @endforeach
                                         </tbody>
                                     </table>

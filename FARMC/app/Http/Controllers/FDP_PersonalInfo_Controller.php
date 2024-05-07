@@ -127,10 +127,7 @@ class FDP_PersonalInfo_Controller extends Controller
 
     public function display_NFD_archived()
     {
-        $nfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
-                        ->where('involvement_mdo', 'National Fisherfolk Director')
-                        ->get();
-
+        $nfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')->get();
         return view('Fisherfolk_Directors_Program.National_FD.archivedNFD', compact('nfd_archived'));
     }
     public function display_NFD()
@@ -302,7 +299,7 @@ class FDP_PersonalInfo_Controller extends Controller
         //DISPLAYING TABLE
         $data = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->get();
 
-        //COUNT THE MEMBER'S NAME
+
         $PFRMemCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
             ->where(function ($query) {
                 $query->whereNotNull('fam_name')
@@ -311,7 +308,7 @@ class FDP_PersonalInfo_Controller extends Controller
                     ->orWhereNotNull('ext');
             })->count();
 
-        //COUNT THE AGE OF MEMBERS
+
         $PFROrgCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->count('name_ass');
 
         $PFRDAgeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
@@ -347,7 +344,7 @@ class FDP_PersonalInfo_Controller extends Controller
         $dataage = array_values($ageRanges);
 
 
-        //COUNT THE GENDER OF MEMBERS
+
         $PFRmaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Male')->count();
         $PFRfemaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Female')->count();
         $PFRothersCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Others')->count();
@@ -361,8 +358,6 @@ class FDP_PersonalInfo_Controller extends Controller
         $labelsgen = array_keys($GenderCount);
         $datagen = array_values($GenderCount);
 
-
-        //COUNT THE COMPOSITION OF MEMBERSHIP
 
         $municipalCount = FDP_PersonalInfo_Model::where('comp_mem', 'Municipal')
             ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
@@ -438,32 +433,33 @@ class FDP_PersonalInfo_Controller extends Controller
     }
 
     // ------------------------------------------------------------------//
-    // ----------------------REGIONAL FISHERFOLK Director-------------------------//
+    // ----------------------REGIONAL FISHERFOLK REPRESENTATIVE-------------------------//
     // ------------------------------------------------------------------//
 
-    public function moveTorfd_archived($id)
+    public function moveToRFR_archived($id)
     {
-        $rfd_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')
+        $rfr_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')
                         ->find($id);
 
-        if ($rfd_archived) {
-            $rfd_archived->status = 'ARCHIVED';
-            $rfd_archived->save();
+        if ($rfr_archived) {
+            $rfr_archived->status = 'ARCHIVED';
+            $rfr_archived->save();
 
             return redirect()->back()->with('success', 'Data moved to archived successfully.');
         } else {
-            return redirect()->back()->with('error', 'Data entry not found or involvement is not Regional Fisherfolk Director.');
+            return redirect()->back()->with('error', 'Data entry not found or involvement is not Regional Fisherfolk Representative.');
         }
     }
 
-    public function display_RFD_archived()
+    public function display_RFR_archived()
     {
-        $rfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
-                        ->where('involvement_mdo', 'Regional Fisherfolk Director')
+        $rfr_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'Regional Fisherfolk Representative')
                         ->get();
 
-        return view('Fisherfolk_Directors_Program.Regional_FD.archivedRFD', compact('rfd_archived'));
+        return view('Fisherfolk_Directors_Program.Regional_FR.archivedRFR', compact('rfr_archived'));
     }
+
 
     public function display_RFR()
     {
@@ -607,31 +603,31 @@ class FDP_PersonalInfo_Controller extends Controller
 
 
     // ------------------------------------------------------------------//
-    // ----------------------REGIONAL FISHERFOLK Representative-------------------------//
+    // ----------------------REGIONAL FISHERFOLK DIRECTOR-------------------------//
     // ------------------------------------------------------------------//
 
-    public function moveToRFR_archived($id)
+    public function moveToRFD_archived($id)
     {
-        $rfr_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')
+        $rfd_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')
                         ->find($id);
 
-        if ($rfr_archived) {
-            $rfr_archived->status = 'ARCHIVED';
-            $rfr_archived->save();
+        if ($rfd_archived) {
+            $rfd_archived->status = 'ARCHIVED';
+            $rfd_archived->save();
 
             return redirect()->back()->with('success', 'Data moved to archived successfully.');
         } else {
-            return redirect()->back()->with('error', 'Data entry not found or involvement is not Regional Fisherfolk Representative.');
+            return redirect()->back()->with('error', 'Data entry not found or involvement is not Regional Fisherfolk Director.');
         }
     }
 
-    public function display_RFR_archived()
+    public function display_RFD_archived()
     {
-        $rfr_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
-                        ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+        $rfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'Regional Fisherfolk Director')
                         ->get();
 
-        return view('Fisherfolk_Directors_Program.Regional_FR.archivedRFR', compact('rfr_archived'));
+        return view('Fisherfolk_Directors_Program.Regional_FD.archivedRFD', compact('rfd_archived'));
     }
 
     public function display_RFD()

@@ -313,7 +313,7 @@ Route::put('/add-fdp_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'addFDP_o
 
 Route::get('/nationalFR', [FDP_PersonalInfo_Controller::class,'display_NFD']);
 Route::get('/archived_NFR',[FDP_PersonalInfo_Controller::class, 'display_NFD_archived']);
-Route::get('/archived_NFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveToNFD_archived']);
+Route::get('/archived_NFD/{id}', [FDP_PersonalInfo_Controller::class, 'moveToNFD_archived']);
 
 Route::get('/provincialFR', [FDP_PersonalInfo_Controller::class,'display_PFR']);
 Route::get('/archived_PFR',[FDP_PersonalInfo_Controller::class, 'display_PFR_archived']);
@@ -322,12 +322,12 @@ Route::get('/archived_PFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveToPFR
 
 Route::get('/regionalFD', [FDP_PersonalInfo_Controller::class,'display_RFD']);
 Route::get('/archived_RFD',[FDP_PersonalInfo_Controller::class, 'display_RFD_archived']);
-Route::get('/archived_RFD/{id}', [FDP_PersonalInfo_Controller::class, 'moveRFD_archived']);
+Route::get('/archived_RFD/{id}', [FDP_PersonalInfo_Controller::class, 'moveToRFD_archived']);
 
 
 Route::get('/regionalFR', [FDP_PersonalInfo_Controller::class,'display_RFR']);
 Route::get('/archived_RFR',[FDP_PersonalInfo_Controller::class, 'display_RFR_archived']);
-Route::get('/archived_RFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveRFR_archived']);
+Route::get('/archived_RFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveToRFR_archived']);
 
 Route::get('/rfdp-viewform/{id}', [FDP_PersonalInfo_Controller::class,'display_rfdp_Viewform']);
 Route::put('/edit-rfdp/{id}', [FDP_PersonalInfo_Controller::class,'edit_RFDP']);

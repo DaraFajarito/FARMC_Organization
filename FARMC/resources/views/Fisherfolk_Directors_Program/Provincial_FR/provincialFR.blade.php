@@ -211,7 +211,7 @@
                                                             class="ti-eye"></i></a>
                                                     <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-warning"><i
                                                             class="ti-pencil"></i></a>
-                                                    <a href="{{ url ('/archived_NFR/'. $item->id)}}" class="btn btn-danger"><i
+                                                    <a href="{{ url ('/archived_PFR/'. $item->id)}}" class="btn btn-danger"><i
                                                             class="ti-trash"></i></a>
                                                 </td>
                                             </tr>
