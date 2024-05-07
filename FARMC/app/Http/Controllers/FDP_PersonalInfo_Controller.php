@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FDP_PersonalInfo_Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class FDP_PersonalInfo_Controller extends Controller
 {
@@ -97,7 +98,11 @@ class FDP_PersonalInfo_Controller extends Controller
 
         $FDP->update($validatedData);
 
-        return redirect('/FDP_orgMem/' . $FDP->id);
+        if ($FDP) {
+            return redirect('/FDP_orgMem/' . $FDP->id)->with('success', 'Data added successfully.');
+        } else {
+            return redirect('/FDP_orgMem/' . $FDP->id)->with('failed', 'Failed to add data.');
+        }
     }
 
 
@@ -105,6 +110,29 @@ class FDP_PersonalInfo_Controller extends Controller
     //================================================== C O U N T  O F  D A T A ===============================================================||
     //==========================================================================================================================================||
 
+    public function moveToNFD_archived($id)
+    {
+        $nfd_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'National Fisherfolk Director')
+                        ->find($id);
+
+        if ($nfd_archived) {
+            $nfd_archived->status = 'ARCHIVED';
+            $nfd_archived->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found or involvement is not National Fisherfolk Director.');
+        }
+    }
+
+    public function display_NFD_archived()
+    {
+        $nfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'National Fisherfolk Director')
+                        ->get();
+
+        return view('Fisherfolk_Directors_Program.National_FD.archivedNFD', compact('nfd_archived'));
+    }
     public function display_NFD()
     {
         //DISPLAYING TABLE
@@ -197,8 +225,6 @@ class FDP_PersonalInfo_Controller extends Controller
         $labelscomp = array_keys($memCount);
         $datacomp = array_values($memCount);
 
-
-
         // Prepare data for the chart
         $cityCounts = FDP_PersonalInfo_Model::where('involvement_mdo', 'National Fisherfolk Director')
             ->whereNotNull('add_city')
@@ -247,12 +273,36 @@ class FDP_PersonalInfo_Controller extends Controller
     // ----------------------PROVINCIAL FISHERFOLK REPRESENTATIVE -------------------------//
     // ------------------------------------------------------------------//
 
+    public function moveToPFR_archived($id)
+    {
+        $pfr_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
+                        ->find($id);
+
+        if ($pfr_archived) {
+            $pfr_archived->status = 'ARCHIVED';
+            $pfr_archived->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found or involvement is not Provincial Fisherfolk Representative.');
+        }
+    }
+
+    public function display_PFR_archived()
+    {
+        $pfr_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+                        ->get();
+
+        return view('Fisherfolk_Directors_Program.Provincial_FR.archivedPFR', compact('pfr_archived'));
+    }
+
     public function display_PFR()
     {
         //DISPLAYING TABLE
         $data = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->get();
 
-
+        //COUNT THE MEMBER'S NAME
         $PFRMemCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
             ->where(function ($query) {
                 $query->whereNotNull('fam_name')
@@ -261,7 +311,7 @@ class FDP_PersonalInfo_Controller extends Controller
                     ->orWhereNotNull('ext');
             })->count();
 
-
+        //COUNT THE AGE OF MEMBERS
         $PFROrgCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->count('name_ass');
 
         $PFRDAgeCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')
@@ -297,7 +347,7 @@ class FDP_PersonalInfo_Controller extends Controller
         $dataage = array_values($ageRanges);
 
 
-
+        //COUNT THE GENDER OF MEMBERS
         $PFRmaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Male')->count();
         $PFRfemaleCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Female')->count();
         $PFRothersCount = FDP_PersonalInfo_Model::where('involvement_mdo', 'Provincial Fisherfolk Representative')->where('gender', 'Others')->count();
@@ -311,6 +361,8 @@ class FDP_PersonalInfo_Controller extends Controller
         $labelsgen = array_keys($GenderCount);
         $datagen = array_values($GenderCount);
 
+
+        //COUNT THE COMPOSITION OF MEMBERSHIP
 
         $municipalCount = FDP_PersonalInfo_Model::where('comp_mem', 'Municipal')
             ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
@@ -386,8 +438,32 @@ class FDP_PersonalInfo_Controller extends Controller
     }
 
     // ------------------------------------------------------------------//
-    // ----------------------REGIONAL FISHERFOLK REPRESENTATIVE-------------------------//
+    // ----------------------REGIONAL FISHERFOLK Director-------------------------//
     // ------------------------------------------------------------------//
+
+    public function moveTorfd_archived($id)
+    {
+        $rfd_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Director')
+                        ->find($id);
+
+        if ($rfd_archived) {
+            $rfd_archived->status = 'ARCHIVED';
+            $rfd_archived->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found or involvement is not Regional Fisherfolk Director.');
+        }
+    }
+
+    public function display_RFD_archived()
+    {
+        $rfd_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'Regional Fisherfolk Director')
+                        ->get();
+
+        return view('Fisherfolk_Directors_Program.Regional_FD.archivedRFD', compact('rfd_archived'));
+    }
 
     public function display_RFR()
     {
@@ -531,9 +607,32 @@ class FDP_PersonalInfo_Controller extends Controller
 
 
     // ------------------------------------------------------------------//
-    // ----------------------REGIONAL FISHERFOLK DIRECTOR-------------------------//
+    // ----------------------REGIONAL FISHERFOLK Representative-------------------------//
     // ------------------------------------------------------------------//
 
+    public function moveToRFR_archived($id)
+    {
+        $rfr_archived = FDP_PersonalInfo_Model::where('involvement_mdo', 'Regional Fisherfolk Representative')
+                        ->find($id);
+
+        if ($rfr_archived) {
+            $rfr_archived->status = 'ARCHIVED';
+            $rfr_archived->save();
+
+            return redirect()->back()->with('success', 'Data moved to archived successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Data entry not found or involvement is not Regional Fisherfolk Representative.');
+        }
+    }
+
+    public function display_RFR_archived()
+    {
+        $rfr_archived = FDP_PersonalInfo_Model::where('status', 'ARCHIVED')
+                        ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+                        ->get();
+
+        return view('Fisherfolk_Directors_Program.Regional_FR.archivedRFR', compact('rfr_archived'));
+    }
 
     public function display_RFD()
     {
@@ -673,5 +772,170 @@ class FDP_PersonalInfo_Controller extends Controller
         return view('Fisherfolk_Directors_Program.Regional_FD.regionalFD', compact('data', 'RFDMemCount', 'RFDOrgCount', 'labelsage', 'dataage', 'labelsgen', 'datagen', 'labelscomp', 'datacomp', 'labelsAdd', 'dataAdd', 'backgroundColors', 'data_ass'));
     }
 
+
+
+    // ------------------------------------------------------------------//
+    // ------------------DISPLAYING DATA IN VIEWFORM---------------------//
+    // ------------------------------------------------------------------//
+
+
+    public function display_rfdp_Viewform($id)
+    {
+        $rfdp = FDP_PersonalInfo_Model::where('id', $id)->get();
+
+        return view('Fisherfolk_Directors_Program.RFDP_Form.RFDP_Viewform', compact('rfdp'));
+    }
+
+    public function display_rfdp_edit($id)
+    {
+        $edit_rfdp = FDP_PersonalInfo_Model::where('id', $id)->get();
+
+        return view('Fisherfolk_Directors_Program.RFDP_Form.RFDP_Editform', compact('edit_rfdp'));
+    }
+
+
+    // ------------------------------------------------------------------//
+    // ------------------------EDITING OF DATA---------------------------//
+    // ------------------------------------------------------------------//
+
+
+    public function edit_RFDP(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'fam_name' => 'nullable|string',
+            'given_name' => 'nullable|string',
+            'mid_name' => 'nullable|string',
+            'ext' => 'nullable|string',
+            'add_barangay' => 'nullable|string',
+            'add_city' => 'nullable|string',
+            'add_province' => 'nullable|string',
+            'civil_status' => 'nullable|in:Single,Married,Widow/Widower,Separated',
+            'gender' => 'nullable|in:Male,Female,Others',
+            'birthdate' => 'nullable|string',
+            'age' => 'nullable|string',
+            'fourps' => 'nullable|in:Yes,No',
+            'cul_af' => 'nullable|in:Yes,No',
+            'cul_af_yes' => 'nullable|string',
+            'birthplace_municipality' => 'nullable|string',
+            'birthplace_province' => 'nullable|string',
+            'name_spouse' => 'nullable|string',
+            'occupation' => 'nullable|string',
+            'dependent_male' => 'nullable|integer',
+            'dependent_female' => 'nullable|integer',
+            'dependent_others' => 'nullable|integer',
+            'educational_attainment' => 'nullable|in:Primary,Secondary,Vocational,Tertiary,Tesda,Others',
+            'tertiary' => 'nullable|string',
+            'tesda' => 'nullable|string',
+            'others' => 'nullable|string',
+
+            'name_ass' => 'nullable|string',
+            'add_ass' => 'nullable|string',
+            'officer_ass' => 'nullable|in:Yes,No',
+            'officer_ass_yes' => 'nullable|string',
+            'reg_agency' => 'nullable|in:SEC,DOLE,CDA,Others',
+            'reg_agency_others' => 'nullable|string',
+            'reg_info_no' => 'nullable|string',
+            'reg_info_date' => 'nullable|string',
+            'comp_mem' => 'nullable|in:Municipal,Fishworker,Commercial,Women/Youth,Others',
+            'comp_mem_others' => 'nullable|string',
+            'type_of_org' => 'nullable|string',
+
+            'name_FARMC' => 'nullable|string',
+            'add_FARMC' => 'nullable|string',
+            'officer_MFARMC' => 'nullable|string',
+            'officer_MFARMC_yes' => 'nullable|string',
+            'as_member' => 'nullable|string',
+            'as_officer' => 'nullable|string',
+            'sector_rep' => 'nullable|in:Fisherfolk/Fishworker,Commercial Operator,Women Sector,Youth Sector,Private Sector,NGO Representative,Cultural Community (IPs),Other',
+            'sector_re_others' => 'nullable|string',
+            'involvement_mdo' => 'nullable|in:Provincial Fisherfolk Representative,Regional Fisherfolk Representative,Regional Fisherfolk Director,National Fisherfolk Director',
+            'year1' => 'nullable|string',
+            'year2' => 'nullable|string',
+            'year3' => 'nullable|string',
+            'year4' => 'nullable|string',
+            'photo' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+        ], [
+            'photo.max' => 'The photo may not be greater than 5MB.',
+        ]);
+
+
+        $rfdp= FDP_PersonalInfo_Model::where('id', $id)->firstOrFail();
+
+        // Delete existing files if new files are uploaded
+        if ($request->hasFile('photo')) {
+            if ($rfdp->photo) {
+                Storage::delete($rfdp->photo);
+            }
+            $photoPath = $request->file('photo')->store('storage');
+            $rfdp->photo = $photoPath;
+        }
+
+
+        // Update other fields
+        $rfdp->fam_name = $validatedData['fam_name'] ?? null;
+        $rfdp->given_name = $validatedData['given_name'] ?? null;
+        $rfdp->mid_name = $validatedData['mid_name'] ?? null;
+        $rfdp->ext = $validatedData['ext'] ?? null;
+        $rfdp->add_barangay = $validatedData['add_barangay'] ?? null;
+        $rfdp->add_city = $validatedData['add_city'] ?? null;
+        $rfdp->add_province = $validatedData['add_province'] ?? null;
+        $rfdp->civil_status = $validatedData['civil_status'] ?? null;
+        $rfdp->gender = $validatedData['gender'] ?? null;
+        $rfdp->birthdate = $validatedData['birthdate'] ?? null;
+        $rfdp->age = $validatedData['age'] ?? null;
+        $rfdp->fourps = $validatedData['fourps'] ?? null;
+        $rfdp->cul_af = $validatedData['cul_af'] ?? null;
+        $rfdp->cul_af_yes = $validatedData['cul_af_yes'] ?? null;
+        $rfdp->birthplace_municipality = $validatedData['birthplace_municipality'] ?? null;
+        $rfdp->birthplace_province = $validatedData['birthplace_province'] ?? null;
+
+        $rfdp->name_spouse = $validatedData['name_spouse'] ?? null;
+        $rfdp->occupation = $validatedData['occupation'] ?? null;
+        $rfdp->dependent_male = $validatedData['dependent_male'] ?? null;
+        $rfdp->dependent_female = $validatedData['dependent_female'] ?? null;
+        $rfdp->dependent_others = $validatedData['dependent_others'] ?? null;
+        $rfdp->educational_attainment = $validatedData['educational_attainment'] ?? null;
+        $rfdp->tertiary = $validatedData['tertiary'] ?? null;
+        $rfdp->tesda = $validatedData['tesda'] ?? null;
+        $rfdp->others = $validatedData['others'] ?? null;
+
+        $rfdp->name_ass = $validatedData['name_ass'] ?? null;
+        $rfdp->add_ass = $validatedData['add_ass'] ?? null;
+        $rfdp->officer_ass = $validatedData['officer_ass'] ?? null;
+        $rfdp->officer_ass_yes = $validatedData['officer_ass_yes'] ?? null;
+        $rfdp->reg_agency = $validatedData['reg_agency'] ?? null;
+        $rfdp->reg_agency_others = $validatedData['reg_agency_others'] ?? null;
+        $rfdp->reg_info_no = $validatedData['reg_info_no'] ?? null;
+        $rfdp->reg_info_date = $validatedData['reg_info_date'] ?? null;
+        $rfdp->comp_mem = $validatedData['comp_mem'] ?? null;
+        $rfdp->comp_mem_others = $validatedData['comp_mem_others'] ?? null;
+        $rfdp->type_of_org = $validatedData['type_of_org'] ?? null;
+        $rfdp->name_FARMC = $validatedData['name_FARMC'] ?? null;
+        $rfdp->add_FARMC = $validatedData['add_FARMC'] ?? null;
+        $rfdp->officer_MFARMC = $validatedData['officer_MFARMC'] ?? null;
+        $rfdp->officer_MFARMC_yes = $validatedData['officer_MFARMC_yes'] ?? null;
+        $rfdp->as_member = $validatedData['as_member'] ?? null;
+
+        $rfdp->as_officer = $validatedData['as_officer'] ?? null;
+        $rfdp->sector_rep = $validatedData['sector_rep'] ?? null;
+        $rfdp->sector_rep_others = $validatedData['sector_rep_others'] ?? null;
+        $rfdp->involvement_mdo = $validatedData['involvement_mdo'] ?? null;
+        $rfdp->year1 = $validatedData['year1'] ?? null;
+        $rfdp->year2 = $validatedData['year2'] ?? null;
+        $rfdp->year3 = $validatedData['year3'] ?? null;
+        $rfdp->year4 = $validatedData['year4'] ?? null;
+        $rfdp->photo = $validatedData['photo'] ?? null;
+
+        // Save the updated record
+        $rfdp->save();
+
+        // Check if any changes were made and redirect accordingly
+        if ($rfdp->wasChanged()) {
+            return redirect('/rfdp-viewform/' . $rfdp->id)->with('success', 'Data has been updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
 
 }

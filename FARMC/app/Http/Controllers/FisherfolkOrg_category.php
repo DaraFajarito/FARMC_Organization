@@ -55,12 +55,10 @@ class FisherfolkOrg_category extends Controller
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
 
 
-        // Retrieve members with sector_rep "Municipal" from Fisherfolk_Organization_Model for FO_ListofMem_Model
         $allFOMembers = FO_ListofMem_Model::whereHas('association', function ($query) {
             $query->where('sector_rep', 'Municipal');
         })->get();
 
-        // Retrieve members with sector_rep "Municipal" from FC_GenInfo_Model for FC_ListofMem_Model
         $allFCMembers = FC_ListofMem_Model::whereHas('cooperative', function ($query) {
             $query->where('sector_rep', 'Municipal');
         })->get();

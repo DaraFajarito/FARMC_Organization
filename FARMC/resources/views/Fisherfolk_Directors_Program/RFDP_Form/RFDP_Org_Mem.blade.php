@@ -245,7 +245,7 @@
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="type_of_org"
-                                                                    value="Fishworker" /><i
+                                                                    value="Cooperative" /><i
                                                                     class="helper"></i>Cooperative
                                                             </label>
                                                         </div>
@@ -436,7 +436,7 @@
                                                     <div class="form-group">
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
-                                                            value="Provincial Fisherfolk Representative"
+                                                            value="Regional Fisherfolk Representative"
                                                             id="pro_radio">
                                                         <label class="form-check-label" for="pro_radio">Regional
                                                             Fisherfolk Representative</label>
@@ -495,7 +495,6 @@
                                             <div style="display: flex; justify-content: center;">
                                                 <div style="width: 300px; text-align: center;"
                                                     class="signature-container">
-
                                                     <br><br>
                                                     <div style="border-bottom: 1px solid black; margin-bottom: 10px;">
                                                     </div>
@@ -548,6 +547,48 @@
             </div>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    background: '#8cc63f',
+                    iconColor: '#ffffff',
+                    customClass: {
+                        title: 'text-white',
+                        content: 'text-white'
+                    }
+                });
+            </script>
+        @endif
+
+        @if (session('failed'))
+            <script>
+                Swal.fire({
+                    icon: 'failed',
+                    title: 'failed!',
+                    text: '{{ session('failed') }}',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    background: '#dc3545',
+                    iconColor: '#ffffff',
+                    customClass: {
+                        title: 'text-white',
+                        content: 'text-white'
+                    }
+                });
+            </script>
+        @endif
 
         <script>
             const photoInput = document.getElementById('photo1x1');

@@ -57,7 +57,6 @@
                         @foreach ($edit_mem as $item)
                             <div class="card">
                                 <div class="card-block">
-                                    <div class="card inline-form-style">
                                         <div class="card-header">
                                             <form class="form-inline"
                                                 action="{{ url('/edit-membership/' . $item->id) }}" method="POST"

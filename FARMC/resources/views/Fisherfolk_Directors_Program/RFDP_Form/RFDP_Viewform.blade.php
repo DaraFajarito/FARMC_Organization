@@ -95,8 +95,7 @@
                         <br>
                         <br>
                         <div style="display: flex;">
-                            <a href="{{ url('/farmc_membership') }}" class="btn btn-secondary"> <i
-                                    class="icon-arrow-left"></i> Back</a>
+                            <a href="#!" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
                             <div class="actions text-right" style="flex: 1;">
                                 <!-- Added text-center class and flex: 1 -->
                                 <button class="btn btn-success" onclick="window.print()">Print</button>
@@ -105,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                @foreach ($farmc_mem as $item)
+                @foreach ($rfdp as $item)
                     <div class="card">
                         <div id="content">
                             <div class="card-header" style="display: flex; justify-content: space-between;">
@@ -142,8 +141,8 @@
                             </div>
 
                             <hr>
-                            <div class="text-center vertical-center">
-                                M/C FARMC Member's Profile Overview
+                            <div class="text-center vertical-center" style="margin-top: 20px">
+                                FIsherfolk Directors Program
                                 <br>
                                 <span class="label label-warning"> Overview</span>
                             </div>
@@ -159,36 +158,25 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="col-md-7">
+                                                <div class="col-md-12">
                                                     <div style="margin-top: 20px"></div>
                                                     <div class="form-group">
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Name
                                                             <em><small>(Family, given, middle & ext.)</small></em> :
-                                                            &nbsp; {{ $item->name }}</label>
+                                                            &nbsp; {{ $item->fam_name }}, {{ $item->given_name }}
+                                                            {{ $item->mid_name }} {{ $item->ext }}</label>
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Address
                                                             <em><small>(Barangay, City/Municipality, Province &
                                                                     Region)</small></em> : &nbsp;
-                                                            {{ $item->address }}</label>
+                                                            {{ $item->add_barangay }}, {{ $item->add_city }},
+                                                            {{ $item->add_province }}</label>
                                                     </div>
                                                     <br><br>
 
                                                 </div>
-                                                <div class="col-md-5">
-                                                    <div for=""><b>CONTACT INFORMATION</b></div>
-                                                    <div class="form-group">
-                                                        <label for="municipality"
-                                                            class="col-md-12 col-form-label form-control-label">Landline
-                                                            Number: &nbsp; {{ $item->landline_no }}</label>
-                                                        <label for=""
-                                                            class="col-md-12 col-form-label form-control-label">Mobile
-                                                            Number: &nbsp; {{ $item->mobile_no }}</label>
-                                                        <label for=""
-                                                            class="col-md-12 col-form-label form-control-label">Email
-                                                            Address: &nbsp; {{ $item->email }}</label>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="col-md-4">
@@ -204,10 +192,8 @@
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Birthdate:
                                                             &nbsp; {{ $item->birthdate }}</label>
-
                                                     </div>
                                                     <br><br>
-
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div style="margin-top: 20px"></div>
@@ -219,26 +205,18 @@
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Age:
                                                             &nbsp; {{ $item->age }}</label>
-                                                        <label for="municipality"
-                                                            class="col-md-12 col-form-label form-control-label">4P's
-                                                            Member: &nbsp; {{ $item->fourps }}
-                                                        </label>
-
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div style="margin-top: 18px"></div>
                                                     <div class="form-group">
                                                         <label for=""
-                                                            class="col-md-12 col-form-label form-control-label">Person w/
-                                                            Disability (PWD): &nbsp; {{ $item->pwd }} - {{ $item->pwd_yes }} </label>
-                                                        <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Cultural
-                                                            Community (IP's): &nbsp; {{ $item->IP }} - {{ $item->IP_yes }}
-                                                        </label>
-                                                        <label for=""
-                                                            class="col-md-12 col-form-label form-control-label">Religion
-                                                            Affliation: &nbsp; {{ $item->religion }}  - {{ $item->religion_christ }}
+                                                            Affliation: &nbsp; {{ $item->pwd }} -
+                                                            {{ $item->cul_af }} - {{ $item->cul_af_yes }} </label>
+                                                        <label for="municipality"
+                                                            class="col-md-12 col-form-label form-control-label">4P's
+                                                            Member: &nbsp; {{ $item->fourps }}
                                                         </label>
                                                     </div>
                                                 </div>
@@ -246,7 +224,7 @@
 
                                             <div class="col-md-12">
                                                 <div class="col-md-6">
-                                                    <div ></div>
+                                                    <div></div>
                                                     <div class="form-group" style="line-height: 10px"
                                                         style="margin-bottom: 30px">
                                                         <br>
@@ -288,7 +266,7 @@
                                                                 class="fas fa-genderless"></i> &nbsp;Others: &nbsp;
                                                             {{ $item->dependent_others }}</label>
                                                     </div>
-                                                    <br><br>
+                                                    <br>
 
                                                 </div>
                                                 <div class="col-md-9">
@@ -297,11 +275,9 @@
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Educational
                                                             Attainment/Level: &nbsp;
-                                                            {{ $item->educational_attainment }} - {{ $item->tertiary}}  {{ $item->tesda }}</label>
-                                                        <label for=""
-                                                            class="col-md-12 col-form-label form-control-label">Other
-                                                            Source of livelihood: &nbsp;
-                                                            {{ $item->other_source }} - {{ $item->other_source_other }} </label>
+                                                            {{ $item->educational_attainment }} -
+                                                            {{ $item->tertiary }} {{ $item->tesda }}
+                                                            {{ $item->tesda }}</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,102 +285,123 @@
                                         <hr>
                                         <div style="background-color: #706d69">
                                             <div class="grid-material bg-general" style="color: white;padding:10px">
-                                                &nbsp&nbsp&nbsp<b>2. FARMC Membership</b></div>
+                                                &nbsp&nbsp&nbsp<b>2. Organizational Membership</b></div>
                                         </div>
                                         <hr>
                                         <div class="col-md-12">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div style="margin-top: 20px"></div>
                                                 <div class="form-group" style="line-height: 10px"
                                                     style="margin-bottom: 30px">
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Name of
-                                                        FARMC: &nbsp; {{ $item->farmc_name }}</label>
+                                                        Association: &nbsp; {{ $item->name_ass }}</label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Address of
-                                                        FARMC: &nbsp; {{ $item->farmc_add }}</label>
+                                                        Association: &nbsp; {{ $item->add_ass }}</label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Officer of
-                                                        FARMC: &nbsp; {{ $item->mfarmc_off }}  {{ $item->mfarmc_off_yes }} </label>
+                                                        Association: &nbsp; {{ $item->officer_ass }}
+                                                        {{ $item->officer_ass_yes }} </label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div for=""><b>Inclusive Date/s of Membership</b></div>
+                                            <div class="col-md-4">
+                                                <br>
+                                                <div><b>Registration of Information</b></div>
                                                 <div class="form-group" style="line-height: 10px">
                                                     <label for="municipality"
-                                                        class="col-md-12 col-form-label form-control-label">As Officer:
-                                                        &nbsp; {{ $item->inc_officer1 }} - {{ $item->inc_officer2 }}
+                                                        class="col-md-12 col-form-label form-control-label">Number:
+                                                        &nbsp; {{ $item->reg_info_no }}
                                                     </label>
                                                     <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">As Member:
-                                                        &nbsp; {{ $item->inc_member1 }} - {{ $item->inc_member2 }}
+                                                        class="col-md-12 col-form-label form-control-label">Date:
+                                                        &nbsp; {{ $item->reg_info_date }}
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
                                             <div class="col-md-4">
-                                                <div style="margin-top: 7px"></div>
-                                                <div class="form-group" style="margin-bottom: 30px">
-                                                    <br>
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">FARMC
-                                                        Representation: &nbsp; {{ $item->farmc_rep }}</label>
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label" >Sector
-                                                        Represented: &nbsp; {{ $item->sect }} - {{ $item->sect_other }} </label>
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">LGU
-                                                        Representative: &nbsp; {{ $item->LGU_rep }} - {{ $item->LGU_rep_other }} </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                                        <hr>
-                                        <div style="background-color: #706d69">
-                                            <div class="grid-material bg-general" style="color: white;padding:10px">
-                                                &nbsp&nbsp&nbsp<b>3. Organizational Membership</b></div>
-                                        </div>
-                                        <hr>
-                                        <div class="col-md-12">
-                                            <div class="col-md-7">
-                                                <div style="margin-top: 20px"></div>
-                                                <div class="form-group"
-                                                    style="margin-bottom: 30px">
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">Name of
-                                                        Association/Organization/Cooperatiove: &nbsp;
-                                                        {{ $item->org_mem_name }}</label>
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">Address of
-                                                        Association/Organization/Cooperatiove: &nbsp;
-                                                        {{ $item->add_acc }}</label>
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">Composition
-                                                        of Membership: &nbsp; {{ $item->comp_mem }}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div style="margin-top: 20px"></div>
+                                                <br>
                                                 <div class="form-group">
                                                     <label for="municipality"
                                                         class="col-md-12 col-form-label form-control-label">Registration
-                                                        of Association: &nbsp; {{ $item->reg_ass }} - {{ $item->reg_ass_yes }}
+                                                        of Agency: {{ $item->reg_agency }} -
+                                                        {{ $item->reg_agency_others }}
+                                                    </label>
+                                                    <label for="municipality"
+                                                        class="col-md-12 col-form-label form-control-label">Composition
+                                                        of Organization: &nbsp; {{ $item->comp_mem }} -
+                                                        {{ $item->comp_mem_others }}
                                                     </label>
                                                     <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">LGU
-                                                        Accreditation: &nbsp; {{ $item->lgu_accre }}
-                                                    </label>
-                                                    <label for=""
-                                                        class="col-md-12 col-form-label form-control-label">Officer of
-                                                        Association: &nbsp; {{ $item->officer_ass }} - {{ $item->position }}
+                                                        class="col-md-12 col-form-label form-control-label">Type of
+                                                        Organization:
+                                                        &nbsp; {{ $item->type_of_org }}
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
+                                        <br><br><br><br><br><br>
+                                        <hr>
+                                        <div style="background-color: #706d69">
+                                            <div class="grid-material bg-general" style="color: white;padding:10px">
+                                                &nbsp&nbsp&nbsp<b>3. FARMC Membership</b></div>
+                                        </div>
+                                        <hr>
+                                        <div class="col-md-12">
+                                            <div class="col-md-4">
+                                                <div style="margin-top: 20px"></div>
+                                                <div class="form-group" style="line-height: 10px"
+                                                    style="margin-bottom: 30px">
+                                                    <label for=""
+                                                        class="col-md-12 col-form-label form-control-label">Name of
+                                                        FARMC: &nbsp;
+                                                        {{ $item->name_FARMC }}</label>
+                                                    <label for=""
+                                                        class="col-md-12 col-form-label form-control-label">Address of
+                                                        FARMC: &nbsp;
+                                                        {{ $item->add_FARMC }}</label>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div style="margin-top: 20px"></div>
+                                                <div class="form-group" style="line-height: 10px">
+                                                    <label for="municipality"
+                                                        class="col-md-12 col-form-label form-control-label">Officer of
+                                                        MFARMC: &nbsp; {{ $item->officer_MFARMC }} -
+                                                        {{ $item->officer_MFARMC_yes }}
+                                                    </label>
+                                                    <label for=""
+                                                        class="col-md-12 col-form-label form-control-label">Sector
+                                                        Represented: &nbsp; {{ $item->sector_rep }} -
+                                                        {{ $item->sector_rep_others }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div><b>Inclusive Date/s of Membership</b></div>
+                                                <div class="form-group" style="line-height: 10px">
+                                                    <label for="municipality"
+                                                        class="col-md-12 col-form-label form-control-label">As Member:
+                                                        &nbsp; {{ $item->as_member }}
+                                                    </label>
+                                                    <label for=""
+                                                        class="col-md-12 col-form-label form-control-label">As Officer:
+                                                        &nbsp; {{ $item->as_officer }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br><br><br><br>
+                                        <hr>
+                                        <div style="background-color: #706d69">
+                                            <div class="grid-material bg-general" style="color: white;padding:10px">
+                                                &nbsp&nbsp&nbsp<b>3. FARMC Membership</b></div>
+                                        </div>
+                                        <hr>
                                         <div class="col-md-12">
                                             <div class="col-md-12">
-                                                <div style="margin-bottom:10px"><b>Involvement in
+                                                <div style="margin-top: 20px; margin-bottom:10px"><b>Involvement in
                                                         Mangingisdang Director Program</b></div>
                                                 <div class="form-group" style="line-height: 10px">
                                                     <label for="municipality"
@@ -413,25 +410,30 @@
                                                     </label>
                                                     <label for=""
                                                         class="col-md-12 col-form-label form-control-label">Year
-                                                        Elected: &nbsp; {{ $item->year1 }}  {{ $item->year2 }}  {{ $item->year3 }}</label>
+                                                        Elected <em> <small> (Inclusive Dates/s) </small></em>: &nbsp;
+                                                        {{ $item->year1 }} {{ $item->year2 }}
+                                                        {{ $item->year3 }} {{ $item->year4 }}</label>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="row" style="margin-top: 330px">
+                                        <div class="row" style="margin-top: 180px">
                                             <div class="col-md-4">
                                                 <div style="display: flex; justify-content: center;">
                                                     <div style="width: 300px; text-align: center;"
                                                         class="signature-container">
-                                                        <p style="margin: 0;">I hereby certify that the above
-                                                            information is true and correct to the best of my knowledge
-                                                            and belief.</p>
-                                                        <br><br>
+                                                        <br>
                                                         <div
                                                             style="border-bottom: 1px solid black; margin-bottom: 10px;">
                                                         </div>
                                                         <label for="signatureFile" class="signature-line"
                                                             style="text-align: center;">Member's Signature</label>
+                                                        <br><br><br>
+                                                        <div
+                                                            style="border-bottom: 1px solid black; margin-bottom: 10px;">
+                                                        </div>
+                                                        <label for="signatureFile" class="signature-line"
+                                                            style="text-align: center;">Contact No.</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -455,8 +457,10 @@
                                                 <div
                                                     style="margin-left: 100px; width: 130px; height: 120px; border: 1px solid black; display: flex; align-items: center; justify-content: center; margin-right: 20px;">
                                                     <input type="file" id="photo1x1" accept="image/*"
-                                                        name="photo" style="display: none;" >
-                                                    <label for="photo1x1" id="label1x1" style="cursor: pointer;"> <img src="{{ $item->photo }}" alt="Item Photo"></label> <!-- 1x1 photo box -->
+                                                        name="photo" style="display: none;">
+                                                    <label for="photo1x1" id="label1x1" style="cursor: pointer;">
+                                                        <img src="{{ $item->photo }}" alt="Item Photo"></label>
+                                                    <!-- 1x1 photo box -->
                                                     <img id="preview1x1" src="#" alt="Preview"
                                                         style="display: none; max-width: 100%; max-height: 100%; cursor: pointer;">
                                                 </div>
@@ -525,69 +529,7 @@
         SyntaxHighlighter.all();
     </script>
 
-    <script>
-        document.querySelectorAll('input[name="optionsRadios"]').forEach(function(radio) {
-            radio.addEventListener('change', function() {
-                if (this.value === 'IPoption') {
-                    document.getElementById('textBoxContainer').style.display = 'block';
-                } else {
-                    document.getElementById('textBoxContainer').style.display = 'none';
-                }
-            });
-        });
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#internalP_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox').prop('checked', true);
-                } else {
-                    $('#checkbox').prop('checked', false);
-                }
-            });
-            $('#fisherfolkR_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox-1').prop('checked', true);
-                } else {
-                    $('#checkbox-1').prop('checked', false);
-                }
-            });
-            $('#fisheriesP_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox-2').prop('checked', true);
-                } else {
-                    $('#checkbox-2').prop('checked', false);
-                }
-            });
-            $('#formulationR_file').change(function() {
-                if ($(this).val()) {
-                    $('#checkbox-3').prop('checked', true);
-                } else {
-                    $('#checkbox-3').prop('checked', false);
-                }
-            });
-
-            // Add similar change event listeners for other file inputs
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function setupCheckbox(checkboxId, hiddenInputId) {
-                const checkbox = document.getElementById(checkboxId);
-                const hiddenInput = document.getElementById(hiddenInputId);
-
-                checkbox.addEventListener('change', function() {
-                    hiddenInput.value = this.checked ? '1' : null;
-                });
-            }
-
-            setupCheckbox('checkbox', 'internalP_file');
-            setupCheckbox('checkbox-1', 'fisherfolkR_file');
-            setupCheckbox('checkbox-2', 'fisheriesP_file');
-            setupCheckbox('checkbox-3', 'formulationR_file');
-        });
-    </script>
 
     <script>
         function downloadPdf() {
@@ -604,7 +546,7 @@
                 },
                 jsPDF: {
                     unit: 'in',
-                    format: 'legal',
+                    format: 'letter',
                     orientation: 'portrait'
                 },
                 // Add autoPaging option
@@ -615,7 +557,50 @@
         }
     </script>
 
-<script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#8cc63f',
+                iconColor: '#ffffff',
+                customClass: {
+                    title: 'text-white',
+                    content: 'text-white'
+                }
+            });
+        </script>
+    @endif
+
+    @if (session('failed'))
+        <script>
+            Swal.fire({
+                icon: 'failed',
+                title: 'failed!',
+                text: '{{ session('failed') }}',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#dc3545',
+                iconColor: '#ffffff',
+                customClass: {
+                    title: 'text-white',
+                    content: 'text-white'
+                }
+            });
+        </script>
+    @endif
+
+    <script>
         const photoInput = document.getElementById('photo1x1');
         const photoLabel = document.getElementById('label1x1');
         const photoPreview = document.getElementById('preview1x1');

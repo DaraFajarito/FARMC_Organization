@@ -45,6 +45,8 @@ return new class extends Migration
             $table->string('RD_SOA_num')->nullable();
             $table->text('RD_categofAccre')->nullable();
             $table->string('cooperative')->default('COOPERATIVE');
+            $table->string('status')->nullable();
+
             $table->timestamps();
         });
     }

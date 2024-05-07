@@ -98,6 +98,7 @@ return new class extends Migration
             $table->string('CIMobile')->nullable();
             $table->string('CIMess')->nullable();
             $table->string('association')->default('ASSOCIATION');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

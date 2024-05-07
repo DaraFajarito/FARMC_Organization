@@ -151,7 +151,7 @@
             </div>
 
             <div class="col-md-12" style="margin-bottom: 30px;">
-                <a href="{{ url('/membership_archived') }}"><button type="button" class="btn btn-warning"><i
+                <a href="{{ url('/archived_NFR') }}"><button type="button" class="btn btn-warning"><i
                             class="ti-archive"></i> Archived Members</button></a>
                 <a href="{{ url('/viewall_members') }}"><button type="button" class="btn btn-primary"
                         style="margin-left: 10px">View All
@@ -207,9 +207,9 @@
                                                 <td>{{$item->fourps}}</td>
                                                 <td>{{$item->cul_af}} - {{$item->cul_af_yes}}</td>
                                                 <td style=" display: flex; justify-content: space-between;">
-                                                    <a href="" class="btn btn-success"><i
+                                                    <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success"><i
                                                             class="ti-eye"></i></a>
-                                                    <a href="" class="btn btn-warning"><i
+                                                    <a href="{{ url ('/rfdp_edit/'. $item->id)}}" class="btn btn-warning"><i
                                                             class="ti-pencil"></i></a>
                                                     <a href="" class="btn btn-danger"><i
                                                             class="ti-trash"></i></a>
@@ -246,24 +246,16 @@
                                             <tr>
 
                                                 <td>{{$item->fam_name}}, {{$item->given_name}} {{$item->mid_name}} {{$item->ext}}</td>
-
                                                 <td>{{$item->name_ass}}</td>
-
                                                 <td>{{$item->add_ass}}</td>
-
                                                 <td>{{$item->officer_ass}} - {{$item->officer_ass_yes}}</td>
-
                                                 <td>{{$item->reg_agency}} - {{$item->reg_agency_others}} </td>
-
                                                 <td>{{$item->reg_info_no}}</td>
-
-                                                <td>{{$item->reg_info_date}}</td>
-
                                                 <td>{{$item->comp_mem}} - {{$item->comp_mem_others}}</td>
-
+                                                <td>{{$item->type_of_org}}</td>
 
                                                 <td style="text-align: center;">
-                                                    <a href="" class="btn btn-success"><i class="ti-eye"></i>
+                                                    <a  href="{{ url ('/rfdp-viewform/'. $item->id)}}" class="btn btn-success"><i class="ti-eye"></i>
                                                         &nbsp;
                                                         View</a>
                                                 </td>

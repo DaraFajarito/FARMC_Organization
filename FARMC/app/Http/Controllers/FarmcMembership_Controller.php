@@ -56,6 +56,7 @@ class FarmcMembership_Controller extends Controller
         return view('FARMC_Membership.membership', compact('data'));
     }
 
+
     public function addFARMC_Membership(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -425,7 +426,7 @@ class FarmcMembership_Controller extends Controller
         $farmc_mem->farmc_name = $validatedData['farmc_name'] ?? null;
         $farmc_mem->farmc_add = $validatedData['farmc_add'] ?? null;
         $farmc_mem->mfarmc_off = $validatedData['mfarmc_off'] ?? null;
-        $farmc_mem->mfarmc_off_yes = $validatedData['mfarm_off_yes'] ?? null;
+        $farmc_mem->mfarmc_off_yes = $validatedData['mfarmc_off_yes'] ?? null;
         $farmc_mem->inc_officer1 = $validatedData['inc_officer1'] ?? null;
         $farmc_mem->inc_officer2 = $validatedData['inc_officer2'] ?? null;
         $farmc_mem->inc_member1 = $validatedData['inc_member1'] ?? null;

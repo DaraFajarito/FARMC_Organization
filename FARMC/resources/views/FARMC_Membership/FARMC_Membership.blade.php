@@ -62,9 +62,10 @@
             <!-- Tab panes -->
             <div class="tab-content tabs">
                 <div class="tab-pane active" id="farmc" role="tabpanel">
-                    <div class="card-block">
+                    <hr>
+                    {{-- <div class="card-block"> --}}
                         <label for="">COUNT OVERVIEW</label>
-                    </div>
+                    {{-- </div> --}}
                     <div class="row dashboard-header">
                         <div class="col-lg-6 col-md-6">
                             <div class="card dashboard-product">

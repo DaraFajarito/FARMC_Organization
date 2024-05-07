@@ -73,33 +73,33 @@ Route::view('/L2Incomplete', 'LoD.Level2.L2_Incomplete');
 Route::view('/L2Editform', 'LoD.Level2.L2_Editform');
 Route::view('/L2Viewform', 'LoD.Level2.L2_Viewform');
 
-Route::view('/basicFunction', 'LVL2_Basic_Function.basicFunction');
+// Route::view('/basicFunction', 'LVL2_Basic_Function.basicFunction');
 
 // ---------------------------------------------------------------------------------------//
 
 //LevelThree
 
-Route::view('/level3', 'LoD.Level3.Level3');
+// Route::view('/level3', 'LoD.Level3.Level3');
 Route::view('/L3Completedtbl', 'LoD.Level3.L3_Completedtbl');
 Route::view('/L3Incompletetbl', 'LoD.Level3.L3_Incompletetbl');
 Route::view('/L3Incomplete', 'LoD.Level3.L3_Incomplete');
 Route::view('/L3Editform', 'LoD.Level3.L3_Editform');
 Route::view('/L3Viewform', 'LoD.Level3.L3_Viewform');
 
-Route::view('/fullyOperational', 'LVL3_Fully_Operational.fullyOperational');
+// Route::view('/fullyOperational', 'LVL3_Fully_Operational.fullyOperational');
 
 // ---------------------------------------------------------------------------------------//
 
 //LevelFour
 
-Route::view('/level4', 'LoD.Level4.Level4');
+// Route::view('/level4', 'LoD.Level4.Level4');
 Route::view('/L4Completedtbl', 'LoD.Level4.L4_Completedtbl');
 Route::view('/L4Incompletetbl', 'LoD.Level4.L4_Incompletetbl');
 Route::view('/L4Incomplete', 'LoD.Level4.L4_Incomplete');
 Route::view('/L4Editform', 'LoD.Level4.L4_Editform');
 Route::view('/L4Viewform', 'LoD.Level4.L4_Viewform');
 
-Route::view('/sustainabilityMechanism', 'LVL4_Sustainability_Mechanism.sustainabilityMechanism');
+// Route::view('/sustainabilityMechanism', 'LVL4_Sustainability_Mechanism.sustainabilityMechanism');
 
 // ---------------------------------------------------------------------------------------//
 
@@ -118,9 +118,7 @@ Route::view('/L5Viewform', 'LoD.Level5.L5_Viewform');
 //LEVEL ONE DATA//
 // ---------------------------------------------------------------------------------------//
 
-
 Route::get('/dash', [ProfileForm_Controller::class,'allLevelCount']);
-
 
 //Profile Form
 Route::view('/basicStructure', 'LVL1_Profile_Form.Basic_Structure.basic_structure');
@@ -130,7 +128,6 @@ Route::get('/mandated-officers-form/{id}', [ProfileForm_Controller::class,'displ
 Route::get('/L1Viewform/{id}', [ProfileForm_Controller::class,'display_level1_info']);
 Route::get('/fisherfolk-rep-form/{id}', [ProfileForm_Controller::class,'display_fisherfolkRep_form']);
 Route::get('/secretariat-form', [ProfileForm_Controller::class,'display_sectariat_form']);
-
 Route::put('/add-basic-info', [ProfileForm_Controller::class,'createProfileForm']);
 Route::put('/add-officer/{id}', [ProfileForm_Controller::class,'addOfficer']);
 Route::put('/add-mandated-officer/{id}', [ProfileForm_Controller::class,'addMandatedOfficer']);
@@ -141,7 +138,6 @@ Route::get('/L1Archivedtbl',[ProfileForm_Controller::class, 'display_level1_arch
 Route::get('/L1Archivedtbl/{id}', [ProfileForm_Controller::class, 'L1moveToArchived']);
 Route::get('/L1Editform/{id}',[ProfileForm_Controller::class, 'display_level1_edit']);
 Route::put('/edit-profileForm/{id}', [ProfileForm_Controller::class,'editBasicStructure']);
-
 // Route::view('/L1Editform', 'LoD.Level1.L1_Editform');
 
 //Fisherfolk Representative
@@ -233,26 +229,18 @@ Route::put('/add-orgmembership/{id}', [FarmcMembership_Controller::class,'addOrg
 Route::get('/farmc_membership', [FarmcMembership_Controller::class,'farmc_membership_count']);
 Route::get('/FARMCViewform/{id}', [FarmcMembership_Controller::class,'display_mem_Viewform']);
 Route::get('/viewall_members',[FarmcMembership_Controller::class, 'display_all_members']);
-
-
 Route::put('/edit-membership/{id}', [FarmcMembership_Controller::class,'editFARMC_Membership']);
 Route::get('/membership_edit/{id}', [FarmcMembership_Controller::class,'display_membership_edit']);
-
 Route::get('/membership_archived',[FarmcMembership_Controller::class, 'display_membership_archived']);
 Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'moveToMem_archived']);
 
-// ---------------------------------------------------------------------------------------//
 
-// ---------------------------------------------------------------------------------------//
-//Fisherfolk Organization
-// ---------------------------------------------------------------------------------------//
+// ---------------------------------------------------------------------------------------------------//
+// ------------------------------ FISHERFOLK ORGANIZATION ---------------------------------------//
+// ---------------------------------------------------------------------------------------------------//
 
-//Municipal
 Route::get('/FOMunicipal', [FisherfolkOrg_category::class,'display_municipal']);
 Route::get('/viewMunAssociation/{id}', [FisherfolkOrg_category::class,'display_MunAssociation_viewform']);
-// Route::view('/viewAssociation', 'Fisherfolk_Organization.Municipal.viewAssociation');
-
-
 
 Route::get('/FOFishworker', [FisherfolkOrg_category::class,'display_fishworker']);
 Route::get('/viewFishAssociation/{id}', [FisherfolkOrg_category::class,'display_Fisher_Association_viewform']);
@@ -266,10 +254,8 @@ Route::get('/viewWomAssociation/{id}', [FisherfolkOrg_category::class,'display_W
 Route::get('/FOYouth',  [FisherfolkOrg_category::class,'display_youth']);
 Route::get('/viewYouthAssociation/{id}', [FisherfolkOrg_category::class,'display_Youth_Association_viewform']);
 
-
 Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
 Route::get('/viewIPAssociation/{id}', [FisherfolkOrg_category::class,'display_IPs_Association_viewform']);
-
 
 
 //ASSOCIATION FORM
@@ -308,48 +294,13 @@ Route::get('/FOform2_ListofMem/{id}', [FC_ListofMem_Controller::class,'display_f
 Route::post('/Form2_add_ListofMem/{id}', [FC_ListofMem_Controller::class,'add_listofMem']);
 
 
-
+// ---------------------------------------------------------------------------------------------------//
 Route::view('/FOmregistered', 'Fisherfolk_Organization.Municipal.registeredtbl');
 Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredtbl');
+// ---------------------------------------------------------------------------------------------------//
 
 
 
-// // ---------------------------------------------------------------------------------------//
-// //Fishworker
-
-// Route::view('/FOfform1', 'Fisherfolk_Organization.Fishworker.form1');
-// Route::view('/FOform2GenInfo1', 'Fisherfolk_Organization.Fishworker.form2_GenInfo');
-// Route::view('/FOform2MembershipAsset1', 'Fisherfolk_Organization.Fishworker.form2_Membership&Asset');
-// Route::view('/FOform2Officers1', 'Fisherfolk_Organization.Fishworker.form2_Officers');
-// Route::view('/FOform2OrgStructure1', 'Fisherfolk_Organization.Fishworker.form2_OrgStructure');
-
-// // ---------------------------------------------------------------------------------------//
-
-// //Commercial
-
-// Route::view('/FOcform1', 'Fisherfolk_Organization.Commercial.form1');
-// Route::view('/FOform2GenInfo2', 'Fisherfolk_Organization.Commercial.form2_GenInfo');
-// Route::view('/FOform2MembershipAsset2', 'Fisherfolk_Organization.Commercial.form2_Membership&Asset');
-// Route::view('/FOform2Officers2', 'Fisherfolk_Organization.Commercial.form2_Officers');
-// Route::view('/FOform2OrgStructure2', 'Fisherfolk_Organization.Commercial.form2_OrgStructure');
-
-// // ---------------------------------------------------------------------------------------//
-// //Women Fisherfolk
-
-// Route::view('/FOwform1', 'Fisherfolk_Organization.Women_Fisherfolk.form1');
-// Route::view('/FOform2GenInfo3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_GenInfo');
-// Route::view('/FOform2MembershipAsset3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_Membership&Asset');
-// Route::view('/FOform2Officers3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_Officers');
-// Route::view('/FOform2OrgStructure3', 'Fisherfolk_Organization.Women_Fisherfolk.form2_OrgStructure');
-
-// // ---------------------------------------------------------------------------------------//
-// //Youth Fisherfolk
-
-// Route::view('/FOyform1', 'Fisherfolk_Organization.Youth_Fisherfolk.form1');
-// Route::view('/FOform2GenInfo4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_GenInfo');
-// Route::view('/FOform2MembershipAsset4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_Membership&Asset');
-// Route::view('/FOform2Officers4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_Officers');
-// Route::view('/FOform2OrgStructure4', 'Fisherfolk_Organization.Youth_Fisherfolk.form2_OrgStructure');
 
 // ---------------------------------------------------------------------------------------------------//
 // ------------------------------ FISHERFOLK DIRECTORS PROGRAM ---------------------------------------//
@@ -360,9 +311,29 @@ Route::put('/add-personal-info1', [FDP_PersonalInfo_Controller::class,'addFDP_Pe
 Route::get('/FDP_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'displayFDP_orgMem']);
 Route::put('/add-fdp_orgMem/{id}', [FDP_PersonalInfo_Controller::class,'addFDP_orgMem']);
 
-Route::get('/nationlFR', [FDP_PersonalInfo_Controller::class,'display_NFD']);
+Route::get('/nationalFR', [FDP_PersonalInfo_Controller::class,'display_NFD']);
+Route::get('/archived_NFR',[FDP_PersonalInfo_Controller::class, 'display_NFD_archived']);
+Route::get('/archived_NFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveToNFD_archived']);
+
 Route::get('/provincialFR', [FDP_PersonalInfo_Controller::class,'display_PFR']);
+Route::get('/archived_PFR',[FDP_PersonalInfo_Controller::class, 'display_PFR_archived']);
+Route::get('/archived_PFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveToPFR_archived']);
+
+
 Route::get('/regionalFD', [FDP_PersonalInfo_Controller::class,'display_RFD']);
+Route::get('/archived_RFD',[FDP_PersonalInfo_Controller::class, 'display_RFD_archived']);
+Route::get('/archived_RFD/{id}', [FDP_PersonalInfo_Controller::class, 'moveRFD_archived']);
+
+
 Route::get('/regionalFR', [FDP_PersonalInfo_Controller::class,'display_RFR']);
+Route::get('/archived_RFR',[FDP_PersonalInfo_Controller::class, 'display_RFR_archived']);
+Route::get('/archived_RFR/{id}', [FDP_PersonalInfo_Controller::class, 'moveRFR_archived']);
+
+Route::get('/rfdp-viewform/{id}', [FDP_PersonalInfo_Controller::class,'display_rfdp_Viewform']);
+Route::put('/edit-rfdp/{id}', [FDP_PersonalInfo_Controller::class,'edit_RFDP']);
+Route::get('/rfdp_edit/{id}', [FDP_PersonalInfo_Controller::class,'display_rfdp_edit']);
+
+
+
 
 // Route::get('/nationlFR', 'Fisherfolk_Directors_Program.National_FD.nationalFD');
