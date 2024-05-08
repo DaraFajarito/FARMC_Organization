@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\FC_GenInfo_Model;
 use App\Models\FC_ListofMem_Model;
 use App\Models\FC_Membership_Model;
+use App\Models\FC_Officers_Commit_Model;
+use App\Models\FC_Officers_Model;
+use App\Models\FC_OrgStruct_Model;
 use App\Models\FisherfolkOrganization_Model;
 use App\Models\FO_ListofMem_Model;
 use App\Models\FO_OAM_BoardofDir_Model;
@@ -135,7 +138,6 @@ class FisherfolkOrg_category extends Controller
     }
 
 
-
     public function display_MunAssociation_viewform($id)
     {
         $basic_info = FisherfolkOrganization_Model::where('id', $id)->get();
@@ -151,8 +153,6 @@ class FisherfolkOrg_category extends Controller
     // ------------------------------------------------------------------//
     // ----------------------F I S H W O R K E R-------------------------//
     // ------------------------------------------------------------------//
-
-
 
 
     public function display_fishworker()
@@ -555,9 +555,10 @@ class FisherfolkOrg_category extends Controller
     }
 
 
-    // ------------------------------------------------------------------//
-    // ---------------------Y O U T H  F I S H E R F O L K -------------------------//
-    // ------------------------------------------------------------------//
+    // -----------------------------------------------------------------------------//
+    // ---------------------Y O U T H   F I S H E R F O L K -------------------------//
+    // -----------------------------------------------------------------------------//
+
     public function display_youth()
     {
         $data = FisherfolkOrganization_Model::where('sector_rep', 'Youth')->get();
@@ -818,4 +819,24 @@ class FisherfolkOrg_category extends Controller
 
         return view('Fisherfolk_Organization.Association_Form.viewAssociation', compact('basic_info', 'boardDir', 'committee', 'listmem'));
     }
+
+
+    // ----------------------------------------------------------------------------------//
+    // -------------------------- D I S P L A Y  V I E W F O R M-------------------------//
+    // ----------------------------------------------------------------------------------//
+
+
+    public function display_coop_viewform($id)
+    {
+        $gen_info = FC_GenInfo_Model::where('id', $id)->get();
+        $members = FC_Membership_Model::where('fisherfolkOrg_FC_id', $id)->get();
+        $offic = FC_Officers_Model::where('fisherfolkOrg_FC_id', $id)->get();
+        $offic1 = FC_Officers_Commit_Model::where('fisherfolkOrg_FC_id', $id)->get();
+        $orgst = FC_OrgStruct_Model::where('fisherfolkOrg_FC_id', $id)->get();
+        $listmem = FC_ListofMem_Model::where('fisherfolkOrg_FC_id', $id)->get();
+
+        return view('Fisherfolk_Organization.Cooperative_Form.viewCooperative', compact('gen_info', 'members', 'offic', 'offic1', 'orgst', 'listmem'));
+    }
+
 }
+

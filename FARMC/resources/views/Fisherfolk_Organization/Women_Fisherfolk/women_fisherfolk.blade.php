@@ -306,7 +306,7 @@
 
                                                                 <td
                                                                     style=" display: flex; justify-content: space-between;">
-                                                                    <a href="" class="btn btn-success"><i
+                                                                    <a href="{{ url ('/viewCooperative/'. $item->id)}}" class="btn btn-success"><i
                                                                             class="ti-eye"></i></a>
                                                                     <a href="" class="btn btn-warning"><i
                                                                             class="ti-pencil"></i></a>

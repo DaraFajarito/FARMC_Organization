@@ -53,7 +53,7 @@ class FC_OrgStruct_Controller extends Controller
 
 
         if ($orgstr) {
-            return redirect('/FOform2_ListofMem/'. $orgstr->fisherfolkOrg_FC_id)->with('success', 'Success!');
+            return redirect('/FOform2_ListofMem/'. $orgstr->fisherfolkOrg_FC_id);
         } else {
             return redirect()->back()->with('failed', 'error');
         }

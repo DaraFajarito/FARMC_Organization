@@ -1879,13 +1879,13 @@
                                                 @else
                                                     {{ $item->mem_birth }}
                                                 @endif</td>
-                                                <td>>@if ($item->mem_age === null)
+                                                <td>@if ($item->mem_age === null)
                                                     <span style="color: red;">no data</span>
                                                 @else
                                                     {{ $item->mem_age }}
                                                 @endif
                                                 </td>
-                                                <td>>@if ($item->mem_fourps === null)
+                                                <td>@if ($item->mem_fourps === null)
                                                     <span style="color: red;">no data</span>
                                                 @else
                                                     {{ $item->mem_fourps }}

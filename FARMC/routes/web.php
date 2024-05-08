@@ -240,7 +240,7 @@ Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'mov
 // ---------------------------------------------------------------------------------------------------//
 
 Route::get('/FOMunicipal', [FisherfolkOrg_category::class,'display_municipal']);
-Route::get('/viewMunAssociation/{id}', [FisherfolkOrg_category::class,'display_MunAssociation_viewform']);
+Route::get( '/viewMunAssociation/{id}', [FisherfolkOrg_category::class,'display_MunAssociation_viewform']);
 
 Route::get('/FOFishworker', [FisherfolkOrg_category::class,'display_fishworker']);
 Route::get('/viewFishAssociation/{id}', [FisherfolkOrg_category::class,'display_Fisher_Association_viewform']);
@@ -256,6 +256,9 @@ Route::get('/viewYouthAssociation/{id}', [FisherfolkOrg_category::class,'display
 
 Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
 Route::get('/viewIPAssociation/{id}', [FisherfolkOrg_category::class,'display_IPs_Association_viewform']);
+
+
+Route::get('/viewCooperative/{id}', [FisherfolkOrg_category::class,'display_coop_viewform']);
 
 
 //ASSOCIATION FORM

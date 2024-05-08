@@ -52,7 +52,7 @@ class FC_ListofMem_Controller extends Controller
         }
 
         if ($listofMem) {
-            return redirect('/FOform2_ListofMem/' . $listofMem->fisherfolkOrg_FC_id)->with('success', 'Success!');
+            return redirect('/FOform2_ListofMem/' . $listofMem->fisherfolkOrg_FC_id)->with('success', 'Data added successfully!');
         } else {
             return redirect()->back()->with('failed', 'error');
         }

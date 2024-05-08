@@ -239,7 +239,7 @@ class FisherfolkOrganization_Controller extends Controller
 
         $capCon->save();
 
-       return redirect('/FOform1_Capcon/'. $capCon->id)->with('success', 'Success!');
+       return redirect('/FOform1_Capcon/'. $capCon->id)->with('success', 'Data added successfully!');
     }
 }
 
