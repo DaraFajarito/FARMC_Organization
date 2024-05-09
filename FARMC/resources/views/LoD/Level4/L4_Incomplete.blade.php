@@ -61,7 +61,7 @@
                                                 <h6 class="captions">Sustainability Mechanism</h6>
                                             </b>
                                         </div>
-                                        <br>
+
                                         <p class="captions"><b>1) Data Bank/Databank System Established And
                                                 Accesible</b></p>
 

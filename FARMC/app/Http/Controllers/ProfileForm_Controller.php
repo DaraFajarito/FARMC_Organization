@@ -1047,7 +1047,7 @@ class ProfileForm_Controller extends Controller
         if (!$incomplete) {
             return redirect('/level4')->with('success', 'Success!');
         } else {
-            return view('LoD.Level4.L4_Incomplete', ['sustainabilityMechNull' => $sustainabilityMechNull]);
+            return view('LoD.Level4.L4_Incomplete', ['sustainabilityMechNull' => $sustainabilityMechNull, 'sustainabilityMech' => $sustainabilityMech]);
         }
     }
 
@@ -2502,6 +2502,12 @@ class ProfileForm_Controller extends Controller
 
     public function allLevelCount()
     {
+        $data = ProfileForm_Model::get();
+        $data1 = BasicFunction_Model::get();
+        $data2 = Fully_Operational_Model::get();
+        $data3 = Sustainability_Mechanism_Model::get();
+        $data4 = Model_of_Excellence_Model::get();
+
         $allcominc1 = ProfileForm_Model::where('status', '!=', 'ARCHIVED')->count();
         $allcominc2 = BasicFunction_Model::where('status', '!=', 'ARCHIVED')->count();
         $allcominc3 = Fully_Operational_Model::where('status', '!=', 'ARCHIVED')->count();
@@ -2532,7 +2538,7 @@ class ProfileForm_Controller extends Controller
 
 
         //chart for complete
-        return view('dashboard', compact('allcominc1', 'allcominc2', 'allcominc3', 'allcominc4', 'allcominc5', 'completedCount'));
+        return view('dashboard', compact('data', 'data1', 'data2', 'data3', 'data4', 'allcominc1', 'allcominc2', 'allcominc3', 'allcominc4', 'allcominc5', 'completedCount'));
     }
 
     //==========================================================================================================================================||

@@ -55,8 +55,8 @@
                     src="{{ asset('assets/images/Logo_changed.png') }}"
                     style="width:280px; padding-top:5px; padding-left:20px" alt="Theme-logo"></a>
             <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <a href="#!" class="sidebar-toggle" onclick="toggleSidebar(event)"></a>
+                <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
+
 
                 <!-- Navbar Right Menu-->
                 <div class="navbar-custom-menu f-right">

@@ -162,9 +162,6 @@ class FarmcMembership_Controller extends Controller
         $farmcCount = $filterOrgname->count();
 
 
-
-
-
         $allMembers = FarmcMembership_Model::whereIn('age', range(0, 18))
             ->orWhereIn('age', range(19, 25))
             ->orWhereIn('age', range(26, 35))

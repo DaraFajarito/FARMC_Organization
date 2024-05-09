@@ -1945,7 +1945,79 @@ input[type="checkbox"]:checked+.cr {
   /* Adjust the line height as needed */
 }
 
-   
+
+.side-box-level {
+  /* position: absolute; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the width as needed */
+  background-color: #f8f9fa; /* Background color of the circle */
+  border-radius: 50%; /* Makes it a circle */
+  margin: 10px; /* Adjust the margin as needed */
+}
+
+.circle-level1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #c41a1a; /* Color of the circle */
+    color: white; /* Text color */
+    font-weight: bold;
+  }
+  .circle-level2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #f38d08; /* Color of the circle */
+    color: white; /* Text color */
+    font-weight: bold;
+  }
+
+  .circle-level3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #f3df08; /* Color of the circle */
+    color: white; /* Text color */
+    font-weight: bold;
+  }
+
+  .circle-level4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #b4f308; /* Color of the circle */
+    color: white; /* Text color */
+    font-weight: bold;
+  }
+
+  .circle-level5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #23d008; /* Color of the circle */
+    color: white; /* Text color */
+    font-weight: bold;
+  }
+
 .side-box {
   position: absolute;
   top: 0;
@@ -1959,6 +2031,7 @@ input[type="checkbox"]:checked+.cr {
   border-radius: 50%; /* Makes it a circle */
   margin: 10px; /* Adjust the margin as needed */
 }
+
 
 .circle {
   display: flex;
