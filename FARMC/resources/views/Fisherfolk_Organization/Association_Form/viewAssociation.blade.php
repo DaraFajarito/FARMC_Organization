@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>FARMC Membership - VIEW FORM | FARMC - BFAR</title>
+    <title> VIEW FORM | Fisherfolk Organization | FARMC - BFAR</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <!-- Meta -->
@@ -95,7 +95,7 @@
                         <br>
                         <br>
                         <div style="display: flex;">
-                            <a href="{{ url('/farmc_membership') }}" class="btn btn-secondary"> <i
+                            <a href="#!" class="btn btn-secondary"> <i
                                     class="icon-arrow-left"></i> Back</a>
                             <div class="actions text-right" style="flex: 1;">
                                 <!-- Added text-center class and flex: 1 -->

@@ -51,6 +51,10 @@
             margin-top: -5px;
             font-size: smaller;
         }
+
+        input.form-control {
+            border: 1px solid #AAAAAA;
+        }
     </style>
 
 

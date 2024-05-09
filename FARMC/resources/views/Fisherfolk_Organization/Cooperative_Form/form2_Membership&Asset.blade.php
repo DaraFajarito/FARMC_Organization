@@ -58,6 +58,10 @@
             font-size: 15px;
             /* Adjust the font size as needed */
         }
+
+        input.form-control {
+            border: 1px solid #AAAAAA;
+        }
     </style>
 
 

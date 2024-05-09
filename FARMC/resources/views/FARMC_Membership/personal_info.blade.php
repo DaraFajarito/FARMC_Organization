@@ -15,6 +15,18 @@
 
 </head>
 
+<style>
+    .captions {
+        display: inline-block;
+        vertical-align: middle;
+        /* margin-left: 10px; Adjust as needed */
+    }
+
+    input.form-control{
+        border: 1px solid #AAAAAA;
+    }
+</style>
+
 <body>
 
     <!-- side_navbar -->
