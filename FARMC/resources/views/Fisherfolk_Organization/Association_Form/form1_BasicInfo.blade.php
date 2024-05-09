@@ -82,8 +82,8 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOMunicipal') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
-                            Back</a>
+                        {{-- <a href="{{ url('/FOMunicipal') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                            Back</a> --}}
                     </div>
                 </div>
                 <form class="form-inline" method="POST" action="{{ url('/Form1_add_BasicInfo') }}"

@@ -89,13 +89,13 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/FOform2MembershipAsset') }}" class="btn btn-secondary"> <i
-                                class="icon-arrow-left"></i> Back</a>
+                        {{-- <a href="{{ url('/FOform2MembershipAsset') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i> Back</a> --}}
                     </div>
                 </div>
 
                 @foreach ($officers_commit as $offi)
-                    <form class="form-inline" method="POST" action="{{ url ('/Form2_add_Officers1') }}"
+                    <form class="form-inline" method="POST" action="{{ url('/Form2_add_Officers1') }}"
                         enctype="multipart/form-data">
                         @csrf
                         @method ('PUT')
@@ -107,49 +107,39 @@
                                             <div class="col-md-12" style="margin-bottom: 20px;">
                                                 <div class="row">
                                                     <div class="row">
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-12">
                                                             <div class="d-flex align-items-center" style="width: 300px">
                                                                 <select name="category" id="category"
-                                                                    class="js-example-basic-single form-control">
+                                                                    class="js-example-basic-single form-control"
+                                                                    onchange="toggleOtherTextbox()">
                                                                     <optgroup label="Committee">
                                                                         <option value="Audit & Inventory Committee">
-                                                                            Audit &
-                                                                            Inventory Committee
-                                                                        </option>
-                                                                        <option value="Election Committee">
-                                                                            Election Committee</option>
-                                                                        </option>
+                                                                            Audit & Inventory Committee</option>
+                                                                        <option value="Election Committee">Election
+                                                                            Committee</option>
                                                                         <option
                                                                             value="Mediation & Concilliation Committee">
-                                                                            Mediation & Concilliation Committee
-                                                                        </option>
+                                                                            Mediation & Concilliation Committee</option>
                                                                         <option value="Ethics Committee">Ethics
-                                                                            Committee
-                                                                        </option>
-                                                                        <option value="Audit Committee">Audit
-                                                                            Committee
+                                                                            Committee</option>
+                                                                        <option value="Audit Committee">Audit Committee
                                                                         </option>
                                                                         <option value="Education Committee">Education
-                                                                            Committee
-                                                                        </option>
+                                                                            Committee</option>
                                                                         <option value="Membership Committee">Membership
-                                                                            Committee
-                                                                        </option>
+                                                                            Committee</option>
                                                                         <option value="Marketing Committee">Marketing
-                                                                            Committee
-                                                                        </option>
+                                                                            Committee</option>
                                                                         <option value="GAD Committee">GAD Committee
                                                                         </option>
-                                                                        <option onchange="toggleOtherTextbox()"
-                                                                            value="Others: please specify">Others:
-                                                                            please
-                                                                            specify</option>
+                                                                        <option value="Others: please specify">Others:
+                                                                            please specify</option>
                                                                     </optgroup>
                                                                 </select>
                                                             </div>
                                                             <br>
-                                                            <input type="text" id="otherText" style="width:300px"
-                                                                name="other_cat" style="display: none;"
+                                                            <input type="text" id="otherText"
+                                                                style="width:300px; display:none;" name="other_cat"
                                                                 placeholder="Please specify" class="form-control">
                                                         </div>
                                                     </div>
@@ -179,69 +169,90 @@
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="chairman_name"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="chairman_name"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="chair_cs"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="chair_cs"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="chair_gen"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="chair_gen"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="date"
                                                                             class="form-control"
-                                                                            style="width: 120px; margin: auto;" name="chair_birth" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                            style="width: 120px; margin: auto;"
+                                                                            name="chair_birth"
+                                                                            onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                                    </td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 80px; margin: auto;" name="chair_age" readonly></td>
+                                                                            style="width: 80px; margin: auto;"
+                                                                            name="chair_age" readonly></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Secretary</td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="sec_name"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="sec_name"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="sec_cs"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="sec_cs"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="sec_gen"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="sec_gen"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="date"
                                                                             class="form-control"
-                                                                            style="width: 120px; margin: auto;" name="sec_birth" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                            style="width: 120px; margin: auto;"
+                                                                            name="sec_birth"
+                                                                            onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                                    </td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 80px; margin: auto;" name="sec_age" readonly></td>
+                                                                            style="width: 80px; margin: auto;"
+                                                                            name="sec_age" readonly></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Member</td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="mem_name"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="mem_name"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="mem_cs"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="mem_cs"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 150px; margin: auto;" name="mem_gen"></td>
+                                                                            style="width: 150px; margin: auto;"
+                                                                            name="mem_gen"></td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="date"
                                                                             class="form-control"
-                                                                            style="width: 120px; margin: auto;" name="mem_birth" onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)"></td>
+                                                                            style="width: 120px; margin: auto;"
+                                                                            name="mem_birth"
+                                                                            onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
+                                                                    </td>
                                                                     <td style="text-align: center;"><input
                                                                             id="" type="text"
                                                                             class="form-control"
-                                                                            style="width: 80px; margin: auto;" name="mem_age" readonly></td>
+                                                                            style="width: 80px; margin: auto;"
+                                                                            name="mem_age" readonly></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -255,9 +266,9 @@
                                                 </div>
                                                 <div class="col-md-12 text-right">
                                                     @foreach ($officers_commit as $offi)
-                                                    <a href="{{ url('/FOform2_OrgStruct/' .$offi->id) }}"> <button
-                                                        class="btn btn-primary" type="button">Next <i
-                                                                class="icon-arrow-right"></i></button></a>
+                                                        <a href="{{ url('/FOform2_OrgStruct/' . $offi->id) }}"> <button
+                                                                class="btn btn-primary" type="button">Next <i
+                                                                    class="icon-arrow-right"></i></button></a>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -288,12 +299,12 @@
 
     <script>
         function toggleOtherTextbox() {
-            var category = document.getElementById("category");
-            var otherText = document.getElementById("otherText");
-            if (category.value === "Others: please specify") {
-                otherText.style.display = "block";
+            var selectElement = document.getElementById("category");
+            var otherTextElement = document.getElementById("otherText");
+            if (selectElement.value === "Others: please specify") {
+                otherTextElement.style.display = "block";
             } else {
-                otherText.style.display = "none";
+                otherTextElement.style.display = "none";
             }
         }
     </script>

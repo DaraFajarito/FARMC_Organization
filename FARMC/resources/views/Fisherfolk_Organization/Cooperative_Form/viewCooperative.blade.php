@@ -505,22 +505,29 @@
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col">Number of Regular members
                                                                         </td>
-                                                                        <td scope="col" class="text-center"> @if ($item->CoM_NRMem_male === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->CoM_NRMem_male }}
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->CoM_NRMem_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->CoM_NRMem_male }}
+                                                                            @endif
                                                                         </td>
-                                                                        <td scope="col" class="text-center"> @if ($item->NRMem_female === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->NRMem_female }}
-                                                                        @endif</td>
-                                                                        <td scope="col" class="text-center">@if ($item->NRMem_total === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                          <b>  {{ $item->NRMem_total }} </b>
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NRMem_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->NRMem_female }}
+                                                                            @endif
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NRMem_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <b> {{ $item->NRMem_total }} </b>
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -528,22 +535,29 @@
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col">Number of Association
                                                                             members</td>
-                                                                        <td scope="col" class="text-center">@if ($item->CoM_NAMem_male === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->CoM_NAMem_male }}
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->CoM_NAMem_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->CoM_NAMem_male }}
+                                                                            @endif
                                                                         </td>
-                                                                        <td scope="col" class="text-center"> @if ($item->NAMem_female === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->NAMem_female }}
-                                                                        @endif</td>
-                                                                        <td scope="col" class="text-center">@if ($item->NAMem_total === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                          <b>  {{ $item->NAMem_total }} </b>
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NAMem_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->NAMem_female }}
+                                                                            @endif
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NAMem_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <b> {{ $item->NAMem_total }} </b>
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -551,22 +565,35 @@
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col">Total of Association members
                                                                         </td>
-                                                                        <td scope="col" class="text-center">@if ($item->CoM_TotalMem_male === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                        <span style="color: rgb(8, 171, 8);">   <b>  {{ $item->CoM_TotalMem_male }} </b> </span>
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->CoM_TotalMem_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <span style="color: rgb(8, 171, 8);">
+                                                                                    <b> {{ $item->CoM_TotalMem_male }}
+                                                                                    </b> </span>
+                                                                            @endif
                                                                         </td>
-                                                                        <td scope="col" class="text-center">@if ($item->TMem_female === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                        <span style="color: rgb(8, 171, 8);">   <b>  {{ $item->TMem_female }} </b> </span>
-                                                                        @endif</td>
-                                                                        <td scope="col" class="text-center">@if ($item->TMem_total === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                        <span style="color: rgb(8, 171, 8);">  <b>  {{ $item->TMem_total }} </b> </span>
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->TMem_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <span style="color: rgb(8, 171, 8);">
+                                                                                    <b> {{ $item->TMem_female }} </b>
+                                                                                </span>
+                                                                            @endif
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->TMem_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <span style="color: rgb(8, 171, 8);">
+                                                                                    <b> {{ $item->TMem_total }} </b>
+                                                                                </span>
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -581,22 +608,29 @@
                                                                         <td scope="col">Target Potential Membership
                                                                             (current year)
                                                                         </td>
-                                                                        <td scope="col"  class="text-center">@if ($item->CoM_TargetMem_male === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->CoM_TargetMem_male }}
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->CoM_TargetMem_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->CoM_TargetMem_male }}
+                                                                            @endif
                                                                         </td>
-                                                                        <td scope="col" class="text-center">@if ($item->TarMem_female === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->TarMem_female }}
-                                                                        @endif</td>
-                                                                        <td scope="col" class="text-center">@if ($item->TarMem_total === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->TarMem_total }}
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->TarMem_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->TarMem_female }}
+                                                                            @endif
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->TarMem_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->TarMem_total }}
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -604,23 +638,39 @@
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col" class="text-center">Total
                                                                             Membership
-                                                                            <td scope="col" class="text-center">@if ($item->CoM_Total_male === null)
-                                                                                <span style="color: red;">no data</span>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->CoM_Total_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
                                                                             @else
-                                                                            <span style="color: rgb(157, 146, 28);">   <b>  {{ $item->CoM_Total_male }} </b> </span>
+                                                                                <span
+                                                                                    style="color: rgb(157, 146, 28);">
+                                                                                    <b> {{ $item->CoM_Total_male }}
+                                                                                    </b> </span>
                                                                             @endif
-                                                                            </td>
-                                                                            <td scope="col" class="text-center">@if ($item->Total_female === null)
-                                                                                <span style="color: red;">no data</span>
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->Total_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
                                                                             @else
-                                                                            <span style="color: rgb(157, 146, 28);">   <b>  {{ $item->Total_female }} </b> </span>
-                                                                            @endif</td>
-                                                                            <td scope="col" class="text-center">@if ($item->Total_total === null)
-                                                                                <span style="color: red;">no data</span>
-                                                                            @else
-                                                                            <span style="color: rgb(157, 146, 28);">  <b>  {{ $item->Total_total }} </b> </span>
+                                                                                <span
+                                                                                    style="color: rgb(157, 146, 28);">
+                                                                                    <b> {{ $item->Total_female }} </b>
+                                                                                </span>
                                                                             @endif
-                                                                            </td>
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->Total_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <span
+                                                                                    style="color: rgb(157, 146, 28);">
+                                                                                    <b> {{ $item->Total_total }} </b>
+                                                                                </span>
+                                                                            @endif
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -656,44 +706,58 @@
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col">Full - Time
                                                                         </td>
-                                                                        <td scope="col"  class="text-center"> @if ($item->NoE_Fulltime_male === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->NoE_Fulltime_male }}
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NoE_Fulltime_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->NoE_Fulltime_male }}
+                                                                            @endif
                                                                         </td>
-                                                                        <td scope="col"  class="text-center"> @if ($item->Fulltime_female === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->Fulltime_female }}
-                                                                        @endif</td>
-                                                                        <td scope="col"  class="text-center">@if ($item->Fulltime_total === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                         <b>   {{ $item->Fulltime_total }} </b>
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->Fulltime_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->Fulltime_female }}
+                                                                            @endif
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->Fulltime_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <b> {{ $item->Fulltime_total }} </b>
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
                                                                 <tbody style="font-size: 15px">
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col">Part - Time</td>
-                                                                        <td scope="col"  class="text-center"> @if ($item->NoE_Parttime_male === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->NoE_Parttime_male }}
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NoE_Parttime_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->NoE_Parttime_male }}
+                                                                            @endif
                                                                         </td>
-                                                                        <td scope="col"  class="text-center"> @if ($item->Parttime_female === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->Parttime_female }}
-                                                                        @endif</td>
-                                                                        <td scope="col"  class="text-center">@if ($item->Parttime_total === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                         <b>   {{ $item->Parttime_total }} </b>
-                                                                        @endif
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->Parttime_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                {{ $item->Parttime_female }}
+                                                                            @endif
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->Parttime_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <b> {{ $item->Parttime_total }} </b>
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -702,23 +766,39 @@
                                                                     <tr style="font-weight: 500">
                                                                         <td scope="col" class="text-center">Total
                                                                             Employees
-                                                                            <td scope="col" class="text-center">@if ($item->NoE_Total_male === null)
-                                                                                <span style="color: red;">no data</span>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->NoE_Total_male === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
                                                                             @else
-                                                                            <span style="color: rgb(157, 146, 28);">   <b>  {{ $item->NoE_Total_male }} </b> </span>
+                                                                                <span
+                                                                                    style="color: rgb(157, 146, 28);">
+                                                                                    <b> {{ $item->NoE_Total_male }}
+                                                                                    </b> </span>
                                                                             @endif
-                                                                            </td>
-                                                                            <td scope="col" class="text-center">@if ($item->TotalEmp_female === null)
-                                                                                <span style="color: red;">no data</span>
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->TotalEmp_female === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
                                                                             @else
-                                                                            <span style="color: rgb(157, 146, 28);">   <b>  {{ $item->TotalEmp_female }} </b> </span>
-                                                                            @endif</td>
-                                                                            <td scope="col" class="text-center">@if ($item->TotalEmp_total === null)
-                                                                                <span style="color: red;">no data</span>
-                                                                            @else
-                                                                            <span style="color: rgb(157, 146, 28);">  <b>  {{ $item->TotalEmp_total }} </b> </span>
+                                                                                <span
+                                                                                    style="color: rgb(157, 146, 28);">
+                                                                                    <b> {{ $item->TotalEmp_female }}
+                                                                                    </b> </span>
                                                                             @endif
-                                                                            </td>
+                                                                        </td>
+                                                                        <td scope="col" class="text-center">
+                                                                            @if ($item->TotalEmp_total === null)
+                                                                                <span style="color: red;">no
+                                                                                    data</span>
+                                                                            @else
+                                                                                <span
+                                                                                    style="color: rgb(157, 146, 28);">
+                                                                                    <b> {{ $item->TotalEmp_total }}
+                                                                                    </b> </span>
+                                                                            @endif
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -738,11 +818,13 @@
                                                         <div class="col-md-12 grid-material bg-general"><b>Total
                                                                 Assets:</b>
                                                             <span><label class="captions">&nbsp;
-                                                                @if ($item->total_assets === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->total_assets }}  </span>
-                                                            @endif</label></span>
+                                                                    @if ($item->total_assets === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->total_assets }} </span>
+                                                                    @endif
+                                                                </label>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -777,439 +859,505 @@
                                                             <td>Board of Directors:</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BoardofDir_name1 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BoardofDir_name1 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs1 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs1 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BoardofDir_name1 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen1 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen1 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs1 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs1 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth1 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth1 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen1 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen1 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age1 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age1 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth1 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth1 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age1 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age1 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Chairperson</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->Chairperson_name2 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->Chairperson_name2 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs2 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs2 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->Chairperson_name2 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen2 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen2 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs2 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs2 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth2 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth2 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen2 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen2 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age2 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age2 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth2 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth2 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age2 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age2 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Vice-chairperson</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->Vchair_name3 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->Vchair_name3 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs3 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs3 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->Vchair_name3 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen3 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen3 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs3 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs3 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth3 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth3 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen3 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen3 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age3 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age3 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth3 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth3 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age3 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age3 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name4 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name4 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs4 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs4 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name4 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen4 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen4 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs4 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs4 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth4 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth4 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen4 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen4 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age4 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age4 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth4 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth4 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age4 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age4 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name5 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name5 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs5 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs5 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name5 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen5 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen5 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs5 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs5 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth5 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth5 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen5 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen5 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age5 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age5 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth5 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth5 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age5 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age5 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name6 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name6 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs6 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs6 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name6 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen6 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen6 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs6 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs6 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth6 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth6 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen6 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen6 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age6 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age6 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth6 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth6 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age6 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age6 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name7 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name7 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs7 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs7 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name7 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen7 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen7 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs7 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs7 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth7 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth7 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen7 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen7 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age7 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age7 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth7 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth7 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age7 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age7 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name8 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name8 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs8 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs8 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name8 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen8 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen8 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs8 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs8 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth8 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth8 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen8 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen8 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age8 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age8 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth8 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth8 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age8 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age8 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name9 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name9 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs9 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs9 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name9 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen9 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen9 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs9 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs9 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth9 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth9 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen9 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen9 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age9 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age9 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth9 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth9 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age9 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age9 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>&nbsp; Board Member</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->BM_name10 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->BM_name10 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs10 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs10 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->BM_name10 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen10 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen10 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs10 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs10 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth10 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth10 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen10 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen10 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age10 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age10 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth10 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth10 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age10 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age10 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>General Manager</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->Gen_Man_name11 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->Gen_Man_name11 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs11 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs11 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->Gen_Man_name11 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen11 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen11 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs11 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs11 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth11 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth11 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen11 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen11 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age11 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age11 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth11 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth11 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age11 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age11 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Secretary</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->Sec_name12 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->Sec_name12 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs12 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs12 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->Sec_name12 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen12 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen12 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs12 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs12 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth12 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth12 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen12 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen12 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age12 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age12 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth12 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth12 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age12 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age12 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Treasurer</td>
                                                             <td style="text-align: center;">
                                                                 @if ($item->Treas_name13 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->Treas_name13 }}  </span>
-                                                            @endif</td>
-                                                            <td style="text-align: center;"> @if ($item->cs13 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->cs13 }}  </span>
-                                                            @endif
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->Treas_name13 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;">@if ($item->gen13 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->gen13 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->cs13 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->cs13 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->birth13 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->birth13 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->gen13 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->gen13 }} </span>
+                                                                @endif
                                                             </td>
-                                                            <td style="text-align: center;"> @if ($item->age13 === null)
-                                                                <span style="color: red;">no data</span>
-                                                            @else
-                                                            <span>   {{ $item->age13 }}  </span>
-                                                            @endif
+                                                            <td style="text-align: center;">
+                                                                @if ($item->birth13 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->birth13 }} </span>
+                                                                @endif
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                @if ($item->age13 === null)
+                                                                    <span style="color: red;">no data</span>
+                                                                @else
+                                                                    <span> {{ $item->age13 }} </span>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             @endforeach
                                             <br>
-                                            @foreach ($offic1 as $item)
                                             <label for="inline3mail" class="block form-control-label">Audit &
                                                 Inventory
                                                 Committee</label>
+                                            @foreach ($offic1 as $item)
+
                                                 @if ($item->category == 'Audit & Inventory Committee')
                                                     <table class="table table-bordered">
                                                         <thead>
@@ -1235,34 +1383,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;"> {{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Member</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1298,34 +1527,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Member</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1359,34 +1669,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1419,34 +1810,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1479,34 +1951,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1539,34 +2092,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1599,34 +2233,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1659,34 +2374,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1719,34 +2515,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1755,7 +2632,11 @@
                                                 @elseif ($item->category == 'Others: please specify')
                                                     <label for="inline3mail" class="block form-control-label">Others:
                                                         please
-                                                        specify</label>
+                                                        specify:   @if ($item->other_cat === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        <span> {{ $item->other_cat }} </span>
+                                                    @endif</label>
                                                     <table class="table table-bordered">
                                                         <thead>
                                                             <tr>
@@ -1780,34 +2661,115 @@
                                                             <tr>
                                                                 <td>Chairman</td>
                                                                 <td style="text-align: center;">
-                                                                    {{ $item->chairman_name }}</td>
-                                                                <td style="text-align: center;">{{ $item->chair_cs }}
+                                                                    @if ($item->chairman_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chairman_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_cs }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_gen }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->chair_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->chair_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->chair_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp; Secretary</td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_name }} </span>
+                                                                    @endif
                                                                 </td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_cs }} </span>
+                                                                    @endif
                                                                 </td>
-                                                                <td style="text-align: center;"></td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->sec_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp; Members</td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
-                                                                <td style="text-align: center;"></td>
+                                                                <td>&nbsp; Member</td>
                                                                 <td style="text-align: center;">
+                                                                    @if ($item->mem_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_name }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_cs === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_cs }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_gen === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_gen }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->mem_birth === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->mem_birth }} </span>
+                                                                    @endif
+                                                                </td>
+                                                                <td style="text-align: center;">
+                                                                    @if ($item->sec_age === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        <span> {{ $item->sec_age }} </span>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -1830,11 +2792,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-9">
-                                                             @if ($item->orgstruct_file === null)
-                                                            <span style="color: red;">no data</span>
-                                                        @else
-                                                       {{ $item->orgstruct_file }}
-                                                        @endif
+                                                            @if ($item->orgstruct_file === null)
+                                                                <span style="color: red;">no data</span>
+                                                            @else
+                                                                {{ $item->orgstruct_file }}
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1850,28 +2812,53 @@
                                                     <div class="form-group m-r-15">
                                                         <div class="grid-material bg-general"><b>Name:</b>
                                                             <span><label class="captions">
-                                                                    &nbsp;   @if ($item->CD_name === null)
-                                                                    <span style="color: red;">no data</span>
-                                                                @else
-                                                               {{ $item->CD_name }}
-                                                                @endif</label></span>
+                                                                    &nbsp; @if ($item->CD_name === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        {{ $item->CD_name }}
+                                                                    @endif
+                                                                </label>
+                                                            </span>
                                                         </div>
                                                         <div class="grid-material bg-general"><b>Designation:</b>
                                                             <span><label class="captions">&nbsp;
-                                                                    {{ $item->CD_design }}</label></span>
+                                                                    @if ($item->CD_design === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        {{ $item->CD_design }}
+                                                                    @endif
+                                                                </label>
+                                                            </span>
                                                         </div>
                                                         <div class="grid-material bg-general"><b>Tell / Cell
                                                                 Number:</b>
                                                             <span><label class="captions">&nbsp;
-                                                                    {{ $item->CD_tell }}</label></span>
+                                                                    @if ($item->CD_tell === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        {{ $item->CD_tell }}
+                                                                    @endif
+                                                                </label>
+                                                            </span>
                                                         </div>
                                                         <div class="grid-material bg-general"><b>Email Address:</b>
                                                             <span><label class="captions">&nbsp;
-                                                                    {{ $item->CD_email }}</label></span>
+                                                                    @if ($item->CD_email === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        {{ $item->CD_email }}
+                                                                    @endif
+                                                                </label>
+                                                            </span>
                                                         </div>
                                                         <div class="grid-material bg-general"><b>Facebook Account:</b>
                                                             <span><label class="captions">&nbsp;
-                                                                    {{ $item->CD_FB_acc }}</label></span>
+                                                                    @if ($item->CD_FBacc === null)
+                                                                        <span style="color: red;">no data</span>
+                                                                    @else
+                                                                        {{ $item->CD_FBacc }}
+                                                                    @endif
+                                                                </label></span>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -153,10 +153,9 @@
                                     <label>LIST OF OVERVIEW</label>
                                 </div>
                                 <div class="col-md-8 text-right">
-                                    <a href="{{ url('/FOmregistered') }}"><button type="button"
-                                            class="btn btn-primary">All Registered</button></a>
-                                    <a href="{{ url('/FOmunregistered') }}"><button type="button"
-                                            class="btn btn-danger">All Unregistered</button></a>
+                                    <a href="{{ url('/archived_Fish') }}"><button type="button"
+                                            class="btn btn-danger">All Archived</button></a>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -191,6 +190,7 @@
                                                 </thead>
                                                 <tbody style="font-size: 13px">
                                                     @foreach ($data as $item)
+                                                    @if ($item->status != 'ARCHIVED')
                                                         <tr>
                                                             @if ($item->name_of_org === null)
                                                                 <td style="color:red">no data</td>
@@ -232,10 +232,11 @@
                                                                         class="ti-eye"></i></a>
                                                                 <a href="" class="btn btn-warning"><i
                                                                         class="ti-pencil"></i></a>
-                                                                <a href="" class="btn btn-danger"><i
+                                                                <a href="{{ url ('/archived_FishAss/'. $item->id)}}" class="btn btn-danger"><i
                                                                         class="ti-trash"></i></a>
                                                             </td>
                                                         </tr>
+                                                        @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -259,9 +260,8 @@
                                                     </thead>
                                                     <tbody style="font-size: 13px">
                                                         @foreach ($data1 as $item)
+                                                    @if ($item->status != 'ARCHIVED')
                                                             <tr>
-
-
                                                                 @if ($item->name_of_coop === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
@@ -309,10 +309,11 @@
                                                                             class="ti-eye"></i></a>
                                                                     <a href="" class="btn btn-warning"><i
                                                                             class="ti-pencil"></i></a>
-                                                                    <a href="" class="btn btn-danger"><i
+                                                                    <a href="{{ url ('/archived_FishCoop/'. $item->id)}}" class="btn btn-danger"><i
                                                                             class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endif
                                                         @endforeach
                                                     </tbody>
                                                 </table>

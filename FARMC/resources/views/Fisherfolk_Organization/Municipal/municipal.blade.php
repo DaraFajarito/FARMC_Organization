@@ -152,12 +152,12 @@
                                 <div class="col-md-4">
                                     <label>LIST OF OVERVIEW</label>
                                 </div>
-                                {{-- <div class="col-md-8 text-right">
-                                    <a href="{{ url('/FOmregistered') }}"><button type="button"
-                                            class="btn btn-primary">All Registered</button></a>
-                                    <a href="{{ url('/FOmunregistered') }}"><button type="button"
-                                            class="btn btn-danger">All Unregistered</button></a>
-                                </div> --}}
+                                <div class="col-md-8 text-right">
+                                    <a href="{{ url('/archived_Mun') }}"><button type="button"
+                                            class="btn btn-danger">All Archived</button></a>
+                                    {{-- <a href="{{ url('/FOmunregistered') }}"><button type="button"
+                                            class="btn btn-danger">All Unregistered</button></a> --}}
+                                </div>
                             </div>
 
                             <div class="row">
@@ -191,51 +191,56 @@
                                                 </thead>
                                                 <tbody style="font-size: 13px">
                                                     @foreach ($data as $item)
-                                                        <tr>
-                                                            @if ($item->name_of_org === null)
-                                                                <td style="color:red">no data</td>
-                                                            @else
-                                                                <td>{{ $item->name_of_org }}</td>
-                                                            @endif
+                                                        @if ($item->status != 'ARCHIVED')
+                                                            <tr>
+                                                                @if ($item->name_of_org === null)
+                                                                    <td style="color:red">no data</td>
+                                                                @else
+                                                                    <td>{{ $item->name_of_org }}</td>
+                                                                @endif
 
-                                                            @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
-                                                                <td style="color:red">no data</td>
-                                                            @else
-                                                                <td>{{ $item->add_barangay }}, {{ $item->add_city }},
-                                                                    {{ $item->add_province }}</td>
-                                                            @endif
+                                                                @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                    <td style="color:red">no data</td>
+                                                                @else
+                                                                    <td>{{ $item->add_barangay }},
+                                                                        {{ $item->add_city }},
+                                                                        {{ $item->add_province }}</td>
+                                                                @endif
 
-                                                            @if ($item->sector_rep === null)
-                                                                <td style="color:red">no data</td>
-                                                            @else
-                                                                <td>{{ $item->sector_rep }} -
-                                                                    {{ $item->sector_rep_yes }}</td>
-                                                            @endif
+                                                                @if ($item->sector_rep === null)
+                                                                    <td style="color:red">no data</td>
+                                                                @else
+                                                                    <td>{{ $item->sector_rep }} -
+                                                                        {{ $item->sector_rep_yes }}</td>
+                                                                @endif
 
-                                                            @if ($item->status_of_reg === null || $item->status_of_reg_yes === null)
-                                                                <td style="color:red">no data</td>
-                                                            @else
-                                                                <td>{{ $item->status_of_reg }} -
-                                                                    {{ $item->status_of_reg_yes }}</td>
-                                                            @endif
+                                                                @if ($item->status_of_reg === null || $item->status_of_reg_yes === null)
+                                                                    <td style="color:red">no data</td>
+                                                                @else
+                                                                    <td>{{ $item->status_of_reg }} -
+                                                                        {{ $item->status_of_reg_yes }}</td>
+                                                                @endif
 
-                                                            @if ($item->status_of_accre === null || $item->status_of_accre_yes === null)
-                                                                <td style="color:red">no data</td>
-                                                            @else
-                                                                <td>{{ $item->status_of_accre }} -
-                                                                    {{ $item->status_of_reg_yes }}</td>
-                                                            @endif
-                                                            {{-- <td><b>REGISTERED</b></td> --}}
-                                                            <td
-                                                                style=" display: flex; justify-content: space-between;">
-                                                                <a href="{{ url ('/viewMunAssociation/' . $item->id)}}" class="btn btn-success"><i
-                                                                        class="ti-eye"></i></a>
-                                                                <a href="" class="btn btn-warning"><i
-                                                                        class="ti-pencil"></i></a>
-                                                                <a href="" class="btn btn-danger"><i
-                                                                        class="ti-trash"></i></a>
-                                                            </td>
-                                                        </tr>
+                                                                @if ($item->status_of_accre === null || $item->status_of_accre_yes === null)
+                                                                    <td style="color:red">no data</td>
+                                                                @else
+                                                                    <td>{{ $item->status_of_accre }} -
+                                                                        {{ $item->status_of_reg_yes }}</td>
+                                                                @endif
+                                                                {{-- <td><b>REGISTERED</b></td> --}}
+                                                                <td
+                                                                    style=" display: flex; justify-content: space-between;">
+                                                                    <a href="{{ url('/viewMunAssociation/' . $item->id) }}"
+                                                                        class="btn btn-success"><i
+                                                                            class="ti-eye"></i></a>
+                                                                    <a href="" class="btn btn-warning"><i
+                                                                            class="ti-pencil"></i></a>
+                                                                    <a href="{{ url('/archived_MunAss/' . $item->id) }}"
+                                                                        class="btn btn-danger"><i
+                                                                            class="ti-trash"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        @endif
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -259,9 +264,9 @@
                                                     </thead>
                                                     <tbody style="font-size: 13px">
                                                         @foreach ($data1 as $item)
+                                                        @if ($item->status != 'ARCHIVED')
+
                                                             <tr>
-
-
                                                                 @if ($item->name_of_coop === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
@@ -305,14 +310,16 @@
 
                                                                 <td
                                                                     style=" display: flex; justify-content: space-between;">
-                                                                    <a href="{{ url ('/viewCooperative/'. $item->id)}}" class="btn btn-success"><i
+                                                                    <a href="{{ url('/viewCooperative/' . $item->id) }}"
+                                                                        class="btn btn-success"><i
                                                                             class="ti-eye"></i></a>
                                                                     <a href="#!" class="btn btn-warning"><i
                                                                             class="ti-pencil"></i></a>
-                                                                    <a href="#!" class="btn btn-danger"><i
+                                                                    <a href="{{ url('/archived_MunCoop/' . $item->id) }}" class="btn btn-danger"><i
                                                                             class="ti-trash"></i></a>
                                                                 </td>
                                                             </tr>
+                                                            @endif
                                                         @endforeach
                                                     </tbody>
                                                 </table>

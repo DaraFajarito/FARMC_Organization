@@ -203,7 +203,7 @@ Route::get('/L4Completedtbl',[ProfileForm_Controller::class, 'display_level4_com
 //LEVEL FIVE DATA//
 // ---------------------------------------------------------------------------------------//
 
-//Sustainability Mechanism
+//Model of Excellence
 Route::get('/modelExcellence/{id}', [ProfileForm_Controller::class,'display_level5']);
 Route::get('/level5', [ProfileForm_Controller::class,'level5Count']);
 Route::put('/add-modelExcellence/{id}', [ProfileForm_Controller::class,'addmodelExcellence']);
@@ -241,21 +241,40 @@ Route::get('/membership_archived/{id}', [FarmcMembership_Controller::class, 'mov
 
 Route::get('/FOMunicipal', [FisherfolkOrg_category::class,'display_municipal']);
 Route::get( '/viewMunAssociation/{id}', [FisherfolkOrg_category::class,'display_MunAssociation_viewform']);
+Route::get('/archived_Mun',[FisherfolkOrg_category::class, 'display_Mun_archived']);
+Route::get('/archived_MunAss/{id}', [FisherfolkOrg_category::class, 'moveToMunAss_archived']);
+Route::get('/archived_MunCoop/{id}', [FisherfolkOrg_category::class, 'moveToMunCoop_archived']);
 
 Route::get('/FOFishworker', [FisherfolkOrg_category::class,'display_fishworker']);
 Route::get('/viewFishAssociation/{id}', [FisherfolkOrg_category::class,'display_Fisher_Association_viewform']);
+Route::get('/archived_Fish',[FisherfolkOrg_category::class, 'display_Fish_archived']);
+Route::get('/archived_FishAss/{id}', [FisherfolkOrg_category::class, 'moveToFishAss_archived']);
+Route::get('/archived_FishCoop/{id}', [FisherfolkOrg_category::class, 'moveToFishCoop_archived']);
 
 Route::get('/FOCommercial', [FisherfolkOrg_category::class,'display_commercial']);
 Route::get('/viewComAssociation/{id}', [FisherfolkOrg_category::class,'display_Com_Association_viewform']);
+Route::get('/archived_Com',[FisherfolkOrg_category::class, 'display_Com_archived']);
+Route::get('/archived_ComAss/{id}', [FisherfolkOrg_category::class, 'moveToComAss_archived']);
+Route::get('/archived_ComCoop/{id}', [FisherfolkOrg_category::class, 'moveToComCoop_archived']);
 
 Route::get('/FOWomenF', [FisherfolkOrg_category::class,'display_women']);
 Route::get('/viewWomAssociation/{id}', [FisherfolkOrg_category::class,'display_Wom_Association_viewform']);
+Route::get('/archived_Women',[FisherfolkOrg_category::class, 'display_Women_archived']);
+Route::get('/archived_WomenAss/{id}', [FisherfolkOrg_category::class, 'moveToWomenAss_archived']);
+Route::get('/archived_WomenCoop/{id}', [FisherfolkOrg_category::class, 'moveToWomenCoop_archived']);
+
 
 Route::get('/FOYouth',  [FisherfolkOrg_category::class,'display_youth']);
 Route::get('/viewYouthAssociation/{id}', [FisherfolkOrg_category::class,'display_Youth_Association_viewform']);
+Route::get('/archived_Youth',[FisherfolkOrg_category::class, 'display_Youth_archived']);
+Route::get('/archived_YouthAss/{id}', [FisherfolkOrg_category::class, 'moveToYouthAss_archived']);
+Route::get('/archived_YouthCoop/{id}', [FisherfolkOrg_category::class, 'moveToYouthCoop_archived']);
 
 Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
 Route::get('/viewIPAssociation/{id}', [FisherfolkOrg_category::class,'display_IPs_Association_viewform']);
+Route::get('/archived_IP',[FisherfolkOrg_category::class, 'display_IP_archived']);
+Route::get('/archived_IPAss/{id}', [FisherfolkOrg_category::class, 'moveToIPsAss_archived']);
+Route::get('/archived_IPCoop/{id}', [FisherfolkOrg_category::class, 'moveToIPsCoop_archived']);
 
 
 Route::get('/viewCooperative/{id}', [FisherfolkOrg_category::class,'display_coop_viewform']);
@@ -298,7 +317,6 @@ Route::post('/Form2_add_ListofMem/{id}', [FC_ListofMem_Controller::class,'add_li
 
 
 // ---------------------------------------------------------------------------------------------------//
-Route::view('/FOmregistered', 'Fisherfolk_Organization.Municipal.registeredtbl');
 Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredtbl');
 // ---------------------------------------------------------------------------------------------------//
 

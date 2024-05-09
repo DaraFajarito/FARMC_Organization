@@ -89,8 +89,8 @@
                             </li>
                         </ol>
                         <br>
-                        <a href="{{ url('/Form2_add_Membership') }}" class="btn btn-secondary"> <i
-                                class="icon-arrow-left"></i> Back</a>
+                        {{-- <a href="{{ url('/Form2_add_Membership') }}" class="btn btn-secondary"> <i
+                                class="icon-arrow-left"></i> Back</a> --}}
                     </div>
                 </div>
                 @foreach ($members as $memb)

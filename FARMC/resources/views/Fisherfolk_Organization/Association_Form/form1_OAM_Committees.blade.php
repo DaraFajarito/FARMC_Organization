@@ -102,32 +102,20 @@
                                                 <label for="" class="block form-control-label"></em></label>
                                                 <label>4.3 Committees</label>
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-12">
                                                         <div class="d-flex align-items-center" style="width: 300px">
-                                                            <select name="category" id="category"
-                                                                class="js-example-basic-single form-control">
+                                                            <select name="category" id="category" class="js-example-basic-single form-control" onchange="toggleOtherTextbox()">
                                                                 <optgroup label="Committee">
-                                                                    <option value="Membership Committee">Membership
-                                                                        Committee
-                                                                    </option>
-                                                                    <option value="Committee on Education and Research">
-                                                                        Committee on Education and Research</option>
-                                                                    <option value="Election Committee">Election
-                                                                        Committee
-                                                                    </option>
-                                                                    <option value="Audit Committee">Audit Committee
-                                                                    </option>
-                                                                    <option onchange="toggleOtherTextbox()"
-                                                                        value="Others: please specify">Others:
-                                                                        please
-                                                                        specify</option>
+                                                                    <option value="Membership Committee">Membership Committee</option>
+                                                                    <option value="Committee on Education and Research">Committee on Education and Research</option>
+                                                                    <option value="Election Committee">Election Committee</option>
+                                                                    <option value="Audit Committee">Audit Committee</option>
+                                                                    <option value="Others: please specify">Others: please specify</option>
                                                                 </optgroup>
                                                             </select>
                                                         </div>
                                                         <br>
-                                                        <input type="text" id="otherText" style="width:300px"
-                                                            name="other_cat" style="display: none;"
-                                                            placeholder="Please specify" class="form-control">
+                                                        <input type="text" id="otherText" style="width:300px; display:none;" name="other_cat" placeholder="Please specify" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -243,12 +231,12 @@
 
     <script>
         function toggleOtherTextbox() {
-            var category = document.getElementById("category");
-            var otherText = document.getElementById("otherText");
-            if (category.value === "Others: please specify") {
-                otherText.style.display = "block";
+            var selectElement = document.getElementById("category");
+            var otherTextElement = document.getElementById("otherText");
+            if (selectElement.value === "Others: please specify") {
+                otherTextElement.style.display = "block";
             } else {
-                otherText.style.display = "none";
+                otherTextElement.style.display = "none";
             }
         }
     </script>
