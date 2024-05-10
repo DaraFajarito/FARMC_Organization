@@ -1324,4 +1324,44 @@ class FDP_PersonalInfo_Controller extends Controller
             return redirect()->back()->with('error', 'Failed to update. No changes were made.');
         }
     }
+
+    public function display_all_RFDPNational()
+    {
+
+        $RFDPviewNational = FDP_PersonalInfo_Model::whereNull('status')
+        ->where('involvement_mdo', 'National Fisherfolk Director')
+        ->get();
+
+        return view('Fisherfolk_Directors_Program.National_FD.RFDP_viewallNational', compact('RFDPviewNational'));
+    }
+
+    public function display_all_RFDPProvincial()
+    {
+
+        $RFDPviewProvincial = FDP_PersonalInfo_Model::whereNull('status')
+        ->where('involvement_mdo', 'Provincial Fisherfolk Representative')
+        ->get();
+
+        return view('Fisherfolk_Directors_Program.Provincial_FR.RFDP_viewallProvincial', compact('RFDPviewProvincial'));
+    }
+
+    public function display_all_RFDPRegionalFD()
+    {
+
+        $RFDPviewRegionalFD = FDP_PersonalInfo_Model::whereNull('status')
+        ->where('involvement_mdo', 'Regional Fisherfolk Director')
+        ->get();
+
+        return view('Fisherfolk_Directors_Program.Regional_FD.RFDP_viewallRegionalFD', compact('RFDPviewRegionalFD'));
+    }
+    public function display_all_RFDPRegionalFR()
+    {
+
+        $RFDPviewRegionalFR = FDP_PersonalInfo_Model::whereNull('status')
+        ->where('involvement_mdo', 'Regional Fisherfolk Representative')
+        ->get();
+
+        return view('Fisherfolk_Directors_Program.Regional_FR.RFDP_viewallRegionalFR', compact('RFDPviewRegionalFR'));
+    }
+
 }

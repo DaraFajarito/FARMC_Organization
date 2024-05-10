@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>FARMC Membership Overview | BFAR - FARMC</title>
+    <title>Provincial RF | Fisherfolk Directors Program | View All | BFAR - FARMC</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <meta charset="utf-8">
@@ -64,24 +64,24 @@
                     </a>
                     <span style="display: inline-block; vertical-align: middle; margin-top:10px">
                         <div>
-                            <h4 style="margin: 0;">FARMC Membership</h4>
+                            <h4 style="margin: 0;">Fisherfolk Directors Program</h4>
                         </div>
                     </span>
 
                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                         <li class="breadcrumb-item"><a href="#!"><i class="icofont icofont-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!"> FARMC STRENGTHENING </a>
+                        <li class="breadcrumb-item"><a href="#!"> Fisherfolk Directors Program </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">FARMC Membership</a>
+                        <li class="breadcrumb-item"><a href="#!"> Provincial Fisherfolk Representative </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">All Members</a>
+                        <li class="breadcrumb-item"><a href="#!">All Directors</a>
                         </li>
                     </ol>
                     <br>
                     <div style="display: flex;">
-                        <a href="{{ url('/farmc_membership') }}" class="btn btn-secondary"> <i
-                                class="icon-arrow-left"></i> Back</a>
+                        <a href="{{ url('/provincialFR') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                            Back</a>
 
                     </div>
                 </div>
@@ -121,11 +121,12 @@
                             <br>
                             <ul class="nav nav-tabs  tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">FARMC
+                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">RF
+                                        Directors
                                         Members</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">FARMC
+                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">RFD
                                         Organizations</a>
                                 </li>
                             </ul>
@@ -140,82 +141,36 @@
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Address</th>
-                                                <th>Landline Number</th>
-                                                <th>Mobile Number</th>
-                                                <th>Email</th>
                                                 <th>Civil Status</th>
                                                 <th>Gender</th>
                                                 <th>Birthdate</th>
                                                 <th>Age</th>
-                                                <th hidden>Status</th>
+                                                <th>4p's</th>
+                                                <th>Cultural Affliation</th>
+                                                {{-- <th hidden>Status</th> --}}
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody style="font-size:11px">
-                                            @foreach ($all_mem as $item)
+                                            @foreach ($RFDPviewProvincial as $item)
                                                 @if ($item->status != 'ARCHIVED')
                                                     <tr>
-                                                        @if ($item->name === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->name }}</td>
-                                                        @endif
-
-                                                        @if ($item->address === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->address }}</td>
-                                                        @endif
-
-                                                        @if ($item->landline_no === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->landline_no }}</td>
-                                                        @endif
-
-                                                        @if ($item->mobile_no === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->mobile_no }}</td>
-                                                        @endif
-
-                                                        @if ($item->email === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->email }}</td>
-                                                        @endif
-
-                                                        @if ($item->civil_status === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->civil_status }}</td>
-                                                        @endif
-
-                                                        @if ($item->gender === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->gender }}</td>
-                                                        @endif
-
-                                                        @if ($item->birthdate === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->birthdate }}</td>
-                                                        @endif
-
-                                                        @if ($item->age === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->age }}</td>
-                                                        @endif
-
-                                                        <td hidden>{{ $item->status }}</td>
+                                                        <td>{{ $item->fam_name }}, {{ $item->given_name }}
+                                                            {{ $item->mid_name }} {{ $item->ext }} </td>
+                                                        <td>{{ $item->add_barangay }}, {{ $item->add_city }},
+                                                            {{ $item->add_province }}</td>
+                                                        <td>{{ $item->civil_status }}</td>
+                                                        <td>{{ $item->gender }}</td>
+                                                        <td>{{ $item->birthdate }}</td>
+                                                        <td>{{ $item->age }}</td>
+                                                        <td>{{ $item->fourps }}</td>
+                                                        <td>{{ $item->cul_af }} - {{ $item->cul_af_yes }}</td>
                                                         <td style=" display: flex; justify-content: space-between;">
-                                                            <a href="{{ url('/FARMCViewform/' . $item->id) }}"
+                                                            <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
                                                                 class="btn btn-success"><i class="ti-eye"></i></a>
-                                                            <a href="{{ url('/membership_edit/' . $item->id) }}"
+                                                            <a href="{{ url('/rfdp_edit/' . $item->id) }}"
                                                                 class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                            <a href="{{ url('/membership_archived/' . $item->id) }}"
+                                                            <a href="{{ url('/archived_NFD/' . $item->id) }}"
                                                                 class="btn btn-danger"><i class="ti-trash"></i></a>
                                                         </td>
                                                     </tr>
@@ -234,83 +189,37 @@
                                         <thead style="font-size:11px">
                                             <tr>
                                                 <th>Member's Name</th>
-                                                <th>Name of Association / Organization / Cooperative</th>
-                                                <th>Address of Association / Organization / Cooperative</th>
-                                                <th>Composition of Membership</th>
-                                                <th>Registration of Association</th>
-                                                <th>LGU Accreditation</th>
+                                                <th>Name of Association</th>
+                                                <th>Address of Association</th>
                                                 <th>Officer of Association</th>
-                                                <th>Involvement in Mangingisdang Director Program</th>
-                                                <th hidden>Status</th>
+                                                <th>Registration Agency</th>
+                                                <th>Registration Information</th>
+                                                <th>Composition of Organization</th>
+                                                <th>Type of Organization</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody style="font-size:12px">
-                                            @foreach ($all_mem as $item)
+                                            @foreach ($RFDPviewProvincial as $item)
                                                 @if ($item->status != 'ARCHIVED')
                                                     <tr>
-                                                        @if ($item->name === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->name }}</td>
-                                                        @endif
 
-                                                        @if ($item->org_mem_name === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->org_mem_name }}</td>
-                                                        @endif
-
-                                                        @if ($item->add_acc === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->add_acc }}</td>
-                                                        @endif
-
-                                                        @if ($item->comp_mem === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->comp_mem }}</td>
-                                                        @endif
-
-                                                        @if ($item->reg_ass === null)
-                                                            <td style="color:red">no data</td>
-                                                        @elseif ($item->reg_ass === 'No')
-                                                            <td>No</td>
-                                                        @elseif ($item->reg_ass === 'Yes')
-                                                            <td>Yes , {{ $item->reg_ass_yes }}</td>
-                                                        @endif
-
-                                                        @if ($item->lgu_accre === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->lgu_accre }}</td>
-                                                        @endif
-
-
-                                                        @if ($item->officer_ass === null)
-                                                            <td style="color:red">no data</td>
-                                                        @elseif ($item->officer_ass === 'No')
-                                                            <td>No , {{ $item->position }}</td>
-                                                        @elseif ($item->officer_ass === 'Yes')
-                                                            <td>Yes , {{ $item->position }}</td>
-                                                        @endif
-
-
-                                                        @if ($item->involvement_mdo === null)
-                                                            <td style="color:red">no data</td>
-                                                        @elseif ($item->involvement_mdo !== null && $item->year1 !== null && $item->year2 !== null && $item->year3 !== null)
-                                                            <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
-                                                                {{ $item->year2 }} {{ $item->year3 }}</td>
-                                                        @else
-                                                            <td>{{ $item->involvement_mdo }}, {{ $item->year1 }}
-                                                                {{ $item->year2 }} {{ $item->year3 }}</td>
-                                                        @endif
-                                                        <td hidden>{{ $item->status }}</td>
+                                                        <td>{{ $item->fam_name }}, {{ $item->given_name }}
+                                                            {{ $item->mid_name }} {{ $item->ext }}</td>
+                                                        <td>{{ $item->name_ass }}</td>
+                                                        <td>{{ $item->add_ass }}</td>
+                                                        <td>{{ $item->officer_ass }} - {{ $item->officer_ass_yes }}
+                                                        </td>
+                                                        <td>{{ $item->reg_agency }} - {{ $item->reg_agency_others }}
+                                                        </td>
+                                                        <td>{{ $item->reg_info_no }}</td>
+                                                        <td>{{ $item->comp_mem }} - {{ $item->comp_mem_others }}</td>
+                                                        <td>{{ $item->type_of_org }}</td>
 
                                                         <td style="text-align: center;">
-                                                            <a href="{{ url('/FARMCViewform/' . $item->id) }}"
-                                                                class="btn btn-success"><i class="ti-eye"></i> &nbsp;
+                                                            <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
+                                                                class="btn btn-success"><i class="ti-eye"></i>
+                                                                &nbsp;
                                                                 View</a>
                                                         </td>
                                                     </tr>
@@ -354,7 +263,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             var table = $('#FARMC').DataTable({
                 dom: 'Bfrtip',
@@ -363,38 +272,41 @@
             });
 
             // Add filtering for gender
-            // Add filtering for gender
             $('#gender-filter').on('change', function() {
                 var selectedGender = this.value;
                 if (selectedGender === '') {
-                    table.column(6).search('').draw();
+                    table.column(3).search('').draw();
                 } else {
-                    table.column(6).search('^' + selectedGender + '$', true, false).draw();
+                    table.column(3).search('^' + selectedGender + '$', true, false).draw();
                 }
             });
-
 
             // Add filtering for age range
             $('#age-filter').on('change', function() {
                 var ageRange = this.value;
                 if (ageRange === '') {
-                    table.column(8).search('').draw();
+                    table.column(5).search('').draw();
                 } else if (ageRange === '0-18') {
-                    table.column(8).search('^((0|1[0-8])\\b)', true, false).draw();
+                    table.column(5).search('^((0|1[0-8])\\b)', true, false).draw();
                 } else if (ageRange === '19-25') {
-                    table.column(8).search('^((1[9-9])|(2[0-5])\\b)', true, false).draw();
+                    table.column(5).search('^((1[9-9])|(2[0-5])\\b)', true, false).draw();
                 } else if (ageRange === '26-35') {
-                    table.column(8).search('^((2[6-9])|(3[0-5])\\b)', true, false).draw();
+                    table.column(5).search('^((2[6-9])|(3[0-5])\\b)', true, false).draw();
                 } else if (ageRange === '36-50') {
-                    table.column(8).search('^((3[6-9])|(4[0-9])|(50)\\b)', true, false).draw();
+                    table.column(5).search('^((3[6-9])|(4[0-9])|(50)\\b)', true, false).draw();
                 } else if (ageRange === '50+') {
-                    table.column(8).search('(5[1-9]|[6-9]\\d|\\d{3,})', true, false).draw();
+                    table.column(5).search('(5[1-9]|[6-9]\\d|\\d{3,})', true, false).draw();
                 }
             });
 
             // Add filtering for civil status
             $('#civil-status-filter').on('change', function() {
-                table.column(5).search(this.value).draw();
+                var selectedStatus = this.value;
+                if (selectedStatus === '') {
+                    table.column(2).search('').draw();
+                } else {
+                    table.column(2).search(selectedStatus).draw();
+                }
             });
 
             // Reset all filters button

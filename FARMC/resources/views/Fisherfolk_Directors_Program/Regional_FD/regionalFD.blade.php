@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>FARMC Membership Overview | BFAR - FARMC</title>
+    <title>Regional Fisherfolk Director Overview | BFAR - FARMC</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <meta charset="utf-8">
@@ -47,7 +47,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#!"> Fisherfolk Directors Program</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="tabs.html">National Fisherfolk Director</a>
+                        <li class="breadcrumb-item"><a href="tabs.html">Regional Fisherfolk Director</a>
                         </li>
                     </ol>
 
@@ -153,7 +153,7 @@
             <div class="col-md-12" style="margin-bottom: 30px;">
                 <a href="{{ url('/archived_RFD') }}"><button type="button" class="btn btn-warning"><i
                             class="ti-archive"></i> Archived Members</button></a>
-                <a href="{{ url('/viewall_members') }}"><button type="button" class="btn btn-primary"
+                <a href="{{ url('/viewall_RegionalFD') }}"><button type="button" class="btn btn-primary"
                         style="margin-left: 10px">View All
                         Members</button></a>
             </div>
@@ -164,11 +164,11 @@
                             <ul class="nav nav-tabs  tabs" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#members"
-                                        role="tab">FARMC
+                                        role="tab">RF Directors
                                         Members</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">FARMC
+                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">RFD
                                         Organizations</a>
                                 </li>
                             </ul>
