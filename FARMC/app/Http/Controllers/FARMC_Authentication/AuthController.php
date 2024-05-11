@@ -24,6 +24,7 @@ class AuthController extends Controller
             'username.required' => 'Username is required',
             'password.required' => 'Password is required',
         ];
+
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
@@ -36,10 +37,16 @@ class AuthController extends Controller
         $user = DB::table('auth')->where('username', $username)->first();
 
         if (!$user || !Hash::check($password, $user->password)) {
+            // Display SweetAlert for invalid credentials
             return redirect()->back()->withErrors(['message' => 'Invalid credentials'])->withInput();
         }
 
-        return redirect('/dash')->with('success', 'Welcome back!');
+
+    // Set session variable indicating successful login
+    session(['login_success' => true]);
+
+    // Display SweetAlert on successful login
+    return redirect('/dash')->with('success', 'Welcome back!');
     }
 
 
@@ -94,7 +101,7 @@ class AuthController extends Controller
 
         return redirect('/')->with('success', 'Password reset successfully.');
     }
-    
+
     public function logout()
     {
         Auth::logout();

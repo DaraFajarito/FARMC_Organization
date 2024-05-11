@@ -215,8 +215,7 @@
                                                                             <td style="color:red"><b>INCOMPLETE</b>
                                                                             </td>
                                                                         @endif
-                                                                        <td
-                                                                            style=" display: flex; justify-content:">
+                                                                        <td style=" display: flex; justify-content:">
                                                                             <a style="margin-left: 5px;"
                                                                                 href="{{ url('/L1Viewform/' . $item->id) }}"
                                                                                 class="btn btn-success"><i
@@ -266,7 +265,8 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>{{ $item->profileForm->municipality }}</td>
+                                                                            <td>{{ $item->profileForm->municipality }}
+                                                                            </td>
                                                                         @endif
                                                                         <td>{{ $item->mfdp }}</td>
                                                                         <td>{{ $item->mfo }}</td>
@@ -277,8 +277,7 @@
                                                                             <td style="color:red"><b>INCOMPLETE</b>
                                                                             </td>
                                                                         @endif
-                                                                        <td
-                                                                            style=" display: flex; justify-content:">
+                                                                        <td style=" display: flex; justify-content:">
                                                                             <a style="margin-left: 5px;"
                                                                                 href="{{ url('/L2Viewform/' . $item->profileForm_id) }}"
                                                                                 class="btn btn-success"><i
@@ -327,7 +326,8 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>{{ $item->profileForm->municipality }}</td>
+                                                                            <td>{{ $item->profileForm->municipality }}
+                                                                            </td>
                                                                         @endif
 
 
@@ -365,8 +365,7 @@
                                                                             </td>
                                                                         @endif
 
-                                                                        <td
-                                                                            style=" display: flex; justify-content:">
+                                                                        <td style=" display: flex; justify-content:">
                                                                             <a style="margin-left: 5px;"
                                                                                 href="{{ url('/L3Viewform/' . $item->profileForm_id) }}"
                                                                                 class="btn btn-success"><i
@@ -415,7 +414,8 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>{{ $item->profileForm->municipality }}</td>
+                                                                            <td>{{ $item->profileForm->municipality }}
+                                                                            </td>
                                                                         @endif
                                                                         @if ($item->data_training === 'No')
                                                                             <td> No </td>
@@ -437,8 +437,7 @@
                                                                             </td>
                                                                         @endif
 
-                                                                        <td
-                                                                            style=" display: flex; justify-content:">
+                                                                        <td style=" display: flex; justify-content:">
                                                                             <a style="margin-left: 5px;"
                                                                                 href="{{ url('/L4Viewform/' . $item->profileForm_id) }}"
                                                                                 class="btn btn-success"><i
@@ -487,7 +486,8 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>{{ $item->profileForm->municipality }}</td>
+                                                                            <td>{{ $item->profileForm->municipality }}
+                                                                            </td>
                                                                         @endif
                                                                         @if ($item->rec_list1 === null)
                                                                             <td><span style="color: red;"> no
@@ -513,8 +513,7 @@
                                                                             </td>
                                                                         @endif
 
-                                                                        <td
-                                                                            style=" display: flex; justify-content:">
+                                                                        <td style=" display: flex; justify-content:">
                                                                             <a style="margin-left: 5px;"
                                                                                 href="{{ url('/L5Viewform/' . $item->profileForm_id) }}"
                                                                                 class="btn btn-success"><i
@@ -600,6 +599,8 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
     <!-- JavaScript -->
@@ -623,6 +624,17 @@
             });
         });
     </script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
 
 </body>
 

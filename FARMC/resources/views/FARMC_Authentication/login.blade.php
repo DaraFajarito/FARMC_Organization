@@ -10,36 +10,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="codedthemes">
-        <meta name="keywords" content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+        <meta name="keywords"
+            content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
         <meta name="author" content="codedthemes">
 
         <!-- Favicon icon -->
-        <link rel="shortcut icon" href="{{ asset ('assets/images/favicon.png') }}" type="image/x-icon">
-        <link rel="icon" href="{{ asset ('assets/images/favicon.ico') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
 
         <!-- Google font-->
         <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
 
         <!-- Font Awesome -->
-        <link href="{{ asset ('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
         <!--ico Fonts-->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/icon/icofont/css/icofont.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/icon/icofont/css/icofont.css') }}">
 
         <!-- Required Fremwork -->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 
         <!-- waves css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/plugins/Waves/waves.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/Waves/waves.min.css') }}">
 
         <!-- Style.css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
 
         <!-- Responsive.css-->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/responsive.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
         <!--color css-->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/color/color-1.min.css') }}" id="color" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color/color-1.min.css') }}" id="color" />
 
     </head>
 
@@ -54,7 +55,8 @@
                             <form method="post" action="{{ url('/login') }}" class="md-float-material">
                                 @csrf <!-- CSRF protection -->
                                 <div class="text-center">
-                                    <img src="{{ asset ('assets/images/Logo_BFAR.png') }}" style="width:120px; height: 80px" alt="logo">
+                                    <img src="{{ asset('assets/images/Logo_BFAR.png') }}"
+                                        style="width:120px; height: 80px" alt="logo">
                                 </div>
                                 <h3 class="text-center txt-primary">
                                     Sign In to your account
@@ -62,32 +64,41 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="md-input-wrapper">
-                                            <input type="text" class="md-form-control" id="username" name="username" value="{{ old('username') }}">
+                                            <input type="text" class="md-form-control" id="username" name="username"
+                                                value="{{ old('username') }}">
                                             <label>Username</label>
                                             @error('username')
-                                            <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="md-input-wrapper">
-                                            <input type="password" class="md-form-control" id="password" name="password">
+                                            <input type="password" class="md-form-control" id="password"
+                                                name="password">
                                             <label>Password</label>
                                             @error('password')
-                                            <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
+
                                 </div>
+                                <br>
                                 <div class="row">
                                     <div class="col-xs-10 offset-xs-1">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                                        <button type="submit"
+                                            class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
                                     </div>
                                 </div>
                                 <!-- <div class="card-footer"> -->
                                 <div class="col-sm-12 col-xs-12 forgot-phone text-center">
-                                    <a href="{{ url('/forgetpass') }}" class=" f-w-600"> Forget Password?</a>
+                                 <label>Don't have an account?</label><a href="{{ url('/registeracc') }}"><span style="color:#2196F3"> Register now</span></a>
                                 </div>
+                                <div class="col-sm-12 col-xs-12 forgot-phone text-center">
+                                    <a href="{{ url('/forgetpass') }}"><span style="color:#2196F3"> Forget Password? </span></a>
+                                </div>
+
                             </form>
 
                             <!-- end of form -->
@@ -102,18 +113,30 @@
         </section>
 
         <!-- Required Jqurey -->
-        <script src="{{ asset ('assets/plugins/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset ('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/tether/dist/js/tether.min.js') }}"></script>
 
         <!-- Required Fremwork -->
-        <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
         <!-- waves effects.js -->
-        <script src="{{ asset ('assets/plugins/Waves/waves.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/Waves/waves.min.js') }}"></script>
         <!-- Custom js -->
-        <script type="text/javascript" src="{{ asset ('assets/pages/elements.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/pages/elements.js') }}"></script>
 
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        @if ($errors->has('message'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid credentials',
+                text: '{{ $errors->first('message') }}',
+            });
+        </script>
+    @endif
 
 
     </body>

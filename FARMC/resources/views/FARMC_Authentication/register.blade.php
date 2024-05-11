@@ -62,7 +62,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
-                                        <input type="text" class="md-form-control" id="username" name="username" placeholder="Enter username" value="{{ old('username') }}">
+                                        <input type="text" class="md-form-control" id="username" name="username" placeholder="" value="{{ old('username') }}">
                                         <label>Username</label>
                                         @error('username')
                                         <span class="text-danger">{{ $message }}</span>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
-                                        <input type="password" class="md-form-control" id="password" name="password" placeholder="Enter password">
+                                        <input type="password" class="md-form-control" id="password" name="password" placeholder="">
                                         <label>Password</label>
                                         @error('password')
                                         <span class="text-danger">{{ $message }}</span>
@@ -80,11 +80,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-xs-10 offset-xs-1">
                                     <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">REGISTER</button>
                                 </div>
                             </div>
+
+                            <div class="col-sm-12 col-xs-12 forgot-phone text-center">
+                                <label>Already have an Account?</label><a href="{{ url('/') }}"><span style="color:#2196F3"> Login</span></a>
+                               </div>
                         </form>
                         <!-- end of form -->
                     </div>

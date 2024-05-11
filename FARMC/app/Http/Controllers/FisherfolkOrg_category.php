@@ -13,7 +13,7 @@ use App\Models\FO_ListofMem_Model;
 use App\Models\FO_OAM_BoardofDir_Model;
 use App\Models\FO_OAM_Committees_Model;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Collection;
 
 class FisherfolkOrg_category extends Controller
 {
@@ -116,6 +116,16 @@ class FisherfolkOrg_category extends Controller
         $totalMembersCount = $allfonamesCount + $allfcnamesCount;
 
 
+        $countAssName =  FisherfolkOrganization_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Municipal')->count('name_of_org');
+
+        $countCoopName = FC_GenInfo_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Municipal')->count('name_of_coop');
+
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
 
         $allFOMembers = FO_ListofMem_Model::whereHas('association', function ($query) {
@@ -211,7 +221,7 @@ class FisherfolkOrg_category extends Controller
         $dataGen = array_values($combinedGenderCount);
 
 
-        return view('Fisherfolk_Organization.Municipal.municipal', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen'));
+        return view('Fisherfolk_Organization.Municipal.municipal', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen', 'countAssName', 'countCoopName'));
     }
 
 
@@ -326,6 +336,17 @@ class FisherfolkOrg_category extends Controller
         $totalMembersCount = $allfonamesCount + $allfcnamesCount;
 
 
+        $countAssName =  FisherfolkOrganization_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Fishworker')->count('name_of_org');
+
+        $countCoopName = FC_GenInfo_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Fishworker')->count('name_of_coop');
+
+
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
 
         $allFOMembers = FO_ListofMem_Model::whereHas('association', function ($query) {
@@ -420,7 +441,7 @@ class FisherfolkOrg_category extends Controller
         $labelsGen = array_keys($combinedGenderCount);
         $dataGen = array_values($combinedGenderCount);
 
-        return view('Fisherfolk_Organization.Fishworker.fishworker', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen'));
+        return view('Fisherfolk_Organization.Fishworker.fishworker', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen', 'countAssName', 'countCoopName'));
     }
 
     public function display_Fisher_Association_viewform($id)
@@ -532,6 +553,16 @@ class FisherfolkOrg_category extends Controller
         $totalMembersCount = $allfonamesCount + $allfcnamesCount;
 
 
+        $countAssName =  FisherfolkOrganization_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Commercial')->count('name_of_org');
+
+        $countCoopName = FC_GenInfo_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Commercial')->count('name_of_coop');
+
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
 
         $allFOMembers = FO_ListofMem_Model::whereHas('association', function ($query) {
@@ -626,7 +657,7 @@ class FisherfolkOrg_category extends Controller
         $labelsGen = array_keys($combinedGenderCount);
         $dataGen = array_values($combinedGenderCount);
 
-        return view('Fisherfolk_Organization.Commercial.commercial', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen'));
+        return view('Fisherfolk_Organization.Commercial.commercial', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen', 'countAssName', 'countCoopName'));
     }
 
     public function display_Com_Association_viewform($id)
@@ -737,6 +768,16 @@ class FisherfolkOrg_category extends Controller
 
         $totalMembersCount = $allfonamesCount + $allfcnamesCount;
 
+        $countAssName =  FisherfolkOrganization_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Women')->count('name_of_org');
+
+        $countCoopName = FC_GenInfo_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Women')->count('name_of_coop');
+
 
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
 
@@ -832,7 +873,7 @@ class FisherfolkOrg_category extends Controller
         $labelsGen = array_keys($combinedGenderCount);
         $dataGen = array_values($combinedGenderCount);
 
-        return view('Fisherfolk_Organization.Women_Fisherfolk.women_fisherfolk', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen'));
+        return view('Fisherfolk_Organization.Women_Fisherfolk.women_fisherfolk', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen', 'countAssName', 'countCoopName'));
     }
 
     public function display_Wom_Association_viewform($id)
@@ -944,6 +985,16 @@ class FisherfolkOrg_category extends Controller
         $totalMembersCount = $allfonamesCount + $allfcnamesCount;
 
 
+        $countAssName =  FisherfolkOrganization_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Youth')->count('name_of_org');
+
+        $countCoopName = FC_GenInfo_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'Youth')->count('name_of_coop');
+
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
 
         $allFOMembers = FO_ListofMem_Model::whereHas('association', function ($query) {
@@ -1038,7 +1089,7 @@ class FisherfolkOrg_category extends Controller
         $labelsGen = array_keys($combinedGenderCount);
         $dataGen = array_values($combinedGenderCount);
 
-        return view('Fisherfolk_Organization.Youth_Fisherfolk.youth_fisherfolk', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen'));
+        return view('Fisherfolk_Organization.Youth_Fisherfolk.youth_fisherfolk', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen', 'countAssName', 'countCoopName'));
     }
 
     public function display_Youth_Association_viewform($id)
@@ -1132,7 +1183,6 @@ class FisherfolkOrg_category extends Controller
 
 
         //COUNT
-
         $allfonamesCount = FO_ListofMem_Model::whereHas('association', function ($query) {
             $query->where('status', '!=', 'ARCHIVED')
                 ->orWhereNull('status')
@@ -1149,6 +1199,16 @@ class FisherfolkOrg_category extends Controller
 
 
         $totalMembersCount = $allfonamesCount + $allfcnamesCount;
+
+        $countAssName =  FisherfolkOrganization_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'IPs')->count('name_of_org');
+
+        $countCoopName = FC_GenInfo_Model::where('status', '!=', 'ARCHIVED')
+            ->orWhereNull('status')
+            ->whereNotNull('sector_rep')
+            ->where('sector_rep', 'IPs')->count('name_of_coop');
 
 
         // $distinctNamesCount = FO_ListofMem_Model::distinct()->count('mem_name'); , // each member counted only once, even if they appear multiple times), you can use the distinct() method:
@@ -1245,7 +1305,7 @@ class FisherfolkOrg_category extends Controller
         $labelsGen = array_keys($combinedGenderCount);
         $dataGen = array_values($combinedGenderCount);
 
-        return view('Fisherfolk_Organization.IPs.IPs', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen'));
+        return view('Fisherfolk_Organization.IPs.IPs', compact('data', 'data1', 'data_ass', 'allfonamesCount', 'allfcnamesCount', 'totalMembersCount', 'labelsage', 'dataage', 'labelsGen', 'dataGen', 'countAssName', 'countCoopName'));
     }
 
     public function display_IPs_Association_viewform($id)
@@ -1288,7 +1348,355 @@ class FisherfolkOrg_category extends Controller
         // } elseif ($listmem->isNotEmpty()) {
         //     $sector_rep = $listmem[0]->sector_rep;
         // }
-
         return view('Fisherfolk_Organization.Cooperative_Form.viewCooperative', compact('gen_info', 'members', 'offic', 'offic1', 'orgst', 'listmem'));
+    }
+
+
+    // ----------------------------------------------------------------------------------//
+    // -------------------------- D I S P L A Y  V I E W F O R M-------------------------//
+    // ----------------------------------------------------------------------------------//
+
+
+    public function display_Ass_edit($id)
+    {
+        $basic_info1 = FisherfolkOrganization_Model::where('id', $id)->get();
+        $boardDir1 = FO_OAM_BoardofDir_Model::where('fisherfolkOrg_id', $id)->get();
+        $committee1 = FO_OAM_Committees_Model::where('fisherfolkOrg_id', $id)->get();
+        $listmem1 = FO_ListofMem_Model::where('fisherfolkOrg_id', $id)->get();
+
+        return view('Fisherfolk_Organization.Association_Form.editAssociation',  compact('basic_info1', 'boardDir1', 'committee1', 'listmem1'));
+    }
+
+    public function edit_Association(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            //BASIC INFO (FisherfolkOrganization_Model)
+            'as_of' => 'nullable|string',
+            'name_of_org' => 'nullable|string',
+            'add_barangay' => 'nullable|string',
+            'add_city' => 'nullable|string',
+            'add_province' => 'nullable|string',
+            'sector_rep' => 'nullable|string',
+            'sector_rep_yes' => 'nullable|string',
+            'status_of_reg' => 'nullable|string',
+            'status_of_reg_yes' => 'nullable|string',
+            'reg_no' => 'nullable|string',
+            'date_reg' => 'nullable|string',
+            'status_of_accre' => 'nullable|string',
+            'status_of_accre_yes' => 'nullable|string',
+            'accre_no' => 'nullable|string',
+            'date_accre' => 'nullable|string',
+
+            'OAM_EO_Chair_name' => 'nullable',
+            'chair_cs' => 'nullable',
+            'chair_gen' => 'nullable',
+            'chair_birth' => 'nullable|date_format:Y-m-d',
+            'chair_age' => 'nullable',
+            'chair_fourps' => 'nullable',
+
+            'OAM_EO_Vicechair_name' => 'nullable',
+            'vicechair_cs' => 'nullable',
+            'vicechair_gen' => 'nullable',
+            'vicechair_birth' => 'nullable|date_format:Y-m-d',
+            'vicechair_age' => 'nullable',
+            'vicechair_fourps' => 'nullable',
+
+            'OAM_EO_Sec_name' => 'nullable',
+            'sec_cs' => 'nullable',
+            'sec_gen' => 'nullable',
+            'sec_birth' => 'nullable|date_format:Y-m-d',
+            'sec_age' => 'nullable',
+            'sec_fourps' => 'nullable',
+
+            'OAM_EO_Treas_name' => 'nullable',
+            'treas_cs' => 'nullable',
+            'treas_gen' => 'nullable',
+            'treas_birth' => 'nullable|date_format:Y-m-d',
+            'treas_age' => 'nullable',
+            'treas_fourps' => 'nullable',
+
+            'OAM_EO_Aud_name' => 'nullable',
+            'aud_cs' => 'nullable',
+            'aud_gen' => 'nullable',
+            'aud_birth' => 'nullable|date_format:Y-m-d',
+            'aud_age' => 'nullable',
+            'aud_fourps' => 'nullable',
+
+            'OAM_EO_PRO_name' => 'nullable',
+            'pro_cs' => 'nullable',
+            'pro_gen' => 'nullable',
+            'pro_birth' => 'nullable|date_format:Y-m-d',
+            'pro_age' => 'nullable',
+            'pro_fourps' => 'nullable',
+
+            'OAM_EO_Sgt_name' => 'nullable',
+            'sgt_cs' => 'nullable',
+            'sgt_gen' => 'nullable',
+            'sgt_birth' => 'nullable|date_format:Y-m-d',
+            'sgt_age' => 'nullable',
+            'sgt_fourps' => 'nullable',
+
+            'OAM_EO_Other_name' => 'nullable',
+            'other_cs' => 'nullable',
+            'other_gen' => 'nullable',
+            'other_birth' => 'nullable|date_format:Y-m-d',
+            'other_age' => 'nullable',
+            'other_fourps' => 'nullable',
+
+             //BOARD OF DIRECTOR (FO_OAM_BoardofDir_Model)
+             'boardofDir_name1' => 'nullable',
+             'boardofDir_cs1' => 'nullable',
+             'boardofDir_gen1' => 'nullable',
+             'boardofDir_birth1' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age1' => 'nullable',
+             'boardofDir_fourps1' => 'nullable',
+
+             'boardofDir_name2' => 'nullable',
+             'boardofDir_cs2' => 'nullable',
+             'boardofDir_gen2' => 'nullable',
+             'boardofDir_birth2' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age2' => 'nullable',
+             'boardofDir_fourps2' => 'nullable',
+
+             'boardofDir_name3' => 'nullable',
+             'boardofDir_cs3' => 'nullable',
+             'boardofDir_gen3' => 'nullable',
+             'boardofDir_birth3' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age3' => 'nullable',
+             'boardofDir_fourps3' => 'nullable',
+
+             'boardofDir_name4' => 'nullable',
+             'boardofDir_cs4' => 'nullable',
+             'boardofDir_gen4' => 'nullable',
+             'boardofDir_birth4' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age4' => 'nullable',
+             'boardofDir_fourps4' => 'nullable',
+
+             'boardofDir_name5' => 'nullable',
+             'boardofDir_cs5' => 'nullable',
+             'boardofDir_gen5' => 'nullable',
+             'boardofDir_birth5' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age5' => 'nullable',
+             'boardofDir_fourps5' => 'nullable',
+
+             'boardofDir_name6' => 'nullable',
+             'boardofDir_cs6' => 'nullable',
+             'boardofDir_gen6' => 'nullable',
+             'boardofDir_birth6' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age6' => 'nullable',
+             'boardofDir_fourps6' => 'nullable',
+
+             'boardofDir_name7' => 'nullable',
+             'boardofDir_cs7' => 'nullable',
+             'boardofDir_gen7' => 'nullable',
+             'boardofDir_birth7' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age7' => 'nullable',
+             'boardofDir_fourps7' => 'nullable',
+
+             'boardofDir_name8' => 'nullable',
+             'boardofDir_cs8' => 'nullable',
+             'boardofDir_gen8' => 'nullable',
+             'boardofDir_birth8' => 'nullable|date_format:Y-m-d',
+             'boardofDir_age8' => 'nullable',
+             'boardofDir_fourps8' => 'nullable',
+
+            //  //COMMITTEE (FO_OAM_Committees_Model)
+            //  'category' => 'nullable',
+            //  'other_cat' => 'nullable',
+            //  'name' => 'nullable',
+            //  'civil_status' => 'nullable',
+            //  'birthday' => 'nullable|date_format:Y-m-d',
+            //  'gender' => 'nullable',
+            //  'age' => 'nullable',
+            //  'fourps' => 'nullable',
+
+            //  'name1' => 'nullable',
+            //  'civil_status1' => 'nullable',
+            //  'birthday1' => 'nullable|date_format:Y-m-d',
+            //  'gender1' => 'nullable',
+            //  'age1' => 'nullable',
+            //  'fourps1' => 'nullable',
+
+            //  'name2' => 'nullable',
+            //  'civil_status2' => 'nullable',
+            //  'birthday2' => 'nullable|date_format:Y-m-d',
+            //  'gender2' => 'nullable',
+            //  'age2' => 'nullable',
+            //  'fourps2' => 'nullable',
+
+            //  //LIST OF MEMBERS (FO_ListofMem_Model)
+            //  'mem_name.*' => 'nullable',
+            //  'mem_cs.*' => 'nullable',
+            //  'mem_gen.*' => 'nullable',
+            //  'mem_birth.*' => 'nullable|date_format:Y-m-d',
+            //  'mem_age.*' => 'nullable',
+            //  'mem_fourps.*' => 'nullable',
+
+        ]);
+
+
+        $editAss = FisherfolkOrganization_Model::where('id', $id)->firstOrFail();
+
+        // Update other fields
+        $editAss->as_of = $validatedData['as_of'] ?? null;
+        $editAss->name_of_org = $validatedData['name_of_org'] ?? null;
+        $editAss->add_barangay = $validatedData['add_barangay'] ?? null;
+        $editAss->add_city = $validatedData['add_city'] ?? null;
+        $editAss->add_province = $validatedData['add_province'] ?? null;
+        $editAss->sector_rep = $validatedData['sector_rep'] ?? null;
+        $editAss->sector_rep_yes = $validatedData['sector_rep_yes'] ?? null;
+        $editAss->status_of_reg = $validatedData['status_of_reg'] ?? null;
+        $editAss->status_of_reg_yes = $validatedData['status_of_reg_yes'] ?? null;
+        $editAss->reg_no = $validatedData['reg_no'] ?? null;
+        $editAss->date_reg = $validatedData['date_reg'] ?? null;
+        $editAss->status_of_accre = $validatedData['status_of_accre'] ?? null;
+        $editAss->status_of_accre_yes = $validatedData['status_of_accre_yes'] ?? null;
+        $editAss->accre_no = $validatedData['accre_no'] ?? null;
+        $editAss->date_accre = $validatedData['date_accre'] ?? null;
+
+        $editAss->OAM_EO_Chair_name = $validatedData['OAM_EO_Chair_name'] ?? null;
+        $editAss->chair_cs = $validatedData['chair_cs'] ?? null;
+        $editAss->chair_gen = $validatedData['chair_gen'] ?? null;
+        $editAss->chair_birth = $validatedData['chair_birth'] ?? null;
+        $editAss->chair_age = $validatedData['chair_age'] ?? null;
+        $editAss->chair_fourps = $validatedData['chair_fourps'] ?? null;
+
+        $editAss->OAM_EO_Vicechair_name = $validatedData['OAM_EO_Vicechair_name'] ?? null;
+        $editAss->vicechair_cs = $validatedData['vicechair_cs'] ?? null;
+        $editAss->vicechair_gen = $validatedData['vicechair_gen'] ?? null;
+        $editAss->vicechair_birth = $validatedData['vicechair_birth'] ?? null;
+        $editAss->vicechair_age = $validatedData['vicechair_age'] ?? null;
+        $editAss->vicechair_fourps = $validatedData['vicechair_fourps'] ?? null;
+
+        // Update Executive Officers
+        $editAss->OAM_EO_Sec_name = $validatedData['OAM_EO_Sec_name'] ?? null;
+        $editAss->sec_cs = $validatedData['sec_cs'] ?? null;
+        $editAss->sec_gen = $validatedData['sec_gen'] ?? null;
+        $editAss->sec_birth = $validatedData['sec_birth'] ?? null;
+        $editAss->sec_age = $validatedData['sec_age'] ?? null;
+        $editAss->sec_fourps = $validatedData['sec_fourps'] ?? null;
+
+        $editAss->OAM_EO_Treas_name = $validatedData['OAM_EO_Treas_name'] ?? null;
+        $editAss->treas_cs = $validatedData['treas_cs'] ?? null;
+        $editAss->treas_gen = $validatedData['treas_gen'] ?? null;
+        $editAss->treas_birth = $validatedData['treas_birth'] ?? null;
+        $editAss->treas_age = $validatedData['treas_age'] ?? null;
+        $editAss->treas_fourps = $validatedData['treas_fourps'] ?? null;
+
+        $editAss->OAM_EO_Aud_name = $validatedData['OAM_EO_Aud_name'] ?? null;
+        $editAss->aud_cs = $validatedData['aud_cs'] ?? null;
+        $editAss->aud_gen = $validatedData['aud_gen'] ?? null;
+        $editAss->aud_birth = $validatedData['aud_birth'] ?? null;
+        $editAss->aud_age = $validatedData['aud_age'] ?? null;
+        $editAss->aud_fourps = $validatedData['aud_fourps'] ?? null;
+
+        $editAss->OAM_EO_PRO_name = $validatedData['OAM_EO_PRO_name'] ?? null;
+        $editAss->pro_cs = $validatedData['pro_cs'] ?? null;
+        $editAss->pro_gen = $validatedData['pro_gen'] ?? null;
+        $editAss->pro_birth = $validatedData['pro_birth'] ?? null;
+        $editAss->pro_age = $validatedData['pro_age'] ?? null;
+        $editAss->pro_fourps = $validatedData['pro_fourps'] ?? null;
+
+        $editAss->OAM_EO_Sgt_name = $validatedData['OAM_EO_Sgt_name'] ?? null;
+        $editAss->sgt_cs = $validatedData['sgt_cs'] ?? null;
+        $editAss->sgt_gen = $validatedData['sgt_gen'] ?? null;
+        $editAss->sgt_birth = $validatedData['sgt_birth'] ?? null;
+        $editAss->sgt_age = $validatedData['sgt_age'] ?? null;
+        $editAss->sgt_fourps = $validatedData['sgt_fourps'] ?? null;
+
+        $editAss->OAM_EO_Other_name = $validatedData['OAM_EO_Other_name'] ?? null;
+        $editAss->other_cs = $validatedData['other_cs'] ?? null;
+        $editAss->other_gen = $validatedData['other_gen'] ?? null;
+        $editAss->other_birth = $validatedData['other_birth'] ?? null;
+        $editAss->other_age = $validatedData['other_age'] ?? null;
+        $editAss->other_fourps = $validatedData['other_fourps'] ?? null;
+
+        $boardir = FO_OAM_BoardofDir_Model::where('fisherfolkOrg_id', $editAss->id)->firstOrFail();
+        $boardir->boardofDir_name1 = $validatedData['boardofDir_name1'] ?? null;
+        $boardir->boardofDir_cs1 = $validatedData['boardofDir_cs1'] ?? null;
+        $boardir->boardofDir_gen1 = $validatedData['boardofDir_gen1'] ?? null;
+        $boardir->boardofDir_age1 =  $validatedData['boardofDir_age1'] ?? null;
+        $boardir->boardofDir_birth1 = isset($validatedData['boardofDir_birth1']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth1'])) : null;
+        $boardir->boardofDir_fourps1 = $validatedData['boardofDir_fourps1'] ?? null;
+
+        $boardir->boardofDir_name2 = $validatedData['boardofDir_name2'] ?? null;
+        $boardir->boardofDir_cs2 = $validatedData['boardofDir_cs2'] ?? null;
+        $boardir->boardofDir_gen2 = $validatedData['boardofDir_gen2'] ?? null;
+        $boardir->boardofDir_birth2 = isset($validatedData['boardofDir_birth2']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth2'])) : null;
+        $boardir->boardofDir_age2 = $validatedData['boardofDir_age2'] ?? null;
+        $boardir->boardofDir_fourps2 = $validatedData['boardofDir_fourps2'] ?? null;
+
+        $boardir->boardofDir_name3 = $validatedData['boardofDir_name3'] ?? null;
+        $boardir->boardofDir_cs3 = $validatedData['boardofDir_cs3'] ?? null;
+        $boardir->boardofDir_gen3 = $validatedData['boardofDir_gen3'] ?? null;
+        $boardir->boardofDir_birth3 = isset($validatedData['boardofDir_birth3']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth3'])) : null;
+        $boardir->boardofDir_age3 = $validatedData['boardofDir_age3'] ?? null;
+        $boardir->boardofDir_fourps3 = $validatedData['boardofDir_fourps3'] ?? null;
+
+        $boardir->boardofDir_name4 = $validatedData['boardofDir_name4'] ?? null;
+        $boardir->boardofDir_cs4 = $validatedData['boardofDir_cs4'] ?? null;
+        $boardir->boardofDir_gen4 = $validatedData['boardofDir_gen4'] ?? null;
+        $boardir->boardofDir_birth4 = isset($validatedData['boardofDir_birth4']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth4'])) : null;
+        $boardir->boardofDir_age4 = $validatedData['boardofDir_age4'] ?? null;
+        $boardir->boardofDir_fourps4 = $validatedData['boardofDir_fourps4'] ?? null;
+
+        $boardir->boardofDir_name5 = $validatedData['boardofDir_name5'] ?? null;
+        $boardir->boardofDir_cs5 = $validatedData['boardofDir_cs5'] ?? null;
+        $boardir->boardofDir_gen5 = $validatedData['boardofDir_gen5'] ?? null;
+        $boardir->boardofDir_birth5 = isset($validatedData['boardofDir_birth5']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth5'])) : null;
+        $boardir->boardofDir_age5 = $validatedData['boardofDir_age5'] ?? null;
+        $boardir->boardofDir_fourps5 = $validatedData['boardofDir_fourps5'] ?? null;
+
+        $boardir->boardofDir_name6 = $validatedData['boardofDir_name6'] ?? null;
+        $boardir->boardofDir_cs6 = $validatedData['boardofDir_cs6'] ?? null;
+        $boardir->boardofDir_gen6 = $validatedData['boardofDir_gen6'] ?? null;
+        $boardir->boardofDir_birth6 = isset($validatedData['boardofDir_birth6']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth6'])) : null;
+        $boardir->boardofDir_age6 = $validatedData['boardofDir_age6'] ?? null;
+        $boardir->boardofDir_fourps6 = $validatedData['boardofDir_fourps6'] ?? null;
+
+        $boardir->boardofDir_name7 = $validatedData['boardofDir_name7'] ?? null;
+        $boardir->boardofDir_cs7 = $validatedData['boardofDir_cs7'] ?? null;
+        $boardir->boardofDir_gen7 = $validatedData['boardofDir_gen7'] ?? null;
+        $boardir->boardofDir_birth7 = isset($validatedData['boardofDir_birth7']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth7'])) : null;
+        $boardir->boardofDir_age7 = $validatedData['boardofDir_age7'] ?? null;
+        $boardir->boardofDir_fourps7 = $validatedData['boardofDir_fourps7'] ?? null;
+
+        $boardir->boardofDir_name8 = $validatedData['boardofDir_name8'] ?? null;
+        $boardir->boardofDir_cs8 = $validatedData['boardofDir_cs8'] ?? null;
+        $boardir->boardofDir_gen8 = $validatedData['boardofDir_gen8'] ?? null;
+        $boardir->boardofDir_birth8 = isset($validatedData['boardofDir_birth8']) ? date('Y-m-d', strtotime($validatedData['boardofDir_birth8'])) : null;
+        $boardir->boardofDir_age8 = $validatedData['boardofDir_age8'] ?? null;
+        $boardir->boardofDir_fourps8 = $validatedData['boardofDir_fourps8'] ?? null;
+
+        // $editAss->category = $validatedData['category'] ?? null;
+        // $editAss->other_cat = $validatedData['other_cat'] ?? null;
+
+        $boardir->save();
+        $editAss->save();
+
+        // Check if any changes were made and redirect accordingly
+        if ($editAss->wasChanged() || $boardir->wasChanged()) {
+            $sectorRep = $editAss->sector_rep;
+            $sectorRep = $editAss->sector_rep;
+            switch ($sectorRep) {
+                case 'Municipal':
+                    return redirect('/FOMunicipal')->with('success', 'Data has been updated successfully!');
+                case 'Fisherworker':
+                    return redirect('/FOFishworker')->with('success', 'Data has been updated successfully!');
+                case 'Commercial':
+                    return redirect('/FOCommercial')->with('success', 'Data has been updated successfully!');
+                case 'Women':
+                    return redirect('/FOWomenF')->with('success', 'Data has been updated successfully!');
+                case 'Youth':
+                    return redirect('/FOYouth')->with('success', 'Data has been updated successfully!');
+                case 'IP':
+                    return redirect('/FOIPs')->with('success', 'Data has been updated successfully!');
+                default:
+                    return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+
     }
 }

@@ -98,4 +98,19 @@ class FisherfolkOrganization_Model extends Model
         'status',
 
     ];
+
+    // public function boardOfDirectors()
+    // {
+    //     return $this->hasMany(FO_OAM_BoardofDir_Model::class, 'fisherfolkOrg_id');
+    // }
+
+    // public function committees()
+    // {
+    //     return $this->hasMany(FO_OAM_Committees_Model::class, 'fisherfolkOrg_id');
+    // }
+
+    // public function listofMembers()
+    // {
+    //     return $this->hasMany(FO_ListofMem_Model::class, 'fisherfolkOrg_id');
+    // }
 }

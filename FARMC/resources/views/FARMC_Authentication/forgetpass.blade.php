@@ -88,11 +88,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-xs-10 offset-xs-1">
                                     <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">SUBMIT</button>
                                 </div>
                             </div>
+                            <div class="col-sm-12 col-xs-12 forgot-phone text-center">
+                                <label>Already have an Account?</label><a href="{{ url('/') }}"><span style="color:#2196F3"> Login</span></a>
+                               </div>
                         </form>
 
                         <!-- end of form -->

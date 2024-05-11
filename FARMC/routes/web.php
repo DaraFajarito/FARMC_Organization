@@ -279,7 +279,6 @@ Route::get('/archived_IPCoop/{id}', [FisherfolkOrg_category::class, 'moveToIPsCo
 
 Route::get('/viewCooperative/{id}', [FisherfolkOrg_category::class,'display_coop_viewform']);
 
-
 //ASSOCIATION FORM
 
 Route::view('/FOform1_BasicInfo', 'Fisherfolk_Organization.Association_Form.form1_BasicInfo');
@@ -296,6 +295,11 @@ Route::get('/FOform1_ListofMem', [FO_ListofMem_Controller::class,'display_listof
 
 Route::get('/FOform1_Capcon/{id}', [FisherfolkOrganization_Controller::class,'display_CapCon_off']);
 Route::put('/add_Capcon/{id}', [FisherfolkOrganization_Controller::class,'add_CapCon']);
+
+Route::get('/association_edit/{id}', [FisherfolkOrg_category::class,'display_Ass_edit']);
+Route::put('/edit-association/{id}', [FisherfolkOrg_category::class, 'edit_Association']);
+
+
 
 
 //COOPERATIVE FORM

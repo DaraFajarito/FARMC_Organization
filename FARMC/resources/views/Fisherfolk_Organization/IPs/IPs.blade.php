@@ -53,17 +53,36 @@
             <!-- Tab panes -->
             <div class="tab-content tabs">
                 <div class="tab-pane active" id="farmc" role="tabpanel">
-                    {{-- <div class="card-block"> --}}
                     <label for="">COUNT OVERVIEW</label>
-                    {{-- </div> --}}
+                    <br>
                     <div class="row dashboard-header">
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-112 col-md-12">
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Indigenous People Members</span>
                                 <h2 class="dashboard-total-products">{{ $totalMembersCount }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-id-badge text-success-color"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card dashboard-product">
+                                <span class="label label-success">All</span>
+                                <span>Number of Association</span>
+                                <h2 class="dashboard-total-products">{{ $countAssName }}</h2>
+                                <div class="side-box ">
+                                    <i class="ti-world text-success-color"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card dashboard-product">
+                                <span class="label label-success">All</span>
+                                <span>Numbers of Cooperative</span>
+                                <h2 class="dashboard-total-products">{{ $countCoopName }}</h2>
+                                <div class="side-box ">
+                                    <i class="ti-world text-success-color"></i>
                                 </div>
                             </div>
                         </div>
@@ -310,7 +329,7 @@
                                                                         <a href="{{ url('/viewCooperative/' . $item->id) }}"
                                                                             class="btn btn-success"><i
                                                                                 class="ti-eye"></i></a>
-                                                                        <a href="" class="btn btn-warning"><i
+                                                                        <a href="{{ url ('/association_edit/' . $item->id)}}" class="btn btn-warning"><i
                                                                                 class="ti-pencil"></i></a>
                                                                         <a href="{{ url('/archived_IPCoop/' . $item->id) }}"
                                                                             class="btn btn-danger"><i
@@ -357,6 +376,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#8cc63f',
+                iconColor: '#ffffff',
+                customClass: {
+                    title: 'text-white',
+                    content: 'text-white'
+                }
+            });
+        </script>
+    @endif
+
+    @if (session('failed'))
+        <script>
+            Swal.fire({
+                icon: 'failed',
+                title: 'failed!',
+                text: '{{ session('failed') }}',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#dc3545',
+                iconColor: '#ffffff',
+                customClass: {
+                    title: 'text-white',
+                    content: 'text-white'
+                }
+            });
+        </script>
+    @endif
 
     <script type="text/javascript">
         $(document).ready(function() {
