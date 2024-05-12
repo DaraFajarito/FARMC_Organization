@@ -160,6 +160,7 @@
                                         <option value="San Fernando">San Fernando</option>
                                         <option value="San Jose">San Jose</option>
                                         <option value="Santa Fe">Santa Fe</option>
+                                        <option value="Santa Maria">Santa Maria</option>
                                     </optgroup>
                                     <optgroup label="Palawan">
                                         <option value="Aborlan">Aborlan</option>

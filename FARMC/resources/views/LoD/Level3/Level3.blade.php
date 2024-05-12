@@ -878,7 +878,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <!-- JavaScript -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
         <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>

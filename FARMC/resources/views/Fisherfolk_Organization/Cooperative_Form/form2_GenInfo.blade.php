@@ -159,27 +159,27 @@
                                         <div class="grid-material bg-general"><em>Sector Represented</em></div>
                                         <br>
                                         <div class="col-md-3">
-                                            <label><input type="radio" name="sector_rep" value="Municipal">
+                                            <label><input type="radio" name="sector_rep" value="Municipal" required>
                                                 Municipal</label><br>
-                                            <label><input type="radio" name="sector_rep" value="Fishworker">
+                                            <label><input type="radio" name="sector_rep" value="Fishworker" required>
                                                 Fishworker</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <label><input type="radio" name="sector_rep" value="Commercial">
+                                            <label><input type="radio" name="sector_rep" value="Commercial" required>
                                                 Commercial</label><br>
-                                            <label><input type="radio" name="sector_rep" value="Women">
+                                            <label><input type="radio" name="sector_rep" value="Women" required>
                                                 Women</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <label><input type="radio" name="sector_rep" value="Youth">
+                                            <label><input type="radio" name="sector_rep" value="Youth" required>
                                                 Youth</label><br>
-                                            <label><input type="radio" name="sector_rep" value="IPs">
+                                            <label><input type="radio" name="sector_rep" value="IPs" required>
                                                 IPs</label>
                                         </div>
                                         <div class="col-md-4">
                                             <!-- Adjusted width and CSS white-space property -->
                                             <labelwhite-space: nowrap;><input type="radio" name="sector_rep"
-                                                    value="Others">
+                                                    value="Others" required>
                                                 Other's
                                                 (Please Specify)</label>
                                                 <br>

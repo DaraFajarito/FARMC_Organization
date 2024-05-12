@@ -111,13 +111,13 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li class="nav-level">--- Main</li>
-                    <li class="active treeview">
+                    <li class="active treeview menu-open">
                         <a class="waves-effect waves-dark" href="{{ url('dash') }}">
                             <i class="icon-speedometer"></i><span> Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-level">--- FARMC Profile</li>
-                    <li class="treeview">
+                    {{-- <li class="treeview">
                         <a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span>1. FARMC
                                 STRENGTHENING</span><i class="icon-arrow-down"></i></a>
 
@@ -184,6 +184,58 @@
                                 <a class="waves-effect waves-dark" href="{{ url('/farmc_membership') }}">
                                     <i class="icon-arrow-right"></i>
                                     1.2 FARMC Membership
+                                </a>
+                            </li>
+                        </ul>
+                    </li> --}}
+
+                    <li class="treeview menu-open">
+                        <a class="waves-effect waves-dark" href="#!">
+                            <i class="icon-briefcase"></i><span>1. FARMC STRENGTHENING</span><i class="icon-arrow-down"></i>
+                        </a>
+                        <ul class="treeview-menu" style="display: block;">
+                            <li class="treeview menu-open">
+                                <a class="waves-effect waves-dark" href="#!">
+                                    <i class="icon-arrow-right"></i>
+                                    <span>1.1 Organized FARMC</span><i class="icon-arrow-down"></i>
+                                </a>
+                                <ul class="treeview-menu" style="display: block;">
+                                    <li class="{{ Request::is('level1') ? 'active' : '' }}">
+                                        <a class="waves-effect waves-dark" href="{{ url('/level1') }}">
+                                            <i class="icon-arrow-right"></i>
+                                            <span>1.1.1 Level One</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('level2') ? 'active' : '' }}">
+                                        <a class="waves-effect waves-dark" href="{{ url('/level2') }}">
+                                            <i class="icon-arrow-right"></i>
+                                            <span>1.1.2 Level Two</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('level3') ? 'active' : '' }}">
+                                        <a class="waves-effect waves-dark" href="{{ url('/level3') }}">
+                                            <i class="icon-arrow-right"></i>
+                                            <span>1.1.3 Level Three</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('level4') ? 'active' : '' }}">
+                                        <a class="waves-effect waves-dark" href="{{ url('/level4') }}">
+                                            <i class="icon-arrow-right"></i>
+                                            <span>1.1.4 Level Four</span>
+                                        </a>
+                                    </li>
+                                    <li class="{{ Request::is('level5') ? 'active' : '' }}">
+                                        <a class="waves-effect waves-dark" href="{{ url('/level5') }}">
+                                            <i class="icon-arrow-right"></i>
+                                            <span>1.1.5 Level Five</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-dark" href="{{ url('/farmc_membership') }}">
+                                    <i class="icon-arrow-right"></i>
+                                    <span>1.2 FARMC Membership</span>
                                 </a>
                             </li>
                         </ul>

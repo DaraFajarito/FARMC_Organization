@@ -117,6 +117,7 @@
                                         <option value="Sablayan">Sablayan</option>
                                         <option value="San Jose">San Jose</option>
                                         <option value="Santa Cruz">Santa Cruz</option>
+                                        <option value="Santa Maria">Santa Maria</option>
                                     </optgroup>
                                     <optgroup label="Oriental Mindoro">
                                         <option value="Baco">Baco</option>
