@@ -177,8 +177,8 @@
                                 <div class="col-md-8 text-right">
                                     <a href="{{ url('/archived_Com') }}"><button type="button"
                                             class="btn btn-danger">All Archived</button></a>
-                                    {{-- <a href="{{ url('/FOmunregistered') }}"><button type="button"
-                                            class="btn btn-danger">All Unregistered</button></a> --}}
+                                            <a href="{{ url('/viewallCom') }}"><button type="button"
+                                                class="btn btn-success">View all Members</button></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -230,7 +230,7 @@
                                                                 @endif
 
                                                                 @if ($item->sector_rep === null || $item->sector_rep_yes === null)
-                                                                    <td style="color:red">no data</td>
+                                                                    <td>Commercial</td>
                                                                 @else
                                                                     <td>{{ $item->sector_rep }} -
                                                                         {{ $item->sector_rep_yes }}</td>
@@ -302,7 +302,7 @@
                                                                     @endif
 
                                                                     @if ($item->sector_rep === null || $item->sector_rep_yes === null)
-                                                                        <td style="color:red">no data</td>
+                                                                        <td> Commercial</td>
                                                                     @else
                                                                         <td>{{ $item->sector_rep }} -
                                                                             {{ $item->sector_rep_yes }}</td>

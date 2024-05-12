@@ -177,7 +177,7 @@
                                 <div class="col-md-8 text-right">
                                     <a href="{{ url('/archived_Mun') }}"><button type="button"
                                             class="btn btn-danger">All Archived</button></a>
-                                    <a href="{{ url('/FOmunregistered') }}"><button type="button"
+                                    <a href="{{ url('/viewallMun') }}"><button type="button"
                                             class="btn btn-success">View all Members</button></a>
                                 </div>
                             </div>

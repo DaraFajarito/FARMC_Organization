@@ -956,7 +956,9 @@
                                         <label for="" class="block form-control-label"></em></label>
                                         <label>4.3 Committees</label>
                                         <br><br>
+
                                         @foreach ($committee1 as $item)
+                                        {{-- <input type="hidden" name="category" value="{{ $item->category }}"> --}}
                                             <caption>{{ $item->category }}</caption>
 
                                             <table class="table">
@@ -1137,7 +1139,76 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12 text-center">
+                                    <div class="col-md-4">
+                                        <label for="" class="block form-control-label">6.
+                                            Capitalization</em></label>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1. Membership Fee:</td>
+                                                    <td><input id="mem_fee" type="text" class="form-control"
+                                                            placeholder="" name="capmem_fee"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2. Monthly Contribution:</td>
+                                                    <td><input id="monthly_cont" type="text"
+                                                            class="form-control" placeholder=""
+                                                            name="capmonthly_cont"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3. Donations:</td>
+                                                    <td><input id="donation" type="text" class="form-control"
+                                                            placeholder="" name="cap_donation"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4. Others:</td>
+                                                    <td><input id="others" type="text" class="form-control"
+                                                            placeholder="" name="cap_others"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Capital:</td>
+                                                    <td><input id="total_cap" type="text" class="form-control"
+                                                            placeholder="" name="captotal_cap" readonly></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="" class="block form-control-label">7. Contact
+                                            Information</em></label>
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="" class="col-md-12 captions">Contact
+                                                    Person</label>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <input id="" type="text" class="form-control"
+                                                            placeholder="" style="width: 280px"
+                                                            name="CIcontact_person">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <label for="" class="col-md-12 captions">Landline</label>
+                                                <br> <br>
+                                                <label for="" class="col-md-12 captions">Mobile
+                                                    Phone</label>
+                                                <br> <br>
+                                                <label for="" class="col-md-12 captions">Messenger</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input type="text" id="" class="form-control"
+                                                    style="width:300px" placeholder="" name="CIlandline">
+                                                <input type="text" id="" class="form-control"
+                                                    style="width:300px" placeholder="" name="CIMobile">
+                                                <input type="text" id="" class="form-control"
+                                                    style="width:300px" placeholder="" name="CIMess">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 text-right" style="margin-top: 20px">
                                         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
                                             &nbsp; SAVE</button>
                                     </div>
@@ -1357,6 +1428,31 @@
         }
     </script>
 
+    <script>
+        const memFeeInput = document.getElementById('mem_fee');
+        const monthlyContInput = document.getElementById('monthly_cont');
+        const donationInput = document.getElementById('donation');
+        const othersInput = document.getElementById('others');
+        const totalCapInput = document.getElementById('total_cap');
+
+        [memFeeInput, monthlyContInput, donationInput, othersInput].forEach(input => {
+            input.addEventListener('input', calculateTotalCapital);
+        });
+
+        function calculateTotalCapital() {
+            const memFee = parseFloat(memFeeInput.value) || 0;
+            const monthlyCont = parseFloat(monthlyContInput.value) || 0;
+            const donation = parseFloat(donationInput.value) || 0;
+            const others = parseFloat(othersInput.value) || 0;
+
+            const totalCapital = memFee + monthlyCont + donation + others;
+
+            totalCapInput.value = isNaN(totalCapital) ? '' : '₱' + totalCapital.toFixed(2);
+        }
+
+        // Initial calculation
+        calculateTotalCapital();
+    </script>
 
 </body>
 

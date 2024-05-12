@@ -270,7 +270,7 @@
                                                 </div>
                                                 <div class="col-md-12 text-right">
                                                     @foreach ($officers_commit as $offi)
-                                                        <a href="{{ url('/FOform2_OrgStruct/' . $offi->id) }}"> <button
+                                                        <a href="{{ url('/FOform2_ListofMem/' . $offi->id) }}"> <button
                                                                 class="btn btn-primary" type="button">Next <i
                                                                     class="icon-arrow-right"></i></button></a>
                                                     @endforeach

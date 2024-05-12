@@ -244,37 +244,43 @@ Route::get( '/viewMunAssociation/{id}', [FisherfolkOrg_category::class,'display_
 Route::get('/archived_Mun',[FisherfolkOrg_category::class, 'display_Mun_archived']);
 Route::get('/archived_MunAss/{id}', [FisherfolkOrg_category::class, 'moveToMunAss_archived']);
 Route::get('/archived_MunCoop/{id}', [FisherfolkOrg_category::class, 'moveToMunCoop_archived']);
+Route::get('/viewallMun',[FisherfolkOrg_category::class, 'display_all_Mun']);
+
 
 Route::get('/FOFishworker', [FisherfolkOrg_category::class,'display_fishworker']);
 Route::get('/viewFishAssociation/{id}', [FisherfolkOrg_category::class,'display_Fisher_Association_viewform']);
 Route::get('/archived_Fish',[FisherfolkOrg_category::class, 'display_Fish_archived']);
 Route::get('/archived_FishAss/{id}', [FisherfolkOrg_category::class, 'moveToFishAss_archived']);
 Route::get('/archived_FishCoop/{id}', [FisherfolkOrg_category::class, 'moveToFishCoop_archived']);
+Route::get('/viewallFish',[FisherfolkOrg_category::class, 'display_all_Fish']);
 
 Route::get('/FOCommercial', [FisherfolkOrg_category::class,'display_commercial']);
 Route::get('/viewComAssociation/{id}', [FisherfolkOrg_category::class,'display_Com_Association_viewform']);
 Route::get('/archived_Com',[FisherfolkOrg_category::class, 'display_Com_archived']);
 Route::get('/archived_ComAss/{id}', [FisherfolkOrg_category::class, 'moveToComAss_archived']);
 Route::get('/archived_ComCoop/{id}', [FisherfolkOrg_category::class, 'moveToComCoop_archived']);
+Route::get('/viewallCom',[FisherfolkOrg_category::class, 'display_all_Com']);
 
 Route::get('/FOWomenF', [FisherfolkOrg_category::class,'display_women']);
 Route::get('/viewWomAssociation/{id}', [FisherfolkOrg_category::class,'display_Wom_Association_viewform']);
 Route::get('/archived_Women',[FisherfolkOrg_category::class, 'display_Women_archived']);
 Route::get('/archived_WomenAss/{id}', [FisherfolkOrg_category::class, 'moveToWomenAss_archived']);
 Route::get('/archived_WomenCoop/{id}', [FisherfolkOrg_category::class, 'moveToWomenCoop_archived']);
-
+Route::get('/viewallWomen',[FisherfolkOrg_category::class, 'display_all_Women']);
 
 Route::get('/FOYouth',  [FisherfolkOrg_category::class,'display_youth']);
 Route::get('/viewYouthAssociation/{id}', [FisherfolkOrg_category::class,'display_Youth_Association_viewform']);
 Route::get('/archived_Youth',[FisherfolkOrg_category::class, 'display_Youth_archived']);
 Route::get('/archived_YouthAss/{id}', [FisherfolkOrg_category::class, 'moveToYouthAss_archived']);
 Route::get('/archived_YouthCoop/{id}', [FisherfolkOrg_category::class, 'moveToYouthCoop_archived']);
+Route::get('/viewallYouth',[FisherfolkOrg_category::class, 'display_all_Youth']);
 
 Route::get('/FOIPs',  [FisherfolkOrg_category::class,'display_IPs']);
 Route::get('/viewIPAssociation/{id}', [FisherfolkOrg_category::class,'display_IPs_Association_viewform']);
 Route::get('/archived_IP',[FisherfolkOrg_category::class, 'display_IP_archived']);
 Route::get('/archived_IPAss/{id}', [FisherfolkOrg_category::class, 'moveToIPsAss_archived']);
 Route::get('/archived_IPCoop/{id}', [FisherfolkOrg_category::class, 'moveToIPsCoop_archived']);
+Route::get('/viewallIP',[FisherfolkOrg_category::class, 'display_all_IP']);
 
 
 Route::get('/viewCooperative/{id}', [FisherfolkOrg_category::class,'display_coop_viewform']);

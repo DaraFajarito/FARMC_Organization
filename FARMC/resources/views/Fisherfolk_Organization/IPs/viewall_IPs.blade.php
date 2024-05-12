@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Provincial RF | Fisherfolk Directors Program | View All | BFAR - FARMC</title>
+    <title>View All | Fisherfolk Organization| View All | BFAR - FARMC</title>
     <link rel="icon" href="{{ asset('assets/images/icon.png') }}" type="image/png">
 
     <meta charset="utf-8">
@@ -64,23 +64,23 @@
                     </a>
                     <span style="display: inline-block; vertical-align: middle; margin-top:10px">
                         <div>
-                            <h4 style="margin: 0;">Fisherfolk Directors Program</h4>
+                            <h4 style="margin: 0;">Fisherfolk Organization</h4>
                         </div>
                     </span>
 
                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                         <li class="breadcrumb-item"><a href="#!"><i class="icofont icofont-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!"> Fisherfolk Directors Program </a>
+                        <li class="breadcrumb-item"><a href="#!"> Fisherfolk Organization </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!"> Provincial Fisherfolk Representative </a>
+                        <li class="breadcrumb-item"><a href="#!"> IPs </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">All Directors</a>
+                        <li class="breadcrumb-item"><a href="#!">All</a>
                         </li>
                     </ol>
                     <br>
                     <div style="display: flex;">
-                        <a href="{{ url('/provincialFR') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
+                        <a href="{{ url('/FOIPs') }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i>
                             Back</a>
 
                     </div>
@@ -95,27 +95,6 @@
                         <div class="card-block">
                             <div class="filter-container">
                                 <button id="reset-filters" class="btn btn-secondary">Reset Filters</button>
-                                <select id="gender-filter">
-                                    <option value="">All Genders</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                                <select id="age-filter">
-                                    <option value="">All Ages</option>
-                                    <option value="0-18">0-18</option>
-                                    <option value="19-25">19-25</option>
-                                    <option value="26-35">26-35</option>
-                                    <option value="36-50">36-50</option>
-                                    <option value="50+">50+</option>
-                                </select>
-                                <select id="civil-status-filter">
-                                    <option value="">All Civil Statuses</option>
-                                    <option value="single">Single</option>
-                                    <option value="married">Married</option>
-                                    <option value="widow/widower">Widow/Widower</option>
-                                    <option value="separated">Separated</option>
-                                </select>
                                 <select id="mimaropa-filter">
                                     <option hidden value="">MIMAROPA Provinces</option>
                                     <option value="Occidental Mindoro">Occidental Mindoro</option>
@@ -211,59 +190,79 @@
                                 </select>
                             </div>
 
+
                             <br>
                             <ul class="nav nav-tabs  tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#members" role="tab">RF
-                                        Directors
-                                        Members</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#members"
+                                        role="tab">Association</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#organization" role="tab">RFD
-                                        Organizations</a>
+                                    <a class="nav-link" data-toggle="tab" href="#organization"
+                                        role="tab">Cooperative</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content tabs">
                                 <div class="tab-pane active" id="members" role="tabpanel">
                                     <br>
-                                    <!-- <a href="#!"><button type="button" class="btn btn-primary">View details</button> -->
                                     <table id="FARMC" class="table table-striped table-bordered" cellspacing="0"
                                         width="100%">
-                                        <thead style="font-size:12px">
+                                        <thead style="font-size: 13px">
                                             <tr>
-                                                <th>Name</th>
+                                                <th>Name of Organization</th>
                                                 <th>Address</th>
-                                                <th>Civil Status</th>
-                                                <th>Gender</th>
-                                                <th>Birthdate</th>
-                                                <th>Age</th>
-                                                <th>4p's</th>
-                                                <th>Cultural Affliation</th>
-                                                {{-- <th hidden>Status</th> --}}
+                                                <th>Sector Represented</th>
+                                                <th>Status of Registration</th>
+                                                <th>Status of Accreditation</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody style="font-size:11px">
-                                            @foreach ($RFDPviewProvincial as $item)
+                                        <tbody style="font-size: 13px">
+                                            @foreach ($association as $item)
                                                 @if ($item->status != 'ARCHIVED')
                                                     <tr>
-                                                        <td>{{ $item->fam_name }}, {{ $item->given_name }}
-                                                            {{ $item->mid_name }} {{ $item->ext }} </td>
-                                                        <td>{{ $item->add_barangay }}, {{ $item->add_city }},
-                                                            {{ $item->add_province }}</td>
-                                                        <td>{{ $item->civil_status }}</td>
-                                                        <td>{{ $item->gender }}</td>
-                                                        <td>{{ $item->birthdate }}</td>
-                                                        <td>{{ $item->age }}</td>
-                                                        <td>{{ $item->fourps }}</td>
-                                                        <td>{{ $item->cul_af }} - {{ $item->cul_af_yes }}</td>
+                                                        @if ($item->name_of_org === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->name_of_org }}</td>
+                                                        @endif
+
+                                                        @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->add_barangay }},
+                                                                {{ $item->add_city }},
+                                                                {{ $item->add_province }}</td>
+                                                        @endif
+
+                                                        @if ($item->sector_rep === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->sector_rep }} -
+                                                                {{ $item->sector_rep_yes }}</td>
+                                                        @endif
+
+                                                        @if ($item->status_of_reg === null || $item->status_of_reg_yes === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->status_of_reg }} -
+                                                                {{ $item->status_of_reg_yes }}</td>
+                                                        @endif
+
+                                                        @if ($item->status_of_accre === null || $item->status_of_accre_yes === null)
+                                                            <td style="color:red">no data</td>
+                                                        @else
+                                                            <td>{{ $item->status_of_accre }} -
+                                                                {{ $item->status_of_reg_yes }}</td>
+                                                        @endif
+                                                        {{-- <td><b>REGISTERED</b></td> --}}
                                                         <td style=" display: flex; justify-content: space-between;">
-                                                            <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
+                                                            <a href="{{ url('/viewMunAssociation/' . $item->id) }}"
                                                                 class="btn btn-success"><i class="ti-eye"></i></a>
-                                                            <a href="{{ url('/rfdp_edit/' . $item->id) }}"
+                                                            <a href="{{ url('/association_edit/' . $item->id) }}"
                                                                 class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                            <a href="{{ url('/archived_PFR/' . $item->id) }}"
+                                                            <a href="{{ url('/archived_IPAss/' . $item->id) }}"
                                                                 class="btn btn-danger"><i class="ti-trash"></i></a>
                                                         </td>
                                                     </tr>
@@ -272,55 +271,87 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <!-- </div> -->
 
-                                <!-- <div class="tab-content tabs"> -->
                                 <div class="tab-pane" id="organization" role="tabpanel">
                                     <br>
-                                    <table id="FARMC2" class="table table-striped table-bordered" cellspacing="0"
-                                        width="100%">
-                                        <thead style="font-size:11px">
-                                            <tr>
-                                                <th>Member's Name</th>
-                                                <th>Name of Association</th>
-                                                <th>Address of Association</th>
-                                                <th>Officer of Association</th>
-                                                <th>Registration Agency</th>
-                                                <th>Registration Information</th>
-                                                <th>Composition of Organization</th>
-                                                <th>Type of Organization</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody style="font-size:12px">
-                                            @foreach ($RFDPviewProvincial as $item)
-                                                @if ($item->status != 'ARCHIVED')
-                                                    <tr>
+                                    <div class="col-mb-12">
+                                        <table id="FARMC2" class="table table-striped table-bordered"
+                                            cellspacing="0" width="100%">
+                                            <thead style="font-size: 13px">
+                                                <tr>
+                                                    <th>Name of Cooperative</th>
+                                                    <th>Address</th>
+                                                    <th>Sector Represented</th>
+                                                    <th>Cooperative Identification Number (CIN)</th>
+                                                    <th>Date of Latest Amendment</th>
+                                                    <th>Membership Operation</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="font-size: 13px">
+                                                @foreach ($cooperative as $item)
+                                                    @if ($item->status != 'ARCHIVED')
+                                                        <tr>
+                                                            @if ($item->name_of_coop === null)
+                                                                <td style="color:red">no data</td>
+                                                            @else
+                                                                <td>{{ $item->name_of_coop }}</td>
+                                                            @endif
 
-                                                        <td>{{ $item->fam_name }}, {{ $item->given_name }}
-                                                            {{ $item->mid_name }} {{ $item->ext }}</td>
-                                                        <td>{{ $item->name_ass }}</td>
-                                                        <td>{{ $item->add_ass }}</td>
-                                                        <td>{{ $item->officer_ass }} - {{ $item->officer_ass_yes }}
-                                                        </td>
-                                                        <td>{{ $item->reg_agency }} - {{ $item->reg_agency_others }}
-                                                        </td>
-                                                        <td>{{ $item->reg_info_no }}</td>
-                                                        <td>{{ $item->comp_mem }} - {{ $item->comp_mem_others }}</td>
-                                                        <td>{{ $item->type_of_org }}</td>
+                                                            @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                <td style="color:red">no data</td>
+                                                            @else
+                                                                <td>{{ $item->add_barangay }},
+                                                                    {{ $item->add_city }},
+                                                                    {{ $item->add_province }}</td>
+                                                            @endif
 
-                                                        <td style="text-align: center;">
-                                                            <a href="{{ url('/rfdp-viewform/' . $item->id) }}"
-                                                                class="btn btn-success"><i class="ti-eye"></i>
-                                                                &nbsp;
-                                                                View</a>
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                            @if ($item->sector_rep === null)
+                                                                <td style="color:red">no data</td>
+                                                            @else
+                                                                <td>{{ $item->sector_rep }} -
+                                                                    {{ $item->sector_rep_yes }}</td>
+                                                            @endif
+
+                                                            @if ($item->CIN === null)
+                                                                <td style="color:red">no data</td>
+                                                            @else
+                                                                <td>{{ $item->CIN }}</td>
+                                                            @endif
+
+                                                            @if ($item->date_of_amend === null)
+                                                                <td style="color:red">no data</td>
+                                                            @else
+                                                                <td>{{ $item->date_of_amend }}
+                                                                </td>
+                                                            @endif
+
+                                                            @if ($item->RD_memOp === null)
+                                                                <td style="color:red">no data</td>
+                                                            @else
+                                                                <td>{{ $item->RD_memOp }}
+                                                                </td>
+                                                            @endif
+
+                                                            <td
+                                                                style=" display: flex; justify-content: space-between;">
+                                                                <a href="{{ url('/viewCooperative/' . $item->id) }}"
+                                                                    class="btn btn-success"><i class="ti-eye"></i></a>
+                                                                <a href="#!" class="btn btn-warning"><i
+                                                                        class="ti-pencil"></i></a>
+                                                                <a href="{{ url('/archived_IPCoop/' . $item->id) }}"
+                                                                    class="btn btn-danger"><i
+                                                                        class="ti-trash"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+
+                                    </div>
                                 </div>
+
                             </div>
 
                         </div>
@@ -356,95 +387,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var table = $('#FARMC').DataTable({
-                dom: 'Bfrtip',
-                buttons: ['copy', 'excel', 'pdf', 'print'],
-                pagingType: 'full_numbers',
-                pageLength: 20
-            });
-
-            // Add filtering for gender
-            $('#gender-filter').on('change', function() {
-                var selectedGender = this.value;
-                if (selectedGender === '') {
-                    table.column(3).search('').draw();
-                } else {
-                    table.column(3).search('^' + selectedGender + '$', true, false).draw();
-                }
-            });
-
-            // Add filtering for age range
-            $('#age-filter').on('change', function() {
-                var ageRange = this.value;
-                if (ageRange === '') {
-                    table.column(5).search('').draw();
-                } else if (ageRange === '0-18') {
-                    table.column(5).search('^((0|1[0-8])\\b)', true, false).draw();
-                } else if (ageRange === '19-25') {
-                    table.column(5).search('^((1[9-9])|(2[0-5])\\b)', true, false).draw();
-                } else if (ageRange === '26-35') {
-                    table.column(5).search('^((2[6-9])|(3[0-5])\\b)', true, false).draw();
-                } else if (ageRange === '36-50') {
-                    table.column(5).search('^((3[6-9])|(4[0-9])|(50)\\b)', true, false).draw();
-                } else if (ageRange === '50+') {
-                    table.column(5).search('(5[1-9]|[6-9]\\d|\\d{3,})', true, false).draw();
-                }
-            });
-
-            // Add filtering for civil status
-            $('#civil-status-filter').on('change', function() {
-                var selectedStatus = this.value;
-                if (selectedStatus === '') {
-                    table.column(2).search('').draw();
-                } else {
-                    table.column(2).search(selectedStatus).draw();
-                }
-            });
-
-            $('#mimaropa-filter, #municipality-filter').change(function() {
-                var selectedProvince = $('#mimaropa-filter').val().toLowerCase();
-                var selectedMunicipality = $('#municipality-filter').val().toLowerCase();
-
-                $('table tbody tr').each(function() {
-                    var address = $(this).find('td:nth-child(2)').text().toLowerCase();
-                    var province = address.split(',')[2].trim();
-                    var municipality = address.split(',')[1].trim();
-
-                    if ((selectedProvince === '' || province === selectedProvince) &&
-                        (selectedMunicipality === '' || municipality === selectedMunicipality)) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
-
-            // Reset all filters button
-            $('#reset-filters').on('click', function() {
-                $('#gender-filter, #age-filter, #civil-status-filter, #mimaropa-filter, #municipality-filter')
-                    .val('').trigger('change');
-                $('table tbody tr').show();
-            });
-        });
-    </script>
-
-
-
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#FARMC2').DataTable({
+            $('#FARMC').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'excel', 'pdf', 'print'
                 ],
                 "pagingType": "full_numbers",
-                "pageLength": 20
+                "pageLength": 20 // Set the default number of rows per page to 20
             });
         });
     </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#FARMC2').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'pdf', 'print'
+            ],
+            "pagingType": "full_numbers",
+            "pageLength": 20 // Set the default number of rows per page to 20
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#mimaropa-filter, #municipality-filter').change(function() {
+            var selectedProvince = $('#mimaropa-filter').val().toLowerCase();
+            var selectedMunicipality = $('#municipality-filter').val().toLowerCase();
+
+            $('table tbody tr').each(function() {
+                var address = $(this).find('td:nth-child(2)').text().toLowerCase();
+                var province = address.split(',')[2].trim();
+                var municipality = address.split(',')[1].trim();
+
+                if ((selectedProvince === '' || province === selectedProvince) &&
+                    (selectedMunicipality === '' || municipality === selectedMunicipality)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        $('#reset-filters').click(function() {
+            $('#mimaropa-filter, #municipality-filter').val('');
+            $('table tbody tr').show();
+        });
+    });
+</script>
 
 </body>
 

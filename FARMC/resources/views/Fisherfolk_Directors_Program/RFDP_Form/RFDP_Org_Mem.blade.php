@@ -193,7 +193,7 @@
                                                             <label>
                                                                 <input type="radio" name="comp_mem"
                                                                     value="Municipal" /><i
-                                                                    class="helper"></i>Municipal
+                                                                    class="helper" required></i>Municipal
                                                             </label>
                                                             <label>
                                                                 <input type="radio" name="comp_mem"
@@ -428,7 +428,7 @@
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
                                                             value="Provincial Fisherfolk Representative"
-                                                            id="">
+                                                            id="" required>
                                                         <label class="form-check-label" for="">Provincial
                                                             Fisherfolk Representative</label>
                                                     </div>
@@ -437,7 +437,7 @@
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
                                                             value="Regional Fisherfolk Representative"
-                                                            id="">
+                                                            id="" required>
                                                         <label class="form-check-label" for="">Regional
                                                             Fisherfolk Representative</label>
                                                     </div>
@@ -445,7 +445,7 @@
                                                     <div class="form-group">
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
-                                                            value="Regional Fisherfolk Director" id="">
+                                                            value="Regional Fisherfolk Director" id="" required>
                                                         <label class="form-check-label" for="">Regional
                                                             Fisherfolk Director</label>
                                                     </div>
@@ -453,7 +453,7 @@
                                                     <div class="form-group">
                                                         <input type="radio" class="form-check-input"
                                                             name="involvement_mdo"
-                                                            value="National Fisherfolk Director" id="na_radio">
+                                                            value="National Fisherfolk Director" id="na_radio" required>
                                                         <label class="form-check-label" for="na_radio">National
                                                             Fisherfolk Director</label>
                                                     </div>

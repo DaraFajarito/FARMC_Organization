@@ -52,10 +52,27 @@ class FC_OrgStruct_Controller extends Controller
         $orgstr->save();
 
 
+        // Check if any changes were made and redirect accordingly
         if ($orgstr) {
-            return redirect('/FOform2_ListofMem/'. $orgstr->fisherfolkOrg_FC_id);
+            $sectorRep = $fisherfolkOrg_FC->sector_rep;
+            switch ($sectorRep) {
+                case 'Municipal':
+                    return redirect('/FOMunicipal')->with('success', 'Data has been updated successfully!');
+                case 'Fishworker':
+                    return redirect('/FOFishworker')->with('success', 'Data has been updated successfully!');
+                case 'Commercial':
+                    return redirect('/FOCommercial')->with('success', 'Data has been updated successfully!');
+                case 'Women':
+                    return redirect('/FOWomenF')->with('success', 'Data has been updated successfully!');
+                case 'Youth':
+                    return redirect('/FOYouth')->with('success', 'Data has been updated successfully!');
+                case 'IP':
+                    return redirect('/FOIPs')->with('success', 'Data has been updated successfully!');
+                default:
+                    return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+            }
         } else {
-            return redirect()->back()->with('failed', 'error');
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
         }
     }
 }

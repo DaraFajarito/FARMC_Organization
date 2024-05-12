@@ -174,6 +174,8 @@
                                 <div class="col-md-8 text-right">
                                     <a href="{{ url('/archived_IP') }}"><button type="button"
                                             class="btn btn-danger">All Archived</button></a>
+                                            <a href="{{ url('/viewallIP') }}"><button type="button"
+                                                class="btn btn-success">View all Members</button></a>
 
                                 </div>
                             </div>

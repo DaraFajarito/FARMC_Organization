@@ -1353,7 +1353,71 @@ class FisherfolkOrg_category extends Controller
 
 
     // ----------------------------------------------------------------------------------//
-    // -------------------------- D I S P L A Y  V I E W F O R M-------------------------//
+    // ----------------------- V I E W  A L L  M E M B E R S ----------------------------//
+    // ----------------------------------------------------------------------------------//
+
+    public function display_all_Mun()
+    {
+         //DISPLAYING TABLE
+         $association = FisherfolkOrganization_Model::where('sector_rep', 'Municipal')->get();
+         $cooperative = FC_GenInfo_Model::where('sector_rep', 'Municipal')->get();
+
+
+        return view('Fisherfolk_Organization.Municipal.viewall_Municipal', compact('association', 'cooperative'));
+    }
+    public function display_all_Fish()
+    {
+         //DISPLAYING TABLE
+         $association = FisherfolkOrganization_Model::where('sector_rep', 'Fishworker')->get();
+         $cooperative = FC_GenInfo_Model::where('sector_rep', 'Fishworker')->get();
+
+
+        return view('Fisherfolk_Organization.Fishworker.viewall_Fishworker', compact('association', 'cooperative'));
+    }
+    public function display_all_Com()
+    {
+         //DISPLAYING TABLE
+         $association = FisherfolkOrganization_Model::where('sector_rep', 'Commercial')->get();
+         $cooperative = FC_GenInfo_Model::where('sector_rep', 'Commercial')->get();
+
+
+        return view('Fisherfolk_Organization.Commercial.viewall_Commercial', compact('association', 'cooperative'));
+    }
+    public function display_all_Women()
+    {
+         //DISPLAYING TABLE
+         $association = FisherfolkOrganization_Model::where('sector_rep', 'Women')->get();
+         $cooperative = FC_GenInfo_Model::where('sector_rep', 'Women')->get();
+
+
+        return view('Fisherfolk_Organization.Women_Fisherfolk.viewall_WFisherfolk', compact('association', 'cooperative'));
+    }
+    public function display_all_Youth()
+    {
+         //DISPLAYING TABLE
+         $association = FisherfolkOrganization_Model::where('sector_rep', 'Youth')->get();
+         $cooperative = FC_GenInfo_Model::where('sector_rep', 'Youth')->get();
+
+
+        return view('Fisherfolk_Organization.Youth_Fisherfolk.viewall_YFisherfolk', compact('association', 'cooperative'));
+    }
+    public function display_all_IP()
+    {
+         //DISPLAYING TABLE
+         $association = FisherfolkOrganization_Model::where('sector_rep', 'IPs')->get();
+         $cooperative = FC_GenInfo_Model::where('sector_rep', 'IPs')->get();
+
+
+        return view('Fisherfolk_Organization.IPs.viewall_IPs', compact('association', 'cooperative'));
+    }
+
+
+
+
+
+
+    // ----------------------------------------------------------------------------------//
+    // ------------------------------ E D I T I N G  D A T A ----------------------------//
     // ----------------------------------------------------------------------------------//
 
 
@@ -1443,97 +1507,101 @@ class FisherfolkOrg_category extends Controller
             'other_age' => 'nullable',
             'other_fourps' => 'nullable',
 
-             //BOARD OF DIRECTOR (FO_OAM_BoardofDir_Model)
-             'boardofDir_name1' => 'nullable',
-             'boardofDir_cs1' => 'nullable',
-             'boardofDir_gen1' => 'nullable',
-             'boardofDir_birth1' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age1' => 'nullable',
-             'boardofDir_fourps1' => 'nullable',
+            //BOARD OF DIRECTOR (FO_OAM_BoardofDir_Model)
+            'boardofDir_name1' => 'nullable',
+            'boardofDir_cs1' => 'nullable',
+            'boardofDir_gen1' => 'nullable',
+            'boardofDir_birth1' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age1' => 'nullable',
+            'boardofDir_fourps1' => 'nullable',
 
-             'boardofDir_name2' => 'nullable',
-             'boardofDir_cs2' => 'nullable',
-             'boardofDir_gen2' => 'nullable',
-             'boardofDir_birth2' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age2' => 'nullable',
-             'boardofDir_fourps2' => 'nullable',
+            'boardofDir_name2' => 'nullable',
+            'boardofDir_cs2' => 'nullable',
+            'boardofDir_gen2' => 'nullable',
+            'boardofDir_birth2' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age2' => 'nullable',
+            'boardofDir_fourps2' => 'nullable',
 
-             'boardofDir_name3' => 'nullable',
-             'boardofDir_cs3' => 'nullable',
-             'boardofDir_gen3' => 'nullable',
-             'boardofDir_birth3' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age3' => 'nullable',
-             'boardofDir_fourps3' => 'nullable',
+            'boardofDir_name3' => 'nullable',
+            'boardofDir_cs3' => 'nullable',
+            'boardofDir_gen3' => 'nullable',
+            'boardofDir_birth3' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age3' => 'nullable',
+            'boardofDir_fourps3' => 'nullable',
 
-             'boardofDir_name4' => 'nullable',
-             'boardofDir_cs4' => 'nullable',
-             'boardofDir_gen4' => 'nullable',
-             'boardofDir_birth4' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age4' => 'nullable',
-             'boardofDir_fourps4' => 'nullable',
+            'boardofDir_name4' => 'nullable',
+            'boardofDir_cs4' => 'nullable',
+            'boardofDir_gen4' => 'nullable',
+            'boardofDir_birth4' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age4' => 'nullable',
+            'boardofDir_fourps4' => 'nullable',
 
-             'boardofDir_name5' => 'nullable',
-             'boardofDir_cs5' => 'nullable',
-             'boardofDir_gen5' => 'nullable',
-             'boardofDir_birth5' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age5' => 'nullable',
-             'boardofDir_fourps5' => 'nullable',
+            'boardofDir_name5' => 'nullable',
+            'boardofDir_cs5' => 'nullable',
+            'boardofDir_gen5' => 'nullable',
+            'boardofDir_birth5' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age5' => 'nullable',
+            'boardofDir_fourps5' => 'nullable',
 
-             'boardofDir_name6' => 'nullable',
-             'boardofDir_cs6' => 'nullable',
-             'boardofDir_gen6' => 'nullable',
-             'boardofDir_birth6' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age6' => 'nullable',
-             'boardofDir_fourps6' => 'nullable',
+            'boardofDir_name6' => 'nullable',
+            'boardofDir_cs6' => 'nullable',
+            'boardofDir_gen6' => 'nullable',
+            'boardofDir_birth6' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age6' => 'nullable',
+            'boardofDir_fourps6' => 'nullable',
 
-             'boardofDir_name7' => 'nullable',
-             'boardofDir_cs7' => 'nullable',
-             'boardofDir_gen7' => 'nullable',
-             'boardofDir_birth7' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age7' => 'nullable',
-             'boardofDir_fourps7' => 'nullable',
+            'boardofDir_name7' => 'nullable',
+            'boardofDir_cs7' => 'nullable',
+            'boardofDir_gen7' => 'nullable',
+            'boardofDir_birth7' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age7' => 'nullable',
+            'boardofDir_fourps7' => 'nullable',
 
-             'boardofDir_name8' => 'nullable',
-             'boardofDir_cs8' => 'nullable',
-             'boardofDir_gen8' => 'nullable',
-             'boardofDir_birth8' => 'nullable|date_format:Y-m-d',
-             'boardofDir_age8' => 'nullable',
-             'boardofDir_fourps8' => 'nullable',
+            'boardofDir_name8' => 'nullable',
+            'boardofDir_cs8' => 'nullable',
+            'boardofDir_gen8' => 'nullable',
+            'boardofDir_birth8' => 'nullable|date_format:Y-m-d',
+            'boardofDir_age8' => 'nullable',
+            'boardofDir_fourps8' => 'nullable',
 
-            //  //COMMITTEE (FO_OAM_Committees_Model)
-            //  'category' => 'nullable',
-            //  'other_cat' => 'nullable',
-            //  'name' => 'nullable',
-            //  'civil_status' => 'nullable',
-            //  'birthday' => 'nullable|date_format:Y-m-d',
-            //  'gender' => 'nullable',
-            //  'age' => 'nullable',
-            //  'fourps' => 'nullable',
+            'capmem_fee' => 'nullable',
+            'capmonthly_cont' => 'nullable',
+            'cap_donation' => 'nullable',
+            'cap_others' => 'nullable',
+            'captotal_cap' => 'nullable',
+            'CIcontact_person' => 'nullable',
+            'CIlandline' => 'nullable',
+            'CIMobile' => 'nullable',
+            'CIMess' => 'nullable',
 
-            //  'name1' => 'nullable',
-            //  'civil_status1' => 'nullable',
-            //  'birthday1' => 'nullable|date_format:Y-m-d',
-            //  'gender1' => 'nullable',
-            //  'age1' => 'nullable',
-            //  'fourps1' => 'nullable',
+            //COMMITTEE (FO_OAM_Committees_Model)
+            // i have category here (Membership Committee, Committee on Education and Research, Election Committee, Audit Committee, Others: please specify),
+            //wherein i just select one of this category and fill up the field in each category
+            //my problem is how can i edit data of each category i have if they have same input fields , how can identify if it is the category data i want to edit
+            'category' => 'nullable',
+            'other_cat' => 'nullable',
+            'name' => 'nullable',
+            'civil_status' => 'nullable',
+            'birthday' => 'nullable|date_format:Y-m-d',
+            'gender' => 'nullable',
+            'age' => 'nullable',
+            'fourps' => 'nullable',
 
-            //  'name2' => 'nullable',
-            //  'civil_status2' => 'nullable',
-            //  'birthday2' => 'nullable|date_format:Y-m-d',
-            //  'gender2' => 'nullable',
-            //  'age2' => 'nullable',
-            //  'fourps2' => 'nullable',
+            'name1' => 'nullable',
+            'civil_status1' => 'nullable',
+            'birthday1' => 'nullable|date_format:Y-m-d',
+            'gender1' => 'nullable',
+            'age1' => 'nullable',
+            'fourps1' => 'nullable',
 
-            //  //LIST OF MEMBERS (FO_ListofMem_Model)
-            //  'mem_name.*' => 'nullable',
-            //  'mem_cs.*' => 'nullable',
-            //  'mem_gen.*' => 'nullable',
-            //  'mem_birth.*' => 'nullable|date_format:Y-m-d',
-            //  'mem_age.*' => 'nullable',
-            //  'mem_fourps.*' => 'nullable',
+            'name2' => 'nullable',
+            'civil_status2' => 'nullable',
+            'birthday2' => 'nullable|date_format:Y-m-d',
+            'gender2' => 'nullable',
+            'age2' => 'nullable',
+            'fourps2' => 'nullable',
 
         ]);
-
 
         $editAss = FisherfolkOrganization_Model::where('id', $id)->firstOrFail();
 
@@ -1611,6 +1679,18 @@ class FisherfolkOrg_category extends Controller
         $editAss->other_age = $validatedData['other_age'] ?? null;
         $editAss->other_fourps = $validatedData['other_fourps'] ?? null;
 
+
+        $editAss->capmem_fee = $validatedData['capmem_fee'] ?? null;
+        $editAss->capmonthly_cont = $validatedData['capmonthly_cont'] ?? null;
+        $editAss->cap_donation = $validatedData['cap_donation'] ?? null;
+        $editAss->cap_others = $validatedData['cap_others'] ?? null;
+        $editAss->captotal_cap = $validatedData['captotal_cap'] ?? null;
+
+        $editAss->CIcontact_person = $validatedData['CIcontact_person'] ?? null;
+        $editAss->CIlandline = $validatedData['CIlandline'] ?? null;
+        $editAss->CIMobile = $validatedData['CIMobile'] ?? null;
+        $editAss->CIMess = $validatedData['CIMess'] ?? null;
+
         $boardir = FO_OAM_BoardofDir_Model::where('fisherfolkOrg_id', $editAss->id)->firstOrFail();
         $boardir->boardofDir_name1 = $validatedData['boardofDir_name1'] ?? null;
         $boardir->boardofDir_cs1 = $validatedData['boardofDir_cs1'] ?? null;
@@ -1668,20 +1748,87 @@ class FisherfolkOrg_category extends Controller
         $boardir->boardofDir_age8 = $validatedData['boardofDir_age8'] ?? null;
         $boardir->boardofDir_fourps8 = $validatedData['boardofDir_fourps8'] ?? null;
 
-        // $editAss->category = $validatedData['category'] ?? null;
-        // $editAss->other_cat = $validatedData['other_cat'] ?? null;
+        // // Update the specific category's data based on the 'category' field in the request
+        // $committee = FO_OAM_Committees_Model::where('fisherfolkOrg_id', $editAss->id)->get();
 
-        $boardir->save();
+        // // Update the specific category's data based on the 'category' field in the request
+        // if ($request->category === 'Membership Committee') {
+        //     $committee->name = $validatedData['name'] ?? null;
+        //     $committee->civil_status = $validatedData['civil_status'] ?? null;
+        //     $committee->birthday = isset($validatedData['birthday']) ? date('Y-m-d', strtotime($validatedData['birthday'])) : null;
+        //     $committee->gender = $validatedData['gender'] ?? null;
+        //     $committee->age = $validatedData['age'] ?? null;
+        //     $committee->fourps = $validatedData['fourps'] ?? null;
+
+        //     $committee->name1 = $validatedData['name1'] ?? null;
+        //     $committee->civil_status1 = $validatedData['civil_status1'] ?? null;
+        //     $committee->birthday1 = isset($validatedData['birthday1']) ? date('Y-m-d', strtotime($validatedData['birthday1'])) : null;
+        //     $committee->gender1 = $validatedData['gender1'] ?? null;
+        //     $committee->age1 = $validatedData['age1'] ?? null;
+        //     $committee->fourps1 = $validatedData['fourps1'] ?? null;
+
+        //     $committee->name2 = $validatedData['name2'] ?? null;
+        //     $committee->civil_status2 = $validatedData['civil_status2'] ?? null;
+        //     $committee->birthday2 = isset($validatedData['birthday2']) ? date('Y-m-d', strtotime($validatedData['birthday2'])) : null;
+        //     $committee->gender2 = $validatedData['gender2'] ?? null;
+        //     $committee->age2 = $validatedData['age2'] ?? null;
+        //     $committee->fourps2 = $validatedData['fourps2'] ?? null;
+        // } elseif ($request->category === 'Committee on Education and Research') {
+        //     $committee->name = $validatedData['name'] ?? null;
+        //     $committee->civil_status = $validatedData['civil_status'] ?? null;
+        //     $committee->birthday = isset($validatedData['birthday']) ? date('Y-m-d', strtotime($validatedData['birthday'])) : null;
+        //     $committee->gender = $validatedData['gender'] ?? null;
+        //     $committee->age = $validatedData['age'] ?? null;
+        //     $committee->fourps = $validatedData['fourps'] ?? null;
+
+        //     $committee->name1 = $validatedData['name1'] ?? null;
+        //     $committee->civil_status1 = $validatedData['civil_status1'] ?? null;
+        //     $committee->birthday1 = isset($validatedData['birthday1']) ? date('Y-m-d', strtotime($validatedData['birthday1'])) : null;
+        //     $committee->gender1 = $validatedData['gender1'] ?? null;
+        //     $committee->age1 = $validatedData['age1'] ?? null;
+        //     $committee->fourps1 = $validatedData['fourps1'] ?? null;
+
+        //     $committee->name2 = $validatedData['name2'] ?? null;
+        //     $committee->civil_status2 = $validatedData['civil_status2'] ?? null;
+        //     $committee->birthday2 = isset($validatedData['birthday2']) ? date('Y-m-d', strtotime($validatedData['birthday2'])) : null;
+        //     $committee->gender2 = $validatedData['gender2'] ?? null;
+        //     $committee->age2 = $validatedData['age2'] ?? null;
+        //     $committee->fourps2 = $validatedData['fourps2'] ?? null;
+        // } elseif ($request->category === 'Election Committee') {
+        //     $committee->name = $validatedData['name'] ?? null;
+        //     $committee->civil_status = $validatedData['civil_status'] ?? null;
+        //     $committee->birthday = isset($validatedData['birthday']) ? date('Y-m-d', strtotime($validatedData['birthday'])) : null;
+        //     $committee->gender = $validatedData['gender'] ?? null;
+        //     $committee->age = $validatedData['age'] ?? null;
+        //     $committee->fourps = $validatedData['fourps'] ?? null;
+
+        //     $committee->name1 = $validatedData['name1'] ?? null;
+        //     $committee->civil_status1 = $validatedData['civil_status1'] ?? null;
+        //     $committee->birthday1 = isset($validatedData['birthday1']) ? date('Y-m-d', strtotime($validatedData['birthday1'])) : null;
+        //     $committee->gender1 = $validatedData['gender1'] ?? null;
+        //     $committee->age1 = $validatedData['age1'] ?? null;
+        //     $committee->fourps1 = $validatedData['fourps1'] ?? null;
+
+        //     $committee->name2 = $validatedData['name2'] ?? null;
+        //     $committee->civil_status2 = $validatedData['civil_status2'] ?? null;
+        //     $committee->birthday2 = isset($validatedData['birthday2']) ? date('Y-m-d', strtotime($validatedData['birthday2'])) : null;
+        //     $committee->gender2 = $validatedData['gender2'] ?? null;
+        //     $committee->age2 = $validatedData['age2'] ?? null;
+        //     $committee->fourps2 = $validatedData['fourps2'] ?? null;
+        // }
+
+        // $committee->save();
+
         $editAss->save();
+        $boardir->save();
 
         // Check if any changes were made and redirect accordingly
         if ($editAss->wasChanged() || $boardir->wasChanged()) {
             $sectorRep = $editAss->sector_rep;
-            $sectorRep = $editAss->sector_rep;
             switch ($sectorRep) {
                 case 'Municipal':
                     return redirect('/FOMunicipal')->with('success', 'Data has been updated successfully!');
-                case 'Fisherworker':
+                case 'Fishworker':
                     return redirect('/FOFishworker')->with('success', 'Data has been updated successfully!');
                 case 'Commercial':
                     return redirect('/FOCommercial')->with('success', 'Data has been updated successfully!');
@@ -1697,6 +1844,5 @@ class FisherfolkOrg_category extends Controller
         } else {
             return redirect()->back()->with('error', 'Failed to update. No changes were made.');
         }
-
     }
 }
