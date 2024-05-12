@@ -94,8 +94,15 @@
                         <h4>M/C FARMC Profile | <small>VIEW DETAILS</small></h4>
                         <br>
                         <br>
+                @foreach ($rfdp as $item)
                         <div style="display: flex;">
-                            <a href="#!" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                            <a href="{{
+                                $item->involvement_mdo === 'National Fisherfolk Director' ? url('/nationalFR') :
+                                ($item->involvement_mdo === 'Regional Fisherfolk Representative' ? url('/regionalFR') :
+                                ($item->involvement_mdo === 'Regional Fisherfolk Director' ? url('/regionalFD') :
+                                ($item->involvement_mdo === 'Provincial Fisherfolk Representative' ? url('/provincialFR') : '#')))
+                            }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+
                             <div class="actions text-right" style="flex: 1;">
                                 <!-- Added text-center class and flex: 1 -->
                                 <button class="btn btn-success" onclick="window.print()">Print</button>
@@ -104,7 +111,6 @@
                         </div>
                     </div>
                 </div>
-                @foreach ($rfdp as $item)
                     <div class="card">
                         <div id="content">
                             <div class="card-header" style="display: flex; justify-content: space-between;">

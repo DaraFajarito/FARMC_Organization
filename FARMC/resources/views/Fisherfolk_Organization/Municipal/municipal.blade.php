@@ -221,7 +221,7 @@
                                                                     <td>{{ $item->name_of_org }}</td>
                                                                 @endif
 
-                                                                @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                @if ($item->add_barangay === null && $item->add_city === null  && $item->add_province === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->add_barangay }},
@@ -229,27 +229,27 @@
                                                                         {{ $item->add_province }}</td>
                                                                 @endif
 
-                                                                @if ($item->sector_rep === null)
+                                                                @if ($item->sector_rep === null && $item->sector_rep_yes === null)
                                                                     <td style="color:red">no data</td>
+
                                                                 @else
                                                                     <td>{{ $item->sector_rep }} -
                                                                         {{ $item->sector_rep_yes }}</td>
                                                                 @endif
 
-                                                                @if ($item->status_of_reg === null || $item->status_of_reg_yes === null)
+                                                                @if ($item->status_of_reg === null &&  $item->status_of_reg_yes === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->status_of_reg }} -
                                                                         {{ $item->status_of_reg_yes }}</td>
                                                                 @endif
 
-                                                                @if ($item->status_of_accre === null || $item->status_of_accre_yes === null)
+                                                                @if ($item->status_of_accre === null && $item->status_of_accre_yes === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->status_of_accre }} -
                                                                         {{ $item->status_of_reg_yes }}</td>
                                                                 @endif
-                                                                {{-- <td><b>REGISTERED</b></td> --}}
                                                                 <td
                                                                     style=" display: flex; justify-content: space-between;">
                                                                     <a href="{{ url('/viewMunAssociation/' . $item->id) }}"
@@ -287,7 +287,6 @@
                                                     <tbody style="font-size: 13px">
                                                         @foreach ($data1 as $item)
                                                         @if ($item->status != 'ARCHIVED')
-
                                                             <tr>
                                                                 @if ($item->name_of_coop === null)
                                                                     <td style="color:red">no data</td>
@@ -295,12 +294,10 @@
                                                                     <td>{{ $item->name_of_coop }}</td>
                                                                 @endif
 
-                                                                @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                @if ($item->add_barangay === null && $item->add_city === null && $item->add_province === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
-                                                                    <td>{{ $item->add_barangay }},
-                                                                        {{ $item->add_city }},
-                                                                        {{ $item->add_province }}</td>
+                                                                    <td>{{ $item->add_barangay }}, {{ $item->add_city }}, {{ $item->add_province }}</td>
                                                                 @endif
 
                                                                 @if ($item->sector_rep === null)

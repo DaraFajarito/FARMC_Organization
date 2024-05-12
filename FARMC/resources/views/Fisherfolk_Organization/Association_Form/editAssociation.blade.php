@@ -230,7 +230,7 @@
                                                 <div class="radio radio-inline">
                                                     <label>
                                                         <input type="radio" name="status_of_reg"
-                                                            onclick="toggleSchedule(this)" value="Yes"
+                                                            value="Yes"
                                                             {{ old('status_of_reg', $item->status_of_reg) == 'Yes' ? 'checked' : '' }} /><i
                                                             class="helper"></i>Yes
                                                     </label>
@@ -249,25 +249,25 @@
                                                 <div class="radio radio-inline">
                                                     <label>
                                                         <input type="radio" name="status_of_reg_yes"
-                                                            onclick="toggleProof(this)" value="DOLE"
+                                                             value="DOLE"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'DOLE' ? 'checked' : '' }} /><i
                                                             class="helper"></i>DOLE
                                                     </label>
                                                     <label>
                                                         <input type="radio" name="status_of_reg_yes"
-                                                            onclick="toggleProof(this)" value="SEC"
+                                                             value="SEC"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'SEC' ? 'checked' : '' }} /><i
                                                             class="helper"></i>SEC
                                                     </label>
                                                     <label>
                                                         <input type="radio" name="status_of_reg_yes"
-                                                            onclick="toggleProof(this)" value="CDA"
+                                                             value="CDA"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'CDA' ? 'checked' : '' }} /><i
                                                             class="helper"></i>CDA
                                                     </label>
                                                     <label>
                                                         <input type="radio" name="status_of_reg_yes"
-                                                            onclick="toggleProof(this)" value="Others"
+                                                             value="Others"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'Others' ? 'checked' : '' }} /><i
                                                             class="helper"></i>Others
                                                     </label>
@@ -307,7 +307,7 @@
                                                     <label>
                                                         <input type="radio" name="status_of_accre" value="Yes"
                                                             {{ old('status_of_accre', $item->status_of_accre) == 'Yes' ? 'checked' : '' }}
-                                                            onclick="toggleAccre(this)" /><i class="helper"></i>Yes
+                                                            /><i class="helper"></i>Yes
                                                     </label>
                                                     <label>
                                                         <input type="radio" name="status_of_accre" value="No"

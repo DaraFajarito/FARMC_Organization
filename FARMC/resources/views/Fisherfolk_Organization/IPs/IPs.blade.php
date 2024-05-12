@@ -291,7 +291,7 @@
                                                                         <td>{{ $item->name_of_coop }}</td>
                                                                     @endif
 
-                                                                    @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                    @if ($item->add_barangay === null && $item->add_city === null && $item->add_province === null)
                                                                         <td style="color:red">no data</td>
                                                                     @else
                                                                         <td>{{ $item->add_barangay }},

@@ -95,13 +95,21 @@
                         <br>
                         <br>
                         <div style="display: flex;">
-                            <a href="#!" class="btn btn-secondary"> <i
-                                    class="icon-arrow-left"></i> Back</a>
-                            <div class="actions text-right" style="flex: 1;">
-                                <!-- Added text-center class and flex: 1 -->
-                                <button class="btn btn-success" onclick="window.print()">Print</button>
-                                <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
-                            </div>
+                            @foreach ($basic_info as $item)
+                            <a href="{{
+                                $item->sector_rep === 'Municipal' ? url('/FOMunicipal') :
+                                ($item->sector_rep === 'Fishworker' ? url('/FOFishworker') :
+                                ($item->sector_rep === 'Commercial' ? url('/FOCommercial') :
+                                ($item->sector_rep === 'Women' ? url('/FOWomenF') :
+                                ($item->sector_rep === 'Youth' ? url('/FOYouth') :
+                                ($item->sector_rep === 'IPs' ? url('/FOIPs') : '#')))))
+                            }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                                <div class="actions text-right" style="flex: 1;">
+                                    <!-- Added text-center class and flex: 1 -->
+                                    <button class="btn btn-success" onclick="window.print()">Print</button>
+                                    <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -252,28 +260,32 @@
                                                 <tbody>
                                                     <tr style="font-size: 12px;">
                                                         <td class="text-center"> &nbsp;@if ($item->status_of_accre === null)
-                                                            <span style="color: red;">no data</span>
-                                                        @else
-                                                            {{ $item->status_of_accre }}
-                                                        @endif
+                                                                <span style="color: red;">no data</span>
+                                                            @else
+                                                                {{ $item->status_of_accre }}
+                                                            @endif
                                                         </td>
-                                                        <td class="text-center">@if ($item->status_of_accre_yes === null)
-                                                            <span style="color: red;">no data</span>
-                                                        @else
-                                                            {{ $item->status_of_accre_yes }}
-                                                        @endif
+                                                        <td class="text-center">
+                                                            @if ($item->status_of_accre_yes === null)
+                                                                <span style="color: red;">no data</span>
+                                                            @else
+                                                                {{ $item->status_of_accre_yes }}
+                                                            @endif
                                                         </td>
-                                                        <td class="text-center">@if ($item->accre_no === null)
-                                                            <span style="color: red;">no data</span>
-                                                        @else
-                                                            {{ $item->accre_no }}
-                                                        @endif</td>
-                                                        <td class="text-center">@if ($item->date_accre === null)
-                                                            <span style="color: red;">no data</span>
-                                                        @else
-                                                            {{ $item->date_accre }}
-                                                        @endif</td>
-
+                                                        <td class="text-center">
+                                                            @if ($item->accre_no === null)
+                                                                <span style="color: red;">no data</span>
+                                                            @else
+                                                                {{ $item->accre_no }}
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center">
+                                                            @if ($item->date_accre === null)
+                                                                <span style="color: red;">no data</span>
+                                                            @else
+                                                                {{ $item->date_accre }}
+                                                            @endif
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -1082,43 +1094,50 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1128,85 +1147,99 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name1 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status1 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender1 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age1 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age1 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps1 }}
+                                                    @endif
                                                 </td>
                                             <tr>
                                                 <td style="font-size: small;">Member</td>
                                                 <td>
                                                     @if ($item->name2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name2 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status2 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender2 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age2 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age2 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps2 }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1236,43 +1269,50 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1282,85 +1322,99 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name1 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status1 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender1 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age1 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age1 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps1 }}
+                                                    @endif
                                                 </td>
                                             <tr>
                                                 <td style="font-size: small;">Member</td>
                                                 <td>
                                                     @if ($item->name2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name2 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status2 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender2 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age2 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age2 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps2 }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1390,43 +1444,50 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1436,85 +1497,99 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name1 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status1 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender1 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age1 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age1 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps1 }}
+                                                    @endif
                                                 </td>
                                             <tr>
                                                 <td style="font-size: small;">Member</td>
                                                 <td>
                                                     @if ($item->name2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name2 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status2 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender2 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age2 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age2 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps2 }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1545,43 +1620,50 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1591,85 +1673,99 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name1 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status1 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender1 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age1 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age1 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps1 }}
+                                                    @endif
                                                 </td>
                                             <tr>
                                                 <td style="font-size: small;">Member</td>
                                                 <td>
                                                     @if ($item->name2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name2 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status2 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender2 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age2 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age2 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps2 }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1699,43 +1795,50 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1745,85 +1848,99 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->name1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name1 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status1 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender1 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender1 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age1 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday1 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps1 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps1 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age1 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps1 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps1 }}
+                                                    @endif
                                                 </td>
                                             <tr>
                                                 <td style="font-size: small;">Member</td>
                                                 <td>
                                                     @if ($item->name2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->name2 }}
-                                                @endif</td>
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->name2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
                                                 <td>
                                                     @if ($item->civil_status2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->civil_status2 }}
-                                                @endif
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->civil_status2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->gender2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->gender2 }}
-                                                @endif</td>
-                                                &nbsp;
-                                                <td>@if ($item->birthday2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->birthday2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->gender2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->gender2 }}
+                                                    @endif
                                                 </td>
                                                 &nbsp;
-                                                <td>@if ($item->age2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->age2 }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->birthday2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->birthday2 }}
+                                                    @endif
+                                                </td>
                                                 &nbsp;
-                                                <td>@if ($item->fourps2 === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->fourps2 }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->age2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->age2 }}
+                                                    @endif
+                                                </td>
+                                                &nbsp;
+                                                <td>
+                                                    @if ($item->fourps2 === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->fourps2 }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1855,41 +1972,49 @@
                                     @foreach ($listmem as $item)
                                         <tbody id="dytable-body">
                                             <tr>
-                                                <td>@if ($item->mem_name === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->mem_name }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->mem_name === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->mem_name }}
+                                                    @endif
                                                 </td>
 
-                                                <td>@if ($item->mem_cs === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->mem_cs }}
-                                                @endif
-                                               </td>
-                                                <td>@if ($item->mem_gen === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->mem_gen }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->mem_cs === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->mem_cs }}
+                                                    @endif
                                                 </td>
-                                                <td>@if ($item->mem_birth === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->mem_birth }}
-                                                @endif</td>
-                                                <td>@if ($item->mem_age === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->mem_age }}
-                                                @endif
+                                                <td>
+                                                    @if ($item->mem_gen === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->mem_gen }}
+                                                    @endif
                                                 </td>
-                                                <td>@if ($item->mem_fourps === null)
-                                                    <span style="color: red;">no data</span>
-                                                @else
-                                                    {{ $item->mem_fourps }}
-                                                @endif</td>
+                                                <td>
+                                                    @if ($item->mem_birth === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->mem_birth }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($item->mem_age === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->mem_age }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($item->mem_fourps === null)
+                                                        <span style="color: red;">no data</span>
+                                                    @else
+                                                        {{ $item->mem_fourps }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                         </tbody>
                                     @endforeach

@@ -223,40 +223,40 @@
                                                 @if ($item->status != 'ARCHIVED')
                                                     <tr>
                                                         @if ($item->name_of_org === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->name_of_org }}</td>
-                                                        @endif
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->name_of_org }}</td>
+                                                    @endif
 
-                                                        @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->add_barangay }},
-                                                                {{ $item->add_city }},
-                                                                {{ $item->add_province }}</td>
-                                                        @endif
+                                                    @if ($item->add_barangay === null && $item->add_city === null  && $item->add_province === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->add_barangay }},
+                                                            {{ $item->add_city }},
+                                                            {{ $item->add_province }}</td>
+                                                    @endif
 
-                                                        @if ($item->sector_rep === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->sector_rep }} -
-                                                                {{ $item->sector_rep_yes }}</td>
-                                                        @endif
+                                                    @if ($item->sector_rep === null && $item->sector_rep_yes === null)
+                                                        <td style="color:red">no data</td>
 
-                                                        @if ($item->status_of_reg === null || $item->status_of_reg_yes === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->status_of_reg }} -
-                                                                {{ $item->status_of_reg_yes }}</td>
-                                                        @endif
+                                                    @else
+                                                        <td>{{ $item->sector_rep }} -
+                                                            {{ $item->sector_rep_yes }}</td>
+                                                    @endif
 
-                                                        @if ($item->status_of_accre === null || $item->status_of_accre_yes === null)
-                                                            <td style="color:red">no data</td>
-                                                        @else
-                                                            <td>{{ $item->status_of_accre }} -
-                                                                {{ $item->status_of_reg_yes }}</td>
-                                                        @endif
-                                                        {{-- <td><b>REGISTERED</b></td> --}}
+                                                    @if ($item->status_of_reg === null &&  $item->status_of_reg_yes === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->status_of_reg }} -
+                                                            {{ $item->status_of_reg_yes }}</td>
+                                                    @endif
+
+                                                    @if ($item->status_of_accre === null && $item->status_of_accre_yes === null)
+                                                        <td style="color:red">no data</td>
+                                                    @else
+                                                        <td>{{ $item->status_of_accre }} -
+                                                            {{ $item->status_of_reg_yes }}</td>
+                                                    @endif
                                                         <td style=" display: flex; justify-content: space-between;">
                                                             <a href="{{ url('/viewMunAssociation/' . $item->id) }}"
                                                                 class="btn btn-success"><i class="ti-eye"></i></a>
@@ -298,7 +298,7 @@
                                                                 <td>{{ $item->name_of_coop }}</td>
                                                             @endif
 
-                                                            @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                            @if ($item->add_barangay === null && $item->add_city === null && $item->add_province === null)
                                                                 <td style="color:red">no data</td>
                                                             @else
                                                                 <td>{{ $item->add_barangay }},

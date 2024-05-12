@@ -176,7 +176,7 @@
                                     <a href="{{ url('/archived_Fish') }}"><button type="button"
                                             class="btn btn-danger">All Archived</button></a>
                                     <a href="{{ url('/viewallFish') }}"><button type="button"
-                                        class="btn btn-success">View all Members</button></a>
+                                            class="btn btn-success">View all Members</button></a>
                                 </div>
                             </div>
                             <div class="row">
@@ -219,7 +219,7 @@
                                                                     <td>{{ $item->name_of_org }}</td>
                                                                 @endif
 
-                                                                @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                @if ($item->add_barangay === null && $item->add_city === null && $item->add_province === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->add_barangay }},
@@ -227,33 +227,33 @@
                                                                         {{ $item->add_province }}</td>
                                                                 @endif
 
-                                                                @if ($item->sector_rep === null || $item->sector_rep_yes === null)
-                                                                    <td> Fishworker</td>
+                                                                @if ($item->sector_rep === null && $item->sector_rep_yes === null)
+                                                                    <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->sector_rep }} -
                                                                         {{ $item->sector_rep_yes }}</td>
                                                                 @endif
 
-                                                                @if ($item->status_of_reg === null || $item->status_of_reg_yes === null)
+                                                                @if ($item->status_of_reg === null && $item->status_of_reg_yes === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->status_of_reg }} -
                                                                         {{ $item->status_of_reg_yes }}</td>
                                                                 @endif
 
-                                                                @if ($item->status_of_accre === null || $item->status_of_accre_yes === null)
+                                                                @if ($item->status_of_accre === null && $item->status_of_accre_yes === null)
                                                                     <td style="color:red">no data</td>
                                                                 @else
                                                                     <td>{{ $item->status_of_accre }} -
                                                                         {{ $item->status_of_reg_yes }}</td>
                                                                 @endif
-                                                                {{-- <td><b>REGISTERED</b></td> --}}
                                                                 <td
                                                                     style=" display: flex; justify-content: space-between;">
                                                                     <a href="{{ url('/viewFishAssociation/' . $item->id) }}"
                                                                         class="btn btn-success"><i
                                                                             class="ti-eye"></i></a>
-                                                                    <a href="{{ url ('/association_edit/' . $item->id)}}" class="btn btn-warning"><i
+                                                                    <a href="{{ url('/association_edit/' . $item->id) }}"
+                                                                        class="btn btn-warning"><i
                                                                             class="ti-pencil"></i></a>
                                                                     <a href="{{ url('/archived_FishAss/' . $item->id) }}"
                                                                         class="btn btn-danger"><i
@@ -292,7 +292,7 @@
                                                                         <td>{{ $item->name_of_coop }}</td>
                                                                     @endif
 
-                                                                    @if ($item->add_barangay === null || $item->add_city === null || $item->add_province === null)
+                                                                    @if ($item->add_barangay === null && $item->add_city === null && $item->add_province === null)
                                                                         <td style="color:red">no data</td>
                                                                     @else
                                                                         <td>{{ $item->add_barangay }},
