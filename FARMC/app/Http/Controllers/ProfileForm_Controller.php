@@ -498,120 +498,238 @@ class ProfileForm_Controller extends Controller
         // Save the updated officer details
         $secretariat->save();
 
-        $committee = Committee_Model::where('profileForm_id', $secretariat->id)->get();
+        $requiredFields = [
+            'municipality',
+            'province',
+            'date_organized',
+            'minutes1',
+            'photos1',
+            'attendance1',
+            'date_reorganized',
+            'minutes2',
+            'photos2',
+            'attendance2',
+            'internalP',
+            'internalP_file',
+            'fisherfolkR',
+            'fisherfolkR_file',
+            'fisheriesP',
+            'fisheriesP_file',
+            'formulationR',
+            'formulationR_file',
+            'chairperson',
+            'vice_chairperson',
+            'secretary',
+            'asst_sec',
+            'treasurer',
+            'asst_treas',
+            'auditor',
+            'asst_aud',
+            'pro1',
+            'pro2',
+            'sgt_arms1',
+            'sgt_arms2',
+            'sgt_arms3',
+            //mandated
+            'chairpersonSB',
+            'mpdo',
+            'repmdc',
+            'repda',
+            'repngo',
+            'repps',
+            'others',
+            'name_sec',
+            'name_sec1',
+            'name_sec2',
+            'office_org',
+            'office_org1',
+            'office_org2',
+        ];
 
-        $committeeNull = $committee->isEmpty();
-
-        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
-
-
-        // Check if the collections are empty
-        $fisherfolkNull = $fisherfolk->isEmpty();
-
-        // Check if there's null in fisherfolk table
-        foreach ($fisherfolk as $representative) {
-            if (
-                is_null($representative->category) ||
-                is_null($representative->name) ||
-                is_null($representative->endorsement_fisherfolk) ||
-                is_null($representative->endorsement_attachment) ||
-                is_null($representative->atleast_one_year) ||
-                is_null($representative->aoy_attachment) ||
-                is_null($representative->source_of_income) ||
-                is_null($representative->soi_attachment) ||
-                is_null($representative->good_moral) ||
-                is_null($representative->gmc_attachment) ||
-                is_null($representative->org_name) ||
-                is_null($representative->date_of_reg) ||
-                is_null($representative->date_of_accreditation) ||
-                is_null($representative->dor_file) ||
-                is_null($representative->doa_file)
-            ) {
-                $fisherfolkNull = true;
+        // Check if any of the required fields are null
+        $incomplete = false;
+        foreach ($requiredFields as $field) {
+            if ($secretariat->$field === null) {
+                $incomplete = true;
                 break;
             }
         }
 
-        // Check if all fields are null in the profileform table
-        $profileFormNull = $secretariat->hasNullValues();
-
-        // Check if any category in fisherfolkrep table is not within the specified options
-        $FisherfolkcategoryOptions = [
-            'Municipal Fisherfolk',
-            'Fisherworker',
-            'Commercial Fishing Operator',
-            'Women Fisherfolk Sector Representative',
-            'Youth Fisherfolk Sector Representative',
-        ];
-
-        $categories = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)
-            ->pluck('category')
-            ->toArray();
-
-        $missingCategories = array_diff($FisherfolkcategoryOptions, $categories);
-
-        // If you need to store the missing categories, you can do it like this:
-        $missingCategoriesArray = [];
-
-        foreach ($missingCategories as $category) {
-            $missingCategoriesArray[] = $category;
+        // Set status to 'INCOMPLETE' if 'mfdp' is 'Formulated'
+        if ($secretariat->mfdp === 'Formulated') {
+            $incomplete = true;
         }
 
-        // Define the options
-        $CommitteeCategoryOptions = [
-            'Law Enforcement & Prosecution',
-            'Rehabilitation and Conservation',
-            'Livelihood',
-            'Research Education and Training',
-            'Legislation',
-            'Land and Water Use',
-            'Fisherfolk Resettlement'
-        ];
-
-        // Retrieve categories from the database based on the given ID
-        $categories = Committee_Model::where('profileForm_id', $secretariat->id)
-            ->pluck('category')
-            ->toArray();
-
-        // Find missing categories
-        $missingCCategories = array_diff($CommitteeCategoryOptions, $categories);
-
-        // Store missing categories in an array
-        $missingCommitteeCategoriesArray = [];
-
-        foreach ($missingCCategories as $category) {
-            $missingCommitteeCategoriesArray[] = $category;
+        // Set status to 'INCOMPLETE' if 'mfdp' is 'Formulated'
+        if ($secretariat->mfo === 'Formulated') {
+            $incomplete = true;
         }
 
-        // Determine status
-        $status = $committeeNull || $fisherfolkNull || $profileFormNull || $missingCategoriesArray || $missingCommitteeCategoriesArray ? 'INCOMPLETE' : 'COMPLETED';
-        $secretariat->update(['status' => $status]);
 
-        // Get null fields for display
-        $profileFormNullFields = $secretariat->getNullFields();
+        // Determine the status based on null values
+        $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
-        // Find the latest committee
-        $committee = Committee_Model::where('profileForm_id', $secretariat->id)->latest()->first();
+        // Update the status field in the database
+        $secretariat->status = $status;
+        $secretariat->save();
 
-        // Check if committee exists and get its null fields
-        $committeeNullFields = [];
-        if ($committee) {
-            $committeeNullFields = $committee->getNullFields();
-        }
 
-        $fisherfolkReps = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
-        $fisherfolkNullFields = [];
-        foreach ($fisherfolkReps as $fisherfolkRep) {
-            $fisherfolkNullFields = array_merge($fisherfolkNullFields, $fisherfolkRep->getNullFields());
-        }
-        $fisherfolkNullFields = array_unique($fisherfolkNullFields);
+        // Retrieve fields with null values
+        $secretariatNull = $secretariat->getNullFields();
 
-        if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields || $missingCategoriesArray || $missingCommitteeCategoriesArray) {
-            return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields', 'missingCategoriesArray', 'missingCommitteeCategoriesArray'));
+
+        // Redirect if null values are present, otherwise display the incomplete view
+        if (!$incomplete) {
+            return redirect('/level1')->with('success', 'Success!');
         } else {
-            return view('LoD.Level1.Level1');
+            return redirect('/L1Incompletetbl');
         }
     }
+    // public function addSecretariat(Request $request)
+    // {
+    //     // Validate the form data
+    //     $validatedData = $request->validate([
+    //         'name_sec' => 'nullable',
+    //         'name_sec1' => 'nullable',
+    //         'name_sec2' => 'nullable',
+    //         'office_org' => 'nullable',
+    //         'office_org1' => 'nullable',
+    //         'office_org2' => 'nullable',
+    //     ]);
+
+    //     // Find the latest ID
+    //     $latestId = ProfileForm_Model::latest('id')->pluck('id')->first();
+
+    //     // Find the record with the latest ID
+    //     $secretariat = ProfileForm_Model::find($latestId);
+
+
+    //     // Update the secre$secretariat' details
+    //     $secretariat->name_sec = $validatedData['name_sec'];
+    //     $secretariat->name_sec1 = $validatedData['name_sec1'];
+    //     $secretariat->name_sec2 = $validatedData['name_sec2'];
+    //     $secretariat->office_org = $validatedData['office_org'];
+    //     $secretariat->office_org1 = $validatedData['office_org1'];
+    //     $secretariat->office_org2 = $validatedData['office_org2'];
+
+    //     // Save the updated officer details
+    //     $secretariat->save();
+
+    //     $committee = Committee_Model::where('profileForm_id', $secretariat->id)->get();
+
+    //     $committeeNull = $committee->isEmpty();
+
+    //     $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
+
+
+    //     // Check if the collections are empty
+    //     $fisherfolkNull = $fisherfolk->isEmpty();
+
+    //     // Check if there's null in fisherfolk table
+    //     foreach ($fisherfolk as $representative) {
+    //         if (
+    //             is_null($representative->category) ||
+    //             is_null($representative->name) ||
+    //             is_null($representative->endorsement_fisherfolk) ||
+    //             is_null($representative->endorsement_attachment) ||
+    //             is_null($representative->atleast_one_year) ||
+    //             is_null($representative->aoy_attachment) ||
+    //             is_null($representative->source_of_income) ||
+    //             is_null($representative->soi_attachment) ||
+    //             is_null($representative->good_moral) ||
+    //             is_null($representative->gmc_attachment) ||
+    //             is_null($representative->org_name) ||
+    //             is_null($representative->date_of_reg) ||
+    //             is_null($representative->date_of_accreditation) ||
+    //             is_null($representative->dor_file) ||
+    //             is_null($representative->doa_file)
+    //         ) {
+    //             $fisherfolkNull = true;
+    //             break;
+    //         }
+    //     }
+
+    //     // Check if all fields are null in the profileform table
+    //     $profileFormNull = $secretariat->hasNullValues();
+
+    //     // Check if any category in fisherfolkrep table is not within the specified options
+    //     $FisherfolkcategoryOptions = [
+    //         'Municipal Fisherfolk',
+    //         'Fisherworker',
+    //         'Commercial Fishing Operator',
+    //         'Women Fisherfolk Sector Representative',
+    //         'Youth Fisherfolk Sector Representative',
+    //     ];
+
+    //     $categories = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)
+    //         ->pluck('category')
+    //         ->toArray();
+
+    //     $missingCategories = array_diff($FisherfolkcategoryOptions, $categories);
+
+    //     // If you need to store the missing categories, you can do it like this:
+    //     $missingCategoriesArray = [];
+
+    //     foreach ($missingCategories as $category) {
+    //         $missingCategoriesArray[] = $category;
+    //     }
+
+    //     // Define the options
+    //     $CommitteeCategoryOptions = [
+    //         'Law Enforcement & Prosecution',
+    //         'Rehabilitation and Conservation',
+    //         'Livelihood',
+    //         'Research Education and Training',
+    //         'Legislation',
+    //         'Land and Water Use',
+    //         'Fisherfolk Resettlement'
+    //     ];
+
+    //     // Retrieve categories from the database based on the given ID
+    //     $categories = Committee_Model::where('profileForm_id', $secretariat->id)
+    //         ->pluck('category')
+    //         ->toArray();
+
+    //     // Find missing categories
+    //     $missingCCategories = array_diff($CommitteeCategoryOptions, $categories);
+
+    //     // Store missing categories in an array
+    //     $missingCommitteeCategoriesArray = [];
+
+    //     foreach ($missingCCategories as $category) {
+    //         $missingCommitteeCategoriesArray[] = $category;
+    //     }
+
+    //     // Determine status
+    //     $status = $committeeNull || $fisherfolkNull || $profileFormNull || $missingCategoriesArray || $missingCommitteeCategoriesArray ? 'INCOMPLETE' : 'COMPLETED';
+    //     $secretariat->update(['status' => $status]);
+
+    //     // Get null fields for display
+    //     $profileFormNullFields = $secretariat->getNullFields();
+
+    //     // Find the latest committee
+    //     $committee = Committee_Model::where('profileForm_id', $secretariat->id)->latest()->first();
+
+    //     // Check if committee exists and get its null fields
+    //     $committeeNullFields = [];
+    //     if ($committee) {
+    //         $committeeNullFields = $committee->getNullFields();
+    //     }
+
+    //     $fisherfolkReps = FisherfolkRepresentative_Model::where('profileForm_id', $secretariat->id)->get();
+    //     $fisherfolkNullFields = [];
+    //     foreach ($fisherfolkReps as $fisherfolkRep) {
+    //         $fisherfolkNullFields = array_merge($fisherfolkNullFields, $fisherfolkRep->getNullFields());
+    //     }
+    //     $fisherfolkNullFields = array_unique($fisherfolkNullFields);
+
+    //     if ($profileFormNullFields || $committeeNullFields || $fisherfolkNullFields || $missingCategoriesArray || $missingCommitteeCategoriesArray) {
+    //         return view('LoD.Level1.L1_Incomplete', compact('profileFormNullFields', 'committeeNullFields', 'fisherfolkNullFields', 'missingCategoriesArray', 'missingCommitteeCategoriesArray'));
+    //     } else {
+    //         return redirect('/level1')->with('success', 'Success!');
+    //     }
+    // }
+
 
     public function addBasicFunction(Request $request, $id)
     {
@@ -1237,7 +1355,7 @@ class ProfileForm_Controller extends Controller
     //================================================== E D I T I N G  O F  D A T A =============================================================||
 
 
-    public function editBasicStructure(Request $request, $Id, $profileFormId)
+    public function editBasicStructure(Request $request, $id)
     {
         $validatedData = $request->validate([
             'minutes1' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
@@ -1250,43 +1368,43 @@ class ProfileForm_Controller extends Controller
             'fisherfolkR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'fisheriesP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
-            'municipality' => 'nullable',
-            'date_organized' => 'nullable',
-            'date_reorganized' => 'nullable',
+            'municipality' => 'nullable|string',
+            'date_organized' => 'nullable|date_format:Y-m-d',
+            'date_reorganized' => 'nullable|date_format:Y-m-d',
             'internalP' => 'nullable',
             'province' => 'nullable',
             'fisherfolkR' => 'nullable',
             'fisheriesP' => 'nullable',
             'formulationR' => 'nullable',
 
-            'chairperson' => 'nullable',
-            'vice_chairperson' => 'nullable',
-            'secretary' => 'nullable',
-            'asst_sec' => 'nullable',
-            'treasurer' => 'nullable',
-            'asst_treas' => 'nullable',
-            'auditor' => 'nullable',
-            'asst_aud' => 'nullable',
-            'pro1' => 'nullable',
-            'pro2' => 'nullable',
-            'sgt_arms1' => 'nullable',
-            'sgt_arms2' => 'nullable',
-            'sgt_arms3' => 'nullable',
+            'chairperson' => 'nullable|string',
+            'vice_chairperson' => 'nullable|string',
+            'secretary' => 'nullable|string',
+            'asst_sec' => 'nullable|string',
+            'treasurer' => 'nullable|string',
+            'asst_treas' => 'nullable|string',
+            'auditor' => 'nullable|string',
+            'asst_aud' => 'nullable|string',
+            'pro1' => 'nullable|string',
+            'pro2' => 'nullable|string',
+            'sgt_arms1' => 'nullable|string',
+            'sgt_arms2' => 'nullable|string',
+            'sgt_arms3' => 'nullable|string',
 
-            'chairpersonSB' => 'nullable',
-            'mpdo' => 'nullable',
-            'repmdc' => 'nullable',
-            'repda' => 'nullable',
-            'repngo' => 'nullable',
-            'repps' => 'nullable',
-            'others' => 'nullable',
+            'chairpersonSB' => 'nullable|string',
+            'mpdo' => 'nullable|string',
+            'repmdc' => 'nullable|string',
+            'repda' => 'nullable|string',
+            'repngo' => 'nullable|string',
+            'repps' => 'nullable|string',
+            'others' => 'nullable|string',
 
-            'name_sec' => 'nullable',
-            'name_sec1' => 'nullable',
-            'name_sec2' => 'nullable',
-            'office_org' => 'nullable',
-            'office_org1' => 'nullable',
-            'office_org2' => 'nullable',
+            'name_sec' => 'nullable|string',
+            'name_sec1' => 'nullable|string',
+            'name_sec2' => 'nullable|string',
+            'office_org' => 'nullable|string',
+            'office_org1' => 'nullable|string',
+            'office_org2' => 'nullable|string',
         ], [
             'minutes1.max' => 'The minutes1 file may not be greater than 5MB.',
             'minutes2.max' => 'The minutes2 file may not be greater than 5MB.',
@@ -1310,9 +1428,7 @@ class ProfileForm_Controller extends Controller
             'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.,,jpeg,png',
         ]);
 
-        $profileForm = ProfileForm_Model::where('id', $Id)->firstOrFail();
-        $officers = ProfileForm_Model::where('profileForm', $profileFormId)->firstOrFail();
-        $secretariat = ProfileForm_Model::where('profileForm', $profileFormId)->firstOrFail();
+        $profileForm = ProfileForm_Model::where('id', $id)->firstOrFail();
 
         // Delete existing files if new files are uploaded
         if ($request->hasFile('minutes1')) {
@@ -1413,41 +1529,41 @@ class ProfileForm_Controller extends Controller
         // Update other fields
         $profileForm->municipality = $validatedData['municipality'] ?? null;
         $profileForm->province = $validatedData['province'] ?? null;
-        $profileForm->date_organized = $validatedData['date_organized'] ?? null;
-        $profileForm->date_reorganized = $validatedData['date_reorganized'] ?? null;
+        $profileForm->date_organized = isset($validatedData['date_organized']) ? date('Y-m-d', strtotime($validatedData['date_organized'])) : null;
+        $profileForm->date_reorganized = isset($validatedData['date_reorganized']) ? date('Y-m-d', strtotime($validatedData['date_reorganized'])) : null;
         // $profileForm->internalP = $validatedData['internalP'] ?? null;
         // $profileForm->fisherfolkR = $validatedData['fisherfolkR'] ?? null;
         // $profileForm->fisheriesP = $validatedData['fisheriesP'] ?? null;
         // $profileForm->formulationR = $validatedData['formulationR'] ?? null;
 
-        $officers->chairperson = $validatedData['chairperson'] ?? null;
-        $officers->vice_chairperson = $validatedData['vice_chairperson'] ?? null;
-        $officers->secretary = $validatedData['secretary'] ?? null;
-        $officers->asst_sec = $validatedData['asst_sec'] ?? null;
-        $officers->treasurer = $validatedData['treasurer'] ?? null;
-        $officers->asst_treas = $validatedData['asst_treas'] ?? null;
-        $officers->auditor = $validatedData['auditor'] ?? null;
-        $officers->asst_aud = $validatedData['asst_aud'] ?? null;
-        $officers->pro1 = $validatedData['pro1'] ?? null;
-        $officers->pro2 = $validatedData['pro2'] ?? null;
-        $officers->sgt_arms1 = $validatedData['sgt_arms1'] ?? null;
-        $officers->sgt_arms2 = $validatedData['sgt_arms2'] ?? null;
-        $officers->sgt_arms3 = $validatedData['sgt_arms3'] ?? null;
+        $profileForm->chairperson = $validatedData['chairperson'] ?? null;
+        $profileForm->vice_chairperson = $validatedData['vice_chairperson'] ?? null;
+        $profileForm->secretary = $validatedData['secretary'] ?? null;
+        $profileForm->asst_sec = $validatedData['asst_sec'] ?? null;
+        $profileForm->treasurer = $validatedData['treasurer'] ?? null;
+        $profileForm->asst_treas = $validatedData['asst_treas'] ?? null;
+        $profileForm->auditor = $validatedData['auditor'] ?? null;
+        $profileForm->asst_aud = $validatedData['asst_aud'] ?? null;
+        $profileForm->pro1 = $validatedData['pro1'] ?? null;
+        $profileForm->pro2 = $validatedData['pro2'] ?? null;
+        $profileForm->sgt_arms1 = $validatedData['sgt_arms1'] ?? null;
+        $profileForm->sgt_arms2 = $validatedData['sgt_arms2'] ?? null;
+        $profileForm->sgt_arms3 = $validatedData['sgt_arms3'] ?? null;
 
-        $officers->chairpersonSB = $validatedData['chairpersonSB'] ?? null;
-        $officers->mpdo = $validatedData['mpdo'] ?? null;
-        $officers->repmdc = $validatedData['repmdc'] ?? null;
-        $officers->repda = $validatedData['repda'] ?? null;
-        $officers->repngo = $validatedData['repngo'] ?? null;
-        $officers->repps = $validatedData['repps'] ?? null;
-        $officers->others = $validatedData['others'] ?? null;
+        $profileForm->chairpersonSB = $validatedData['chairpersonSB'] ?? null;
+        $profileForm->mpdo = $validatedData['mpdo'] ?? null;
+        $profileForm->repmdc = $validatedData['repmdc'] ?? null;
+        $profileForm->repda = $validatedData['repda'] ?? null;
+        $profileForm->repngo = $validatedData['repngo'] ?? null;
+        $profileForm->repps = $validatedData['repps'] ?? null;
+        $profileForm->others = $validatedData['others'] ?? null;
 
-        $secretariat->name_sec = $validatedData['name_sec'] ?? null;
-        $secretariat->name_sec1 = $validatedData['name_sec1'] ?? null;
-        $secretariat->name_sec2 = $validatedData['name_sec2'] ?? null;
-        $secretariat->office_org = $validatedData['office_org'] ?? null;
-        $secretariat->office_org1 = $validatedData['office_org1'] ?? null;
-        $secretariat->office_org2 = $validatedData['office_org2'] ?? null;
+        $profileForm->name_sec = $validatedData['name_sec'] ?? null;
+        $profileForm->name_sec1 = $validatedData['name_sec1'] ?? null;
+        $profileForm->name_sec2 = $validatedData['name_sec2'] ?? null;
+        $profileForm->office_org = $validatedData['office_org'] ?? null;
+        $profileForm->office_org1 = $validatedData['office_org1'] ?? null;
+        $profileForm->office_org2 = $validatedData['office_org2'] ?? null;
 
         // Save the updated record
         $profileForm->save();
@@ -1474,7 +1590,7 @@ class ProfileForm_Controller extends Controller
 
         // Check if any changes were made and redirect accordingly
         if ($profileForm->wasChanged()) {
-            return redirect('/L1Viewform/' . $Id)->with('success', 'Basic Structure updated successfully!');
+            return redirect('/L1Viewform/' . $id)->with('success', 'Basic Structure updated successfully!');
         } else {
             return redirect()->back()->with('error', 'Failed to update. No changes were made.');
         }

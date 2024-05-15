@@ -95,12 +95,21 @@
                         <br>
                         <br>
                         <div style="display: flex;">
-                            <a href="#!" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
-                            <div class="actions text-right" style="flex: 1;">
-                                <!-- Added text-center class and flex: 1 -->
-                                <button class="btn btn-success" onclick="window.print()">Print</button>
-                                <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
-                            </div>
+                            @foreach ($gen_info as $item)
+                            <a href="{{
+                                $item->sector_rep === 'Municipal' ? url('/FOMunicipal') :
+                                ($item->sector_rep === 'Fishworker' ? url('/FOFishworker') :
+                                ($item->sector_rep === 'Commercial' ? url('/FOCommercial') :
+                                ($item->sector_rep === 'Women' ? url('/FOWomenF') :
+                                ($item->sector_rep === 'Youth' ? url('/FOYouth') :
+                                ($item->sector_rep === 'IPs' ? url('/FOIPs') : '#')))))
+                            }}" class="btn btn-secondary"> <i class="icon-arrow-left"></i> Back</a>
+                                <div class="actions text-right" style="flex: 1;">
+                                    <!-- Added text-center class and flex: 1 -->
+                                    <button class="btn btn-success" onclick="window.print()">Print</button>
+                                    <button class="btn btn-danger" onclick="downloadPdf()">Download as PDF</button>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
         /* margin-left: 10px; Adjust as needed */
     }
 
-    input.form-control{
+    input.form-control {
         border: 1px solid #AAAAAA;
     }
 </style>
@@ -69,487 +69,486 @@
                             @method ('PUT')
                             <div class="card">
                                 <div class="card-block">
-                                        <div class="card-header">
-                                            <div class="col-sm-6 col-xs-6 waves-effect waves-light">
-                                                <div class="grid-material bg-general">Personal Information</div>
-                                            </div>
-                                            <div class="col-sm-6 col-xs-6 waves-effect waves-light">
-                                                <div class="grid-material bg-general">Contact Information</div>
+                                    <div class="card-header">
+                                        <div class="col-sm-6 col-xs-6 waves-effect waves-light">
+                                            <div class="grid-material bg-general">Personal Information</div>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 waves-effect waves-light">
+                                            <div class="grid-material bg-general">Contact Information</div>
+                                        </div>
+
+                                        <!-- <div class="card-block"> -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail" class="block form-control-label">Name
+                                                        <em>(Family,given,middle & Ext.)</em></label>
+                                                    <input id="inline3mail" name="name" type="text"
+                                                        class="form-control" style="width: 500px;" placeholder="Name ">
+                                                </div>
+                                                <br><br>
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail" class="block form-control-label">Address
+                                                        <em>(Barangay, City/Municipality, Province)</em>
+                                                    </label>
+                                                    <div class="row">
+                                                        <div class="col-md-4 mb-2">
+                                                            <input id="" name="barangay" style="width: 170px" type="text" class="form-control" placeholder="Barangay">
+                                                        </div>
+                                                        <div class="col-md-4 mb-2">
+                                                            <input id="" name="city" style="width: 170px" type="text" class="form-control" placeholder="City/Municipality">
+                                                        </div>
+                                                        <div class="col-md-4 mb-2">
+                                                            <input id="" name="province" style="width: 170px" type="text" class="form-control" placeholder="Province">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <!-- <div class="card-block"> -->
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="block form-control-label">Name
-                                                            <em>(Family,given,middle & Ext.)</em></label>
-                                                        <input id="inline3mail" name="name" type="text"
-                                                            class="form-control" style="width: 500px;" placeholder="">
+                                            <div class="col-md-6">
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail" class="block form-control-label">Landline
+                                                        No.</label>
+                                                    <input id="inline3mail" name="landline_no" type="text"
+                                                        class="form-control" placeholder="Landline No.">
+                                                </div>
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail" class="block form-control-label">Mobile
+                                                        No.</label>
+                                                    <input id="inline3mail" name="mobile_no" type="text"
+                                                        class="form-control" placeholder="Mobile No.">
+                                                </div>
+                                                <br> <br>
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail" class="block form-control-label">Email
+                                                        Address</label>
+                                                    <input id="inline3mail" name="email" type="email"
+                                                        class="form-control" style="width: 450px;"
+                                                        placeholder="Email Add">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <!-- <div class="card-block"> -->
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="grid-material bg-general"><em>Civil Status</em></div>
+                                                <div class="form-radio">
+                                                    <div class="radio radio-inline">
+
+                                                        <label>
+                                                            <input type="radio" name="civil_status"
+                                                                value="Single" /><i class="helper"></i>Single
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="civil_status"
+                                                                value="Married" /><i class="helper"></i>Married
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="civil_status"
+                                                                value="Widow/Widower" /><i
+                                                                class="helper"></i>Widow/Widower
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="civil_status"
+                                                                value="Seperated" /><i class="helper"></i>Separated
+                                                        </label>
                                                     </div>
-                                                    <br><br>
-                                                    <div class="form-group m-r-15">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="grid-material bg-general"><em>Gender</em></div>
+                                                <div class="form-radio">
+                                                    <div class="radio radio-inline">
+
+                                                        <label>
+                                                            <input type="radio" name="gender" value="Male" /><i
+                                                                class="helper"></i>Male
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="gender" value="Female" /><i
+                                                                class="helper"></i>Female
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="gender" value="Others" /><i
+                                                                class="helper"></i>Others
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <div class="grid-material bg-general">Birthdate</div>
+                                                    <div class="form-group">
                                                         <label for="inline3mail"
-                                                            class="block form-control-label">Address <em>(Barangay,
-                                                                City/Municipality, Province & Region)</em></label>
-                                                        <input id="inline3mail" name="address" type="text"
-                                                            class="form-control" style="width: 500px;" placeholder="">
+                                                            class="block form-control-label">Date</label>
+                                                        <input id="inline3mail" type="text" name="birthdate"
+                                                            class="form-control" placeholder="Date">
                                                     </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group m-r-15">
+                                                    <div class="form-group">
                                                         <label for="inline3mail"
-                                                            class="block form-control-label">Landline No.</label>
-                                                        <input id="inline3mail" name="landline_no" type="text"
-                                                            class="form-control" placeholder="Landline No.">
-                                                    </div>
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="block form-control-label">Mobile
-                                                            No.</label>
-                                                        <input id="inline3mail" name="mobile_no" type="text"
-                                                            class="form-control" placeholder="Mobile No.">
-                                                    </div>
-                                                    <br> <br>
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="block form-control-label">Email
-                                                            Address</label>
-                                                        <input id="inline3mail" name="email" type="email"
-                                                            class="form-control" style="width: 450px;"
-                                                            placeholder="Email Add">
+                                                            class="block form-control-label">Age</label>
+                                                        <input id="inline3mail" type="number" name="age"
+                                                            class="form-control" placeholder="Age">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr>
-                                            <!-- <div class="card-block"> -->
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em>Civil Status</em></div>
+
+                                            <div class="col-md-3">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <div class="grid-material bg-general">Birthplace</div>
+                                                    <div class="form-group">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label">City/Municipality</label>
+                                                        <input id="inline3mail" type="text"
+                                                            name="birthplace_municipality" class="form-control"
+                                                            placeholder="">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label">Province</label>
+                                                        <input id="inline3mail" type="text"
+                                                            name="birthplace_province" class="form-control"
+                                                            placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="grid-material bg-general"><em>4P's Member</em>
+                                                </div>
+                                                <div class="form-radio">
+                                                    <div class="radio radio-inline">
+
+                                                        <label>
+                                                            <input type="radio" name="fourps" value="Yes" /><i
+                                                                class="helper"></i>Yes
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="fourps" value="No" /><i
+                                                                class="helper"></i>No
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <div class="grid-material bg-general"><em>Person w/
+                                                            Disability
+                                                            (PWD)
+                                                        </em></div>
+
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
-
                                                             <label>
-                                                                <input type="radio" name="civil_status"
-                                                                    value="Single" /><i class="helper"></i>Single
+                                                                <input type="radio" name="pwd" value="Yes"
+                                                                    onclick="toggleTextBox('otherTextBox8');" />
+                                                                <i class="helper"></i> Yes
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="civil_status"
-                                                                    value="Married" /><i class="helper"></i>Married
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="civil_status"
-                                                                    value="Widow/Widower" /><i
-                                                                    class="helper"></i>Widow/Widower
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="civil_status"
-                                                                    value="Seperated" /><i
-                                                                    class="helper"></i>Separated
+                                                                <input type="radio" name="pwd"
+                                                                    value="No" />
+                                                                <i class="helper"></i> No
                                                             </label>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group" id="otherTextBox8" style="display:none;">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><small>If
+                                                                If Yes, please specify</small></label>
+                                                        <input id="otherInput" type="text" value=""
+                                                            class="form-control" name="pwd_yes">
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em>Gender</em></div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <div class="grid-material bg-general"><em>Cultural
+                                                            Community
+                                                            (IPs)</em></div>
+
                                                     <div class="form-radio">
                                                         <div class="radio radio-inline">
-
                                                             <label>
-                                                                <input type="radio" name="gender"
-                                                                    value="Male" /><i class="helper"></i>Male
+                                                                <input type="radio" name="IP" value="Yes"
+                                                                    onclick="toggleTextBox('otherTextBox7');" />
+                                                                <i class="helper"></i> Yes
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="gender"
-                                                                    value="Female" /><i class="helper"></i>Female
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="gender"
-                                                                    value="Others" /><i class="helper"></i>Others
+                                                                <input type="radio" name="IP"
+                                                                    value="No" />
+                                                                <i class="helper"></i> No
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-md-3">
-                                                    <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general">Birthdate</div>
-                                                        <div class="form-group">
-                                                            <label for="inline3mail"
-                                                                class="block form-control-label">Date</label>
-                                                            <input id="inline3mail" type="text" name="birthdate"
-                                                                class="form-control" placeholder="Date">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="inline3mail"
-                                                                class="block form-control-label">Age</label>
-                                                            <input id="inline3mail" type="number" name="age"
-                                                                class="form-control" placeholder="Age">
-                                                        </div>
+                                                    <div class="form-group" id="otherTextBox7" style="display:none;">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><small>If
+                                                                If Yes, please specify</small></label>
+                                                        <input id="otherInput" type="text" value=""
+                                                            class="form-control" name="IP_yes">
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-md-3">
-                                                    <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general">Birthplace</div>
-                                                        <div class="form-group">
-                                                            <label for="inline3mail"
-                                                                class="block form-control-label">City/Municipality</label>
-                                                            <input id="inline3mail" type="text"
-                                                                name="birthplace_municipality" class="form-control"
-                                                                placeholder="">
+                                            <div class="col-md-3">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <div class="grid-material bg-general"><em>Religion
+                                                            Affiliation</em></div>
+                                                    <div class="form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="religion"
+                                                                    value="Islam" />
+                                                                <i class="helper"></i> Islam
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="religion"
+                                                                    value="Christian"
+                                                                    onclick="toggleTextBox('otherTextBox6');" />
+                                                                <i class="helper"></i> Christian
+                                                            </label>
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group" id="otherTextBox6" style="display:none;">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><small>
+                                                                If Christian, please specify</small></label>
+                                                        <input id="otherInput" type="text" value=""
+                                                            class="form-control" name="religion_christ">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail" class="block form-control-label">Name
+                                                        Spouse<em>(Family, Given, Middle)</em></label>
+                                                    <input id="inline3mail" type="text" name="name_spouse"
+                                                        class="form-control" style="width: 650px;"
+                                                        placeholder="Enter name">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="col-sm-12 col-xs-12 waves-effect waves-light">
+                                                    <form>
                                                         <div class="form-group">
                                                             <label for="inline3mail"
-                                                                class="block form-control-label">Province</label>
-                                                            <input id="inline3mail" type="text"
-                                                                name="birthplace_province" class="form-control"
-                                                                placeholder="">
+                                                                class="block form-control-label">Occupation</label>
+                                                            <input id="inline3mail" style="width: 310px;"
+                                                                type="text" name="occupation"
+                                                                class="form-control">
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group m-r-15">
+                                                    <!-- <hr> -->
+                                                    <label for="inline3mail" class="block form-control-label">No.
+                                                        of Dependent/s</em></label>
+                                                    <br>
+                                                    <div class="col-md-4">
+                                                        <div>
+
+                                                            <input type="checkbox" name="internalP" id="checkbox">
+                                                            <span class="checkbox"></span>
+                                                            <div class="captions">Male</div>
+                                                        </div>
+                                                        <br><br>
+                                                        <div>
+                                                            <input type="checkbox" name="fisherfolkR"
+                                                                id="checkbox-1">
+                                                            <span class="checkbox"></span>
+                                                            <div class="captions">Female</div>
+                                                        </div>
+                                                        <br><br>
+                                                        {{-- <div class="rkmd-checkbox checkbox-rotate checkbox-ripple"> --}}
+                                                        <div>
+                                                            {{-- <label class="input-checkbox checkbox-primary"> --}}
+                                                            <input type="checkbox" name="fisheriesP" id="checkbox-2">
+                                                            <span class="checkbox"></span>
+                                                            {{-- </label> --}}
+                                                            <div class="captions">Others</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-inline">
+                                                            <div>
+                                                                <label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="dependent_male" placeholder=""
+                                                                        style="width:150px">
+                                                                </label>
+                                                                <br>
+                                                                <br>
+                                                                <label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="dependent_female" placeholder=""
+                                                                        style="width:150px">
+
+                                                                </label>
+                                                                <br>
+                                                                <br>
+                                                                <label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="dependent_others" placeholder=""
+                                                                        style="width:150px">
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- </div> -->
-
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="grid-material bg-general"><em>4P's Member</em>
-                                                    </div>
-                                                    <div class="form-radio">
-                                                        <div class="radio radio-inline">
-
-                                                            <label>
-                                                                <input type="radio" name="fourps"
-                                                                    value="Yes" /><i class="helper"></i>Yes
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="fourps"
-                                                                    value="No" /><i class="helper"></i>No
-                                                            </label>
+                                            <div class="col-md-4">
+                                                <div class="form-group m-r-15">
+                                                    <label for="inline3mail"
+                                                        class="block form-control-label">Educational
+                                                        Attainment/Level</em></label>
+                                                    <div class="col-md-5">
+                                                        <div class="form-radio">
+                                                            <div class="radio radio-inline">
+                                                                <br>
+                                                                <label>
+                                                                    <input type="radio"
+                                                                        name="educational_attainment"
+                                                                        value="Primary" /><i
+                                                                        class="helper"></i>Primary
+                                                                </label>
+                                                                <br>
+                                                                <label>
+                                                                    <input type="radio"
+                                                                        name="educational_attainment"
+                                                                        value="Secondary" /><i
+                                                                        class="helper"></i>Secondary
+                                                                </label>
+                                                                <br>
+                                                                <label>
+                                                                    <input type="radio"
+                                                                        name="educational_attainment"
+                                                                        value="Vocational" /><i
+                                                                        class="helper"></i>Vocational
+                                                                </label>
+                                                                <br>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general"><em>Person w/
-                                                                Disability
-                                                                (PWD)
-                                                            </em></div>
-
+                                                    <div class="col-md-3" style="margin-top:21px">
                                                         <div class="form-radio">
                                                             <div class="radio radio-inline">
                                                                 <label>
-                                                                    <input type="radio" name="pwd"
-                                                                        value="Yes"
-                                                                        onclick="toggleTextBox('otherTextBox8');" />
-                                                                    <i class="helper"></i> Yes
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="pwd"
-                                                                        value="No" />
-                                                                    <i class="helper"></i> No
+                                                                    <input type="radio"
+                                                                        name="educational_attainment" value="Tertiary"
+                                                                        onclick="toggleTextBox('otherTextBox9');" />
+                                                                    <i class="helper"></i> Tertiary
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group" id="otherTextBox8"
+                                                        <div class="form-group" id="otherTextBox9"
                                                             style="display:none;">
                                                             <label for="inline3mail"
-                                                                class="block form-control-label"><small>If
-                                                                    If Yes, please specify</small></label>
-                                                            <input id="otherInput" type="text" value=""
-                                                                class="form-control" name="pwd_yes">
+                                                                class="block form-control-label"><small>Specify,Tertiary</small></label>
+                                                            <input id="otherInput" type="text"
+                                                                class="form-control" name="tertiary">
                                                         </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-3">
-                                                    <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general"><em>Cultural
-                                                                Community
-                                                                (IPs)</em></div>
-
-                                                        <div class="form-radio">
+                                                        <div class="form-radio" style="margin-top: 23px">
                                                             <div class="radio radio-inline">
                                                                 <label>
-                                                                    <input type="radio" name="IP"
-                                                                        value="Yes"
-                                                                        onclick="toggleTextBox('otherTextBox7');" />
-                                                                    <i class="helper"></i> Yes
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="IP"
-                                                                        value="No" />
-                                                                    <i class="helper"></i> No
+                                                                    <input type="radio"
+                                                                        name="educational_attainment" value="Tesda"
+                                                                        onclick="toggleTextBox('otherTextBox10');" />
+                                                                    <i class="helper"></i> TESDA
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group" id="otherTextBox7"
-                                                            style="display:none;">
-                                                            <label for="inline3mail"
-                                                                class="block form-control-label"><small>If
-                                                                    If Yes, please specify</small></label>
-                                                            <input id="otherInput" type="text" value=""
-                                                                class="form-control" name="IP_yes">
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-3">
-                                                    <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <div class="grid-material bg-general"><em>Religion
-                                                                Affiliation</em></div>
-                                                        <div class="form-radio">
-                                                            <div class="radio radio-inline">
-                                                                <label>
-                                                                    <input type="radio" name="religion"
-                                                                        value="Islam" />
-                                                                    <i class="helper"></i> Islam
-                                                                </label>
-                                                                <label>
-                                                                    <input type="radio" name="religion"
-                                                                        value="Christian"
-                                                                        onclick="toggleTextBox('otherTextBox6');" />
-                                                                    <i class="helper"></i> Christian
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group" id="otherTextBox6"
+                                                        <div class="form-group" id="otherTextBox10"
                                                             style="display:none;">
                                                             <label for="inline3mail"
-                                                                class="block form-control-label"><small>
-                                                                    If Christian, please specify</small></label>
-                                                            <input id="otherInput" type="text" value=""
-                                                                class="form-control" name="religion_christ">
+                                                                class="block form-control-label"><small>Specify,TESDA</small></label>
+                                                            <input id="otherInput" type="text"
+                                                                class="form-control" name="tesda">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="block form-control-label">Name
-                                                            Spouse<em>(Family, Given, Middle)</em></label>
-                                                        <input id="inline3mail" type="text" name="name_spouse"
-                                                            class="form-control" style="width: 650px;"
-                                                            placeholder="Enter name">
-                                                    </div>
-                                                </div>
-
+                                            <div>
                                                 <div class="col-md-4">
-                                                    <div class="col-sm-12 col-xs-12 waves-effect waves-light">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <label for="inline3mail"
-                                                                    class="block form-control-label">Occupation</label>
-                                                                <input id="inline3mail" style="width: 310px;"
-                                                                    type="text" name="occupation"
-                                                                    class="form-control">
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group m-r-15">
-                                                        <!-- <hr> -->
-                                                        <label for="inline3mail" class="block form-control-label">No.
-                                                            of Dependent/s</em></label>
-                                                        <br>
-                                                        <div class="col-md-4">
-                                                            <div>
-
-                                                                    <input type="checkbox" name="internalP"
-                                                                        id="checkbox">
-                                                                    <span class="checkbox"></span>
-                                                                <div class="captions">Male</div>
-                                                            </div>
-                                                            <br><br>
-                                                            <div>
-                                                                    <input type="checkbox" name="fisherfolkR"
-                                                                        id="checkbox-1">
-                                                                    <span class="checkbox"></span>
-                                                                <div class="captions">Female</div>
-                                                            </div>
-                                                            <br><br>
-                                                            {{-- <div class="rkmd-checkbox checkbox-rotate checkbox-ripple"> --}}
-                                                            <div>
-                                                                {{-- <label class="input-checkbox checkbox-primary"> --}}
-                                                                    <input type="checkbox" name="fisheriesP"
-                                                                        id="checkbox-2">
-                                                                    <span class="checkbox"></span>
-                                                                {{-- </label> --}}
-                                                                <div class="captions">Others</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-inline">
-                                                                <div>
-                                                                    <label>
-                                                                        <input type="number" class="form-control"
-                                                                            name="dependent_male" placeholder=""
-                                                                            style="width:150px">
-                                                                    </label>
-                                                                    <br>
-                                                                    <br>
-                                                                    <label>
-                                                                        <input type="number" class="form-control"
-                                                                            name="dependent_female" placeholder=""
-                                                                            style="width:150px">
-
-                                                                    </label>
-                                                                    <br>
-                                                                    <br>
-                                                                    <label>
-                                                                        <input type="number" class="form-control"
-                                                                            name="dependent_others" placeholder=""
-                                                                            style="width:150px">
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group m-r-15">
+                                                    <div class="form-group m-r-10">
                                                         <label for="inline3mail"
-                                                            class="block form-control-label">Educational
-                                                            Attainment/Level</em></label>
+                                                            class="block form-control-label">Other source of
+                                                            livelihood</label>
                                                         <div class="col-md-5">
                                                             <div class="form-radio">
                                                                 <div class="radio radio-inline">
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio"
-                                                                            name="educational_attainment"
-                                                                            value="Primary" /><i
-                                                                            class="helper"></i>Primary
+                                                                        <input type="radio" name="other_source"
+                                                                            value="Salary" /><i
+                                                                            class="helper"></i>Salary
                                                                     </label>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio"
-                                                                            name="educational_attainment"
-                                                                            value="Secondary" /><i
-                                                                            class="helper"></i>Secondary
+                                                                        <input type="radio" name="other_source"
+                                                                            value="Farming" /><i
+                                                                            class="helper"></i>Farming
                                                                     </label>
                                                                     <br>
                                                                     <label>
-                                                                        <input type="radio"
-                                                                            name="educational_attainment"
-                                                                            value="Vocational" /><i
-                                                                            class="helper"></i>Vocational
+                                                                        <input type="radio" name="other_source"
+                                                                            value="Business" /><i
+                                                                            class="helper"></i>Business
                                                                     </label>
                                                                     <br>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3" style="margin-top:21px">
-                                                            <div class="form-radio">
-                                                                <div class="radio radio-inline">
-                                                                    <label>
-                                                                        <input type="radio"
-                                                                            name="educational_attainment"
-                                                                            value="Tertiary"
-                                                                            onclick="toggleTextBox('otherTextBox9');" />
-                                                                        <i class="helper"></i> Tertiary
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group" id="otherTextBox9"
-                                                                style="display:none;">
-                                                                <label for="inline3mail"
-                                                                    class="block form-control-label"><small>Specify,Tertiary</small></label>
-                                                                <input id="otherInput" type="text"
-                                                                    class="form-control" name="tertiary">
-                                                            </div>
-
+                                                        <div class="col-md-2">
                                                             <div class="form-radio" style="margin-top: 23px">
                                                                 <div class="radio radio-inline">
                                                                     <label>
-                                                                        <input type="radio"
-                                                                            name="educational_attainment"
-                                                                            value="Tesda"
-                                                                            onclick="toggleTextBox('otherTextBox10');" />
-                                                                        <i class="helper"></i> TESDA
+                                                                        <input type="radio" name="other_source"
+                                                                            value="Other"
+                                                                            onclick="toggleTextBox('otherTextBox11');" />
+                                                                        <i class="helper"></i> Others
                                                                     </label>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="form-group" id="otherTextBox10"
+                                                            <div class="form-group" id="otherTextBox11"
                                                                 style="display:none;">
                                                                 <label for="inline3mail"
-                                                                    class="block form-control-label"><small>Specify,TESDA</small></label>
+                                                                    class="block form-control-label"><small>Please
+                                                                        specify</small></label>
                                                                 <input id="otherInput" type="text"
-                                                                    class="form-control" name="tesda">
+                                                                    style="width: 180px" class="form-control"
+                                                                    name="other_source_other">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group m-r-10">
-                                                            <label for="inline3mail"
-                                                                class="block form-control-label">Other source of
-                                                                livelihood</label>
-                                                            <div class="col-md-5">
-                                                                <div class="form-radio">
-                                                                    <div class="radio radio-inline">
-                                                                        <br>
-                                                                        <label>
-                                                                            <input type="radio" name="other_source"
-                                                                                value="Salary" /><i
-                                                                                class="helper"></i>Salary
-                                                                        </label>
-                                                                        <br>
-                                                                        <label>
-                                                                            <input type="radio" name="other_source"
-                                                                                value="Farming" /><i
-                                                                                class="helper"></i>Farming
-                                                                        </label>
-                                                                        <br>
-                                                                        <label>
-                                                                            <input type="radio" name="other_source"
-                                                                                value="Business" /><i
-                                                                                class="helper"></i>Business
-                                                                        </label>
-                                                                        <br>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <div class="form-radio" style="margin-top: 23px">
-                                                                    <div class="radio radio-inline">
-                                                                        <label>
-                                                                            <input type="radio" name="other_source"
-                                                                                value="Other"
-                                                                                onclick="toggleTextBox('otherTextBox11');" />
-                                                                            <i class="helper"></i> Others
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group" id="otherTextBox11"
-                                                                    style="display:none;">
-                                                                    <label for="inline3mail"
-                                                                        class="block form-control-label"><small>Please
-                                                                            specify</small></label>
-                                                                    <input id="otherInput" type="text"
-                                                                        style="width: 180px"
-                                                                        class="form-control"
-                                                                        name="other_source_other">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-right">
-                                                    <button type="submit" class="btn btn-primary">Next<i
-                                                            class="icon-arrow-right"></i></button>
-                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-primary">Next<i
+                                                        class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>

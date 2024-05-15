@@ -66,7 +66,7 @@ return new class extends Migration
             $table->string('office_org1')->nullable();
             $table->string('office_org2')->nullable();
             $table->string('status')->nullable();
-            $table->string('level')->nullable();
+            $table->string('level')->default('LEVEL ONE')->nullable();
             $table->timestamps();
         });
     }

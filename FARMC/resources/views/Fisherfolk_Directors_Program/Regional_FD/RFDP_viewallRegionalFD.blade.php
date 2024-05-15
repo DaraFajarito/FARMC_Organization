@@ -430,8 +430,6 @@
         });
     </script>
 
-
-
     <script type="text/javascript">
         $(document).ready(function() {
             $('#FARMC2').DataTable({

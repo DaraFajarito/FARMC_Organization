@@ -9,6 +9,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 </head>
 
+<style>
+    input.form-control {
+        border: 1px solid #AAAAAA;
+    }
+
+
+    .filter-container button {
+        float: left;
+    }
+
+    .filter-container {
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .filter-container select {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        font-size: 14px;
+    }
+
+    .filter-container select:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+</style>
+
 <body>
 
     <!-- side_navbar -->
@@ -131,29 +162,113 @@
                                             <a class="nav-link active" data-toggle="tab" href="#mimaropa"
                                                 role="tab">All</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#mimaropa1"
-                                                role="tab">Oriental Mindoro</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#mimaropa2"
-                                                role="tab">Occidental Mindoro</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#mimaropa3"
-                                                role="tab">Marinduque</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#mimaropa4"
-                                                role="tab">Romblon</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#mimaropa5"
-                                                role="tab">Palawan</a>
-                                        </li>
-
-
                                     </ul>
+                                    <br>
+                                    <div class="filter-container">
+                                        <button id="reset-filters" class="btn btn-secondary">Reset Filters</button>
+                                        <select id="mimaropa-filter">
+                                            <option hidden value="">MIMAROPA Provinces</option>
+                                            <option value="Occidental Mindoro">Occidental Mindoro</option>
+                                            <option value="Oriental Mindoro">Oriental Mindoro</option>
+                                            <option value="Marinduque">Marinduque</option>
+                                            <option value="Romblon">Romblon</option>
+                                            <option value="Palawan">Palawan</option>
+                                        </select>
+                                        <select id="municipality-filter">
+                                            <option hidden value="">Municipality</option>
+                                            <optgroup label="Occidental Mindoro">
+                                                <option value="Abra de Ilog">Abra de Ilog</option>
+                                                <option value="Calintaan">Calintaan</option>
+                                                <option value="Looc">Looc</option>
+                                                <option value="Lubang">Lubang</option>
+                                                <option value="Magsaysay">Magsaysay</option>
+                                                <option value="Mamburao">Mamburao</option>
+                                                <option value="Paluan">Paluan</option>
+                                                <option value="Rizal">Rizal</option>
+                                                <option value="Sablayan">Sablayan</option>
+                                                <option value="San Jose">San Jose</option>
+                                                <option value="Santa Cruz">Santa Cruz</option>
+                                                <option value="Santa Maria">Santa Maria</option>
+                                            </optgroup>
+                                            <optgroup label="Oriental Mindoro">
+                                                <option value="Baco">Baco</option>
+                                                <option value="Bansud">Bansud</option>
+                                                <option value="Bongabong">Bongabong</option>
+                                                <option value="Bulalacao">Bulalacao</option>
+                                                <option value="Calapan">Calapan</option>
+                                                <option value="Gloria">Gloria</option>
+                                                <option value="Mansalay">Mansalay</option>
+                                                <option value="Naujan">Naujan</option>
+                                                <option value="Pinamalayan">Pinamalayan</option>
+                                                <option value="Pola">Pola</option>
+                                                <option value="Puerto Galera">Puerto Galera</option>
+                                                <option value="Roxas">Roxas</option>
+                                                <option value="San Teodoro">San Teodoro</option>
+                                                <option value="Socorro">Socorro</option>
+                                                <option value="Victoria">Victoria</option>
+                                            </optgroup>
+                                            <optgroup label="Marinduque">
+                                                <option value="Boac">Boac</option>
+                                                <option value="Buenavista">Buenavista</option>
+                                                <option value="Gasan">Gasan</option>
+                                                <option value="Mogpog">Mogpog</option>
+                                                <option value="Santa Cruz">Santa Cruz</option>
+                                                <option value="Torrijos">Torrijos</option>
+                                            </optgroup>
+                                            <optgroup label="Romblon">
+                                                <option value="Alcantara">Alcantara</option>
+                                                <option value="Banton">Banton</option>
+                                                <option value="Cajidiocan">Cajidiocan</option>
+                                                <option value="Calatrava">Calatrava</option>
+                                                <option value="Concepcion">Concepcion</option>
+                                                <option value="Corcuera">Corcuera</option>
+                                                <option value="Ferrol">Ferrol</option>
+                                                <option value="Looc">Looc</option>
+                                                <option value="Magdiwang">Magdiwang</option>
+                                                <option value="Odiongan">Odiongan</option>
+                                                <option value="Romblon">Romblon</option>
+                                                <option value="San Agustin">San Agustin</option>
+                                                <option value="San Andres">San Andres</option>
+                                                <option value="San Fernando">San Fernando</option>
+                                                <option value="San Jose">San Jose</option>
+                                                <option value="Santa Fe">Santa Fe</option>
+                                            </optgroup>
+                                            <optgroup label="Palawan">
+                                                <option value="Aborlan">Aborlan</option>
+                                                <option value="Agutaya">Agutaya</option>
+                                                <option value="Araceli">Araceli</option>
+                                                <option value="Balabac">Balabac</option>
+                                                <option value="Bataraza">Bataraza</option>
+                                                <option value="Brooke's Point">Brooke's Point</option>
+                                                <option value="Busuanga">Busuanga</option>
+                                                <option value="Cagayancillo">Cagayancillo</option>
+                                                <option value="Coron">Coron</option>
+                                                <option value="Culion">Culion</option>
+                                                <option value="Cuyo">Cuyo</option>
+                                                <option value="Dumaran">Dumaran</option>
+                                                <option value="El Nido">El Nido</option>
+                                                <option value="Kalayaan">Kalayaan</option>
+                                                <option value="Linapacan">Linapacan</option>
+                                                <option value="Magsaysay">Magsaysay</option>
+                                                <option value="Narra">Narra</option>
+                                                <option value="Puerto Princesa">Puerto Princesa</option>
+                                                <option value="Quezon">Quezon</option>
+                                                <option value="Rizal">Rizal</option>
+                                                <option value="Roxas">Roxas</option>
+                                                <option value="San Vicente">San Vicente</option>
+                                                <option value="Sofronio Española">Sofronio Española</option>
+                                                <option value="Taytay">Taytay</option>
+                                            </optgroup>
+                                        </select>
+                                        <select id="levels-filter">
+                                            <option hidden value="">Levels</option>
+                                            <option value="LEVEL ONE">Level 1</option>
+                                            <option value="LEVEL TWO">Level 2</option>
+                                            <option value="LEVEL THREE">Level 3</option>
+                                            <option value="LEVEL FOUR">Level 4</option>
+                                            <option value="LEVEL FIVE">Level 5</option>
+                                        </select>
+                                    </div>
                                     <!-- Tab panes -->
                                     <div class="tab-content tabs">
                                         <div class="tab-pane active" id="mimaropa" role="tabpanel">
@@ -185,11 +300,9 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>
-                                                                                <div class="side-box-level">
-                                                                                    <div class="circle-level1">1</div>
-                                                                                </div>
-                                                                            </td>
+                                                                        <td style="font-size: 14px; color:darkred">
+                                                                            <div><b>{{$item->level}}</b></div>
+                                                                        </td>
                                                                         @endif
 
                                                                         @if ($item->province === null)
@@ -248,11 +361,9 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>
-                                                                                <div class="side-box-level">
-                                                                                    <div class="circle-level2">2</div>
-                                                                                </div>
-                                                                            </td>
+                                                                        <td style="font-size: 14px; color:chocolate">
+                                                                            <div><b>{{$item->level}}</b></div>
+                                                                        </td>
                                                                         @endif
                                                                         @if ($item->profileForm->province === null)
                                                                             <td><span style="color: red;"> no
@@ -309,10 +420,8 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>
-                                                                                <div class="side-box-level">
-                                                                                    <div class="circle-level3">3</div>
-                                                                                </div>
+                                                                            <td style="font-size: 14px; color:orange">
+                                                                                <div><b>{{$item->level}}</b></div>
                                                                             </td>
                                                                         @endif
 
@@ -397,11 +506,9 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>
-                                                                                <div class="side-box-level">
-                                                                                    <div class="circle-level4">4</div>
-                                                                                </div>
-                                                                            </td>
+                                                                        <td style="font-size: 14px; color:goldenrod">
+                                                                            <div><b>{{$item->level}}</b></div>
+                                                                        </td>
                                                                         @endif
 
                                                                         @if ($item->profileForm->province === null)
@@ -469,11 +576,9 @@
                                                                             <td><span style="color: red;"> no
                                                                                     data</span></td>
                                                                         @else
-                                                                            <td>
-                                                                                <div class="side-box-level">
-                                                                                    <div class="circle-level5">5</div>
-                                                                                </div>
-                                                                            </td>
+                                                                        <td style="font-size: 14px; color:darkgreen">
+                                                                            <div><b>{{$item->level}}</b></div>
+                                                                        </td>
                                                                         @endif
 
                                                                         @if ($item->profileForm->province === null)
@@ -535,43 +640,7 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="mimaropa1" role="tabpanel">
-                                            <br>
-                                            <p>2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor
-                                                interdum praesent sit amet nulla vel enim amet. Donec convallis tellus
-                                                neque, et imperdiet felis amet.</p>
-                                        </div>
-                                        <div class="tab-pane" id="mimaropa2" role="tabpanel">
-                                            <p>3. This is Photoshop's version of Lorem IpThis is Photoshop's version of
-                                                Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
-                                                sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                                nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer
-                                                adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis
-                                                natoque penatibus et magnis dis.....</p>
-                                        </div>
-                                        <div class="tab-pane" id="mimaropa3" role="tabpanel">
-                                            <p>4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor
-                                                interdum praesent sit amet nulla vel enim amet. Donec convallis tellus
-                                                neque, et imperdiet felis amet.</p>
-                                        </div>
-                                        <div class="tab-pane" id="mimaropa4" role="tabpanel">
-                                            <p>2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor
-                                                interdum praesent sit amet nulla vel enim amet. Donec convallis tellus
-                                                neque, et imperdiet felis amet.</p>
-                                        </div>
-                                        <div class="tab-pane" id="mimaropa5" role="tabpanel">
-                                            <p>3. This is Photoshop's version of Lorem IpThis is Photoshop's version of
-                                                Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
-                                                sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                                nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer
-                                                adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis
-                                                natoque penatibus et magnis dis.....</p>
-                                        </div>
-                                        <div class="tab-pane" id="mimaropa6" role="tabpanel">
-                                            <p>4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor
-                                                interdum praesent sit amet nulla vel enim amet. Donec convallis tellus
-                                                neque, et imperdiet felis amet.</p>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -620,7 +689,8 @@
                 buttons: [
                     'copy', 'excel', 'pdf', 'print'
                 ],
-                "pagingType": "full_numbers"
+                "pagingType": "full_numbers",
+                "pageLength": 20
             });
         });
     </script>
@@ -634,6 +704,50 @@
             });
         </script>
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const levelFilter = document.getElementById('levels-filter');
+            const provinceFilter = document.getElementById('mimaropa-filter');
+            const municipalityFilter = document.getElementById('municipality-filter');
+
+            levelFilter.addEventListener('change', filterTable);
+            provinceFilter.addEventListener('change', filterTable);
+            municipalityFilter.addEventListener('change', filterTable);
+
+            function filterTable() {
+                const level = levelFilter.value;
+                const province = provinceFilter.value;
+                const municipality = municipalityFilter.value;
+
+                const rows = document.querySelectorAll('#FARMC tbody tr');
+
+                rows.forEach(row => {
+                    const rowLevel = row.cells[0].textContent.trim();
+                    const rowProvince = row.cells[1].textContent.trim();
+                    const rowMunicipality = row.cells[2].textContent.trim();
+
+                    const levelMatch = level === '' || rowLevel === level;
+                    const provinceMatch = province === '' || rowProvince === province;
+                    const municipalityMatch = municipality === '' || rowMunicipality === municipality;
+
+                    if (levelMatch && provinceMatch && municipalityMatch) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            $('#reset-filters').click(function() {
+                $('#mimaropa-filter, #municipality-filter, #levels-filter').val('');
+                $('table tbody tr').show();
+            });
+        });
+    </script>
+
+
+
 
 
 </body>

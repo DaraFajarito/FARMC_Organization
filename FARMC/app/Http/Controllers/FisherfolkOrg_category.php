@@ -1333,21 +1333,6 @@ class FisherfolkOrg_category extends Controller
         $orgst = FC_OrgStruct_Model::where('fisherfolkOrg_FC_id', $id)->get();
         $listmem = FC_ListofMem_Model::where('fisherfolkOrg_FC_id', $id)->get();
 
-        // $sector_rep = null;
-
-        // if ($gen_info->isNotEmpty()) {
-        //     $sector_rep = $gen_info[0]->sector_rep;
-        // } elseif ($members->isNotEmpty()) {
-        //     $sector_rep = $members[0]->sector_rep;
-        // } elseif ($offic->isNotEmpty()) {
-        //     $sector_rep = $offic[0]->sector_rep;
-        // } elseif ($offic1->isNotEmpty()) {
-        //     $sector_rep = $offic1[0]->sector_rep;
-        // } elseif ($orgst->isNotEmpty()) {
-        //     $sector_rep = $orgst[0]->sector_rep;
-        // } elseif ($listmem->isNotEmpty()) {
-        //     $sector_rep = $listmem[0]->sector_rep;
-        // }
         return view('Fisherfolk_Organization.Cooperative_Form.viewCooperative', compact('gen_info', 'members', 'offic', 'offic1', 'orgst', 'listmem'));
     }
 
@@ -1433,6 +1418,8 @@ class FisherfolkOrg_category extends Controller
 
     public function edit_Association(Request $request, $id)
     {
+
+
         $validatedData = $request->validate([
             //BASIC INFO (FisherfolkOrganization_Model)
             'as_of' => 'nullable|string',
@@ -1679,7 +1666,6 @@ class FisherfolkOrg_category extends Controller
         $editAss->other_age = $validatedData['other_age'] ?? null;
         $editAss->other_fourps = $validatedData['other_fourps'] ?? null;
 
-
         $editAss->capmem_fee = $validatedData['capmem_fee'] ?? null;
         $editAss->capmonthly_cont = $validatedData['capmonthly_cont'] ?? null;
         $editAss->cap_donation = $validatedData['cap_donation'] ?? null;
@@ -1748,96 +1734,27 @@ class FisherfolkOrg_category extends Controller
         $boardir->boardofDir_age8 = $validatedData['boardofDir_age8'] ?? null;
         $boardir->boardofDir_fourps8 = $validatedData['boardofDir_fourps8'] ?? null;
 
-        // // Update the specific category's data based on the 'category' field in the request
-        // $committee = FO_OAM_Committees_Model::where('fisherfolkOrg_id', $editAss->id)->get();
-
-        // // Update the specific category's data based on the 'category' field in the request
-        // if ($request->category === 'Membership Committee') {
-        //     $committee->name = $validatedData['name'] ?? null;
-        //     $committee->civil_status = $validatedData['civil_status'] ?? null;
-        //     $committee->birthday = isset($validatedData['birthday']) ? date('Y-m-d', strtotime($validatedData['birthday'])) : null;
-        //     $committee->gender = $validatedData['gender'] ?? null;
-        //     $committee->age = $validatedData['age'] ?? null;
-        //     $committee->fourps = $validatedData['fourps'] ?? null;
-
-        //     $committee->name1 = $validatedData['name1'] ?? null;
-        //     $committee->civil_status1 = $validatedData['civil_status1'] ?? null;
-        //     $committee->birthday1 = isset($validatedData['birthday1']) ? date('Y-m-d', strtotime($validatedData['birthday1'])) : null;
-        //     $committee->gender1 = $validatedData['gender1'] ?? null;
-        //     $committee->age1 = $validatedData['age1'] ?? null;
-        //     $committee->fourps1 = $validatedData['fourps1'] ?? null;
-
-        //     $committee->name2 = $validatedData['name2'] ?? null;
-        //     $committee->civil_status2 = $validatedData['civil_status2'] ?? null;
-        //     $committee->birthday2 = isset($validatedData['birthday2']) ? date('Y-m-d', strtotime($validatedData['birthday2'])) : null;
-        //     $committee->gender2 = $validatedData['gender2'] ?? null;
-        //     $committee->age2 = $validatedData['age2'] ?? null;
-        //     $committee->fourps2 = $validatedData['fourps2'] ?? null;
-        // } elseif ($request->category === 'Committee on Education and Research') {
-        //     $committee->name = $validatedData['name'] ?? null;
-        //     $committee->civil_status = $validatedData['civil_status'] ?? null;
-        //     $committee->birthday = isset($validatedData['birthday']) ? date('Y-m-d', strtotime($validatedData['birthday'])) : null;
-        //     $committee->gender = $validatedData['gender'] ?? null;
-        //     $committee->age = $validatedData['age'] ?? null;
-        //     $committee->fourps = $validatedData['fourps'] ?? null;
-
-        //     $committee->name1 = $validatedData['name1'] ?? null;
-        //     $committee->civil_status1 = $validatedData['civil_status1'] ?? null;
-        //     $committee->birthday1 = isset($validatedData['birthday1']) ? date('Y-m-d', strtotime($validatedData['birthday1'])) : null;
-        //     $committee->gender1 = $validatedData['gender1'] ?? null;
-        //     $committee->age1 = $validatedData['age1'] ?? null;
-        //     $committee->fourps1 = $validatedData['fourps1'] ?? null;
-
-        //     $committee->name2 = $validatedData['name2'] ?? null;
-        //     $committee->civil_status2 = $validatedData['civil_status2'] ?? null;
-        //     $committee->birthday2 = isset($validatedData['birthday2']) ? date('Y-m-d', strtotime($validatedData['birthday2'])) : null;
-        //     $committee->gender2 = $validatedData['gender2'] ?? null;
-        //     $committee->age2 = $validatedData['age2'] ?? null;
-        //     $committee->fourps2 = $validatedData['fourps2'] ?? null;
-        // } elseif ($request->category === 'Election Committee') {
-        //     $committee->name = $validatedData['name'] ?? null;
-        //     $committee->civil_status = $validatedData['civil_status'] ?? null;
-        //     $committee->birthday = isset($validatedData['birthday']) ? date('Y-m-d', strtotime($validatedData['birthday'])) : null;
-        //     $committee->gender = $validatedData['gender'] ?? null;
-        //     $committee->age = $validatedData['age'] ?? null;
-        //     $committee->fourps = $validatedData['fourps'] ?? null;
-
-        //     $committee->name1 = $validatedData['name1'] ?? null;
-        //     $committee->civil_status1 = $validatedData['civil_status1'] ?? null;
-        //     $committee->birthday1 = isset($validatedData['birthday1']) ? date('Y-m-d', strtotime($validatedData['birthday1'])) : null;
-        //     $committee->gender1 = $validatedData['gender1'] ?? null;
-        //     $committee->age1 = $validatedData['age1'] ?? null;
-        //     $committee->fourps1 = $validatedData['fourps1'] ?? null;
-
-        //     $committee->name2 = $validatedData['name2'] ?? null;
-        //     $committee->civil_status2 = $validatedData['civil_status2'] ?? null;
-        //     $committee->birthday2 = isset($validatedData['birthday2']) ? date('Y-m-d', strtotime($validatedData['birthday2'])) : null;
-        //     $committee->gender2 = $validatedData['gender2'] ?? null;
-        //     $committee->age2 = $validatedData['age2'] ?? null;
-        //     $committee->fourps2 = $validatedData['fourps2'] ?? null;
-        // }
-
-        // $committee->save();
-
         $editAss->save();
         $boardir->save();
+
+
 
         // Check if any changes were made and redirect accordingly
         if ($editAss->wasChanged() || $boardir->wasChanged()) {
             $sectorRep = $editAss->sector_rep;
             switch ($sectorRep) {
                 case 'Municipal':
-                    return redirect('/FOMunicipal')->with('success', 'Data has been updated successfully!');
+                    return redirect('/viewMunAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 case 'Fishworker':
-                    return redirect('/FOFishworker')->with('success', 'Data has been updated successfully!');
+                    return redirect('/viewFishAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 case 'Commercial':
-                    return redirect('/FOCommercial')->with('success', 'Data has been updated successfully!');
+                    return redirect('/viewComAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 case 'Women':
-                    return redirect('/FOWomenF')->with('success', 'Data has been updated successfully!');
+                    return redirect('/viewWomAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 case 'Youth':
-                    return redirect('/FOYouth')->with('success', 'Data has been updated successfully!');
+                    return redirect('/viewYouthAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 case 'IP':
-                    return redirect('/FOIPs')->with('success', 'Data has been updated successfully!');
+                    return redirect('/viewIPAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 default:
                     return redirect()->back()->with('error', 'Failed to update. No changes were made.');
             }
@@ -1846,3 +1763,4 @@ class FisherfolkOrg_category extends Controller
         }
     }
 }
+

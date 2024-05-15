@@ -77,13 +77,21 @@
                                                         </div>
                                                         <br><br>
                                                         <div class="form-group m-r-15">
-                                                            <label for="inline3mail"
-                                                                class="block form-control-label">Address <em>(Barangay,
-                                                                    City/Municipality, Province & Region)</em></label>
-                                                            <input id="inline3mail" name="address" type="text"
-                                                                class="form-control" style="width: 500px;"
-                                                                placeholder=""
-                                                                value="{{ old('address', $item->address) }}">
+                                                            <label for="inline3mail" class="block form-control-label">Address
+                                                                <em>(Barangay, City/Municipality, Province)</em>
+                                                            </label>
+                                                            <div class="row">
+                                                                <div class="col-md-4 mb-2">
+                                                                    <input id="barangay" name="barangay" value="{{ old('barangay', $item->barangay) }}" style="width: 170px" type="text" class="form-control" placeholder="">
+                                                                </div>
+                                                                <div class="col-md-4 mb-2">
+                                                                    <input id="city" name="city" value="{{ old('city', $item->city) }}" style="width: 170px" type="text" class="form-control" placeholder="">
+                                                                </div>
+                                                                <div class="col-md-4 mb-2">
+                                                                    <input id="province" name="province" value="{{ old('province', $item->province) }}" style="width: 170px" type="text" class="form-control" placeholder="">
+                                                                </div>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">

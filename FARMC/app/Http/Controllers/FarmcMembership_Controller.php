@@ -14,7 +14,9 @@ class FarmcMembership_Controller extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'nullable|string',
-            'address' => 'nullable|string',
+            'barangay' => 'nullable|string',
+            'city' => 'nullable|string',
+            'province' => 'nullable|string',
             'landline_no' => 'nullable|string',
             'mobile_no' => 'nullable|string',
             'email' => 'nullable|string|email',
@@ -317,7 +319,9 @@ class FarmcMembership_Controller extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'nullable|string',
-            'address' => 'nullable|string',
+            'barangay' => 'nullable|string',
+            'city' => 'nullable|string',
+            'province' => 'nullable|string',
             'landline_no' => 'nullable|string',
             'mobile_no' => 'nullable|string',
             'email' => 'nullable|string',
@@ -392,7 +396,9 @@ class FarmcMembership_Controller extends Controller
 
         // Update other fields
         $farmc_mem->name = $validatedData['name'] ?? null;
-        $farmc_mem->address = $validatedData['address'] ?? null;
+        $farmc_mem->barangay = $validatedData['barangay'] ?? null;
+        $farmc_mem->city = $validatedData['city'] ?? null;
+        $farmc_mem->province = $validatedData['province'] ?? null;
         $farmc_mem->landline_no = $validatedData['landline_no'] ?? null;
         $farmc_mem->mobile_no = $validatedData['mobile_no'] ?? null;
         $farmc_mem->email = $validatedData['email'] ?? null;

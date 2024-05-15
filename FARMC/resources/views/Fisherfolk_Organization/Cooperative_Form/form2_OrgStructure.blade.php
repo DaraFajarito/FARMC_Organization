@@ -99,7 +99,7 @@
                 </div>
 
                 @foreach ($orgstruct as $orgs)
-                    <form class="form-inline" method="POST" action="{{ url('/Form2_add_OrgStruct/'. $orgs->id) }}"
+                    <form class="form-inline" method="POST" action="{{ url('/Form2_add_OrgStruct/' . $orgs->id) }}"
                         enctype="multipart/form-data">
                         @csrf
                         @method ('PUT')
@@ -168,9 +168,10 @@
                                                 </div>
                                                 <div class="col-md-12" style="margin-bottom: 10px;">
                                                     <div class="col-md-2">
-                                                        <div class="grid-material bg-general">Facebook Account:</div>
+                                                        <div class="grid-material bg-general" style="margin-top: 15px">
+                                                            Facebook Account:</div>
                                                     </div>
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-10" style="margin-top: 10px;">
                                                         <input id="" type="text" class="form-control"
                                                             style="width: 100%;" placeholder="" name="CD_FBacc">
                                                     </div>
@@ -180,7 +181,7 @@
                                         <div class="row">
                                             <div class="col-md-12 text-right">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#confirmationModal">SUBMIT</button>
+                                                    data-target="#confirmationModal">SUBMIT</button>
 
                                             </div>
                                         </div>
@@ -188,29 +189,29 @@
                                 </div>
                             </div>
                         </div>
-                          <!-- Modal -->
-                          <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                          aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal"
-                                          aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                      </button>
-                                      <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                  </div>
-                                  <div class="modal-body">
-                                      Are you sure you want to submit now?
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary"
-                                          data-dismiss="modal">No</button>
-                                      <button type="submit" class="btn btn-primary">Yes</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to submit now?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">No</button>
+                                        <button type="submit" class="btn btn-primary">Yes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 @endforeach
             </div>

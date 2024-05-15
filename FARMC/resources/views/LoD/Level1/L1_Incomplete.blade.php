@@ -228,8 +228,6 @@
                                                 <li><i class="ti-check-box text-danger-color"></i> &nbsp; {{ $category }}</li>
                                                 @endforeach
                                             </ul>
-                                            @else
-                                            <p>All categories are present.</p>
                                             @endif
 
                                             <br>
@@ -255,8 +253,6 @@
                                                     <li><i class="ti-check-box text-danger-color"></i> &nbsp; {{ $category }}</li>
                                                     @endforeach
                                                 </ul>
-                                                @else
-                                                <p>All committee categories are present.</p>
                                                 @endif
 
                                                 <br>

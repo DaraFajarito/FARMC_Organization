@@ -75,7 +75,9 @@
                                         <input id="approved_MFDP_file" type="file" name="approved_MFDP_file" class="form-control file-input" style="width: 250px;" accept="image/*,.pdf,.doc,.docx" placeholder="">
                                         <br>
                                         @if ($item['approved_MFDP_file'])
-                                        <small>Previous file: {{ $item['approved_MFDP_file'] }}</small>
+                                            <a href="{{ asset($item->approved_MFDP_file) }}"
+                                                target="_blank">View old
+                                                file</a>
                                         @endif
                                         <br>
                                     </div>

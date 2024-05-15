@@ -19,6 +19,31 @@
     input.form-control {
         border: 1px solid #AAAAAA;
     }
+
+
+    .filter-container button {
+        float: left;
+    }
+
+    .filter-container {
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .filter-container select {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        font-size: 14px;
+    }
+
+    .filter-container select:focus {
+        outline: none;
+        border-color: #007bff;
+    }
 </style>
 
 <body>
@@ -64,7 +89,7 @@
                 <div class="tab-pane active" id="farmc" role="tabpanel">
                     <hr>
                     {{-- <div class="card-block"> --}}
-                        <label for="">COUNT OVERVIEW</label>
+                    <label for="">COUNT OVERVIEW</label>
                     {{-- </div> --}}
                     <div class="row dashboard-header">
                         <div class="col-lg-6 col-md-6">
@@ -160,6 +185,125 @@
                                         Organizations</a>
                                 </li>
                             </ul>
+                            <br>
+
+                            <div class="filter-container">
+                                <button id="reset-filters" class="btn btn-secondary">Reset Filters</button>
+                                <select id="gender-filter">
+                                    <option value="">All Genders</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <select id="age-filter">
+                                    <option value="">All Ages</option>
+                                    <option value="0-18">0-18</option>
+                                    <option value="19-25">19-25</option>
+                                    <option value="26-35">26-35</option>
+                                    <option value="36-50">36-50</option>
+                                    <option value="50+">50+</option>
+                                </select>
+                                <select id="civil-status-filter">
+                                    <option value="">All Civil Statuses</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                    <option value="widow/widower">Widow/Widower</option>
+                                    <option value="separated">Separated</option>
+                                </select>
+                                <select id="mimaropa-filter">
+                                    <option hidden value="">MIMAROPA Provinces</option>
+                                    <option value="Occidental Mindoro">Occidental Mindoro</option>
+                                    <option value="Oriental Mindoro">Oriental Mindoro</option>
+                                    <option value="Marinduque">Marinduque</option>
+                                    <option value="Romblon">Romblon</option>
+                                    <option value="Palawan">Palawan</option>
+                                </select>
+                                <select id="municipality-filter">
+                                    <option hidden value="">Municipality</option>
+                                    <optgroup label="Occidental Mindoro">
+                                        <option value="Abra de Ilog">Abra de Ilog</option>
+                                        <option value="Calintaan">Calintaan</option>
+                                        <option value="Looc">Looc</option>
+                                        <option value="Lubang">Lubang</option>
+                                        <option value="Magsaysay">Magsaysay</option>
+                                        <option value="Mamburao">Mamburao</option>
+                                        <option value="Paluan">Paluan</option>
+                                        <option value="Rizal">Rizal</option>
+                                        <option value="Sablayan">Sablayan</option>
+                                        <option value="San Jose">San Jose</option>
+                                        <option value="Santa Cruz">Santa Cruz</option>
+                                    </optgroup>
+                                    <optgroup label="Oriental Mindoro">
+                                        <option value="Baco">Baco</option>
+                                        <option value="Bansud">Bansud</option>
+                                        <option value="Bongabong">Bongabong</option>
+                                        <option value="Bulalacao">Bulalacao</option>
+                                        <option value="Calapan">Calapan</option>
+                                        <option value="Gloria">Gloria</option>
+                                        <option value="Mansalay">Mansalay</option>
+                                        <option value="Naujan">Naujan</option>
+                                        <option value="Pinamalayan">Pinamalayan</option>
+                                        <option value="Pola">Pola</option>
+                                        <option value="Puerto Galera">Puerto Galera</option>
+                                        <option value="Roxas">Roxas</option>
+                                        <option value="San Teodoro">San Teodoro</option>
+                                        <option value="Socorro">Socorro</option>
+                                        <option value="Victoria">Victoria</option>
+                                    </optgroup>
+                                    <optgroup label="Marinduque">
+                                        <option value="Boac">Boac</option>
+                                        <option value="Buenavista">Buenavista</option>
+                                        <option value="Gasan">Gasan</option>
+                                        <option value="Mogpog">Mogpog</option>
+                                        <option value="Santa Cruz">Santa Cruz</option>
+                                        <option value="Torrijos">Torrijos</option>
+                                    </optgroup>
+                                    <optgroup label="Romblon">
+                                        <option value="Alcantara">Alcantara</option>
+                                        <option value="Banton">Banton</option>
+                                        <option value="Cajidiocan">Cajidiocan</option>
+                                        <option value="Calatrava">Calatrava</option>
+                                        <option value="Concepcion">Concepcion</option>
+                                        <option value="Corcuera">Corcuera</option>
+                                        <option value="Ferrol">Ferrol</option>
+                                        <option value="Looc">Looc</option>
+                                        <option value="Magdiwang">Magdiwang</option>
+                                        <option value="Odiongan">Odiongan</option>
+                                        <option value="Romblon">Romblon</option>
+                                        <option value="San Agustin">San Agustin</option>
+                                        <option value="San Andres">San Andres</option>
+                                        <option value="San Fernando">San Fernando</option>
+                                        <option value="San Jose">San Jose</option>
+                                        <option value="Santa Fe">Santa Fe</option>
+                                    </optgroup>
+                                    <optgroup label="Palawan">
+                                        <option value="Aborlan">Aborlan</option>
+                                        <option value="Agutaya">Agutaya</option>
+                                        <option value="Araceli">Araceli</option>
+                                        <option value="Balabac">Balabac</option>
+                                        <option value="Bataraza">Bataraza</option>
+                                        <option value="Brooke's Point">Brooke's Point</option>
+                                        <option value="Busuanga">Busuanga</option>
+                                        <option value="Cagayancillo">Cagayancillo</option>
+                                        <option value="Coron">Coron</option>
+                                        <option value="Culion">Culion</option>
+                                        <option value="Cuyo">Cuyo</option>
+                                        <option value="Dumaran">Dumaran</option>
+                                        <option value="El Nido">El Nido</option>
+                                        <option value="Kalayaan">Kalayaan</option>
+                                        <option value="Linapacan">Linapacan</option>
+                                        <option value="Magsaysay">Magsaysay</option>
+                                        <option value="Narra">Narra</option>
+                                        <option value="Puerto Princesa">Puerto Princesa</option>
+                                        <option value="Quezon">Quezon</option>
+                                        <option value="Rizal">Rizal</option>
+                                        <option value="Roxas">Roxas</option>
+                                        <option value="San Vicente">San Vicente</option>
+                                        <option value="Sofronio Española">Sofronio Española</option>
+                                        <option value="Taytay">Taytay</option>
+                                    </optgroup>
+                                </select>
+                            </div>
 
                             <!-- Tab panes -->
                             <div class="tab-content tabs">
@@ -193,10 +337,11 @@
                                                             <td>{{ $item->name }}</td>
                                                         @endif
 
-                                                        @if ($item->address === null)
+                                                        @if ($item->barangay === null && $item->city === null && $item->province === null)
                                                             <td style="color:red">no data</td>
                                                         @else
-                                                            <td>{{ $item->address }}</td>
+                                                            <td>{{ $item->barangay }}, {{ $item->city }},
+                                                                {{ $item->province }}</td>
                                                         @endif
 
                                                         @if ($item->landline_no === null)
@@ -386,7 +531,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function() {
             $('#FARMC').DataTable({
                 dom: 'Bfrtip',
@@ -396,7 +541,87 @@
                 "pagingType": "full_numbers"
             });
         });
-    </script>
+    </script> --}}
+
+<script>
+    $(document).ready(function() {
+        var table = $('#FARMC').DataTable({
+            dom: 'Bfrtip',
+            buttons: ['copy', 'excel', 'pdf', 'print'],
+            pagingType: 'full_numbers',
+            pageLength: 20
+        });
+
+        // Add filtering for gender
+        $('#gender-filter').on('change', function() {
+            var selectedGender = this.value;
+            if (selectedGender === '') {
+                table.column(6).search('').draw();
+            } else {
+                table.column(6).search('^' + selectedGender + '$', true, false).draw();
+            }
+        });
+
+        // Add filtering for age range
+        $('#age-filter').on('change', function() {
+            var ageRange = this.value;
+            if (ageRange === '') {
+                table.column(8).search('').draw();
+            } else if (ageRange === '0-18') {
+                table.column(8).search('^((0|1[0-8])\\b)', true, false).draw();
+            } else if (ageRange === '19-25') {
+                table.column(8).search('^((1[9-9])|(2[0-5])\\b)', true, false).draw();
+            } else if (ageRange === '26-35') {
+                table.column(8).search('^((2[6-9])|(3[0-5])\\b)', true, false).draw();
+            } else if (ageRange === '36-50') {
+                table.column(8).search('^((3[6-9])|(4[0-9])|(50)\\b)', true, false).draw();
+            } else if (ageRange === '50+') {
+                table.column(8).search('(5[1-9]|[6-9]\\d|\\d{3,})', true, false).draw();
+            }
+        });
+
+        // Add filtering for civil status
+        $('#civil-status-filter').on('change', function() {
+            var selectedStatus = this.value;
+            if (selectedStatus === '') {
+                table.column(5).search('').draw();
+            } else {
+                table.column(5).search(selectedStatus).draw();
+            }
+        });
+
+        // Add filtering for MIMAROPA provinces and municipalities
+        $('#mimaropa-filter, #municipality-filter').change(function() {
+            var selectedProvince = $('#mimaropa-filter').val().toLowerCase();
+            var selectedMunicipality = $('#municipality-filter').val().toLowerCase();
+
+            console.log('Selected Province:', selectedProvince);
+            console.log('Selected Municipality:', selectedMunicipality);
+
+            table.column(1).search(selectedProvince).draw();
+
+            $('table tbody tr').each(function() {
+                var address = $(this).find('td:nth-child(2)').text().toLowerCase();
+                var province = address.split(',')[2].trim().toLowerCase();
+                var municipality = address.split(',')[1].trim().toLowerCase();
+
+                if ((selectedProvince === '' || province === selectedProvince) &&
+                    (selectedMunicipality === '' || municipality === selectedMunicipality)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        // Reset all filters button
+        $('#reset-filters').on('click', function() {
+            $('#gender-filter, #age-filter, #civil-status-filter, #mimaropa-filter, #municipality-filter')
+                .val('').trigger('change');
+            $('table tbody tr').show();
+        });
+    });
+</script>
 
     <script>
         var ctx = document.getElementById('compMemChart').getContext('2d');
@@ -523,6 +748,14 @@
             options: options
         });
     </script>
+
+
+
+
+
+
+
+
 
 
 

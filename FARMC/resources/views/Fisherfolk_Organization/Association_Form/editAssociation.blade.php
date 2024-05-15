@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Form 1 - Fisherfolk Organization | BFAR - FARMC</title>
+    <title>ASSOCIATION EDIT FORM | Fisherfolk Organization | BFAR - FARMC</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -229,8 +229,7 @@
                                             <div class="form-radio">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="status_of_reg"
-                                                            value="Yes"
+                                                        <input type="radio" name="status_of_reg" value="Yes"
                                                             {{ old('status_of_reg', $item->status_of_reg) == 'Yes' ? 'checked' : '' }} /><i
                                                             class="helper"></i>Yes
                                                     </label>
@@ -248,26 +247,22 @@
                                             <div class="form-radio">
                                                 <div class="radio radio-inline">
                                                     <label>
-                                                        <input type="radio" name="status_of_reg_yes"
-                                                             value="DOLE"
+                                                        <input type="radio" name="status_of_reg_yes" value="DOLE"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'DOLE' ? 'checked' : '' }} /><i
                                                             class="helper"></i>DOLE
                                                     </label>
                                                     <label>
-                                                        <input type="radio" name="status_of_reg_yes"
-                                                             value="SEC"
+                                                        <input type="radio" name="status_of_reg_yes" value="SEC"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'SEC' ? 'checked' : '' }} /><i
                                                             class="helper"></i>SEC
                                                     </label>
                                                     <label>
-                                                        <input type="radio" name="status_of_reg_yes"
-                                                             value="CDA"
+                                                        <input type="radio" name="status_of_reg_yes" value="CDA"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'CDA' ? 'checked' : '' }} /><i
                                                             class="helper"></i>CDA
                                                     </label>
                                                     <label>
-                                                        <input type="radio" name="status_of_reg_yes"
-                                                             value="Others"
+                                                        <input type="radio" name="status_of_reg_yes" value="Others"
                                                             {{ old('status_of_reg_yes', $item->status_of_reg_yes) == 'Others' ? 'checked' : '' }} /><i
                                                             class="helper"></i>Others
                                                     </label>
@@ -306,8 +301,8 @@
                                                 <div class="radio radio-inline">
                                                     <label>
                                                         <input type="radio" name="status_of_accre" value="Yes"
-                                                            {{ old('status_of_accre', $item->status_of_accre) == 'Yes' ? 'checked' : '' }}
-                                                            /><i class="helper"></i>Yes
+                                                            {{ old('status_of_accre', $item->status_of_accre) == 'Yes' ? 'checked' : '' }} /><i
+                                                            class="helper"></i>Yes
                                                     </label>
                                                     <label>
                                                         <input type="radio" name="status_of_accre" value="No"
@@ -416,7 +411,7 @@
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
                                                                 value="{{ old('chair_age', $item->chair_age) }}"
-                                                                name="chair_age">
+                                                                name="chair_age" readonly>
                                                         </td>
                                                         &nbsp;
                                                         <td><input type="text" class="form-control"
@@ -452,7 +447,8 @@
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
                                                                 name="vicechair_age"
-                                                                value="{{ old('vicechair_age', $item->vicechair_age) }}">
+                                                                value="{{ old('vicechair_age', $item->vicechair_age) }}"
+                                                                readonly>
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
@@ -483,7 +479,8 @@
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age" name="sec_age"
-                                                                value="{{ old('sec_age', $item->sec_age) }}"></td>
+                                                                value="{{ old('sec_age', $item->sec_age) }}" readonly>
+                                                        </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="sec_fourps"
@@ -514,7 +511,8 @@
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
                                                                 name="treas_age"
-                                                                value="{{ old('treas_age', $item->treas_age) }}"></td>
+                                                                value="{{ old('treas_age', $item->treas_age) }}"
+                                                                readonly></td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="treas_fourps"
@@ -544,7 +542,8 @@
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age" name="aud_age"
-                                                                value="{{ old('aud_age', $item->aud_age) }}"></td>
+                                                                value="{{ old('aud_age', $item->aud_age) }}" readonly>
+                                                        </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="aud_fourps"
@@ -573,7 +572,8 @@
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age" name="pro_age"
-                                                                value="{{ old('pro_age', $item->pro_age) }}"></td>
+                                                                value="{{ old('pro_age', $item->pro_age) }}" readonly>
+                                                        </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="pro_fourps"
@@ -603,7 +603,8 @@
                                                         </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age" name="sgt_age"
-                                                                value="{{ old('sgt_age', $item->sgt_age) }}"></td>
+                                                                value="{{ old('sgt_age', $item->sgt_age) }}" readonly>
+                                                        </td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="sgt_fourps"
@@ -634,7 +635,8 @@
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 60px;" placeholder="Age"
                                                                 name="other_age"
-                                                                value="{{ old('other_age', $item->other_age) }}"></td>
+                                                                value="{{ old('other_age', $item->other_age) }}"
+                                                                readonly></td>
                                                         <td><input type="text" class="form-control"
                                                                 style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
                                                                 name="other_fourps"
@@ -688,7 +690,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age1" id="age1"
-                                                                    value="{{ old('boardofDir_age1', $item->boardofDir_age1) }}">
+                                                                    value="{{ old('boardofDir_age1', $item->boardofDir_age1) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -724,7 +727,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age2" id="age1"
-                                                                    value="{{ old('boardofDir_age2', $item->boardofDir_age2) }}">
+                                                                    value="{{ old('boardofDir_age2', $item->boardofDir_age2) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -760,7 +764,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age3" id="age1"
-                                                                    value="{{ old('boardofDir_age3', $item->boardofDir_age3) }}">
+                                                                    value="{{ old('boardofDir_age3', $item->boardofDir_age3) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -796,7 +801,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age4" id="age1"
-                                                                    value="{{ old('boardofDir_age4', $item->boardofDir_age4) }}">
+                                                                    value="{{ old('boardofDir_age4', $item->boardofDir_age4) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -832,7 +838,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age5" id="age1"
-                                                                    value="{{ old('boardofDir_age5', $item->boardofDir_age5) }}">
+                                                                    value="{{ old('boardofDir_age5', $item->boardofDir_age5) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -868,7 +875,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age6" id="age1"
-                                                                    value="{{ old('boardofDir_age6', $item->boardofDir_age6) }}">
+                                                                    value="{{ old('boardofDir_age6', $item->boardofDir_age6) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -904,7 +912,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age7" id="age1"
-                                                                    value="{{ old('boardofDir_age7', $item->boardofDir_age4) }}">
+                                                                    value="{{ old('boardofDir_age7', $item->boardofDir_age4) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -940,7 +949,8 @@
                                                                 <input type="text" class="form-control"
                                                                     style="width:100px" placeholder="Age"
                                                                     name="boardofDir_age8" id="age1"
-                                                                    value="{{ old('boardofDir_age8', $item->boardofDir_age8) }}">
+                                                                    value="{{ old('boardofDir_age8', $item->boardofDir_age8) }}"
+                                                                    readonly>
                                                             </td>
                                                             <td><input type="text" class="form-control"
                                                                     placeholder="4ps/Ips/SC/PWD"
@@ -955,225 +965,72 @@
 
                                         <label for="" class="block form-control-label"></em></label>
                                         <label>4.3 Committees</label>
-                                        <br><br>
+                                        <div><small> <span style="color: red"> This section <small><b>
+                                                            "COMMITTEES"</b></small> cannot be edited. Please ensure
+                                                    that all fields are filled out when adding committees.
+                                                </span></small></div>
+                                        <br>
+                                    </div>
 
-                                        @foreach ($committee1 as $item)
-                                        {{-- <input type="hidden" name="category" value="{{ $item->category }}"> --}}
-                                            <caption>{{ $item->category }}</caption>
+                                    <div class="col-md-12" style="margin-bottom:20px">
+                                        <div class="form-group m-r-15">
+                                            <label for="" class="block form-control-label">5. List of
+                                                Members </em></label>
+                                        </div>
+                                        <div><small> <span style="color: red"> This section <small><b> "LIST OF
+                                                            MEMBERS"</b></small> cannot be edited. Please ensure that
+                                                    all fields are filled out when adding members. </span></small></div>
 
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Position</th>
-                                                        <th>Name</th>
-                                                        <th>Civil Status</th>
-                                                        <th>Gender</th>
-                                                        <th>Birthday</th>
-                                                        <th>Age</th>
-                                                        <th>4ps/Ips/SC/PWD</th>
-                                                    </tr>
-                                                </thead>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        @foreach ($basic_info1 as $item)
+                                            <label for="" class="block form-control-label">6.
+                                                Capitalization</em></label>
+                                            <table>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;">Chairperson</div>
-                                                        </td>
-                                                        <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name"
-                                                                name="name"
-                                                                value="{{ old('name', $item->name) }}">
-                                                        </td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status"
-                                                                name="civil_status"
-                                                                value="{{ old('civil_status', $item->civil_status) }}">
-                                                        </td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender"
-                                                                name="gender"
-                                                                value="{{ old('gender', $item->gender) }}"></td>
-                                                        &nbsp;
-                                                        <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="birthday"
-                                                                value="{{ old('birthday', $item->birthday) }}"
-                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
-                                                        </td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="age"
-                                                                value="{{ old('age', $item->age) }}"></td>
-                                                        &nbsp;
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
-                                                                name="fourps"
-                                                                value="{{ old('fourps', $item->fourps) }}">
+                                                        <td>1. Membership Fee:</td>
+                                                        <td><input id="mem_fee" type="text" class="form-control"
+                                                                placeholder="" name="capmem_fee"
+                                                                value="{{ old('capmem_fee', $item->capmem_fee) }}">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <div style="font-size: small;">Secretary
-                                                            </div>
+                                                        <td>2. Monthly Contribution:</td>
+                                                        <td><input id="monthly_cont" type="text"
+                                                                class="form-control" placeholder=""
+                                                                name="capmonthly_cont"
+                                                                value="{{ old('capmonthly_cont', $item->capmonthly_cont) }}">
                                                         </td>
-                                                        <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name"
-                                                                name="name1"
-                                                                value="{{ old('name1', $item->name1) }}">
-                                                        </td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status"
-                                                                name="civil_status1"
-                                                                value="{{ old('civil_status1', $item->civil_status1) }}">
-                                                        </td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender"
-                                                                name="gender1"
-                                                                value="{{ old('gender1', $item->gender1) }}"></td>
-                                                        <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="birthday1"
-                                                                value="{{ old('birthday1', $item->birthday1) }}"
-                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
-                                                        </td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="age1"
-                                                                value="{{ old('age1', $item->age1) }}"></td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
-                                                                name="fourps1"
-                                                                value="{{ old('fourps1', $item->fourps1) }}"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="font-size: small;">Member</td>
-                                                        <td><input id="name" type="text" class="form-control"
-                                                                style="width: 250px;" placeholder="Name"
-                                                                name="name2"
-                                                                value="{{ old('name2', $item->name2) }}">
+                                                        <td>3. Donations:</td>
+                                                        <td><input id="donation" type="text" class="form-control"
+                                                                placeholder="" name="cap_donation"
+                                                                value="{{ old('cap_donation', $item->cap_donation) }}">
                                                         </td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="Civil Status"
-                                                                name="civil_status2"
-                                                                value="{{ old('civil_status2', $item->civil_status2) }}">
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4. Others:</td>
+                                                        <td><input id="others" type="text" class="form-control"
+                                                                placeholder="" name="cap_others"
+                                                                value="{{ old('cap_others', $item->cap_others) }}">
                                                         </td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 100px;" placeholder="Gender"
-                                                                name="gender2"
-                                                                value="{{ old('gender2', $item->gender2) }}"></td>
-                                                        <td><input type="date" class="form-control"
-                                                                placeholder="Birthday" name="birthday2"
-                                                                value="{{ old('birthday2', $item->birthday2) }}"
-                                                                onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
-                                                        </td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 60px;" placeholder="Age" name="age2"
-                                                                value="{{ old('age2', $item->age2) }}"></td>
-                                                        <td><input type="text" class="form-control"
-                                                                style="width: 150px;" placeholder="4ps/Ips/SC/PWD"
-                                                                name="fourps2"
-                                                                value="{{ old('fourps2', $item->fourps2) }}"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Total Capital:</td>
+                                                        <td><input id="total_cap" type="text" class="form-control"
+                                                                placeholder="" name="captotal_cap"
+                                                                value="{{ old('captotal_cap', $item->captotal_cap) }}"
+                                                                readonly></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        @endforeach
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group m-r-15">
-                                            <label for="" class="block form-control-label">5. List of
-                                                Members</em></label>
-                                            <table class="table" id="dynamic">
-                                                <thead>
-                                                    <tr style="width: 180px; font-size: small;">
-                                                        <th>Name</th>
-                                                        <th>Civil Status</th>
-                                                        <th>Gender</th>
-                                                        <th>Birthday</th>
-                                                        <th>Age</th>
-                                                        <th>4ps/Ips/SC/PWD</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                @foreach ($listmem1 as $item)
-                                                    <tbody id="dytable-body">
-                                                        <tr>
-                                                            <td><input id="name" type="text"
-                                                                    class="form-control" style="width: 230px;"
-                                                                    placeholder="Name" name="mem_name[]"
-                                                                    value="{{ old('mem_name', $item->mem_name) }}">
-                                                            </td>
-
-                                                            <td><input type="text" class="form-control"
-                                                                    placeholder="Civil Status" style="width:150px"
-                                                                    name="mem_cs[]"
-                                                                    value="{{ old('mem_cs', $item->mem_cs) }}"></td>
-                                                            <td><input type="text" class="form-control"
-                                                                    placeholder="Gender" style="width:130px"
-                                                                    name="mem_gen[]"
-                                                                    value="{{ old('mem_gen', $item->mem_gen) }}">
-                                                            </td>
-                                                            <td><input type="date" class="form-control"
-                                                                    placeholder="Birthday" name="mem_birth[]"
-                                                                    value="{{ old('mem_birth', $item->mem_birth) }}"
-                                                                    onchange="calculateAge(this, this.parentNode.nextElementSibling.firstChild)">
-                                                            </td>
-                                                            <td><input type="text" class="form-control"
-                                                                    placeholder="Age" style="width: 100px"
-                                                                    name="mem_age[]"
-                                                                    value="{{ old('mem_age', $item->mem_age) }}">
-                                                            </td>
-                                                            <td><input type="text" class="form-control"
-                                                                    placeholder="4ps/Ips/SC/PWD"
-                                                                    style="width: 130px" name="mem_fourps[]"
-                                                                    value="{{ old('mem_fourps', $item->mem_fourps) }}">
-                                                            </td>
-
-                                                            <td><button type="button" onclick="deleteRow(this)"
-                                                                    class="btn btn-default"> <i
-                                                                        class="icofont icofont-close"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                @endforeach
-                                            </table>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label for="" class="block form-control-label">6.
-                                            Capitalization</em></label>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1. Membership Fee:</td>
-                                                    <td><input id="mem_fee" type="text" class="form-control"
-                                                            placeholder="" name="capmem_fee"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2. Monthly Contribution:</td>
-                                                    <td><input id="monthly_cont" type="text"
-                                                            class="form-control" placeholder=""
-                                                            name="capmonthly_cont"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3. Donations:</td>
-                                                    <td><input id="donation" type="text" class="form-control"
-                                                            placeholder="" name="cap_donation"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4. Others:</td>
-                                                    <td><input id="others" type="text" class="form-control"
-                                                            placeholder="" name="cap_others"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total Capital:</td>
-                                                    <td><input id="total_cap" type="text" class="form-control"
-                                                            placeholder="" name="captotal_cap" readonly></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                     <div class="col-md-12">
+
                                         <label for="" class="block form-control-label">7. Contact
                                             Information</em></label>
                                         <div class="form-group row">
@@ -1184,7 +1041,8 @@
                                                     <div class="col-md-6">
                                                         <input id="" type="text" class="form-control"
                                                             placeholder="" style="width: 280px"
-                                                            name="CIcontact_person">
+                                                            name="CIcontact_person"
+                                                            value="{{ old('CIcontact_person', $item->CIcontact_person) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1199,29 +1057,33 @@
                                             </div>
                                             <div class="col-md-5">
                                                 <input type="text" id="" class="form-control"
-                                                    style="width:300px" placeholder="" name="CIlandline">
+                                                    style="width:300px" placeholder="" name="CIlandline"
+                                                    value="{{ old('CIlandline', $item->CIlandline) }}">
                                                 <input type="text" id="" class="form-control"
-                                                    style="width:300px" placeholder="" name="CIMobile">
+                                                    style="width:300px" placeholder="" name="CIMobile"
+                                                    value="{{ old('CIMobile', $item->CIMobile) }}">
                                                 <input type="text" id="" class="form-control"
-                                                    style="width:300px" placeholder="" name="CIMess">
+                                                    style="width:300px" placeholder="" name="CIMess"
+                                                    value="{{ old('CIMess', $item->CIMess) }}">
                                             </div>
                                         </div>
                                     </div>
+                @endforeach
 
-                                    <div class="col-md-12 text-right" style="margin-top: 20px">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
-                                            &nbsp; SAVE</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+                <div class="col-md-12 text-right" style="margin-top: 20px">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                        &nbsp; SAVE</button>
+                </div>
             </div>
-            </form>
-            @endforeach
+
         </div>
     </div>
-    </div>
-    </div>
+    </form>
+    @endforeach
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -63,7 +63,7 @@ return new class extends Migration
             $table->string('iec_AVP_file')->nullable();
 
             $table->string('status')->nullable();
-            $table->string('level')->nullable();
+            $table->string('level')->default('LEVEL FIVE')->nullable();
             $table->timestamps();
         });
     }

@@ -51,7 +51,7 @@
     <div class="wrapper">
         <!-- Navbar-->
         <header class="main-header-top hidden-print">
-            <a href="index.html" class="logo"><img class="img-fluid able-logo"
+            <a href="{{ url ('/dash')}}" class="logo"><img class="img-fluid able-logo"
                     src="{{ asset('assets/images/Logo_changed.png') }}"
                     style="width:280px; padding-top:5px; padding-left:20px" alt="Theme-logo"></a>
             <nav class="navbar navbar-static-top">
@@ -81,7 +81,7 @@
 
                             </a>
                             <ul class="dropdown-menu settings-menu">
-                                <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+                                {{-- <li><a href="#"><i class="icon-user"></i> Profile</a></li> --}}
                                 <li class="p-0">
                                     <div class="dropdown-divider m-0"></div>
                                 </li>
@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li class="nav-level">--- FARMC Profile</li>
-                    {{-- <li class="treeview">
+                    <li class="treeview">
                         <a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span>1. FARMC
                                 STRENGTHENING</span><i class="icon-arrow-down"></i></a>
 
@@ -187,9 +187,9 @@
                                 </a>
                             </li>
                         </ul>
-                    </li> --}}
+                    </li>
 
-                    <li class="treeview menu-open">
+                    {{-- <li class="treeview menu-open">
                         <a class="waves-effect waves-dark" href="#!">
                             <i class="icon-briefcase"></i><span>1. FARMC STRENGTHENING</span><i class="icon-arrow-down"></i>
                         </a>
@@ -239,7 +239,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
 
 

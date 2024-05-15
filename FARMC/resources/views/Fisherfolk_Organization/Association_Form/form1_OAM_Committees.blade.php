@@ -86,9 +86,7 @@
                             </li>
                         </ol>
                         <hr>
-                        {{-- <a href="{{ url('/FOform1_OAM_BoardofDir') }}" class="btn btn-secondary"> <i
-                                class="icon-arrow-left"></i>
-                            Back</a> --}}
+                        <div class="captions" style="font-size: smaller">➤ "<b>Please note:</b>&nbsp; Fill out all the necessary information in each <span style="color: red"><small><b>COMMITTEE CATEGORY</b></small></span> before proceeding to the next page. Editing is not available in this section."
                     </div>
                 </div>
 

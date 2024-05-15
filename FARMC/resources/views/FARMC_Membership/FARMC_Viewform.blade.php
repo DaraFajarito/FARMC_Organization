@@ -168,9 +168,8 @@
                                                             &nbsp; {{ $item->name }}</label>
                                                         <label for=""
                                                             class="col-md-12 col-form-label form-control-label">Address
-                                                            <em><small>(Barangay, City/Municipality, Province &
-                                                                    Region)</small></em> : &nbsp;
-                                                            {{ $item->address }}</label>
+                                                            <em><small>(Barangay, City/Municipality, Province)</small></em> : &nbsp;
+                                                            {{ $item->barangay }},  {{ $item->city }},  {{ $item->province }}  </label>
                                                     </div>
                                                     <br><br>
 

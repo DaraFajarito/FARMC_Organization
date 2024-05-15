@@ -96,11 +96,15 @@
                         {{-- <a href="{{ url('/FOform2Officers_1') }}" class="btn btn-secondary"> <i
                                 class="icon-arrow-left"></i> Back</a> --}}
 
-                        <div class="captions" style="font-size: smaller">➤ "<b>Please note:</b> Only 'Female', 'Male',
-                            and 'Others' are accepted inputs in the <b>GENDER</b> field. Inputs that starts with lowercase letter
-                            such as <span style="color: red"><b> 'male', 'female', and 'others' </b> </span> will not be
-                            saved in the database."
-                        </div>
+                                <div><small> <b>Reminder:</b> </small></div>
+                                <div class="captions" style="font-size: smaller">➤ Only <span style="color: green"><b>
+                                            'Female', 'Male', and 'Others' </b></span> are accepted inputs in the <b>GENDER</b>
+                                    field. Inputs that starts with lowercase letter such as <span style="color: red"><b> 'male',
+                                            'female', and 'others' </b> </span> will not be saved in the database.
+                                    <div class="captions" style="font-size: ">➤ Ensure that all members of the association are
+                                        correctly filled out. Editing is not available in this section. Adding or deleting
+                                        members is not permitted.</div>
+                                </div>
                     </div>
                 </div>
                 @foreach ($listofMem as $list)

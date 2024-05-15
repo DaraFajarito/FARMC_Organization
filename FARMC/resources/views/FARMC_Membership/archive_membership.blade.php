@@ -65,7 +65,7 @@
                                     @foreach ($mem_archived as $item)
                                         <tr>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->address }}</td>
+                                            <td>{{ $item->barangay }}, {{ $item->city }}, {{ $item->province }} </td>
                                             <td>{{ $item->landline_no }}</td>
                                             <td>{{ $item->mobile_no }}</td>
                                             <td>{{ $item->email }}</td>

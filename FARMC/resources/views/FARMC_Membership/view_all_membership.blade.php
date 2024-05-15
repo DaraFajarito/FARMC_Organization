@@ -161,10 +161,10 @@
                                                             <td>{{ $item->name }}</td>
                                                         @endif
 
-                                                        @if ($item->address === null)
+                                                        @if ($item->barangay === null && $item->city === null && $item->province === null)
                                                             <td style="color:red">no data</td>
                                                         @else
-                                                            <td>{{ $item->address }}</td>
+                                                            <td>{{ $item->barangay }}, {{ $item->city }}, {{ $item->province }}</td>
                                                         @endif
 
                                                         @if ($item->landline_no === null)

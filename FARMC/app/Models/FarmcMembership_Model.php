@@ -13,7 +13,9 @@ class FarmcMembership_Model extends Model
 
     protected $fillable = [
         'name',
-        'address',
+        'barangay',
+        'city',
+        'province',
         'landline_no',
         'mobile_no',
         'email',
