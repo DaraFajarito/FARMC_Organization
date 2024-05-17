@@ -99,7 +99,7 @@
                                                         </select>
                                                     </div>
                                                     <br>
-                                                    <input type="text" id="otherText" style="display: none;" placeholder="Please specify" class="form-control">
+                                                    <input type="text" id="otherText" name="other" style="display: none;" placeholder="Please specify" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-9"></div>
@@ -168,6 +168,49 @@
     <!-- custom js -->
     <script type="text/javascript" src="{{ asset ('assets/pages/advance-form.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#8cc63f',
+            iconColor: '#ffffff',
+            customClass: {
+                title: 'text-white',
+                content: 'text-white'
+            }
+        });
+    </script>
+@endif
+
+@if (session('failed'))
+    <script>
+        Swal.fire({
+            icon: 'failed',
+            title: 'failed!',
+            text: '{{ session('failed') }}',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#dc3545',
+            iconColor: '#ffffff',
+            customClass: {
+                title: 'text-white',
+                content: 'text-white'
+            }
+        });
+    </script>
+@endif
 
     <script>
         function submitFormAndAddAnother1() {

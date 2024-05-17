@@ -95,11 +95,11 @@ class ProfileForm_Controller extends Controller
 
     public function display_level1_edit($id)
     {
-        $data = ProfileForm_Model::select('id')->where('id', $id)->get();
-        $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $id)->get();
-        $committee = Committee_Model::where('profileForm_id', $id)->get();
+        $data = ProfileForm_Model::where('id', $id)->get();
+        // $fisherfolk = FisherfolkRepresentative_Model::where('profileForm_id', $id)->get();
+        // $committee = Committee_Model::where('profileForm_id', $id)->get();
 
-        return view('LoD.Level1.L1_Editform', compact('data', 'fisherfolk', 'committee'));
+        return view('LoD.Level1.L1_Editform', compact('data'));
     }
 
     public function display_level1_incomplete()
@@ -178,11 +178,11 @@ class ProfileForm_Controller extends Controller
     public function display_level3_info($id)
     {
         $basics = BasicFunction_Model::select('id')->where('id', $id)->get();
-        // $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->get();
         $fullyOp = Fully_Operational_Model::where('profileForm_id', $id)->where('status', '!=', 'ARCHIVED')->get();
 
         return view('LoD.Level3.L3_Viewform', compact('basics', 'fullyOp'));
     }
+
 
     public function display_level3_edit($id)
     {
@@ -317,8 +317,8 @@ class ProfileForm_Controller extends Controller
             'fisheriesP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'municipality' => 'nullable',
-            'date_organized' => 'nullable',
-            'date_reorganized' => 'nullable',
+            'date_organized' => 'nullable|date_format:Y-m-d',
+            'date_reorganized' => 'nullable|date_format:Y-m-d',
             'internalP' => 'nullable',
             'province' => 'nullable',
             'fisherfolkR' => 'nullable',
@@ -335,16 +335,17 @@ class ProfileForm_Controller extends Controller
             'fisherfolkR_file.max' => 'The fisherfolkR file may not be greater than 5MB.',
             'fisheriesP_file.max' => 'The fisheriesP file may not be greater than 5MB.',
             'formulationR_file.max' => 'The formulationR file may not be greater than 5MB.',
-            'minutes1.mimes' => 'The minutes1 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'minutes2.mimes' => 'The minutes2 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'photos1.mimes' => 'The photos1 file must be a file of type: jpeg, png.',
-            'photos2.mimes' => 'The photos2 file must be a file of type: jpeg, png.',
-            'attendance1.mimes' => 'The attendance1 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'attendance2.mimes' => 'The attendance2 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'internalP_file.mimes' => 'The internalP file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'fisherfolkR_file.mimes' => 'The fisherfolkR file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'fisheriesP_file.mimes' => 'The fisheriesP file must be a file of type: pdf, doc, docx.,,jpeg,png',
-            'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.,,jpeg,png',
+
+            // 'minutes1.mimes' => 'The minutes1 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            // 'minutes2.mimes' => 'The minutes2 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            // 'photos1.mimes' => 'The photos1 file must be a file of type: jpeg, png.',
+            // 'photos2.mimes' => 'The photos2 file must be a file of type: jpeg, png.',
+            // 'attendance1.mimes' => 'The attendance1 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            // 'attendance2.mimes' => 'The attendance2 file must be a file of type: pdf, doc, docx.,jpeg,png',
+            // 'internalP_file.mimes' => 'The internalP file must be a file of type: pdf, doc, docx.,jpeg,png',
+            // 'fisherfolkR_file.mimes' => 'The fisherfolkR file must be a file of type: pdf, doc, docx.,jpeg,png',
+            // 'fisheriesP_file.mimes' => 'The fisheriesP file must be a file of type: pdf, doc, docx.,,jpeg,png',
+            // 'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.,,jpeg,png',
         ]);
 
         // Store the files in a public path
@@ -363,8 +364,8 @@ class ProfileForm_Controller extends Controller
         $profileForm = new ProfileForm_Model();
         $profileForm->municipality = $validatedData['municipality'] ?? null;
         $profileForm->province = $validatedData['province'] ?? null;
-        $profileForm->date_organized = $validatedData['date_organized'] ?? null;
-        $profileForm->date_reorganized = $validatedData['date_reorganized'] ?? null;
+        $profileForm->date_organized = isset($validatedData['date_organized']) ? date('Y-m-d', strtotime($validatedData['date_organized'])) : null;
+        $profileForm->date_reorganized = isset($validatedData['date_reorganized']) ? date('Y-m-d', strtotime($validatedData['date_reorganized'])) : null;
         $profileForm->internalP = isset($validatedData['internalP']) ? 1 : 0;
         $profileForm->internalP_file = $internalPFilePath ? '/internalPolicy/' . $internalPFilePath->getFilename() : null;
         $profileForm->fisherfolkR = isset($validatedData['fisherfolkR']) ? 1 : 0;
@@ -375,12 +376,13 @@ class ProfileForm_Controller extends Controller
         $profileForm->formulationR_file = $formulationRFilePath ? '/formulationResolution/' . $formulationRFilePath->getFilename() : null;
         $profileForm->photos1 = $photos1FilePath ? '/assets/images/dateOrganized-photos/' . $photos1FilePath->getFilename() : null;
         $profileForm->photos2 = $photos2FilePath ? '/assets/images/dateReOrganized-photos/' . $photos2FilePath->getFilename() : null;
-        $profileForm->minutes1 = $minutes1FilePath ? '/dateOrganized-minutes/' . $minutes1FilePath->getFilename() : null;
-        $profileForm->minutes2 = $minutes2FilePath ? '/dateReOrganized-minutes/' . $minutes2FilePath->getFilename() : null;
-        $profileForm->attendance1 = $attendance1FilePath ? '/dateOrganized-attendance/' . $attendance1FilePath->getFilename() : null;
-        $profileForm->attendance2 = $attendance2FilePath ? '/dateReOrganized-attendance/' . $attendance2FilePath->getFilename() : null;
+        $profileForm->minutes1 = $minutes1FilePath ? '/assets/dateOrganized-minutes/' . $minutes1FilePath->getFilename() : null;
+        $profileForm->minutes2 = $minutes2FilePath ? '/assets/dateReOrganized-minutes/' . $minutes2FilePath->getFilename() : null;
+        $profileForm->attendance1 = $attendance1FilePath ? '/assets/dateOrganized-attendance/' . $attendance1FilePath->getFilename() : null;
+        $profileForm->attendance2 = $attendance2FilePath ? '/assets/dateReOrganized-attendance/' . $attendance2FilePath->getFilename() : null;
 
         $profileForm->save();
+
 
         if ($profileForm) {
             return redirect('/officers-form/' . $profileForm->id)->with('success', 'Success!');
@@ -554,18 +556,6 @@ class ProfileForm_Controller extends Controller
                 break;
             }
         }
-
-        // Set status to 'INCOMPLETE' if 'mfdp' is 'Formulated'
-        if ($secretariat->mfdp === 'Formulated') {
-            $incomplete = true;
-        }
-
-        // Set status to 'INCOMPLETE' if 'mfdp' is 'Formulated'
-        if ($secretariat->mfo === 'Formulated') {
-            $incomplete = true;
-        }
-
-
         // Determine the status based on null values
         $status = $incomplete ? 'INCOMPLETE' : 'COMPLETED';
 
@@ -1358,6 +1348,7 @@ class ProfileForm_Controller extends Controller
     public function editBasicStructure(Request $request, $id)
     {
         $validatedData = $request->validate([
+            //Profileform_model
             'minutes1' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'minutes2' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'photos1' => 'file|max:5242880|mimes:jpeg,png',
@@ -1368,7 +1359,7 @@ class ProfileForm_Controller extends Controller
             'fisherfolkR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'fisheriesP_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
             'formulationR_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
-            'municipality' => 'nullable|string',
+            'municipality' => 'nullable',
             'date_organized' => 'nullable|date_format:Y-m-d',
             'date_reorganized' => 'nullable|date_format:Y-m-d',
             'internalP' => 'nullable',
@@ -1377,34 +1368,35 @@ class ProfileForm_Controller extends Controller
             'fisheriesP' => 'nullable',
             'formulationR' => 'nullable',
 
-            'chairperson' => 'nullable|string',
-            'vice_chairperson' => 'nullable|string',
-            'secretary' => 'nullable|string',
-            'asst_sec' => 'nullable|string',
-            'treasurer' => 'nullable|string',
-            'asst_treas' => 'nullable|string',
-            'auditor' => 'nullable|string',
-            'asst_aud' => 'nullable|string',
-            'pro1' => 'nullable|string',
-            'pro2' => 'nullable|string',
-            'sgt_arms1' => 'nullable|string',
-            'sgt_arms2' => 'nullable|string',
-            'sgt_arms3' => 'nullable|string',
+            'chairperson' => 'nullable',
+            'vice_chairperson' => 'nullable',
+            'secretary' => 'nullable',
+            'asst_sec' => 'nullable',
+            'treasurer' => 'nullable',
+            'asst_treas' => 'nullable',
+            'auditor' => 'nullable',
+            'asst_aud' => 'nullable',
+            'pro1' => 'nullable',
+            'pro2' => 'nullable',
+            'sgt_arms1' => 'nullable',
+            'sgt_arms2' => 'nullable',
+            'sgt_arms3' => 'nullable',
 
-            'chairpersonSB' => 'nullable|string',
-            'mpdo' => 'nullable|string',
-            'repmdc' => 'nullable|string',
-            'repda' => 'nullable|string',
-            'repngo' => 'nullable|string',
-            'repps' => 'nullable|string',
-            'others' => 'nullable|string',
+            'chairpersonSB' => 'nullable',
+            'mpdo' => 'nullable',
+            'repmdc' => 'nullable',
+            'repda' => 'nullable',
+            'repngo' => 'nullable',
+            'repps' => 'nullable',
+            'others' => 'nullable',
 
-            'name_sec' => 'nullable|string',
-            'name_sec1' => 'nullable|string',
-            'name_sec2' => 'nullable|string',
-            'office_org' => 'nullable|string',
-            'office_org1' => 'nullable|string',
-            'office_org2' => 'nullable|string',
+            'name_sec' => 'nullable',
+            'name_sec1' => 'nullable',
+            'name_sec2' => 'nullable',
+            'office_org' => 'nullable',
+            'office_org1' => 'nullable',
+            'office_org2' => 'nullable',
+
         ], [
             'minutes1.max' => 'The minutes1 file may not be greater than 5MB.',
             'minutes2.max' => 'The minutes2 file may not be greater than 5MB.',
@@ -1416,180 +1408,174 @@ class ProfileForm_Controller extends Controller
             'fisherfolkR_file.max' => 'The fisherfolkR file may not be greater than 5MB.',
             'fisheriesP_file.max' => 'The fisheriesP file may not be greater than 5MB.',
             'formulationR_file.max' => 'The formulationR file may not be greater than 5MB.',
-            'minutes1.mimes' => 'The minutes1 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'minutes2.mimes' => 'The minutes2 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'photos1.mimes' => 'The photos1 file must be a file of type: jpeg, png.',
-            'photos2.mimes' => 'The photos2 file must be a file of type: jpeg, png.',
-            'attendance1.mimes' => 'The attendance1 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'attendance2.mimes' => 'The attendance2 file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'internalP_file.mimes' => 'The internalP file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'fisherfolkR_file.mimes' => 'The fisherfolkR file must be a file of type: pdf, doc, docx.,jpeg,png',
-            'fisheriesP_file.mimes' => 'The fisheriesP file must be a file of type: pdf, doc, docx.,,jpeg,png',
-            'formulationR_file.mimes' => 'The formulationR file must be a file of type: pdf, doc, docx.,,jpeg,png',
         ]);
 
-        $profileForm = ProfileForm_Model::where('id', $id)->firstOrFail();
+        $profile = Profileform_Model::where('id', $id)->firstOrFail();
 
-        // Delete existing files if new files are uploaded
         if ($request->hasFile('minutes1')) {
-            if ($profileForm->minute1) {
-                Storage::delete($profileForm->minute1);
+            if ($profile->minutes1) {
+                Storage::delete($profile->minutes1);
             }
-            $minutes1FilePath = $request->file('minute1')->store('profileForm/minute1');
-            $profileForm->minute1 = $minutes1FilePath;
+            $minutes1Path = $request->file('minutes1')->store('storage');
+            $profile->minutes1 = $minutes1Path;
         }
 
         if ($request->hasFile('minutes2')) {
-            if ($profileForm->minutes2) {
-                Storage::delete($profileForm->minutes2);
+            if ($profile->minutes2) {
+                Storage::delete($profile->minutes2);
             }
-            $minutes2FilePath = $request->file('minutes2')->store('profileForm/minutes2');
-            $profileForm->minutes2 = $minutes2FilePath;
+            $minutes2Path = $request->file('minutes2')->store('storage');
+            $profile->minutes2 = $minutes2Path;
         }
-
         if ($request->hasFile('photos1')) {
-            if ($profileForm->photos1) {
-                Storage::delete($profileForm->photos1);
+            if ($profile->photos1) {
+                Storage::delete($profile->photos1);
             }
-            $photos1FilePath = $request->file('photos1')->store('profileForm/photos1');
-            $profileForm->photos1 = $photos1FilePath;
+            $photos1Path = $request->file('photos1')->store('storage');
+            $profile->photos1 = $photos1Path;
         }
-
         if ($request->hasFile('photos2')) {
-            if ($profileForm->photos2) {
-                Storage::delete($profileForm->photos2);
+            if ($profile->photos2) {
+                Storage::delete($profile->photos2);
             }
-            $photos2FilePath = $request->file('photos2')->store('profileForm/photos2');
-            $profileForm->photos2 = $photos2FilePath;
+            $photos2Path = $request->file('photos2')->store('storage');
+            $profile->photos2 = $photos2Path;
         }
-
         if ($request->hasFile('attendance1')) {
-            if ($profileForm->attendance1) {
-                Storage::delete($profileForm->attendance1);
+            if ($profile->attendance1) {
+                Storage::delete($profile->attendance1);
             }
-            $attendance1FilePath = $request->file('attendance1')->store('profileForm/attendance1');
-            $profileForm->attendance1 = $attendance1FilePath;
+            $attendance1Path = $request->file('attendance1')->store('storage');
+            $profile->attendance1 = $attendance1Path;
         }
-
         if ($request->hasFile('attendance2')) {
-            if ($profileForm->attendance2) {
-                Storage::delete($profileForm->attendance2);
+            if ($profile->attendance2) {
+                Storage::delete($profile->attendance2);
             }
-            $attendance2FilePath = $request->file('attendance2')->store('profileForm/attendance2');
-            $profileForm->attendance2 = $attendance2FilePath;
+            $attendance2Path = $request->file('attendance2')->store('storage');
+            $profile->attendance2 = $attendance2Path;
         }
-
-        if ($request->hasFile('attendance1')) {
-            if ($profileForm->attendance1) {
-                Storage::delete($profileForm->attendance1);
-            }
-            $attendance1FilePath = $request->file('attendance1')->store('profileForm/attendance1');
-            $profileForm->attendance1 = $attendance1FilePath;
-        }
-
-        if ($request->hasFile('attendance2')) {
-            if ($profileForm->attendance2) {
-                Storage::delete($profileForm->attendance2);
-            }
-            $attendance2FilePath = $request->file('attendance2')->store('profileForm/attendance2');
-            $profileForm->attendance2 = $attendance2FilePath;
-        }
-
         if ($request->hasFile('internalP_file')) {
-            if ($profileForm->internalP_file) {
-                Storage::delete($profileForm->internalP_file);
+            if ($profile->internalP_file) {
+                Storage::delete($profile->internalP_file);
             }
-            $internalPFilePath = $request->file('internalP_file')->store('profileForm/internalP');
-            $profileForm->internalP_file = $internalPFilePath;
+            $internalP_filePath = $request->file('internalP_file')->store('storage');
+            $profile->internalP_file = $internalP_filePath;
         }
-
         if ($request->hasFile('fisherfolkR_file')) {
-            if ($profileForm->fisherfolkR_file) {
-                Storage::delete($profileForm->fisherfolkR_file);
+            if ($profile->fisherfolkR_file) {
+                Storage::delete($profile->fisherfolkR_file);
             }
-            $fisherfolkRFilePath = $request->file('fisherfolkR_file')->store('profileForm/fisherfolkR');
-            $profileForm->fisherfolkR_file = $fisherfolkRFilePath;
+            $fisherfolkR_filePath = $request->file('fisherfolkR_file')->store('storage');
+            $profile->fisherfolkR_file = $fisherfolkR_filePath;
         }
-
         if ($request->hasFile('fisheriesP_file')) {
-            if ($profileForm->fisheriesP_file) {
-                Storage::delete($profileForm->fisheriesP_file);
+            if ($profile->fisheriesP_file) {
+                Storage::delete($profile->fisheriesP_file);
             }
-            $fisheriesPFilePath = $request->file('fisheriesP_file')->store('profileForm/fisheriesP');
-            $profileForm->fisheriesP_file = $fisheriesPFilePath;
+            $fisheriesP_filePath = $request->file('fisheriesP_file')->store('storage');
+            $profile->fisheriesP_file = $fisheriesP_filePath;
         }
-
         if ($request->hasFile('formulationR_file')) {
-            if ($profileForm->formulationR_file) {
-                Storage::delete($profileForm->formulationR_file);
+            if ($profile->formulationR_file) {
+                Storage::delete($profile->formulationR_file);
             }
-            $formulationRFilePath = $request->file('formulationR_file')->store('profileForm/formulationR');
-            $profileForm->formulationR_file = $formulationRFilePath;
-        }
-        // Update other fields
-        $profileForm->municipality = $validatedData['municipality'] ?? null;
-        $profileForm->province = $validatedData['province'] ?? null;
-        $profileForm->date_organized = isset($validatedData['date_organized']) ? date('Y-m-d', strtotime($validatedData['date_organized'])) : null;
-        $profileForm->date_reorganized = isset($validatedData['date_reorganized']) ? date('Y-m-d', strtotime($validatedData['date_reorganized'])) : null;
-        // $profileForm->internalP = $validatedData['internalP'] ?? null;
-        // $profileForm->fisherfolkR = $validatedData['fisherfolkR'] ?? null;
-        // $profileForm->fisheriesP = $validatedData['fisheriesP'] ?? null;
-        // $profileForm->formulationR = $validatedData['formulationR'] ?? null;
-
-        $profileForm->chairperson = $validatedData['chairperson'] ?? null;
-        $profileForm->vice_chairperson = $validatedData['vice_chairperson'] ?? null;
-        $profileForm->secretary = $validatedData['secretary'] ?? null;
-        $profileForm->asst_sec = $validatedData['asst_sec'] ?? null;
-        $profileForm->treasurer = $validatedData['treasurer'] ?? null;
-        $profileForm->asst_treas = $validatedData['asst_treas'] ?? null;
-        $profileForm->auditor = $validatedData['auditor'] ?? null;
-        $profileForm->asst_aud = $validatedData['asst_aud'] ?? null;
-        $profileForm->pro1 = $validatedData['pro1'] ?? null;
-        $profileForm->pro2 = $validatedData['pro2'] ?? null;
-        $profileForm->sgt_arms1 = $validatedData['sgt_arms1'] ?? null;
-        $profileForm->sgt_arms2 = $validatedData['sgt_arms2'] ?? null;
-        $profileForm->sgt_arms3 = $validatedData['sgt_arms3'] ?? null;
-
-        $profileForm->chairpersonSB = $validatedData['chairpersonSB'] ?? null;
-        $profileForm->mpdo = $validatedData['mpdo'] ?? null;
-        $profileForm->repmdc = $validatedData['repmdc'] ?? null;
-        $profileForm->repda = $validatedData['repda'] ?? null;
-        $profileForm->repngo = $validatedData['repngo'] ?? null;
-        $profileForm->repps = $validatedData['repps'] ?? null;
-        $profileForm->others = $validatedData['others'] ?? null;
-
-        $profileForm->name_sec = $validatedData['name_sec'] ?? null;
-        $profileForm->name_sec1 = $validatedData['name_sec1'] ?? null;
-        $profileForm->name_sec2 = $validatedData['name_sec2'] ?? null;
-        $profileForm->office_org = $validatedData['office_org'] ?? null;
-        $profileForm->office_org1 = $validatedData['office_org1'] ?? null;
-        $profileForm->office_org2 = $validatedData['office_org2'] ?? null;
-
-        // Save the updated record
-        $profileForm->save();
-
-        $fields = [
-            'municipality', 'province', 'date_organized', 'date_reorganized', 'internalP', 'fisherfolkR',
-            'fisheriesP', 'formulationR', 'minutes1', 'minutes2', 'photos1', 'photos2', 'attendance1', 'attendance2', 'internalP_file', 'fisherfolkR_file', 'fisheriesP_file', 'formulationR_file',
-            'chairperson', 'vicechairperson', 'chairperson', 'vice_chairperson', 'secretary', 'asst_sec', 'treasurer', 'asst_treas', 'auditor', 'asst_aud', 'pro1', 'pro2', 'sgt_arms1', 'sgt_arms2', 'sgt_arms3',
-            'chairpersonSB', 'mpdo', 'repmdc', 'repda', 'repngo', 'repps', 'others', 'name_sec', 'name_sec1', 'name_sec2', 'office_org', 'office_org1', 'office_org2'
-        ];
-
-        $allFieldsFilled = true;
-        foreach ($fields as $field) {
-            if (empty($validatedData[$field])) {
-                $allFieldsFilled = false;
-                break;
-            }
-        }
-        // Update status to 'COMPLETED' if all fields are filled
-        if ($allFieldsFilled) {
-            $profileForm->status = 'COMPLETED';
-            $profileForm->save();
+            $formulationR_filePath = $request->file('formulationR_file')->store('storage');
+            $profile->formulationR_file = $formulationR_filePath;
         }
 
-        // Check if any changes were made and redirect accordingly
-        if ($profileForm->wasChanged()) {
+         // Update other fields
+        $profile->municipality = $validatedData['municipality'] ?? null;
+        $profile->province = $validatedData['province'] ?? null;
+        $profile->date_organized =  $validatedData['date_organized'] ?? null;
+        $profile->date_reorganized =  $validatedData['date_reorganized'] ?? null;
+        $profile->internalP = isset($validatedData['internalP']) ? 1 : 0;
+        $profile->fisherfolkR = isset($validatedData['fisherfolkR']) ? 1 : 0;
+        $profile->fisheriesP = isset($validatedData['fisheriesP']) ? 1 : 0;
+        $profile->formulationR = isset($validatedData['formulationR']) ? 1 : 0;
+        $profile->chairperson = $validatedData['chairperson'] ?? null;
+        $profile->vice_chairperson = $validatedData['vice_chairperson'] ?? null;
+        $profile->secretary = $validatedData['secretary'] ?? null;
+        $profile->asst_sec = $validatedData['asst_sec'] ?? null;
+        $profile->treasurer = $validatedData['treasurer'] ?? null;
+        $profile->asst_treas = $validatedData['asst_treas'] ?? null;
+        $profile->auditor = $validatedData['auditor'] ?? null;
+        $profile->asst_aud = $validatedData['asst_aud'] ?? null;
+        $profile->pro1 = $validatedData['pro1'] ?? null;
+        $profile->pro2 = $validatedData['pro2'] ?? null;
+        $profile->sgt_arms1 = $validatedData['sgt_arms1'] ?? null;
+        $profile->sgt_arms2 = $validatedData['sgt_arms2'] ?? null;
+        $profile->sgt_arms3 = $validatedData['sgt_arms3'] ?? null;
+
+        $profile->chairpersonSB = $validatedData['chairpersonSB'] ?? null;
+        $profile->mpdo = $validatedData['mpdo'] ?? null;
+        $profile->repmdc = $validatedData['repmdc'] ?? null;
+        $profile->repda = $validatedData['repda'] ?? null;
+        $profile->repngo = $validatedData['repngo'] ?? null;
+        $profile->repps = $validatedData['repps'] ?? null;
+        $profile->others = $validatedData['others'] ?? null;
+
+        $profile->name_sec = $validatedData['name_sec'] ?? null;
+        $profile->name_sec1 = $validatedData['name_sec1'] ?? null;
+        $profile->name_sec2 = $validatedData['name_sec2'] ?? null;
+        $profile->office_org = $validatedData['office_org'] ?? null;
+        $profile->office_org1 = $validatedData['office_org1'] ?? null;
+        $profile->office_org2 = $validatedData['office_org2'] ?? null;
+
+        $profile->save();
+
+        $allFieldsFilled =
+        $profile->municipality &&
+        $profile->province &&
+        $profile->internalP_file &&
+        $profile->fisherfolkR_file &&
+        $profile->fisheriesP_file &&
+        $profile->formulationR_file &&
+        $profile->minutes1 &&
+        $profile->minutes2 &&
+        // Check if all files are uploaded
+        $profile->photos1 &&
+        $profile->photos2 &&
+        $profile->attendance1 &&
+        $profile->attendance2 &&
+        $profile->internalP !== null &&
+        $profile->fisherfolkR !== null &&
+        $profile->fisheriesP !== null &&
+        $profile->formulationR !== null &&
+        $profile->chairperson &&
+        $profile->vice_chairperson &&
+        $profile->secretary &&
+        $profile->asst_sec &&
+        $profile->treasurer &&
+        $profile->asst_treas &&
+        $profile->auditor &&
+        $profile->asst_aud &&
+        $profile->pro1 &&
+        $profile->pro2 &&
+        $profile->sgt_arms1 &&
+        $profile->sgt_arms2 &&
+        $profile->sgt_arms3 &&
+        $profile->chairpersonSB &&
+        $profile->mpdo &&
+        $profile->repmdc &&
+        $profile->repda &&
+        $profile->repngo &&
+        $profile->repps &&
+        $profile->others &&
+        $profile->name_sec &&
+        $profile->name_sec1 &&
+        $profile->name_sec2 &&
+        $profile->office_org &&
+        $profile->office_org1 &&
+        $profile->office_org2;
+
+    $profile->status = $allFieldsFilled ? 'COMPLETED' : 'INCOMPLETE';
+
+
+       // Save the updated status
+       $profile->save();
+
+        if ($profile->wasChanged()) {
             return redirect('/L1Viewform/' . $id)->with('success', 'Basic Structure updated successfully!');
         } else {
             return redirect()->back()->with('error', 'Failed to update. No changes were made.');
@@ -1741,10 +1727,10 @@ class ProfileForm_Controller extends Controller
         $allFieldsFilled =
             $basicFunction->mfdp &&
             $basicFunction->mfo &&
-            $basicFunction->bantaydt &&
-            $basicFunction->actfarmcbt &&
-            $basicFunction->appfarmcbt &&
-            $basicFunction->caseestablished &&
+            $basicFunction->bantaydt !== null &&
+            $basicFunction->actfarmcbt !== null &&
+            $basicFunction->appfarmcbt !== null &&
+            $basicFunction->caseestablished !== null &&
             $basicFunction->mfarmcoffice &&
             $basicFunction->regmeet &&
             // Check if all files are uploaded
@@ -2086,26 +2072,7 @@ class ProfileForm_Controller extends Controller
         // Save the updated record
         $fullyOperational->save();
 
-        // $fields = [
-        //     'profileForm_id','approved_MFDP_file', 'imp_act1', 'imp_act1_file', 'imp_act2', 'imp_act2_file', 'imp_act3', 'imp_act3_file', 'pol_prop1', 'pol_prop1_file', 'pol_prop2', 'pol_prop2_file', 'pol_prop3', 'pol_prop3_file', 'rec_act1', 'rec_act1_file', 'rec_act2_file', 'rec_act2', 'rec_act3',
-        //     'rec_act3_file', 'rec_iss1', 'rec_iss1_file', 'rec_iss2', 'rec_iss2_file', 'rec_iss3', 'rec_iss3_file', 'part_act1', 'part_act1_file', 'part_act2', 'part_act2_file', 'part_act3', 'part_act3_file', 'part_LGU1', 'part_LGU1_file', 'part_LGU2', 'part_LGU2_file', 'part_LGU3', 'part_LGU3_file',
-        //     'name_com', 'sched_regmeet', 'sched_regmeet_file', 'wor_act1', 'wor_act1_file', 'wor_act2', 'wor_act2_file', 'wor_act3', 'wor_act3_file'
-        // ];
-
-        // $allFieldsFilled = true;
-        // foreach ($fields as $field) {
-        //     if (empty($validatedData[$field])) {
-        //         $allFieldsFilled = false;
-        //         break;
-        //     }
-        // }
-        // // Update status to 'COMPLETED' if all fields are filled
-        // if ($allFieldsFilled) {
-        //     $fullyOperational->status = 'COMPLETED';
-        //     $fullyOperational->save();
-        // }
-
-        if (
+       $allFieldsFilled =
             // Check if all fields are filled
             $fullyOperational->imp_act1 && $fullyOperational->imp_act2 && $fullyOperational->imp_act3 &&
             $fullyOperational->pol_prop1 && $fullyOperational->pol_prop2 && $fullyOperational->pol_prop3 &&
@@ -2124,18 +2091,18 @@ class ProfileForm_Controller extends Controller
             $fullyOperational->part_act1_file && $fullyOperational->part_act2_file && $fullyOperational->part_act3_file &&
             $fullyOperational->part_LGU1_file && $fullyOperational->part_LGU2_file && $fullyOperational->part_LGU3_file &&
             $fullyOperational->sched_regmeet_file &&
-            $fullyOperational->wor_act1_file && $fullyOperational->wor_act2_file && $fullyOperational->wor_act3_file
-        ) {
+            $fullyOperational->wor_act1_file && $fullyOperational->wor_act2_file && $fullyOperational->wor_act3_file;
+
             // Update status to completed
-            $fullyOperational->status = 'COMPLETED';
-        }
+            $fullyOperational->status = $allFieldsFilled ? 'COMPLETED' : 'INCOMPLETE';
+
 
         // Save the updated status
         $fullyOperational->save();
 
         // Check if any changes were made and redirect accordingly
         if ($fullyOperational->wasChanged()) {
-            return redirect('/L3Viewform/' . $profileFormId)->with('success', 'Sustainability mechanism updated successfully!');
+            return redirect('/L3Viewform/' . $profileFormId)->with('success', 'Fully Operational updated successfully!');
         } else {
             return redirect()->back()->with('error', 'Failed to update. No changes were made.');
         }

@@ -162,7 +162,7 @@
                                                         <div class="grid-material bg-general">Email Address:</div>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input id="" type="email" class="form-control"
+                                                        <input id="" type="text" class="form-control"
                                                             style="width: 100%;" placeholder="" name="CD_email">
                                                     </div>
                                                 </div>

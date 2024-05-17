@@ -1129,12 +1129,7 @@
         </script>
     @endif
 
-    <script>
-        function deleteRow(btn) {
-            var row = btn.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
-    </script>
+
 
     <script>
         function calculateAge(birthDateInput, ageInput) {

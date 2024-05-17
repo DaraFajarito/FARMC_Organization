@@ -446,15 +446,6 @@
         });
     </script>
 
-
-
-
-
-
-
-
-
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const ftMaleInput = document.querySelector('input[name="NoE_Fulltime_male"]');

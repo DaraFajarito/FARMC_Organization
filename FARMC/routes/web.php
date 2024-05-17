@@ -325,14 +325,8 @@ Route::put('/Form2_add_OrgStruct/{id}', [FC_OrgStruct_Controller::class,'add_Org
 Route::get('/FOform2_ListofMem/{id}', [FC_ListofMem_Controller::class,'display_fc_listofMem']);
 Route::post('/Form2_add_ListofMem/{id}', [FC_ListofMem_Controller::class,'add_listofMem']);
 
-Route::view('/cooperative_edit', 'Fisherfolk_Organization.Cooperative_Form.editCooperative');
-
-
-// ---------------------------------------------------------------------------------------------------//
-// Route::view('/FOmunregistered', 'Fisherfolk_Organization.Municipal.unregisteredtbl');
-// ---------------------------------------------------------------------------------------------------//
-
-
+Route::get('/cooperative_edit/{id}', [FisherfolkOrg_category::class,'display_coop_edit']);
+Route::put('/edit-cooperative/{id}', [FisherfolkOrg_category::class,'edit_Cooperative']);
 
 
 // ---------------------------------------------------------------------------------------------------//

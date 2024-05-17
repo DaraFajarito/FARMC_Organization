@@ -113,7 +113,7 @@
                                     <div class="col-md-12" style="margin-top:1rem">
                                         <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="" class="col-md-12 captions">1.2 Please attached
+                                                <label for="" class="col-md-12 captions">1.2 Please attach
                                                     Communications / Reports on the representations of FARMCs in various
                                                     fora, Assemblies, Dialogues and involvement in project planning,
                                                     monitoring and evaluation.</label>
@@ -121,7 +121,7 @@
                                                     <input id="rec_attach_file" type="file" name="rec_attach_file"
                                                         class="form-control file-input" style="width: 400px;"
                                                         accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                    <small><b><em>Please attached</b></em></small>
+                                                    <small><b><em>Please attach copy</b></em></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
                                                             name="award_plaq1_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_plaq2" name="award_plaq2"
@@ -162,7 +162,7 @@
                                                             name="award_plaq2_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_plaq3" name="award_plaq3"
@@ -173,7 +173,7 @@
                                                             name="award_plaq3_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,7 +196,7 @@
                                                             name="award_cert1_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_cert2" name="award_cert2"
@@ -207,7 +207,7 @@
                                                             name="award_cert2_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_cert3" name="award_cert3"
@@ -218,7 +218,7 @@
                                                             name="award_cert3_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,7 +241,7 @@
                                                             name="award_proj1_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_proj2" name="award_proj2"
@@ -252,7 +252,7 @@
                                                             name="award_proj2_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_proj3" name="award_proj3"
@@ -263,7 +263,7 @@
                                                             name="award_proj3_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -286,7 +286,7 @@
                                                             name="award_trop1_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_trop2" name="award_trop2"
@@ -297,7 +297,7 @@
                                                             name="award_trop2_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <input type="text" id="award_trop3" name="award_trop3"
@@ -308,7 +308,7 @@
                                                             name="award_trop3_file" class="form-control file-input"
                                                             style="width: 300px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached</b></em></small>
+                                                        <small><b><em>Please attach copy</b></em></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -377,22 +377,22 @@
                                                             name="iec_broch_file" class="form-control file-input"
                                                             style="width: 250px;" accept="image/*,.pdf,.doc,.docx"
                                                             placeholder="">
-                                                        <small><b><em>Please attached copy</b></em></small>
+                                                        <small><b><em>Please attach copy copy</b></em></small>
                                                         <br>
                                                         <input id="iec_hand_file" type="file" name="iec_hand_file"
                                                             class="form-control file-input" style="width: 250px;"
                                                             accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <small><b><em>Please attach copy copy</em></b></small>
                                                         <br>
                                                         <input id="iec_pub_file" type="file" name="iec_pub_file"
                                                             class="form-control file-input" style="width: 250px;"
                                                             accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <small><b><em>Please attach copy copy</em></b></small>
                                                         <br>
                                                         <input id="iec_AVP_file" type="file" name="iec_AVP_file"
                                                             class="form-control file-input" style="width: 250px;"
                                                             accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        <small><b><em>Please attached copy</em></b></small>
+                                                        <small><b><em>Please attach copy copy</em></b></small>
                                                     </div>
 
                                                 </div>

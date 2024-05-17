@@ -79,112 +79,118 @@
                                             </div>
                                             <br><br>
                                             <div class="col-md-12">
-                                                <div class="col-md-4">
+                                                <div class="col-md-12">
                                                     <div class="form-group m-r-15">
-                                                        <label for="date" class="block form-control-label">Date
+                                                        <label class="block form-control-label">Date
                                                             organized</label>
-                                                        <input id="date" type="date" name="date_organized"
-                                                            value="{{ old('date_organized', $item->date_organized) }}"
-                                                            class="form-control" style="width: 300px;" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group m-r-15">
-                                                        <label for="minutes1" class="captions"><b>Attach
-                                                                the
-                                                                minutes</b></label>
-                                                        &nbsp;<input id="minutes1" type="file" name="minutes1"
-                                                            class="form-control" style="width: 195px;"
-                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        @if ($item['minutes1'])
-                                                            <a href="{{ asset('assets' . $item->minutes1) }}"
-                                                                target="_blank">View old file</a>
-                                                            <small>Previous file: {{ $item['minutes1'] }}</small>
-                                                        @endif
-                                                    </div>
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="captions"><b>Attach
-                                                                the
-                                                                Photos</b></label>
-                                                        &nbsp; <input id="photos1" type="file" name="photos1"
-                                                            class="form-control" style="width: 195px;"
-                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        @if ($item['photos1'])
-                                                            <a href="{{ asset('assets' . $item->photos1) }}"
-                                                                target="_blank">View old file</a>
-                                                            <small>Previous file: {{ $item['photos1'] }}</small>
-                                                        @endif
-                                                    </div>
+                                                        <input type="date"
+                                                            value="{{ \Carbon\Carbon::parse($item->date_organized)->format('Y-m-d') }}"
+                                                            id="dateInput" name="date" class="form-control" style="width: 300px;"
+                                                            placeholder="dd/mm/yyyy">
 
+
+                                                        {{-- <input id="date" type="date" name="date_organized"
+                                                           {{ old('date_organized', $item->date_organized) }}
+                                                            class="form-control" style="width: 300px;" placeholder=""> --}}
+                                                    </div>
                                                     <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="captions"><b>Attach
-                                                                the
-                                                                Attendance</b></label>
-                                                        &nbsp;<input id="attendance1" type="file"
-                                                            name="attendance1" class="form-control"
-                                                            style="width: 195px;" accept="image/*,.pdf,.doc,.docx"
-                                                            placeholder="">
+                                                        <label for="minutes1" class="block form-control-label">Attach
+                                                            the minutes</label>
+                                                        <input id="minutes1" type="file" name="minutes1"
+                                                            class="form-control" style="width: 195px;"
+                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
+                                                        @if ($item['minutes1'])
+                                                            <a href="{{ asset($item['minutes1']) }}"
+                                                                target="_blank"><small>View old
+                                                                    file</small></a>
+                                                            {{-- <small>Previous file: {{ $item['copy1_file'] }}</small> --}}
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group m-r-15">
+                                                        <label for="inline3mail" class="block form-control-label">Attach
+                                                            the Photos</label>
+                                                        <input id="photos1" type="file" name="photos1"
+                                                            class="form-control" style="width: 195px;"
+                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
+                                                        @if ($item['photos1'])
+                                                            <a href="{{ asset($item['photos1']) }}"
+                                                                target="_blank"><small>View old
+                                                                    file</small></a>
+                                                            {{-- <small>Previous file: {{ $item['copy1_file'] }}</small> --}}
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group m-r-15">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label">Attach the
+                                                            Attendance</label>
+                                                        <input id="attendance1" type="file" name="attendance1"
+                                                            class="form-control" style="width: 195px;"
+                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
                                                         @if ($item['attendance1'])
-                                                            <a href="{{ asset('assets' . $item->attendance1) }}"
-                                                                target="_blank">View old file</a>
-                                                            <small>Previous file: {{ $item['attendance1'] }}</small>
+                                                            <a href="{{ asset($item['attendance1']) }}"
+                                                                target="_blank"><small>View old
+                                                                    file</small></a>
+                                                            {{-- <small>Previous file: {{ $item['copy1_file'] }}</small> --}}
                                                         @endif
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <div class="col-md-12">
-                                                <div class="col-md-4">
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="captions">Date
-                                                            of
-                                                            Re-Organization</label>
-                                                        <input id="date_reorganized" type="date"
-                                                            name="date_reorganized" class="form-control"
-                                                            style="width: 300px;" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="col-md-8">
-                                                    <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="captions"><b>Attach
-                                                                the
-                                                                Minutes</b></label>
-                                                        &nbsp; <input id="minutes2" type="file" name="minutes2"
-                                                            class="form-control" style="width: 195px;"
-                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        @if ($item['minutes2'])
-                                                            <a href="{{ asset('assets' . $item->minutes2) }}"
-                                                                target="_blank">View old file</a>
-                                                            <small>Previous file: {{ $item['minutes2'] }}</small>
-                                                        @endif
 
+                                            <div class="col-md-12" style="margin-top: 20px">
+                                                <div class="col-md-12">
+                                                    <div class="form-group m-r-15">
+                                                        <label for="inline3mail" class="block form-control-label">Date
+                                                            of Re-Organization</label>
+                                                        <input type="date"
+                                                            value="{{ \Carbon\Carbon::parse($item->date_reorganized)->format('Y-m-d') }}"
+                                                            id="dateInput" name="date" class="form-control" style="width: 300px;"
+                                                            placeholder="dd/mm/yyyy">
+
+                                                        {{-- <input id="date_reorganized" value="{{ old('date_organized', $item->date_organized) }}"  type="date" name="date_reorganized" class="form-control" style="width: 300px;" placeholder=""> --}}
                                                     </div>
                                                     <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="captions"><b>Attach
-                                                                the
-                                                                Photos</b></label>
-                                                        &nbsp; <input id="photos2" type="file" name="photos2"
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><br></label>
+                                                        <input id="minutes2" type="file" name="minutes2"
                                                             class="form-control" style="width: 195px;"
                                                             accept="image/*,.pdf,.doc,.docx" placeholder="">
-                                                        @if ($item['photos2'])
-                                                            <a href="{{ asset('assets' . $item->photos2) }}"
-                                                                target="_blank">View old file</a>
-                                                            <small>Previous file: {{ $item['photos2'] }}</small>
+                                                        <br>
+                                                        @if ($item['minutes2'])
+                                                            <a href="{{ asset($item['minutes2']) }}"
+                                                                target="_blank"><small>View old
+                                                                    file</small></a>
+                                                            {{-- <small>Previous file: {{ $item['copy1_file'] }}</small> --}}
                                                         @endif
                                                     </div>
                                                     <div class="form-group m-r-15">
-                                                        <label for="inline3mail" class="captions"><b>Attach
-                                                                the
-                                                                Attendance</b></label>
-                                                        &nbsp; <input id="attendance2" type="file"
-                                                            name="attendance2" class="form-control"
-                                                            style="width: 195px;" accept="image/*,.pdf,.doc,.docx"
-                                                            placeholder="">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><br></label>
+                                                        <input id="photos2" type="file" name="photos2"
+                                                            class="form-control" style="width: 195px;"
+                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
+                                                        @if ($item['photos2'])
+                                                            <a href="{{ asset($item['photos2']) }}"
+                                                                target="_blank"><small>View old
+                                                                    file</small></a>
+                                                            {{-- <small>Previous file: {{ $item['copy1_file'] }}</small> --}}
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group m-r-15">
+                                                        <label for="inline3mail"
+                                                            class="block form-control-label"><br></label>
+                                                        <input id="attendance2" type="file" name="attendance2"
+                                                            class="form-control" style="width: 195px;"
+                                                            accept="image/*,.pdf,.doc,.docx" placeholder="">
+                                                        <br>
                                                         @if ($item['attendance2'])
-                                                            <a href="{{ asset('assets' . $item->attendance2) }}"
-                                                                target="_blank">View old file</a>
-                                                            <small>Previous file: {{ $item['attendance2'] }}</small>
+                                                            <a href="{{ asset($item['attendance2']) }}"
+                                                                target="_blank"><small>View old
+                                                                    file</small></a>
+                                                            {{-- <small>Previous file: {{ $item['copy1_file'] }}</small> --}}
                                                         @endif
                                                     </div>
                                                 </div>
@@ -193,12 +199,12 @@
 
                                             <!-- <div class="col-md-12"> -->
                                             <br>
-                                            <div class="col-md-4" style="margin-top: 30px">
+                                            <div class="col-md-6" style="margin-top: 30px">
                                                 <br>
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
                                                         <input type="checkbox" name="internalP" id="checkbox"
-                                                            {{ old('internalP', $item->internalP) ? 'checked' : '' }}>
+                                                            {{ $item->internalP == 1 ? 'checked' : '' }}>
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Internal Policy</div>
@@ -207,7 +213,7 @@
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
                                                         <input type="checkbox" name="fisherfolkR" id="checkbox-1"
-                                                            {{ old('fisherfolkR', $item->fisherfolkR) ? 'checked' : '' }}>
+                                                            {{ $item->fisherfolkR == 1 ? 'checked' : '' }}>
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Fisherfolk Registry</div>
@@ -216,7 +222,7 @@
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
                                                         <input type="checkbox" name="fisheriesP" id="checkbox-2"
-                                                            {{ old('fisheriesP', $item->fisheriesP) ? 'checked' : '' }}>
+                                                            {{ $item->fisheriesP == 1 ? 'checked' : '' }}>
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Fisheries Profile</div>
@@ -225,7 +231,7 @@
                                                 <div class="rkmd-checkbox checkbox-rotate checkbox-ripple">
                                                     <label class="input-checkbox checkbox-primary">
                                                         <input type="checkbox" name="formulationR" id="checkbox-3"
-                                                            {{ old('formulationR', $item->formulationR) ? 'checked' : '' }}>
+                                                            {{ $item->formulationR == 1 ? 'checked' : '' }}>
                                                         <span class="checkbox"></span>
                                                     </label>
                                                     <div class="captions">Formulation of Resolution and propose
@@ -233,7 +239,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-8" style="line-height:4rem; margin-top: 40px">
+                                            <div class="col-md-6" style="line-height:4rem; margin-top: 40px">
                                                 <input id="internalP_file" type="file" name="internalP_file"
                                                     class="form-control file-input" style="width: 300px;"
                                                     accept="image/*,.pdf,.doc,.docx" placeholder="">
@@ -241,7 +247,7 @@
                                                 @if ($item['internalP_file'])
                                                     <a href="{{ asset('assets' . $item->internalP_file) }}"
                                                         target="_blank"><small>View old file</small></a>
-                                                    <small>Previous file: {{ $item['internalP_file'] }}</small>
+                                                    {{-- <small>Previous file: {{ $item['internalP_file'] }}</small> --}}
                                                 @endif
                                                 <br>
 
@@ -252,7 +258,7 @@
                                                 @if ($item['fisherfolkR_file'])
                                                     <a href="{{ asset('assets' . $item->fisherfolkR_file) }}"
                                                         target="_blank"><small>View old file</small></a>
-                                                    <small>Previous file: {{ $item['fisherfolkR_file'] }}</small>
+                                                    {{-- <small>Previous file: {{ $item['fisherfolkR_file'] }}</small> --}}
                                                 @endif
                                                 <br>
                                                 <input id="fisheriesP_file" type="file" name="fisheriesP_file"
@@ -262,7 +268,7 @@
                                                 @if ($item['fisheriesP_file'])
                                                     <a href="{{ asset('assets' . $item->fisheriesP_file) }}"
                                                         target="_blank"><small>View old file</small></a>
-                                                    <small>Previous file: {{ $item['fisheriesP_file'] }}</small>
+                                                    {{-- <small>Previous file: {{ $item['fisheriesP_file'] }}</small> --}}
                                                 @endif
                                                 <br>
                                                 <input id="formulationR_file" type="file" name="formulationR_file"
@@ -272,7 +278,7 @@
                                                 @if ($item['formulationR_file'])
                                                     <a href="{{ asset('assets' . $item->formulationR_file) }}"
                                                         target="_blank"><small>View old file</small></a>
-                                                    <small>Previous file: {{ $item['formulationR_file'] }}</small>
+                                                    {{-- <small>Previous file: {{ $item['formulationR_file'] }}</small> --}}
                                                 @endif
                                             </div>
                                         </div>
@@ -415,7 +421,7 @@
                                     <hr>
                                     <div style="background-color: #415dfe;">
                                         <div class="grid-material bg-general" style="color: white;padding:10px">
-                                            <b>COMPOSITION
+                                            <b>A. COMPOSITION
                                                 OF MEMBERSHIP</b>
                                         </div>
                                     </div>
@@ -522,6 +528,32 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <hr>
+                                        <label for="inline3mail" class="block form-control-label"><strong>2.
+                                                Fisherfolk Reresentative
+                                            </strong>
+                                        </label>
+                                        <div><small> <span style="color: red"> This section <small><b>
+                                                            "FISHERFOLK REPRESENTATIVE"</b></small> cannot be edited.
+                                                    Please ensure
+                                                    that all fields in each category are filled out when adding
+                                                    Fisherfolk Representative.
+                                                </span></small>
+                                        </div>
+                                    </div>
+
+                                    <div style="background-color: #415dfe;">
+                                        <div class="grid-material bg-general" style="color: white;padding:10px">
+                                            <b>B. COMPOSITION OF MEMBERSHIP</b>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div><small> <span style="color: red"> This section <small><b>
+                                                        "B. COMPOSITION OF MEMBERSHIP"</b></small> cannot be edited.
+                                                Please ensure
+                                                that all fields in each category are filled out when adding
+                                                composition of membership.
+                                            </span></small>
                                     </div>
                                     <hr>
                                     <div style="background-color: #415dfe;">
@@ -582,9 +614,6 @@
     </div>
 
 
-
-
-
     <script type="text/javascript">
         SyntaxHighlighter.all();
     </script>
@@ -633,6 +662,12 @@
             });
 
             // Add similar change event listeners for other file inputs
+        });
+    </script>
+
+    <script>
+        flatpickr('#dateInput', {
+            dateFormat: "d/m/Y",
         });
     </script>
     <script>

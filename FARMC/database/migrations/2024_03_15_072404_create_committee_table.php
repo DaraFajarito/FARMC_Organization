@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profileForm_id')->constrained('profile_form');
             $table->string('category')->nullable();
+            $table->string('other')->nullable();
             $table->string('chairperson_name')->nullable();
             $table->string('chairperson_org')->nullable();
             $table->string('sec_name')->nullable();

@@ -1365,7 +1365,7 @@
                                     </div>
                                     <br>
                                     @else
-                                    <label for="inline3mail" class="block form-control-label">Other, if any</label>
+                                    <label for="inline3mail" class="block form-control-label">Other, if any {{ $item->other}}</label>
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
                                             <thead>

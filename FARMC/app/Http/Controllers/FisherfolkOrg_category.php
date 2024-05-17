@@ -13,7 +13,9 @@ use App\Models\FO_ListofMem_Model;
 use App\Models\FO_OAM_BoardofDir_Model;
 use App\Models\FO_OAM_Committees_Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
+// use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
+
 
 class FisherfolkOrg_category extends Controller
 {
@@ -1416,12 +1418,22 @@ class FisherfolkOrg_category extends Controller
         return view('Fisherfolk_Organization.Association_Form.editAssociation',  compact('basic_info1', 'boardDir1', 'committee1', 'listmem1'));
     }
 
+    public function display_coop_edit($id)
+    {
+        $gen_info1 = FC_GenInfo_Model::where('id', $id)->get();
+        $mem = FC_Membership_model::where('fisherfolkOrg_FC_id', $id)->get();
+        $officer = FC_Officers_Model::where('fisherfolkOrg_FC_id', $id)->get();
+        $org = FC_Orgstruct_Model::where('fisherfolkOrg_FC_id', $id)->get();
+
+        return view('Fisherfolk_Organization.Cooperative_Form.editCooperative',  compact('gen_info1', 'mem', 'officer', 'org'));
+    }
+
     public function edit_Association(Request $request, $id)
     {
 
-
         $validatedData = $request->validate([
             //BASIC INFO (FisherfolkOrganization_Model)
+
             'as_of' => 'nullable|string',
             'name_of_org' => 'nullable|string',
             'add_barangay' => 'nullable|string',
@@ -1564,7 +1576,7 @@ class FisherfolkOrg_category extends Controller
             //COMMITTEE (FO_OAM_Committees_Model)
             // i have category here (Membership Committee, Committee on Education and Research, Election Committee, Audit Committee, Others: please specify),
             //wherein i just select one of this category and fill up the field in each category
-            //my problem is how can i edit data of each category i have if they have same input fields , how can identify if it is the category data i want to edit
+            //my problem is how can i edit data of each category if they have same input fields , how can identify if it is the category data i want to edit
             'category' => 'nullable',
             'other_cat' => 'nullable',
             'name' => 'nullable',
@@ -1737,9 +1749,6 @@ class FisherfolkOrg_category extends Controller
         $editAss->save();
         $boardir->save();
 
-
-
-        // Check if any changes were made and redirect accordingly
         if ($editAss->wasChanged() || $boardir->wasChanged()) {
             $sectorRep = $editAss->sector_rep;
             switch ($sectorRep) {
@@ -1755,6 +1764,371 @@ class FisherfolkOrg_category extends Controller
                     return redirect('/viewYouthAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
                 case 'IP':
                     return redirect('/viewIPAssociation/' . $editAss->id)->with('success', 'Data has been updated successfully!');
+                default:
+                    return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Failed to update. No changes were made.');
+        }
+    }
+    public function edit_Cooperative(Request $request, $id)
+    {
+
+        $validatedData = $request->validate([
+            //GEN INFO (FC_GenInfo_Model)
+            'as_of' => 'nullable',
+            'name_of_coop' => 'nullable',
+            'add_barangay' => 'nullable',
+            'add_city' => 'nullable',
+            'add_province' => 'nullable',
+            'sector_rep' => 'nullable|in:Municipal,Commercial,Fishworker,Women,Youth,IPs,Others',
+            'sector_rep_yes' => 'nullable',
+            'CIN' => 'nullable',
+            'date_of_amend' => 'nullable|date_format:Y-m-d',
+            'short_history' => 'nullable',
+
+            'RD_ODR_regnum' => 'nullable',
+            'RD_ODR_regdate' => 'nullable|date_format:Y-m-d',
+            'RD_ODR_regfile' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+
+            'RD_RA_regnum' => 'nullable',
+            'RD_RA_regdate' => 'nullable|date_format:Y-m-d',
+            'RD_RA_regfile' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+
+
+            'RD_memOp' => 'nullable|in:Municipal,Provincial,Regional,National',
+            'RD_bussOp' => 'nullable',
+            'RD_categofCoop' => 'nullable|in:Primary,Secondary,Tertiary',
+            'RD_typeofCoop' => 'nullable',
+
+            'RD_genObj' => 'nullable',
+            'RD_progpas' => 'nullable',
+            'RD_SOA_date' =>'nullable|date_format:Y-m-d',
+            'RD_SOA_num' => 'nullable',
+            'RD_categofAccre' => 'nullable|in:Municipal,Provincial,National',
+
+            //MEMBERSHIP & ASSETS (FC_Membership_Model)
+            'common_bond' => 'nullable|in:Institutional,Occupational,Residential,Associational',
+            'CoM_NRMem_male' => 'nullable',
+            'NRMem_female' => 'nullable',
+            'NRMem_total' => 'nullable',
+
+            'CoM_NAMem_male' => 'nullable',
+            'NAMem_female' => 'nullable',
+            'NAMem_total' => 'nullable',
+
+            'CoM_TotalMem_male' => 'nullable',
+            'TMem_female' => 'nullable',
+            'TMem_total' => 'nullable',
+
+            'CoM_TargetMem_male' => 'nullable',
+            'TarMem_female' => 'nullable',
+            'TarMem_total' => 'nullable',
+
+            'CoM_Total_male' => 'nullable',
+            'Total_female' => 'nullable',
+            'Total_total' => 'nullable',
+
+            'NoE_Fulltime_male' => 'nullable',
+            'Fulltime_female' => 'nullable',
+            'Fulltime_total' => 'nullable',
+
+            'NoE_Parttime_male' => 'nullable',
+            'Parttime_female' => 'nullable',
+            'Parttime_total' => 'nullable',
+
+            'NoE_Total_male' => 'nullable',
+            'TotalEmp_female' => 'nullable',
+            'TotalEmp_total' => 'nullable',
+
+            'total_assets' => 'nullable',
+
+            //OFFICERS (FC_Officers_Model)
+            'BoardofDir_name1' => 'nullable',
+            'cs1' => 'nullable',
+            'gen1' => 'nullable',
+            'birth1' =>  'nullable|date_format:Y-m-d',
+            'age1' => 'nullable',
+
+            'Chairperson_name2' => 'nullable',
+            'cs2' => 'nullable',
+            'gen2' => 'nullable',
+            'birth2' =>  'nullable|date_format:Y-m-d',
+            'age2' => 'nullable',
+
+            'Vchair_name3' => 'nullable',
+            'cs3' => 'nullable',
+            'gen3' => 'nullable',
+            'birth3' =>  'nullable|date_format:Y-m-d',
+            'age3' => 'nullable',
+
+            'BM_name4' => 'nullable',
+            'cs4' => 'nullable',
+            'gen4' => 'nullable',
+            'birth4' =>  'nullable|date_format:Y-m-d',
+            'age4' => 'nullable',
+
+            'BM_name5' => 'nullable',
+            'cs5' => 'nullable',
+            'gen5' => 'nullable',
+            'birth5' =>  'nullable|date_format:Y-m-d',
+            'age5' => 'nullable',
+
+            'BM_name6' => 'nullable',
+            'cs6' => 'nullable',
+            'gen6' => 'nullable',
+            'birth6' =>  'nullable|date_format:Y-m-d',
+            'age6' => 'nullable',
+
+            'BM_name7' => 'nullable',
+            'cs7' => 'nullable',
+            'gen7' => 'nullable',
+            'birth7' =>  'nullable|date_format:Y-m-d',
+            'age7' => 'nullable',
+
+            'BM_name8' => 'nullable',
+            'cs8' => 'nullable',
+            'gen8' => 'nullable',
+            'birth8' =>  'nullable|date_format:Y-m-d',
+            'age8' => 'nullable',
+
+            'BM_name9' => 'nullable',
+            'cs9' => 'nullable',
+            'gen9' => 'nullable',
+            'birth9' =>  'nullable|date_format:Y-m-d',
+            'age9' => 'nullable',
+
+            'BM_name10' => 'nullable',
+            'cs10' => 'nullable',
+            'gen10' => 'nullable',
+            'birth10' =>  'nullable|date_format:Y-m-d',
+            'age10' => 'nullable',
+
+            'GenMan_name11' => 'nullable',
+            'cs11' => 'nullable',
+            'gen11' => 'nullable',
+            'birth11' =>  'nullable|date_format:Y-m-d',
+            'age11' => 'nullable',
+
+            'Sec_name12' => 'nullable',
+            'cs12' => 'nullable',
+            'gen12' => 'nullable',
+            'birth12' =>  'nullable|date_format:Y-m-d',
+            'age12' => 'nullable',
+
+            'Treas_name13' => 'nullable',
+            'cs13' => 'nullable',
+            'gen13' => 'nullable',
+            'birth13' =>  'nullable|date_format:Y-m-d',
+            'age13' => 'nullable',
+
+            'orgstruct_file' => 'file|max:5242880|mimes:pdf,doc,docx,jpeg,png',
+            'CD_name' => 'nullable',
+            'CD_design' => 'nullable',
+            'CD_tell' => 'nullable',
+            'CD_email' => 'nullable',
+            'CD_FBacc' => 'nullable',
+        ], [
+            'RD_ODR_regfile.max' => 'The file may not be greater than 5MB.',
+            'RD_RA_regfile.max' => 'The file may not be greater than 5MB.',
+            'orgstruct_file.max' => 'The file may not be greater than 5MB.',
+        ]);
+
+        $editCoop = FC_GenInfo_Model::where('id', $id)->firstOrFail();
+
+        if ($request->hasFile('RD_ODR_regfile')) {
+            if ($editCoop->RD_ODR_regfile) {
+                Storage::delete($editCoop->RD_ODR_regfile);
+            }
+            $RD_ODR_regfilePath = $request->file('RD_ODR_regfile')->store('storage');
+            $editCoop->RD_ODR_regfile = $RD_ODR_regfilePath;
+        }
+
+        if ($request->hasFile('RD_RA_regfile')) {
+            if ($editCoop->RD_RA_regfile) {
+                Storage::delete($editCoop->RD_RA_regfile);
+            }
+            $RD_RA_regfilePath = $request->file('RD_RA_regfile')->store('storage');
+            $editCoop->RD_RA_regfile = $RD_RA_regfilePath;
+        }
+
+        // Update other fields
+        $editCoop->as_of = $validatedData['as_of'] ?? null;
+        $editCoop->name_of_coop = $validatedData['name_of_coop'] ?? null;
+        $editCoop->add_barangay = $validatedData['add_barangay'] ?? null;
+        $editCoop->add_city = $validatedData['add_city'] ?? null;
+        $editCoop->add_province = $validatedData['add_province'] ?? null;
+        $editCoop->sector_rep = $validatedData['sector_rep'] ?? null;
+        $editCoop->sector_rep_yes = $validatedData['sector_rep_yes'] ?? null;
+
+        $editCoop->CIN = $validatedData['CIN'] ?? null;
+        $editCoop->date_of_amend = $validatedData['date_of_amend'] ?? null;
+        $editCoop->short_history = $validatedData['short_history'] ?? null;
+
+        $editCoop->RD_ODR_regnum = $validatedData['RD_ODR_regnum'] ?? null;
+        $editCoop->RD_ODR_regdate = isset($validatedData['RD_ODR_regdate']) ? date('Y-m-d', strtotime($validatedData['RD_ODR_regdate'])) : null;
+        $editCoop->RD_ODR_regfile = $validatedData['RD_ODR_regfile'] ?? null;
+
+        $editCoop->RD_RA_regnum = $validatedData['RD_ODR_regnum'] ?? null;
+        $editCoop->RD_RA_regdate = isset($validatedData['RD_RA_regdate']) ? date('Y-m-d', strtotime($validatedData['RD_RA_regdate'])) : null;
+        $editCoop->RD_RA_regfile = $validatedData['RD_RA_regfile'] ?? null;
+
+        $editCoop->RD_memOp = $validatedData['RD_memOp'] ?? null;
+        $editCoop->RD_bussOp = $validatedData['RD_bussOp'] ?? null;
+        $editCoop->RD_categofCoop = $validatedData['RD_categofCoop'] ?? null;
+        $editCoop->RD_typeofCoop = $validatedData['RD_typeofCoop'] ?? null;
+
+        $editCoop->RD_genObj = $validatedData['RD_genObj'] ?? null;
+        $editCoop->RD_progpas = $validatedData['RD_progpas'] ?? null;
+        $editCoop->RD_SOA_date = isset($validatedData['RD_SOA_date']) ? date('Y-m-d', strtotime($validatedData['RD_SOA_date'])) : null;
+        $editCoop->RD_SOA_num = $validatedData['RD_SOA_num'] ?? null;
+        $editCoop->RD_categofAccre = $validatedData['RD_categofAccre'] ?? null;
+
+        $mem = FC_Membership_Model::where('fisherfolkOrg_FC_id', $editCoop->id)->firstOrFail();
+        $mem->common_bond = $validatedData['common_bond'] ?? null;
+        $mem->CoM_NRMem_male = $validatedData['CoM_NRMem_male'] ?? null;
+        $mem->NRMem_female = $validatedData['NRMem_female'] ?? null;
+        $mem->NRMem_total =  $validatedData['NRMem_total'] ?? null;
+
+        $mem->CoM_NAMem_male = $validatedData['CoM_NAMem_male'] ?? null;
+        $mem->NAMem_female = $validatedData['NAMem_female'] ?? null;
+        $mem->NAMem_total = $validatedData['NAMem_total'] ?? null;
+
+        $mem->CoM_TotalMem_male = $validatedData['CoM_TotalMem_male'] ?? null;
+        $mem->TMem_female = $validatedData['TMem_female'] ?? null;
+        $mem->TMem_total = $validatedData['TMem_total'] ?? null;
+
+        $mem->CoM_TargetMem_male = $validatedData['CoM_TargetMem_male'] ?? null;
+        $mem->TarMem_female = $validatedData['TarMem_female'] ?? null;
+        $mem->TarMem_total = $validatedData['TarMem_total'] ?? null;
+
+        $mem->CoM_Total_male = $validatedData['CoM_Total_male'] ?? null;
+        $mem->Total_female = $validatedData['Total_female'] ?? null;
+        $mem->Total_total = $validatedData['Total_total'] ?? null;
+
+
+        $mem->NoE_Fulltime_male = $validatedData['NoE_Fulltime_male'] ?? null;
+        $mem->Fulltime_female = $validatedData['Fulltime_female'] ?? null;
+        $mem->Fulltime_total = $validatedData['Fulltime_total'] ?? null;
+
+        $mem->NoE_Parttime_male = $validatedData['NoE_Parttime_male'] ?? null;
+        $mem->Parttime_female = $validatedData['Parttime_female'] ?? null;
+        $mem->Parttime_total = $validatedData['Parttime_total'] ?? null;
+
+        $mem->NoE_Total_male = $validatedData['NoE_Total_male'] ?? null;
+        $mem->TotalEmp_female = $validatedData['TotalEmp_female'] ?? null;
+        $mem->TotalEmp_total = $validatedData['TotalEmp_total'] ?? null;
+
+        $mem->total_assets = $validatedData['total_assets'] ?? null;
+
+        $off = FC_Officers_Model::where('fisherfolkOrg_FC_id', $editCoop->id)->firstOrFail();
+        $off->BoardofDir_name1 = $validatedData['BoardofDir_name1'] ?? null;
+        $off->cs1 = $validatedData['cs1'] ?? null;
+        $off->gen1 = $validatedData['gen1'] ?? null;
+        $off->birth1 = isset($validatedData['birth1']) ? date('Y-m-d', strtotime($validatedData['birth1'])) : null;
+        $off->age1 =  $validatedData['age1'] ?? null;
+
+        $off->Chairperson_name2 = $validatedData['Chairperson_name2'] ?? null;
+        $off->cs2 = $validatedData['cs2'] ?? null;
+        $off->gen2 = $validatedData['gen2'] ?? null;
+        $off->birth2 = isset($validatedData['birth2']) ? date('Y-m-d', strtotime($validatedData['birth2'])) : null;
+        $off->age2 =  $validatedData['age2'] ?? null;
+
+        $off->Vchair_name3 = $validatedData['Vchair_name3'] ?? null;
+        $off->cs3 = $validatedData['cs3'] ?? null;
+        $off->gen3 = $validatedData['gen3'] ?? null;
+        $off->birth3 = isset($validatedData['birth3']) ? date('Y-m-d', strtotime($validatedData['birth3'])) : null;
+        $off->age3 =  $validatedData['age3'] ?? null;
+
+        $off->BM_name4 = $validatedData['BM_name4'] ?? null;
+        $off->cs4 = $validatedData['cs4'] ?? null;
+        $off->gen4 = $validatedData['gen4'] ?? null;
+        $off->birth4 = isset($validatedData['birth4']) ? date('Y-m-d', strtotime($validatedData['birth4'])) : null;
+        $off->age4 =  $validatedData['age4'] ?? null;
+
+        $off->BM_name5 = $validatedData['BM_name5'] ?? null;
+        $off->cs5 = $validatedData['cs5'] ?? null;
+        $off->gen5 = $validatedData['gen5'] ?? null;
+        $off->birth5 = isset($validatedData['birth5']) ? date('Y-m-d', strtotime($validatedData['birth5'])) : null;
+        $off->age5 =  $validatedData['age5'] ?? null;
+
+        $off->BM_name6 = $validatedData['BM_name6'] ?? null;
+        $off->cs6 = $validatedData['cs6'] ?? null;
+        $off->gen6 = $validatedData['gen6'] ?? null;
+        $off->birth6 = isset($validatedData['birth6']) ? date('Y-m-d', strtotime($validatedData['birth6'])) : null;
+        $off->age6 =  $validatedData['age6'] ?? null;
+
+        $off->BM_name7 = $validatedData['BM_name7'] ?? null;
+        $off->cs7 = $validatedData['cs7'] ?? null;
+        $off->gen7 = $validatedData['gen7'] ?? null;
+        $off->birth7 = isset($validatedData['birth7']) ? date('Y-m-d', strtotime($validatedData['birth7'])) : null;
+        $off->age7 =  $validatedData['age7'] ?? null;
+
+        $off->BM_name8 = $validatedData['BM_name8'] ?? null;
+        $off->cs8 = $validatedData['cs8'] ?? null;
+        $off->gen8 = $validatedData['gen8'] ?? null;
+        $off->birth8 = isset($validatedData['birth8']) ? date('Y-m-d', strtotime($validatedData['birth8'])) : null;
+        $off->age8 =  $validatedData['age8'] ?? null;
+
+        $off->BM_name9 = $validatedData['BM_name9'] ?? null;
+        $off->cs9 = $validatedData['cs9'] ?? null;
+        $off->gen9 = $validatedData['gen9'] ?? null;
+        $off->birth9 = isset($validatedData['birth9']) ? date('Y-m-d', strtotime($validatedData['birth9'])) : null;
+        $off->age9 =  $validatedData['age9'] ?? null;
+
+        $off->BM_name10 = $validatedData['BM_name10'] ?? null;
+        $off->cs10 = $validatedData['cs10'] ?? null;
+        $off->gen10 = $validatedData['gen10'] ?? null;
+        $off->birth10 = isset($validatedData['birth10']) ? date('Y-m-d', strtotime($validatedData['birth10'])) : null;
+        $off->age10 =  $validatedData['age10'] ?? null;
+
+        $off->GenMan_name11 = $validatedData['GenMan_name11'] ?? null;
+        $off->cs11 = $validatedData['cs11'] ?? null;
+        $off->gen11 = $validatedData['gen11'] ?? null;
+        $off->birth11 = isset($validatedData['birth11']) ? date('Y-m-d', strtotime($validatedData['birth11'])) : null;
+        $off->age11 =  $validatedData['age11'] ?? null;
+
+        $off->Sec_name12 = $validatedData['Sec_name12'] ?? null;
+        $off->cs12 = $validatedData['cs12'] ?? null;
+        $off->gen12 = $validatedData['gen12'] ?? null;
+        $off->birth12 = isset($validatedData['birth12']) ? date('Y-m-d', strtotime($validatedData['birth12'])) : null;
+        $off->age12 =  $validatedData['age12'] ?? null;
+
+        $off->Treas_name13 = $validatedData['Treas_name13'] ?? null;
+        $off->cs13 = $validatedData['cs13'] ?? null;
+        $off->gen13 = $validatedData['gen13'] ?? null;
+        $off->birth13 = isset($validatedData['birth13']) ? date('Y-m-d', strtotime($validatedData['birth13'])) : null;
+        $off->age13 =  $validatedData['age13'] ?? null;
+
+        $orgstr = FC_OrgStruct_Model::where('fisherfolkOrg_FC_id', $editCoop->id)->firstOrFail();
+        $orgstr->orgstruct_file = $validatedData['orgstruct_file'] ?? null;
+        $orgstr->CD_name = $validatedData['CD_name'] ?? null;
+        $orgstr->CD_design = $validatedData['CD_design'] ?? null;
+        $orgstr->CD_tell = $validatedData['CD_tell'] ?? null;
+        $orgstr->CD_email =  $validatedData['CD_email'] ?? null;
+        $orgstr->CD_FBacc = $validatedData['CD_FBacc'] ?? null;
+
+        $editCoop->save();
+        $mem->save();
+        $off->save();
+        $orgstr->save();
+
+        if ($editCoop->wasChanged() || $mem->wasChanged() || $off->wasChanged() || $orgstr->wasChanged()) {
+            $sectorRep = $editCoop->sector_rep;
+            switch ($sectorRep) {
+                case 'Municipal':
+                    return redirect('/viewCooperative/' . $editCoop->id)->with('success', 'Data has been updated successfully!');
+                case 'Fishworker':
+                    return redirect('/viewCooperative/' . $editCoop->id)->with('success', 'Data has been updated successfully!');
+                case 'Commercial':
+                    return redirect('/viewCooperative/' . $editCoop->id)->with('success', 'Data has been updated successfully!');
+                case 'Women':
+                    return redirect('/viewCooperative/' . $editCoop->id)->with('success', 'Data has been updated successfully!');
+                case 'Youth':
+                    return redirect('/viewCooperative/' . $editCoop->id)->with('success', 'Data has been updated successfully!');
+                case 'IP':
+                    return redirect('/viewCooperative/' . $editCoop->id)->with('success', 'Data has been updated successfully!');
                 default:
                     return redirect()->back()->with('error', 'Failed to update. No changes were made.');
             }

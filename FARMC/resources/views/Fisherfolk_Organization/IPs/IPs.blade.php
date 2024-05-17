@@ -252,7 +252,7 @@
                                                                     <a href="{{ url('/viewIPAssociation/' . $item->id) }}"
                                                                         class="btn btn-success"><i
                                                                             class="ti-eye"></i></a>
-                                                                    <a href="" class="btn btn-warning"><i
+                                                                    <a href="{{ url ('/association_edit/' . $item->id)}}" class="btn btn-warning"><i
                                                                             class="ti-pencil"></i></a>
                                                                     <a href="{{ url('/archived_IPAss/' . $item->id) }}"
                                                                         class="btn btn-danger"><i
@@ -331,7 +331,7 @@
                                                                         <a href="{{ url('/viewCooperative/' . $item->id) }}"
                                                                             class="btn btn-success"><i
                                                                                 class="ti-eye"></i></a>
-                                                                        <a href="{{ url ('/association_edit/' . $item->id)}}" class="btn btn-warning"><i
+                                                                        <a href="{{ url ('/cooperative_edit/' . $item->id)}}" class="btn btn-warning"><i
                                                                                 class="ti-pencil"></i></a>
                                                                         <a href="{{ url('/archived_IPCoop/' . $item->id) }}"
                                                                             class="btn btn-danger"><i

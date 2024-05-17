@@ -2889,7 +2889,6 @@
                                                                 <th class="text-center">Gender</th>
                                                                 <th class="text-center">Birthday</th>
                                                                 <th class="text-center">Age</th>
-                                                                <th class="text-center">4ps/Ips/SC/PWD</th>
                                                                 <th class="text-center"></th>
 
                                                             </tr>
@@ -2933,13 +2932,7 @@
                                                                             {{ $item->listmem_age }}
                                                                         @endif
                                                                     </td>
-                                                                    <td>
-                                                                        @if ($item->listmem_fourps === null)
-                                                                            <span style="color: red;">no data</span>
-                                                                        @else
-                                                                            {{ $item->listmem_fourps }}
-                                                                        @endif
-                                                                    </td>
+
                                                                 </tr>
                                                             </tbody>
                                                         @endforeach

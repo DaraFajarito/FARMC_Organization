@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                @foreach($basics as $item)
+                {{-- @foreach($basics as $item) --}}
                 <div class="card">
                     <div id="content">
                         <div class="card-header" style="display: flex; justify-content: space-between;">
@@ -788,12 +788,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </form>
-                            @endforeach
+
                         </div>
                     </div>
                 </div>
-                @endforeach
+                {{-- @endforeach --}}
             </div>
         </div>
 

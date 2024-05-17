@@ -98,8 +98,6 @@ class FC_Officers_Controller extends Controller
             'birth13' =>  'nullable|date_format:Y-m-d',
             'age13' => 'nullable',
 
-
-
         ]);
 
 

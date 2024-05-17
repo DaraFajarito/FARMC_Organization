@@ -102,13 +102,13 @@ class FDP_PersonalInfo_Controller extends Controller
             $mdo = $FDP->involvement_mdo;
             switch ($mdo) {
                 case 'Provincial Fisherfolk Representative':
-                    return redirect('/provincialFR')->with('success', 'Data has been updated successfully!');
+                    return redirect('/provincialFR')->with('success', 'Data has been added successfully!');
                 case 'Regional Fisherfolk Representative':
-                    return redirect('/regionalFR')->with('success', 'Data has been updated successfully!');
+                    return redirect('/regionalFR')->with('success', 'Data has been added successfully!');
                 case 'Regional Fisherfolk Director':
-                    return redirect('/regionalFD')->with('success', 'Data has been updated successfully!');
+                    return redirect('/regionalFD')->with('success', 'Data has been added successfully!');
                 case 'National Fisherfolk Director':
-                    return redirect('/nationalFD')->with('success', 'Data has been updated successfully!');
+                    return redirect('/nationalFD')->with('success', 'Data has been added successfully!');
                 default:
                     return redirect()->back()->with('error', 'Failed to update. No changes were made.');
             }

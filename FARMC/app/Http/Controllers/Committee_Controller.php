@@ -21,6 +21,7 @@ class Committee_Controller extends Controller
 
         $validatedData = $request->validate([
             'category' => 'NULLABLE', // Add any other validation rules you need
+            'other' => 'NULLABLE', // Add any other validation rules you need
             'chairperson_name' => 'NULLABLE',
             'chairperson_org' => 'NULLABLE',
             'sec_name' => 'NULLABLE',
@@ -32,6 +33,7 @@ class Committee_Controller extends Controller
         // Create a new committee instance
         $committee = new Committee_Model();
         $committee->category = $validatedData['category'] ?? null;
+        $committee->other = $validatedData['other'] ?? null;
         $committee->profileForm_id = $profile->id ?? null;
         $committee->chairperson_name = $validatedData['chairperson_name'] ?? null;
         $committee->chairperson_org = $validatedData['chairperson_org'] ?? null;
