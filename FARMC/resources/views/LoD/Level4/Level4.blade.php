@@ -58,7 +58,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-success">All</span>
                                 <span>Level 4 | Completed</span>
-                                <h2 class="dashboard-total-products">{{$completedsustain}}</h2>
+                                <h2 class="dashboard-total-products">{{ $completedsustain }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-check text-success-color"></i>
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="card dashboard-product">
                                 <span class="label label-danger">All</span>
                                 <span>Level 4 | Incompleted</span>
-                                <h2 class="dashboard-total-products">{{$incompletesustain}}</h2>
+                                <h2 class="dashboard-total-products">{{ $incompletesustain }}</h2>
                                 <div class="side-box ">
                                     <i class="ti-close text-danger-color"></i>
                                 </div>
@@ -84,9 +84,12 @@
                                         <label>MIMAROPA LEVELS OVERVIEW</label>
                                     </div>
                                     <div class="col-md-8 text-right">
-                                        <a href="{{ url ('/L4Completedtbl') }}"><button type="button" class="btn btn-primary">All Completed</button></a>
-                                        <a href="{{ url ('/L4Incompletetbl') }}"><button type="button" class="btn btn-danger">All Incomplete</button></a>
-                                        <a href="{{ url ('/L4Archivedtbl') }}"><button type="button" class="btn btn-warning"><i class="ti-archive"></i></button></a>
+                                        <a href="{{ url('/L4Completedtbl') }}"><button type="button"
+                                                class="btn btn-primary">All Completed</button></a>
+                                        <a href="{{ url('/L4Incompletetbl') }}"><button type="button"
+                                                class="btn btn-danger">All Incomplete</button></a>
+                                        <a href="{{ url('/L4Archivedtbl') }}"><button type="button"
+                                                class="btn btn-warning"><i class="ti-archive"></i></button></a>
                                     </div>
                                 </div>
                                 <br>
@@ -96,14 +99,16 @@
                                         <div class="card-block">
                                             <ul class="nav nav-tabs  tabs" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#mimaropa" role="tab">All</a>
+                                                    <a class="nav-link active" data-toggle="tab" href="#mimaropa"
+                                                        role="tab">All</a>
                                                 </li>
                                             </ul>
                                             <!-- Tab panes -->
                                             <div class="tab-content tabs">
                                                 <div class="tab-pane active" id="mimaropa" role="tabpanel">
                                                     <br>
-                                                    <table id="FARMC" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                    <table id="FARMC" class="table table-striped table-bordered"
+                                                        cellspacing="0" width="100%">
                                                         <thead style="font-size:10px">
                                                             <tr>
                                                                 <th>Province</th>
@@ -116,44 +121,56 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach($data as $item)
-                                                            @if ($item->status !== "ARCHIVED")
-                                                            <tr>
-                                                                <td>{{$item->profileForm->province}}</td>
-                                                                <td>{{$item->profileForm->municipality}}</td>
-                                                                @if ($item->data_training === 'No')
-                                                                <td> No </td>
-                                                                @else
-                                                                <td>Yes</td>
-                                                                @endif
+                                                            @foreach ($data as $item)
+                                                                @if ($item->status !== 'ARCHIVED')
+                                                                    <tr>
+                                                                        <td>{{ $item->profileForm->province }}</td>
+                                                                        <td>{{ $item->profileForm->municipality }}</td>
+                                                                        @if ($item->data_training === 'No')
+                                                                            <td> No </td>
+                                                                        @else
+                                                                            <td>Yes</td>
+                                                                        @endif
 
-                                                                @if ($item->data_fishcatch === 'No')
-                                                                <td> No </td>
-                                                                @else
-                                                                <td>Yes</td>
-                                                                @endif
+                                                                        @if ($item->data_fishcatch === 'No')
+                                                                            <td> No </td>
+                                                                        @else
+                                                                            <td>Yes</td>
+                                                                        @endif
 
-                                                                @if ($item->data_regforms === 'No')
-                                                                <td> No </td>
-                                                                @else
-                                                                <td>Yes </td>
-                                                                @endif
+                                                                        @if ($item->data_regforms === 'No')
+                                                                            <td> No </td>
+                                                                        @else
+                                                                            <td>Yes </td>
+                                                                        @endif
 
-                                                                @if ($item->status == "COMPLETED")
-                                                                <td style="color:green"><b>COMPLETED</b></td>
-                                                                @elseif ($item->status == "INCOMPLETE")
-                                                                <td style="color:red"><b>INCOMPLETE</b></td>
-                                                                @elseif ($item->status == "ARCHIVED")
-                                                                <td style="color:orange"><b>ARCHIVED</b></td>
-                                                                @endif
+                                                                        @if ($item->status == 'COMPLETED')
+                                                                            <td style="color:green"><b>COMPLETED</b>
+                                                                            </td>
+                                                                        @elseif ($item->status == 'INCOMPLETE')
+                                                                            <td style="color:red"><b>INCOMPLETE</b></td>
+                                                                        @elseif ($item->status == 'ARCHIVED')
+                                                                            <td style="color:orange"><b>ARCHIVED</b>
+                                                                            </td>
+                                                                        @endif
 
-                                                                <td style=" display: flex; justify-content: space-between;">
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Viewform/' . $item->profileForm_id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Editform/' . $item->profileForm_id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                                                    <a style="margin-left: 5px;" href="{{ url('/L4Archivedtbl/' . $item->id) }}" class="btn btn-danger"><i class="ti-trash"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            @endif
+                                                                        <td
+                                                                            style=" display: flex; justify-content: space-between;">
+                                                                            <a style="margin-left: 5px;"
+                                                                                href="{{ url('/L4Viewform/' . $item->profileForm_id) }}"
+                                                                                class="btn btn-success"><i
+                                                                                    class="ti-eye"></i></a>
+                                                                            <a style="margin-left: 5px;"
+                                                                                href="{{ url('/L4Editform/' . $item->profileForm_id) }}"
+                                                                                class="btn btn-warning"><i
+                                                                                    class="ti-pencil"></i></a>
+                                                                            <a style="margin-left: 5px;"
+                                                                                href="{{ url('/L4Archivedtbl/' . $item->id) }}"
+                                                                                class="btn btn-danger"><i
+                                                                                    class="ti-trash"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
                                                             @endforeach
                                                         </tbody>
                                                     </table>
@@ -167,7 +184,8 @@
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-block">
-                                        <h6 class="card-title">All Level 4 <em> <small>(Incomplete & Complete)</small> </em></h6>
+                                        <h6 class="card-title">All Level 4 <em> <small>(Incomplete & Complete)</small>
+                                            </em></h6>
                                         <div class="row">
                                             <div class="col-sm-12 grid-margin">
                                                 <canvas id="level4chart"></canvas>

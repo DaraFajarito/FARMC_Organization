@@ -65,10 +65,16 @@
                                         @elseif ($item->status == "INCOMPLETE")
                                         <td style="color:red"><b>INCOMPLETE</b></td>
                                         @endif
-                                        <td style=" display: flex; justify-content: space-between;">
+                                        <td style=" display: flex; justify-content:">
                                             <a style="margin-left: 5px;" href="{{ url('/L1Viewform/' . $item->id) }}" class="btn btn-success"><i class="ti-eye"></i></a>
-                                            <!-- <a style="margin-left: 5px;" href="{{ url('/L1Editform') }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
-                                            <a style="margin-left: 5px;" href="{{ url('/L1Viewform') }}" class="btn btn-danger"><i class="ti-trash"></i></a> -->
+                                            <a style="margin-left: 5px;"
+                                            href="{{ url('/L1Editform/' . $item->id) }}"
+                                            class="btn btn-warning"><i
+                                                class="ti-pencil"></i></a>
+                                        <a style="margin-left: 5px;"
+                                            href="{{ url('/L1Archivedtbl/' . $item->id) }}"
+                                            class="btn btn-danger"><i
+                                                class="ti-trash"></i></a>
                                         </td>
                                 </tbody>
                                 @endforeach

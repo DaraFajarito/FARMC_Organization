@@ -183,7 +183,6 @@ class ProfileForm_Controller extends Controller
         return view('LoD.Level3.L3_Viewform', compact('basics', 'fullyOp'));
     }
 
-
     public function display_level3_edit($id)
     {
         $basics = BasicFunction_Model::select('id')->where('id', $id)->get();

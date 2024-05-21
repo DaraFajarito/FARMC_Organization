@@ -95,7 +95,7 @@
                             <div class="card dashboard-product">
                                 <span>Level One</span>
                                 <h2 class="dashboard-total-products"><span>{{ $allcominc1 }}</span></h2>
-                                <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#"
+                                <a href="{{ url ('/L1Completedtbl')}}" id="completed-link"><small>Completed </small></a> | <a href="{{ url ('/L1Incompletetbl')}}"
                                     id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle">1</div>
@@ -107,7 +107,7 @@
                             <div class="card dashboard-product">
                                 <span>Level Two</span>
                                 <h2 class="dashboard-total-products"><span>{{ $allcominc2 }}</span></h2>
-                                <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#"
+                                <a href="{{ url ('/L2Completedtbl')}}" id="completed-link"><small>Completed </small></a> | <a href="{{ url ('/L2Incompletetbl')}}"
                                     id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle1">2</div>
@@ -118,7 +118,7 @@
                             <div class="card dashboard-product">
                                 <span>Level Three</span>
                                 <h2 class="dashboard-total-products"><span>{{ $allcominc3 }}</span></h2>
-                                <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#"
+                                <a href="{{ url ('/L3Completedtbl')}}" id="completed-link"><small>Completed </small></a> | <a href="{{ url ('/L3Incompletetbl')}}"
                                     id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle2">3</div>
@@ -129,7 +129,7 @@
                             <div class="card dashboard-product">
                                 <span>Level Four</span>
                                 <h2 class="dashboard-total-products"><span>{{ $allcominc4 }}</span></h2>
-                                <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#"
+                                <a href="{{ url ('/L4Completedtbl')}}" id="completed-link"><small>Completed </small></a> | <a href="{{ url ('/L4Incompletetbl')}}"
                                     id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle3">4</div>
@@ -140,7 +140,7 @@
                             <div class="card dashboard-product">
                                 <span>Level Five</span>
                                 <h2 class="dashboard-total-products"><span>{{ $allcominc5 }}</span></h2>
-                                <a href="#" id="completed-link"><small>Completed </small></a> | <a href="#"
+                                <a href="{{ url ('/L5Completedtbl')}}" id="completed-link"><small>Completed </small></a> | <a href="{{ url ('/L5Incompletetbl')}}"
                                     id="incomplete-link"><small>Incomplete</small></a>
                                 <div class="side-box">
                                     <div class="circle4">5</div>
